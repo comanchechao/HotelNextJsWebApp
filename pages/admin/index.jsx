@@ -12,8 +12,12 @@ import {
   IconArrowsLeftRight,
   IconSortDescending2,
   IconStars,
+  IconBuildingSkyscraper,
   IconStarsOff,
+  IconUserCheck,
   IconSortAscending,
+  IconLogout,
+  IconBook,
 } from "@tabler/icons";
 import { useState } from "react";
 
@@ -36,45 +40,55 @@ export default function adminPage() {
             onClick={() => {
               setTab("hotel");
             }}
-            className="flex justify-center items-center h-28 w-full "
+            className="flex cursor-pointer hover:bg-gray-700 transition hover:text-white justify-center items-center h-28 w-full "
           >
-            <div className="flex justify-center text-2xl font-bold text-gray-100 w-full">
-              هتل ها
+            <div className="flex justify-around items-center  transition   text-gray-100 w-full">
+              <IconBuildingSkyscraper size={24} />
+              <h1 className="text-2xl font-bold"> هتل ها </h1>
             </div>
           </div>
           <div
             onClick={() => {
               setTab("user");
             }}
-            className="flex justify-center items-center h-28 w-full "
+            className="flex cursor-pointer hover:bg-gray-700 transition hover justify-center items-center h-28 w-full "
           >
-            <div className="flex justify-center text-2xl font-bold text-gray-100 w-full">
-              همکاران
+            <div className="flex justify-around items-center  transition   text-gray-100 w-full">
+              <IconUserCheck size={24} />
+              <h1 className="text-2xl font-bold"> همکاران </h1>
             </div>
           </div>
           <div
             onClick={() => {
               setTab("reserve");
             }}
-            className="flex justify-center items-center h-28 w-full "
+            className="flex cursor-pointer hover:bg-gray-700 transition hover justify-center items-center h-28 w-full "
           >
-            <div className="flex justify-center text-2xl font-bold text-gray-100 w-full">
-              سفارش ها
+            <div className="flex justify-around items-center  transition   text-gray-100 w-full">
+              <IconBook size={24} />
+              <h1 className="text-2xl font-bold"> رزرو ها </h1>
             </div>
           </div>
-          <div className="flex justify-center items-center h-28 w-full ">
-            <div className="flex justify-center text-2xl font-bold text-gray-100 w-full">
-              پیام ها
+          <div className="flex cursor-pointer hover:bg-gray-700 transition hover justify-center items-center h-28 w-full ">
+            <div className="flex justify-around items-center  transition   text-gray-100 w-full">
+              <IconBuildingSkyscraper size={24} />
+              <h1 className="text-2xl font-bold"> هتل ها </h1>
+            </div>
+          </div>
+          <div className="flex cursor-pointer hover:bg-red-700 transition hover justify-center items-center h-28 w-full ">
+            <div className="flex justify-around items-center  transition   text-gray-100 w-full">
+              <IconLogout size={24} />
+              <h1 className="text-2xl font-bold"> خروج </h1>
             </div>
           </div>
         </div>
         <div className="flex py-0 flex-col w-full h-full bg-gray-800">
           <div className="flex h-14 justify-end w-full items-center">
-            <div className="flex">
+            <div className="flex mx-4">
               <div className="flex">
                 <input
                   placeholder="...جستوجو در هتل ها "
-                  className="text-right p-3 bg-gray-100"
+                  className="text-right rounded-xl p-4 bg-gray-100"
                   type="text"
                 />
               </div>
