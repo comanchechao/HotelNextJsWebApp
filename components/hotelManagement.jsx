@@ -25,7 +25,7 @@ export default function hotelManagement() {
           return (
             <div
               key={i}
-              className="space-x-2  flex px-0 items-center justify-between h-52 shadow-2xl w-full rounded bg-gray-200"
+              className="space-x-2  flex px-0 items-center justify-between h-52 shadow-2xl w-full rounded bg-white"
             >
               <div className="flex border-r border-gray-900 flex-col h-full w-2/3 justify-center items-center">
                 <div className="flex justify-center items-center w-full h-full">
@@ -36,7 +36,7 @@ export default function hotelManagement() {
                   </div>
                 </div>
                 <div className="flex p-5 w-full justify-center items-center">
-                  <button className="w-full py-4 bg-Sky-800 rounded-xl shadow-2xl text-white hover:bg-Sky-500">
+                  <button className="w-full py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
                     ویرایش هتل
                   </button>
                 </div>

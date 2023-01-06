@@ -28,7 +28,7 @@ export default function adminPage() {
     <div className="w-screen h-full">
       <Navbar />
       <div className="flex w-full h-full">
-        <div className="flex hidden lg:flex flex-col h-screen w-96 divide-y bg-black">
+        <div className="hidden lg:flex flex-col h-full w-96 divide-y bg-CoolGray-900">
           <div className="flex w-full justify-center items-center ">
             <div className="flex h-28 justify-around items-center text-gray-100 w-full">
               <div className="w-10 h-10 rounded-full bg-gray-300"></div>
@@ -41,7 +41,7 @@ export default function adminPage() {
             onClick={() => {
               setTab("hotel");
             }}
-            className="flex cursor-pointer hover:bg-purple-700 transition hover:text-white justify-center items-center h-28 w-full "
+            className="flex cursor-pointer hover:bg-mainPurple transition hover:text-white justify-center items-center h-28 w-full "
           >
             <div className="flex justify-around items-center  transition   text-gray-50 w-full">
               <IconBuildingSkyscraper size={24} />
@@ -52,7 +52,7 @@ export default function adminPage() {
             onClick={() => {
               setTab("user");
             }}
-            className="flex cursor-pointer hover:bg-purple-700 transition hover justify-center items-center h-28 w-full "
+            className="flex cursor-pointer hover:bg-mainPurple transition hover justify-center items-center h-28 w-full "
           >
             <div className="flex justify-around items-center  transition   text-gray-50 w-full">
               <IconUserCheck size={24} />
@@ -63,14 +63,14 @@ export default function adminPage() {
             onClick={() => {
               setTab("reserve");
             }}
-            className="flex cursor-pointer hover:bg-purple-700 transition hover justify-center items-center h-28 w-full "
+            className="flex cursor-pointer hover:bg-mainPurple transition hover justify-center items-center h-28 w-full "
           >
             <div className="flex justify-around items-center  transition   text-gray-50 w-full">
               <IconBook size={24} />
               <h1 className="text-2xl font-bold"> رزرو ها </h1>
             </div>
           </div>
-          <div className="flex cursor-pointer hover:bg-purple-700 transition hover justify-center items-center h-28 w-full ">
+          <div className="flex cursor-pointer hover:bg-mainPurple transition hover justify-center items-center h-28 w-full ">
             <div className="flex justify-around items-center  transition   text-gray-50 w-full">
               <IconBuildingSkyscraper size={24} />
               <h1 className="text-2xl font-bold"> هتل ها </h1>
@@ -83,7 +83,7 @@ export default function adminPage() {
             </div>
           </div>
         </div>
-        <div className="flex py-0 flex-col w-full h-full bg-gray-800">
+        <div className="flex py-0 flex-col w-full h-full bg-gray-200">
           <div className="flex h-14 lg:justify-end justify-between w-full items-center">
             <div className="lg:hidden flex px-2 justify-center items-center">
               <IconMenu2 size={32} className="text-white" />
@@ -106,7 +106,6 @@ export default function adminPage() {
                 </Menu.Dropdown>
               </Menu>
               <div className="flex justify-center items-center bg-yellow-500 h-full">
-                {" "}
                 <Menu
                   trigger="hover"
                   openDelay={100}
