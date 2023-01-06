@@ -24,7 +24,7 @@ module.exports = {
         carousel: "50rem",
       },
       fontFamily: {
-        mainFont: ["LaleZar"],
+        mainFont: ["IranSans"],
         SultanFont: ["SultanFont"],
       },
       fontSize: {

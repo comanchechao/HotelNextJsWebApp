@@ -2,8 +2,8 @@ import Head from "next/head";
 import { Inter } from "@next/font/google";
 import Navbar from "../components/Navbar";
 // const inter = Inter({ subsets: ["latin"] });
-import { Select, Menu, Text, useMantineTheme, Button } from "@mantine/core";
-import { MapPin } from "phosphor-react";
+import { Select, Popover, useMantineTheme, TextInput } from "@mantine/core";
+import { MapPin, PlusCircle, MinusCircle } from "phosphor-react";
 import Image from "next/image";
 import mainBg from "../assets/images/mainBg.webp";
 import { DatePicker } from "@mantine/dates";
@@ -22,8 +22,8 @@ export default function Home() {
           />
         </div>
         <div className="w-full  h-72 px-56">
-          <div className="w-full h-full flex flex-row-reverse items-center justify-center space-x-6 bg-white rounded-lg p-14  ">
-            <div className="flex bg-mainPurple w-full h-full items-center flex-row-reverse justify-center space-x-5">
+          <div className="w-full h-full flex flex-col items-center justify-center space-x-6 bg-white rounded-lg p-14  ">
+            <div className="flex w-full h-full items-center flex-row-reverse justify-center space-x-5">
               <Select
                 className="text-2xl mx-6 text-right flex flex-col items-end   shadow-md "
                 data={["تهران", "تبریز", "ارومیه", "مشهد"]}
@@ -57,119 +57,44 @@ export default function Home() {
                 radius="xl"
                 size="md"
               />
-            </div>
-            <div className=" flex items-center flex-col  justify-center h-full bg-red-600">
-              <Menu
-                variant="default"
-                radius="xl"
-                size="md"
-                transition="pop-top-right"
-                position="top-end"
-                width={220}
-                withinPortal
-                placeholder="تاریخ ورود"
-                label="تاریخ ورود"
-                className="text-xl text-right flex flex-col items-end justify-end shadow-md"
-              >
-                <Menu.Target>
-                  <Select
+              <Popover width={300} position="bottom" withArrow shadow="md">
+                <Popover.Target>
+                  <TextInput
+                    className="text-4xl text-right flex flex-col items-end   shadow-md"
+                    placeholder="انتخاب مسافر"
+                    label="انتخاب مسافر"
                     variant="default"
                     radius="xl"
                     size="md"
-                    placeholder="تاریخ ورود"
-                    label="تاریخ ورود"
-                    className="px-14 text-gray-500 bg-gray-200 rounded-full shadow-md"
-                    // rightIcon={ }
-                  ></Select>
-                </Menu.Target>
-                <Menu.Dropdown>
-                  <Menu.Item
-                    // icon={
-                    //   <IconPackage
-                    //     size={16}
-                    //     color={theme.colors.blue[6]}
-                    //     stroke={1.5}
-                    //   />
-                    // }
-                    rightSection={
-                      <Text
-                        size="xs"
-                        transform="uppercase"
-                        weight={700}
-                        color="dimmed"
-                      >
-                        Ctrl + P
-                      </Text>
-                    }
-                  >
-                    Project
-                  </Menu.Item>
-                  <Menu.Item
-                    // icon={
-                    //   <IconSquareCheck
-                    //     size={16}
-                    //     color={theme.colors.pink[6]}
-                    //     stroke={1.5}
-                    //   />
-                    // }
-                    rightSection={
-                      <Text
-                        size="xs"
-                        transform="uppercase"
-                        weight={700}
-                        color="dimmed"
-                      >
-                        Ctrl + T
-                      </Text>
-                    }
-                  >
-                    Task
-                  </Menu.Item>
-                  <Menu.Item
-                    // icon={
-                    //   <IconUsers
-                    //     size={16}
-                    //     color={theme.colors.cyan[6]}
-                    //     stroke={1.5}
-                    //   />
-                    // }
-                    rightSection={
-                      <Text
-                        size="xs"
-                        transform="uppercase"
-                        weight={700}
-                        color="dimmed"
-                      >
-                        Ctrl + U
-                      </Text>
-                    }
-                  >
-                    Team
-                  </Menu.Item>
-                  <Menu.Item
-                    // icon={
-                    //   <IconCalendar
-                    //     size={16}
-                    //     color={theme.colors.violet[6]}
-                    //     stroke={1.5}
-                    //   />
-                    // }
-                    rightSection={
-                      <Text
-                        size="xs"
-                        transform="uppercase"
-                        weight={700}
-                        color="dimmed"
-                      >
-                        Ctrl + E
-                      </Text>
-                    }
-                  >
-                    Event
-                  </Menu.Item>
-                </Menu.Dropdown>
-              </Menu>
+                    withAsterisk
+                  />
+                </Popover.Target>
+                <Popover.Dropdown>
+                  <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
+                    <h1 className="text-sm font-bold">اتاق اول</h1>
+                    <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
+                      <h1 className="text-sm">بزرگسال(۱۲ سال به بالا)</h1>
+                      <div className="flex text-blue-800  items-center justify-center space-x-5">
+                        <PlusCircle size={27} weight="fill" />
+                        <h1 className="text-sm font-bold">1</h1>
+                        <MinusCircle size={27} weight="fill" />
+                      </div>
+                    </div>
+                    <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
+                      <h1 className="text-sm">کودک(تا ۱۲ سال)</h1>
+                      <div className="flex text-blue-800 items-center justify-center space-x-5">
+                        <PlusCircle size={27} weight="fill" />
+                        <h1 className="text-sm font-bold">1</h1>
+                        <MinusCircle size={27} weight="fill" />
+                      </div>
+                    </div>
+                  </div>
+                </Popover.Dropdown>
+              </Popover>
             </div>
+            <button className="px-14 rounded-full transition ease-in duration-300 hover:bg-white hover:text-mainPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+              جستجو
+            </button>
           </div>
         </div>
       </div>
