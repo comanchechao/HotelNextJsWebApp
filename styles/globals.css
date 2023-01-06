@@ -11,6 +11,14 @@
   font-display: swap;
   /* unicode-range: U+0020-007F; */
 }
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
 
 /* @font-face {
   font-family: "SultanFont";

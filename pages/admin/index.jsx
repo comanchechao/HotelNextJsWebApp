@@ -1,5 +1,8 @@
 import Navbar from "../../components/Navbar.jsx";
 import { Menu, Button, Text } from "@mantine/core";
+import ReservationManagement from "../../components/reservationManagement.js";
+import UserManagement from "../../components/userManagement";
+import HotelManagement from "../../components/hotelManagement";
 import {
   IconSettings,
   IconSearch,
@@ -12,10 +15,12 @@ import {
   IconStarsOff,
   IconSortAscending,
 } from "@tabler/icons";
+import { useState } from "react";
 
 export default function adminPage() {
+  const [tab, setTab] = useState("");
   return (
-    <div className="w-full h-full">
+    <div className="w-screen h-full">
       <Navbar />
       <div className="flex w-full h-full">
         <div className="flex flex-col h-screen w-96 divide-y bg-black">
@@ -27,17 +32,32 @@ export default function adminPage() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center items-center h-28 w-full ">
+          <div
+            onClick={() => {
+              setTab("hotel");
+            }}
+            className="flex justify-center items-center h-28 w-full "
+          >
             <div className="flex justify-center text-2xl font-bold text-gray-100 w-full">
               هتل ها
             </div>
           </div>
-          <div className="flex justify-center items-center h-28 w-full ">
+          <div
+            onClick={() => {
+              setTab("user");
+            }}
+            className="flex justify-center items-center h-28 w-full "
+          >
             <div className="flex justify-center text-2xl font-bold text-gray-100 w-full">
               همکاران
             </div>
           </div>
-          <div className="flex justify-center items-center h-28 w-full ">
+          <div
+            onClick={() => {
+              setTab("reserve");
+            }}
+            className="flex justify-center items-center h-28 w-full "
+          >
             <div className="flex justify-center text-2xl font-bold text-gray-100 w-full">
               سفارش ها
             </div>
@@ -48,8 +68,8 @@ export default function adminPage() {
             </div>
           </div>
         </div>
-        <div className="flex w-full h-full bg-gray-800">
-          <div className="flex justify-end w-full items-center">
+        <div className="flex py-0 flex-col w-full h-full bg-gray-800">
+          <div className="flex h-14 justify-end w-full items-center">
             <div className="flex">
               <div className="flex">
                 <input
@@ -145,6 +165,15 @@ export default function adminPage() {
                 </Menu.Dropdown>
               </Menu>
             </div>
+          </div>
+          <div className="w-10/12 h-full  justify-center items-center">
+            {tab === "hotel" ? (
+              <HotelManagement />
+            ) : tab === "user" ? (
+              <UserManagement />
+            ) : tab === "reserve" ? (
+              <ReservationManagement />
+            ) : null}
           </div>
         </div>
       </div>
