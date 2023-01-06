@@ -23,7 +23,7 @@ import {
 import { useState } from "react";
 
 export default function adminPage() {
-  const [tab, setTab] = useState("");
+  const [tab, setTab] = useState("hotel");
   return (
     <div className="w-screen h-full">
       <Navbar />

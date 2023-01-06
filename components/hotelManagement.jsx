@@ -34,10 +34,6 @@ export default function hotelManagement() {
                     <IconBed />
                     <h2>{hotel.rooms}</h2>
                   </div>
-                  <div className="flex text-center justify-center items-center">
-                    <IconStar />
-                    <h2>4</h2>
-                  </div>
                 </div>
                 <div className="flex p-5 w-full justify-center items-center">
                   <button className="w-full py-4 bg-Sky-800 rounded-xl shadow-2xl text-white hover:bg-Sky-500">
@@ -46,8 +42,12 @@ export default function hotelManagement() {
                 </div>
               </div>
               <div className="flex  border-black w-full justify-end items-center text-right flex-col">
-                <div className="flex text-right">
-                  <h2>{hotel.title}</h2>
+                <div className="flex flex-col text-right">
+                  <h2 className="text-2xl">{hotel.title}</h2>
+                  <div className="flex justify-center text-md">
+                    <IconStar size={15} />
+                    <h3>5</h3>
+                  </div>
                 </div>
                 <div className="flex w-full flex-col text-right">
                   <div className="flex space-y-1 flex-col w-full">
