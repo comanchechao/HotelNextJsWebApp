@@ -3,7 +3,7 @@ import { Inter } from "@next/font/google";
 import Navbar from "../components/Navbar";
 // const inter = Inter({ subsets: ["latin"] });
 import { Select } from "@mantine/core";
-import { MapPin } from "phosphor-react";
+// import { MapPin } from "phosphor-react";
 import Image from "next/image";
 import mainBg from "../assets/images/mainBg.webp";
 import { DatePicker } from "@mantine/dates";
@@ -32,7 +32,6 @@ export default function Home() {
               withAsterisk
               clearable
               searchable
-              icon={<MapPin size={20} weight="fill" />}
             />
             <DatePicker
               locale="fa"
