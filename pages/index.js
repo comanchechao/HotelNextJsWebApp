@@ -3,7 +3,7 @@ import { Inter } from "@next/font/google";
 import Navbar from "../components/Navbar";
 // const inter = Inter({ subsets: ["latin"] });
 import { Select, Popover, useMantineTheme, TextInput } from "@mantine/core";
-import { MapPin, PlusCircle, MinusCircle } from "phosphor-react";
+// import { MapPin, PlusCircle, MinusCircle } from "phosphor-react";
 import Image from "next/image";
 import mainBg from "../assets/images/mainBg.webp";
 import { DatePicker } from "@mantine/dates";

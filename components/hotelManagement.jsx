@@ -10,6 +10,7 @@ import {
   IconBath,
   IconStar,
 } from "@tabler/icons";
+import Link from "next/link";
 
 export default function hotelManagement() {
   let hotels = [
@@ -19,29 +20,30 @@ export default function hotelManagement() {
     { title: "هتل", rooms: 32, image: hotelFour },
   ];
   return (
-    <div className="flex p-8 w-full h-full  justify-center font-bold  items-center">
-      <div className="flex w-full space-y-4 flex-col">
+    <div className="flex lg:p-8 w-full h-full  justify-center font-bold  items-center">
+      <div className="flex w-full p-5  lg:h-rem34 lg:overflow-y-scroll space-y-4 flex-col">
         {hotels.map((hotel, i) => {
           return (
             <div
               key={i}
-              className="space-x-2  flex px-0 items-center justify-between h-52 shadow-2xl w-full rounded bg-white"
+              className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-2xl w-full rounded bg-white"
             >
-              <div className="flex border-r border-gray-900 flex-col h-full w-2/3 justify-center items-center">
+              <div className="flex lg:border-r border-gray-900 flex-col h-full w-full lg:w-2/3 justify-center items-center">
                 <div className="flex justify-center items-center w-full h-full">
-                  {" "}
                   <div className="flex text-center justify-center items-center">
                     <IconBed />
                     <h2>{hotel.rooms}</h2>
                   </div>
                 </div>
                 <div className="flex p-5 w-full justify-center items-center">
-                  <button className="w-full py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
-                    ویرایش هتل
-                  </button>
+                  <Link className="w-full" href="/admin/hoteldetail">
+                    <button className="w-full py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
+                      ویرایش هتل
+                    </button>
+                  </Link>
                 </div>
               </div>
-              <div className="flex  border-black w-full justify-end items-center text-right flex-col">
+              <div className="flex px-4 lg:px-0  border-black w-full justify-end items-center text-right flex-col">
                 <div className="flex flex-col text-right">
                   <h2 className="text-2xl">{hotel.title}</h2>
                   <div className="flex justify-center text-md">
@@ -69,9 +71,9 @@ export default function hotelManagement() {
                   <h2>مشاهده روی نقشه</h2>
                 </div>
               </div>
-              <div className="flex w-full h-52 justify-center items-center">
+              <div className="flex w-full h-full lg:h-52 justify-center items-center">
                 <Image
-                  className="w-full h-52 object-contain"
+                  className="w-full lg:h-52 object-contain"
                   src={hotel.image}
                 />
               </div>
