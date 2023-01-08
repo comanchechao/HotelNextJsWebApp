@@ -12,7 +12,7 @@ export default function Home() {
   const theme = useMantineTheme();
   return (
     <>
-      <div className="h-full w-screen flex-col items-center bg-gray-200 flex">
+      <div className="h-full w-screen bg-gray-200 overflow-x-hidden">
         <Navbar />
         <div className="w-screen h-96 ">
           <Image
