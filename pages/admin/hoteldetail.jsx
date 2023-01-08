@@ -80,7 +80,7 @@ export default function hotelDetail() {
         <div className="p-4 bg-gray-100 flex space-y-3 flex-col w-full">
           {rooms.map((room) => {
             return (
-              <div className="flex bg-white h-full justify-around divide-y divide-gray-900 border border-gray-900 rounded-2xl flex-col w-full h-52">
+              <div className="flex bg-white h-full justify-around divide-y divide-gray-300 border border-gray-300 rounded-2xl flex-col w-full h-52">
                 <div className="flex flex-col py-4 px-5 justify-center items-end ">
                   <h1 className="text-lg">{room.title}</h1>
                   <h2>{room.meal}</h2>
@@ -95,7 +95,7 @@ export default function hotelDetail() {
                   <h1 className="text-lg">قیمت برای هرشب</h1>
                 </div>
                 <div className="flex justify-center items-center h-full">
-                  <button className="py-4 rounded-xl font-bold text-gray-100 px-12 bg-mainPurple shadow-2xl">
+                  <button className="py-4 hover:bg-purple-800 transition rounded-xl font-bold text-gray-100 px-12 bg-mainPurple shadow-2xl">
                     <p>ویرایش</p>
                   </button>
                 </div>
