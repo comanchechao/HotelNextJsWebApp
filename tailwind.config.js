@@ -45,7 +45,7 @@ module.exports = {
       current: "currentColor",
       mainPurple: "#4405a8",
       darkPurple: "#20024f",
-      mainBlue: "#00FFD1",
+      mainBlue: "#26ced4",
       mainYellow: "#ffd500",
       // mainBlue: "#1982C4",
       mainWhite: "#dfc69c",
