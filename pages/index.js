@@ -98,7 +98,7 @@ export default function Home() {
           </div>
         </div>
         <div className="w-full  h-60 px-56">
-          <div className="w-full h-full flex items-center justify-around mb-4   shadow-2xl bg-white rounded-lg p-14  ">
+          <div className="w-full h-full flex flex-row-reverse items-center justify-around mb-4   shadow-2xl bg-white rounded-lg p-14  ">
             <div className="flex flex-col items-center space-y-2">
               <svg
                 viewBox="0 0 24 24"
