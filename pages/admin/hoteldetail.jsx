@@ -4,7 +4,16 @@ import hotelThree from "../../assets/images/hotelthree.jpg";
 import hotelFour from "../../assets/images/hotelfour.jpg";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
-import { IconStar } from "@tabler/icons";
+import {
+  IconStar,
+  IconBarbell,
+  IconCoffee,
+  IconChefHat,
+  IconHotelService,
+  IconBath,
+  IconWifi,
+  IconWashMachine,
+} from "@tabler/icons";
 import { Tabs } from "@mantine/core";
 
 export default function hotelDetail() {
@@ -77,7 +86,7 @@ export default function hotelDetail() {
             </Tabs>
           </div>
         </div>
-        <div className="p-4 bg-gray-100 flex space-y-3 flex-col w-full">
+        <div className="p-4 bg-gray-100 flex space-y-3 flex-col lg:px-20 w-full">
           {rooms.map((room) => {
             return (
               <div className="flex bg-white h-full justify-around divide-y divide-gray-300 border border-gray-300 rounded-2xl flex-col w-full h-52">
@@ -102,6 +111,65 @@ export default function hotelDetail() {
               </div>
             );
           })}
+          <div className="flex">
+            <button className="w-52 py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
+              بیشتر نشونم بده
+            </button>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <div className="flex p-5 items-center bg-gray-300 space-x-1 w-full justify-between">
+            <h1 className="font-bold text-mainPurple text-sm cursor-pointer hover:text-blue-800">
+              مشاهده همه
+            </h1>
+            <h1 className="font-bold text-gray-700 text-lg">
+              امکانات و ویژگی ها
+            </h1>
+          </div>
+          <div className="rounded grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 p-5 divdie-x divide-black  m-4 shadow-2xl">
+            <div className="flex px-3 justify-between items-center">
+              <h2>سالن بدنسازی</h2>
+              <h2>
+                <IconBarbell size={32} />
+              </h2>
+            </div>
+            <div className="flex px-3 justify-between items-center">
+              <h2>کافی شاپ</h2>
+              <h2>
+                <IconCoffee size={32} />
+              </h2>
+            </div>
+            <div className="flex px-3 justify-between items-center">
+              <h2>رستوران</h2>
+              <h2>
+                <IconChefHat size={32} />
+              </h2>
+            </div>
+            <div className="flex px-3 justify-between items-center">
+              <h2>سرویس روزانه</h2>
+              <h2>
+                <IconHotelService size={32} />
+              </h2>
+            </div>
+            <div className="flex px-3 justify-between items-center">
+              <h2>حمام</h2>
+              <h2>
+                <IconBath size={32} />
+              </h2>
+            </div>
+            <div className="flex px-3 justify-between items-center">
+              <h2>خدمات اینترنت</h2>
+              <h2>
+                <IconWifi size={32} />
+              </h2>
+            </div>
+            <div className="flex px-3 justify-between items-center">
+              <h2>خشکشویی</h2>
+              <h2>
+                <IconWashMachine size={32} />
+              </h2>
+            </div>
+          </div>
         </div>
       </div>
     </div>
