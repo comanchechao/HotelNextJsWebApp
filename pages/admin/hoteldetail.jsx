@@ -59,7 +59,7 @@ export default function hotelDetail() {
             return <Image key={i} alt="" className="h-96 w-96" src={image} />;
           })}
         </div>
-        <div className="p-5 bg-gray-200 shadow-xl flex flex-col w-full">
+        <div className="p-5 bg-white drop-shadow-lg flex flex-col w-full">
           <div className="flex items-center space-x-1 w-full justify-end">
             <h2 className="font-bold text-xl">Grand Hotel</h2>
             <h1>هتل</h1>
@@ -72,7 +72,7 @@ export default function hotelDetail() {
             </h2>
           </div>
         </div>
-        <div className="mt-5  bg-gray-200 shadow-xl flex flex-col w-full">
+        <div className="mt-5  bg-white drop-shadow-lg flex flex-col w-full">
           <div className="flex p-5 items-center space-x-1 w-full justify-end">
             <h1 className="font-bold text-gray-700 text-lg">اتاق ها</h1>
           </div>
@@ -86,10 +86,10 @@ export default function hotelDetail() {
             </Tabs>
           </div>
         </div>
-        <div className="p-4 bg-gray-100 flex space-y-3 flex-col lg:px-20 w-full">
+        <div className="p-4 bg-gray-200 flex space-y-3 flex-col lg:px-20 w-full">
           {rooms.map((room) => {
             return (
-              <div className="flex bg-white h-full justify-around divide-y divide-gray-300 border border-gray-300 rounded-2xl flex-col w-full h-52">
+              <div className="flex bg-white justify-around divide-y my-5 divide-gray-300 rounded-sm flex-col w-full h-64">
                 <div className="flex flex-col py-4 px-5 justify-center items-end ">
                   <h1 className="text-lg">{room.title}</h1>
                   <h2>{room.meal}</h2>
@@ -104,7 +104,7 @@ export default function hotelDetail() {
                   <h1 className="text-lg">قیمت برای هرشب</h1>
                 </div>
                 <div className="flex justify-center items-center h-full">
-                  <button className="py-4 hover:bg-purple-800 transition rounded-xl font-bold text-gray-100 px-12 bg-mainPurple shadow-2xl">
+                  <button className="py-3 hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl">
                     <p>ویرایش</p>
                   </button>
                 </div>
@@ -126,7 +126,7 @@ export default function hotelDetail() {
               امکانات و ویژگی ها
             </h1>
           </div>
-          <div className="rounded grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 p-5 divdie-x divide-black  m-4 shadow-2xl">
+          <div className="rounded-sm grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 p-5 divdie-x divide-black  m-4 shadow-2xl">
             <div className="flex px-3 justify-between items-center">
               <h2>سالن بدنسازی</h2>
               <h2>

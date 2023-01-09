@@ -19,6 +19,12 @@ import Milan from "../assets/images/Milan.webp";
 import Irvan from "../assets/images/Irvan.webp";
 import Rome from "../assets/images/Rome.webp";
 import Moscow from "../assets/images/Moscow.webp";
+import Kish from "../assets/images/Kish.webp";
+import Tehran from "../assets/images/Tehran.webp";
+import Mashhad from "../assets/images/Mashhad.webp";
+import Shiraz from "../assets/images/Shiraz.webp";
+import Tabriz from "../assets/images/Tabriz.webp";
+import Esfahan from "../assets/images/Esfahan.webp";
 
 import "dayjs/locale/fa";
 export default function Home() {
@@ -111,7 +117,7 @@ export default function Home() {
           </div>
         </div>
         <div className="w-full  h-60 px-56">
-          <div className="w-full h-full flex flex-row-reverse items-center justify-around mb-4   shadow-2xl bg-white rounded-sm p-14  ">
+          <div className="w-full h-full flex flex-row-reverse items-center justify-around mb-4   drop-shadow-xl bg-white rounded-sm p-14  ">
             <div className="flex flex-col items-center space-y-2">
               <svg
                 viewBox="0 0 24 24"
@@ -215,7 +221,7 @@ export default function Home() {
         </div>
         <div className="w-full h-rem26 py-6 flex items-center justify-center space-x-5 px-56 my-10">
           <div className=" w-full h-full flex flex-col items-center justify-around">
-            <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Van} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
@@ -224,7 +230,7 @@ export default function Home() {
               <CaretLeft size={20} weight="bold" />
             </a>
 
-            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Irvan} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
@@ -232,7 +238,7 @@ export default function Home() {
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
-            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Rome} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
@@ -240,7 +246,7 @@ export default function Home() {
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
-            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Moscow} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
@@ -250,7 +256,7 @@ export default function Home() {
             </a>
           </div>
           <div className=" w-full h-full flex flex-col items-center justify-around">
-            <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Istanbul} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
@@ -259,7 +265,7 @@ export default function Home() {
               <CaretLeft size={20} weight="bold" />
             </a>
 
-            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Paris} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
@@ -267,7 +273,7 @@ export default function Home() {
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
-            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Baku} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
@@ -275,7 +281,7 @@ export default function Home() {
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
-            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Milan} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
@@ -285,7 +291,7 @@ export default function Home() {
             </a>
           </div>
           <div className=" w-full h-full flex flex-col items-center justify-around">
-            <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Antalia} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
@@ -294,7 +300,7 @@ export default function Home() {
               <CaretLeft size={20} weight="bold" />
             </a>
 
-            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Dubai} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
@@ -302,7 +308,7 @@ export default function Home() {
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
-            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Amsterdam} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
@@ -310,11 +316,94 @@ export default function Home() {
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
-            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:shadow-2xl bg-white">
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Berlin} />
                 <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
                 <strong>برلین</strong>
+              </div>
+              <CaretLeft size={20} weight="bold" />
+            </a>
+          </div>
+        </div>
+        <div className="w-full h-auto py-6 flex items-center justify-center space-x-5 px-56 my-10">
+          <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
+            <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
+              <div className="flex flex-row-reverse items-center">
+                <Image
+                  className="h-16 w-20 object-contain"
+                  alt="antalia"
+                  src={Kish}
+                />
+                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
+                <strong>کیش</strong>
+              </div>
+              <CaretLeft size={20} weight="bold" />
+            </a>
+
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
+              <div className="flex flex-row-reverse items-center">
+                <Image
+                  className="h-16 w-20 object-contain"
+                  alt="antalia"
+                  src={Shiraz}
+                />
+                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
+                <strong>شیراز</strong>
+              </div>
+              <CaretLeft size={20} weight="bold" />
+            </a>
+          </div>
+          <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
+            <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
+              <div className="flex flex-row-reverse items-center">
+                <Image
+                  className="h-16 w-20 object-contain"
+                  alt="antalia"
+                  src={Tehran}
+                />
+                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
+                <strong>تهران</strong>
+              </div>
+              <CaretLeft size={20} weight="bold" />
+            </a>
+
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
+              <div className="flex flex-row-reverse items-center">
+                <Image
+                  className="h-16 w-20 object-contain"
+                  alt="antalia"
+                  src={Esfahan}
+                />
+                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
+                <strong>اصفهان</strong>
+              </div>
+              <CaretLeft size={20} weight="bold" />
+            </a>
+          </div>
+          <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
+            <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
+              <div className="flex flex-row-reverse items-center">
+                <Image
+                  className="h-16 w-20 object-contain"
+                  alt="antalia"
+                  src={Mashhad}
+                />
+                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
+                <strong>مشهد</strong>
+              </div>
+              <CaretLeft size={20} weight="bold" />
+            </a>
+
+            <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
+              <div className="flex flex-row-reverse items-center">
+                <Image
+                  className="h-16 w-20 object-contain"
+                  alt="antalia"
+                  src={Tabriz}
+                />
+                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
+                <strong>تبریز</strong>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
