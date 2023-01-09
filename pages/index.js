@@ -331,7 +331,7 @@ export default function Home() {
             <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image
-                  className="h-16 w-20 object-contain"
+                  className="h-16 w-14 object-contain"
                   alt="antalia"
                   src={Kish}
                 />
@@ -344,7 +344,7 @@ export default function Home() {
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image
-                  className="h-16 w-20 object-contain"
+                  className="h-10 w-14 object-contain"
                   alt="antalia"
                   src={Shiraz}
                 />
@@ -358,7 +358,7 @@ export default function Home() {
             <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image
-                  className="h-16 w-20 object-contain"
+                  className="h-16 w-14 object-contain"
                   alt="antalia"
                   src={Tehran}
                 />
@@ -371,7 +371,7 @@ export default function Home() {
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image
-                  className="h-16 w-20 object-contain"
+                  className="h-16 w-10 object-contain"
                   alt="antalia"
                   src={Esfahan}
                 />
@@ -385,7 +385,7 @@ export default function Home() {
             <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image
-                  className="h-16 w-20 object-contain"
+                  className="h-16 w-14 object-contain"
                   alt="antalia"
                   src={Mashhad}
                 />
@@ -398,7 +398,7 @@ export default function Home() {
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image
-                  className="h-16 w-20 object-contain"
+                  className="h-16 w-14 object-contain"
                   alt="antalia"
                   src={Tabriz}
                 />
