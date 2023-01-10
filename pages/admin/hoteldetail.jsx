@@ -126,8 +126,8 @@ export default function hotelDetail() {
             امکانات و ویژگی ها
           </h1>
         </div>
-        <div className="flex w-full bg-gray-300 px-20 flex-col">
-          <div className="rounded-sm bg-gray-100 grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 p-5 divdie-x divide-black  m-4 shadow-2xl">
+        <div className="flex w-full bg-gray-300 px-4 lg:px-20 flex-col">
+          <div className="rounded-sm bg-gray-100 grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  m-4 shadow-2xl">
             <div className="flex px-3 justify-between items-center">
               <h2>
                 <IconBarbell size={32} />
@@ -178,7 +178,7 @@ export default function hotelDetail() {
         <div className="flex p-5  bg-gray-200 px-8 justify-center w-full">
           <div className="flex rounded-sm drop-shadow-2xl flex-col w-full bg-gray-50">
             <div className="flex p-2 justify-end  h-18 w-full">
-              <div className="p-5  flex justify-end w-1/2">
+              <div className="p-5  flex justify-end w-full lg:w-1/2">
                 <div className="flex items-end justify-center w-full text-sm font-medium flex-col">
                   <div className="flex items-center justify-center">
                     <IconDoor size={25} />
