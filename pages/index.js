@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import Navbar from "../components/Navbar";
+import Faq from "../components/Faq";
 // const inter = Inter({ subsets: ["latin"] });
 import { Select, Popover, useMantineTheme, TextInput } from "@mantine/core";
 import Image from "next/image";
@@ -407,6 +408,12 @@ export default function Home() {
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
+          </div>
+        </div>
+        <div className="w-full  h-auto px-56 mb-7">
+          <div className="w-full h-full flex flex-col justify-center items-end space-y-3 rounded-sm">
+            <h1 className="font-bold">پرسش‌های متداول درباره رزرو هتل</h1>
+            <Faq />
           </div>
         </div>
       </div>
