@@ -4,12 +4,15 @@ import hotelThree from "../../assets/images/hotelthree.jpg";
 import hotelFour from "../../assets/images/hotelfour.jpg";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
+import RoomModal from "../../components/roomModal";
 import {
   IconStar,
   IconBarbell,
   IconCoffee,
   IconChefHat,
   IconHotelService,
+  IconDoor,
+  IconDoorOff,
   IconBath,
   IconWifi,
   IconWashMachine,
@@ -104,9 +107,7 @@ export default function hotelDetail() {
                   <h1 className="text-lg">قیمت برای هرشب</h1>
                 </div>
                 <div className="flex justify-center items-center h-full">
-                  <button className="py-3 hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl">
-                    <p>ویرایش</p>
-                  </button>
+                  <RoomModal />
                 </div>
               </div>
             );
@@ -117,57 +118,107 @@ export default function hotelDetail() {
             </button>
           </div>
         </div>
-        <div className="flex flex-col">
-          <div className="flex p-5 items-center bg-gray-300 space-x-1 w-full justify-between">
-            <h1 className="font-bold text-mainPurple text-sm cursor-pointer hover:text-blue-800">
-              مشاهده همه
-            </h1>
-            <h1 className="font-bold text-gray-700 text-lg">
-              امکانات و ویژگی ها
-            </h1>
-          </div>
-          <div className="rounded-sm grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 p-5 divdie-x divide-black  m-4 shadow-2xl">
+        <div className="flex p-5 items-center bg-gray-300 space-x-1 w-full justify-between">
+          <h1 className="font-bold text-mainPurple text-sm cursor-pointer hover:text-blue-800">
+            مشاهده همه
+          </h1>
+          <h1 className="font-bold text-gray-700 text-lg">
+            امکانات و ویژگی ها
+          </h1>
+        </div>
+        <div className="flex w-full bg-gray-300 px-20 flex-col">
+          <div className="rounded-sm bg-gray-100 grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 p-5 divdie-x divide-black  m-4 shadow-2xl">
             <div className="flex px-3 justify-between items-center">
-              <h2>سالن بدنسازی</h2>
               <h2>
                 <IconBarbell size={32} />
               </h2>
+              <h2>سالن بدنسازی</h2>
             </div>
             <div className="flex px-3 justify-between items-center">
-              <h2>کافی شاپ</h2>
               <h2>
                 <IconCoffee size={32} />
               </h2>
+              <h2>کافی شاپ</h2>
             </div>
             <div className="flex px-3 justify-between items-center">
-              <h2>رستوران</h2>
               <h2>
                 <IconChefHat size={32} />
               </h2>
+              <h2>رستوران</h2>
             </div>
             <div className="flex px-3 justify-between items-center">
-              <h2>سرویس روزانه</h2>
               <h2>
                 <IconHotelService size={32} />
               </h2>
+              <h2>سرویس روزانه</h2>
             </div>
             <div className="flex px-3 justify-between items-center">
-              <h2>حمام</h2>
               <h2>
                 <IconBath size={32} />
               </h2>
+              <h2>حمام</h2>
             </div>
             <div className="flex px-3 justify-between items-center">
-              <h2>خدمات اینترنت</h2>
               <h2>
                 <IconWifi size={32} />
               </h2>
+              <h2>خدمات اینترنت</h2>
             </div>
             <div className="flex px-3 justify-between items-center">
-              <h2>خشکشویی</h2>
               <h2>
                 <IconWashMachine size={32} />
               </h2>
+              <h2>خشکشویی</h2>
+            </div>
+          </div>
+        </div>
+        <div className="flex p-5 items-center space-x-1 w-full justify-end">
+          <h1 className="font-bold text-gray-700 text-lg">قوانین و مقررات </h1>
+        </div>
+        <div className="flex p-5  bg-gray-200 px-8 justify-center w-full">
+          <div className="flex rounded-sm drop-shadow-2xl flex-col w-full bg-gray-50">
+            <div className="flex p-2 justify-end  h-18 w-full">
+              <div className="p-5  flex justify-end w-1/2">
+                <div className="flex items-end justify-center w-full text-sm font-medium flex-col">
+                  <div className="flex items-center justify-center">
+                    <IconDoor size={25} />
+                    <p className="text-md font-bold">ساعت ورود</p>
+                  </div>
+                  <p className="text-lg font-bold">14:00</p>
+                </div>
+                <div className="flex items-end justify-center w-full text-sm font-medium flex-col">
+                  <div className="flex items-center justify-center">
+                    <IconDoorOff size={25} />
+                    <p className="text-md font-bold">ساعت خروج</p>
+                  </div>
+                  <p className="text-lg font-bold">12:00</p>
+                </div>
+              </div>
+            </div>
+            <div className="p-5 flex w-full flex-col">
+              <div className="flex  w-full justify-end items-center">
+                <h1 className="text-lg text-black font-bold">نکات ضروری</h1>
+              </div>
+              <div className="flex text-right flex-col">
+                <p>
+                  *طبق اعلام هتل اقامت های اکونومی و اقامت های ساعتی خدمات
+                  صبحانه و همچنین امکان کنسلی ندارد*طبق اعلام هتل خدمات خانه
+                  داری در اقامت اکونومی به صورت محدود ارائه می گردد* نرخ میهمان
+                  غیر ایرانی در این هتل متفاوت می باشد. لطفا قبل از رزرو استعلام
+                  بفرمایید و در صورت عدم پرداخت به سامانه علی بابا، باید مابه
+                  .تفاوت در هتل پرداخت گردد
+                </p>
+                <h1 className="text-lg text-black font-bold">
+                  هزینه های جانبی
+                </h1>
+                <p>
+                  افراد 0 تا 7 سال، بدون استفاده از تخت اضافه به صورت رایگان از
+                  خدمات اقامتی بهره‌مند می شوند. قیمت خدمات برای افراد با 7 سال
+                  سن و بیشتر به صورت یک فرد کامل محاسبه می‌گردد. استفاده از تخت
+                  اضافه حتی برای افراد زیر 7 سال مشمول پرداخت هزینه كامل نفر سوم
+                  است.
+                </p>
+              </div>
             </div>
           </div>
         </div>
