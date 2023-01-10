@@ -32,7 +32,10 @@ module.exports = {
         "10xl": "14rem",
       },
     },
-
+    daisyui: {
+      styled: false,
+      base: false,
+    },
     screens: {
       xs: { max: "767px" },
       sm: { min: "768px", max: "991px" },
