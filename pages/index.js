@@ -412,7 +412,7 @@ export default function Home() {
         </div>
         <div className="w-full  h-auto px-56 mb-7">
           <div className="w-full h-full flex flex-col justify-center items-end space-y-3 rounded-sm">
-            <h1 className="font-bold">پرسش‌های متداول درباره رزرو هتل</h1>
+            <h1 className="font-bold mb-3">پرسش‌های متداول درباره رزرو هتل</h1>
             <Faq />
           </div>
         </div>
