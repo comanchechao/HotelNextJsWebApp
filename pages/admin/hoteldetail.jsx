@@ -56,7 +56,7 @@ export default function hotelDetail() {
   return (
     <div className="w-full h-full">
       <Navbar />
-      <div className="flex flex-col w-full">
+      <div className="flex pt-10 flex-col w-full">
         <div className="flex w-full overflow-x-scroll">
           {images.map((image, i) => {
             return <Image key={i} alt="" className="h-96 w-96" src={image} />;
@@ -170,6 +170,22 @@ export default function hotelDetail() {
               </h2>
               <h2>خشکشویی</h2>
             </div>
+          </div>
+        </div>
+        <div className="flex p-5 items-center space-x-1 w-full justify-end">
+          <h1 className="font-bold text-gray-700 text-lg">مکان و موقیت </h1>
+        </div>
+        <div className="flex bg-gray-200 items-center dropshadow-2xl justify-center p-5">
+          <div className="flex  items-center dropshadow-2xl justify-center">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12659.458400775064!2d45.0234385!3d37.5111115!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9bafc107d7fb8ae0!2z2YfYqtmEINii2YbYpw!5e0!3m2!1sen!2sfr!4v1673414835237!5m2!1sen!2sfr"
+              width="800"
+              height="350"
+              style={{ border: "0" }}
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
         <div className="flex p-5 items-center space-x-1 w-full justify-end">

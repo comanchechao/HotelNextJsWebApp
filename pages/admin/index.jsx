@@ -31,7 +31,7 @@ export default function adminPage() {
   return (
     <div className="w-screen h-full">
       <Navbar />
-      <div className="flex w-full h-full">
+      <div className="flex pt-16 w-full h-full">
         <div className="hidden lg:flex flex-col h-full w-96 divide-y bg-CoolGray-900">
           <div className="flex w-full justify-center items-center ">
             <div className="flex h-28 justify-around items-center text-gray-100 w-full">
