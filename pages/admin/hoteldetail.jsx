@@ -107,7 +107,7 @@ export default function hotelDetail() {
                   <h1 className="text-lg">قیمت برای هرشب</h1>
                 </div>
                 <div className="flex justify-center items-center h-full">
-                  <RoomModal />
+                  <RoomModal Room={room} />
                 </div>
               </div>
             );

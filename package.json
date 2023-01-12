@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.4.7",
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.5",
     "@headlessui/react": "^1.7.7",
     "@mantine/carousel": "^5.10.0",
     "@mantine/core": "^5.10.0",
@@ -27,6 +29,7 @@
     "embla-carousel-react": "^7.0.5",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
+    "framer-motion": "^8.4.2",
     "next": "13.1.1",
     "phosphor-react": "^1.4.1",
     "react": "18.2.0",
