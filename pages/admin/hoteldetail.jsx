@@ -17,13 +17,47 @@ import {
   IconBath,
   IconWifi,
   IconWashMachine,
+  IconEdit,
+  IconCheck,
+  IconX,
   IconEraser,
 } from "@tabler/icons";
 import { Tabs, Modal, Select } from "@mantine/core";
 
+import {
+  EditablePreview,
+  IconButton,
+  Input,
+  useEditableControls,
+  ButtonGroup,
+  Editable,
+  Flex,
+  EditableInput,
+} from "@chakra-ui/react";
+
 export default function hotelDetail() {
   const [opened, setOpened] = useState(false);
   let images = [hotelOne, hotelTwo, hotelThree, hotelFour];
+
+  function EditableControls() {
+    const {
+      isEditing,
+      getSubmitButtonProps,
+      getCancelButtonProps,
+      getEditButtonProps,
+    } = useEditableControls();
+    return isEditing ? (
+      <ButtonGroup justifyContent="center" size="sm">
+        <IconButton icon={<IconCheck />} {...getSubmitButtonProps()} />
+        <IconButton icon={<IconX />} {...getCancelButtonProps()} />
+      </ButtonGroup>
+    ) : (
+      <Flex justifyContent="center">
+        <IconButton size="sm" icon={<IconEdit />} {...getEditButtonProps()} />
+      </Flex>
+    );
+  }
+
   let rooms = [
     {
       title: "دو تخته برای یک نفر",
@@ -66,9 +100,18 @@ export default function hotelDetail() {
           })}
         </div>
         <div className="p-5 bg-white drop-shadow-lg flex flex-col w-full">
-          <div className="flex items-center space-x-1 w-full justify-end">
-            <h2 className="font-bold text-xl">Grand Hotel</h2>
-            <h1>هتل</h1>
+          <div className="flex font-bold text-4xl items-center space-x-1 w-full justify-end">
+            <Editable
+              textAlign="center"
+              defaultValue="Grand Hotel"
+              fontSize="4xl"
+              isPreviewFocusable={false}
+            >
+              <EditablePreview />
+              {/* Here is the custom input */}
+              <Input as={EditableInput} />
+              <EditableControls />
+            </Editable>
           </div>
           <div className="flex space-x-1 justify-end w-full">
             <h2>ستاره</h2>
@@ -283,7 +326,10 @@ export default function hotelDetail() {
             </div>
           </Modal>
         </div>
-        <div className="flex p-5 items-center space-x-1 w-full justify-end">
+        <div className="flex p-5 items-center space-x-1 w-full justify-between">
+          <h1 className="font-bold text-mainPurple text-sm cursor-pointer hover:text-blue-800">
+            تغییر موقعیت
+          </h1>
           <h1 className="font-bold text-gray-700 text-lg">مکان و موقیت </h1>
         </div>
         <div className="flex bg-gray-200 items-center dropshadow-2xl justify-center p-5">
@@ -306,19 +352,39 @@ export default function hotelDetail() {
           <div className="flex rounded-sm drop-shadow-2xl flex-col w-full bg-gray-50">
             <div className="flex p-2 justify-end  h-18 w-full">
               <div className="p-5  flex justify-end w-full lg:w-1/2">
-                <div className="flex items-end justify-center w-full text-sm font-medium flex-col">
+                <div className="flex text-xl font-bold items-end justify-center w-32  flex-col">
                   <div className="flex items-center justify-center">
                     <IconDoor size={25} />
                     <p className="text-md font-bold">ساعت ورود</p>
                   </div>
-                  <p className="text-lg font-bold">14:00</p>
+                  <Editable
+                    textAlign="center"
+                    defaultValue="12:00"
+                    fontSize="4xl"
+                    isPreviewFocusable={false}
+                  >
+                    <EditablePreview />
+                    {/* Here is the custom input */}
+                    <Input as={EditableInput} />
+                    <EditableControls />
+                  </Editable>
                 </div>
-                <div className="flex items-end justify-center w-full text-sm font-medium flex-col">
+                <div className="flex items-end text-xl justify-center w-52  font-bold flex-col">
                   <div className="flex items-center justify-center">
                     <IconDoorOff size={25} />
                     <p className="text-md font-bold">ساعت خروج</p>
                   </div>
-                  <p className="text-lg font-bold">12:00</p>
+                  <Editable
+                    textAlign="center"
+                    defaultValue="14:00"
+                    fontSize="4xl"
+                    isPreviewFocusable={false}
+                  >
+                    <EditablePreview />
+                    {/* Here is the custom input */}
+                    <Input as={EditableInput} />
+                    <EditableControls />
+                  </Editable>
                 </div>
               </div>
             </div>
@@ -327,24 +393,72 @@ export default function hotelDetail() {
                 <h1 className="text-lg text-black font-bold">نکات ضروری</h1>
               </div>
               <div className="flex text-right flex-col">
-                <p>
-                  *طبق اعلام هتل اقامت های اکونومی و اقامت های ساعتی خدمات
+                <Editable
+                  textAlign="end"
+                  defaultValue=" *طبق اعلام هتل اقامت های اکونومی و اقامت های ساعتی خدمات
                   صبحانه و همچنین امکان کنسلی ندارد*طبق اعلام هتل خدمات خانه
                   داری در اقامت اکونومی به صورت محدود ارائه می گردد* نرخ میهمان
                   غیر ایرانی در این هتل متفاوت می باشد. لطفا قبل از رزرو استعلام
                   بفرمایید و در صورت عدم پرداخت به سامانه علی بابا، باید مابه
-                  .تفاوت در هتل پرداخت گردد
-                </p>
+                  .تفاوت در هتل پرداخت گردد"
+                  fontSize="4xl"
+                  isPreviewFocusable={false}
+                >
+                  <EditablePreview />
+                  {/* Here is the custom input */}
+                  <Input as={EditableInput} />
+                  <EditableControls />
+                </Editable>
                 <h1 className="text-lg text-black font-bold">
                   هزینه های جانبی
                 </h1>
-                <p>
-                  افراد 0 تا 7 سال، بدون استفاده از تخت اضافه به صورت رایگان از
-                  خدمات اقامتی بهره‌مند می شوند. قیمت خدمات برای افراد با 7 سال
-                  سن و بیشتر به صورت یک فرد کامل محاسبه می‌گردد. استفاده از تخت
-                  اضافه حتی برای افراد زیر 7 سال مشمول پرداخت هزینه كامل نفر سوم
-                  است.
-                </p>
+
+                <Editable
+                  textAlign="end"
+                  defaultValue=" *طبق اعلام هتل اقامت های اکونومی و اقامت های ساعتی خدمات
+                  صبحانه و همچنین امکان کنسلی ندارد*طبق اعلام هتل خدمات خانه
+                  داری در اقامت اکونومی به صورت محدود ارائه می گردد* نرخ میهمان
+                  غیر ایرانی در این هتل متفاوت می باشد. لطفا قبل از رزرو استعلام
+                  بفرمایید و در صورت عدم پرداخت به سامانه علی بابا، باید مابه
+                  .تفاوت در هتل پرداخت گردد"
+                  fontSize="4xl"
+                  isPreviewFocusable={false}
+                >
+                  <EditablePreview />
+                  {/* Here is the custom input */}
+                  <Input as={EditableInput} />
+                  <EditableControls />
+                </Editable>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex p-5 bg-gray-100 items-center space-x-1 w-full justify-end">
+          <h1 className="font-bold text-gray-700 text-lg">درباره هتل </h1>
+        </div>
+        <div className="flex p-5  bg-gray-400 px-8 justify-center w-full">
+          <div className="flex rounded-sm drop-shadow-2xl flex-col w-full bg-gray-50">
+            <div className="p-5 flex w-full flex-col">
+              <div className="flex  w-full justify-end items-center">
+                <h1 className="text-lg text-black font-bold">هتل</h1>
+              </div>
+              <div className="flex text-right flex-col">
+                <Editable
+                  textAlign="end"
+                  defaultValue=" *طبق اعلام هتل اقامت های اکونومی و اقامت های ساعتی خدمات
+                  صبحانه و همچنین امکان کنسلی ندارد*طبق اعلام هتل خدمات خانه
+                  داری در اقامت اکونومی به صورت محدود ارائه می گردد* نرخ میهمان
+                  غیر ایرانی در این هتل متفاوت می باشد. لطفا قبل از رزرو استعلام
+                  بفرمایید و در صورت عدم پرداخت به سامانه علی بابا، باید مابه
+                  .تفاوت در هتل پرداخت گردد"
+                  fontSize="4xl"
+                  isPreviewFocusable={false}
+                >
+                  <EditablePreview />
+                  {/* Here is the custom input */}
+                  <Input as={EditableInput} />
+                  <EditableControls />
+                </Editable>
               </div>
             </div>
           </div>
