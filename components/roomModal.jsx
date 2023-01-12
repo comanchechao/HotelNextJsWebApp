@@ -45,7 +45,7 @@ export default function roomModal(props) {
       >
         <div className="flex w-full flex-col">
           <div className="flex items-center border-b border-gray-800  w-full justify-end text-right font-bold text-md lg:text-lg h-14">
-            <h1 className="py-4">ویرایش اتاق</h1>
+            <h1 className="">ویرایش اتاق</h1>
           </div>
           <div className="flex w-full p-5  justify-center items-center space-y-4 flex-col">
             <div className="flex">

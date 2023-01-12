@@ -5,6 +5,7 @@ import hotelFour from "../../assets/images/hotelfour.jpg";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import RoomModal from "../../components/roomModal";
+import { useState } from "react";
 import {
   IconStar,
   IconBarbell,
@@ -16,10 +17,12 @@ import {
   IconBath,
   IconWifi,
   IconWashMachine,
+  IconEraser,
 } from "@tabler/icons";
-import { Tabs } from "@mantine/core";
+import { Tabs, Modal, Select } from "@mantine/core";
 
 export default function hotelDetail() {
+  const [opened, setOpened] = useState(false);
   let images = [hotelOne, hotelTwo, hotelThree, hotelFour];
   let rooms = [
     {
@@ -119,7 +122,10 @@ export default function hotelDetail() {
           </div>
         </div>
         <div className="flex p-5 items-center bg-gray-300 space-x-1 w-full justify-between">
-          <h1 className="font-bold text-mainPurple text-sm cursor-pointer hover:text-blue-800">
+          <h1
+            onClick={() => setOpened(true)}
+            className="font-bold text-mainPurple text-sm cursor-pointer hover:text-blue-800"
+          >
             مشاهده همه
           </h1>
           <h1 className="font-bold text-gray-700 text-lg">
@@ -171,6 +177,111 @@ export default function hotelDetail() {
               <h2>خشکشویی</h2>
             </div>
           </div>
+
+          {/* this is the modal for hotel feature */}
+          <Modal opened={opened} onClose={() => setOpened(false)}>
+            <div className=" bg-gray-100 flex flex-col  divdie-x divide-black  ">
+              <div className="flex justify-center items-center w-full text-right h-14">
+                <h1 className="text-lg font-bold py-2">امکانات هتل</h1>
+              </div>
+              <div className="flex px-3 justify-between items-center">
+                <h2 className="flex flex-row">
+                  <IconEraser
+                    className="text-red-500 hover:text-red-700"
+                    size={32}
+                  />
+
+                  <IconBarbell size={32} />
+                </h2>
+                <h2>سالن بدنسازی</h2>
+              </div>
+              <div className="flex px-3 justify-between items-center">
+                <h2 className="flex flex-row">
+                  <IconEraser
+                    className="text-red-500 hover:text-red-700"
+                    size={32}
+                  />
+
+                  <IconCoffee size={32} />
+                </h2>
+                <h2>کافی شاپ</h2>
+              </div>
+              <div className="flex px-3 justify-between items-center">
+                <h2 className="flex flex-row">
+                  <IconEraser
+                    className="text-red-500 hover:text-red-700"
+                    size={32}
+                  />
+
+                  <IconChefHat size={32} />
+                </h2>
+                <h2>رستوران</h2>
+              </div>
+              <div className="flex px-3 justify-between items-center">
+                <h2 className="flex flex-row">
+                  <IconEraser
+                    className="text-red-500 hover:text-red-700"
+                    size={32}
+                  />
+
+                  <IconHotelService size={32} />
+                </h2>
+                <h2>سرویس روزانه</h2>
+              </div>
+              <div className="flex px-3 justify-between items-center">
+                <h2 className="flex flex-row">
+                  <IconEraser
+                    className="text-red-500 hover:text-red-700"
+                    size={32}
+                  />
+
+                  <IconBath size={32} />
+                </h2>
+                <h2>حمام</h2>
+              </div>
+              <div className="flex px-3 justify-between items-center">
+                <h2 className="flex flex-row">
+                  <IconEraser
+                    className="text-red-500 hover:text-red-700"
+                    size={32}
+                  />
+
+                  <IconWifi size={32} />
+                </h2>
+                <h2>خدمات اینترنت</h2>
+              </div>
+              <div className="flex px-3 justify-between items-center">
+                <h2 className="flex flex-row">
+                  <IconEraser
+                    className="text-red-500 hover:text-red-700"
+                    size={32}
+                  />
+
+                  <IconWashMachine size={32} />
+                </h2>
+                <h2>خشکشویی</h2>
+              </div>
+              <div className="flex h-full flex-row-reverse w-full text-right justify-center flex-col">
+                <Select
+                  searchable
+                  clearable
+                  className="w-full text-right"
+                  label="امکانات جدید"
+                  data={[
+                    { value: "باشگاه", label: "باشگاه" },
+                    { value: "استخر", label: "استخر" },
+                    { value: "بار", label: "بار" },
+                    { value: "کافی شاپ", label: "کافی شاپ" },
+                  ]}
+                />
+                <div className="flex w-full h-full">
+                  <button className="text-center flex justify-center items-center w-full h-full py-2 bg-darkPurple transition ease-in duration-300 font-mainFont  text-white hover:bg-Sky-500">
+                    اضافه کردن
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Modal>
         </div>
         <div className="flex p-5 items-center space-x-1 w-full justify-end">
           <h1 className="font-bold text-gray-700 text-lg">مکان و موقیت </h1>
