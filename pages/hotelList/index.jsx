@@ -46,8 +46,8 @@ export default function HotelList() {
             <HotelCard /> <HotelCard />
           </div>
         </div>
-        <div className=" w-1/4 h-full bg-mainBlue">
-          <div className="w-full bg-green-400 h-96 p-6">
+        <div className=" w-1/4 h-full">
+          <div className="w-full h-96 p-6">
             <HotelListMenu />
           </div>
         </div>
