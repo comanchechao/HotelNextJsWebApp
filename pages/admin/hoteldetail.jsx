@@ -4,6 +4,7 @@ import hotelThree from "../../assets/images/hotelthree.jpg";
 import hotelFour from "../../assets/images/hotelfour.jpg";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
+import AddRoom from "../../components/addRoom";
 import RoomModal from "../../components/roomModal";
 import { useState } from "react";
 import {
@@ -158,10 +159,11 @@ export default function hotelDetail() {
               </div>
             );
           })}
-          <div className="flex">
-            <button className="w-52 py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
+          <div className="flex justify-around">
+            <button className="w-48 py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
               بیشتر نشونم بده
             </button>
+            <AddRoom />
           </div>
         </div>
         <div className="flex p-5 items-center bg-gray-300 space-x-1 w-full justify-between">
