@@ -28,6 +28,7 @@ import Tabriz from "../assets/images/Tabriz.webp";
 import Esfahan from "../assets/images/Esfahan.webp";
 
 import "dayjs/locale/fa";
+import Footer from "../components/Footer";
 export default function Home() {
   const theme = useMantineTheme();
   return (
@@ -416,6 +417,7 @@ export default function Home() {
             <Faq />
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

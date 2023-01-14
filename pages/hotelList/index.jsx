@@ -4,6 +4,7 @@ import { CaretLeft } from "phosphor-react";
 import HotelCard from "../../components/hotelCard";
 import { Accordion } from "@mantine/core";
 import HotelListMenu from "../../components/hotelListMenu";
+import Footer from "../../components/Footer";
 
 export default function HotelList() {
   return (
@@ -52,6 +53,7 @@ export default function HotelList() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
