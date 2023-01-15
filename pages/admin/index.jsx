@@ -23,7 +23,7 @@ import {
   IconBook,
 } from "@tabler/icons";
 import { useState } from "react";
-
+import { MagnifyingGlass } from "phosphor-react";
 export default function adminPage() {
   const [tab, setTab] = useState("hotel");
   const [opened, setOpened] = useState(false);
@@ -46,7 +46,7 @@ export default function adminPage() {
             onClick={() => {
               setTab("hotel");
             }}
-            className="flex cursor-pointer hover:bg-mainPurple transition hover:text-white justify-center items-center h-28 w-full "
+            className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-28 w-full "
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconBuildingSkyscraper size={24} />
@@ -57,7 +57,7 @@ export default function adminPage() {
             onClick={() => {
               setTab("user");
             }}
-            className="flex cursor-pointer hover:bg-mainPurple transition hover justify-center items-center h-28 w-full "
+            className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full "
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconUserCheck size={24} />
@@ -68,20 +68,20 @@ export default function adminPage() {
             onClick={() => {
               setTab("reserve");
             }}
-            className="flex cursor-pointer hover:bg-mainPurple transition hover justify-center items-center h-28 w-full "
+            className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full "
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconBook size={24} />
               <h1 className="text-2xl  "> رزرو ها </h1>
             </div>
           </div>
-          <div className="flex cursor-pointer hover:bg-mainPurple transition hover justify-center items-center h-28 w-full ">
+          <div className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full ">
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconBuildingSkyscraper size={24} />
               <h1 className="text-2xl  "> هتل ها </h1>
             </div>
           </div>
-          <div className="flex cursor-pointer hover:bg-red-700 transition hover justify-center items-center h-28 w-full ">
+          <div className="flex cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-28 w-full ">
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconLogout size={24} />
               <h1 className="text-2xl  "> خروج </h1>
@@ -89,7 +89,7 @@ export default function adminPage() {
           </div>
         </div>
         <div className="flex  py-0 flex-col w-full bg-transparent h-full mt-16">
-          <div className="flex  bg-white   drop-shadow-lg h-14 lg:justify-end justify-between w-full items-center">
+          <div className="flex  bg-white z-20   drop-shadow-lg h-20 lg:justify-end justify-between w-full items-center">
             <div className="lg:hidden flex px-2 justify-center items-center">
               <IconMenu2
                 onClick={() => setOpened(true)}
@@ -98,23 +98,22 @@ export default function adminPage() {
               />
             </div>
 
-            <div className="flex h-full item-center justify-around">
-              <Menu shadow="md" width={250} height={200}>
-                <Menu.Target>
-                  <Button className=" transition hover:text-black hover:bg-gray-50 text-gray-900 w-full h-full rounded-none">
-                    <IconSearch size={30} />
-                  </Button>
-                </Menu.Target>
-
-                <Menu.Dropdown>
-                  <input
-                    placeholder="...جستوجو در هتل ها "
-                    className=" lg:block text-right rounded-xl p-4 bg-gray-100"
-                    type="text"
-                  />
-                </Menu.Dropdown>
-              </Menu>
-              <div className="flex justify-center items-center bg-yellow-500 h-full">
+            <div className="flex h-full items-center justify-around">
+              <div class="pt-2 relative text-black ">
+                <input
+                  className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-textArea hover:bg-white   bg-gray-100 font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-full  text-sm focus:outline-none"
+                  type="search"
+                  name="search"
+                  placeholder="جستجو نام هتل"
+                />
+                <button
+                  type="submit"
+                  className="absolute flex items-center left-0 top-0 mt-5 ml-4"
+                >
+                  <MagnifyingGlass size={20} weight="bold" />
+                </button>
+              </div>
+              <div className="flex justify-center items-center h-full">
                 <Menu
                   trigger="hover"
                   openDelay={100}
@@ -123,7 +122,7 @@ export default function adminPage() {
                   width={200}
                 >
                   <Menu.Target>
-                    <Button className="hover:bg-gray-100 transition text-gray-900 w-full h-full rounded-none">
+                    <Button className="hover:bg-gray-100 font-normal text-lg transition text-gray-900 w-full h-full rounded-none">
                       شهر ها
                     </Button>
                   </Menu.Target>
@@ -185,8 +184,8 @@ export default function adminPage() {
                   width={200}
                 >
                   <Menu.Target>
-                    <Button className="hover:bg-gray-100 hover:text-gray-900 transition w-full h-full rounded-none text-gray-900">
-                      دسته بندی
+                    <Button className="hover:bg-gray-100 font-normal text-lg hover:text-gray-900 transition w-full h-full rounded-none text-gray-900">
+                      مرتب سازی
                     </Button>
                   </Menu.Target>
 

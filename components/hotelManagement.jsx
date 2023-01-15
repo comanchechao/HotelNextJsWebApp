@@ -25,7 +25,7 @@ export default function hotelManagement() {
     { title: "هتل", rooms: 32, image: hotelFour },
   ];
   return (
-    <div className="flex flex-col lg:px-8 space-y-3 w-full h-full  justify-center   items-center">
+    <div className="flex flex-col lg:px-14 space-y-3 w-full h-full  justify-center   items-center">
       <div className="flex w-full p-5 space-y-4 flex-col">
         <Tabs color="violet" variant="pills" defaultValue="gallery">
           <Tabs.List position="right">
