@@ -6,6 +6,7 @@ import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import AddRoom from "../../components/addRoom";
 import RoomModal from "../../components/roomModal";
+import Footer from "../../components/Footer";
 import { useState } from "react";
 import {
   IconStar,
@@ -466,6 +467,7 @@ export default function hotelDetail() {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 }

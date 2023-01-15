@@ -3,6 +3,7 @@ import hotelTwo from "../assets/images/hoteltwo.jpg";
 import hotelThree from "../assets/images/hotelthree.jpg";
 import hotelFour from "../assets/images/hotelfour.jpg";
 import Image from "next/image";
+import AddHotel from "../components/addHotel";
 import {
   IconBed,
   IconToolsKitchen,
@@ -20,13 +21,13 @@ export default function hotelManagement() {
     { title: "هتل", rooms: 32, image: hotelFour },
   ];
   return (
-    <div className="flex lg:p-8 w-full h-full  justify-center font-bold  items-center">
+    <div className="flex flex-col lg:px-8 space-y-3 w-full h-full  justify-center font-bold  items-center">
       <div className="flex w-full p-5  lg:h-rem34 lg:overflow-y-scroll space-y-4 flex-col">
         {hotels.map((hotel, i) => {
           return (
             <div
               key={i}
-              className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-2xl w-full rounded bg-white"
+              className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-2xl w-full rounded bg-gray-100"
             >
               <div className="flex lg:border-r border-gray-900 flex-col h-full w-full lg:w-2/3 justify-center items-center">
                 <div className="flex justify-center items-center w-full h-full">
@@ -80,6 +81,12 @@ export default function hotelManagement() {
             </div>
           );
         })}
+      </div>
+      <div className="flex p-5 w-full h-full justify-start space-x-4">
+        <button className="w-48 py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
+          بیشتر نشونم بده
+        </button>
+        <AddHotel />
       </div>
     </div>
   );

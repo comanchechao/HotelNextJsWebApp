@@ -4,6 +4,7 @@ import ReservationManagement from "../../components/reservationManagement.js";
 import UserManagement from "../../components/userManagement";
 import HotelManagement from "../../components/hotelManagement";
 import { Drawer, Group, useMantineTheme } from "@mantine/core";
+import Footer from "../../components/Footer";
 import {
   IconSettings,
   IconSearch,
@@ -32,7 +33,7 @@ export default function adminPage() {
     <div className="w-screen h-full">
       <Navbar />
       <div className="flex pt-16 w-full h-full">
-        <div className="hidden lg:flex flex-col h-full w-96 divide-y bg-CoolGray-900">
+        <div className="hidden pt-5 lg:flex flex-col h-screen w-96 divide-y bg-CoolGray-900">
           <div className="flex w-full justify-center items-center ">
             <div className="flex h-28 justify-around items-center text-gray-100 w-full">
               <div className="w-10 h-10 rounded-full bg-gray-300"></div>
@@ -161,6 +162,15 @@ export default function adminPage() {
                       icon={<IconBuildingSkyscraper size={14} />}
                     >
                       استانبول
+                    </Menu.Item>
+
+                    <Menu.Divider />
+
+                    <Menu.Label>افزودن هتل</Menu.Label>
+                    <Menu.Item className="font-medium text-right">
+                      <button className="w-full py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
+                        شهر جدید
+                      </button>
                     </Menu.Item>
                   </Menu.Dropdown>
                 </Menu>
