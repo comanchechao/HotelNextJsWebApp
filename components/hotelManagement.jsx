@@ -25,7 +25,7 @@ export default function hotelManagement() {
     { title: "هتل", rooms: 32, image: hotelFour },
   ];
   return (
-    <div className="flex flex-col lg:px-8 space-y-3 w-full h-full  justify-center font-bold  items-center">
+    <div className="flex flex-col lg:px-8 space-y-3 w-full h-full  justify-center   items-center">
       <div className="flex w-full p-5 space-y-4 flex-col">
         <Tabs color="violet" variant="pills" defaultValue="gallery">
           <Tabs.List position="right">
@@ -49,7 +49,7 @@ export default function hotelManagement() {
                 return (
                   <div
                     key={i}
-                    className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-2xl w-full rounded bg-gray-100"
+                    className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-2xl w-full rounded bg-white my-5"
                   >
                     <div className="flex lg:border-r border-gray-900 flex-col h-full w-full lg:w-2/3 justify-center items-center">
                       <div className="flex justify-center items-center w-full h-full">
@@ -118,7 +118,7 @@ export default function hotelManagement() {
                 return (
                   <div
                     key={i}
-                    className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-2xl w-full rounded bg-gray-100"
+                    className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-2xl w-full rounded bg-white"
                   >
                     <div className="flex lg:border-r border-gray-900 flex-col h-full w-full lg:w-2/3 justify-center items-center">
                       <div className="flex justify-center items-center w-full h-full">
@@ -187,7 +187,6 @@ export default function hotelManagement() {
         </Tabs>
       </div>
       <div className="flex p-5 w-full h-full justify-start space-x-4">
-   
         <AddHotel />
       </div>
     </div>
