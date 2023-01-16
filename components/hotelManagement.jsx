@@ -119,6 +119,7 @@ export default function hotelManagement() {
                     </div>
                     <div className="flex w-full h-full lg:h-52 justify-center items-center">
                       <Image
+                        alt=""
                         className="w-full lg:h-52 object-contain"
                         src={hotel.image}
                       />

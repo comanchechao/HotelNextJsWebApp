@@ -71,9 +71,12 @@ export default function userManagement() {
           </Tabs.List>
           <Tabs.Panel value="gallery" pt="xs">
             <div className="flex space-y-2 h-rem34 overflow-y-scroll px-4 w-full h-full flex-col">
-              {users.map((user) => {
+              {users.map((user, i) => {
                 return (
-                  <div className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center">
+                  <div
+                    key={i}
+                    className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                  >
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full bg-mainBlue">
                       <IconUserCircle size={50} />
                     </div>
@@ -90,9 +93,12 @@ export default function userManagement() {
 
           <Tabs.Panel value="messages" pt="xs">
             <div className="flex space-y-2 overflow-y-scroll px-4 w-full h-full flex-col">
-              {users.map((user) => {
+              {users.map((user, i) => {
                 return (
-                  <div className="flex flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center">
+                  <div
+                    key={i}
+                    className="flex flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                  >
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full bg-mainBlue">
                       <IconUserCircle size={50} />
                     </div>
@@ -108,9 +114,12 @@ export default function userManagement() {
           </Tabs.Panel>
           <Tabs.Panel value="settings" pt="xs">
             <div className="flex space-y-2 overflow-y-scroll px-4 w-full h-full flex-col">
-              {users.map((user) => {
+              {users.map((user, i) => {
                 return (
-                  <div className="flex flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center">
+                  <div
+                    key={i}
+                    className="flex flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                  >
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full bg-mainBlue">
                       <IconUserCircle size={50} />
                     </div>
