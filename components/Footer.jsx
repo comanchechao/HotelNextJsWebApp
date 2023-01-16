@@ -111,27 +111,27 @@ export default function Footer() {
       <div className="w-full flex items-center justify-between h-24 px-20 border-t border-dashed border-mainPurple">
         <div className="flex items-center justify-start space-x-5">
           <InstagramLogo
-            className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-darkPurple hover:text-white cursor-pointer"
+            className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
             size={40}
             weight="fill"
           />
           <FacebookLogo
-            className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-darkPurple hover:text-white cursor-pointer"
+            className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
             size={45}
             weight="fill"
           />
           <WhatsappLogo
-            className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-darkPurple hover:text-white cursor-pointer"
+            className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
             size={45}
             weight="fill"
           />
           <TelegramLogo
-            className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-darkPurple hover:text-white cursor-pointer"
+            className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
             size={45}
             weight="fill"
           />
           <Phone
-            className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-darkPurple hover:text-white cursor-pointer"
+            className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
             size={45}
             weight="fill"
           />
