@@ -75,21 +75,21 @@ export default function adminPage() {
               <h1 className="text-2xl font-bold"> رزرو ها </h1>
             </div>
           </div>
-          <div className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full ">
-            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+          <div className="flex cursor-pointer hover:bg-mainPurple transition hover justify-center items-center h-28 w-full ">
+            <div className="flex justify-around items-center  transition   text-gray-50 w-full">
               <IconBuildingSkyscraper size={24} />
               <h1 className="text-2xl font-bold"> هتل ها </h1>
             </div>
           </div>
-          <div className="flex cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-28 w-full ">
-            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+          <div className="flex cursor-pointer hover:bg-red-700 transition hover justify-center items-center h-28 w-full ">
+            <div className="flex justify-around items-center  transition   text-gray-50 w-full">
               <IconLogout size={24} />
               <h1 className="text-2xl font-bold"> خروج </h1>
             </div>
           </div>
         </div>
-        <div className="flex  py-0 flex-col w-full bg-transparent h-full mt-16">
-          <div className="flex  bg-white z-20   drop-shadow-lg h-20 lg:justify-end justify-between w-full items-center">
+        <div className="flex  py-0 flex-col w-full h-full bg-gray-200">
+          <div className="flex border-b border-gray-900 shadow-2xl h-14 lg:justify-end justify-between w-full items-center">
             <div className="lg:hidden flex px-2 justify-center items-center">
               <IconMenu2
                 onClick={() => setOpened(true)}
@@ -185,8 +185,8 @@ export default function adminPage() {
                   width={200}
                 >
                   <Menu.Target>
-                    <Button className="hover:bg-gray-100 font-normal text-lg hover:text-gray-900 transition w-full h-full rounded-none text-gray-900">
-                      مرتب سازی
+                    <Button className="hover:bg-gray-100 hover:text-gray-900 transition  w-full h-full rounded-none text-gray-900">
+                      دسته بندی
                     </Button>
                   </Menu.Target>
 
