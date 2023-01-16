@@ -26,7 +26,7 @@ export default function hotelManagement() {
     { title: "هتل", rooms: 32, image: hotelFour },
   ];
   return (
-    <div className="flex flex-col lg:px-14 space-y-3 w-full h-full  justify-center   items-center">
+    <div className="flex flex-col bg-gray-300 lg:px-14 space-y-3 w-full h-full  justify-center   items-center">
       <div className="flex w-full space-y-4 flex-col">
         <div class="pt-4 px-2 flex w-full justify-center items-center relative text-black ">
           <div className="flex flex-reverse w-full items-center space-x-2 justify-center">
