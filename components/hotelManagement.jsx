@@ -16,6 +16,7 @@ import {
 } from "@tabler/icons";
 import Link from "next/link";
 import { Tabs } from "@mantine/core";
+import { MagnifyingGlass } from "phosphor-react";
 
 export default function hotelManagement() {
   let hotels = [
@@ -26,9 +27,25 @@ export default function hotelManagement() {
   ];
   return (
     <div className="flex flex-col lg:px-14 space-y-3 w-full h-full  justify-center   items-center">
-      <div className="flex w-full p-5 space-y-4 flex-col">
+      <div className="flex w-full space-y-4 flex-col">
+        <div class="pt-4 px-2 flex w-full justify-center items-center relative text-black ">
+          <div className="flex flex-reverse w-full items-center space-x-2 justify-center">
+            <button
+              type="submit"
+              className="bg-gray-100 justify-center items-center border-2 h-10 px-3  flex"
+            >
+              <MagnifyingGlass size={20} weight="bold" />
+            </button>
+            <input
+              className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-textArea hover:bg-white   bg-gray-100 font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-sm  text-sm focus:outline-none"
+              type="search"
+              name="search"
+              placeholder="جستجو نام هتل"
+            />
+          </div>
+        </div>
         <Tabs color="violet" variant="pills" defaultValue="gallery">
-          <Tabs.List position="right">
+          <Tabs.List className="px-2" position="center">
             <Tabs.Tab value="settings" icon={<IconUsers size={14} />}>
               هتل های همکاران
             </Tabs.Tab>
@@ -171,6 +188,7 @@ export default function hotelManagement() {
                     </div>
                     <div className="flex w-full h-full lg:h-52 justify-center items-center">
                       <Image
+                        alt=""
                         className="w-full lg:h-52 object-contain"
                         src={hotel.image}
                       />
@@ -187,7 +205,6 @@ export default function hotelManagement() {
         </Tabs>
       </div>
       <div className="flex p-5 w-full h-full justify-start space-x-4">
-   
         <AddHotel />
       </div>
     </div>

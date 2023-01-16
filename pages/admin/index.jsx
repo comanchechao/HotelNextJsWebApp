@@ -32,7 +32,7 @@ export default function adminPage() {
   return (
     <div className="w-screen h-full">
       <Navbar />
-      <div className="flex pt-16 w-full h-full">
+      <div className="flex bg-CoolGray-900 pt-16 w-full h-full">
         <div className="hidden pt-5 lg:flex flex-col h-screen w-96 divide-y bg-CoolGray-900">
           <div className="flex w-full justify-center items-center ">
             <div className="flex h-28 justify-around items-center text-gray-100 w-full">
@@ -89,8 +89,8 @@ export default function adminPage() {
           </div>
         </div>
         <div className="flex  py-0 flex-col w-full h-full bg-gray-200">
-          <div className="flex border-b border-gray-900 shadow-2xl h-14 lg:justify-end justify-between w-full items-center">
-            <div className="lg:hidden flex px-2 justify-center items-center">
+          <div className="flex  border-b border-gray-900 shadow-2xl h-24 lg:justify-end justify-between w-full items-center">
+            <div className="lg:hidden flex px-2 justify-center items-end h-16">
               <IconMenu2
                 onClick={() => setOpened(true)}
                 size={32}
@@ -98,22 +98,8 @@ export default function adminPage() {
               />
             </div>
 
-            <div className="flex h-full items-center justify-around">
-              <div class="pt-2 relative text-black ">
-                <input
-                  className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-textArea hover:bg-white   bg-gray-100 font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-full  text-sm focus:outline-none"
-                  type="search"
-                  name="search"
-                  placeholder="جستجو نام هتل"
-                />
-                <button
-                  type="submit"
-                  className="absolute flex items-center left-0 top-0 mt-5 ml-4"
-                >
-                  <MagnifyingGlass size={20} weight="bold" />
-                </button>
-              </div>
-              <div className="flex justify-center items-center h-full">
+            <div className="flex h-full items-end justify-around">
+              <div className="flex justify-center items-center h-16">
                 <Menu
                   trigger="hover"
                   openDelay={100}
@@ -175,7 +161,7 @@ export default function adminPage() {
                 </Menu>
               </div>
 
-              <div className="flex h-full">
+              <div className="flex h-16">
                 {" "}
                 <Menu
                   trigger="hover"
