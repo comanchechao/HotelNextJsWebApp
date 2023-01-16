@@ -26,7 +26,7 @@ export default function hotelManagement() {
     { title: "هتل", rooms: 32, image: hotelFour },
   ];
   return (
-    <div className="flex flex-col w-full h-full bg-gray-300">
+    <div className="flex flex-col w-full h-full bg-gray-200">
       <div className="flex w-full space-y-4 flex-col">
         <div class="pt-4 px-2 flex w-full justify-center items-center relative text-black ">
           <div className="flex flex-reverse w-full items-center space-x-2 justify-center">
@@ -61,12 +61,12 @@ export default function hotelManagement() {
           </Tabs.List>
 
           <Tabs.Panel value="gallery" pt="xs">
-            <div className="flex w-full p-5  lg:h-rem34 lg:overflow-y-scroll space-y-4 flex-col">
+            <div className="flex w-full p-5  lg:h-rem34 lg:overflow-y-scroll space-y-7 px-20 flex-col">
               {hotels.map((hotel, i) => {
                 return (
                   <div
                     key={i}
-                    className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-2xl w-full rounded bg-gray-100"
+                    className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-xl w-full rounded bg-gray-100"
                   >
                     <div className="flex lg:border-r border-gray-900 flex-col h-full w-full lg:w-2/3 justify-center items-center">
                       <div className="flex justify-center items-center w-full h-full">
@@ -80,7 +80,7 @@ export default function hotelManagement() {
                           className="w-full h-full"
                           href="/admin/hoteldetail"
                         >
-                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
+                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-150 font-mainFont rounded-full text-white hover:bg-mainBlue">
                             ویرایش هتل
                           </button>
                         </Link>
@@ -150,7 +150,7 @@ export default function hotelManagement() {
                           className="w-full h-full"
                           href="/admin/hoteldetail"
                         >
-                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
+                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue">
                             ویرایش هتل
                           </button>
                         </Link>

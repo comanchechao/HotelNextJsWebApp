@@ -1,5 +1,13 @@
-import { CaretDown, Question, Scroll } from "phosphor-react";
-
+import Link from "next/link";
+import {
+  CaretDown,
+  Question,
+  Scroll,
+  Bed,
+  HouseLine,
+  User,
+  SignOut,
+} from "phosphor-react";
 export default function Navbar() {
   return (
     <div className=" w-screen h-16 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-32">
@@ -8,7 +16,7 @@ export default function Navbar() {
         <div className="dropdown">
           <label
             tabIndex={0}
-            className="btn font-normal text-lg bg-transparent rounded-sm px-6 m-1 border-none text-gray-900 transition ease-in hover:bg-gray-900 hover:text-white duration-300"
+            className="btn font-normal text-lg bg-transparent rounded-sm px-3 m-1 border-none text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
             <CaretDown className="mx-2" size={20} weight="bold" />
             اقامت
@@ -18,19 +26,58 @@ export default function Navbar() {
             className="dropdown-content menu  text-right bg-white rounded-sm     w-auto"
           >
             <li className="text-gray-900 ">
-              <a className="w-full text-center flex items-center justify-end">
+              <Link
+                href="/hotelList"
+                className="w-full text-center flex items-center justify-end"
+              >
                 هتل
-              </a>
+                <Bed size={30} />
+              </Link>
             </li>
             <li className="text-gray-900">
-              <a className="w-full text-center flex items-center justify-end">
+              <Link
+                href="#"
+                className="w-full text-center flex items-center justify-end"
+              >
                 ویلا و اقامتگاه
-              </a>
+                <HouseLine size={40} />
+              </Link>
             </li>
           </ul>
         </div>
       </div>
       <div className="text-lg flex items-center space-x-10 ">
+        <div className="dropdown">
+          <label
+            tabIndex={0}
+            className="btn font-normal text-sm  bg-transparent rounded-sm px-1 m-1 border-none text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          >
+            <CaretDown className="mx-2" size={20} weight="bold" />
+            <User size={30} />
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu  w-52  text-right bg-white rounded-sm  "
+          >
+            <li className="text-gray-900 ">
+              <Link
+                href="/userProfile"
+                className="w-full text-center text-sm flex items-center justify-end"
+              >
+                اطلاعات حساب کاربری
+                <User size={20} />
+              </Link>
+            </li>
+            <li className="text-gray-900">
+              <Link
+                href="#"
+                className="w-full text-center text-sm flex items-center justify-end"
+              >
+                خروج از حساب کاربری <SignOut size={20} />
+              </Link>
+            </li>
+          </ul>
+        </div>
         <h4 className="flex items-center cursor-pointer transition ease-in duration-300 hover:text-mainBlue">
           سفرهای من <Scroll className="mx-2" size={24} weight="thin" />
         </h4>

@@ -20,19 +20,19 @@ export default function addRoom() {
               <div className="flex p-2 w-full text-right justify-end">
                 :تصاویر هتل
               </div>
-              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-Sky-500">
+              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <IconUpload size={30} />
               </button>
-              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-Sky-500">
+              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <IconUpload size={30} />
               </button>
-              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-Sky-500">
+              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <IconUpload size={30} />
               </button>
-              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-Sky-500">
+              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <IconUpload size={30} />
               </button>
-              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-Sky-500">
+              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <IconUpload size={30} />
               </button>
             </div>
@@ -109,7 +109,7 @@ export default function addRoom() {
                 onClick={() => {
                   setOpened(false);
                 }}
-                className="w-52 py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500"
+                className="w-52 py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue"
               >
                 افزودن
               </button>
@@ -123,7 +123,7 @@ export default function addRoom() {
           onClick={() => {
             setOpened(true);
           }}
-          className="w-52 py-3 border-2 text-lg border-darkPurple border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-full text-darkPurple hover:bg-Sky-500"
+          className="w-52 py-3 border-2 text-lg border-darkPurple border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-full text-darkPurple hover:bg-mainBlue"
         >
           هتل جدید
         </button>
