@@ -30,14 +30,14 @@ export default function adminPage() {
   const theme = useMantineTheme();
 
   return (
-    <div className="w-screen h-full bg-gray-200">
+    <div className="w-screen h-full">
       <Navbar />
-      <div className="flex pt-16 w-full h-screen items-center justify-center space-x-5 px-44">
-        <div className="hidden pt-5 lg:flex flex-col items-center h-carousel justify-center w-96 divide-y bg-white text-gray-800">
+      <div className="flex pt-16 w-full h-full">
+        <div className="hidden pt-5 lg:flex flex-col h-screen w-96 divide-y bg-CoolGray-900">
           <div className="flex w-full justify-center items-center ">
-            <div className="flex h-28 justify-around items-center w-full">
+            <div className="flex h-28 justify-around items-center text-gray-100 w-full">
               <div className="w-10 h-10 rounded-full bg-gray-300"></div>
-              <div className="text-gray-800   text-2xl">
+              <div className="text-gray-100 font-bold text-2xl">
                 <h1>ادمین</h1>
               </div>
             </div>
@@ -48,9 +48,9 @@ export default function adminPage() {
             }}
             className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-28 w-full "
           >
-            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+            <div className="flex justify-around items-center  transition   text-gray-50 w-full">
               <IconBuildingSkyscraper size={24} />
-              <h1 className="text-2xl  "> هتل ها </h1>
+              <h1 className="text-2xl font-bold"> هتل ها </h1>
             </div>
           </div>
           <div
@@ -59,9 +59,9 @@ export default function adminPage() {
             }}
             className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full "
           >
-            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+            <div className="flex justify-around items-center  transition   text-gray-50 w-full">
               <IconUserCheck size={24} />
-              <h1 className="text-2xl  "> همکاران </h1>
+              <h1 className="text-2xl font-bold"> همکاران </h1>
             </div>
           </div>
           <div
@@ -70,21 +70,21 @@ export default function adminPage() {
             }}
             className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full "
           >
-            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+            <div className="flex justify-around items-center  transition   text-gray-50 w-full">
               <IconBook size={24} />
-              <h1 className="text-2xl  "> رزرو ها </h1>
+              <h1 className="text-2xl font-bold"> رزرو ها </h1>
             </div>
           </div>
           <div className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full ">
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconBuildingSkyscraper size={24} />
-              <h1 className="text-2xl  "> هتل ها </h1>
+              <h1 className="text-2xl font-bold"> هتل ها </h1>
             </div>
           </div>
           <div className="flex cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-28 w-full ">
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconLogout size={24} />
-              <h1 className="text-2xl  "> خروج </h1>
+              <h1 className="text-2xl font-bold"> خروج </h1>
             </div>
           </div>
         </div>
@@ -176,6 +176,7 @@ export default function adminPage() {
               </div>
 
               <div className="flex h-full">
+                {" "}
                 <Menu
                   trigger="hover"
                   openDelay={100}
@@ -247,7 +248,7 @@ export default function adminPage() {
               <div className="flex w-full justify-center items-center ">
                 <div className="flex h-28 justify-around items-center text-gray-100 w-full">
                   <div className="w-10 h-10 rounded-full bg-gray-300"></div>
-                  <div className="text-gray-100   text-2xl">
+                  <div className="text-gray-100 font-bold text-2xl">
                     <h1>ادمین</h1>
                   </div>
                 </div>
@@ -260,7 +261,7 @@ export default function adminPage() {
               >
                 <div className="flex justify-around items-center  transition   text-gray-50 w-full">
                   <IconBuildingSkyscraper size={24} />
-                  <h1 className="text-2xl  "> هتل ها </h1>
+                  <h1 className="text-2xl font-bold"> هتل ها </h1>
                 </div>
               </div>
               <div
@@ -271,7 +272,7 @@ export default function adminPage() {
               >
                 <div className="flex justify-around items-center  transition   text-gray-50 w-full">
                   <IconUserCheck size={24} />
-                  <h1 className="text-2xl  "> همکاران </h1>
+                  <h1 className="text-2xl font-bold"> همکاران </h1>
                 </div>
               </div>
               <div
@@ -282,19 +283,19 @@ export default function adminPage() {
               >
                 <div className="flex justify-around items-center  transition   text-gray-50 w-full">
                   <IconBook size={24} />
-                  <h1 className="text-2xl  "> رزرو ها </h1>
+                  <h1 className="text-2xl font-bold"> رزرو ها </h1>
                 </div>
               </div>
               <div className="flex cursor-pointer hover:bg-mainPurple transition hover justify-center items-center h-28 w-full ">
                 <div className="flex justify-around items-center  transition   text-gray-50 w-full">
                   <IconBuildingSkyscraper size={24} />
-                  <h1 className="text-2xl  "> هتل ها </h1>
+                  <h1 className="text-2xl font-bold"> هتل ها </h1>
                 </div>
               </div>
               <div className="flex cursor-pointer hover:bg-red-700 transition hover justify-center items-center h-28 w-full ">
                 <div className="flex justify-around items-center  transition   text-gray-50 w-full">
                   <IconLogout size={24} />
-                  <h1 className="text-2xl  "> خروج </h1>
+                  <h1 className="text-2xl font-bold"> خروج </h1>
                 </div>
               </div>
             </div>
