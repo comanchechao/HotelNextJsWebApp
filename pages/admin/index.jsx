@@ -32,7 +32,7 @@ export default function adminPage() {
   return (
     <div className="w-screen h-full bg-gray-200">
       <Navbar />
-      <div className="flex pt-16 w-full h-screen items-center justify-center space-x-5 px-44">
+      <div className="flex pt-16 w-full h-screen items-center justify-center space-x-5 lg:px-44">
         <div className="hidden pt-5 lg:flex flex-col items-center h-carousel justify-center w-96 divide-y bg-white text-gray-800">
           <div className="flex w-full justify-center items-center ">
             <div className="flex h-28 justify-around items-center w-full">
