@@ -10,8 +10,8 @@ import {
 } from "phosphor-react";
 export default function Navbar() {
   return (
-    <div className=" w-screen h-16 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-32">
-      <div className="text-lg flex items-center  ">
+    <div className=" w-screen h-16 items-center justify-center lg:justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl lg:px-32">
+      <div className="text-lg flex items-center w-auto">
         <div className="h-full w-60 bg-mainPurple"></div>
         <div className="dropdown">
           <label

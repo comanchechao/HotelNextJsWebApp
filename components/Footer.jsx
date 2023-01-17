@@ -8,9 +8,9 @@ import {
 } from "phosphor-react";
 export default function Footer() {
   return (
-    <div className="w-screen h-rem26 bg-white drop-shadow-lg px-44 flex flex-col items-center mt-5">
-      <div className="flex items-center w-full h-full">
-        <div className="w-1/2 h-3/5  px-20 flex items-start justify-center space-y-3 flex-col">
+    <div className="w-screen h-auto lg:h-rem26 bg-white drop-shadow-lg lg:px-44 flex flex-col items-center mt-5">
+      <div className="flex lg:flex-row flex-col items-center w-full h-full my-4">
+        <div className="lg:w-1/2 lg:h-3/5 w-full h-auto  lg:px-20 flex items-center lg:items-start justify-center space-y-3 flex-col">
           <div className="w-52 h-24 bg-mainPurple"></div>
           <p className="text-gray-600">تلفن پشتیبانی : 32344455</p>
           <p className="text-gray-600">
@@ -24,7 +24,7 @@ export default function Footer() {
             <div className="w-20 h-20 bg-mainYellow drop-shadow-lg"></div>
           </div>
         </div>
-        <div className="w-1/2 h-3/5      flex items-start py-6 justify-around">
+        <div className="lg:w-1/2 lg:h-3/5 w-full h-auto flex items-start py-6 justify-around">
           <div className="flex items-end flex-col space-y-1">
             <h3 className="font-bold text-lg my-1">هتل</h3>
             <Link
@@ -108,7 +108,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="w-full flex items-center justify-between h-24 px-20 border-t border-dashed border-mainPurple">
+      <div className="w-full flex lg:flex-row flex-col items-center justify-evenly lg:justify-between h-24 lg:px-20 border-t border-dashed border-mainPurple">
         <div className="flex items-center justify-start space-x-5">
           <InstagramLogo
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"

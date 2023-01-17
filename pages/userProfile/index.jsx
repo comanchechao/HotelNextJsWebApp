@@ -3,6 +3,7 @@ import { useState } from "react";
 import { User, Bed, Info, Money } from "phosphor-react";
 import PaymentHistory from "../../components/paymentHistory";
 import ProfileInfo from "../../components/profileInfo";
+import Footer from "../../components/Footer";
 export default function UserProfile() {
   const [tab, setTab] = useState("Profile");
   return (
@@ -51,6 +52,7 @@ export default function UserProfile() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -42,9 +42,9 @@ export default function Home() {
             alt="Main Background"
           />
         </div>
-        <div className="w-full  h-72 px-56">
+        <div className="w-full h-auto lg:h-72 lg:px-56">
           <div className="w-full h-full flex flex-col items-center justify-center space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-sm p-14  ">
-            <div className="flex w-full h-full items-center flex-row-reverse justify-center space-x-5 mb-5">
+            <div className="flex w-full h-full items-center flex-col lg:flex-row-reverse justify-center space-x-5 mb-5">
               <Select
                 className="text-2xl mx-6 text-right flex flex-col items-end   shadow-md "
                 data={["تهران", "تبریز", "ارومیه", "مشهد"]}
@@ -118,8 +118,8 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="w-full  h-60 px-56">
-          <div className="w-full h-full flex flex-row-reverse items-center justify-around mb-4   drop-shadow-xl bg-white rounded-sm p-14  ">
+        <div className="w-full h-auto  lg:h-60 lg:px-56">
+          <div className="w-full h-full flex flex-col lg:flex-row-reverse items-center justify-around lg:mb-10 lg:py-0 my-10 py-14 space-y-5 lg:space-x-0 drop-shadow-xl bg-white rounded-sm lg:p-14  ">
             <div className="flex flex-col items-center space-y-2">
               <svg
                 viewBox="0 0 24 24"
@@ -221,8 +221,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-full h-rem26 py-6 flex items-center justify-center space-x-5 px-56 my-10">
-          <div className=" w-full h-full flex flex-col items-center justify-around">
+        <div className="w-full h-auto lg:space-y-0 space-y-2 lg:h-rem26 py-6 flex-col lg:flex-row flex items-center justify-center space-x-5 lg:px-56 my-10">
+          <div className=" w-full h-full flex flex-col items-center justify-around lg:space-y-0 space-y-4">
             <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Van} />
@@ -257,7 +257,7 @@ export default function Home() {
               <CaretLeft size={20} weight="bold" />
             </a>
           </div>
-          <div className=" w-full h-full flex flex-col items-center justify-around">
+          <div className=" w-full h-full flex flex-col items-center justify-around  lg:space-y-0 space-y-2">
             <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Istanbul} />
@@ -292,7 +292,7 @@ export default function Home() {
               <CaretLeft size={20} weight="bold" />
             </a>
           </div>
-          <div className=" w-full h-full flex flex-col items-center justify-around">
+          <div className=" w-full h-full flex flex-col items-center justify-around  lg:space-y-0 space-y-2">
             <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Antalia} />
@@ -328,7 +328,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="w-full h-auto py-6 flex items-center justify-center space-x-5 px-56 my-10">
+        <div className="w-full h-auto py-6 flex items-center lg:flex-row flex-col space-y-2 lg:space-y-0 justify-center space-x-5 lg:px-56 my-10">
           <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
             <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
@@ -411,9 +411,11 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="w-full  h-auto px-56 mb-7">
-          <div className="w-full h-full flex flex-col justify-center items-end space-y-3 rounded-sm">
-            <h1 className="font-bold mb-3">پرسش‌های متداول درباره رزرو هتل</h1>
+        <div className="w-full  h-auto lg:px-56 mb-7">
+          <div className="w-full h-full flex flex-col justify-center items-center lg:items-end space-y-3 rounded-sm">
+            <h1 className="font-bold mb-3 text-center">
+              پرسش‌های متداول درباره رزرو هتل
+            </h1>
             <Faq />
           </div>
         </div>
