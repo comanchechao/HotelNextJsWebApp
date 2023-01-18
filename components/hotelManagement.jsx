@@ -61,7 +61,7 @@ export default function hotelManagement() {
           </Tabs.List>
 
           <Tabs.Panel value="gallery" pt="xs">
-            <div className="flex w-full p-5  lg:h-rem34 lg:overflow-y-scroll space-y-7 px-20 flex-col">
+            <div className="flex w-full p-5  lg:h-rem28 lg:overflow-y-scroll space-y-7  flex-col">
               {hotels.map((hotel, i) => {
                 return (
                   <div

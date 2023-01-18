@@ -15,6 +15,8 @@ module.exports = {
       },
       height: {
         rem26: "26rem",
+        rem28: "28rem",
+        rem30: "30rem",
         dialog: "32rem",
         rem33: "33rem",
         rem34: "34rem",

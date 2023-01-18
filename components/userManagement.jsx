@@ -6,6 +6,7 @@ import {
   IconUserCircle,
   IconUserCheck,
 } from "@tabler/icons";
+import SuperUser from "../components/superUserModal";
 
 export default function userManagement() {
   let users = [
@@ -70,21 +71,19 @@ export default function userManagement() {
             </Tabs.Tab>
           </Tabs.List>
           <Tabs.Panel value="gallery" pt="xs">
-            <div className="flex space-y-2 h-rem34 overflow-y-scroll px-4 w-full h-full flex-col">
+            <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
               {users.map((user, i) => {
                 return (
                   <div
                     key={i}
                     className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
                   >
-                    <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full bg-mainBlue">
+                    <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                       <IconUserCircle size={50} />
                     </div>
                     <h1 className=" text-sm lg:text-xl">{user.title}</h1>
                     <p className="hidden lg:block">{user.name}</p>
-                    <button className="lg:w-32 w-24 py-3 border-2 text-lg border-darkPurple border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-full text-darkPurple hover:bg-mainBlue">
-                      <p>اطلاعات</p>
-                    </button>
+                    <SuperUser />
                   </div>
                 );
               })}
@@ -92,14 +91,14 @@ export default function userManagement() {
           </Tabs.Panel>
 
           <Tabs.Panel value="messages" pt="xs">
-            <div className="flex space-y-2 overflow-y-scroll px-4 w-full h-full flex-col">
+            <div className="flex space-y-2 overflow-y-scroll px-4 w-full h-rem30 flex-col">
               {users.map((user, i) => {
                 return (
                   <div
                     key={i}
                     className="flex flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
                   >
-                    <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full bg-mainBlue">
+                    <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                       <IconUserCircle size={50} />
                     </div>
                     <h1 className=" text-sm lg:text-xl">{user.title}</h1>
@@ -120,7 +119,7 @@ export default function userManagement() {
                     key={i}
                     className="flex flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
                   >
-                    <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full bg-mainBlue">
+                    <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                       <IconUserCircle size={50} />
                     </div>
                     <h1 className=" text-sm lg:text-xl">{user.title}</h1>
