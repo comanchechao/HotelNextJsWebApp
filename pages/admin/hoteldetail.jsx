@@ -102,7 +102,7 @@ export default function hotelDetail() {
           })}
         </div>
         <div className="p-5 mb-10 bg-white drop-shadow-lg flex flex-col w-full">
-          <div className="flex font-bold text-4xl items-center space-x-1 w-full justify-end">
+          <div className="flex   text-4xl items-center space-x-1 w-full justify-end">
             <Editable
               textAlign="center"
               defaultValue="Grand Hotel"
@@ -156,9 +156,7 @@ export default function hotelDetail() {
                 <div className="flex items-center h-full w-full px-5 justify-between">
                   <div className="flex space-x-1 p-2 justify-center items-center">
                     <h2>ریال</h2>
-                    <h2 className="font-bold text-3xl text-mainPurple">
-                      {room.price}
-                    </h2>
+                    <h2 className="  text-3xl text-mainPurple">{room.price}</h2>
                   </div>
                   <h1 className="text-lg">قیمت برای هرشب</h1>
                 </div>
@@ -178,13 +176,11 @@ export default function hotelDetail() {
         <div className="flex p-5 items-center bg-white space-x-1 w-full justify-between">
           <h1
             onClick={() => setOpened(true)}
-            className="font-bold text-mainPurple text-sm cursor-pointer hover:text-blue-800"
+            className="  text-mainPurple text-sm cursor-pointer hover:text-blue-800"
           >
             مشاهده همه
           </h1>
-          <h1 className="font-bold text-gray-700 text-2xl">
-            امکانات و ویژگی ها
-          </h1>
+          <h1 className="  text-gray-700 text-2xl">امکانات و ویژگی ها</h1>
         </div>
         <div className="flex w-full bg-gray-200 px-4 lg:px-20 flex-col">
           <div className="rounded-sm bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  m-4 ">
@@ -236,7 +232,7 @@ export default function hotelDetail() {
           <Modal opened={opened} onClose={() => setOpened(false)}>
             <div className=" bg-gray-100 flex flex-col  divdie-x divide-black  ">
               <div className="flex justify-center items-center w-full text-right h-14">
-                <h1 className="text-lg font-bold py-2">امکانات هتل</h1>
+                <h1 className="text-lg   py-2">امکانات هتل</h1>
               </div>
               <div className="flex px-3 justify-between items-center">
                 <h2 className="flex flex-row">
@@ -338,10 +334,10 @@ export default function hotelDetail() {
           </Modal>
         </div>
         <div className="flex p-5 items-center space-x-1 w-full justify-between">
-          <h1 className="font-bold text-mainPurple text-sm cursor-pointer hover:text-blue-800">
+          <h1 className="  text-mainPurple text-sm cursor-pointer hover:text-blue-800">
             تغییر موقعیت
           </h1>
-          <h1 className="font-bold text-gray-700 text-2xl">مکان و موقیت </h1>
+          <h1 className="  text-gray-700 text-2xl">مکان و موقیت </h1>
         </div>
         <div className="flex bg-gray-200 items-center   justify-center p-5">
           <div className="flex  items-center dropshadow-2xl justify-center">
@@ -357,16 +353,16 @@ export default function hotelDetail() {
           </div>
         </div>
         <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
-          <h1 className="font-bold text-gray-700 text-2xl">قوانین و مقررات </h1>
+          <h1 className="  text-gray-700 text-2xl">قوانین و مقررات </h1>
         </div>
         <div className="flex p-5  bg-gray-200 px-8 justify-center w-full">
           <div className="flex rounded-sm   flex-col w-full bg-gray-50">
             <div className="flex p-2 justify-end  h-18 w-full">
               <div className="p-5  flex justify-end w-full lg:w-1/2">
-                <div className="flex text-xl font-bold items-end justify-center w-32  flex-col">
+                <div className="flex text-xl   items-end justify-center w-32  flex-col">
                   <div className="flex items-center justify-center">
                     <IconDoor size={25} />
-                    <p className="text-md font-bold">ساعت ورود</p>
+                    <p className="text-md  ">ساعت ورود</p>
                   </div>
                   <Editable
                     textAlign="center"
@@ -380,10 +376,10 @@ export default function hotelDetail() {
                     <EditableControls />
                   </Editable>
                 </div>
-                <div className="flex items-end text-xl justify-center w-52  font-bold flex-col">
+                <div className="flex items-end text-xl justify-center w-52    flex-col">
                   <div className="flex items-center justify-center">
                     <IconDoorOff size={25} />
-                    <p className="text-md font-bold">ساعت خروج</p>
+                    <p className="text-md  ">ساعت خروج</p>
                   </div>
                   <Editable
                     textAlign="center"
@@ -401,7 +397,7 @@ export default function hotelDetail() {
             </div>
             <div className="p-5 flex w-full flex-col">
               <div className="flex  w-full justify-end items-center">
-                <h1 className="text-lg text-black font-bold">نکات ضروری</h1>
+                <h1 className="text-lg text-black  ">نکات ضروری</h1>
               </div>
               <div className="flex text-right flex-col">
                 <Editable
@@ -420,9 +416,7 @@ export default function hotelDetail() {
                   <Input as={EditableInput} />
                   <EditableControls />
                 </Editable>
-                <h1 className="text-lg text-black font-bold">
-                  هزینه های جانبی
-                </h1>
+                <h1 className="text-lg text-black  ">هزینه های جانبی</h1>
 
                 <Editable
                   textAlign="end"
@@ -445,13 +439,13 @@ export default function hotelDetail() {
           </div>
         </div>
         <div className="flex p-5 bg-white items-center space-x-1 w-full justify-end">
-          <h1 className="font-bold text-gray-700 text-2xl">درباره هتل </h1>
+          <h1 className="  text-gray-700 text-2xl">درباره هتل </h1>
         </div>
         <div className="flex p-5  bg-gray-200 px-8 justify-center w-full">
           <div className="flex rounded-sm drop-shadow-2xl flex-col w-full bg-gray-50">
             <div className="p-5 flex w-full flex-col">
               <div className="flex  w-full justify-end items-center">
-                <h1 className="text-lg text-black font-bold">هتل</h1>
+                <h1 className="text-lg text-black  ">هتل</h1>
               </div>
               <div className="flex text-right flex-col">
                 <Editable
