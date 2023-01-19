@@ -48,7 +48,7 @@ export default function HotelList() {
           </div>
         </div>
         <div className=" w-1/4 h-full">
-          <div className="w-full h-96 p-6">
+          <div className="w-full h-96 py-6">
             <HotelListMenu />
           </div>
         </div>

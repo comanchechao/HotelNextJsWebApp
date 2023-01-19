@@ -147,7 +147,7 @@ export default function adminPage() {
 
                     <Menu.Label>افزودن هتل</Menu.Label>
                     <Menu.Item className="font-medium text-right">
-                      <button className="w-full py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
+                      <button className="w-full py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue">
                         شهر جدید
                       </button>
                     </Menu.Item>

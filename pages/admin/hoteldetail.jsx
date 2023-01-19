@@ -101,7 +101,7 @@ export default function hotelDetail() {
             return <Image key={i} alt="" className="h-96 w-96" src={image} />;
           })}
         </div>
-        <div className="p-5 bg-white drop-shadow-lg flex flex-col w-full">
+        <div className="p-5 mb-10 bg-white drop-shadow-lg flex flex-col w-full">
           <div className="flex font-bold text-4xl items-center space-x-1 w-full justify-end">
             <Editable
               textAlign="center"
@@ -125,14 +125,20 @@ export default function hotelDetail() {
         </div>
         <div className="mt-5  bg-white drop-shadow-lg flex flex-col w-full">
           <div className="flex p-5 items-center space-x-1 w-full justify-end">
-            <h1 className="font-bold text-gray-700 text-lg">اتاق ها</h1>
+            <h1 className=" text-gray-800 text-3xl">اتاق ها</h1>
           </div>
-          <div className="flex  justify-center w-full">
-            <Tabs color="grape" defaultValue="first">
+          <div className="flex  justify-center w-full text-lg">
+            <Tabs color="violet" defaultValue="first">
               <Tabs.List grow position="center">
-                <Tabs.Tab value="second">صبحانه</Tabs.Tab>
-                <Tabs.Tab value="third">بدون وعده غذایی</Tabs.Tab>
-                <Tabs.Tab value="first">همه موارد</Tabs.Tab>
+                <Tabs.Tab value="second">
+                  <span className="text-lg">صبحانه</span>
+                </Tabs.Tab>
+                <Tabs.Tab value="third">
+                  <span className="text-lg">بدون وعده غذایی</span>
+                </Tabs.Tab>
+                <Tabs.Tab value="first">
+                  <span className="text-lg">همه موارد</span>
+                </Tabs.Tab>
               </Tabs.List>
             </Tabs>
           </div>
@@ -142,8 +148,10 @@ export default function hotelDetail() {
             return (
               <div className="flex bg-white justify-around divide-y my-5 divide-gray-300 rounded-sm flex-col w-full h-64">
                 <div className="flex flex-col py-4 px-5 justify-center items-end ">
-                  <h1 className="text-lg">{room.title}</h1>
-                  <h2>{room.meal}</h2>
+                  <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
+                    {room.title}
+                  </h1>
+                  <h2 className="my-3">{room.meal}</h2>
                 </div>
                 <div className="flex items-center h-full w-full px-5 justify-between">
                   <div className="flex space-x-1 p-2 justify-center items-center">
@@ -161,25 +169,25 @@ export default function hotelDetail() {
             );
           })}
           <div className="flex justify-around">
-            <button className="w-48 py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500">
+            <button className="w-48 py-4 my-6 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue">
               بیشتر نشونم بده
             </button>
             <AddRoom />
           </div>
         </div>
-        <div className="flex p-5 items-center bg-gray-300 space-x-1 w-full justify-between">
+        <div className="flex p-5 items-center bg-white space-x-1 w-full justify-between">
           <h1
             onClick={() => setOpened(true)}
             className="font-bold text-mainPurple text-sm cursor-pointer hover:text-blue-800"
           >
             مشاهده همه
           </h1>
-          <h1 className="font-bold text-gray-700 text-lg">
+          <h1 className="font-bold text-gray-700 text-2xl">
             امکانات و ویژگی ها
           </h1>
         </div>
-        <div className="flex w-full bg-gray-300 px-4 lg:px-20 flex-col">
-          <div className="rounded-sm bg-gray-100 grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  m-4 shadow-2xl">
+        <div className="flex w-full bg-gray-200 px-4 lg:px-20 flex-col">
+          <div className="rounded-sm bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  m-4 ">
             <div className="flex px-3 justify-between items-center">
               <h2>
                 <IconBarbell size={32} />
@@ -321,7 +329,7 @@ export default function hotelDetail() {
                   ]}
                 />
                 <div className="flex w-full h-full">
-                  <button className="text-center flex justify-center items-center w-full h-full py-2 bg-darkPurple transition ease-in duration-300 font-mainFont  text-white hover:bg-Sky-500">
+                  <button className="text-center flex justify-center items-center w-full h-full py-2 bg-darkPurple transition ease-in duration-300 font-mainFont  text-white hover:bg-mainBlue">
                     اضافه کردن
                   </button>
                 </div>
@@ -333,9 +341,9 @@ export default function hotelDetail() {
           <h1 className="font-bold text-mainPurple text-sm cursor-pointer hover:text-blue-800">
             تغییر موقعیت
           </h1>
-          <h1 className="font-bold text-gray-700 text-lg">مکان و موقیت </h1>
+          <h1 className="font-bold text-gray-700 text-2xl">مکان و موقیت </h1>
         </div>
-        <div className="flex bg-gray-200 items-center dropshadow-2xl justify-center p-5">
+        <div className="flex bg-gray-200 items-center   justify-center p-5">
           <div className="flex  items-center dropshadow-2xl justify-center">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12659.458400775064!2d45.0234385!3d37.5111115!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9bafc107d7fb8ae0!2z2YfYqtmEINii2YbYpw!5e0!3m2!1sen!2sfr!4v1673414835237!5m2!1sen!2sfr"
@@ -348,11 +356,11 @@ export default function hotelDetail() {
             ></iframe>
           </div>
         </div>
-        <div className="flex p-5 items-center space-x-1 w-full justify-end">
+        <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
           <h1 className="font-bold text-gray-700 text-lg">قوانین و مقررات </h1>
         </div>
         <div className="flex p-5  bg-gray-200 px-8 justify-center w-full">
-          <div className="flex rounded-sm drop-shadow-2xl flex-col w-full bg-gray-50">
+          <div className="flex rounded-sm   flex-col w-full bg-gray-50">
             <div className="flex p-2 justify-end  h-18 w-full">
               <div className="p-5  flex justify-end w-full lg:w-1/2">
                 <div className="flex text-xl font-bold items-end justify-center w-32  flex-col">
@@ -436,10 +444,10 @@ export default function hotelDetail() {
             </div>
           </div>
         </div>
-        <div className="flex p-5 bg-gray-100 items-center space-x-1 w-full justify-end">
-          <h1 className="font-bold text-gray-700 text-lg">درباره هتل </h1>
+        <div className="flex p-5 bg-white items-center space-x-1 w-full justify-end">
+          <h1 className="font-bold text-gray-700 text-2xl">درباره هتل </h1>
         </div>
-        <div className="flex p-5  bg-gray-400 px-8 justify-center w-full">
+        <div className="flex p-5  bg-gray-200 px-8 justify-center w-full">
           <div className="flex rounded-sm drop-shadow-2xl flex-col w-full bg-gray-50">
             <div className="p-5 flex w-full flex-col">
               <div className="flex  w-full justify-end items-center">

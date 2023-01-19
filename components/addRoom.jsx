@@ -69,7 +69,7 @@ export default function addRoom() {
                 onClick={() => {
                   setOpened(false);
                 }}
-                className="w-52 py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500"
+                className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue"
               >
                 افزودن
               </button>
@@ -83,7 +83,7 @@ export default function addRoom() {
           onClick={() => {
             setOpened(true);
           }}
-          className="w-52 py-4 bg-Amber-600 transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500"
+          className="w-52 my-6 py-4 bg-transparent border-2 border-dashed border-mainBlue transition ease-in duration-300 font-mainFont rounded-full text-darkPurple hover:bg-mainBlue"
         >
           اتاق جدید
         </button>

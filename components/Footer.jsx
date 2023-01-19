@@ -117,22 +117,22 @@ export default function Footer() {
           />
           <FacebookLogo
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
-            size={45}
+            size={40}
             weight="fill"
           />
           <WhatsappLogo
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
-            size={45}
+            size={40}
             weight="fill"
           />
           <TelegramLogo
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
-            size={45}
+            size={40}
             weight="fill"
           />
           <Phone
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
-            size={45}
+            size={40}
             weight="fill"
           />
         </div>

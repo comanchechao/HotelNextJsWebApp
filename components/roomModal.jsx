@@ -92,7 +92,7 @@ export default function roomModal(props) {
               onClick={() => {
                 setOpened(false);
               }}
-              className="text-center flex justify-center items-center w-52 py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-Sky-500"
+              className="text-center flex justify-center items-center w-52 py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue"
             >
               تایید
             </button>
@@ -104,7 +104,7 @@ export default function roomModal(props) {
         onClick={() => {
           setOpened(true);
         }}
-        className="py-3 hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl"
+        className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl"
       >
         <p>ویرایش</p>
       </button>
