@@ -42,8 +42,8 @@ export default function Home() {
             alt="Main Background"
           />
         </div>
-        <div className="w-full h-auto lg:h-72 lg:px-56">
-          <div className="w-full h-full flex flex-col items-center justify-center space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-sm p-14  ">
+        <div className="w-full h-auto lg:h-72 lg:px-56 z-40">
+          <div className="w-full z-30 h-full flex flex-col items-center justify-center space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-sm p-14  ">
             <div className="flex w-full h-full items-center flex-col lg:flex-row-reverse justify-center space-x-5 mb-5">
               <Select
                 className="text-2xl mx-6 text-right flex flex-col items-end   shadow-md "
@@ -60,6 +60,7 @@ export default function Home() {
               />
               <DatePicker
                 locale="fa"
+                dropdownPosition="top-start"
                 className="text-4xl text-right flex flex-col items-end   shadow-md"
                 placeholder="تاریخ ورود"
                 label="تاریخ ورود"
@@ -70,6 +71,7 @@ export default function Home() {
               />
               <DatePicker
                 locale="fa"
+                dropdownPosition="top-start"
                 className="text-4xl text-right flex flex-col items-end   shadow-md"
                 placeholder="تاریخ خروج"
                 label="تاریخ خروج"
@@ -118,7 +120,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="w-full h-auto  lg:h-60 lg:px-56">
+        <div className="w-full h-auto  lg:h-60 lg:px-56 z-10">
           <div className="w-full h-full flex flex-col lg:flex-row-reverse items-center justify-around lg:mb-10 lg:py-0 my-10 py-14 space-y-5 lg:space-x-0 drop-shadow-xl bg-white rounded-sm lg:p-14  ">
             <div className="flex flex-col items-center space-y-2">
               <svg
