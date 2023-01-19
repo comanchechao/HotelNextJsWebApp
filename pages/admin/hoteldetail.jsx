@@ -357,7 +357,7 @@ export default function hotelDetail() {
           </div>
         </div>
         <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
-          <h1 className="font-bold text-gray-700 text-lg">قوانین و مقررات </h1>
+          <h1 className="font-bold text-gray-700 text-2xl">قوانین و مقررات </h1>
         </div>
         <div className="flex p-5  bg-gray-200 px-8 justify-center w-full">
           <div className="flex rounded-sm   flex-col w-full bg-gray-50">

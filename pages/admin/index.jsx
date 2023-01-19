@@ -24,10 +24,10 @@ export default function adminPage() {
   const theme = useMantineTheme();
 
   return (
-    <div className="w-screen h-full bg-gray-200">
+    <div className="w-screen h-full bg-gray-200 overflow-hidden">
       <Navbar />
-      <div className="flex pt-5 w-full h-auto items-center justify-center lg:space-x-5 lg:px-44">
-        <div className="hidden pt-5 lg:flex flex-col items-center h-carousel justify-center w-96 divide-y bg-white text-gray-800">
+      <div className="flex pt-5 w-full h-screen items-center justify-center lg:space-x-5 lg:px-44">
+        <div className="hidden pt-9 lg:flex flex-col items-center h-carousel justify-center w-96 divide-y bg-white text-gray-800">
           <div className="flex w-full justify-center items-center ">
             <div className="flex h-28 justify-around items-center w-full">
               <div className="w-10 h-10 rounded-full bg-gray-300"></div>
@@ -82,7 +82,7 @@ export default function adminPage() {
             </div>
           </div>
         </div>
-        <div className="flex  py-0 flex-col w-full bg-transparent h-full mt-16">
+        <div className="flex  py-0 flex-col w-full bg-transparent h-full mt-28">
           <div className="flex py-5  bg-white z-20   drop-shadow-lg h-20 lg:justify-end justify-between w-full items-center">
             <div className="lg:hidden flex px-2 justify-center items-center">
               <IconMenu2
