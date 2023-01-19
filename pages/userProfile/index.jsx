@@ -29,14 +29,14 @@ export default function UserProfile() {
               حساب کاربری
               <User className="mx-2" size={20} />
             </button>
-            <button className="w-full p-6 flex text-sm font-light items-center justify-end font-mainFont transition ease-in duration-200 hover:bg-mainBlue text-gray-900">
+            {/* <button className="w-full p-6 flex text-sm font-light items-center justify-end font-mainFont transition ease-in duration-200 hover:bg-mainBlue text-gray-900">
               رزورهای من
               <User className="mx-2" size={20} />
-            </button>
-            <button className="w-full p-6 flex text-sm font-light items-center justify-end font-mainFont transition ease-in duration-200 hover:bg-mainBlue text-gray-900">
+            </button> */}
+            {/* <button className="w-full p-6 flex text-sm font-light items-center justify-end font-mainFont transition ease-in duration-200 hover:bg-mainBlue text-gray-900">
               لیست هتل
               <Bed className="mx-2" size={20} />
-            </button>
+            </button> */}
             <button className="w-full p-6 flex text-sm font-light items-center justify-end font-mainFont transition ease-in duration-200 hover:bg-mainBlue text-gray-900">
               درخواست پشتیبانی
               <Info className="mx-2" size={20} />

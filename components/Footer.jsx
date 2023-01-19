@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <div className="w-screen h-auto lg:h-rem26 bg-white drop-shadow-lg lg:px-44 flex flex-col items-center mt-5">
       <div className="flex lg:flex-row flex-col items-center w-full h-full my-4">
-        <div className="lg:w-1/2 lg:h-3/5 w-full h-auto  lg:px-20 flex items-center lg:items-start justify-center space-y-3 flex-col">
+        <div className="lg:w-1/2 lg:h-3/5 w-full h-auto text-sm lg:px-20 flex items-center lg:items-start justify-center space-y-3 flex-col">
           <div className="w-52 h-24 bg-mainPurple"></div>
           <p className="text-gray-600">تلفن پشتیبانی : 32344455</p>
           <p className="text-gray-600">
