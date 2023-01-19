@@ -15,6 +15,7 @@ import {
   IconSortAscending,
   IconLogout,
   IconBook,
+  IconUser,
 } from "@tabler/icons";
 import { useState } from "react";
 export default function adminPage() {
@@ -70,8 +71,8 @@ export default function adminPage() {
           </div>
           <div className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full ">
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
-              <IconBuildingSkyscraper size={24} />
-              <h1 className="text-2xl  "> هتل ها </h1>
+              <IconUser size={24} />
+              <h1 className="text-2xl  "> اطلاعات من </h1>
             </div>
           </div>
           <div className="flex cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-28 w-full ">

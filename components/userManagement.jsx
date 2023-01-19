@@ -7,6 +7,7 @@ import {
   IconUserCheck,
 } from "@tabler/icons";
 import SuperUser from "../components/superUserModal";
+import SuperUserValidation from "../components/superUserValidation";
 
 export default function userManagement() {
   let users = [
@@ -91,42 +92,38 @@ export default function userManagement() {
           </Tabs.Panel>
 
           <Tabs.Panel value="messages" pt="xs">
-            <div className="flex space-y-2 overflow-y-scroll px-4 w-full h-rem30 flex-col">
+            <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
               {users.map((user, i) => {
                 return (
                   <div
                     key={i}
-                    className="flex flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                    className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
                   >
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                       <IconUserCircle size={50} />
                     </div>
                     <h1 className=" text-sm lg:text-xl">{user.title}</h1>
                     <p className="hidden lg:block">{user.name}</p>
-                    <button className="lg:w-32 w-24 py-3 border-2 text-lg border-green-500 border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-full text-green-500 hover:bg-mainBlue">
-                      <p>اطلاعات</p>
-                    </button>
+                    <SuperUser />
                   </div>
                 );
               })}
             </div>
           </Tabs.Panel>
           <Tabs.Panel value="settings" pt="xs">
-            <div className="flex space-y-2 overflow-y-scroll px-4 w-full h-full flex-col">
+            <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
               {users.map((user, i) => {
                 return (
                   <div
                     key={i}
-                    className="flex flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                    className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
                   >
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                       <IconUserCircle size={50} />
                     </div>
                     <h1 className=" text-sm lg:text-xl">{user.title}</h1>
                     <p className="hidden lg:block">{user.name}</p>
-                    <button className="lg:w-32 w-24 py-3 border-2 text-lg border-yellow-600 border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-full text-yellow-600 hover:bg-mainBlue">
-                      <p className="text-lg">اطلاعات</p>
-                    </button>
+                    <SuperUserValidation />
                   </div>
                 );
               })}

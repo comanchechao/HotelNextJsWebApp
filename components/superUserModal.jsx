@@ -96,7 +96,7 @@ export default function superUserModal() {
                           href="/admin/hoteldetail"
                         >
                           <button className="w-full py-4 bg-mainPurple transition ease-in duration-150 font-mainFont rounded-full text-white hover:bg-mainBlue">
-                            ویرایش هتل
+                            نمایش هتل
                           </button>
                         </Link>
                       </div>
