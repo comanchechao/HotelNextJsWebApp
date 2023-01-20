@@ -3,12 +3,13 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { appWithTranslation } from "next-i18next";
-
+import "../styles/transition.css";
+import Transition from "../components/Transition";
 function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Page title</title>
+        <title>رزرو هتل</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -23,7 +24,9 @@ function App({ Component, pageProps }) {
           colorScheme: "light",
         }}
       >
-        <Component {...pageProps} />
+        <Transition>
+          <Component {...pageProps} />
+        </Transition>
       </MantineProvider>
     </>
   );

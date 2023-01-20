@@ -1,8 +1,13 @@
 import { Carousel } from "@mantine/carousel";
+import Image from "next/image";
+import hotelone from "../assets/images/hotelone.webp";
+import hotelthree from "../assets/images/hotelthree.webp";
+import hotelfour from "../assets/images/hotelfour.webp";
+
 import Link from "next/link";
 export default function HotelCard() {
   return (
-    <div className=" w-carousel h-48 bg-white drop-shadow-lg rounded-sm flex justify-between items-center ">
+    <div className=" w-carousel h-48 bg-white shadow-sm rounded-sm flex justify-between items-center ">
       <div className="w-56 h-full flex flex-col p-4 items-center justify-center space-y-2">
         <h2 className="text-mainPurple text-lg">11,016,000</h2>
         <button className="px-6 w-full rounded-full transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-sm font-mainFont">
@@ -27,10 +32,23 @@ export default function HotelCard() {
           withIndicators
           height={200}
         >
-          <Carousel.Slide>1</Carousel.Slide>
-          <Carousel.Slide>2</Carousel.Slide>
-          <Carousel.Slide>3</Carousel.Slide>
-          {/* ...other slides */}
+          <Carousel.Slide>
+            <div className="h-full w-full flex items-center">
+              <Image className=" object-cover" alt="antalia" src={hotelone} />
+            </div>
+          </Carousel.Slide>
+          <Carousel.Slide>
+            {" "}
+            <div className="h-full w-full flex items-center">
+              <Image className=" object-cover" alt="antalia" src={hotelthree} />
+            </div>
+          </Carousel.Slide>
+          <Carousel.Slide>
+            {" "}
+            <div className="h-full w-full flex items-center">
+              <Image className=" object-cover" alt="antalia" src={hotelfour} />
+            </div>
+          </Carousel.Slide>
         </Carousel>
       </div>
       {/* <div className="h-full w-full bg-green-500"></div> */}
