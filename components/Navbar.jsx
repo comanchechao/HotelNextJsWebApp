@@ -7,6 +7,7 @@ import {
   HouseLine,
   User,
   SignOut,
+  IdentificationCard,
 } from "phosphor-react";
 export default function Navbar() {
   return (
@@ -78,6 +79,13 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
+        <Link
+          href="/admin"
+          className="flex  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+        >
+          <IdentificationCard className="mx-1" size={30} />
+          <h4 className=" ">ادمین</h4>
+        </Link>
         <h4 className="flex items-center cursor-pointer transition ease-in duration-300 hover:text-mainBlue">
           سفرهای من <Scroll className="mx-2" size={24} weight="thin" />
         </h4>
