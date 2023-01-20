@@ -93,7 +93,7 @@ export default function superUserModal() {
           onClick={() => {
             setOpened(true);
           }}
-          className="lg:w-32 w-24 py-3 border-2 text-lg border-yellow-500 border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-full text-darkPurple hover:bg-yellow-500 hover:text-gray-100 "
+          className="lg:w-32 w-24 py-2 border-2 text-lg border-mainYellow border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-full text-darkPurple hover:bg-yellow-500 "
         >
           <p>اطلاعات</p>
         </button>
