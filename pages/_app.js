@@ -2,7 +2,9 @@ import "../styles/globals.css";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
-export default function App({ Component, pageProps }) {
+import { appWithTranslation } from "next-i18next";
+
+function App({ Component, pageProps }) {
   return (
     <>
       <Head>
@@ -26,3 +28,5 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+
+export default appWithTranslation(App);

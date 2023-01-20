@@ -26,11 +26,22 @@ import Mashhad from "../assets/images/Mashhad.webp";
 import Shiraz from "../assets/images/Shiraz.webp";
 import Tabriz from "../assets/images/Tabriz.webp";
 import Esfahan from "../assets/images/Esfahan.webp";
-
 import "dayjs/locale/fa";
 import Footer from "../components/Footer";
-export default function Home() {
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}
+export default function Home(props) {
   const theme = useMantineTheme();
+
+  const { t } = useTranslation();
   return (
     <>
       <div className="h-full w-screen bg-gray-200 overflow-x-hidden">
@@ -42,6 +53,7 @@ export default function Home() {
             alt="Main Background"
           />
         </div>
+        {props.locale}
         <div className="w-full h-auto lg:h-72 lg:px-56 z-40">
           <div className="w-full z-30 h-full flex flex-col items-center justify-center space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-sm p-14  ">
             <div className="flex w-full h-full items-center flex-col lg:flex-row-reverse justify-center space-x-5 mb-5">
@@ -49,7 +61,7 @@ export default function Home() {
                 className="text-2xl mx-6 text-right flex flex-col items-end   shadow-md "
                 data={["تهران", "تبریز", "ارومیه", "مشهد"]}
                 placeholder="مقصد یا هتل ( داخلی و خارجی )"
-                label="مقصد یا هتل ( داخلی و خارجی )"
+                label={t("destination")}
                 variant="default"
                 radius="xl"
                 withAsterisk
