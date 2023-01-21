@@ -32,7 +32,7 @@ export default function Navbar() {
             router.push({ pathname, query }, asPath, { locale: "tr" });
           }}
         >
-          Fa 🇮🇷
+          فارسی 🇮🇷
         </Link>
         <div className="dropdown">
           <label
