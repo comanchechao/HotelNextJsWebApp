@@ -37,7 +37,7 @@ import {
   EditableInput,
 } from "@chakra-ui/react";
 
-export default function hotelDetail() {
+export default function HotelDetail() {
   const [opened, setOpened] = useState(false);
   let images = [hotelOne, hotelTwo, hotelThree, hotelFour];
 
@@ -144,9 +144,12 @@ export default function hotelDetail() {
           </div>
         </div>
         <div className="p-4 bg-gray-200 flex space-y-3 flex-col lg:px-20 w-full">
-          {rooms.map((room) => {
+          {rooms.map((room, i) => {
             return (
-              <div className="flex bg-white justify-around divide-y my-5 divide-gray-300 rounded-sm flex-col w-full h-64">
+              <div
+                key={i}
+                className="flex bg-white justify-around divide-y my-5 divide-gray-300 rounded-sm flex-col w-full h-64"
+              >
                 <div className="flex flex-col py-4 px-5 justify-center items-end ">
                   <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
                     {room.title}

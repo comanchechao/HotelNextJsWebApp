@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Modal, Select, Group } from "@mantine/core";
 import { IconUpload } from "@tabler/icons";
 
-export default function addRoom() {
+export default function AddHotel() {
   const [opened, setOpened] = useState(false);
 
   return (

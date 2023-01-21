@@ -11,7 +11,7 @@ import {
   EditableInput,
 } from "@chakra-ui/react";
 import { IconEdit, IconCheck, IconX } from "@tabler/icons";
-export default function roomModal(props) {
+export default function RoomModal(props) {
   let room = props.Room;
   const [opened, setOpened] = useState(false);
 

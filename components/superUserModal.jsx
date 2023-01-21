@@ -14,7 +14,7 @@ import hotelThree from "../assets/images/hotelthree.jpg";
 import hotelFour from "../assets/images/hotelfour.jpg";
 import Image from "next/image";
 import Link from "next/link";
-export default function superUserModal() {
+export default function SuperUserModal() {
   let hotels = [
     { title: "هتل", rooms: 32, image: hotelOne },
     { title: "دلتا", rooms: 32, image: hotelTwo },

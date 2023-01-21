@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal, Select, Group } from "@mantine/core";
 
-export default function addRoom() {
+export default function AddRoom() {
   const [opened, setOpened] = useState(false);
 
   return (
