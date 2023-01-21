@@ -37,7 +37,7 @@ export default function hotelManagement() {
               <MagnifyingGlass size={20} weight="bold" />
             </button>
             <input
-              className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-textArea hover:bg-white   bg-gray-100 font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-sm  text-sm focus:outline-none"
+              className="border-2 p-0 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-textArea hover:bg-white   bg-gray-100 font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-sm  text-sm focus:outline-none"
               type="search"
               name="search"
               placeholder="جستجو نام هتل"
