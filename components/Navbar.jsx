@@ -9,15 +9,16 @@ import {
   SignOut,
   IdentificationCard,
 } from "phosphor-react";
+import NavDrawer from "./NavDrawer";
 export default function Navbar() {
   return (
-    <div className=" w-screen h-16 items-center justify-center lg:justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl lg:px-32">
-      <div className="text-lg flex items-center w-auto">
-        <div className="h-full w-60 bg-mainPurple"></div>
+    <div className=" w-screen h-16 items-center justify-end lg:justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32">
+      <div className="lg:text-lg text-sm  flex items-center w-auto  ">
+        <div className="h-full lg:w-60 bg-mainPurple"></div>
         <div className="dropdown">
           <label
             tabIndex={0}
-            className="btn font-normal text-lg bg-transparent rounded-sm px-3 m-1 border-none text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            className="btn font-normal  text-lg  bg-transparent rounded-sm px-3 m-1 border-none text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
             <CaretDown className="mx-2" size={20} weight="bold" />
             اقامت
@@ -47,11 +48,11 @@ export default function Navbar() {
           </ul>
         </div>
       </div>
-      <div className="text-lg flex items-center space-x-10 ">
+      <div className="lg:text-lg text-sm lg:flex items-center lg:space-x-10 hidden">
         <div className="dropdown">
           <label
             tabIndex={0}
-            className="btn font-normal text-sm  bg-transparent rounded-sm px-1 m-1 border-none text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            className="btn font-normal text-sm  bg-transparent rounded-sm px-1 m-1 border-none  text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
             <CaretDown className="mx-2" size={20} weight="bold" />
             <User size={30} />
@@ -81,18 +82,21 @@ export default function Navbar() {
         </div>
         <Link
           href="/admin"
-          className="flex  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex rounded-sm  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           <IdentificationCard className="mx-1" size={30} />
           <h4 className=" ">ادمین</h4>
         </Link>
-        <h4 className="flex items-center cursor-pointer transition ease-in duration-300 hover:text-mainBlue">
+        <h4 className="flex rounded-sm p-2 items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200">
           سفرهای من <Scroll className="mx-2" size={24} weight="thin" />
         </h4>
-        <h4 className="flex items-center cursor-pointer transition ease-in duration-300 hover:text-mainBlue">
+        <h4 className="flex rounded-sm p-2 items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200">
           مرکز پشتیبانی آنلاین
           <Question className="mx-2" size={24} weight="thin" />
         </h4>
+      </div>
+      <div className="lg:hidden flex ">
+        <NavDrawer />
       </div>
     </div>
   );
