@@ -9,7 +9,17 @@ import {
   SignOut,
   IdentificationCard,
 } from "phosphor-react";
+import i18next from "i18next";
+import { useState } from "react";
+import { useRouter } from "next/router";
+
 export default function Navbar() {
+  const [language, setLanguage] = useState("fa");
+  const [nextLocale, setNextLocale] = useState("tr");
+  const router = useRouter();
+  const { pathname, asPath, query } = router;
+  // change just the locale and maintain all other route information including href's query
+
   return (
     <div className=" w-screen h-16 items-center justify-center lg:justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl lg:px-32">
       <div className="text-lg flex items-center w-auto">
@@ -46,6 +56,17 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
+      </div>
+      <div className="flex space-x-5">
+        <Link
+          href=""
+          locale={false}
+          onClick={() => {
+            router.push({ pathname, query }, asPath, { locale: "tr" });
+          }}
+        >
+          fa
+        </Link>
       </div>
       <div className="text-lg flex items-center space-x-10 ">
         <div className="dropdown">
