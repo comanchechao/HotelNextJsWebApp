@@ -26,7 +26,7 @@ export default function HotelList() {
           <div className=" w-full h-10 pl-44 flex items-center justify-end my-4 space-x-4">
             <div className="h-10 w-full flex items-center justify-around bg-white drop-shadow-sm rounded-full">
               <h2 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue">
-                پیش فرض
+                بیشترین رزرو
               </h2>
               <h2 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue">
                 بالاترین امتیاز
