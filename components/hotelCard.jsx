@@ -7,7 +7,7 @@ import hotelfour from "../assets/images/hotelfour.webp";
 import Link from "next/link";
 export default function HotelCard() {
   return (
-    <div className=" w-carousel h-48 bg-white shadow-sm rounded-sm flex justify-between items-center ">
+    <div className=" w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-sm flex lg:flex-row flex-col-reverse justify-between items-center ">
       <div className="w-56 h-full flex flex-col p-4 items-center justify-center space-y-2">
         <h2 className="text-mainPurple text-lg">11,016,000</h2>
         <button className="px-6 w-full rounded-full transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-sm font-mainFont">
@@ -24,13 +24,17 @@ export default function HotelCard() {
           مشاهده روی نقشه
         </Link>
       </div>
-      <div className=" w-56 h-full">
+      <div className=" w-full flex items-center lg:w-56 h-full">
         <Carousel
-          className="flex items-center justify-center"
-          sx={{ maxWidth: 320 }}
-          mx="auto"
-          withIndicators
+          slideSize="70%"
           height={200}
+          slideGap="xs"
+          controlsOffset="xl"
+          controlSize={25}
+          loop
+          dragFree
+          draggable={false}
+          withIndicators
         >
           <Carousel.Slide>
             <div className="h-full w-full flex items-center">
@@ -38,13 +42,11 @@ export default function HotelCard() {
             </div>
           </Carousel.Slide>
           <Carousel.Slide>
-            {" "}
             <div className="h-full w-full flex items-center">
               <Image className=" object-cover" alt="antalia" src={hotelthree} />
             </div>
           </Carousel.Slide>
           <Carousel.Slide>
-            {" "}
             <div className="h-full w-full flex items-center">
               <Image className=" object-cover" alt="antalia" src={hotelfour} />
             </div>

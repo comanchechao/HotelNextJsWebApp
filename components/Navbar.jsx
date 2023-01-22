@@ -34,7 +34,7 @@ export default function Navbar() {
           className="flex rounded-sm p-2 items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           locale={changeTo}
         >
-          {router.locale === "fa" ? <p> فارسی 🇮🇷</p> : <p>ترکیه tr</p>}
+          {router.locale === "fa" ? <p> فارسی 🇮🇷</p> : <p>Turkish 🇹🇷</p>}
         </Link>
         <div className="dropdown">
           <label

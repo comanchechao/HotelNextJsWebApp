@@ -5,13 +5,14 @@ import HotelCard from "../../components/hotelCard";
 import { Accordion } from "@mantine/core";
 import HotelListMenu from "../../components/hotelListMenu";
 import Footer from "../../components/Footer";
+import HotelListModal from "../../components/hotelListModal";
 
 export default function HotelList() {
   return (
     <div className="w-screen h-auto bg-gray-200">
       <Navbar />
-      <div className="h-full w-full pt-28 flex px-56 space-x-4">
-        <div className=" w-3/4 h-full  p-6 ">
+      <div className="h-full w-full pt-28 flex lg:px-56 space-x-4">
+        <div className=" w-full lg:w-3/4 h-full  p-6 ">
           <div className="h-auto w-full space-x-3 flex items-center justify-end">
             <Link className="text-lg items-center flex text-black" href="/">
               <CaretLeft size={20} />
@@ -23,8 +24,8 @@ export default function HotelList() {
             </Link>
           </div>
 
-          <div className=" w-full h-10 pl-44 flex items-center justify-end my-4 space-x-4">
-            <div className="h-10 w-full flex items-center justify-around bg-white drop-shadow-sm rounded-full">
+          <div className=" w-full lg:text-lg text-sm text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-4 space-x-4">
+            <div className="lg:h-10 h-auto py-2 w-full flex items-center justify-around bg-white drop-shadow-sm rounded-full">
               <h2 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue">
                 بیشترین رزرو
               </h2>
@@ -40,6 +41,7 @@ export default function HotelList() {
             </div>
             <h3 className="w-28">مرتب سازی</h3>
           </div>
+          <HotelListModal />
           <div className="w-full h-full flex flex-col items-center justify-center space-y-9 my-10">
             <HotelCard />
             <HotelCard /> <HotelCard />
@@ -47,7 +49,7 @@ export default function HotelList() {
             <HotelCard /> <HotelCard />
           </div>
         </div>
-        <div className=" w-1/4 h-full">
+        <div className=" w-1/4 h-full hidden lg:flex">
           <div className="w-full h-96 py-6">
             <HotelListMenu />
           </div>
