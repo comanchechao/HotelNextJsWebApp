@@ -26,14 +26,13 @@ export default function HotelCard() {
       </div>
       <div className=" w-full flex items-center lg:w-56 h-full">
         <Carousel
-          slideSize="70%"
-          height={200}
+          slideSize="100%"
+          height="100%"
           slideGap="xs"
           controlsOffset="xl"
           controlSize={25}
           loop
           dragFree
-          draggable={false}
           withIndicators
         >
           <Carousel.Slide>

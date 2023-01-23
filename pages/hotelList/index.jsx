@@ -41,7 +41,9 @@ export default function HotelList() {
             </div>
             <h3 className="w-28">مرتب سازی</h3>
           </div>
-          <HotelListModal />
+          <div className="w-full flex justify-end my-3 lg:hidden">
+            <HotelListModal />
+          </div>
           <div className="w-full h-full flex flex-col items-center justify-center space-y-9 my-10">
             <HotelCard />
             <HotelCard /> <HotelCard />

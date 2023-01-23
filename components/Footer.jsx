@@ -21,7 +21,6 @@ export default function Footer() {
             <div className="w-20 h-20 bg-mainYellow drop-shadow-lg"></div>
             <div className="w-20 h-20 bg-mainYellow drop-shadow-lg"></div>
             <div className="w-20 h-20 bg-mainYellow drop-shadow-lg"></div>
-            <div className="w-20 h-20 bg-mainYellow drop-shadow-lg"></div>
           </div>
         </div>
         <div className="lg:w-1/2 lg:h-3/5 w-full h-auto flex items-start py-6 justify-around">

@@ -25,6 +25,8 @@ module.exports = {
       },
       width: {
         carousel: "50rem",
+        textArea: "66rem",
+        blog: "30rem",
       },
       fontFamily: {
         mainFont: ["IranSans"],

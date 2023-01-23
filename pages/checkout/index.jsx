@@ -8,6 +8,7 @@ import {
   Money,
   ClosedCaptioning,
 } from "phosphor-react";
+import PassengerInfo from "./passengerInfo";
 
 export default function Checkout() {
   const [active, setActive] = useState(1);
@@ -17,12 +18,12 @@ export default function Checkout() {
     setActive((current) => (current > 0 ? current - 1 : current));
 
   return (
-    <div className="w-screen h-screen bg-gray-200">
+    <div className="w-screen h-full bg-gray-200">
       <Navbar />
-      <div className="w-full text-right h-auto bg-white flex items-start pt-44 justify-center ">
+      <div className="w-screen h-screen  text-right flex items-start pt-44 justify-center ">
         <Stepper
           color="violet"
-          size="md"
+          size="lg"
           active={active}
           onStepClick={setActive}
           breakpoint="sm"
@@ -31,8 +32,12 @@ export default function Checkout() {
           <Stepper.Step icon={<Buildings size={28} />} label="انتخاب هتل">
             Step 1 content: Create an account
           </Stepper.Step>
-          <Stepper.Step icon={<Users size={28} />} label="مشخصات مسافران">
-            Step 2 content: Verify email
+          <Stepper.Step
+            size="xl"
+            icon={<Users size={28} />}
+            label="مشخصات مسافران"
+          >
+            <PassengerInfo />
           </Stepper.Step>
           <Stepper.Step icon={<Files size={28} />} label="تایید اطلاعات">
             Step 3 content: Get full access
