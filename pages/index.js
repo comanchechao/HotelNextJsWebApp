@@ -46,9 +46,9 @@ export default function Home(props) {
   return (
     <>
       <Head>
-        <title>بوتک</title>
+        <title>وبسایت رزرو هتل بوتک</title>
 
-        <meta name="description" content="وبسایت رزرو هتل بوتک" />
+        <meta name="description" content="به وبسایت رزرو هتل بوتک خوش اومدین" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
