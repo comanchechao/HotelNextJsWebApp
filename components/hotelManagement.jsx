@@ -78,7 +78,7 @@ export default function hotelManagement() {
                       <div className="flex flex-col p-5 h-full w-full justify-between  items-around">
                         <Link
                           className="w-full h-full"
-                          href="/admin/hotelDetail"
+                          href="/admin/hoteldetail"
                         >
                           <button className="w-full py-4 bg-mainPurple transition ease-in duration-150 font-mainFont rounded-full text-white hover:bg-mainBlue">
                             ویرایش هتل

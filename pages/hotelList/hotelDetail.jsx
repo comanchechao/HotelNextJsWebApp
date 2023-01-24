@@ -3,7 +3,8 @@ import hotelTwo from "../../assets/images/hoteltwo.jpg";
 import hotelThree from "../../assets/images/hotelthree.jpg";
 import hotelFour from "../../assets/images/hotelfour.jpg";
 import Navbar from "../../components/Navbar";
-import { Tabs } from "@mantine/core";
+import { Tabs, Popover, TextInput } from "@mantine/core";
+import { DatePicker } from "@mantine/dates";
 import {
   IconChevronLeft,
   IconStar,
@@ -17,7 +18,7 @@ import {
 } from "@tabler/icons";
 import Link from "next/link";
 import Image from "next/image";
-import { ImageSquare } from "phosphor-react";
+import { PlusCircle, MinusCircle } from "phosphor-react";
 import Footer from "../../components/Footer";
 export default function HotelDetailPage() {
   let rooms = [
@@ -106,7 +107,71 @@ export default function HotelDetailPage() {
             </div>
           </div>
           <div className="flex">
-            <div className="w-96 h-96 sticky  border -top-14  rounded"></div>
+            <div className="w-96 h-96 sticky  border -top-14  rounded">
+              <div className="flex bg-mainBlue flex-col items-center w-full h-full">
+                <DatePicker
+                  locale="fa"
+                  dropdownPosition="bottom-start"
+                  className="text-4xl text-center flex flex-col items-end"
+                  placeholder="تاریخ ورود"
+                  label="تاریخ ورود"
+                  withAsterisk
+                  variant="default"
+                  radius="md"
+                  size="md"
+                />
+                <DatePicker
+                  locale="fa"
+                  dropdownPosition="bottom-start"
+                  className="text-4xl text-center flex flex-col items-end"
+                  placeholder="تاریخ خروج"
+                  label="تاریخ خروج"
+                  withAsterisk
+                  variant="default"
+                  radius="md"
+                  size="md"
+                />
+                <Popover width={300} position="bottom" withArrow shadow="md">
+                  <Popover.Target>
+                    <TextInput
+                      className="text-4xl text-right flex flex-col items-end"
+                      placeholder="انتخاب مسافر"
+                      label="انتخاب مسافر"
+                      variant="default"
+                      radius="xl"
+                      size="md"
+                      withAsterisk
+                    />
+                  </Popover.Target>
+                  <Popover.Dropdown>
+                    <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
+                      <h1 className="text-sm font-bold">اتاق اول</h1>
+                      <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
+                        <h1 className="text-sm">بزرگسال(۱۲ سال به بالا)</h1>
+                        <div className="flex text-blue-800  items-center justify-center space-x-5">
+                          <PlusCircle size={27} weight="fill" />
+                          <h1 className="text-sm font-bold">1</h1>
+                          <MinusCircle size={27} weight="fill" />
+                        </div>
+                      </div>
+                      <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
+                        <h1 className="text-sm">کودک(تا ۱۲ سال)</h1>
+                        <div className="flex text-blue-800 items-center justify-center space-x-5">
+                          <PlusCircle size={27} weight="fill" />
+                          <h1 className="text-sm font-bold">1</h1>
+                          <MinusCircle size={27} weight="fill" />
+                        </div>
+                      </div>
+                    </div>
+                  </Popover.Dropdown>
+                </Popover>
+                <div className="flex">
+                  <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl">
+                    <p>رزرو اتاق</p>
+                  </button>
+                </div>
+              </div>
+            </div>
             <div className="flex flex-col w-full mt-8">
               <div className="flex p-5 items-center space-x-1 w-full justify-between">
                 <h1 className="  text-mainPurple font-bold text-sm cursor-pointer hover:text-blue-800">
