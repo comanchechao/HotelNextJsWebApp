@@ -3,6 +3,7 @@ import hotelTwo from "../../assets/images/hoteltwo.jpg";
 import hotelThree from "../../assets/images/hotelthree.jpg";
 import hotelFour from "../../assets/images/hotelfour.jpg";
 import Navbar from "../../components/Navbar";
+import { Tabs } from "@mantine/core";
 import {
   IconChevronLeft,
   IconStar,
@@ -17,7 +18,40 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { ImageSquare } from "phosphor-react";
+import Footer from "../../components/Footer";
 export default function HotelDetailPage() {
+  let rooms = [
+    {
+      title: "دو تخته برای یک نفر",
+      meal: "صبحانه",
+      max: "1",
+      price: 400000,
+    },
+    {
+      title: "دو تخته برای دو نفر",
+      meal: "صبحانه",
+      max: "1",
+      price: 400000,
+    },
+    {
+      title: "یک تخته برای یک نفر",
+      meal: "شام",
+      max: "1",
+      price: 35500000,
+    },
+    {
+      title: "دو تخته برای یک نفر",
+      meal: "صبحانه",
+      max: "3",
+      price: 5500000,
+    },
+    {
+      title: "دو تخته برای یک نفر",
+      meal: "بدون وعده غذایی",
+      max: "1",
+      price: 4233000,
+    },
+  ];
   let Images = [hotelOne, hotelTwo, hotelThree, hotelFour];
   return (
     <div className="w-full h-full">
@@ -72,10 +106,13 @@ export default function HotelDetailPage() {
             </div>
           </div>
           <div className="flex">
-            <div className="w-96 h-96 border rounded"></div>
+            <div className="w-96 h-96 sticky  border -top-14  rounded"></div>
             <div className="flex flex-col w-full mt-8">
-              <div className="flex text-gray-400 font-bold w-full justify-end">
-                <h1>امکانات و ویژگی ها</h1>
+              <div className="flex p-5 items-center space-x-1 w-full justify-between">
+                <h1 className="  text-mainPurple font-bold text-sm cursor-pointer hover:text-blue-800">
+                  مشاهده همه
+                </h1>
+                <h1 className="  text-gray-700 text-2xl">امکانات و ویژگی ها</h1>
               </div>
               <div className="rounded-lg border border-gray-200 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  m-4 ">
                 <div className="flex px-3 justify-between items-center">
@@ -193,10 +230,106 @@ export default function HotelDetailPage() {
                   </div>
                 </div>
               </div>
+              <div className="flex p-5 items-center space-x-1 w-full justify-end">
+                <h1 className=" text-gray-800 text-3xl">اتاق ها</h1>
+              </div>
+              <div className="flex  justify-center w-full text-lg">
+                <Tabs color="violet" defaultValue="first">
+                  <Tabs.List grow position="center">
+                    <Tabs.Tab value="second">
+                      <span className="text-lg">صبحانه</span>
+                    </Tabs.Tab>
+                    <Tabs.Tab value="third">
+                      <span className="text-lg">بدون وعده غذایی</span>
+                    </Tabs.Tab>
+                    <Tabs.Tab value="first">
+                      <span className="text-lg">همه موارد</span>
+                    </Tabs.Tab>
+                  </Tabs.List>
+                </Tabs>
+              </div>
+              <div className="p-4  flex space-y-3 flex-col  w-full">
+                {rooms.map((room, i) => {
+                  return (
+                    <div
+                      key={i}
+                      className="flex border border-gray-300 bg-white justify-around divide-y my-5 divide-gray-300 rounded-sm flex-col w-full h-64"
+                    >
+                      <div className="flex flex-col py-4 px-5 justify-center items-end ">
+                        <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
+                          {room.title}
+                        </h1>
+                        <h2 className="my-3">{room.meal}</h2>
+                      </div>
+                      <div className="flex items-center h-full w-full px-5 justify-between">
+                        <div className="flex space-x-1 p-2 justify-center items-center">
+                          <h2>ریال</h2>
+                          <h2 className="  text-3xl text-mainPurple">
+                            {room.price}
+                          </h2>
+                        </div>
+                        <h1 className="text-lg">قیمت برای هرشب</h1>
+                      </div>
+                      <div className="flex justify-center items-center h-full">
+                        <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl">
+                          <p>رزرو اتاق</p>
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+                <div className="flex justify-around">
+                  <button className="w-48 py-4 my-6 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue">
+                    بیشتر نشونم بده
+                  </button>
+                </div>
+              </div>
+              <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
+                <h1 className="  text-gray-700 text-2xl">قوانین و مقررات </h1>
+              </div>
+              <div className="flex divide-x divide-gray-300 p-5 border border-gray-300 rounded">
+                <div className="flex justify-end text-right px-4 w-full h-full">
+                  <ul>
+                    <li>هزینه های جانبی</li>
+                    <li>هزینه اقامت کودک زیر دوسال رایگان می‌باشد</li>
+                    <li>
+                      هزینه اقامت کودک دو تا شش سال طبق قوانین هتل در خود هتل
+                      مبلغ پرداخت می‌گردد
+                    </li>
+                    <li>
+                      هزینه اقامت کودک بالای شش سال یک نفر کامل محاسبه می‌گردد
+                    </li>
+                  </ul>
+                </div>
+                <div className="flex w-1/3 justify-center items-center flex-col">
+                  <div className="flex flex-col justify-center items-center">
+                    <p>ساعت ورود</p>
+                    <p>14:00</p>
+                  </div>
+                  <div className="flex flex-col justify-center items-center">
+                    <p>ساعت خروج</p>
+                    <p>14:00</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
+                <h1 className="  text-gray-700 text-2xl">درباره هتل آنا </h1>
+              </div>
+              <div className="flex text-right p-5 border border-gray-300 rounded">
+                <p>
+                  گزینه‌ای بسیار مطلوب برای کسانی است که هم هتلی مجلل و شیک
+                  می‌خواهند و هم دلشان می‌خواهد به مرکز شهر، شرکت‌های خصوصی و
+                  دولتی و مکان‌هایی از این دست نزدیک باشند. البته موقعیت مکانی
+                  یکی از امتیازات این هتل است؛ اتاق‌ها و سوئیت‌هایی راحت و مجهز،
+                  رستورانی شیک و مدرن، کافی‌شاپ آرام و مرتب و امکانات رفاهی
+                  متناسب، از دیگر مزیت‌های این هتل 4 ستاره به شمار می‌آیند
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
