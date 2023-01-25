@@ -66,7 +66,7 @@ export default function Home(props) {
           <div className="w-full z-30 h-full flex flex-col items-center justify-center space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-sm p-14  ">
             <div className="flex w-full h-full items-center flex-col lg:flex-row-reverse justify-center space-x-5 mb-5">
               <Select
-                className="text-2xl mx-6 text-right flex flex-col items-end   shadow-md "
+                className="text-2xl mx-6 text-right flex flex-col items-end"
                 data={["تهران", "تبریز", "ارومیه", "مشهد"]}
                 placeholder="مقصد یا هتل ( داخلی و خارجی )"
                 label={t("destination")}
@@ -81,7 +81,7 @@ export default function Home(props) {
               <DatePicker
                 locale="fa"
                 dropdownPosition="top-start"
-                className="text-4xl text-right flex flex-col items-end   shadow-md"
+                className="text-4xl text-right flex flex-col items-end"
                 placeholder="تاریخ ورود"
                 label="تاریخ ورود"
                 withAsterisk
@@ -92,7 +92,7 @@ export default function Home(props) {
               <DatePicker
                 locale="fa"
                 dropdownPosition="top-start"
-                className="text-4xl text-right flex flex-col items-end   shadow-md"
+                className="text-4xl text-right flex flex-col items-end"
                 placeholder="تاریخ خروج"
                 label="تاریخ خروج"
                 withAsterisk
@@ -103,7 +103,7 @@ export default function Home(props) {
               <Popover width={300} position="bottom" withArrow shadow="md">
                 <Popover.Target>
                   <TextInput
-                    className="text-4xl text-right flex flex-col items-end   shadow-md"
+                    className="text-4xl text-right flex flex-col items-end"
                     placeholder="انتخاب مسافر"
                     label="انتخاب مسافر"
                     variant="default"

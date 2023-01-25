@@ -58,7 +58,7 @@ export default function HotelDetailPage() {
     <div className="w-full h-full">
       <Navbar />
       <div className="flex w-full p-20 h-full bg-gray-200">
-        <div className="flex flex-col p-5 w-full bg-white h-full">
+        <div className="flex flex-col p-5 w-full h-full">
           <div className="flex justify-end items-center  text-gray-700 w-full h-10">
             <Link href="/hotelList/hotelDetail">
               <p>هتل آنا</p>
@@ -86,14 +86,14 @@ export default function HotelDetailPage() {
               </div>
             </div>
             <div className="flex justify-center py-5  w-full h-10">
-              <button className="text-mainPurple py-4  text-center flex items-center justify-center w-32 font-bold hover:bg-mainPurple hover:text-gray-100 transition">
+              <button className="text-mainPurple rounded-sm border-2 border-dashed border-mainPurple  text-center flex items-center justify-center px-6 py-5 hover:bg-mainPurple hover:text-gray-100 transition">
                 <p>عکس های بیشتر</p>
               </button>
             </div>
           </div>
           <div className="flex w-full justify-end h-20">
             <div className="flex w-full justify-center items-end flex-col">
-              <h1>هتل آنا</h1>
+              <h1 className="text-3xl my-2">هتل آنا</h1>
               <div className="flex space-x-8 justify-center items-center">
                 <div className="flex">
                   <p>اول بند ، روبه روی خیابان گلشهر</p>
@@ -108,7 +108,7 @@ export default function HotelDetailPage() {
           </div>
           <div className="flex">
             <div className="w-96 h-96 sticky  border -top-14  rounded">
-              <div className="flex bg-mainBlue flex-col items-center w-full h-full">
+              <div className="flex bg-white flex-col items-center w-full h-full">
                 <DatePicker
                   locale="fa"
                   dropdownPosition="bottom-start"
@@ -173,11 +173,13 @@ export default function HotelDetailPage() {
               </div>
             </div>
             <div className="flex flex-col w-full mt-8">
-              <div className="flex p-5 items-center space-x-1 w-full justify-between">
-                <h1 className="  text-mainPurple font-bold text-sm cursor-pointer hover:text-blue-800">
+              <div className="flex items-center space-x-1 w-full justify-between pl-5 ">
+                <h1 className="  text-mainPurple   text-sm cursor-pointer hover:text-blue-800">
                   مشاهده همه
                 </h1>
-                <h1 className="  text-gray-700 text-2xl">امکانات و ویژگی ها</h1>
+                <h1 className="  text-gray-900   text-xl">
+                  امکانات و ویژگی ها
+                </h1>
               </div>
               <div className="rounded-lg border border-gray-200 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  m-4 ">
                 <div className="flex px-3 justify-between items-center">
@@ -236,14 +238,14 @@ export default function HotelDetailPage() {
                 </div>
               </div>
               <div className="flex p-5 items-center space-x-1 w-full justify-between">
-                <h1 className="  text-mainPurple font-bold text-sm cursor-pointer hover:text-blue-800">
+                <h1 className="  text-mainPurple   text-sm cursor-pointer hover:text-blue-800">
                   تغییر موقعیت
                 </h1>
                 <h1 className="  text-gray-700 text-2xl">
                   مکان های مهم اطراف هتل
                 </h1>
               </div>
-              <div className="flex space-x-2 p-3">
+              <div className="flex space-x-2 p-3 bg-white">
                 <div className="flex w-full">
                   {" "}
                   <iframe
@@ -352,7 +354,7 @@ export default function HotelDetailPage() {
               <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
                 <h1 className="  text-gray-700 text-2xl">قوانین و مقررات </h1>
               </div>
-              <div className="flex divide-x divide-gray-300 p-5 border border-gray-300 rounded">
+              <div className="flex divide-x divide-gray-300 p-5 border border-gray-300 rounded bg-white">
                 <div className="flex justify-end text-right px-4 w-full h-full">
                   <ul>
                     <li>هزینه های جانبی</li>
@@ -380,7 +382,7 @@ export default function HotelDetailPage() {
               <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
                 <h1 className="  text-gray-700 text-2xl">درباره هتل آنا </h1>
               </div>
-              <div className="flex text-right p-5 border border-gray-300 rounded">
+              <div className="flex text-right p-5 border border-gray-300 rounded bg-white">
                 <p>
                   گزینه‌ای بسیار مطلوب برای کسانی است که هم هتلی مجلل و شیک
                   می‌خواهند و هم دلشان می‌خواهد به مرکز شهر، شرکت‌های خصوصی و
