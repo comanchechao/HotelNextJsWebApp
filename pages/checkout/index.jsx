@@ -19,7 +19,7 @@ export default function Checkout() {
     setActive((current) => (current > 0 ? current - 1 : current));
 
   return (
-    <div className="w-screen h-auto bg-gray-200">
+    <div className="w-screen  h-auto bg-gray-200">
       <Navbar />
       <div className="w-screen h-full flex-col text-right flex items-center pt-24 justify-center ">
         <Stepper

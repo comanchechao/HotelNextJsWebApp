@@ -166,9 +166,11 @@ export default function HotelDetailPage() {
                   </Popover.Dropdown>
                 </Popover>
                 <div className="flex">
-                  <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl">
-                    <p>رزرو اتاق</p>
-                  </button>
+                  <Link href="/checkout">
+                    <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl">
+                      <p>رزرو اتاق</p>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -338,9 +340,11 @@ export default function HotelDetailPage() {
                         <h1 className="text-lg">قیمت برای هرشب</h1>
                       </div>
                       <div className="flex justify-center items-center h-full">
-                        <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl">
-                          <p>رزرو اتاق</p>
-                        </button>
+                        <Link href="/checkout">
+                          <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl">
+                            <p>رزرو اتاق</p>
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   );
