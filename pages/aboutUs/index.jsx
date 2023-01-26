@@ -6,9 +6,9 @@ export default function AboutUs() {
   return (
     <div className="h-full w-screen">
       <Navbar />
-      <div className="w-screen h-screen pt-10 flex   items-center justify-end ">
-        <div className="w-full h-full flex-col    flex items-center pt-44 justify-center space-y-7">
-          <h1 className="text-gray-900  text-7xl pb-4 border-b-8 rounded-lg border-mainPurple">
+      <div className="w-screen h-screen pt-10 flex lg:flex-row flex-col-reverse items-center justify-end ">
+        <div className="w-full h-full flex-col    flex items-center pt-9 lg:pt-44 justify-center space-y-7">
+          <h1 className="text-gray-900 lg:px-0  text-7xl pb-4 border-b-8 rounded-lg border-mainPurple">
             درباره ی بوتک
           </h1>
           <div className="w-full h-96  ">
@@ -25,12 +25,12 @@ export default function AboutUs() {
           </div>
         </div>
         <Image
-          className="  object-contain   h-full  w-auto"
+          className=" h-96 object-contain   lg:h-full  lg:w-auto"
           src={aboutUsBg}
           alt="Main Background"
         />
       </div>
-      <div className="h-auto w-screen bg-gray-200 my-9 flex items-end py-5 flex-col justify-end px-24">
+      <div className="h-auto w-screen bg-gray-200 my-9 flex items-end py-5 flex-col justify-end lg:px-24">
         <div className="w-full h-full py-10 my-16 flex flex-col px-16 items-center justify-center space-y-6 bg-white">
           <h2 className="text-gray-900  text-4xl pb-4 border-b-8 rounded-lg border-mainPurple">
             تاریخچه و پیشینه
