@@ -24,9 +24,9 @@ export default function AdminPage() {
   const theme = useMantineTheme();
 
   return (
-    <div className="w-full h-full bg-gray-200">
+    <div className="w-full h-screen bg-gray-200">
       <Navbar />
-      <div className="flex pt-5 w-full h-full items-center justify-center lg:space-x-5 lg:px-44">
+      <div className="flex pt-5 w-full h-screen items-center justify-center lg:space-x-5 lg:px-44">
         <div className="hidden pt-9 p-14 lg:flex flex-col items-center h-carousel justify-center w-full divide-y bg-white text-gray-800">
           <div className="flex w-full justify-center items-center ">
             <div className="flex h-28 justify-around items-center w-full">

@@ -34,7 +34,7 @@ export default function Footer() {
             </Link>{" "}
             <Link
               className="transition ease-in duration-200 hover:text-mainBlue"
-              href="/"
+              href="/contactUs"
             >
               تماس با ما
             </Link>
