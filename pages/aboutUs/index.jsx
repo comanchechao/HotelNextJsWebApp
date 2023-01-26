@@ -30,8 +30,8 @@ export default function AboutUs() {
           alt="Main Background"
         />
       </div>
-      <div className="h-screen w-screen bg-gray-200 flex items-end pt-16 flex-col justify-end px-24">
-        <div className="w-full h-full my-16 flex flex-col px-16 items-center justify-center space-y-6 bg-white">
+      <div className="h-auto w-screen bg-gray-200 my-9 flex items-end py-5 flex-col justify-end px-24">
+        <div className="w-full h-full py-10 my-16 flex flex-col px-16 items-center justify-center space-y-6 bg-white">
           <h2 className="text-gray-900  text-4xl pb-4 border-b-8 rounded-lg border-mainPurple">
             تاریخچه و پیشینه
           </h2>
