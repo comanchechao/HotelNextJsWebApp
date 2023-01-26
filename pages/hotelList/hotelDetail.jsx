@@ -72,14 +72,17 @@ export default function HotelDetailPage() {
           </div>
           <div className="flex py-5 lg:p-5 flex-col">
             <div className="flex cursor-pointer w-full justify-center  h-96 rounded-lg">
-              <div className="flex hidden lg:flex">
-                <Image className=" w-full h-full" src={hotelOne} />
+              <div className="hidden lg:flex">
+                <Image alt="" className=" w-full h-full" src={hotelOne} />
               </div>
               <div className="grid grid-cols-2 grid-rows-2">
                 {Images.map((image) => {
                   return (
-                    <div className="flex w-full h-full justify-center items-center">
-                      <Image className=" w-full h-full" src={image} />
+                    <div
+                      key={image}
+                      className="flex w-full h-full justify-center items-center"
+                    >
+                      <Image alt="" className=" w-full h-full" src={image} />
                     </div>
                   );
                 })}
@@ -220,19 +223,19 @@ export default function HotelDetailPage() {
                   </h2>
                   <h2>رستوران</h2>
                 </div>
-                <div className="flex hidden lg:flex px-3 justify-between items-center">
+                <div className=" hidden lg:flex px-3 justify-between items-center">
                   <h2>
                     <IconHotelService size={32} />
                   </h2>
                   <h2>سرویس روزانه</h2>
                 </div>
-                <div className="flex hidden lg:flex px-3 justify-between items-center">
+                <div className=" hidden lg:flex px-3 justify-between items-center">
                   <h2>
                     <IconBath size={32} />
                   </h2>
                   <h2>حمام</h2>
                 </div>
-                <div className="flex hidden lg:flex px-3 justify-between items-center">
+                <div className=" hidden lg:flex px-3 justify-between items-center">
                   <h2>
                     <IconWifi size={32} />
                   </h2>
