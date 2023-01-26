@@ -1,3 +1,16 @@
 {
-  "destination": "turkish"
+  "destination": "Hedef",
+  "inhabitancy": "Kalmak",
+
+  "support": "çevrimiçi destek",
+
+  "travels": "Gezilerim",
+
+  "admin": "Yönetici",
+
+  "inDate": "Giriş tarihi",
+
+  "outDate": "çıkış tarihi",
+
+  "passenger": "yolcu seçimi"
 }

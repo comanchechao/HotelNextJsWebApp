@@ -28,7 +28,7 @@ export default function Footer() {
             <h3 className="font-bold text-lg my-1">هتل</h3>
             <Link
               className="transition ease-in duration-200 hover:text-mainBlue"
-              href="/"
+              href="/aboutUs"
             >
               درباره ما
             </Link>{" "}

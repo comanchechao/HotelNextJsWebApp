@@ -14,6 +14,8 @@ module.exports = {
         "[auto,auto,1fr]": "auto auto 1fr",
       },
       height: {
+        rem22: "22rem",
+
         rem26: "26rem",
         rem28: "28rem",
         rem30: "30rem",

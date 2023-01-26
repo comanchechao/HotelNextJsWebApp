@@ -68,7 +68,7 @@ export default function Home(props) {
               <Select
                 className="text-2xl mx-6 text-right flex flex-col items-end"
                 data={["تهران", "تبریز", "ارومیه", "مشهد"]}
-                placeholder="مقصد یا هتل ( داخلی و خارجی )"
+                placeholder={t("destination")}
                 label={t("destination")}
                 variant="default"
                 radius="xl"
@@ -82,8 +82,8 @@ export default function Home(props) {
                 locale="fa"
                 dropdownPosition="top-start"
                 className="text-4xl text-right flex flex-col items-end"
-                placeholder="تاریخ ورود"
-                label="تاریخ ورود"
+                placeholder={t("inDate")}
+                label={t("inDate")}
                 withAsterisk
                 variant="default"
                 radius="xl"
@@ -93,8 +93,8 @@ export default function Home(props) {
                 locale="fa"
                 dropdownPosition="top-start"
                 className="text-4xl text-right flex flex-col items-end"
-                placeholder="تاریخ خروج"
-                label="تاریخ خروج"
+                placeholder={t("outDate")}
+                label={t("outDate")}
                 withAsterisk
                 variant="default"
                 radius="xl"
