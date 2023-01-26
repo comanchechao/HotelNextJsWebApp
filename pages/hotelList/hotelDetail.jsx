@@ -88,7 +88,7 @@ export default function HotelDetailPage() {
                 })}
               </div>
             </div>
-            <div className="flex justify-center py-5  w-full h-10">
+            <div className="flex justify-center py-5  w-full h-16 lg:h-10">
               <button className="text-mainPurple rounded-sm border-2 border-dashed border-mainPurple  text-center flex items-center justify-center px-6 py-5 hover:bg-mainPurple hover:text-gray-100 transition">
                 <p>عکس های بیشتر</p>
               </button>
