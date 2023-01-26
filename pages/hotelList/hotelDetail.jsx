@@ -23,13 +23,13 @@ import Footer from "../../components/Footer";
 export default function HotelDetailPage() {
   let rooms = [
     {
-      title: "دو تخته برای یک نفر",
+      title: "اتاق مستر روم",
       meal: "صبحانه",
       max: "1",
       price: 400000,
     },
     {
-      title: "دو تخته برای دو نفر",
+      title: "اتاق سویت",
       meal: "صبحانه",
       max: "1",
       price: 400000,
@@ -57,9 +57,9 @@ export default function HotelDetailPage() {
   return (
     <div className="w-full h-full">
       <Navbar />
-      <div className="flex w-full p-20 h-full bg-gray-200">
+      <div className="flex w-full p-4 lg:p-20 h-full bg-gray-200">
         <div className="flex flex-col p-5 w-full h-full">
-          <div className="flex justify-end items-center  text-gray-700 w-full h-10">
+          <div className="flex justify-end lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24">
             <Link href="/hotelList/hotelDetail">
               <p>هتل آنا</p>
             </Link>
@@ -70,9 +70,9 @@ export default function HotelDetailPage() {
               <p>هتل ها</p>
             </Link>
           </div>
-          <div className="flex p-5 flex-col">
+          <div className="flex py-5 lg:p-5 flex-col">
             <div className="flex cursor-pointer w-full justify-center  h-96 rounded-lg">
-              <div className="flex">
+              <div className="flex hidden lg:flex">
                 <Image className=" w-full h-full" src={hotelOne} />
               </div>
               <div className="grid grid-cols-2 grid-rows-2">
@@ -91,10 +91,10 @@ export default function HotelDetailPage() {
               </button>
             </div>
           </div>
-          <div className="flex w-full justify-end h-20">
-            <div className="flex w-full justify-center items-end flex-col">
+          <div className="flex w-full justify-end h-32 lg:h-20">
+            <div className="flex p-2 w-full justify-center items-end flex-col">
               <h1 className="text-3xl my-2">هتل آنا</h1>
-              <div className="flex space-x-8 justify-center items-center">
+              <div className="flex bg-gray-50 p-3 rounded space-x-8 justify-center items-center">
                 <div className="flex">
                   <p>اول بند ، روبه روی خیابان گلشهر</p>
                 </div>
@@ -107,7 +107,7 @@ export default function HotelDetailPage() {
             </div>
           </div>
           <div className="flex">
-            <div className="w-96 h-96 sticky  border -top-14  rounded">
+            <div className="w-96 hidden lg:block h-96 sticky  border -top-14  rounded">
               <div className="flex bg-white flex-col items-center w-full h-full">
                 <DatePicker
                   locale="fa"
@@ -175,11 +175,11 @@ export default function HotelDetailPage() {
               </div>
             </div>
             <div className="flex flex-col w-full mt-8">
-              <div className="flex items-center space-x-1 w-full justify-between pl-5 ">
+              <div className="flex items-center py-4 space-x-1 w-full justify-between lg:pl-5 ">
                 <h1 className="  text-mainPurple   text-sm cursor-pointer hover:text-blue-800">
                   مشاهده همه
                 </h1>
-                <h1 className="  text-gray-900   text-xl">
+                <h1 className=" font-bold text-gray-900  text-xl lg:text-2xl">
                   امکانات و ویژگی ها
                 </h1>
               </div>
@@ -220,39 +220,39 @@ export default function HotelDetailPage() {
                   </h2>
                   <h2>رستوران</h2>
                 </div>
-                <div className="flex px-3 justify-between items-center">
+                <div className="flex hidden lg:flex px-3 justify-between items-center">
                   <h2>
                     <IconHotelService size={32} />
                   </h2>
                   <h2>سرویس روزانه</h2>
                 </div>
-                <div className="flex px-3 justify-between items-center">
+                <div className="flex hidden lg:flex px-3 justify-between items-center">
                   <h2>
                     <IconBath size={32} />
                   </h2>
                   <h2>حمام</h2>
                 </div>
-                <div className="flex px-3 justify-between items-center">
+                <div className="flex hidden lg:flex px-3 justify-between items-center">
                   <h2>
                     <IconWifi size={32} />
                   </h2>
                   <h2>خدمات اینترنت</h2>
                 </div>
               </div>
-              <div className="flex p-5 items-center space-x-1 w-full justify-between">
+              <div className="flex py-4 px-2  items-center space-x-1 w-full justify-between">
                 <h1 className="  text-mainPurple   text-sm cursor-pointer hover:text-blue-800">
                   تغییر موقعیت
                 </h1>
-                <h1 className="  text-gray-700 text-2xl">
+                <h1 className="  text-gray-700 text-xl font-bold">
                   مکان های مهم اطراف هتل
                 </h1>
               </div>
-              <div className="flex space-x-2 p-3 bg-white">
+              <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-2 m-2 p-3 bg-white">
                 <div className="flex w-full">
                   {" "}
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12659.458400775064!2d45.0234385!3d37.5111115!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9bafc107d7fb8ae0!2z2YfYqtmEINii2YbYpw!5e0!3m2!1sen!2sfr!4v1673414835237!5m2!1sen!2sfr"
-                    width="500"
+                    width="400"
                     height="350"
                     style={{ border: "0" }}
                     allowfullscreen=""
@@ -302,7 +302,7 @@ export default function HotelDetailPage() {
               <div className="flex p-5 items-center space-x-1 w-full justify-end">
                 <h1 className=" text-gray-800 text-3xl">اتاق ها</h1>
               </div>
-              <div className="flex  justify-center w-full text-lg">
+              <div className="flex bg-gray-50 justify-center w-full text-lg">
                 <Tabs color="violet" defaultValue="first">
                   <Tabs.List grow position="center">
                     <Tabs.Tab value="second">
@@ -317,7 +317,7 @@ export default function HotelDetailPage() {
                   </Tabs.List>
                 </Tabs>
               </div>
-              <div className="p-4  flex space-y-3 flex-col  w-full">
+              <div className="lg:p-4  flex space-y-3 flex-col  w-full">
                 {rooms.map((room, i) => {
                   return (
                     <div
