@@ -8,6 +8,7 @@ import {
   User,
   SignOut,
   IdentificationCard,
+  House,
 } from "phosphor-react";
 import i18next from "i18next";
 import { useEffect, useState } from "react";
@@ -28,7 +29,7 @@ export default function Navbar() {
 
   return (
     <div className=" w-screen h-16 items-center justify-end lg:justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32">
-      <div className="lg:text-lg text-sm  flex items-center w-auto  ">
+      <div className="lg:text-lg text-sm  flex items-center   ">
         <Link
           href="/"
           className="flex rounded-sm p-2 items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
@@ -68,6 +69,13 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
+        <Link
+          href="/"
+          className=" hidden lg:flex  rounded-sm  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+        >
+          <House className="mx-1" size={30} weight="fill" />
+          <h4 className=" ">خونه</h4>
+        </Link>
       </div>
 
       <div className="lg:text-lg text-sm lg:flex items-center lg:space-x-10 hidden">
