@@ -8,11 +8,11 @@ import SupportRequest from "./supportRequest";
 export default function UserProfile() {
   const [tab, setTab] = useState("Profile");
   return (
-    <div className="h-screen w-screen bg-gray-200">
+    <div className="h-auto w-screen bg-gray-200">
       <Navbar />
 
-      <div className="h-full  w-full pt-28 flex space-x-3 px-64">
-        <div className=" w-3/4 h-full p-6">
+      <div className="h-full  w-full items-center pt-28 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-3 lg:px-64">
+        <div className=" lg:w-3/4 w-full h-full lg:p-6">
           {tab === "Profile" ? (
             <ProfileInfo />
           ) : tab === "Support" ? (
@@ -21,7 +21,7 @@ export default function UserProfile() {
             <PaymentHistory />
           ) : null}
         </div>
-        <div className=" w-1/4 h-full  ">
+        <div className=" lg:w-1/4 w-full h-full  ">
           <div className="w-full h-auto  bg-white drop-shadow-sm">
             <button
               onClick={() => {

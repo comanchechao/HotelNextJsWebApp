@@ -8,9 +8,9 @@ export default function ProfileInfo() {
           اطلاعات حساب کاربری
           <User className="mx-2 text-mainPurple" size={25} />
         </h2>
-        <div className="w-full h-36 border-t border-darkPurple border-dashed p-6 justify-center flex items-center">
-          <div className="flex flex-col items-end justify-end space-y-7 my-3 text-right">
-            <div className="flex items-end justify-end space-x-4">
+        <div className="w-full h-auto lg:h-36 border-t border-darkPurple border-dashed p-6 justify-center flex items-center">
+          <div className="flex flex-col justify-center items-center lg:items-end lg:justify-end space-y-7 my-3 text-right">
+            <div className="flex lg:flex-row flex-col items-center space-y-4 lg:space-y-0 lg:items-end justify-center lg:justify-end lg:space-x-4">
               <h2 className="text-lg text-gray-800 border-b-2 border-mainPurple pb-1">
                 0914522448
               </h2>
@@ -20,7 +20,7 @@ export default function ProfileInfo() {
               </h2>
               <h2 className="text-lg text-gray-500">ایمیل</h2>
             </div>
-            <div className="flex items-end justify-end space-x-4">
+            <div className="flex lg:flex-row flex-col items-center space-y-4 lg:space-y-0 lg:items-end justify-center lg:justify-end lg:space-x-4">
               <h2 className="text-lg text-gray-800 border-b-2 border-mainPurple pb-1">
                 0023470011
               </h2>
@@ -42,8 +42,8 @@ export default function ProfileInfo() {
           <Money className="mx-2 text-mainPurple" size={25} />
         </h2>
         <div className="w-full h-36 border-t border-darkPurple border-dashed p-6 justify-center flex items-center">
-          <div className="flex flex-col items-end justify-end space-y-7 my-3 text-right">
-            <div className="flex items-end justify-end space-x-4">
+          <div className="flex flex-col justify-center items-center lg:items-end lg:justify-end space-y-7 my-3 text-right">
+            <div className="flex lg:flex-row flex-col items-center justify-center lg:items-end lg:justify-end space-x-4">
               <h2 className="text-lg text-gray-800 border-b-2 border-mainPurple pb-1">
                 000000000000000000
               </h2>
