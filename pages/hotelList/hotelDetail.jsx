@@ -20,6 +20,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { PlusCircle, MinusCircle } from "phosphor-react";
 import Footer from "../../components/Footer";
+import ImagesModal from "../../components/imagesModal";
+import FeaturesModal from "../../components/FeaturesModal";
 export default function HotelDetailPage() {
   let rooms = [
     {
@@ -89,9 +91,7 @@ export default function HotelDetailPage() {
               </div>
             </div>
             <div className="flex justify-center py-5  w-full h-16 lg:h-10">
-              <button className="text-mainPurple rounded-sm border-2 border-dashed border-mainPurple  text-center flex items-center justify-center px-6 py-5 hover:bg-mainPurple hover:text-gray-100 transition">
-                <p>عکس های بیشتر</p>
-              </button>
+              <ImagesModal />
             </div>
           </div>
           <div className="flex w-full justify-end h-32 lg:h-20">
@@ -179,10 +179,8 @@ export default function HotelDetailPage() {
             </div>
             <div className="flex flex-col w-full mt-8">
               <div className="flex items-center py-4 space-x-1 w-full justify-between lg:pl-5 ">
-                <h1 className="  text-mainPurple   text-sm cursor-pointer hover:text-blue-800">
-                  مشاهده همه
-                </h1>
-                <h1 className=" font-bold text-gray-900  text-xl lg:text-2xl">
+                <FeaturesModal />
+                <h1 className="w-full text-right font-bold text-gray-900  text-xl lg:text-2xl">
                   امکانات و ویژگی ها
                 </h1>
               </div>
