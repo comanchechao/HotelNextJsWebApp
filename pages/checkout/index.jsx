@@ -21,7 +21,7 @@ export default function Checkout() {
   return (
     <div className="w-screen  h-auto bg-gray-200">
       <Navbar />
-      <div className="w-screen h-full flex-col text-right flex items-center pt-24 justify-center ">
+      <div className="w-screen h-full flex-col text-right flex items-center pt-36 justify-center ">
         <Stepper
           color="violet"
           size="lg"
