@@ -250,7 +250,6 @@ export default function HotelDetailPage() {
               </div>
               <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-2 m-2 p-3 bg-white">
                 <div className="flex w-full">
-                  {" "}
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12659.458400775064!2d45.0234385!3d37.5111115!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9bafc107d7fb8ae0!2z2YfYqtmEINii2YbYpw!5e0!3m2!1sen!2sfr!4v1673414835237!5m2!1sen!2sfr"
                     width="400"

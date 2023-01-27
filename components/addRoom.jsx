@@ -64,7 +64,6 @@ export default function AddRoom() {
               />
             </div>
             <div className="flex">
-              {" "}
               <button
                 onClick={() => {
                   setOpened(false);

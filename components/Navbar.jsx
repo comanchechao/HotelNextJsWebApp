@@ -28,8 +28,8 @@ export default function Navbar() {
   // change just the locale and maintain all other route information including href's query
 
   return (
-    <div className=" w-screen h-16 items-center justify-end lg:justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32">
-      <div className="lg:text-lg text-sm  flex items-center   ">
+    <div className=" w-screen h-16 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32">
+      <div className="text-lg flex items-center   ">
         <Link
           href="/"
           className="flex rounded-sm p-2 items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
@@ -117,13 +117,20 @@ export default function Navbar() {
           <IdentificationCard className="mx-1" size={30} />
           <h4 className=" ">ادمین</h4>
         </Link>
-        <h4 className="flex rounded-sm p-2 items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200">
-          سفرهای من <Scroll className="mx-2" size={24} weight="thin" />
-        </h4>
-        <h4 className="flex rounded-sm p-2 items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200">
-          مرکز پشتیبانی آنلاین
+        <Link
+          href="/aboutUs"
+          className="flex rounded-sm  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+        >
+          <Scroll className="mx-2" size={24} weight="thin" />
+          <h4>درباره ما</h4>
+        </Link>
+        <Link
+          href="/contactUs"
+          className="flex rounded-sm  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+        >
           <Question className="mx-2" size={24} weight="thin" />
-        </h4>
+          <h4>تماس با ما</h4>
+        </Link>
       </div>
       <div className="lg:hidden flex ">
         <NavDrawer />

@@ -31,19 +31,19 @@ export default function Footer() {
               href="/aboutUs"
             >
               درباره ما
-            </Link>{" "}
+            </Link>
             <Link
               className="transition ease-in duration-200 hover:text-mainBlue"
               href="/contactUs"
             >
               تماس با ما
             </Link>
-            <Link
+            {/* <Link
               className="transition ease-in duration-200 hover:text-mainBlue"
               href="/"
             >
               چرا هتل
-            </Link>
+            </Link> */}
           </div>
           <div className="flex  items-end flex-col space-y-1">
             <h3 className="font-bold text-lg my-1">تماس با مشتریان</h3>
@@ -80,12 +80,12 @@ export default function Footer() {
           </div>
           <div className="flex items-end flex-col space-y-1">
             <h3 className="font-bold text-lg my-1">اطلاعات تکمیلی</h3>
-            <Link
+            {/* <Link
               className="transition ease-in duration-200 hover:text-mainBlue"
               href="/"
             >
               باشگاه همسفران
-            </Link>
+            </Link> */}
             <Link
               className="transition ease-in duration-200 hover:text-mainBlue"
               href="/"
@@ -96,7 +96,7 @@ export default function Footer() {
               className="transition ease-in duration-200 hover:text-mainBlue"
               href="/"
             >
-              همکاری با آزانس ها
+              همکاری با آژانس ها
             </Link>
             <Link
               className="transition ease-in duration-200 hover:text-mainBlue"

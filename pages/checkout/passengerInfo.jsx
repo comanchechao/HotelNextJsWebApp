@@ -24,7 +24,7 @@ export default function PassengerInfo() {
         <div className="h-full w-1/2 p-3 flex flex-col items-end justify-start space-y-3">
           <div className="flex items-center space-x-4">
             <h2 className="flex items-center">
-              5 ستاره{" "}
+              5 ستاره
               <Star className="mx-2" size={19} color="#4405a8" weight="fill" />
             </h2>
             <h1 className="text-xl font-bold">هتل پارسیان استقلال</h1>

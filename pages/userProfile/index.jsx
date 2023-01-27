@@ -1,9 +1,10 @@
 import Navbar from "../../components/Navbar";
 import { useState } from "react";
 import { User, Bed, Info, Money } from "phosphor-react";
-import PaymentHistory from "../../components/paymentHistory";
-import ProfileInfo from "../../components/profileInfo";
 import Footer from "../../components/Footer";
+import ProfileInfo from "./profileInfo";
+import PaymentHistory from "./paymentHistory";
+import SupportRequest from "./supportRequest";
 export default function UserProfile() {
   const [tab, setTab] = useState("Profile");
   return (
@@ -14,6 +15,8 @@ export default function UserProfile() {
         <div className=" w-3/4 h-full p-6">
           {tab === "Profile" ? (
             <ProfileInfo />
+          ) : tab === "Support" ? (
+            <SupportRequest />
           ) : tab === "Payment" ? (
             <PaymentHistory />
           ) : null}
@@ -37,7 +40,12 @@ export default function UserProfile() {
               لیست هتل
               <Bed className="mx-2" size={20} />
             </button> */}
-            <button className="w-full p-6 flex text-sm font-light items-center justify-end font-mainFont transition ease-in duration-200 hover:bg-mainBlue text-gray-900">
+            <button
+              onClick={() => {
+                setTab("Support");
+              }}
+              className="w-full p-6 flex text-sm font-light items-center justify-end font-mainFont transition ease-in duration-200 hover:bg-mainBlue text-gray-900"
+            >
               درخواست پشتیبانی
               <Info className="mx-2" size={20} />
             </button>
