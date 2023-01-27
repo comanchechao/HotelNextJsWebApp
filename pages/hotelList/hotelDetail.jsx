@@ -170,7 +170,7 @@ export default function HotelDetailPage() {
                 </Popover>
                 <div className="flex">
                   <Link href="/checkout">
-                    <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl">
+                    <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  ">
                       <p>رزرو اتاق</p>
                     </button>
                   </Link>
@@ -342,7 +342,7 @@ export default function HotelDetailPage() {
                       </div>
                       <div className="flex justify-center items-center h-full">
                         <Link href="/checkout">
-                          <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl">
+                          <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  ">
                             <p>رزرو اتاق</p>
                           </button>
                         </Link>
