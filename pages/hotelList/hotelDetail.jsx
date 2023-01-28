@@ -22,7 +22,13 @@ import { PlusCircle, MinusCircle } from "phosphor-react";
 import Footer from "../../components/Footer";
 import ImagesModal from "../../components/imagesModal";
 import FeaturesModal from "../../components/FeaturesModal";
+
+import dynamic from "next/dynamic";
+
 export default function HotelDetailPage() {
+  const DynamicMap = dynamic(() => import("../../components/map"), {
+    ssr: false,
+  });
   let rooms = [
     {
       title: "اتاق مستر روم",
@@ -250,15 +256,7 @@ export default function HotelDetailPage() {
               </div>
               <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-2 m-2 p-3 bg-white">
                 <div className="flex w-full">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12659.458400775064!2d45.0234385!3d37.5111115!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9bafc107d7fb8ae0!2z2YfYqtmEINii2YbYpw!5e0!3m2!1sen!2sfr!4v1673414835237!5m2!1sen!2sfr"
-                    width="400"
-                    height="350"
-                    style={{ border: "0" }}
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                  ></iframe>
+                  <DynamicMap />
                 </div>
                 <div className="flex flex-col border rounded-lg border-gray-200 divide-y divide-gray-200 w-full h-full">
                   <div className="flex flex-col justify-around items-around space-y-2 p-5 w-full">
