@@ -37,7 +37,12 @@ import {
   EditableInput,
 } from "@chakra-ui/react";
 
+import dynamic from "next/dynamic";
+
 export default function HotelDetail() {
+  const DynamicMap = dynamic(() => import("../../components/map"), {
+    ssr: false,
+  });
   const [opened, setOpened] = useState(false);
   let images = [hotelOne, hotelTwo, hotelThree, hotelFour];
 
@@ -344,15 +349,7 @@ export default function HotelDetail() {
         </div>
         <div className="flex bg-gray-200 items-center   justify-center p-5">
           <div className="flex  items-center dropshadow-2xl justify-center">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12659.458400775064!2d45.0234385!3d37.5111115!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9bafc107d7fb8ae0!2z2YfYqtmEINii2YbYpw!5e0!3m2!1sen!2sfr!4v1673414835237!5m2!1sen!2sfr"
-              width="800"
-              height="350"
-              style={{ border: "0" }}
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+            <DynamicMap />
           </div>
         </div>
         <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
