@@ -40,7 +40,7 @@ import {
 import dynamic from "next/dynamic";
 
 export default function HotelDetail() {
-  const DynamicMap = dynamic(() => import("../../components/map"), {
+  const DynamicMap = dynamic(() => import("../../components/displayMap"), {
     ssr: false,
   });
   const [opened, setOpened] = useState(false);

@@ -45,7 +45,7 @@ export default function ExternalStateExample(position) {
     () => (
       <MapContainer
         id="map"
-        className="w-10/12 h-96"
+        className="w-96 h-96"
         center={center}
         zoom={zoom}
         scrollWheelZoom={false}
