@@ -26,7 +26,7 @@ import FeaturesModal from "../../components/FeaturesModal";
 import dynamic from "next/dynamic";
 
 export default function HotelDetailPage() {
-  const DynamicMap = dynamic(() => import("../../components/map"), {
+  const DynamicMap = dynamic(() => import("../../components/mapWithLocation"), {
     ssr: false,
   });
   let rooms = [
