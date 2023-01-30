@@ -6,10 +6,10 @@ import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 
 const center = [35.7, 51.4167];
 const locations = [
-  { name: "یک", lat: 37.7, lng: 51.41 },
-  { name: "بعدی", lat: 35.7, lng: 51.4167 },
-  { name: "بشیسب", lat: 32.7, lng: 51.419 },
-  { name: "بی", lat: 33.7, lng: 51.435 },
+  { name: "دریا", lat: 37.7, lng: 51.41 },
+  { name: "مرکز تهران", lat: 35.7, lng: 51.4167 },
+  { name: "نجف آباد", lat: 32.7, lng: 51.419 },
+  { name: "کاشان", lat: 33.7, lng: 51.435 },
 ];
 const zoom = 8;
 
