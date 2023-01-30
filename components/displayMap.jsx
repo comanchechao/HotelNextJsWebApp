@@ -6,6 +6,7 @@ import { useState, useRef, useMemo, useCallback, useEffect } from "react";
 import IRCities from "../assets/cities/ir.json";
 import { IconBrandCitymapper } from "@tabler/icons";
 import L from "leaflet";
+import cityIcon from "../assets/cities/icon/city.png";
 
 export default function MapWithNoSSR() {
   const center = {
@@ -13,7 +14,7 @@ export default function MapWithNoSSR() {
     lng: 51.4167,
   };
   var greenIcon = L.icon({
-    iconUrl: IconBrandCitymapper,
+    iconUrl: cityIcon,
 
     iconSize: [38, 95], // size of the icon
     shadowSize: [50, 64], // size of the shadow
@@ -27,7 +28,7 @@ export default function MapWithNoSSR() {
       id="map"
       className="w-96 h-96"
       center={center}
-      zoom={8}
+      zoom={5}
       scrollWheelZoom={false}
     >
       <TileLayer
@@ -37,7 +38,7 @@ export default function MapWithNoSSR() {
       {IRCities.map((city, i) => {
         if (city.population >= 201184) {
           return (
-            <Marker  key={i} position={[city.lat, city.lng]}>
+            <Marker key={i} position={[city.lat, city.lng]}>
               <Popup>{city.city}</Popup>
             </Marker>
           );
