@@ -40,7 +40,13 @@ function DisplayPosition({ map }) {
     <div className="flex flex-col items-end w-96 ">
       <div className="flex flex-row-reverse items-center justify-around w-full">
         latitude: {position.lat.toFixed(4)}, longitude:{" "}
-        {position.lng.toFixed(4)} <button className="bg-Sky-500 flex text-center font-bold text-gray-50 p-3 shadow-2xl rounded-lg" onClick={onClick}>reset</button>
+        {position.lng.toFixed(4)}{" "}
+        <button
+          className="bg-Sky-500 flex text-center font-bold text-gray-50 p-3 shadow-2xl rounded-lg"
+          onClick={onClick}
+        >
+          reset
+        </button>
       </div>
       <div className="flex flex-col border items-end rounded-lg border-gray-200 divide-y divide-gray-200 w-full h-full">
         {locations.map((location, i) => {
@@ -97,8 +103,8 @@ export default function ExternalStateExample(position) {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {locations.map((location) => {
-          return <Marker position={[location.lat, location.lng]} />;
+        {locations.map((location, i) => {
+          return <Marker key={i} position={[location.lat, location.lng]} />;
         })}
       </MapContainer>
     ),
