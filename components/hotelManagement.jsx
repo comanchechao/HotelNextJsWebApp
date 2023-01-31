@@ -204,9 +204,9 @@ export default function hotelManagement() {
             Settings tab content
           </Tabs.Panel>
         </Tabs>
-      </div>
-      <div className="flex p-5 w-full h-full justify-start space-x-4">
-        <AddHotel />
+        <div className="absolute right-8 bottom-8">
+          <AddHotel />
+        </div>
       </div>
     </div>
   );

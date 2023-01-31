@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Modal, Select, Group } from "@mantine/core";
 import { IconUpload } from "@tabler/icons";
+import dynamic from "next/dynamic.js";
 
 export default function AddHotel() {
   const [opened, setOpened] = useState(false);
+  const DynamicMap = dynamic(() => import("./map"), {
+    ssr: false,
+  });
 
   return (
     <>
@@ -99,9 +103,7 @@ export default function AddHotel() {
               />
             </div>
             <div className="flex p-5 w-full justify-center items-center">
-              <button className="font-bold p-3 transition text-mainPurple hover:bg-darkPurple hover:text-gray-100 rounded-sm">
-                <p>انتخاب محل در نقشه</p>
-              </button>
+              <DynamicMap />
             </div>
             <div className="flex">
               <button
@@ -122,7 +124,7 @@ export default function AddHotel() {
           onClick={() => {
             setOpened(true);
           }}
-          className="w-52 py-3 border-2 text-lg border-darkPurple border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-full text-darkPurple hover:bg-mainBlue"
+          className="w-52 py-3 border-2 text-lg border-darkPurple border-dashed bg-mainBlue transition ease-in duration-300 font-mainFont rounded-full text-gray-50 hover:text-darkPurple hover:bg-gray-50"
         >
           هتل جدید
         </button>

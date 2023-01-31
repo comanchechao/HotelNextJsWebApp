@@ -258,44 +258,6 @@ export default function HotelDetailPage() {
                 <div className="flex w-full">
                   <DynamicMap />
                 </div>
-                <div className="flex flex-col border rounded-lg border-gray-200 divide-y divide-gray-200 w-full h-full">
-                  <div className="flex flex-col justify-around items-around space-y-2 p-5 w-full">
-                    <h1 className="text-lg self-end">پارک لاله</h1>
-                    <div className="flex w-full">
-                      <div className="flex w-full">
-                        <p>23213</p>
-                        <p>متر</p>
-                      </div>
-                      <div className="flex justify-end w-full">
-                        <div className="flex">
-                          <p>4 دقیقه</p>
-                        </div>
-                        <div className="flex">
-                          <p>4</p>
-                          <p>دقیقه</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col justify-around items-around space-y-2 p-5 w-full">
-                    <h1 className="text-lg self-end">پارک لاله</h1>
-                    <div className="flex w-full">
-                      <div className="flex w-full">
-                        <p>23213</p>
-                        <p>متر</p>
-                      </div>
-                      <div className="flex justify-end w-full">
-                        <div className="flex">
-                          <p>4 دقیقه</p>
-                        </div>
-                        <div className="flex">
-                          <p>4</p>
-                          <p>دقیقه</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
               <div className="flex p-5 items-center space-x-1 w-full justify-end">
                 <h1 className=" text-gray-800 text-3xl">اتاق ها</h1>
