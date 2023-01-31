@@ -11,7 +11,7 @@ export default function HotelCard() {
       <div className="w-56 h-full flex flex-col p-4 items-center justify-center space-y-2">
         <h2 className="text-mainPurple text-lg">11,016,000</h2>
         <Link href="/hotelList/hotelDetail">
-          <button className="px-6 w-full rounded-full transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-sm font-mainFont">
+          <button className="px-6 w-full rounded-full transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xs font-mainFont">
             مشاهده ی اتاق ها و رزرو
           </button>
         </Link>

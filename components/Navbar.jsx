@@ -14,6 +14,7 @@ import i18next from "i18next";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import NavDrawer from "./NavDrawer";
+import LoginModal from "./loginModal";
 
 export default function Navbar() {
   const [nextLocale, setNextLocale] = useState("tr");
@@ -29,7 +30,7 @@ export default function Navbar() {
 
   return (
     <div className=" w-screen h-16 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32">
-      <div className="text-lg flex items-center   ">
+      <div className="text-lg flex items-center space-x-4">
         <Link
           href="/"
           className="flex rounded-sm p-2 items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
@@ -73,12 +74,13 @@ export default function Navbar() {
           href="/"
           className=" hidden lg:flex  rounded-sm  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
-          <House className="mx-1" size={30} weight="fill" />
           <h4 className=" ">خونه</h4>
+          <House className="mx-1" size={28} weight="light" />
         </Link>
+        <LoginModal />
       </div>
 
-      <div className="lg:text-lg text-sm lg:flex items-center lg:space-x-10 hidden">
+      <div className="lg:text-lg text-sm lg:flex items-center lg:space-x-4 hidden">
         <div className="dropdown">
           <label
             tabIndex={0}
@@ -112,24 +114,24 @@ export default function Navbar() {
         </div>
         <Link
           href="/admin"
-          className="flex rounded-sm  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex rounded-sm justify-center  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
-          <IdentificationCard className="mx-1" size={30} />
           <h4 className=" ">ادمین</h4>
+          <IdentificationCard className="mx-1" weight="light" size={30} />
         </Link>
         <Link
           href="/aboutUs"
-          className="flex rounded-sm  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex rounded-sm  justify-center  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
-          <Scroll className="mx-2" size={24} weight="thin" />
           <h4>درباره ما</h4>
+          <Scroll className="mx-2" size={24} weight="light" />
         </Link>
         <Link
           href="/contactUs"
-          className="flex rounded-sm  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex rounded-sm justify-center  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
-          <Question className="mx-2" size={24} weight="thin" />
           <h4>تماس با ما</h4>
+          <Question className="ml-1" size={24} weight="light" />
         </Link>
       </div>
       <div className="lg:hidden flex ">

@@ -117,7 +117,7 @@ export default function HotelDetailPage() {
           </div>
           <div className="flex">
             <div className="w-96 hidden lg:block h-96 sticky  border -top-14  rounded">
-              <div className="flex bg-white flex-col items-center w-full h-full">
+              <div className="flex bg-white flex-col items-center sticky w-full h-full">
                 <DatePicker
                   locale="fa"
                   dropdownPosition="bottom-start"
@@ -315,7 +315,7 @@ export default function HotelDetailPage() {
                   </Tabs.List>
                 </Tabs>
               </div>
-              <div className="lg:p-4  flex space-y-3 flex-col  w-full">
+              <div className="lg:p-4  flex  flex-col  w-full">
                 {rooms.map((room, i) => {
                   return (
                     <div
