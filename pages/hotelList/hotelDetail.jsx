@@ -66,7 +66,7 @@ export default function HotelDetailPage() {
     <div className="w-full h-full">
       <Navbar />
       <div className="flex w-full p-4 lg:p-20 h-full bg-gray-200">
-        <div className="flex flex-col p-5 w-full h-full">
+        <div className="flex flex-col p-5 w-full h-full  ">
           <div className="flex justify-end lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24">
             <Link href="/hotelList/hotelDetail">
               <p>هتل آنا</p>
@@ -78,8 +78,8 @@ export default function HotelDetailPage() {
               <p>هتل ها</p>
             </Link>
           </div>
-          <div className="flex py-5 lg:p-5 flex-col">
-            <div className="flex cursor-pointer w-full justify-center  h-96 rounded-lg">
+          <div className="flex py-5  flex-col">
+            <div className="flex cursor-pointer w-full justify-center  h-96 rounded-md">
               <div className="hidden lg:flex">
                 <Image alt="" className=" w-full h-full" src={hotelOne} />
               </div>
@@ -101,9 +101,9 @@ export default function HotelDetailPage() {
             </div>
           </div>
           <div className="flex w-full justify-end h-32 lg:h-20">
-            <div className="flex p-2 w-full justify-center items-end flex-col">
+            <div className="flex w-full justify-center items-end flex-col">
               <h1 className="text-3xl my-2">هتل آنا</h1>
-              <div className="flex bg-gray-50 p-3 rounded space-x-8 justify-center items-center">
+              <div className="flex bg-gray-50 p-3 rounded-md space-x-8 justify-center items-center">
                 <div className="flex">
                   <p>اول بند ، روبه روی خیابان گلشهر</p>
                 </div>
@@ -116,7 +116,7 @@ export default function HotelDetailPage() {
             </div>
           </div>
           <div className="flex">
-            <div className="w-96 hidden lg:block h-96 sticky  border -top-14  rounded">
+            <div className="w-96 hidden lg:block h-96 sticky  border -top-14  rounded-md">
               <div className="flex bg-white flex-col items-center sticky w-full h-full">
                 <DatePicker
                   locale="fa"
@@ -154,12 +154,12 @@ export default function HotelDetailPage() {
                   </Popover.Target>
                   <Popover.Dropdown>
                     <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
-                      <h1 className="text-sm font-bold">اتاق اول</h1>
+                      <h1 className="text-sm ">اتاق اول</h1>
                       <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
                         <h1 className="text-sm">بزرگسال(۱۲ سال به بالا)</h1>
                         <div className="flex text-blue-800  items-center justify-center space-x-5">
                           <PlusCircle size={27} weight="fill" />
-                          <h1 className="text-sm font-bold">1</h1>
+                          <h1 className="text-sm ">1</h1>
                           <MinusCircle size={27} weight="fill" />
                         </div>
                       </div>
@@ -167,7 +167,7 @@ export default function HotelDetailPage() {
                         <h1 className="text-sm">کودک(تا ۱۲ سال)</h1>
                         <div className="flex text-blue-800 items-center justify-center space-x-5">
                           <PlusCircle size={27} weight="fill" />
-                          <h1 className="text-sm font-bold">1</h1>
+                          <h1 className="text-sm ">1</h1>
                           <MinusCircle size={27} weight="fill" />
                         </div>
                       </div>
@@ -176,21 +176,21 @@ export default function HotelDetailPage() {
                 </Popover>
                 <div className="flex">
                   <Link href="/checkout">
-                    <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  ">
+                    <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-md-full  text-mainPurple my-5 px-12 bg-transparent  ">
                       <p>رزرو اتاق</p>
                     </button>
                   </Link>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col w-full mt-8">
-              <div className="flex items-center py-4 space-x-1 w-full justify-between lg:pl-5 ">
+            <div className="flex flex-col w-full mt-8   pl-7">
+              <div className="flex items-center py-4 space-x-1  w-full justify-between ">
                 <FeaturesModal />
-                <h1 className="w-full text-right font-bold text-gray-900  text-xl lg:text-2xl">
+                <h1 className="w-full text-right  text-gray-900  text-xl lg:text-2xl">
                   امکانات و ویژگی ها
                 </h1>
               </div>
-              <div className="rounded-lg border border-gray-200 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  m-4 ">
+              <div className="rounded-md-lg border border-gray-200 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  ">
                 <div className="flex px-3 justify-between items-center">
                   <h2>
                     <IconWashMachine size={32} />
@@ -246,15 +246,15 @@ export default function HotelDetailPage() {
                   <h2>خدمات اینترنت</h2>
                 </div>
               </div>
-              <div className="flex py-4 px-2  items-center space-x-1 w-full justify-between">
+              <div className="flex py-4 mt-10 items-center space-x-1 w-full justify-between ">
                 <h1 className="  text-mainPurple   text-sm cursor-pointer hover:text-blue-800">
                   تغییر موقعیت
                 </h1>
-                <h1 className="  text-gray-700 text-xl font-bold">
+                <h1 className="  text-gray-900 text-xl ">
                   مکان های مهم اطراف هتل
                 </h1>
               </div>
-              <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-2 m-2 p-3 bg-white">
+              <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-2  p-3 bg-white">
                 <div className="flex w-full">
                   <DynamicMap />
                 </div>
@@ -282,10 +282,10 @@ export default function HotelDetailPage() {
                   return (
                     <div
                       key={i}
-                      className="flex border border-gray-300 bg-white justify-around divide-y my-5 divide-gray-300 rounded-sm flex-col w-full h-64"
+                      className="flex border border-gray-300 bg-white justify-around divide-y my-5 divide-gray-300 rounded-md-md flex-col w-full h-64"
                     >
                       <div className="flex flex-col py-4 px-5 justify-center items-end ">
-                        <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
+                        <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md-md">
                           {room.title}
                         </h1>
                         <h2 className="my-3">{room.meal}</h2>
@@ -301,7 +301,7 @@ export default function HotelDetailPage() {
                       </div>
                       <div className="flex justify-center items-center h-full">
                         <Link href="/checkout">
-                          <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  ">
+                          <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-md-full  text-mainPurple my-5 px-12 bg-transparent  ">
                             <p>رزرو اتاق</p>
                           </button>
                         </Link>
@@ -310,7 +310,7 @@ export default function HotelDetailPage() {
                   );
                 })}
                 <div className="flex justify-around">
-                  <button className="w-48 py-4 my-6 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue">
+                  <button className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
                     بیشتر نشونم بده
                   </button>
                 </div>
@@ -318,7 +318,7 @@ export default function HotelDetailPage() {
               <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
                 <h1 className="  text-gray-700 text-2xl">قوانین و مقررات </h1>
               </div>
-              <div className="flex divide-x divide-gray-300 p-5 border border-gray-300 rounded bg-white">
+              <div className="flex divide-x divide-gray-300 p-5 border border-gray-300 rounded-md bg-white">
                 <div className="flex justify-end text-right px-4 w-full h-full">
                   <ul>
                     <li>هزینه های جانبی</li>
@@ -346,7 +346,7 @@ export default function HotelDetailPage() {
               <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
                 <h1 className="  text-gray-700 text-2xl">درباره هتل آنا </h1>
               </div>
-              <div className="flex text-right p-5 border border-gray-300 rounded bg-white">
+              <div className="flex text-right p-5 border border-gray-300 rounded-md bg-white">
                 <p>
                   گزینه‌ای بسیار مطلوب برای کسانی است که هم هتلی مجلل و شیک
                   می‌خواهند و هم دلشان می‌خواهد به مرکز شهر، شرکت‌های خصوصی و
