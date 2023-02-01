@@ -1,7 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal, Select, MultiSelect, Rating, Group } from "@mantine/core";
 import { IconUpload } from "@tabler/icons";
 import dynamic from "next/dynamic.js";
+
+let cities = [
+  { value: "1", label: "تهران" },
+  { value: "2", label: "شیراز" },
+  { value: "3", label: "رشت" },
+  { value: "4", label: "تنکابن" },
+  { value: "1", label: "بتریز" },
+  { value: "2", label: "شهسوار" },
+  { value: "3", label: "گنبد کاووس" },
+  { value: "4", label: "کاشان" },
+  { value: "1", label: "کرمان" },
+  { value: "2", label: "شیراز" },
+  { value: "3", label: "رشت" },
+  { value: "4", label: "تنکابن" },
+  { value: "1", label: "تهران" },
+  { value: "2", label: "شیراز" },
+  { value: "3", label: "رشت" },
+  { value: "4", label: "تنکابن" },
+];
 
 export default function AddHotel() {
   const [opened, setOpened] = useState(false);
@@ -17,6 +36,10 @@ export default function AddHotel() {
   const [location, setLocation] = useState({});
   const DynamicMap = dynamic(() => import("./map"), {
     ssr: false,
+  });
+
+  useEffect(() => {
+    console.log("title:", title, "features", features, "stars", value);
   });
 
   // uploading images
@@ -51,37 +74,107 @@ export default function AddHotel() {
       setUploading(false);
     }
   };
+  const secondImageUpload = async (event) => {
+    try {
+      event.preventDefault();
+      setUploading(true);
 
+      if (!event.target.files || event.target.files.length === 0) {
+        throw new Error("You must select an image to upload.");
+      }
+
+      const file = event.target.files[0];
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `${fileName}`;
+      setSecondImage(filePath);
+
+      let { error: uploadError } = await supabase.storage
+        .from("hotel-images")
+        .upload(filePath, file);
+
+      if (uploadError) {
+        throw uploadError;
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setUploading(false);
+    }
+  };
+  const thirdImageUpload = async (event) => {
+    try {
+      event.preventDefault();
+      setUploading(true);
+
+      if (!event.target.files || event.target.files.length === 0) {
+        throw new Error("You must select an image to upload.");
+      }
+
+      const file = event.target.files[0];
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `${fileName}`;
+      setThirdImage(filePath);
+
+      let { error: uploadError } = await supabase.storage
+        .from("hotel-images")
+        .upload(filePath, file);
+
+      if (uploadError) {
+        throw uploadError;
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setUploading(false);
+    }
+  };
   return (
     <>
       <Modal
-        size="600px"
+        size="800px"
         opened={opened}
         onClose={() => setOpened(false)}
         centered
         title="Add new Hotel"
       >
         <div className="flex flex-col  w-full h-full">
-          <div className="flex space-y-2 w-full h-full flex-col">
+          <div className="flex space-y-5 w-full h-full flex-col">
             <div className="flex justify-around flex-wrap">
               <div className="flex p-2 w-full text-right justify-end">
                 :تصاویر هتل
               </div>
-              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
-                <IconUpload size={30} />
-              </button>
-              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
-                <IconUpload size={30} />
-              </button>
-              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
-                <IconUpload size={30} />
-              </button>
-              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
-                <IconUpload size={30} />
-              </button>
-              <button className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
-                <IconUpload size={30} />
-              </button>
+              <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
+                <label htmlFor="firstImage">
+                  <IconUpload size={30} />
+                </label>
+                <input type="file" className="hidden" id="firstImage" />
+              </div>
+              <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
+                <label htmlFor="secondImage">
+                  <IconUpload size={30} />
+                </label>
+                <input type="file" className="hidden" id="secondImage" />
+              </div>
+              <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
+                <label htmlFor="thirdImage">
+                  <IconUpload size={30} />
+                </label>
+                <input type="file" className="hidden" id="thirdImage" />
+              </div>
+              <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
+                <label htmlFor="fourthImage">
+                  <IconUpload size={30} />
+                </label>
+                <input type="file" className="hidden" id="fourthImage" />
+              </div>
+              <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
+                <label htmlFor="fifthImage">
+                  <IconUpload size={30} />
+                </label>
+                <input type="file" className="hidden" id="fifthImage" />
+              </div>
             </div>
             <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
               <label className="w-24" htmlFor="title">
@@ -141,6 +234,14 @@ export default function AddHotel() {
                   { value: "3", label: "3" },
                   { value: "4", label: "4" },
                 ]}
+              />
+            </div>
+            <div className="flex w-full h-full text-right justify-center items-center">
+              <Select
+                searchable
+                className="text-right w-full"
+                label=":شهر"
+                data={cities}
               />
             </div>
             <div className="flex p-5 w-full justify-center items-center">

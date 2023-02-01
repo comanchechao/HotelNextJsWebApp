@@ -3,7 +3,7 @@ import hotelTwo from "../../assets/images/hoteltwo.jpg";
 import hotelThree from "../../assets/images/hotelthree.jpg";
 import hotelFour from "../../assets/images/hotelfour.jpg";
 import Navbar from "../../components/Navbar";
-import { Tabs, Popover, TextInput } from "@mantine/core";
+import { Tabs, Popover, TextInput, Accordion } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import {
   IconChevronLeft,
@@ -289,21 +289,45 @@ export default function HotelDetailPage() {
                   return (
                     <div
                       key={i}
-                      className="flex border border-gray-300 bg-white justify-around divide-y my-5 divide-gray-300 rounded-md-md flex-col w-full h-64"
+                      className="flex border border-gray-300 bg-white justify-around divide-y my-5 divide-gray-300 rounded-md-md flex-col w-full h-full lg:h-68"
                     >
                       <div className="flex flex-col py-4 px-5 justify-center items-end ">
                         <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md-md">
                           {room.title}
                         </h1>
-                        <h2 className="my-3">{room.meal}</h2>
+                        <div className="flex w-full justify-around">
+                          <Accordion
+                            variant="separated"
+                            chevronPosition="left"
+                            color="violet"
+                          >
+                            <Accordion.Item value="customization">
+                              <Accordion.Control className="text-right text-red-400 w-full">
+                                <p>قوانین کنسلی</p>
+                              </Accordion.Control>
+                              <Accordion.Panel>
+                                <div className="flex w-52 space-x-4 justify-around items-center">
+                                  <p className="text-xs">
+                                    از لحظه‌ی خرید تا ساعت 00:00 تاریخ
+                                    1401/11/12 میزان جریمه 5,000,000 ریال خواهد
+                                    بود از ساعت 00:00 تاریخ 1401/11/12 غیر قابل
+                                    استرداد خواهد بود
+                                  </p>
+                                </div>
+                              </Accordion.Panel>
+                            </Accordion.Item>
+                          </Accordion>
+                          <h2 className="my-3">{room.meal}</h2>
+                        </div>
                       </div>
-                      <div className="flex items-center h-full w-full px-5 justify-between">
+                      <div className="flex items-center h-full w-full py-2 px-5 justify-between">
                         <div className="flex space-x-1 p-2 justify-center items-center">
                           <h2>ریال</h2>
                           <h2 className="  text-3xl text-mainPurple">
                             {room.price}
                           </h2>
                         </div>
+
                         <h1 className="text-lg">قیمت برای هرشب</h1>
                       </div>
                       <div className="flex justify-center items-center h-full">
