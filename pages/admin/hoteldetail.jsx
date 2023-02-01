@@ -106,7 +106,7 @@ export default function HotelDetail() {
             return <Image key={i} alt="" className="h-96 w-96" src={image} />;
           })}
         </div>
-        <div className="p-5 mb-10 bg-white drop-shadow-lg flex flex-col w-full">
+        <div className="p-5 mb-10 bg-white   flex flex-col w-full">
           <div className="flex   text-4xl items-center space-x-1 w-full justify-end">
             <Editable
               textAlign="center"
@@ -128,7 +128,7 @@ export default function HotelDetail() {
             </h2>
           </div>
         </div>
-        <div className="mt-5  bg-white drop-shadow-lg flex flex-col w-full">
+        <div className="mt-5  bg-white   flex flex-col w-full">
           <div className="flex p-5 items-center space-x-1 w-full justify-end">
             <h1 className=" text-gray-800 text-3xl">اتاق ها</h1>
           </div>
@@ -153,7 +153,7 @@ export default function HotelDetail() {
             return (
               <div
                 key={i}
-                className="flex bg-white justify-around divide-y my-5 divide-gray-300 rounded-sm flex-col w-full h-64"
+                className="flex bg-white justify-around divide-y my-5 divide-gray-300 rounded-md flex-col w-full h-64"
               >
                 <div className="flex flex-col py-4 px-5 justify-center items-end ">
                   <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
@@ -175,7 +175,7 @@ export default function HotelDetail() {
             );
           })}
           <div className="flex justify-around">
-            <button className="w-48 py-4 my-6 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue">
+            <button className="w-48 py-4 my-6 bg-mainPurple border-r-8 border-mainBlue transition ease-in duration-300 font-mainFont rounded-md  text-white hover:bg-mainBlue">
               بیشتر نشونم بده
             </button>
             <AddRoom />
@@ -191,7 +191,7 @@ export default function HotelDetail() {
           <h1 className="  text-gray-700 text-2xl">امکانات و ویژگی ها</h1>
         </div>
         <div className="flex w-full bg-gray-200 px-4 lg:px-20 flex-col">
-          <div className="rounded-sm bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  m-4 ">
+          <div className="rounded-md bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  m-4 ">
             <div className="flex px-3 justify-between items-center">
               <h2>
                 <IconBarbell size={32} />
@@ -348,7 +348,7 @@ export default function HotelDetail() {
           <h1 className="  text-gray-700 text-2xl">مکان و موقیت </h1>
         </div>
         <div className="flex bg-gray-200 items-center   justify-center p-5">
-          <div className="flex  items-center dropshadow-2xl justify-center">
+          <div className="flex  items-center   justify-center">
             <DynamicMap />
           </div>
         </div>
@@ -356,7 +356,7 @@ export default function HotelDetail() {
           <h1 className="  text-gray-700 text-2xl">قوانین و مقررات </h1>
         </div>
         <div className="flex p-5  bg-gray-200 px-8 justify-center w-full">
-          <div className="flex rounded-sm   flex-col w-full bg-gray-50">
+          <div className="flex rounded-md   flex-col w-full bg-gray-50">
             <div className="flex p-2 justify-end  h-18 w-full">
               <div className="p-5  flex justify-end w-full lg:w-1/2">
                 <div className="flex text-xl   items-end justify-center w-32  flex-col">
@@ -442,7 +442,7 @@ export default function HotelDetail() {
           <h1 className="  text-gray-700 text-2xl">درباره هتل </h1>
         </div>
         <div className="flex p-5  bg-gray-200 px-8 justify-center w-full">
-          <div className="flex rounded-sm drop-shadow-2xl flex-col w-full bg-gray-50">
+          <div className="flex rounded-md   flex-col w-full bg-gray-50">
             <div className="p-5 flex w-full flex-col">
               <div className="flex  w-full justify-end items-center">
                 <h1 className="text-lg text-black  ">هتل</h1>
