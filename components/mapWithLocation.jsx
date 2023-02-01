@@ -92,23 +92,8 @@ export default function ExternalStateExample(position) {
   const displayMap = useMemo(
     () => (
       <div>
-        {" "}
         <MapContainer
-          className="lg:hidden z-0"
-          id="map"
-          style={{ width: "270px", height: "500px" }}
-          center={center}
-          zoom={zoom}
-          scrollWheelZoom={false}
-          ref={setMap}
-        >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          {locations.map((location, i) => {
-            return <Marker key={i} position={[location.lat, location.lng]} />;
-          })}
-        </MapContainer>
-        <MapContainer
-          className="hidden lg:block z-0"
+          className=""
           id="map"
           style={{ width: "600px", height: "500px" }}
           center={center}
