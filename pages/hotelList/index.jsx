@@ -44,7 +44,7 @@ export default function HotelList() {
           <div className="w-full flex justify-end my-3 lg:hidden">
             <HotelListModal />
           </div>
-          <div className="w-full h-full flex flex-col items-center justify-center space-y-9 my-10">
+          <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10">
             <HotelCard />
             <HotelCard /> <HotelCard />
             <HotelCard />

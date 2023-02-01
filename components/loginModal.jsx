@@ -24,6 +24,7 @@ export default function LoginModal() {
       data={data}
       styles={{
         input: {
+          height: "1.2cm",
           fontFamily: "IranSans",
           fontWeight: 500,
         },
