@@ -11,7 +11,7 @@ export default function HotelList() {
   return (
     <div className="w-screen h-auto bg-gray-200">
       <Navbar />
-      <div className="h-full w-full pt-28 flex lg:px-56 space-x-4">
+      <div className="h-full w-full pt-28 flex lg:px-44 space-x-16">
         <div className=" w-full lg:w-3/4 h-full  p-6 ">
           <div className="h-auto w-full space-x-3 flex items-center justify-end">
             <Link className="text-lg items-center flex text-black" href="/">

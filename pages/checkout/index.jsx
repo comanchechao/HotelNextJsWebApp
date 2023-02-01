@@ -21,13 +21,13 @@ export default function Checkout() {
   return (
     <div className="w-screen  h-auto bg-gray-200">
       <Navbar />
-      <div className="w-screen h-full flex-col text-right flex items-center pt-36 justify-center ">
+      <div className="w-screen h-full flex-col text-right flex items-center px-10 lg:px-0 pt-36 justify-center ">
         <Stepper
           color="violet"
           size="lg"
           active={active}
           onStepClick={setActive}
-          breakpoint="sm"
+          breakpoint="md"
           iconSize={47}
         >
           <Stepper.Step icon={<Buildings size={28} />} label="انتخاب هتل">
@@ -53,14 +53,14 @@ export default function Checkout() {
             Completed, click back button to get to previous step
           </Stepper.Completed>
         </Stepper>
-        <div className="h-24 w-full bg-white flex px-7 items-center justify-around">
+        <div className=" h-44 lg:space-y-0  lg:flex-row flex-col-reverse lg:h-24 w-full bg-white flex lg:px-7 items-center justify-center lg:justify-around">
           <button
             onClick={nextStep}
             className="px-14 rounded-full transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont"
           >
             تایید و ادامه ی خرید
           </button>
-          <h3>
+          <h3 className="lg:text-right text-center my-3">
             با کلیک روی تایید و ادامه خرید با
             <Link className=" underline text-Indigo-500 mx-1" href="/">
               قوانین سایت

@@ -2,7 +2,7 @@ import { Star, SignIn, SignOut, Bed } from "phosphor-react";
 
 export default function InfoConfirmation() {
   return (
-    <div className=" mb-10 h-auto w-textArea flex mt-5 flex-col items-center space-y-7">
+    <div className=" mb-10 h-auto w-full lg:w-textArea flex mt-5 flex-col items-center space-y-7">
       <div className="h-24 w-full bg-white divide-x-2 flex">
         <div className="h-full w-1/2 flex items-center justify-center ">
           <div className="h-full w-1/2 flex flex-col items-center justify-center">
