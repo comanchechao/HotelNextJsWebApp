@@ -37,7 +37,7 @@ function DisplayPosition({ map }) {
   }
 
   return (
-    <div className="flex flex-col items-end  w-full lg:w-96 ">
+    <div className="flex flex-col items-end w-96 ">
       <div className="flex flex-row-reverse items-center justify-around w-full">
         latitude: {position.lat.toFixed(4)}, longitude:{" "}
         {position.lng.toFixed(4)}{" "}
@@ -45,7 +45,7 @@ function DisplayPosition({ map }) {
           className="bg-Sky-500 flex text-center font-bold text-gray-50 p-3 shadow-2xl rounded-lg"
           onClick={onClick}
         >
-          <p>به هتل</p>
+          به هتل
         </button>
       </div>
       <div className="flex flex-col border items-end rounded-lg border-gray-200 divide-y divide-gray-200 w-full h-full">
@@ -56,7 +56,7 @@ function DisplayPosition({ map }) {
               onMouseOver={() => {
                 toLocation(location);
               }}
-              className="flex flex-col justify-around items-around space-y-2 p-5 w-full lg:w-10/12"
+              className="flex flex-col justify-around items-around space-y-2 p-5 w-10/12"
             >
               <h1 className="text-lg self-end">{location.name}</h1>
               <div className="flex w-full">
@@ -91,28 +91,25 @@ export default function ExternalStateExample(position) {
 
   const displayMap = useMemo(
     () => (
-      <div>
-        <MapContainer
-          className=""
-          id="map"
-          style={{ width: "600px", height: "500px" }}
-          center={center}
-          zoom={zoom}
-          scrollWheelZoom={false}
-          ref={setMap}
-        >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          {locations.map((location, i) => {
-            return <Marker key={i} position={[location.lat, location.lng]} />;
-          })}
-        </MapContainer>
-      </div>
+      <MapContainer
+        id="map"
+        style={{ width: "600px", height: "500px" }}
+        center={center}
+        zoom={zoom}
+        scrollWheelZoom={false}
+        ref={setMap}
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {locations.map((location, i) => {
+          return <Marker key={i} position={[location.lat, location.lng]} />;
+        })}
+      </MapContainer>
     ),
     []
   );
 
   return (
-    <div className="flex justify-center items-center lg:flex-row flex-col w-full">
+    <div className="flex w-full">
       {displayMap}
       {map ? <DisplayPosition map={map} /> : null}
     </div>
