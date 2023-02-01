@@ -1,19 +1,61 @@
 import { useState } from "react";
-import { Modal, Select, Rating, Group } from "@mantine/core";
+import { Modal, Select, MultiSelect, Rating, Group } from "@mantine/core";
 import { IconUpload } from "@tabler/icons";
 import dynamic from "next/dynamic.js";
 
 export default function AddHotel() {
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
+  const [title, setTitle] = useState("");
+  const [firstImage, setFirstImage] = useState("");
+  const [secondImage, setSecondImage] = useState("");
+  const [thirdImage, setThirdImage] = useState("");
+  const [fourthImage, setFourthImage] = useState("");
+  const [fifthImage, setFifthImage] = useState("");
+  const [features, setFeatures] = useState([]);
+  const [avragePrice, setAvragePrice] = useState(0);
+  const [location, setLocation] = useState({});
   const DynamicMap = dynamic(() => import("./map"), {
     ssr: false,
   });
 
+  // uploading images
+
+  const [uploading, setUploading] = useState(false);
+
+  const firstImageUpload = async (event) => {
+    try {
+      event.preventDefault();
+      setUploading(true);
+
+      if (!event.target.files || event.target.files.length === 0) {
+        throw new Error("You must select an image to upload.");
+      }
+
+      const file = event.target.files[0];
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `${fileName}`;
+      setFirstImage(filePath);
+
+      let { error: uploadError } = await supabase.storage
+        .from("hotel-images")
+        .upload(filePath, file);
+
+      if (uploadError) {
+        throw uploadError;
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
   return (
     <>
       <Modal
-        size="400px"
+        size="600px"
         opened={opened}
         onClose={() => setOpened(false)}
         centered
@@ -46,24 +88,27 @@ export default function AddHotel() {
                 :عنوان هتل
               </label>
               <input
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
                 className="py-2 text-right px-2 w-full bg-gray-200"
                 type="text"
                 name="title"
                 placeholder="..."
               />
             </div>
-            <div className="flex w-full h-full text-right justify-center items-center">
-              <Select
-                searchable
-                className="text-right w-full"
-                label=":امکانات هتل"
+            <div className="flex w-full h-full text-right justify-between items-center">
+              <MultiSelect
+                value={features}
+                onChange={setFeatures}
                 data={[
                   { value: "صبحانه", label: "استخر" },
                   { value: "صبحانه و نهار", label: "خشکشویی" },
                   { value: "بدون وعده غذایی", label: "اینترنت بی سیم" },
-                  { value: "شام", label: "وعده های غذایی" },
+                  { value: "شام", label: "سونا" },
                 ]}
               />
+              <p>:امکانات هتل را انتخاب کنید</p>
             </div>
             <div className="flex w-full h-full text-right justify-center items-center">
               <div className="flex w-full justify-between items-center h-full">
@@ -76,6 +121,9 @@ export default function AddHotel() {
                 :قیمت هرشب
               </label>
               <input
+                onChange={(e) => {
+                  setAvragePrice(e.target.value);
+                }}
                 className="py-2 text-right px-2 w-full bg-gray-200"
                 type="number"
                 name="price"
