@@ -261,7 +261,7 @@ export default function HotelDetailPage() {
                   مکان های مهم اطراف هتل
                 </h1>
               </div>
-              <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-2  p-3 bg-white">
+              <div className="flex flex-col w-full  p-3 bg-white">
                 <div className="flex w-full">
                   <DynamicMap />
                 </div>

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Modal, Select, Group } from "@mantine/core";
+import { Modal, Select, Rating, Group } from "@mantine/core";
 import { IconUpload } from "@tabler/icons";
 import dynamic from "next/dynamic.js";
 
 export default function AddHotel() {
   const [opened, setOpened] = useState(false);
+  const [value, setValue] = useState(3);
   const DynamicMap = dynamic(() => import("./map"), {
     ssr: false,
   });
@@ -65,18 +66,10 @@ export default function AddHotel() {
               />
             </div>
             <div className="flex w-full h-full text-right justify-center items-center">
-              <Select
-                searchable
-                className="text-right w-full"
-                label=":ستاره های هتل"
-                data={[
-                  { value: "5", label: "5" },
-                  { value: "4", label: "4" },
-                  { value: "3", label: "3" },
-                  { value: "2", label: "2" },
-                  { value: "1", label: "1" },
-                ]}
-              />
+              <div className="flex w-full justify-between items-center h-full">
+                <Rating value={value} onChange={setValue} size="lg" count={5} />
+                <p>:ستاره های هتل</p>
+              </div>
             </div>
             <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
               <label className="w-24" htmlFor="price">
@@ -93,7 +86,7 @@ export default function AddHotel() {
               <Select
                 searchable
                 className="text-right w-full"
-                label=":ظرفیت اتاق"
+                label=":تعداد اتاق ها"
                 data={[
                   { value: "1", label: "1" },
                   { value: "2", label: "2" },
