@@ -19,7 +19,7 @@ import {
 } from "@tabler/icons";
 import { useState } from "react";
 export default function AdminPage() {
-  const [tab, setTab] = useState("hotel");
+  const [tab, setTab] = useState("user");
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
 
