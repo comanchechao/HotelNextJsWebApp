@@ -31,6 +31,7 @@ import "dayjs/locale/fa";
 import Footer from "../components/Footer";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import HomePageCarousel from "../components/homePageCarousel";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -142,6 +143,9 @@ export default function Home(props) {
               </button>
             </Link>
           </div>
+        </div>
+        <div className="w-full h-auto lg:px-44 z-40">
+          <HomePageCarousel />
         </div>
         <div className="w-full h-auto  lg:h-60 lg:px-44 z-10">
           <div className="w-full h-full flex flex-col lg:flex-row-reverse items-center justify-around lg:mb-10 lg:py-0 my-10 py-14 space-y-5 lg:space-x-0 drop-shadow-xl bg-white rounded-md lg:p-14  ">

@@ -40,32 +40,6 @@ export default function LoginModal() {
       >
         <div className=" flex flex-col items-center px-5">
           {change ? (
-            <div className=" h-rem26 flex flex-col items-center justify-around">
-              <div className="flex flex-col items-center justify-center space-y-3">
-                <h1 className="text-3xl  "> ورود یا ثبت‌نام </h1>
-                <h4>شماره تلفن خود را برای ورود یا ثبت‌نام وارد کنید</h4>
-              </div>
-              <TextInput
-                className="text-2xl mx-6 text-right flex flex-col items-end "
-                type="number"
-                placeholder="شماره تلفن"
-                label="شماره تلفن"
-                rightSection={select}
-                rightSectionWidth={85}
-                size="lg"
-                withAsterisk
-              />
-              <button className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-                تایید و دریافت کد
-              </button>
-              <button
-                onClick={() => setChange(false)}
-                className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-darkPurple text-lg font-mainFont"
-              >
-                ورود با ایمیل و کلمه ی عبور
-              </button>
-            </div>
-          ) : (
             <div className=" w-full h-rem28 flex flex-col items-center justify-around space-y-5">
               <div className="flex flex-col items-center justify-center space-y-3">
                 <h1 className="text-3xl  "> ورود یا ثبت‌نام </h1>
@@ -93,10 +67,36 @@ export default function LoginModal() {
                 تایید
               </button>
               <button
-                onClick={() => setChange(true)}
+                onClick={() => setChange(false)}
                 className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-darkPurple text-lg font-mainFont"
               >
                 ورود با رمز یکبار مصرف
+              </button>
+            </div>
+          ) : (
+            <div className=" h-rem26 flex flex-col items-center justify-around">
+              <div className="flex flex-col items-center justify-center space-y-3">
+                <h1 className="text-3xl  "> ورود یا ثبت‌نام </h1>
+                <h4>شماره تلفن خود را برای ورود یا ثبت‌نام وارد کنید</h4>
+              </div>
+              <TextInput
+                className="text-2xl mx-6 text-right flex flex-col items-end "
+                type="number"
+                placeholder="شماره تلفن"
+                label="شماره تلفن"
+                rightSection={select}
+                rightSectionWidth={85}
+                size="lg"
+                withAsterisk
+              />
+              <button className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+                تایید و دریافت کد
+              </button>
+              <button
+                onClick={() => setChange(true)}
+                className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-darkPurple text-lg font-mainFont"
+              >
+                ورود با ایمیل و کلمه ی عبور
               </button>
             </div>
           )}

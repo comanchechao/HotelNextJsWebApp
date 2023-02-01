@@ -32,6 +32,10 @@ export default function TicketModal() {
             minRows={7}
             withAsterisk
           />
+          <button className="px-14 rounded-md flex items-center transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+            <h4>درخواست تیکت</h4>
+            <Plus className="mx-2" size={28} weight="fill" />
+          </button>
         </div>
       </Modal>
       <button
