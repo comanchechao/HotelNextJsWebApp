@@ -22,7 +22,7 @@ export default function UserProfile() {
           ) : null}
         </div>
         <div className=" lg:w-1/4 w-full h-full  ">
-          <div className="w-full h-auto  bg-white drop-shadow-sm">
+          <div className="w-full h-auto  bg-white drop-shadow-sm rounded-lg">
             <button
               onClick={() => {
                 setTab("Profile");

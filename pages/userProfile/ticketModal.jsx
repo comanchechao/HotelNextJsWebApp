@@ -39,7 +39,7 @@ export default function TicketModal() {
         </div>
       </Modal>
       <button
-        className="px-14 rounded-full flex items-center transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+        className="px-14 rounded-md flex items-center transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
         onClick={() => setOpened(true)}
       >
         <h4>ایجاد تیکت جدید</h4>

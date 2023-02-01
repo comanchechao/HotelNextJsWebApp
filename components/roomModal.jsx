@@ -104,7 +104,7 @@ export default function RoomModal(props) {
         onClick={() => {
           setOpened(true);
         }}
-        className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl"
+        className="py-3  hover:text-white border-mainPurple border-2 border-r-8 ease-in duration-300 hover:bg-darkPurple transition rounded-md  text-mainPurple my-5 px-12 bg-transparent  shadow-2xl"
       >
         <p>ویرایش</p>
       </button>

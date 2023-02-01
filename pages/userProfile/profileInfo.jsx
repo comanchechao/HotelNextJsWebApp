@@ -3,7 +3,7 @@ import { Money, User } from "phosphor-react";
 export default function ProfileInfo() {
   return (
     <div className="w-full h-full p-3 flex space-y-8 flex-col">
-      <div className="w-full h-auto flex-col flex items-end justify-end bg-white drop-shadow-md">
+      <div className="w-full h-auto flex-col flex items-end justify-end bg-white drop-shadow-md rounded-lg">
         <h2 className="flex items-center text-xl m-3 ">
           اطلاعات حساب کاربری
           <User className="mx-2 text-mainPurple" size={25} />
@@ -32,11 +32,11 @@ export default function ProfileInfo() {
             </div>
           </div>
         </div>
-        <button className="px-10 rounded-full transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-sm m-3 self-start font-mainFont">
+        <button className="px-10 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-sm m-3 self-start font-mainFont">
           ویرایش اطلاعات
         </button>
       </div>
-      <div className="w-full h-auto flex-col flex items-end justify-end bg-white drop-shadow-md">
+      <div className="w-full h-auto flex-col flex items-end justify-end bg-white drop-shadow-md rounded-lg">
         <h2 className="flex items-center text-xl m-3 ">
           اطلاعات حساب بانکی
           <Money className="mx-2 text-mainPurple" size={25} />
@@ -55,7 +55,7 @@ export default function ProfileInfo() {
             </div>
           </div>
         </div>
-        <button className="px-10 rounded-full transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-sm m-3 self-start font-mainFont">
+        <button className="px-10 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-sm m-3 self-start font-mainFont">
           ویرایش اطلاعات
         </button>
       </div>

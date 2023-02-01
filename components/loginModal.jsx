@@ -7,12 +7,24 @@ export default function LoginModal() {
     { value: "+90", label: "🇹🇷 +90" },
   ];
   const [change, setChange] = useState(false);
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [alert, setAlert] = useState(false);
+
+  // const getSetUser = function () {
+  //   const user = supabase.auth.user();
+  //   if (user) {
+  //     dispatch(userActions.setUser(user));
+  //   }
+  // };
+  // const dispatch = useDispatch();
 
   const select = (
     <NativeSelect
       data={data}
       styles={{
         input: {
+          height: "1.2cm",
           fontFamily: "IranSans",
           fontWeight: 500,
         },
@@ -107,7 +119,7 @@ export default function LoginModal() {
         onClick={() => setOpened(true)}
       >
         <SignIn className="mx-2" size={30} weight="light" />
-        <h4> ورود یا ثبت‌نام </h4>
+        <h4 className="hidden lg:flex"> ورود یا ثبت‌نام </h4>
       </button>
     </div>
   );
