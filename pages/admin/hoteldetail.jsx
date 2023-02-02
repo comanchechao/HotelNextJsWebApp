@@ -7,7 +7,7 @@ import Navbar from "../../components/Navbar";
 import AddRoom from "../../components/addRoom";
 import RoomModal from "../../components/roomModal";
 import Footer from "../../components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   IconStar,
   IconBarbell,
@@ -36,12 +36,18 @@ import {
   Flex,
   EditableInput,
 } from "@chakra-ui/react";
-
+import { useSelector } from "react-redux";
 import dynamic from "next/dynamic";
 
 export default function HotelDetail() {
   const DynamicMap = dynamic(() => import("../../components/displayMap"), {
     ssr: false,
+  });
+
+  const store = useSelector((state) => state.main.title);
+
+  useEffect(() => {
+    console.log(store);
   });
   const [opened, setOpened] = useState(false);
   let images = [hotelOne, hotelTwo, hotelThree, hotelFour];

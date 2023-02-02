@@ -5,6 +5,8 @@ import { MantineProvider } from "@mantine/core";
 import { appWithTranslation } from "next-i18next";
 import "../styles/transition.css";
 import Transition from "../components/Transition";
+import store from "../store/index";
+import { Provider } from "react-redux";
 function App({ Component, pageProps }) {
   return (
     <>
@@ -25,7 +27,9 @@ function App({ Component, pageProps }) {
         }}
       >
         <Transition>
-          <Component {...pageProps} />
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
         </Transition>
       </MantineProvider>
     </>

@@ -17,9 +17,8 @@ import {
 import Link from "next/link";
 import { Tabs } from "@mantine/core";
 import { MagnifyingGlass } from "phosphor-react";
-import { useEffect } from "react";
 
-export default function hotelManagement({ cities }) {
+export default function HotelManagement({ cities }) {
   let hotels = [
     { title: "هتل", rooms: 32, image: hotelOne },
     { title: "دلتا", rooms: 32, image: hotelTwo },
@@ -27,9 +26,6 @@ export default function hotelManagement({ cities }) {
     { title: "هتل", rooms: 32, image: hotelFour },
   ];
 
-  useEffect(() => {
-    console.log(cities);
-  });
   return (
     <div className="flex flex-col w-full h-full bg-gray-200">
       <div className="flex w-full space-y-4 flex-col">

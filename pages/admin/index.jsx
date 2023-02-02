@@ -35,9 +35,6 @@ export default function AdminPage({ cities }) {
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
 
-  useEffect(() => {
-    console.log(cities);
-  });
   return (
     <div className="w-full h-screen bg-gray-200">
       <Navbar />
