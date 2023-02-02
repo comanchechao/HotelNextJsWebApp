@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Modal, TextInput, useMantineTheme, NativeSelect } from "@mantine/core";
+import {
+  Modal,
+  TextInput,
+  useMantineTheme,
+  NativeSelect,
+  Alert,
+} from "@mantine/core";
 import { SignIn } from "phosphor-react";
 import { supabase } from "../lib/supabaseClient";
 import { useDispatch } from "react-redux";
@@ -14,6 +20,8 @@ export default function LoginModal() {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
   const [change, setChange] = useState(false);
+  const [register, setRegister] = useState(false);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
@@ -43,8 +51,12 @@ export default function LoginModal() {
       // alert(error.error_description || error.message);
     } finally {
       // setLoading(false);
-      //       setAlert(true);
-      console.log("poozliq wins");
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+
+        setOpened(false);
+      }, 2000);
     }
   };
 
@@ -58,11 +70,10 @@ export default function LoginModal() {
       if (error) throw error;
       checkLog(true);
     } catch (error) {
-      alert(error.error_description || error.message);
     } finally {
       // setLoading(false);
       getSetUser();
-      // setAlert(true);
+      setAlert(true);
       setTimeout(() => {
         setOpened(false);
       }, 2000);
@@ -100,48 +111,110 @@ export default function LoginModal() {
       >
         <div className=" flex flex-col items-center px-5">
           {change ? (
-            <div className=" w-full h-rem28 flex flex-col items-center justify-around space-y-5">
-              <div className="flex flex-col items-center justify-center space-y-3">
-                <h1 className="text-3xl  "> ورود یا ثبت‌نام </h1>
-                <h4>ایمیل و رمز عبور خود را برای ورود یا ثبت‌نام وارد کنید</h4>
-              </div>
-              <TextInput
-                className="text-2xl   text-right flex flex-col items-end "
-                type="email"
-                placeholder="ایمیل"
-                label="ایمیل"
-                size="md"
-                variant="filled"
-                withAsterisk
-                value={emailSignUp}
-                onChange={(e) => setEmailSignUp(e.target.value)}
-              />
-              <TextInput
-                className="text-2xl   text-right flex flex-col items-end "
-                type="password"
-                placeholder="رمز عبور"
-                label="رمز عبور"
-                size="md"
-                variant="filled"
-                withAsterisk
-                value={passwordSignUp}
-                onChange={(e) => setPasswordSignUp(e.target.value)}
-              />
-              <button
-                onClick={handleSignUp}
-                className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
-              >
-                تایید
-              </button>
-              <button
-                onClick={() => setChange(false)}
-                className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-darkPurple text-lg font-mainFont"
-              >
-                ورود با رمز یکبار مصرف
-              </button>
+            <div className=" w-full h-rem28 flex flex-col items-center justify-around space-y-2">
+              {alert ? (
+                <Alert color="green" withCloseButton variant="outline">
+                  Something terrible happened! You made a mistake and there is
+                  no going back, your data was lost forever!
+                </Alert>
+              ) : (
+                <div>
+                  {register ? (
+                    <div className="flex flex-col items-center justify-center space-y-5">
+                      <div className="flex flex-col items-center justify-center space-y-3">
+                        <h1 className="text-3xl  "> ورود </h1>
+                        <h4>ایمیل و رمز عبور خود را برای ورود وارد کنید</h4>
+                      </div>
+                      <TextInput
+                        className="text-2xl   text-right flex flex-col items-end "
+                        type="email"
+                        placeholder="ایمیل"
+                        label="ایمیل"
+                        size="md"
+                        withAsterisk
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                      <TextInput
+                        className="text-2xl   text-right flex flex-col items-end "
+                        type="password"
+                        placeholder="رمز عبور"
+                        label="رمز عبور"
+                        size="md"
+                        withAsterisk
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                      <button
+                        onClick={handleLogin}
+                        className="w-full rounded-md mt-4 transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+                      >
+                        تایید
+                      </button>
+                      <button
+                        onClick={() => setRegister(false)}
+                        className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent   text-md font-mainFont"
+                      >
+                        ثبت‌نام حساب کاربری
+                      </button>
+                      <button
+                        onClick={() => setChange(false)}
+                        className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
+                      >
+                        ورود با رمز یکبار مصرف
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center space-y-3">
+                      <div className="flex flex-col items-center justify-center space-y-3">
+                        <h1 className="text-3xl  "> ثبت‌نام </h1>
+                        <h4>ایمیل و رمز عبور خود را برای ثبت‌نام وارد کنید</h4>
+                      </div>
+                      <TextInput
+                        className="text-2xl   text-right flex flex-col items-end "
+                        type="email"
+                        placeholder="ایمیل"
+                        label="ایمیل"
+                        size="md"
+                        withAsterisk
+                        value={emailSignUp}
+                        onChange={(e) => setEmailSignUp(e.target.value)}
+                      />
+                      <TextInput
+                        className="text-2xl   text-right flex flex-col items-end "
+                        type="password"
+                        placeholder="رمز عبور"
+                        label="رمز عبور"
+                        size="md"
+                        withAsterisk
+                        value={passwordSignUp}
+                        onChange={(e) => setPasswordSignUp(e.target.value)}
+                      />
+                      <button
+                        onClick={handleSignUp}
+                        className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+                      >
+                        تایید
+                      </button>
+                      <button
+                        onClick={() => setRegister(true)}
+                        className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-gray-500 hover:text-gray-900 text-md font-mainFont"
+                      >
+                        ورود با ایمیل و پسوورد
+                      </button>
+                      <button
+                        onClick={() => setChange(false)}
+                        className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
+                      >
+                        ورود با رمز یکبار مصرف
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           ) : (
-            <div className=" h-rem26 flex flex-col items-center justify-around">
+            <div className=" h-rem26 flex flex-col items-center justify-center space-y-5">
               <div className="flex flex-col items-center justify-center space-y-3">
                 <h1 className="text-3xl  "> ورود یا ثبت‌نام </h1>
                 <h4>شماره تلفن خود را برای ورود یا ثبت‌نام وارد کنید</h4>
@@ -161,7 +234,7 @@ export default function LoginModal() {
               </button>
               <button
                 onClick={() => setChange(true)}
-                className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-darkPurple text-lg font-mainFont"
+                className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
               >
                 ورود با ایمیل و کلمه ی عبور
               </button>
