@@ -2,27 +2,27 @@ import { useEffect, useState } from "react";
 import { Modal, Select, MultiSelect, Rating, Group } from "@mantine/core";
 import { IconUpload } from "@tabler/icons";
 import dynamic from "next/dynamic.js";
+import { supabase } from "../lib/supabaseClient";
+// let cities = [
+//   { value: "1", label: "تهران" },
+//   { value: "2", label: "شیراز" },
+//   { value: "3", label: "رشت" },
+//   { value: "4", label: "تنکابن" },
+//   { value: "1", label: "بتریز" },
+//   { value: "2", label: "شهسوار" },
+//   { value: "3", label: "گنبد کاووس" },
+//   { value: "4", label: "کاشان" },
+//   { value: "1", label: "کرمان" },
+//   { value: "2", label: "شیراز" },
+//   { value: "3", label: "رشت" },
+//   { value: "4", label: "تنکابن" },
+//   { value: "1", label: "تهران" },
+//   { value: "2", label: "شیراز" },
+//   { value: "3", label: "رشت" },
+//   { value: "4", label: "تنکابن" },
+// ];
 
-let cities = [
-  { value: "1", label: "تهران" },
-  { value: "2", label: "شیراز" },
-  { value: "3", label: "رشت" },
-  { value: "4", label: "تنکابن" },
-  { value: "1", label: "بتریز" },
-  { value: "2", label: "شهسوار" },
-  { value: "3", label: "گنبد کاووس" },
-  { value: "4", label: "کاشان" },
-  { value: "1", label: "کرمان" },
-  { value: "2", label: "شیراز" },
-  { value: "3", label: "رشت" },
-  { value: "4", label: "تنکابن" },
-  { value: "1", label: "تهران" },
-  { value: "2", label: "شیراز" },
-  { value: "3", label: "رشت" },
-  { value: "4", label: "تنکابن" },
-];
-
-export default function AddHotel() {
+export default function AddHotel({ cities }) {
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
   const [title, setTitle] = useState("");
@@ -34,12 +34,49 @@ export default function AddHotel() {
   const [features, setFeatures] = useState([]);
   const [avragePrice, setAvragePrice] = useState(0);
   const [location, setLocation] = useState({});
+  const [city, setCity] = useState("");
   const DynamicMap = dynamic(() => import("./map"), {
     ssr: false,
   });
 
+  const [cityNames, setCityNames] = useState([]);
+
+  // handing submit event
+
+  const handleSubmit = async function () {
+    try {
+      const { error } = await supabase.from("Hotels").insert({
+        title: title,
+        firstImage: firstImage,
+        features: features,
+        prices: avragePrice,
+        stars: value,
+      });
+
+      if (error) throw error;
+      alert("done");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   useEffect(() => {
-    console.log("title:", title, "features", features, "stars", value);
+    if (cities) {
+      cities.forEach((city, i) => {
+        if (cityNames.indexOf(city.name) === -1) {
+          cityNames.push(city.name);
+        }
+      });
+    }
+    console.log(
+      "title:",
+      title,
+      "features",
+      features,
+      "stars",
+      value,
+      "cities:",
+      cities
+    );
   });
 
   // uploading images
@@ -130,6 +167,34 @@ export default function AddHotel() {
       setUploading(false);
     }
   };
+  const fourthImageUpload = async (event) => {
+    try {
+      event.preventDefault();
+      setUploading(true);
+
+      if (!event.target.files || event.target.files.length === 0) {
+        throw new Error("You must select an image to upload.");
+      }
+
+      const file = event.target.files[0];
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `${fileName}`;
+      setFourthImage(filePath);
+
+      let { error: uploadError } = await supabase.storage
+        .from("hotel-images")
+        .upload(filePath, file);
+
+      if (uploadError) {
+        throw uploadError;
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setUploading(false);
+    }
+  };
   return (
     <>
       <Modal
@@ -149,25 +214,45 @@ export default function AddHotel() {
                 <label htmlFor="firstImage">
                   <IconUpload size={30} />
                 </label>
-                <input type="file" className="hidden" id="firstImage" />
+                <input
+                  onChange={firstImageUpload}
+                  type="file"
+                  className="hidden"
+                  id="firstImage"
+                />
               </div>
               <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="secondImage">
                   <IconUpload size={30} />
                 </label>
-                <input type="file" className="hidden" id="secondImage" />
+                <input
+                  onChange={secondImageUpload}
+                  type="file"
+                  className="hidden"
+                  id="secondImage"
+                />
               </div>
               <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="thirdImage">
                   <IconUpload size={30} />
                 </label>
-                <input type="file" className="hidden" id="thirdImage" />
+                <input
+                  onChange={thirdImageUpload}
+                  type="file"
+                  className="hidden"
+                  id="thirdImage"
+                />
               </div>
               <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="fourthImage">
                   <IconUpload size={30} />
                 </label>
-                <input type="file" className="hidden" id="fourthImage" />
+                <input
+                  onChange={fourthImageUpload}
+                  type="file"
+                  className="hidden"
+                  id="fourthImage"
+                />
               </div>
               <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="fifthImage">
@@ -238,10 +323,11 @@ export default function AddHotel() {
             </div>
             <div className="flex w-full h-full text-right justify-center items-center">
               <Select
+                value={city}
                 searchable
                 className="text-right w-full"
                 label=":شهر"
-                data={cities}
+                data={cityNames}
               />
             </div>
             <div className="flex p-5 w-full justify-center items-center">
@@ -250,7 +336,7 @@ export default function AddHotel() {
             <div className="flex">
               <button
                 onClick={() => {
-                  setOpened(false);
+                  handleSubmit();
                 }}
                 className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue"
               >

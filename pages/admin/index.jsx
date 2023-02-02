@@ -17,12 +17,27 @@ import {
   IconBook,
   IconUser,
 } from "@tabler/icons";
-import { useState } from "react";
-export default function AdminPage() {
+import { useEffect, useState } from "react";
+import { supabase } from "../../lib/supabaseClient";
+
+export async function getServerSideProps() {
+  let { data } = await supabase.from("cities").select();
+
+  return {
+    props: {
+      cities: data,
+    },
+  };
+}
+
+export default function AdminPage({ cities }) {
   const [tab, setTab] = useState("user");
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
 
+  useEffect(() => {
+    console.log(cities);
+  });
   return (
     <div className="w-full h-screen bg-gray-200">
       <Navbar />
@@ -203,7 +218,7 @@ export default function AdminPage() {
           </div>
           <div className="w-full h-full  justify-center items-center">
             {tab === "hotel" ? (
-              <HotelManagement />
+              <HotelManagement cities={cities} />
             ) : tab === "user" ? (
               <UserManagement />
             ) : tab === "reserve" ? (
