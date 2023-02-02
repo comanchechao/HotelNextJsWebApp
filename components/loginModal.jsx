@@ -1,23 +1,73 @@
 import { useState } from "react";
 import { Modal, TextInput, useMantineTheme, NativeSelect } from "@mantine/core";
 import { SignIn } from "phosphor-react";
+import { supabase } from "../lib/supabaseClient";
+import { useDispatch } from "react-redux";
+
+import { userActions } from "../store/user/user";
+
 export default function LoginModal() {
   const data = [
     { value: "+98", label: "🇮🇷 +98" },
     { value: "+90", label: "🇹🇷 +90" },
   ];
+  const theme = useMantineTheme();
+  const [opened, setOpened] = useState(false);
   const [change, setChange] = useState(false);
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [alert, setAlert] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [alert, setAlert] = useState(false);
+  const [emailSignUp, setEmailSignUp] = useState("");
+  const [passwordSignUp, setPasswordSignUp] = useState("");
+  // GET USER
+  const getSetUser = function () {
+    const user = supabase.auth.user();
+    if (user) {
+      dispatch(userActions.setUser(user));
+    }
+  };
+  const dispatch = useDispatch();
 
-  // const getSetUser = function () {
-  //   const user = supabase.auth.user();
-  //   if (user) {
-  //     dispatch(userActions.setUser(user));
-  //   }
-  // };
-  // const dispatch = useDispatch();
+  // SIGN UP
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+
+    try {
+      // setLoading(true);
+      const { error } = await supabase.auth.signUp({
+        email: emailSignUp,
+        password: passwordSignUp,
+      });
+      if (error) throw error;
+    } catch (error) {
+      // alert(error.error_description || error.message);
+    } finally {
+      // setLoading(false);
+      //       setAlert(true);
+      console.log("poozliq wins");
+    }
+  };
+
+  // LOGIN
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      // setLoading(true);
+      const { error } = await supabase.auth.signIn({ email, password });
+      if (error) throw error;
+      checkLog(true);
+    } catch (error) {
+      alert(error.error_description || error.message);
+    } finally {
+      // setLoading(false);
+      getSetUser();
+      // setAlert(true);
+      setTimeout(() => {
+        setOpened(false);
+      }, 2000);
+    }
+  };
 
   const select = (
     <NativeSelect
@@ -31,8 +81,6 @@ export default function LoginModal() {
       }}
     />
   );
-  const theme = useMantineTheme();
-  const [opened, setOpened] = useState(false);
   return (
     <div>
       <Modal
@@ -65,6 +113,8 @@ export default function LoginModal() {
                 size="md"
                 variant="filled"
                 withAsterisk
+                value={emailSignUp}
+                onChange={(e) => setEmailSignUp(e.target.value)}
               />
               <TextInput
                 className="text-2xl   text-right flex flex-col items-end "
@@ -74,8 +124,13 @@ export default function LoginModal() {
                 size="md"
                 variant="filled"
                 withAsterisk
+                value={passwordSignUp}
+                onChange={(e) => setPasswordSignUp(e.target.value)}
               />
-              <button className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+              <button
+                onClick={handleSignUp}
+                className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+              >
                 تایید
               </button>
               <button
