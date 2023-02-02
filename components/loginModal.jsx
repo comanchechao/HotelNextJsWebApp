@@ -107,7 +107,7 @@ export default function LoginModal() {
               </div>
               <TextInput
                 className="text-2xl   text-right flex flex-col items-end "
-                type="number"
+                type="email"
                 placeholder="ایمیل"
                 label="ایمیل"
                 size="md"
@@ -118,7 +118,7 @@ export default function LoginModal() {
               />
               <TextInput
                 className="text-2xl   text-right flex flex-col items-end "
-                type="number"
+                type="password"
                 placeholder="رمز عبور"
                 label="رمز عبور"
                 size="md"
