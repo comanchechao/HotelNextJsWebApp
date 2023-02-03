@@ -72,7 +72,7 @@ export default function Home(props) {
                 placeholder={t("destination")}
                 label={t("destination")}
                 variant="default"
-                radius="xl"
+                radius="md"
                 withAsterisk
                 clearable
                 searchable
@@ -87,7 +87,7 @@ export default function Home(props) {
                 label={t("inDate")}
                 withAsterisk
                 variant="default"
-                radius="xl"
+                radius="md"
                 size="md"
               />
               <DatePicker
@@ -98,7 +98,7 @@ export default function Home(props) {
                 label={t("outDate")}
                 withAsterisk
                 variant="default"
-                radius="xl"
+                radius="md"
                 size="md"
               />
               <Popover width={300} position="bottom" withArrow shadow="md">
@@ -108,7 +108,7 @@ export default function Home(props) {
                     placeholder="انتخاب مسافر"
                     label="انتخاب مسافر"
                     variant="default"
-                    radius="xl"
+                    radius="md"
                     size="md"
                     withAsterisk
                   />
@@ -138,7 +138,7 @@ export default function Home(props) {
             </div>
 
             <Link href="/hotelList">
-              <button className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+              <button className="px-14 rounded-lg transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
                 جستجو
               </button>
             </Link>
