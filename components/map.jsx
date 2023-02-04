@@ -19,12 +19,12 @@ function DisplayPosition({ map, markedHotel }) {
   const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(() => map.getCenter());
 
-  let hotelLat = useSelector((state) => state.map.lat);
-  let hotelLng = useSelector((state) => state.map.lng);
+  let Lat = useSelector((state) => state.map.lat);
+  let Lng = useSelector((state) => state.map.lng);
 
   const onClick = useCallback(() => {
-    map.setView(center, zoom);
-    console.log(markedHotel);
+    map.setView({ Lat, Lng }, zoom);
+    console.log({ lat: Lat, lng: Lng });
   }, [map]);
 
   const onMove = useCallback(() => {
@@ -64,11 +64,17 @@ export default function ExternalStateExample(position) {
   let lng = useSelector((state) => state.map.lng);
   let markedHotel = { lat, lng };
   function DraggableMarker() {
-    let hotelLat = useSelector((state) => state.map.lat);
-    let hotelLng = useSelector((state) => state.map.lng);
+    let lat = useSelector((state) => state.map.lat);
+    let lng = useSelector((state) => state.map.lng);
 
     const dispatch = useDispatch();
     const [draggable, setDraggable] = useState(false);
+
+    useEffect(() => {
+      if ((lat > 0) & (lng > 0)) {
+        setPosition(markedHotel);
+      }
+    }, []);
     const [position, setPosition] = useState(center);
     const markerRef = useRef(null);
 
@@ -84,6 +90,7 @@ export default function ExternalStateExample(position) {
         dragend() {
           const marker = markerRef.current;
           if (marker != null) {
+            setLocations();
           }
         },
       }),
@@ -95,8 +102,7 @@ export default function ExternalStateExample(position) {
     }, []);
 
     useEffect(() => {
-      setLocations();
-      console.log(hotelLat, hotelLng);
+      console.log(lat, lng);
     }, [draggable]);
 
     return (

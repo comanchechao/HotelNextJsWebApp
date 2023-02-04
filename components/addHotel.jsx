@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { Modal, Select, MultiSelect, Rating, Group } from "@mantine/core";
 import { IconUpload } from "@tabler/icons";
 import dynamic from "next/dynamic.js";
@@ -45,8 +45,11 @@ export default function AddHotel({ cities }) {
   const [cityNames, setCityNames] = useState([]);
 
   // handing submit event
-
-  const handleSubmit = useCallback(() => {
+  useMemo(() => {
+    let lat = useSelector((state) => state.map.lat);
+    let lng = useSelector((state) => state.map.lng);
+  });
+  async function handleSubmit() {
     try {
       // const { error } = await supabase.from("Hotels").insert({
       //   title: title,
@@ -62,7 +65,7 @@ export default function AddHotel({ cities }) {
     } catch (error) {
       alert(error.message);
     }
-  });
+  }
   useEffect(() => {
     if (cities) {
       cities.forEach((city, i) => {
