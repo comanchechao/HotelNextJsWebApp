@@ -77,9 +77,9 @@ export default function ForgotPasswordModal() {
       </Modal>
       <button
         onClick={() => setOpened(true)}
-        className="px-28 rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-gray-500 hover:text-gray-900 text-md font-mainFont"
+        className="w-full  h-full rounded-md flex items-center justify-center text-center  transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent   text-md font-mainFont"
       >
-        بازیابی رمز عبور
+        <p className=" w-28">بازیابی رمز عبور</p>
       </button>
     </div>
   );

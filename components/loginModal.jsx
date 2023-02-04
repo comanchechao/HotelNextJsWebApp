@@ -151,13 +151,15 @@ export default function LoginModal() {
                       >
                         تایید
                       </button>
-                      <ForgotPasswordModal />
-                      <button
-                        onClick={() => setRegister(false)}
-                        className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent   text-md font-mainFont"
-                      >
-                        ثبت‌نام حساب کاربری
-                      </button>
+                      <div className="flex items-center h-9 justify-between space-x-3 w-full">
+                        <button
+                          onClick={() => setRegister(false)}
+                          className="w-full h-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent   text-md font-mainFont"
+                        >
+                          <p className=" w-36 mx-2">ثبت‌نام حساب کاربری</p>
+                        </button>
+                        <ForgotPasswordModal />
+                      </div>
                       <button
                         onClick={() => setChange(false)}
                         className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
