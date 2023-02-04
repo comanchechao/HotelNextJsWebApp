@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
+import { mapReducer } from "./map/index";
 
 // create a slice
 export const mainSlice = createSlice({
@@ -13,6 +14,7 @@ export const mainSlice = createSlice({
 const store = configureStore({
   reducer: {
     main: mainSlice.reducer,
+    map: mapReducer,
   },
 });
 

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Modal, Select, MultiSelect, Rating, Group } from "@mantine/core";
 import { IconUpload } from "@tabler/icons";
 import dynamic from "next/dynamic.js";
 import { supabase } from "../lib/supabaseClient";
+import { useSelector, createSelector } from "react-redux";
 // let cities = [
 //   { value: "1", label: "تهران" },
 //   { value: "2", label: "شیراز" },
@@ -35,6 +36,8 @@ export default function AddHotel({ cities }) {
   const [avragePrice, setAvragePrice] = useState(0);
   const [location, setLocation] = useState({});
   const [city, setCity] = useState("");
+  const [get, setGet] = useState(false);
+
   const DynamicMap = dynamic(() => import("./map"), {
     ssr: false,
   });
@@ -43,22 +46,23 @@ export default function AddHotel({ cities }) {
 
   // handing submit event
 
-  const handleSubmit = async function () {
+  const handleSubmit = useCallback(() => {
     try {
-      const { error } = await supabase.from("Hotels").insert({
-        title: title,
-        firstImage: firstImage,
-        features: features,
-        prices: avragePrice,
-        stars: value,
-      });
+      // const { error } = await supabase.from("Hotels").insert({
+      //   title: title,
+      //   firstImage: firstImage,
+      //   features: features,
+      //   prices: avragePrice,
+      //   stars: value,
+      // });
+      console.log(get, hotelLat, hotelLng);
 
       if (error) throw error;
       alert("done");
     } catch (error) {
       alert(error.message);
     }
-  };
+  });
   useEffect(() => {
     if (cities) {
       cities.forEach((city, i) => {
