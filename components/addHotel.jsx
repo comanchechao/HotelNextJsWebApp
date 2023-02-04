@@ -24,8 +24,6 @@ import { useSelector, createSelector } from "react-redux";
 // ];
 
 export default function AddHotel({ cities }) {
-  let hotelLat = useSelector((state) => state.map.lat);
-  let hotelLng = useSelector((state) => state.map.lng);
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
   const [title, setTitle] = useState("");
