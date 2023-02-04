@@ -9,8 +9,8 @@ import {
 import { SignIn } from "phosphor-react";
 import { supabase } from "../lib/supabaseClient";
 import { useDispatch } from "react-redux";
-
 import { userActions } from "../store/user/user";
+import ForgotPasswordModal from "./forgotPasswordModal";
 
 export default function LoginModal() {
   const data = [
@@ -21,12 +21,12 @@ export default function LoginModal() {
   const [opened, setOpened] = useState(false);
   const [change, setChange] = useState(false);
   const [register, setRegister] = useState(false);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
   const [emailSignUp, setEmailSignUp] = useState("");
   const [passwordSignUp, setPasswordSignUp] = useState("");
+
   // GET USER
   const getSetUser = function () {
     const user = supabase.auth.user();
@@ -111,7 +111,7 @@ export default function LoginModal() {
       >
         <div className=" flex flex-col items-center px-5">
           {change ? (
-            <div className=" w-full h-rem28 flex flex-col items-center justify-around space-y-2">
+            <div className=" w-full h-rem33 flex flex-col items-center justify-around space-y-2">
               {alert ? (
                 <Alert color="green" withCloseButton variant="outline">
                   Something terrible happened! You made a mistake and there is
@@ -151,6 +151,7 @@ export default function LoginModal() {
                       >
                         تایید
                       </button>
+                      <ForgotPasswordModal />
                       <button
                         onClick={() => setRegister(false)}
                         className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent   text-md font-mainFont"
