@@ -45,10 +45,9 @@ export default function AddHotel({ cities }) {
   const [cityNames, setCityNames] = useState([]);
 
   // handing submit event
-  useMemo(() => {
-    let lat = useSelector((state) => state.map.lat);
-    let lng = useSelector((state) => state.map.lng);
-  });
+  let lat = useSelector((state) => state.map.lat);
+  let lng = useSelector((state) => state.map.lng);
+
   async function handleSubmit() {
     try {
       // const { error } = await supabase.from("Hotels").insert({
@@ -58,7 +57,7 @@ export default function AddHotel({ cities }) {
       //   prices: avragePrice,
       //   stars: value,
       // });
-      console.log(get, hotelLat, hotelLng);
+      console.log(get, lat, lng);
 
       if (error) throw error;
       alert("done");

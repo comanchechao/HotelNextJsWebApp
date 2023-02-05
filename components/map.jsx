@@ -19,11 +19,17 @@ function DisplayPosition({ map, markedHotel }) {
   const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(() => map.getCenter());
 
+  useEffect(() => {
+    if ((Lat > 0) & (Lng > 0)) {
+      map.setView({ lat: Lat, lng: Lng }, 10);
+    }
+  }, []);
+
   let Lat = useSelector((state) => state.map.lat);
   let Lng = useSelector((state) => state.map.lng);
 
   const onClick = useCallback(() => {
-    map.setView({ Lat, Lng }, zoom);
+    map.setView({ lat: Lat, lng: Lng }, 16);
     console.log({ lat: Lat, lng: Lng });
   }, [map]);
 
@@ -139,7 +145,7 @@ export default function ExternalStateExample(position) {
   );
 
   return (
-    <div className="flex w-full">
+    <div className="flex flex-col w-full">
       {displayMap}
       {map ? <DisplayPosition markedHotel={markedHotel} map={map} /> : null}
     </div>
