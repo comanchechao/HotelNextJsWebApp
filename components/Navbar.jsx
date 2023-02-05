@@ -23,21 +23,19 @@ export default function Navbar() {
   const router = useRouter();
   // const [isLogged, SetisLogged] = useState(false);
   const changeTo = router.locale === "fa" ? "tr" : "fa";
+  // async function getSetUser() {
+  //   const {
+  //     data: { user },
+  //   } = await supabase.auth.getUser();
+  //   if (user) {
+  //     console.log("logged");
+  //     SetisLogged(true);
+  //   } else {
+  //     console.log("Logged out");
+  //     SetisLogged(false);
+  //   }
+  // }
 
-  const isLogged = useSelector((state) => state.isLogged);
-
-  const handleSignOut = async (e) => {
-    try {
-      let { error } = await supabase.auth.signOut();
-      if (error) throw error;
-    } catch (error) {
-      alert(error.message);
-    } finally {
-      setTimeout(() => {
-        window.location.reload();
-      }, 3000);
-    }
-  };
   const [nextLocale, setNextLocale] = useState("tr");
   const { pathname, asPath, query } = router;
 
@@ -96,41 +94,8 @@ export default function Navbar() {
           <h4 className=" ">خونه</h4>
           <House className="mx-1" size={28} weight="light" />
         </Link>
-        {isLogged ? (
-          <div className="dropdown">
-            <label
-              tabIndex={0}
-              className="btn font-normal text-sm  bg-transparent rounded-sm px-1 m-1 border-none  text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
-            >
-              <CaretDown className="mx-2" size={20} weight="bold" />
-              <User size={30} />
-            </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu  w-52  text-right bg-white rounded-sm  "
-            >
-              <li className="text-gray-900 ">
-                <Link
-                  href="/userProfile"
-                  className="w-full text-center text-sm flex items-center justify-end"
-                >
-                  اطلاعات حساب کاربری
-                  <User size={20} />
-                </Link>
-              </li>
-              <li className="text-gray-900">
-                <button
-                  onClick={handleSignOut}
-                  className="w-full font-mainFont text-center text-sm flex items-center justify-end"
-                >
-                  خروج از حساب کاربری <SignOut size={20} />
-                </button>
-              </li>
-            </ul>
-          </div>
-        ) : (
-          <LoginModal />
-        )}
+
+        <LoginModal />
       </div>
 
       <div className="lg:text-lg text-sm lg:flex items-center lg:space-x-4 hidden">

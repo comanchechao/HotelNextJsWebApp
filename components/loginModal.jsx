@@ -7,18 +7,19 @@ import {
   Alert,
   Loader,
 } from "@mantine/core";
-import { SignIn } from "phosphor-react";
+import { SignIn, CaretDown, User, SignOut } from "phosphor-react";
 import { supabase } from "../lib/supabaseClient";
 import { useDispatch } from "react-redux";
 import { userActions } from "../store/user/user";
 import ForgotPasswordModal from "./forgotPasswordModal";
-
+import Link from "next/link";
 export default function LoginModal() {
   const data = [
     { value: "+98", label: "🇮🇷 +98" },
     { value: "+90", label: "🇹🇷 +90" },
   ];
   const theme = useMantineTheme();
+
   const [opened, setOpened] = useState(false);
   const [change, setChange] = useState(false);
   const [register, setRegister] = useState(false);
@@ -28,6 +29,7 @@ export default function LoginModal() {
   const [emailSignUp, setEmailSignUp] = useState("");
   const [passwordSignUp, setPasswordSignUp] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isLogged, SetisLogged] = useState("");
 
   // GET USER
   async function getSetUser() {
@@ -35,10 +37,11 @@ export default function LoginModal() {
       data: { user },
     } = await supabase.auth.getUser();
     if (user) {
-      dispatch(userActions.setUser(user));
       console.log("logged");
+      SetisLogged(true);
     } else {
       console.log("Logged out");
+      SetisLogged(false);
     }
   }
   const dispatch = useDispatch();
@@ -80,17 +83,29 @@ export default function LoginModal() {
     else {
       console.log("user");
       setLoading(false);
-
       getSetUser();
       setTimeout(() => {
         setAlert(true);
       }, 2000);
       setTimeout(() => {
+        setAlert(false);
         setOpened(false);
       }, 5000);
     }
   };
-
+  // SignOut
+  const handleSignOut = async (e) => {
+    try {
+      let { error } = await supabase.auth.signOut();
+      if (error) throw error;
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+    }
+  };
   const select = (
     <NativeSelect
       data={data}
@@ -267,13 +282,49 @@ export default function LoginModal() {
           )}
         </div>
       </Modal>
-      <button
-        className=" flex rounded-sm  items-center justify-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
-        onClick={() => setOpened(true)}
-      >
-        <SignIn className="mx-2" size={30} weight="light" />
-        <h4 className="hidden lg:flex"> ورود یا ثبت‌نام </h4>
-      </button>
+      <div>
+        {isLogged ? (
+          <div className="dropdown">
+            <label
+              tabIndex={0}
+              className="btn font-normal text-sm  bg-transparent rounded-sm px-1 m-1 border-none  text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            >
+              <CaretDown className="mx-2" size={20} weight="bold" />
+              <User size={30} />
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu  w-52  text-right bg-white rounded-sm  "
+            >
+              <li className="text-gray-900 ">
+                <Link
+                  href="/userProfile"
+                  className="w-full text-center text-sm flex items-center justify-end"
+                >
+                  اطلاعات حساب کاربری
+                  <User size={20} />
+                </Link>
+              </li>
+              <li className="text-gray-900">
+                <button
+                  onClick={handleSignOut}
+                  className="w-full font-mainFont text-center text-sm flex items-center justify-end"
+                >
+                  خروج از حساب کاربری <SignOut size={20} />
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <button
+            className=" flex rounded-sm  items-center justify-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            onClick={() => setOpened(true)}
+          >
+            <SignIn className="mx-2" size={30} weight="light" />
+            <h4 className="hidden lg:flex"> ورود یا ثبت‌نام </h4>
+          </button>
+        )}
+      </div>
     </div>
   );
 }
