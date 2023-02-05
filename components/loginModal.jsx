@@ -5,6 +5,7 @@ import {
   useMantineTheme,
   NativeSelect,
   Alert,
+  Loader,
 } from "@mantine/core";
 import { SignIn } from "phosphor-react";
 import { supabase } from "../lib/supabaseClient";
@@ -26,6 +27,7 @@ export default function LoginModal() {
   const [alert, setAlert] = useState(false);
   const [emailSignUp, setEmailSignUp] = useState("");
   const [passwordSignUp, setPasswordSignUp] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // GET USER
   async function getSetUser() {
@@ -34,6 +36,9 @@ export default function LoginModal() {
     } = await supabase.auth.getUser();
     if (user) {
       dispatch(userActions.setUser(user));
+      console.log("logged");
+    } else {
+      console.log("Logged out");
     }
   }
   const dispatch = useDispatch();
@@ -43,7 +48,7 @@ export default function LoginModal() {
     e.preventDefault();
 
     try {
-      // setLoading(true);
+      setLoading(true);
       const { error } = await supabase.auth.signUp({
         email: emailSignUp,
         password: passwordSignUp,
@@ -52,7 +57,7 @@ export default function LoginModal() {
     } catch (error) {
       // alert(error.error_description || error.message);
     } finally {
-      // setLoading(false);
+      setLoading(false);
       setAlert(true);
       setTimeout(() => {
         setAlert(false);
@@ -66,23 +71,23 @@ export default function LoginModal() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    try {
-      // setLoading(true);
-      const { error } = await supabase.auth.signIn({ email, password });
-      if (error) throw error;
-      checkLog(true);
-      console.log(user);
-    } catch (error) {
-    } finally {
-      // setLoading(false);
+    setLoading(true);
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) throw error;
+    else {
+      console.log("user");
+      setLoading(false);
+
       getSetUser();
-      setAlert(true);
       setTimeout(() => {
-        setAlert(false);
+        setAlert(true);
       }, 2000);
       setTimeout(() => {
         setOpened(false);
-      }, 2000);
+      }, 5000);
     }
   };
 
@@ -118,18 +123,25 @@ export default function LoginModal() {
         <div className=" flex flex-col items-center px-5">
           {change ? (
             <div className=" w-full h-rem33 flex flex-col items-center justify-around space-y-2">
-              {alert ? (
-                <Alert color="green" withCloseButton variant="outline">
-                  <h1 className="text-2xl text-center">ورود موفقیت آمیز بود</h1>
-                </Alert>
-              ) : (
-                <div>
-                  {register ? (
-                    <div className="flex flex-col items-center justify-center space-y-5">
-                      <div className="flex flex-col items-center justify-center space-y-3">
-                        <h1 className="text-3xl  "> ورود </h1>
-                        <h4>ایمیل و رمز عبور خود را برای ورود وارد کنید</h4>
-                      </div>
+              <div>
+                {register ? (
+                  <div className="flex flex-col items-center justify-center space-y-5">
+                    <div>
+                      {alert ? (
+                        <Alert color="green" withCloseButton variant="outline">
+                          <h1 className="text-2xl text-center">
+                            ورود موفقیت آمیز بود
+                          </h1>
+                        </Alert>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
+                    <div className="flex flex-col items-center justify-center space-y-3">
+                      <h1 className="text-3xl  "> ورود </h1>
+                      <h4>ایمیل و رمز عبور خود را برای ورود وارد کنید</h4>
+                    </div>
+                    <form onSubmit={handleLogin}>
                       <TextInput
                         className="text-2xl   text-right flex flex-col items-end "
                         type="email"
@@ -150,76 +162,81 @@ export default function LoginModal() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
-                      <button
-                        onClick={handleLogin}
-                        className="w-full rounded-md mt-4 transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
-                      >
-                        تایید
-                      </button>
-                      <div className="flex items-center h-9 justify-between space-x-3 w-full">
-                        <button
-                          onClick={() => setRegister(false)}
-                          className="w-full h-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent   text-md font-mainFont"
-                        >
-                          <p className=" w-36 mx-2">ثبت‌نام حساب کاربری</p>
+
+                      {loading ? (
+                        <div className="flex items-center justify-center">
+                          <Loader color="violet" />
+                        </div>
+                      ) : (
+                        <button className="w-full rounded-md mt-4 transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+                          تایید
                         </button>
-                        <ForgotPasswordModal />
-                      </div>
+                      )}
+                    </form>
+
+                    <div className="flex items-center h-9 justify-between space-x-3 w-full">
                       <button
-                        onClick={() => setChange(false)}
-                        className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
+                        onClick={() => setRegister(false)}
+                        className="w-full h-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent   text-md font-mainFont"
                       >
-                        ورود با رمز یکبار مصرف
+                        <p className=" w-36 mx-2">ثبت‌نام حساب کاربری</p>
                       </button>
+                      <ForgotPasswordModal />
                     </div>
-                  ) : (
+                    <button
+                      onClick={() => setChange(false)}
+                      className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
+                    >
+                      ورود با رمز یکبار مصرف
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center space-y-3">
                     <div className="flex flex-col items-center justify-center space-y-3">
-                      <div className="flex flex-col items-center justify-center space-y-3">
-                        <h1 className="text-3xl  "> ثبت‌نام </h1>
-                        <h4>ایمیل و رمز عبور خود را برای ثبت‌نام وارد کنید</h4>
-                      </div>
-                      <TextInput
-                        className="text-2xl   text-right flex flex-col items-end "
-                        type="email"
-                        placeholder="ایمیل"
-                        label="ایمیل"
-                        size="md"
-                        withAsterisk
-                        value={emailSignUp}
-                        onChange={(e) => setEmailSignUp(e.target.value)}
-                      />
-                      <TextInput
-                        className="text-2xl   text-right flex flex-col items-end "
-                        type="password"
-                        placeholder="رمز عبور"
-                        label="رمز عبور"
-                        size="md"
-                        withAsterisk
-                        value={passwordSignUp}
-                        onChange={(e) => setPasswordSignUp(e.target.value)}
-                      />
-                      <button
-                        onClick={handleSignUp}
-                        className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
-                      >
-                        تایید
-                      </button>
-                      <button
-                        onClick={() => setRegister(true)}
-                        className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-gray-500 hover:text-gray-900 text-md font-mainFont"
-                      >
-                        ورود با ایمیل و پسوورد
-                      </button>
-                      <button
-                        onClick={() => setChange(false)}
-                        className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
-                      >
-                        ورود با رمز یکبار مصرف
-                      </button>
+                      <h1 className="text-3xl  "> ثبت‌نام </h1>
+                      <h4>ایمیل و رمز عبور خود را برای ثبت‌نام وارد کنید</h4>
                     </div>
-                  )}
-                </div>
-              )}
+                    <TextInput
+                      className="text-2xl   text-right flex flex-col items-end "
+                      type="email"
+                      placeholder="ایمیل"
+                      label="ایمیل"
+                      size="md"
+                      withAsterisk
+                      value={emailSignUp}
+                      onChange={(e) => setEmailSignUp(e.target.value)}
+                    />
+                    <TextInput
+                      className="text-2xl   text-right flex flex-col items-end "
+                      type="password"
+                      placeholder="رمز عبور"
+                      label="رمز عبور"
+                      size="md"
+                      withAsterisk
+                      value={passwordSignUp}
+                      onChange={(e) => setPasswordSignUp(e.target.value)}
+                    />
+                    <button
+                      onClick={handleSignUp}
+                      className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+                    >
+                      تایید
+                    </button>
+                    <button
+                      onClick={() => setRegister(true)}
+                      className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-gray-500 hover:text-gray-900 text-md font-mainFont"
+                    >
+                      ورود با ایمیل و پسوورد
+                    </button>
+                    <button
+                      onClick={() => setChange(false)}
+                      className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
+                    >
+                      ورود با رمز یکبار مصرف
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           ) : (
             <div className=" h-rem26 flex flex-col items-center justify-center space-y-5">

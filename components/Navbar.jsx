@@ -21,20 +21,10 @@ import { supabase } from "../lib/supabaseClient";
 
 export default function Navbar() {
   const router = useRouter();
-  const [isLogged, SetisLogged] = useState(false);
+  // const [isLogged, SetisLogged] = useState(false);
   const changeTo = router.locale === "fa" ? "tr" : "fa";
 
-  async function GetUser() {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (user) {
-      console.log("logged in");
-      SetisLogged(true);
-    } else {
-      SetisLogged(false);
-    }
-  }
+  const isLogged = useSelector((state) => state.isLogged);
 
   const handleSignOut = async (e) => {
     try {
@@ -58,10 +48,7 @@ export default function Navbar() {
   // change just the locale and maintain all other route information including href's query
 
   return (
-    <div
-      onload={GetUser()}
-      className=" w-screen h-16 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32"
-    >
+    <div className=" w-screen h-16 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32">
       <div className="text-lg flex items-center space-x-4">
         <Link
           href="/"
