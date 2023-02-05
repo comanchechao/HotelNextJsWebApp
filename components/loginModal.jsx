@@ -28,12 +28,14 @@ export default function LoginModal() {
   const [passwordSignUp, setPasswordSignUp] = useState("");
 
   // GET USER
-  const getSetUser = function () {
-    const user = supabase.auth.user();
+  async function getSetUser() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (user) {
       dispatch(userActions.setUser(user));
     }
-  };
+  }
   const dispatch = useDispatch();
 
   // SIGN UP
@@ -69,11 +71,15 @@ export default function LoginModal() {
       const { error } = await supabase.auth.signIn({ email, password });
       if (error) throw error;
       checkLog(true);
+      console.log(user);
     } catch (error) {
     } finally {
       // setLoading(false);
       getSetUser();
       setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 2000);
       setTimeout(() => {
         setOpened(false);
       }, 2000);
@@ -114,8 +120,7 @@ export default function LoginModal() {
             <div className=" w-full h-rem33 flex flex-col items-center justify-around space-y-2">
               {alert ? (
                 <Alert color="green" withCloseButton variant="outline">
-                  Something terrible happened! You made a mistake and there is
-                  no going back, your data was lost forever!
+                  <h1 className="text-2xl text-center">ورود موفقیت آمیز بود</h1>
                 </Alert>
               ) : (
                 <div>

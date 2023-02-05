@@ -15,21 +15,53 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import NavDrawer from "./NavDrawer";
 import LoginModal from "./loginModal";
+import { useSelector } from "react-redux";
+import { user } from "../store/user/user";
+import { supabase } from "../lib/supabaseClient";
 
 export default function Navbar() {
-  const [nextLocale, setNextLocale] = useState("tr");
   const router = useRouter();
+  const [isLogged, SetisLogged] = useState(false);
+  const changeTo = router.locale === "fa" ? "tr" : "fa";
+
+  async function GetUser() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (user) {
+      console.log("logged in");
+      SetisLogged(true);
+    } else {
+      SetisLogged(false);
+    }
+  }
+
+  const handleSignOut = async (e) => {
+    try {
+      let { error } = await supabase.auth.signOut();
+      if (error) throw error;
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+    }
+  };
+  const [nextLocale, setNextLocale] = useState("tr");
   const { pathname, asPath, query } = router;
 
   useEffect(() => {
     console.log(router.locale);
   });
 
-  const changeTo = router.locale === "fa" ? "tr" : "fa";
   // change just the locale and maintain all other route information including href's query
 
   return (
-    <div className=" w-screen h-16 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32">
+    <div
+      onload={GetUser()}
+      className=" w-screen h-16 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32"
+    >
       <div className="text-lg flex items-center space-x-4">
         <Link
           href="/"
@@ -77,41 +109,44 @@ export default function Navbar() {
           <h4 className=" ">خونه</h4>
           <House className="mx-1" size={28} weight="light" />
         </Link>
-        <LoginModal />
+        {isLogged ? (
+          <div className="dropdown">
+            <label
+              tabIndex={0}
+              className="btn font-normal text-sm  bg-transparent rounded-sm px-1 m-1 border-none  text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            >
+              <CaretDown className="mx-2" size={20} weight="bold" />
+              <User size={30} />
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu  w-52  text-right bg-white rounded-sm  "
+            >
+              <li className="text-gray-900 ">
+                <Link
+                  href="/userProfile"
+                  className="w-full text-center text-sm flex items-center justify-end"
+                >
+                  اطلاعات حساب کاربری
+                  <User size={20} />
+                </Link>
+              </li>
+              <li className="text-gray-900">
+                <button
+                  onClick={handleSignOut}
+                  className="w-full font-mainFont text-center text-sm flex items-center justify-end"
+                >
+                  خروج از حساب کاربری <SignOut size={20} />
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <LoginModal />
+        )}
       </div>
 
       <div className="lg:text-lg text-sm lg:flex items-center lg:space-x-4 hidden">
-        <div className="dropdown">
-          <label
-            tabIndex={0}
-            className="btn font-normal text-sm  bg-transparent rounded-sm px-1 m-1 border-none  text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
-          >
-            <CaretDown className="mx-2" size={20} weight="bold" />
-            <User size={30} />
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu  w-52  text-right bg-white rounded-sm  "
-          >
-            <li className="text-gray-900 ">
-              <Link
-                href="/userProfile"
-                className="w-full text-center text-sm flex items-center justify-end"
-              >
-                اطلاعات حساب کاربری
-                <User size={20} />
-              </Link>
-            </li>
-            <li className="text-gray-900">
-              <Link
-                href="#"
-                className="w-full text-center text-sm flex items-center justify-end"
-              >
-                خروج از حساب کاربری <SignOut size={20} />
-              </Link>
-            </li>
-          </ul>
-        </div>
         <Link
           href="/admin"
           className="flex rounded-sm justify-center  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
