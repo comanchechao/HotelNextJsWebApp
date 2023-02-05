@@ -5,8 +5,6 @@ import {
   Scroll,
   Bed,
   HouseLine,
-  User,
-  SignOut,
   IdentificationCard,
   House,
 } from "phosphor-react";
@@ -15,9 +13,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import NavDrawer from "./NavDrawer";
 import LoginModal from "./loginModal";
-import { useSelector } from "react-redux";
-import { user } from "../store/user/user";
-import { supabase } from "../lib/supabaseClient";
 
 export default function Navbar() {
   const router = useRouter();

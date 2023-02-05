@@ -4,7 +4,7 @@ import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { appWithTranslation } from "next-i18next";
 import "../styles/transition.css";
-import Transition from "../components/Transition";
+import Transitions from "../components/Transitions";
 import store from "../store/index";
 import { Provider } from "react-redux";
 function App({ Component, pageProps }) {
@@ -26,11 +26,11 @@ function App({ Component, pageProps }) {
           colorScheme: "light",
         }}
       >
-        <Transition>
+        <Transitions>
           <Provider store={store}>
             <Component {...pageProps} />
           </Provider>
-        </Transition>
+        </Transitions>
       </MantineProvider>
     </>
   );

@@ -4,13 +4,12 @@ import {
   TextInput,
   useMantineTheme,
   NativeSelect,
-  Alert,
+  Notification,
   Loader,
 } from "@mantine/core";
 import { SignIn, CaretDown, User, SignOut } from "phosphor-react";
 import { supabase } from "../lib/supabaseClient";
 import { useDispatch } from "react-redux";
-import { userActions } from "../store/user/user";
 import ForgotPasswordModal from "./forgotPasswordModal";
 import Link from "next/link";
 export default function LoginModal() {
@@ -84,9 +83,7 @@ export default function LoginModal() {
       console.log("user");
       setLoading(false);
       getSetUser();
-      setTimeout(() => {
-        setAlert(true);
-      }, 2000);
+      setAlert(true);
       setTimeout(() => {
         setAlert(false);
         setOpened(false);
@@ -143,11 +140,18 @@ export default function LoginModal() {
                   <div className="flex flex-col items-center justify-center space-y-5">
                     <div>
                       {alert ? (
-                        <Alert color="green" withCloseButton variant="outline">
+                        <Notification
+                          transition="fade"
+                          transitionDuration={600}
+                          transitionTimingFunction="ease"
+                          color="green"
+                          withCloseButton
+                          variant="outline"
+                        >
                           <h1 className="text-2xl text-center">
                             ورود موفقیت آمیز بود
                           </h1>
-                        </Alert>
+                        </Notification>
                       ) : (
                         <div></div>
                       )}
@@ -179,7 +183,7 @@ export default function LoginModal() {
                       />
 
                       {loading ? (
-                        <div className="flex items-center justify-center">
+                        <div className="flex items-center justify-center my-4">
                           <Loader color="violet" />
                         </div>
                       ) : (

@@ -15,7 +15,7 @@ const variants = {
     },
   },
 };
-const Transition = ({ children }) => {
+const Transitions = ({ children }) => {
   const { asPath } = useRouter();
   return (
     <div className="effect-1">
@@ -34,4 +34,4 @@ const Transition = ({ children }) => {
   );
 };
 
-export default Transition;
+export default Transitions;
