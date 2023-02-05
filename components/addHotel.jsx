@@ -81,7 +81,9 @@ export default function AddHotel({ cities }) {
       "stars",
       value,
       "cities:",
-      cities
+      cities,
+      "city",
+      city
     );
   });
 
@@ -337,7 +339,7 @@ export default function AddHotel({ cities }) {
               />
             </div>
             <div className="flex p-5 w-full justify-center items-center">
-              <DynamicMap />
+              <DynamicMap city={city} />
             </div>
             <div className="flex">
               <button
