@@ -15,15 +15,21 @@ const locations = [
 ];
 const zoom = 8;
 
-function DisplayPosition({ map, markedHotel }) {
+function DisplayPosition({ map }) {
   const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(() => map.getCenter());
+
+  useEffect(() => {
+    if ((Lat > 0) & (Lng > 0)) {
+      map.setView({ lat: Lat, lng: Lng }, 8);
+    }
+  }, []);
 
   let Lat = useSelector((state) => state.map.lat);
   let Lng = useSelector((state) => state.map.lng);
 
   const onClick = useCallback(() => {
-    map.setView({ Lat, Lng }, zoom);
+    map.setView({ lat: Lat, lng: Lng }, 16);
     console.log({ lat: Lat, lng: Lng });
   }, [map]);
 
@@ -58,7 +64,7 @@ function DisplayPosition({ map, markedHotel }) {
   );
 }
 
-export default function ExternalStateExample(position) {
+export default function ExternalStateExample({ city }) {
   const [map, setMap] = useState(null);
   let lat = useSelector((state) => state.map.lat);
   let lng = useSelector((state) => state.map.lng);
@@ -75,6 +81,9 @@ export default function ExternalStateExample(position) {
         setPosition(markedHotel);
       }
     }, []);
+    useEffect(() => {
+      console.log(city);
+    });
     const [position, setPosition] = useState(center);
     const markerRef = useRef(null);
 
@@ -139,7 +148,7 @@ export default function ExternalStateExample(position) {
   );
 
   return (
-    <div className="flex w-full">
+    <div className="flex flex-col items-center  w-full">
       {displayMap}
       {map ? <DisplayPosition markedHotel={markedHotel} map={map} /> : null}
     </div>
