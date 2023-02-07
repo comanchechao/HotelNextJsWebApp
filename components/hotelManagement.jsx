@@ -19,6 +19,7 @@ import { Tabs } from "@mantine/core";
 import { MagnifyingGlass } from "phosphor-react";
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
+import HotelImage from "./hotelImage";
 
 export default function HotelManagement({ hotels }) {
   const HotelMap = dynamic(() => import("./hotelMap"), {
@@ -121,11 +122,7 @@ export default function HotelManagement({ hotels }) {
                       </div>
                     </div>
                     <div className="flex w-full h-full lg:h-52 justify-center items-center">
-                      <Image
-                        alt=""
-                        className="w-full lg:h-52 object-contain"
-                        src={hotel.image}
-                      />
+                      <HotelImage image={hotel.firstImage} />
                     </div>
                   </div>
                 );
