@@ -1,6 +1,36 @@
 import { Money, User } from "phosphor-react";
+import { useEffect, useState } from "react";
+import { supabase } from "../../lib/supabaseClient";
 
 export default function ProfileInfo() {
+  const [email, setEmail] = useState("");
+  useEffect(() => {
+    setTimeout(() => {
+      getProfile();
+    }, 5000);
+  });
+  async function getProfile() {
+    try {
+      const user = supabase.auth.getUser();
+      let { data, error, status } = await supabase
+        .from("profiles")
+        .select(`email`)
+        .eq("id", user.id)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        setEmail(data.email);
+        console.log(email);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   return (
     <div className="w-full h-full p-3 flex space-y-8 flex-col">
       <div className="w-full h-auto flex-col flex items-end justify-end bg-white drop-shadow-md rounded-lg">
@@ -16,7 +46,7 @@ export default function ProfileInfo() {
               </h2>
               <h2 className="text-lg text-gray-500">شماره تلفن</h2>
               <h2 className="text-lg text-gray-800 border-b-2 border-mainPurple pb-1">
-                chao.comanche@gmail.com
+                {email}
               </h2>
               <h2 className="text-lg text-gray-500">ایمیل</h2>
             </div>
