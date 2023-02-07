@@ -22,7 +22,7 @@ export default function HotelMaps({ lat, lng }) {
         opened={opened}
         onClose={() => setOpened(false)}
         centered
-        title="Add new Hotel"
+        title="hotel display"
       >
         {" "}
         <MapContainer

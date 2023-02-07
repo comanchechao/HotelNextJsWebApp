@@ -6,8 +6,22 @@ import { Accordion } from "@mantine/core";
 import HotelListMenu from "../../components/hotelListMenu";
 import Footer from "../../components/Footer";
 import HotelListModal from "../../components/hotelListModal";
+import { supabase } from "../../lib/supabaseClient";
 
-export default function HotelList() {
+export async function getServerSideProps() {
+  // Fetch data from the database
+
+  const { data, error } = await supabase.from("Hotels").select();
+
+  if (error) throw error;
+  return {
+    props: {
+      hotels: data,
+    },
+  };
+}
+
+export default function HotelList({ hotels }) {
   return (
     <div className="w-screen h-auto bg-gray-200">
       <Navbar />
@@ -45,10 +59,9 @@ export default function HotelList() {
             <HotelListModal />
           </div>
           <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10">
-            <HotelCard />
-            <HotelCard /> <HotelCard />
-            <HotelCard />
-            <HotelCard /> <HotelCard />
+            {hotels.map((hotel) => {
+              return <HotelCard hotel={hotel} />;
+            })}
           </div>
         </div>
         <div className=" w-1/4 h-full hidden lg:flex">
