@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Modal,
   TextInput,
@@ -31,13 +31,21 @@ export default function LoginModal() {
   const [isLogged, SetisLogged] = useState("");
 
   // GET USER
+  useEffect(() => {
+    getSetUser();
+  });
   async function getSetUser() {
     const {
       data: { user },
     } = await supabase.auth.getUser();
     if (user) {
       console.log("logged");
+      const updates = {
+        id: user.id,
+        email: email,
+      };
       SetisLogged(true);
+      let { error } = await supabase.from("profiles").upsert(updates);
     } else {
       console.log("Logged out");
       SetisLogged(false);
@@ -80,9 +88,23 @@ export default function LoginModal() {
     });
     if (error) throw error;
     else {
-      console.log("user");
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user) {
+        console.log("logged");
+        const updates = {
+          id: user.id,
+          email: user.email,
+        };
+        SetisLogged(true);
+        await supabase.from("profiles").upsert(updates);
+      } else {
+        console.log("Logged out");
+        SetisLogged(false);
+      }
       setLoading(false);
-      getSetUser();
+      // getSetUser();
       setAlert(true);
       setTimeout(() => {
         setAlert(false);
