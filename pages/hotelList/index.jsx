@@ -60,7 +60,7 @@ export default function HotelList({ hotels }) {
           </div>
           <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10">
             {hotels.map((hotel) => {
-              return <HotelCard hotel={hotel} />;
+              return <HotelCard key={hotel.id} hotel={hotel} />;
             })}
           </div>
         </div>
