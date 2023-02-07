@@ -29,7 +29,7 @@ export default function HotelMaps({ lat, lng }) {
           id="map"
           className="w-96 h-96"
           center={{ lat: lat, lng: lng }}
-          zoom={5}
+          zoom={8}
           scrollWheelZoom={false}
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
