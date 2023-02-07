@@ -21,16 +21,19 @@ import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 
 export async function getServerSideProps() {
-  let { data } = await supabase.from("cities").select();
+  // Fetch data from the database
 
+  const { data, error } = await supabase.from("Hotels").select();
+
+  if (error) throw error;
   return {
     props: {
-      cities: data,
+      hotels: data,
     },
   };
 }
 
-export default function AdminPage({ cities }) {
+export default function AdminPage({ hotels }) {
   const [tab, setTab] = useState("user");
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
@@ -215,7 +218,7 @@ export default function AdminPage({ cities }) {
           </div>
           <div className="w-full h-full  justify-center items-center">
             {tab === "hotel" ? (
-              <HotelManagement cities={cities} />
+              <HotelManagement hotels={hotels} />
             ) : tab === "user" ? (
               <UserManagement />
             ) : tab === "reserve" ? (
