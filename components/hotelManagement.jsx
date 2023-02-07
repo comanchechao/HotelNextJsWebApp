@@ -17,15 +17,13 @@ import {
 import Link from "next/link";
 import { Tabs } from "@mantine/core";
 import { MagnifyingGlass } from "phosphor-react";
+import { useEffect } from "react";
+import dynamic from "next/dynamic";
 
-export default function HotelManagement({ cities }) {
-  let hotels = [
-    { title: "هتل", rooms: 32, image: hotelOne },
-    { title: "دلتا", rooms: 32, image: hotelTwo },
-    { title: "هتل", rooms: 32, image: hotelThree },
-    { title: "هتل", rooms: 32, image: hotelFour },
-  ];
-
+export default function HotelManagement({ hotels }) {
+  const HotelMap = dynamic(() => import("./hotelMap"), {
+    ssr: false,
+  });
   return (
     <div className="flex flex-col w-full h-full bg-gray-200">
       <div className="flex w-full space-y-4 flex-col">
@@ -64,6 +62,7 @@ export default function HotelManagement({ cities }) {
           <Tabs.Panel value="gallery" pt="xs">
             <div className="flex w-full p-5  lg:h-rem28 lg:overflow-y-scroll space-y-7  flex-col">
               {hotels.map((hotel, i) => {
+                console.log(hotel.locationLat);
                 return (
                   <div
                     key={i}
@@ -115,7 +114,10 @@ export default function HotelManagement({ cities }) {
                         </div>
                       </div>
                       <div className="flex text-blue-500 transition hover:text-blue-600 cursor-pointer justify-center items-center">
-                        <h2>مشاهده روی نقشه</h2>
+                        <HotelMap
+                          lat={hotel.locationLat}
+                          lng={hotel.locationLng}
+                        />
                       </div>
                     </div>
                     <div className="flex w-full h-full lg:h-52 justify-center items-center">
@@ -185,14 +187,14 @@ export default function HotelManagement({ cities }) {
                         </div>
                       </div>
                       <div className="flex text-blue-500 transition hover:text-blue-600 cursor-pointer justify-center items-center">
-                        <h2>مشاهده روی نقشه</h2>
+                        <HotelMap location={hotel.location} />
                       </div>
                     </div>
                     <div className="flex w-full h-full lg:h-52 justify-center items-center">
                       <Image
                         alt=""
+                        src={hotelOne}
                         className="w-full lg:h-52 object-contain"
-                        src={hotel.image}
                       />
                     </div>
                   </div>
@@ -206,7 +208,7 @@ export default function HotelManagement({ cities }) {
           </Tabs.Panel>
         </Tabs>
         <div className="absolute right-8 bottom-8">
-          <AddHotel cities={cities} />
+          <AddHotel />
         </div>
       </div>
     </div>

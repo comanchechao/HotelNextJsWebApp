@@ -1,5 +1,12 @@
 import { useMemo, useEffect, useState } from "react";
-import { Modal, Select, MultiSelect, Rating, Group } from "@mantine/core";
+import {
+  Modal,
+  Select,
+  MultiSelect,
+  Rating,
+  Loader,
+  Group,
+} from "@mantine/core";
 import { IconUpload } from "@tabler/icons";
 import dynamic from "next/dynamic.js";
 import { supabase } from "../lib/supabaseClient";
@@ -23,7 +30,7 @@ import { useSelector, createSelector } from "react-redux";
 //   { value: "4", label: "تنکابن" },
 // ];
 
-export default function AddHotel({ cities }) {
+export default function AddHotel() {
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
   const [title, setTitle] = useState("");
@@ -49,30 +56,18 @@ export default function AddHotel({ cities }) {
   let lng = useSelector((state) => state.map.lng);
 
   async function handleSubmit() {
-    try {
-      // const { error } = await supabase.from("Hotels").insert({
-      //   title: title,
-      //   firstImage: firstImage,
-      //   features: features,
-      //   prices: avragePrice,
-      //   stars: value,
-      // });
-      console.log(get, lat, lng);
-
-      if (error) throw error;
-      alert("done");
-    } catch (error) {
-      alert(error.message);
-    }
-  }
-  useEffect(() => {
-    if (cities) {
-      cities.forEach((city, i) => {
-        if (cityNames.indexOf(city.name) === -1) {
-          cityNames.push(city.name);
-        }
-      });
-    }
+    const { error } = await supabase.from("Hotels").insert({
+      title: title,
+      firstImage: firstImage,
+      secondImage: secondImage,
+      thirdImage: thirdImage,
+      fourthImage: fourthImage,
+      features: features,
+      prices: avragePrice,
+      stars: value,
+      locationLat: lat,
+      locationLng: lng,
+    });
     console.log(
       "title:",
       title,
@@ -80,12 +75,23 @@ export default function AddHotel({ cities }) {
       features,
       "stars",
       value,
-      "cities:",
-      cities,
-      "city",
-      city
+
+      "location ",
+      { lat: lat, lng: lng }
     );
-  });
+
+    if (error) throw error;
+    alert("done");
+  }
+  // useEffect(() => {
+  //   if (cities) {
+  //     cities.forEach((city, i) => {
+  //       if (cityNames.indexOf(city.name) === -1) {
+  //         cityNames.push(city.name);
+  //       }
+  //     });
+  //   }
+  // }, []);
 
   // uploading images
 
@@ -220,7 +226,11 @@ export default function AddHotel({ cities }) {
               </div>
               <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="firstImage">
-                  <IconUpload size={30} />
+                  {uploading ? (
+                    <Loader color="grape" />
+                  ) : (
+                    <IconUpload size={30} />
+                  )}
                 </label>
                 <input
                   onChange={firstImageUpload}
@@ -231,7 +241,11 @@ export default function AddHotel({ cities }) {
               </div>
               <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="secondImage">
-                  <IconUpload size={30} />
+                  {uploading ? (
+                    <Loader color="grape" />
+                  ) : (
+                    <IconUpload size={30} />
+                  )}
                 </label>
                 <input
                   onChange={secondImageUpload}
@@ -242,7 +256,11 @@ export default function AddHotel({ cities }) {
               </div>
               <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="thirdImage">
-                  <IconUpload size={30} />
+                  {uploading ? (
+                    <Loader color="grape" />
+                  ) : (
+                    <IconUpload size={30} />
+                  )}
                 </label>
                 <input
                   onChange={thirdImageUpload}
@@ -253,7 +271,11 @@ export default function AddHotel({ cities }) {
               </div>
               <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="fourthImage">
-                  <IconUpload size={30} />
+                  {uploading ? (
+                    <Loader color="grape" />
+                  ) : (
+                    <IconUpload size={30} />
+                  )}
                 </label>
                 <input
                   onChange={fourthImageUpload}
@@ -264,7 +286,11 @@ export default function AddHotel({ cities }) {
               </div>
               <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="fifthImage">
-                  <IconUpload size={30} />
+                  {uploading ? (
+                    <Loader color="grape" />
+                  ) : (
+                    <IconUpload size={30} />
+                  )}
                 </label>
                 <input type="file" className="hidden" id="fifthImage" />
               </div>
