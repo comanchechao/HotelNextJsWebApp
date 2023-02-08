@@ -28,7 +28,7 @@ import FeaturesModal from "../../../components/FeaturesModal";
 import Reply from "../../../components/reply";
 
 import dynamic from "next/dynamic";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const getStaticPaths = async () => {
   const { data, error } = await supabase.from("Hotels").select();
@@ -57,9 +57,68 @@ export const getStaticProps = async (context) => {
 };
 
 export default function HotelDetailPage({ hotel }) {
+  const [loading, setLoading] = useState(false);
+  const [displayImages, setDisplayImages] = useState([]);
+  const [singleImage, setSingleImage] = useState("");
+  const downloadImage1 = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.firstImage);
+
+      if (error) {
+        throw error;
+      }
+      const url = URL.createObjectURL(data);
+      setSingleImage(url);
+    } catch (error) {
+      console.log("Error downloading image: ", error.message);
+    } finally {
+      setLoading(false);
+      downloadImage2();
+    }
+  };
+  const downloadImage2 = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.secondImage);
+
+      if (error) {
+        throw error;
+      }
+      const url = URL.createObjectURL(data);
+      displayImages.push(url);
+    } catch (error) {
+      console.log("Error downloading image: ", error.message);
+    } finally {
+      setLoading(false);
+      downloadImage3();
+    }
+  };
+  const downloadImage3 = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.thirdImage);
+
+      if (error) {
+        throw error;
+      }
+      const url = URL.createObjectURL(data);
+      displayImages.push(url);
+    } catch (error) {
+      console.log("Error downloading image: ", error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    console.log(hotel.locationLat);
-  });
+    downloadImage1();
+  }, []);
   const DynamicMap = dynamic(
     () => import("../../../components/mapWithLocation"),
     {
@@ -118,19 +177,25 @@ export default function HotelDetailPage({ hotel }) {
           <div className="flex py-5  flex-col">
             <div className="flex cursor-pointer w-full justify-center  h-96 rounded-md">
               <div className="hidden lg:flex">
-                {/* <Image alt="" className=" w-full h-full" src={hotelOne} /> */}
+                <Image
+                  width={400}
+                  height={400}
+                  alt=""
+                  className=" w-full h-full"
+                  src={singleImage}
+                />
               </div>
               <div className="grid grid-cols-2 grid-rows-2">
-                {/* {Images.map((image) => {
+                {displayImages.map((image) => {
                   return (
                     <div
                       key={image}
                       className="flex w-full h-full justify-center items-center"
                     >
-                      <Image alt="" className=" w-full h-full" src={image} />
+                      <Image width={200} height={200} alt="" className=" w-full h-full" src={image} />
                     </div>
                   );
-                })} */}
+                })}
               </div>
             </div>
             <div className="flex justify-center py-5  w-full h-16 lg:h-10">
