@@ -103,6 +103,7 @@ export default function ExternalStateExample({ lat, lng }) {
         {locations.map((location, i) => {
           return <Marker key={i} position={[location.lat, location.lng]} />;
         })}
+        <Marker position={{ lat: lat, lng: lng }} />
       </MapContainer>
     ),
     []
