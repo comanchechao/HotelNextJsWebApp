@@ -1,10 +1,7 @@
-import hotelOne from "../../assets/images/hotelone.jpg";
-import hotelTwo from "../../assets/images/hoteltwo.jpg";
-import hotelThree from "../../assets/images/hotelthree.jpg";
-import hotelFour from "../../assets/images/hotelfour.jpg";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../../components/Navbar";
 import { Tabs, Popover, TextInput, Accordion } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
+import { supabase } from "../../../lib/supabaseClient";
 import {
   IconChevronLeft,
   IconStar,
@@ -25,17 +22,50 @@ import {
   ThumbsDown,
   StarHalf,
 } from "phosphor-react";
-import Footer from "../../components/Footer";
-import ImagesModal from "../../components/imagesModal";
-import FeaturesModal from "../../components/FeaturesModal";
-import Reply from "../../components/reply";
+import Footer from "../../../components/Footer";
+import ImagesModal from "../../../components/imagesModal";
+import FeaturesModal from "../../../components/FeaturesModal";
+import Reply from "../../../components/reply";
 
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 
-export default function HotelDetailPage() {
-  const DynamicMap = dynamic(() => import("../../components/mapWithLocation"), {
-    ssr: false,
+export const getStaticPaths = async () => {
+  const { data, error } = await supabase.from("Hotels").select();
+  if (error) throw error;
+
+  const paths = data.map((hotel) => {
+    return {
+      params: { id: hotel.id.toString() },
+    };
   });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const id = context.params.id;
+  const { data, error } = await supabase.from("Hotels").select().eq("id", id);
+  if (error) throw error;
+
+  return {
+    props: { hotel: data[0] },
+  };
+};
+
+export default function HotelDetailPage({ hotel }) {
+  useEffect(() => {
+    console.log(hotel.locationLat);
+  });
+  const DynamicMap = dynamic(
+    () => import("../../../components/mapWithLocation"),
+    {
+      ssr: false,
+    }
+  );
   let rooms = [
     {
       title: "اتاق مستر روم",
@@ -68,7 +98,7 @@ export default function HotelDetailPage() {
       price: 4233000,
     },
   ];
-  let Images = [hotelOne, hotelTwo, hotelThree, hotelFour];
+
   return (
     <div className="w-full h-full">
       <Navbar />
@@ -76,7 +106,7 @@ export default function HotelDetailPage() {
         <div className="flex flex-col p-5 w-full h-full  ">
           <div className="flex justify-end lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24">
             <Link href="/hotelList/hotelDetail">
-              <p>هتل آنا</p>
+              <p>هتل {hotel.title}</p>
             </Link>
             <IconChevronLeft />
             <p>هتل های شهر تهران</p>
@@ -88,10 +118,10 @@ export default function HotelDetailPage() {
           <div className="flex py-5  flex-col">
             <div className="flex cursor-pointer w-full justify-center  h-96 rounded-md">
               <div className="hidden lg:flex">
-                <Image alt="" className=" w-full h-full" src={hotelOne} />
+                {/* <Image alt="" className=" w-full h-full" src={hotelOne} /> */}
               </div>
               <div className="grid grid-cols-2 grid-rows-2">
-                {Images.map((image) => {
+                {/* {Images.map((image) => {
                   return (
                     <div
                       key={image}
@@ -100,7 +130,7 @@ export default function HotelDetailPage() {
                       <Image alt="" className=" w-full h-full" src={image} />
                     </div>
                   );
-                })}
+                })} */}
               </div>
             </div>
             <div className="flex justify-center py-5  w-full h-16 lg:h-10">
@@ -109,14 +139,14 @@ export default function HotelDetailPage() {
           </div>
           <div className="flex w-full justify-end h-32 lg:h-20">
             <div className="flex w-full justify-center items-end flex-col">
-              <h1 className="text-3xl my-2">هتل آنا</h1>
+              <h1 className="text-3xl my-2">هتل {hotel.title}</h1>
               <div className="flex bg-gray-50 p-3 rounded-md space-x-8 justify-center items-center">
                 <div className="flex">
                   <p>اول بند ، روبه روی خیابان گلشهر</p>
                 </div>
                 <div className="flex justify-center items-center space-x-2">
                   <p className="text-lg">ستاره</p>
-                  <p className="text-lg">4</p>
+                  <p className="text-lg">{hotel.stars}</p>
                   <IconStar />
                 </div>
               </div>
@@ -263,7 +293,7 @@ export default function HotelDetailPage() {
               </div>
               <div className="flex flex-col w-full  p-3 bg-white">
                 <div className="flex w-full">
-                  <DynamicMap />
+                  <DynamicMap lat={hotel.locationLat} lng={hotel.locationLng} />
                 </div>
               </div>
               <div className="flex p-5 items-center space-x-1 w-full justify-end">

@@ -13,12 +13,12 @@ const locations = [
 ];
 const zoom = 8;
 
-function DisplayPosition({ map }) {
+function DisplayPosition({ map, lng, lat }) {
   const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(() => map.getCenter());
 
   const onClick = useCallback(() => {
-    map.setView(center, zoom);
+    map.setView({ lat: lat, lng: lng }, zoom);
   }, [map]);
 
   const onMove = useCallback(() => {
@@ -82,11 +82,11 @@ function DisplayPosition({ map }) {
   );
 }
 
-export default function ExternalStateExample(position) {
+export default function ExternalStateExample({ lat, lng }) {
   const [map, setMap] = useState(null);
 
   useEffect(() => {
-    console.log(position);
+    console.log({ lat, lng });
   });
 
   const displayMap = useMemo(
@@ -111,7 +111,7 @@ export default function ExternalStateExample(position) {
   return (
     <div className="flex w-full">
       {displayMap}
-      {map ? <DisplayPosition map={map} /> : null}
+      {map ? <DisplayPosition map={map} lat={lat} lng={lng} /> : null}
     </div>
   );
 }
