@@ -3,31 +3,45 @@ import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 
 export default function ProfileInfo() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState([]);
   useEffect(() => {
     setTimeout(() => {
-      getProfile();
+      getSetUser();
     }, 5000);
   });
-  async function getProfile() {
-    try {
-      const user = supabase.auth.getUser();
-      let { data, error, status } = await supabase
+  async function getSetUser() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (user) {
+      console.log(user.id);
+      let userData = await supabase
         .from("profiles")
-        .select(`email`)
-        .eq("id", user.id)
-        .single();
+        .select("email")
+        .eq("id", user.id);
+      setEmail(userData.email);
+      console.log(userData);
+    } else {
+      console.log("Logged out");
+    }
+  }
+  async function getProfile() {
+    const user = await supabase.auth.getUser();
+    if (user) {
+      console.log(user.id);
+    }
+    let { data, error, status } = await supabase
+      .from("profiles")
+      .select(`email`)
+      .eq("id", user.id)
+      .maybeSingle();
+    if (error && status !== 406) {
+      throw error;
+    }
 
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        setEmail(data.email);
-        console.log(email);
-      }
-    } catch (error) {
-      console.log(error.message);
+    if (data) {
+      setEmail(data.email);
+      console.log(email);
     }
   }
 

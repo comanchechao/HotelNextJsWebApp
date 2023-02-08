@@ -31,26 +31,8 @@ export default function LoginModal() {
   const [isLogged, SetisLogged] = useState("");
 
   // GET USER
-  useEffect(() => {
-    getSetUser();
-  });
-  async function getSetUser() {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (user) {
-      console.log("logged");
-      const updates = {
-        id: user.id,
-        email: email,
-      };
-      SetisLogged(true);
-      let { error } = await supabase.from("profiles").upsert(updates);
-    } else {
-      console.log("Logged out");
-      SetisLogged(false);
-    }
-  }
+  useEffect(() => {});
+
   const dispatch = useDispatch();
 
   // SIGN UP
@@ -92,7 +74,7 @@ export default function LoginModal() {
         data: { user },
       } = await supabase.auth.getUser();
       if (user) {
-        console.log("logged");
+        console.log("logged in");
         const updates = {
           id: user.id,
           email: user.email,
