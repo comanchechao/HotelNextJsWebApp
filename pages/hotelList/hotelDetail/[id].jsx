@@ -164,7 +164,7 @@ export default function HotelDetailPage({ hotel }) {
       <div className="flex w-full p-4 lg:p-20 h-full bg-gray-200">
         <div className="flex flex-col p-5 w-full h-full  ">
           <div className="flex justify-end lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24">
-            <Link href="/hotelList/hotelDetail">
+            <Link href={"/hotelList/hotelDetail/" + hotel.id}>
               <p>هتل {hotel.title}</p>
             </Link>
             <IconChevronLeft />
@@ -192,7 +192,13 @@ export default function HotelDetailPage({ hotel }) {
                       key={image}
                       className="flex w-full h-full justify-center items-center"
                     >
-                      <Image width={200} height={200} alt="" className=" w-full h-full" src={image} />
+                      <Image
+                        width={200}
+                        height={200}
+                        alt=""
+                        className=" w-full h-full"
+                        src={image}
+                      />
                     </div>
                   );
                 })}
