@@ -31,8 +31,21 @@ export default function LoginModal() {
   const [isLogged, SetisLogged] = useState("");
 
   // GET USER
-  useEffect(() => {});
+  useEffect(() => {
+    getSetUser();
+  });
+  async function getSetUser() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (user) {
+      SetisLogged(true);
 
+      console.log("logged in");
+    } else {
+      console.log("Logged out");
+    }
+  }
   const dispatch = useDispatch();
 
   // SIGN UP

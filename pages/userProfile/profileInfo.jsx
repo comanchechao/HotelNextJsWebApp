@@ -3,45 +3,33 @@ import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 
 export default function ProfileInfo() {
-  const [email, setEmail] = useState([]);
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [id, setId] = useState("");
+
+  const [phone, setPhone] = useState("");
+  const [shaba, setShaba] = useState("");
+  const [card, setCard] = useState("");
+
   useEffect(() => {
-    setTimeout(() => {
-      getSetUser();
-    }, 5000);
+    getSetUser();
   });
   async function getSetUser() {
     const {
       data: { user },
     } = await supabase.auth.getUser();
     if (user) {
-      console.log(user.id);
-      let userData = await supabase
-        .from("profiles")
-        .select("email")
-        .eq("id", user.id);
-      setEmail(userData.email);
+      let userData = await supabase.from("profiles").select().eq("id", user.id);
+      setEmail(userData.data[0].email);
+      setFullName(userData.data[0].fullName);
+      setPhone(userData.data[0].phone);
+      setCard(userData.data[0].card);
+      setId(userData.data[0].id);
+      setShaba(userData.data[0].shaba);
+
       console.log(userData);
     } else {
       console.log("Logged out");
-    }
-  }
-  async function getProfile() {
-    const user = await supabase.auth.getUser();
-    if (user) {
-      console.log(user.id);
-    }
-    let { data, error, status } = await supabase
-      .from("profiles")
-      .select(`email`)
-      .eq("id", user.id)
-      .maybeSingle();
-    if (error && status !== 406) {
-      throw error;
-    }
-
-    if (data) {
-      setEmail(data.email);
-      console.log(email);
     }
   }
 
@@ -56,7 +44,7 @@ export default function ProfileInfo() {
           <div className="flex flex-col justify-center items-center lg:items-end lg:justify-end space-y-7 my-3 text-right">
             <div className="flex lg:flex-row flex-col items-center space-y-4 lg:space-y-0 lg:items-end justify-center lg:justify-end lg:space-x-4">
               <h2 className="text-lg text-gray-800 border-b-2 border-mainPurple pb-1">
-                0914522448
+                {phone}
               </h2>
               <h2 className="text-lg text-gray-500">شماره تلفن</h2>
               <h2 className="text-lg text-gray-800 border-b-2 border-mainPurple pb-1">
@@ -66,11 +54,11 @@ export default function ProfileInfo() {
             </div>
             <div className="flex lg:flex-row flex-col items-center space-y-4 lg:space-y-0 lg:items-end justify-center lg:justify-end lg:space-x-4">
               <h2 className="text-lg text-gray-800 border-b-2 border-mainPurple pb-1">
-                0023470011
+                {id}
               </h2>
               <h2 className="text-lg text-gray-500">کد ملی</h2>
               <h2 className="text-lg text-gray-800 border-b-2 border-mainPurple pb-1">
-                آروین نیک بین
+                {fullName}{" "}
               </h2>
               <h2 className="text-lg text-gray-500">نام و نام خانوادگی</h2>
             </div>
@@ -89,11 +77,11 @@ export default function ProfileInfo() {
           <div className="flex flex-col justify-center items-center lg:items-end lg:justify-end space-y-7 my-3 text-right">
             <div className="flex lg:flex-row flex-col items-center justify-center lg:items-end lg:justify-end space-x-4">
               <h2 className="text-lg text-gray-800 border-b-2 border-mainPurple pb-1">
-                000000000000000000
+                {shaba}
               </h2>
               <h2 className="text-lg text-gray-500">شماره شبا</h2>
               <h2 className="text-lg text-gray-800 border-b-2 border-mainPurple pb-1">
-                6037-6975-5828-9838
+                {card}{" "}
               </h2>
               <h2 className="text-lg text-gray-500">شماره حساب</h2>
             </div>
