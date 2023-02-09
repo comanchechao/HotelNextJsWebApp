@@ -77,10 +77,10 @@ export default function SuperUserModal() {
               <h1 className="bg-gray-900 p-3 text-gray-100">مدارک هتل</h1>
             </div>
             <div className="flex w-full justify-around items-center p-4">
-              <button className="lg:w-32 w-24 py-3 border-2 text-lg border-gray-100  bg-green-800 transition ease-in duration-300 font-mainFont rounded-full text-gray-50 hover:bg-green-500 hover:text-gray-100 ">
+              <button className="lg:w-32 w-24 py-3 border-2 text-lg border-gray-100  bg-green-800 transition ease-in duration-300 font-mainFont rounded-md text-gray-50 hover:bg-green-500 hover:text-gray-100 ">
                 <p>تایید</p>
               </button>
-              <button className="lg:w-32 w-24 py-3 border-2 text-lg border-gray-100  bg-red-800 transition ease-in duration-300 font-mainFont rounded-full text-gray-50 hover:bg-red-500 hover:text-gray-100 ">
+              <button className="lg:w-32 w-24 py-3 border-2 text-lg border-gray-100  bg-red-800 transition ease-in duration-300 font-mainFont rounded-md text-gray-50 hover:bg-red-500 hover:text-gray-100 ">
                 <p>رد</p>
               </button>
             </div>
@@ -93,7 +93,7 @@ export default function SuperUserModal() {
           onClick={() => {
             setOpened(true);
           }}
-          className="lg:w-32 w-24 py-2 border-2 text-lg border-mainYellow border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-full text-darkPurple hover:bg-yellow-500 "
+          className="lg:w-32 w-24 py-2 border-2 text-lg border-mainYellow border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-md text-darkPurple hover:bg-yellow-500 "
         >
           <p>اطلاعات</p>
         </button>

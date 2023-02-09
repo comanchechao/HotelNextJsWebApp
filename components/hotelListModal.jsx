@@ -200,7 +200,7 @@ export default function HotelListModal() {
       </Modal>
       <button
         onClick={() => setOpened(true)}
-        className="py-1 px-8 mt-6 font-mainFont border-r-8 border-mainBlue rounded-full bg-white transition ease-in duration-300 text-gray-700 text-lg"
+        className="py-1 px-8 mt-6 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
       >
         فیلترها
       </button>

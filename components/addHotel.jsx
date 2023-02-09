@@ -372,7 +372,7 @@ export default function AddHotel() {
                 onClick={() => {
                   handleSubmit();
                 }}
-                className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue"
+                className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
               >
                 افزودن
               </button>
@@ -386,7 +386,7 @@ export default function AddHotel() {
           onClick={() => {
             setOpened(true);
           }}
-          className="w-52 py-3 border-2 text-lg border-darkPurple border-dashed bg-mainBlue transition ease-in duration-300 font-mainFont rounded-full text-gray-50 hover:text-darkPurple hover:bg-gray-50"
+          className="w-52 py-3 border-2 text-lg text-darkPurple border-r-8 border-mainPurple bg-mainBlue transition ease-in duration-300 font-mainFont rounded-md hover:text-darkPurple hover:bg-gray-50"
         >
           هتل جدید
         </button>

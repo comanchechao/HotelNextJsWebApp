@@ -41,7 +41,7 @@ export default function Reply() {
                 onClick={() => {
                   setOpened(false);
                 }}
-                className="w-52 py-3 border-2 text-lg border-darkPurple border-dashed bg-mainBlue transition ease-in duration-300 font-mainFont rounded-full text-gray-50 hover:text-darkPurple hover:bg-gray-50"
+                className="w-52 py-3 border-2 text-lg border-darkPurple border-dashed bg-mainBlue transition ease-in duration-300 font-mainFont rounded-md text-gray-50 hover:text-darkPurple hover:bg-gray-50"
               >
                 ثبت نظر
               </button>
@@ -55,7 +55,7 @@ export default function Reply() {
           onClick={() => {
             setOpened(true);
           }}
-          className="w-52 py-3 border-2 text-lg border-darkPurple border-dashed bg-mainBlue transition ease-in duration-300 font-mainFont rounded-full text-gray-50 hover:text-darkPurple hover:bg-gray-50"
+          className="w-52 py-3 border-2 text-lg border-darkPurple border-dashed bg-mainBlue transition ease-in duration-300 font-mainFont rounded-md text-gray-50 hover:text-darkPurple hover:bg-gray-50"
         >
           نظر شما
         </button>

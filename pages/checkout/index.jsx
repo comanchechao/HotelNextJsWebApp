@@ -56,7 +56,7 @@ export default function Checkout() {
         <div className=" h-44 lg:space-y-0  lg:flex-row flex-col-reverse lg:h-24 w-full bg-white flex lg:px-7 items-center justify-center lg:justify-around">
           <button
             onClick={nextStep}
-            className="px-14 rounded-full transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont"
+            className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont"
           >
             تایید و ادامه ی خرید
           </button>

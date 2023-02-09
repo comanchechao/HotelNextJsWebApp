@@ -81,7 +81,7 @@ export default function HotelManagement({ hotels }) {
                           className="w-full h-full"
                           href="/admin/hoteldetail"
                         >
-                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-150 font-mainFont rounded-full text-white hover:bg-mainBlue">
+                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-150 font-mainFont rounded-md text-white hover:bg-mainBlue">
                             ویرایش هتل
                           </button>
                         </Link>
@@ -150,7 +150,7 @@ export default function HotelManagement({ hotels }) {
                           className="w-full h-full"
                           href="/admin/hotelDetail"
                         >
-                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue">
+                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue">
                             ویرایش هتل
                           </button>
                         </Link>

@@ -95,7 +95,7 @@ export default function SuperUserModal() {
                           className="w-full h-full"
                           href="/admin/hoteldetail"
                         >
-                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-150 font-mainFont rounded-full text-white hover:bg-mainBlue">
+                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-150 font-mainFont rounded-md text-white hover:bg-mainBlue">
                             نمایش هتل
                           </button>
                         </Link>
@@ -152,7 +152,7 @@ export default function SuperUserModal() {
           onClick={() => {
             setOpened(true);
           }}
-          className="lg:w-32 w-24 py-2 border-2 text-lg border-darkPurple border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-full text-darkPurple hover:bg-mainBlue"
+          className="lg:w-32 w-24 py-2 border-2 text-lg border-darkPurple border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-md text-darkPurple hover:bg-mainBlue"
         >
           <p>اطلاعات</p>
         </button>

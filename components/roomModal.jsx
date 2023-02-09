@@ -92,7 +92,7 @@ export default function RoomModal(props) {
               onClick={() => {
                 setOpened(false);
               }}
-              className="text-center flex justify-center items-center w-52 py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue"
+              className="text-center flex justify-center items-center w-52 py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
             >
               تایید
             </button>

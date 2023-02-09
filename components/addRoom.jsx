@@ -68,7 +68,7 @@ export default function AddRoom() {
                 onClick={() => {
                   setOpened(false);
                 }}
-                className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-full text-white hover:bg-mainBlue"
+                className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
               >
                 افزودن
               </button>
