@@ -55,6 +55,9 @@ export default function AddHotel() {
   let lat = useSelector((state) => state.map.lat);
   let lng = useSelector((state) => state.map.lng);
 
+  let lat2 = useSelector((state) => state.map.lat);
+  let lng2 = useSelector((state) => state.map.lng);
+
   async function handleSubmit() {
     const { error } = await supabase.from("Hotels").insert({
       title: title,
@@ -220,6 +223,9 @@ export default function AddHotel() {
       >
         <div className="flex flex-col  w-full h-full">
           <div className="flex space-y-5 w-full h-full flex-col">
+            <div className="flex p-5 w-full justify-center items-center">
+              <DynamicMap city={city} />
+            </div>
             <div className="flex justify-around flex-wrap">
               <div className="flex p-2 w-full text-right justify-end">
                 :تصاویر هتل
@@ -364,9 +370,7 @@ export default function AddHotel() {
                 data={cityNames}
               />
             </div>
-            <div className="flex p-5 w-full justify-center items-center">
-              <DynamicMap city={city} />
-            </div>
+
             <div className="flex">
               <button
                 onClick={() => {

@@ -123,15 +123,203 @@ export default function ExternalStateExample({ city }) {
       >
         <Popup minWidth={90}>
           <span onClick={toggleDraggable}>
-            {draggable ? "مکان هتل را مشخص کنید" : "برای حرکت کلیک کنید"}
+            {draggable ? "مارکر اول" : "برای حرکت کلیک کنید"}
           </span>
         </Popup>
       </Marker>
     );
   }
 
-  const displayMap = useMemo(
-    () => (
+  function DraggableMarker2() {
+    let lat2 = useSelector((state) => state.map.lat2);
+    let lng2 = useSelector((state) => state.map.lng2);
+
+    const dispatch = useDispatch();
+    const [draggable, setDraggable] = useState(false);
+
+    useEffect(() => {
+      if ((lat2 > 0) & (lng2 > 0)) {
+        setPosition({ lat: lat2, lng: lng2 });
+      }
+    }, []);
+
+    useEffect(() => {
+      console.log("lat2", lat2, "lng2", lng2);
+    });
+    const [position, setPosition] = useState(center);
+    const markerRef2 = useRef(null);
+
+    const setLocations = function () {
+      const marker = markerRef2.current;
+      let lat2 = marker.getLatLng().lat;
+      let lng2 = marker.getLatLng().lng;
+      dispatch(mapActions.setLat2(lat2));
+      dispatch(mapActions.setLng2(lng2));
+    };
+    const eventHandlers = useMemo(
+      () => ({
+        dragend() {
+          const marker = markerRef2.current;
+          if (marker != null) {
+            setLocations();
+          }
+        },
+      }),
+      []
+    );
+    const toggleDraggable = useCallback(() => {
+      const marker = markerRef2.current;
+      setDraggable((d) => !d);
+    }, []);
+
+    useEffect(() => {
+      console.log(lat2, lng2);
+    }, [draggable]);
+
+    return (
+      <Marker
+        draggable={draggable}
+        eventHandlers={eventHandlers}
+        position={position}
+        ref={markerRef2}
+      >
+        <Popup minWidth={90}>
+          <span onClick={toggleDraggable}>
+            {draggable ? "مارکر دوم" : "برای حرکت کلیک کنید"}
+          </span>
+        </Popup>
+      </Marker>
+    );
+  }
+
+  function DraggableMarker3() {
+    let lat3 = useSelector((state) => state.map.lat3);
+    let lng3 = useSelector((state) => state.map.lng3);
+
+    const dispatch = useDispatch();
+    const [draggable, setDraggable] = useState(false);
+
+    useEffect(() => {
+      if ((lat3 > 0) & (lng3 > 0)) {
+        setPosition({ lat: lat3, lng: lng3 });
+      }
+    }, []);
+
+    useEffect(() => {
+      console.log("lat3", lat3, "lng3", lng3);
+    });
+    const [position, setPosition] = useState(center);
+    const markerRef3 = useRef(null);
+
+    const setLocations = function () {
+      const marker = markerRef3.current;
+      let lat3 = marker.getLatLng().lat;
+      let lng3 = marker.getLatLng().lng;
+      dispatch(mapActions.setLat3(lat3));
+      dispatch(mapActions.setLng3(lng3));
+    };
+    const eventHandlers = useMemo(
+      () => ({
+        dragend() {
+          const marker = markerRef3.current;
+          if (marker != null) {
+            setLocations();
+          }
+        },
+      }),
+      []
+    );
+    const toggleDraggable = useCallback(() => {
+      const marker = markerRef3.current;
+      setDraggable((d) => !d);
+    }, []);
+
+    useEffect(() => {
+      console.log(lat3, lng3);
+    }, [draggable]);
+
+    return (
+      <Marker
+        draggable={draggable}
+        eventHandlers={eventHandlers}
+        position={position}
+        ref={markerRef3}
+      >
+        <Popup minWidth={90}>
+          <span onClick={toggleDraggable}>
+            {draggable ? "مارکر سوم" : "برای حرکت کلیک کنید"}
+          </span>
+        </Popup>
+      </Marker>
+    );
+  }
+
+  function MainMarker() {
+    let lat = useSelector((state) => state.map.lat);
+    let lng = useSelector((state) => state.map.lng);
+
+    const dispatch = useDispatch();
+    const [draggable, setDraggable] = useState(false);
+
+    useEffect(() => {
+      if ((lat > 0) & (lng > 0)) {
+        setPosition({ lat: lat, lng: lng });
+      }
+    }, []);
+
+    useEffect(() => {
+      console.log("lat", lat, "lng", lng);
+    });
+    const [position, setPosition] = useState(center);
+    const markerRef = useRef(null);
+
+    const setLocations = function () {
+      const marker = markerRef.current;
+      let lat = marker.getLatLng().lat;
+      let lng = marker.getLatLng().lng;
+      dispatch(mapActions.setLat(lat));
+      dispatch(mapActions.setLng(lng));
+    };
+    const eventHandlers = useMemo(
+      () => ({
+        dragend() {
+          const marker = markerRef.current;
+          if (marker != null) {
+            setLocations();
+          }
+        },
+      }),
+      []
+    );
+    const toggleDraggable = useCallback(() => {
+      const marker = markerRef.current;
+      setDraggable((d) => !d);
+    }, []);
+
+    useEffect(() => {
+      console.log(lat, lng);
+    }, [draggable]);
+
+    return (
+      <Marker
+        draggable={draggable}
+        eventHandlers={eventHandlers}
+        position={position}
+        ref={markerRef}
+      >
+        <Popup minWidth={90}>
+          <span onClick={toggleDraggable}>
+            {draggable ? "هتل مارکر" : "برای حرکت کلیک کنید"}
+          </span>
+        </Popup>
+      </Marker>
+    );
+  }
+  const [showMarker2, setShowMarker2] = useState(false);
+  const [showMarker3, setShowMarker3] = useState(false);
+
+  return (
+    <div className="flex flex-col items-center  w-full">
       <MapContainer
         id="map"
         style={{ width: "600px", height: "500px" }}
@@ -141,15 +329,27 @@ export default function ExternalStateExample({ city }) {
         ref={setMap}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <DraggableMarker />
+        <MainMarker />
+        {showMarker2 ? <DraggableMarker2 /> : null}
+        {showMarker3 ? <DraggableMarker3 /> : null}
       </MapContainer>
-    ),
-    []
-  );
 
-  return (
-    <div className="flex flex-col items-center  w-full">
-      {displayMap}
+      <h1
+        onClick={() => {
+          setShowMarker2(true);
+          console.log(showMarker2);
+        }}
+      >
+        مارکر دوم
+      </h1>
+      <h1
+        onClick={() => {
+          setShowMarker3(true);
+          console.log(showMarker3);
+        }}
+      >
+        مارکر سوم
+      </h1>
       {map ? <DisplayPosition markedHotel={markedHotel} map={map} /> : null}
     </div>
   );
