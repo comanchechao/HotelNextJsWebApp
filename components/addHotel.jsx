@@ -12,10 +12,9 @@ import {
   IconUpload,
   IconPhoto,
   IconMessageCircle,
-  IconSettings,
-  IconPlus,
-  IconMinus,
+  IconCirclePlus,
   IconTrash,
+  IconCircleMinus,
 } from "@tabler/icons";
 import dynamic from "next/dynamic.js";
 import { supabase } from "../lib/supabaseClient";
@@ -384,34 +383,37 @@ export default function AddHotel({ lat, lng }) {
                 data={cityNames}
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex space-y-1 flex-col">
               {rooms.map((room, i) => {
                 return (
-                  <div key={i} className=" flex border">
-                    <div className="flex">
-                      <div className="flex">
-                        <div className="flex">
-                          <div className="flex flex-col">
+                  <div key={i} className="py-2 flex border rounded-lg">
+                    <div className="flex w-full">
+                      <div className="flex flex-col w-full">
+                        <div className="flex text-darkPurple justify-center items-around h-full p-1 flex-col w-full">
+                          <div className="flex justify-around text-darkPurple w-24  flex">
                             <p>
-                              <IconPlus />
+                              <IconCirclePlus />
                             </p>
                             <p>{room.quantity}</p>
                             <p>
-                              <IconMinus />
+                              <IconCircleMinus />
                             </p>
                           </div>
                           <div
                             onClick={() => {
                               filterRoom(room.id);
                             }}
-                            className="flex"
+                            className="flex bg-red-500 rounded-full text-white justify-center items-center w-24"
                           >
-                            <IconTrash />
+                            <IconTrash size={25} />
                           </div>
                         </div>
-                        <p>{room.price}</p>
+                        <div className="w-36 flex  justify-around">
+                          <p>تومان</p>
+                          <p className="text-lg">{room.price}</p>
+                        </div>
                       </div>
-                      <div className="flex flex-col">
+                      <div className="flex self-end w-52 text-right px-2  flex-col">
                         <h1> {room.title}</h1>
                         <p> {room.meal}</p>
                       </div>
@@ -513,14 +515,19 @@ export default function AddHotel({ lat, lng }) {
                         <div className="flex h-full items-end justify-center px-4">
                           <button
                             onClick={() => {
-                              setRooms(
-                                rooms.concat({
-                                  title: "اتاق کینگ",
-                                  price: 655555,
-                                  meal: "کامل",
-                                  quantity: 1,
+                              if (
+                                rooms.find((room) => {
+                                  room.title === "اتاق کنیگ";
                                 })
-                              );
+                              ) {
+                                console.log(rooms);
+                              } else {
+                                console.log(
+                                  rooms.find(
+                                    return (room) => room.title === "اتاق کنیگ"
+                                  )
+                                );
+                              }
                             }}
                             className="w-24 h-14 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
                           >
