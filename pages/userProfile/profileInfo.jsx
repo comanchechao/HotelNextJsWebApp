@@ -139,7 +139,7 @@ export default function ProfileInfo() {
               </h2>
               <h2 className="text-lg text-gray-500">شماره شبا</h2>
               <h2 className="text-lg text-gray-800 border-b-2 border-mainPurple pb-1">
-                {card}{" "}
+                {card}
               </h2>
               <h2 className="text-lg text-gray-500">شماره حساب</h2>
             </div>

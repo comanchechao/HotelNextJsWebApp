@@ -29,6 +29,7 @@ import Reply from "../../../components/reply";
 
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import RoomCard from "./roomCard";
 
 export const getStaticPaths = async () => {
   const { data, error } = await supabase.from("Hotels").select();
@@ -125,38 +126,6 @@ export default function HotelDetailPage({ hotel }) {
       ssr: false,
     }
   );
-  let rooms = [
-    {
-      title: "اتاق مستر روم",
-      meal: "صبحانه",
-      max: "1",
-      price: 400000,
-    },
-    {
-      title: "اتاق سویت",
-      meal: "صبحانه",
-      max: "1",
-      price: 400000,
-    },
-    {
-      title: "یک تخته برای یک نفر",
-      meal: "شام",
-      max: "1",
-      price: 35500000,
-    },
-    {
-      title: "دو تخته برای یک نفر",
-      meal: "صبحانه",
-      max: "3",
-      price: 5500000,
-    },
-    {
-      title: "دو تخته برای یک نفر",
-      meal: "بدون وعده غذایی",
-      max: "1",
-      price: 4233000,
-    },
-  ];
 
   return (
     <div className="w-full h-full">
@@ -371,80 +340,27 @@ export default function HotelDetailPage({ hotel }) {
                   />
                 </div>
               </div>
-              <div className="flex p-5 items-center space-x-1 w-full justify-end">
-                <h1 className=" text-gray-800 text-3xl">اتاق ها</h1>
-              </div>
-              <div className="flex bg-gray-50 justify-center w-full text-lg">
-                <Tabs color="violet" defaultValue="first">
-                  <Tabs.List grow position="center">
-                    <Tabs.Tab value="second">
-                      <span className="text-lg">صبحانه</span>
-                    </Tabs.Tab>
-                    <Tabs.Tab value="third">
-                      <span className="text-lg">بدون وعده غذایی</span>
-                    </Tabs.Tab>
-                    <Tabs.Tab value="first">
-                      <span className="text-lg">همه موارد</span>
-                    </Tabs.Tab>
-                  </Tabs.List>
-                </Tabs>
-              </div>
-              <div className="lg:p-4  flex  flex-col  w-full">
-                {rooms.map((room, i) => {
-                  return (
-                    <div
-                      key={i}
-                      className="flex border border-gray-300 bg-white justify-around divide-y my-5 divide-gray-300 rounded-md-md flex-col w-full h-full lg:h-68"
-                    >
-                      <div className="flex flex-col py-4 px-5 justify-center items-end ">
-                        <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md-md">
-                          {room.title}
-                        </h1>
-                        <div className="flex w-full justify-around">
-                          <Accordion
-                            variant="separated"
-                            chevronPosition="left"
-                            color="violet"
-                          >
-                            <Accordion.Item value="customization">
-                              <Accordion.Control className="text-right text-red-400 w-full">
-                                <p>قوانین کنسلی</p>
-                              </Accordion.Control>
-                              <Accordion.Panel>
-                                <div className="flex w-52 space-x-4 justify-around items-center">
-                                  <p className="text-xs">
-                                    از لحظه‌ی خرید تا ساعت 00:00 تاریخ
-                                    1401/11/12 میزان جریمه 5,000,000 ریال خواهد
-                                    بود از ساعت 00:00 تاریخ 1401/11/12 غیر قابل
-                                    استرداد خواهد بود
-                                  </p>
-                                </div>
-                              </Accordion.Panel>
-                            </Accordion.Item>
-                          </Accordion>
-                          <h2 className="my-3">{room.meal}</h2>
-                        </div>
-                      </div>
-                      <div className="flex items-center h-full w-full py-2 px-5 justify-between">
-                        <div className="flex space-x-1 p-2 justify-center items-center">
-                          <h2>ریال</h2>
-                          <h2 className="  text-3xl text-mainPurple">
-                            {room.price}
-                          </h2>
-                        </div>
-
-                        <h1 className="text-lg">قیمت برای هرشب</h1>
-                      </div>
-                      <div className="flex justify-center items-center h-full">
-                        <Link href="/checkout">
-                          <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-md-full  text-mainPurple my-5 px-12 bg-transparent  ">
-                            <p>رزرو اتاق</p>
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="flex p-5 items-center space-y-6 w-full flex-col  justify-center">
+                <h1 className=" text-gray-800 text-3xl self-end">اتاق ها</h1>
+                <div className="flex bg-white justify-center w-full text-lg">
+                  <Tabs color="violet" defaultValue="first">
+                    <Tabs.List grow position="center">
+                      <Tabs.Tab value="second">
+                        <span className="text-lg">صبحانه</span>
+                      </Tabs.Tab>
+                      <Tabs.Tab value="third">
+                        <span className="text-lg">بدون وعده غذایی</span>
+                      </Tabs.Tab>
+                      <Tabs.Tab value="first">
+                        <span className="text-lg">همه موارد</span>
+                      </Tabs.Tab>
+                    </Tabs.List>
+                  </Tabs>
+                </div>
+                <RoomCard />
+                <RoomCard />
+                <RoomCard />
+                <RoomCard />
                 <div className="flex justify-around">
                   <button className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
                     بیشتر نشونم بده
