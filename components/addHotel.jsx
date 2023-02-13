@@ -64,13 +64,11 @@ export default function AddHotel({ lat, lng }) {
 
   const [cityNames, setCityNames] = useState([]);
 
-  let room = useSelector((state) => state.room.room);
-  let room2 = useSelector((state) => state.room.room2);
-  let rooms = [room, room2];
+  const [rooms, setRooms] = useState([]);
   const dispatch = useDispatch();
 
   function filterRoom(roomId) {
-    return rooms.filter((room) => room.id === roomId);
+    console.log(rooms);
   }
 
   // handing submit event
@@ -388,39 +386,38 @@ export default function AddHotel({ lat, lng }) {
             </div>
             <div className="flex flex-col">
               {rooms.map((room, i) => {
-                if (room.quantity > 0) {
-                  return (
-                    <div key={room.id} className=" flex border">
+                return (
+                  <div key={i} className=" flex border">
+                    <div className="flex">
                       <div className="flex">
                         <div className="flex">
-                          <div className="flex">
-                            <div className="flex flex-col">
-                              <p>
-                                <IconPlus />
-                              </p>
-                              <p>{room.quantity}</p>
-                              <p>
-                                <IconMinus />
-                              </p>
-                            </div>
-                            <div className="flex">
-                              <IconTrash
-                                onClick={() => {
-                                  filterRoom(room.id);
-                                }}
-                              />
-                            </div>
+                          <div className="flex flex-col">
+                            <p>
+                              <IconPlus />
+                            </p>
+                            <p>{room.quantity}</p>
+                            <p>
+                              <IconMinus />
+                            </p>
                           </div>
-                          <p>{room.price}</p>
+                          <div
+                            onClick={() => {
+                              filterRoom(room.id);
+                            }}
+                            className="flex"
+                          >
+                            <IconTrash />
+                          </div>
                         </div>
-                        <div className="flex flex-col">
-                          <h1> {room.title}</h1>
-                          <p> {room.meal}</p>
-                        </div>
+                        <p>{room.price}</p>
+                      </div>
+                      <div className="flex flex-col">
+                        <h1> {room.title}</h1>
+                        <p> {room.meal}</p>
                       </div>
                     </div>
-                  );
-                }
+                  </div>
+                );
               })}
             </div>
             <div className="flex w-full ">
@@ -516,11 +513,11 @@ export default function AddHotel({ lat, lng }) {
                         <div className="flex h-full items-end justify-center px-4">
                           <button
                             onClick={() => {
-                              dispatch(
-                                roomActions.setRoom({
-                                  title: "سام اتاق",
-                                  price: 3000,
-                                  meal: "صبحانه",
+                              setRooms(
+                                rooms.concat({
+                                  title: "اتاق کینگ",
+                                  price: 655555,
+                                  meal: "کامل",
                                   quantity: 1,
                                 })
                               );
@@ -550,8 +547,8 @@ export default function AddHotel({ lat, lng }) {
                         <div className="flex h-full items-end justify-center px-4">
                           <button
                             onClick={() => {
-                              dispatch(
-                                roomActions.setRoom2({
+                              setRooms(
+                                rooms.concat({
                                   title: "اتاق ملکه",
                                   price: 655555,
                                   meal: "کامل",
