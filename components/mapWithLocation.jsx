@@ -13,7 +13,7 @@ const locations = [
 ];
 const zoom = 8;
 
-function DisplayPosition({ map, lng, lat }) {
+function DisplayPosition({ map, lng, lat, firstLocation }) {
   const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(() => map.getCenter());
 
@@ -35,6 +35,10 @@ function DisplayPosition({ map, lng, lat }) {
   function toLocation(location) {
     map.setView(location, zoom);
   }
+
+  useEffect(() => {
+    console.log(firstLocation);
+  });
 
   return (
     <div className="flex flex-col items-end w-96 ">
@@ -82,7 +86,7 @@ function DisplayPosition({ map, lng, lat }) {
   );
 }
 
-export default function ExternalStateExample({ lat, lng }) {
+export default function ExternalStateExample({ lat, lng, firstLocation }) {
   const [map, setMap] = useState(null);
 
   useEffect(() => {
@@ -112,7 +116,14 @@ export default function ExternalStateExample({ lat, lng }) {
   return (
     <div className="flex w-full">
       {displayMap}
-      {map ? <DisplayPosition map={map} lat={lat} lng={lng} /> : null}
+      {map ? (
+        <DisplayPosition
+          map={map}
+          firstLocation={firstLocation}
+          lat={lat}
+          lng={lng}
+        />
+      ) : null}
     </div>
   );
 }

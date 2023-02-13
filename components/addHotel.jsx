@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   Modal,
   Select,
@@ -30,7 +30,7 @@ import { useSelector, createSelector } from "react-redux";
 //   { value: "4", label: "تنکابن" },
 // ];
 
-export default function AddHotel() {
+export default function AddHotel({ lat, lng }) {
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
   const [title, setTitle] = useState("");
@@ -45,6 +45,8 @@ export default function AddHotel() {
   const [city, setCity] = useState("");
   const [get, setGet] = useState(false);
 
+  useEffect(() => {});
+
   const DynamicMap = dynamic(() => import("./map"), {
     ssr: false,
   });
@@ -52,25 +54,20 @@ export default function AddHotel() {
   const [cityNames, setCityNames] = useState([]);
 
   // handing submit event
-  let lat = useSelector((state) => state.map.lat);
-  let lng = useSelector((state) => state.map.lng);
-
-  let lat2 = useSelector((state) => state.map.lat);
-  let lng2 = useSelector((state) => state.map.lng);
 
   async function handleSubmit() {
-    const { error } = await supabase.from("Hotels").insert({
-      title: title,
-      firstImage: firstImage,
-      secondImage: secondImage,
-      thirdImage: thirdImage,
-      fourthImage: fourthImage,
-      features: features,
-      prices: avragePrice,
-      stars: value,
-      locationLat: lat,
-      locationLng: lng,
-    });
+    // const { error } = await supabase.from("Hotels").insert({
+    //   title: title,
+    //   firstImage: firstImage,
+    //   secondImage: secondImage,
+    //   thirdImage: thirdImage,
+    //   fourthImage: fourthImage,
+    //   features: features,
+    //   prices: avragePrice,
+    //   stars: value,
+    //   locationLat: lat,
+    //   locationLng: lng,
+    // });
     console.log(
       "title:",
       title,
@@ -80,11 +77,8 @@ export default function AddHotel() {
       value,
 
       "location ",
-      { lat: lat, lng: lng }
+      getValueCallback
     );
-
-    if (error) throw error;
-    alert("done");
   }
   // useEffect(() => {
   //   if (cities) {

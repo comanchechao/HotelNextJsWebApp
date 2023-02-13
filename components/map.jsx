@@ -5,8 +5,12 @@ import { Marker, DraggableMarker, render, Popup } from "react-leaflet";
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { mapActions } from "../store/map";
+import { IconTrash } from "@tabler/icons";
 
 const center = [35.7, 51.4167];
+const center2 = [35.8, 51.4167];
+const center3 = [35.9, 51.4167];
+
 const locations = [
   { name: "دریا", lat: 37.7, lng: 51.41 },
   { name: "مرکز تهران", lat: 35.7, lng: 51.4167 },
@@ -146,7 +150,7 @@ export default function ExternalStateExample({ city }) {
     useEffect(() => {
       console.log("lat2", lat2, "lng2", lng2);
     });
-    const [position, setPosition] = useState(center);
+    const [position, setPosition] = useState(center2);
     const markerRef2 = useRef(null);
 
     const setLocations = function () {
@@ -208,7 +212,7 @@ export default function ExternalStateExample({ city }) {
     useEffect(() => {
       console.log("lat3", lat3, "lng3", lng3);
     });
-    const [position, setPosition] = useState(center);
+    const [position, setPosition] = useState(center3);
     const markerRef3 = useRef(null);
 
     const setLocations = function () {
@@ -334,22 +338,73 @@ export default function ExternalStateExample({ city }) {
         {showMarker3 ? <DraggableMarker3 /> : null}
       </MapContainer>
 
-      <h1
-        onClick={() => {
-          setShowMarker2(true);
-          console.log(showMarker2);
-        }}
-      >
-        مارکر دوم
-      </h1>
-      <h1
-        onClick={() => {
-          setShowMarker3(true);
-          console.log(showMarker3);
-        }}
-      >
-        مارکر سوم
-      </h1>
+      <div className="flex flex-col space-y-3 items-center  justify-center w-full">
+        <div className="flex justify-center items-center w-full p-4">
+          {showMarker2 ? (
+            <div className="flex justify-around  w-full h-full">
+              <div
+                onClick={() => {
+                  setShowMarker2(false);
+                  console.log(showMarker2);
+                }}
+                className="flex justify-center items-center text-red-500"
+              >
+                <IconTrash />
+              </div>
+              <div className="flex">
+                <input
+                  className="py-2 px-8 rounded-lg bg-gray-200"
+                  type="text"
+                  placeholder="نام مکان"
+                />
+              </div>
+            </div>
+          ) : (
+            <button
+              className="bg-mainPurple hover:bg-darkPurple text-white transition px-8 py-3 rounded-lg shadow-2xl"
+              onClick={() => {
+                setShowMarker2(true);
+                console.log(showMarker2);
+              }}
+            >
+              افزودن مارکر
+            </button>
+          )}
+        </div>
+        <div className="flex justify-center items-center w-full p-4">
+          {" "}
+          {showMarker3 ? (
+            <div className="flex justify-around  w-full h-full">
+              <div className="flex justify-center items-center text-red-500">
+                <IconTrash
+                  onClick={() => {
+                    setShowMarker3(false);
+                    console.log(showMarker2);
+                  }}
+                />
+              </div>
+              <div className="flex">
+                <input
+                  className="py-2 px-8 rounded-lg bg-gray-200"
+                  type="text"
+                  placeholder="نام مکان"
+                />
+              </div>
+            </div>
+          ) : (
+            <button
+              className="bg-mainPurple hover:bg-darkPurple text-white transition px-8 py-3 rounded-lg shadow-2xl"
+              onClick={() => {
+                setShowMarker3(true);
+                console.log(showMarker3);
+              }}
+            >
+              افزودن مارکر
+            </button>
+          )}
+        </div>
+      </div>
+
       {map ? <DisplayPosition markedHotel={markedHotel} map={map} /> : null}
     </div>
   );

@@ -364,7 +364,11 @@ export default function HotelDetailPage({ hotel }) {
               </div>
               <div className="flex flex-col w-full  p-3 bg-white">
                 <div className="flex w-full">
-                  <DynamicMap lat={hotel.locationLat} lng={hotel.locationLng} />
+                  <DynamicMap
+                    firstLocation={hotel.firstLocation}
+                    lat={hotel.locationLat}
+                    lng={hotel.locationLng}
+                  />
                 </div>
               </div>
               <div className="flex p-5 items-center space-x-1 w-full justify-end">
