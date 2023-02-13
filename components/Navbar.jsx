@@ -9,15 +9,20 @@ import {
   House,
 } from "phosphor-react";
 import i18next from "i18next";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import NavDrawer from "./NavDrawer";
 import LoginModal from "./loginModal";
+import { gsap } from "gsap";
 
 export default function Navbar() {
   const router = useRouter();
-  // const [isLogged, SetisLogged] = useState(false);
+  const boxRef = useRef();
   const changeTo = router.locale === "fa" ? "tr" : "fa";
+
+  useEffect(() => {
+    gsap.to(boxRef.current, { opacity: "1", duration: 1.3 });
+  }, []);
   // async function getSetUser() {
   //   const {
   //     data: { user },
@@ -41,7 +46,10 @@ export default function Navbar() {
   // change just the locale and maintain all other route information including href's query
 
   return (
-    <div className=" w-screen h-16 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32">
+    <div
+      ref={boxRef}
+      className=" w-screen h-16 opacity-0 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32"
+    >
       <div className="text-lg flex items-center space-x-4">
         <Link
           href="/"

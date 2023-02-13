@@ -3,7 +3,7 @@ import { Inter } from "@next/font/google";
 import Navbar from "../components/Navbar";
 import Faq from "../components/Faq";
 import Link from "next/link";
-// const inter = Inter({ subsets: ["latin"] });
+import { gsap } from "gsap";
 import { Select, Popover, useMantineTheme, TextInput } from "@mantine/core";
 import Image from "next/image";
 import mainBg from "../assets/images/mainBg.webp";
@@ -32,6 +32,7 @@ import Footer from "../components/Footer";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import HomePageCarousel from "../components/homePageCarousel";
+import { useRef, useEffect } from "react";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -42,8 +43,25 @@ export async function getStaticProps({ locale }) {
 }
 export default function Home(props) {
   const theme = useMantineTheme();
+  const mainPageBg = useRef();
+
+  const firstContainer = useRef();
 
   const { t } = useTranslation();
+
+  useEffect(() => {
+    var tl = gsap.timeline();
+    tl.to(mainPageBg.current, {
+      opacity: "1",
+      duration: 0.8,
+      delay: 1.3,
+    });
+    tl.to(firstContainer.current, { opacity: "1", duration: 0.4, y: -50 });
+  }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Head>
@@ -55,7 +73,7 @@ export default function Home(props) {
       </Head>
       <div className="h-full w-screen bg-gray-200 overflow-x-hidden">
         <Navbar />
-        <div className="w-screen h-96 ">
+        <div ref={mainPageBg} className="w-screen h-96  opacity-0">
           <Image
             className=" h-rem26 w-full object-cover"
             src={mainBg}
@@ -64,7 +82,10 @@ export default function Home(props) {
         </div>
         {props.locale}
         <div className="w-full h-auto lg:h-72 lg:px-44 z-40">
-          <div className="w-full z-30 h-full flex flex-col items-center justify-center space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-lg p-14  ">
+          <div
+            ref={firstContainer}
+            className="w-full opacity-0 z-30 h-full flex flex-col items-center justify-center space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-lg p-14  "
+          >
             <div className="flex w-full h-full items-center flex-col lg:flex-row-reverse justify-center space-x-5 mb-5">
               <Select
                 className="text-2xl mx-6 text-right flex flex-col items-end"

@@ -18,8 +18,8 @@ export default function RoomCard() {
             </button>
           </Link>
         </div>
-        <div className="h-full flex flex-col items-end justify-start divide-y p-4 w-3/4  ">
-          <div className="h-14 w-full   flex items-center justify-between">
+        <div className="h-full flex flex-col items-end justify-start  p-4 w-3/4  ">
+          <div className="h-14 w-full flex items-center justify-between">
             <Accordion
               variant="separated"
               chevronPosition="left"
