@@ -6,11 +6,18 @@ import {
   Rating,
   Loader,
   Group,
+  Tabs,
 } from "@mantine/core";
-import { IconUpload } from "@tabler/icons";
+import {
+  IconUpload,
+  IconPhoto,
+  IconMessageCircle,
+  IconSettings,
+} from "@tabler/icons";
 import dynamic from "next/dynamic.js";
 import { supabase } from "../lib/supabaseClient";
 import { useSelector, createSelector } from "react-redux";
+import AddRoom from "./addRoom";
 // let cities = [
 //   { value: "1", label: "تهران" },
 //   { value: "2", label: "شیراز" },
@@ -56,18 +63,21 @@ export default function AddHotel({ lat, lng }) {
   // handing submit event
 
   async function handleSubmit() {
-    // const { error } = await supabase.from("Hotels").insert({
-    //   title: title,
-    //   firstImage: firstImage,
-    //   secondImage: secondImage,
-    //   thirdImage: thirdImage,
-    //   fourthImage: fourthImage,
-    //   features: features,
-    //   prices: avragePrice,
-    //   stars: value,
-    //   locationLat: lat,
-    //   locationLng: lng,
-    // });
+    const { data, error } = await supabase
+      .from("Hotels")
+      .insert({
+        title: title,
+        firstImage: firstImage,
+        secondImage: secondImage,
+        thirdImage: thirdImage,
+        fourthImage: fourthImage,
+        features: features,
+        prices: avragePrice,
+        stars: value,
+        locationLat: lat,
+        locationLng: lng,
+      })
+      .select("id");
     console.log(
       "title:",
       title,
@@ -75,9 +85,8 @@ export default function AddHotel({ lat, lng }) {
       features,
       "stars",
       value,
-
-      "location ",
-      getValueCallback
+      "hotel id",
+      data
     );
   }
   // useEffect(() => {
@@ -363,6 +372,122 @@ export default function AddHotel({ lat, lng }) {
                 label=":شهر"
                 data={cityNames}
               />
+            </div>
+            <div className="flex w-full ">
+              <Tabs className="w-full" variant="outline" defaultValue="gallery">
+                <Tabs.List grow position="center">
+                  <Tabs.Tab
+                    position="center"
+                    value="gallery"
+                    icon={<IconPhoto size={14} />}
+                  >
+                    تعریف اتاق
+                  </Tabs.Tab>
+                  <Tabs.Tab
+                    value="messages"
+                    icon={<IconMessageCircle size={14} />}
+                  >
+                    اتاق پیش فرض
+                  </Tabs.Tab>
+                </Tabs.List>
+
+                <Tabs.Panel value="gallery" pt="xs">
+                  <div className="flex flex-col  w-full h-full">
+                    <div className="flex space-y-2 w-full h-full flex-col">
+                      <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
+                        <label className="w-24" htmlFor="title">
+                          :عنوان اتاق
+                        </label>
+                        <input
+                          className="py-2 text-right px-2 w-full bg-gray-200"
+                          type="text"
+                          name="title"
+                          placeholder="..."
+                        />
+                      </div>
+                      <div className="flex w-full h-full text-right justify-center items-center">
+                        <Select
+                          searchable
+                          className="text-right w-full"
+                          label=":وعده غذایی اتاق"
+                          data={[
+                            { value: "صبحانه", label: "صبحانه" },
+                            { value: "صبحانه و نهار", label: "صبحانه و نهار" },
+                            {
+                              value: "بدون وعده غذایی",
+                              label: "بدون وعده غذایی",
+                            },
+                            { value: "شام", label: "شام" },
+                          ]}
+                        />
+                      </div>
+                      <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
+                        <label className="w-24" htmlFor="price">
+                          :قیمت هرشب
+                        </label>
+                        <input
+                          className="py-2 text-right px-2 w-full bg-gray-200"
+                          type="number"
+                          name="price"
+                          placeholder="..."
+                        />
+                      </div>
+                      <div className="flex w-full h-full text-right justify-center items-center">
+                        <Select
+                          searchable
+                          className="text-right w-full"
+                          label=":ظرفیت اتاق"
+                          data={[
+                            { value: "1", label: "1" },
+                            { value: "2", label: "2" },
+                            { value: "3", label: "3" },
+                            { value: "4", label: "4" },
+                          ]}
+                        />
+                      </div>
+                      <div className="flex">
+                        <button
+                          onClick={() => {
+                            setOpened(false);
+                          }}
+                          className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                        >
+                          افزودن
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </Tabs.Panel>
+
+                <Tabs.Panel value="messages" pt="xs">
+                  <div className="flex bg-white justify-around divide-y my-1 divide-gray-300 rounded-md flex-col w-full h-44 border">
+                    <div className="flex w-full justify-between">
+                      <div className="flex h-full items-end justify-center px-4">
+                        <button className="w-24 h-14 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue">
+                          افزودن
+                        </button>
+                      </div>
+                      <div className="flex flex-col py-4 px-5 justify-center items-end ">
+                        <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
+                          سام اتاق
+                        </h1>
+                        <h2 className="my-3">وعده</h2>
+                      </div>
+                    </div>
+                    <div className="flex items-center h-full w-full px-5 justify-between">
+                      <div className="flex space-x-1 p-2 justify-center items-center">
+                        <h2>ریال</h2>
+                        <h2 className="  text-3xl text-mainPurple">65555</h2>
+                      </div>
+                      <h1 className="text-lg">قیمت برای هرشب</h1>
+                    </div>
+                  </div>
+                </Tabs.Panel>
+
+                <Tabs.Panel value="settings" pt="xs">
+                  Settings tab content
+                </Tabs.Panel>
+              </Tabs>
             </div>
 
             <div className="flex">
