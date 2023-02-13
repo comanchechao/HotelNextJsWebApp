@@ -2,17 +2,16 @@ import Navbar from "../../components/Navbar";
 import Link from "next/link";
 import { CaretLeft } from "phosphor-react";
 import HotelCard from "../../components/hotelCard";
-import { Accordion } from "@mantine/core";
+import { Skeleton } from "@mantine/core";
 import HotelListMenu from "../../components/hotelListMenu";
 import Footer from "../../components/Footer";
 import HotelListModal from "../../components/hotelListModal";
 import { supabase } from "../../lib/supabaseClient";
+import { useEffect, useState } from "react";
 
 export async function getServerSideProps() {
   // Fetch data from the database
-
   const { data, error } = await supabase.from("Hotels").select();
-
   if (error) throw error;
   return {
     props: {
@@ -22,6 +21,14 @@ export async function getServerSideProps() {
 }
 
 export default function HotelList({ hotels }) {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    if (hotels.data !== null) {
+      setLoading(false);
+      console.log("poozliq");
+    }
+  });
+
   return (
     <div className="w-screen h-auto bg-gray-200">
       <Navbar />
@@ -58,11 +65,21 @@ export default function HotelList({ hotels }) {
           <div className="w-full flex justify-end my-3 lg:hidden">
             <HotelListModal />
           </div>
-          <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10">
-            {hotels.map((hotel) => {
-              return <HotelCard key={hotel.id} hotel={hotel} />;
-            })}
-          </div>
+          {loading === false ? (
+            <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
+              {hotels.map((hotel) => {
+                return <HotelCard key={hotel.id} hotel={hotel} />;
+              })}
+            </div>
+          ) : (
+            <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
+              <Skeleton height={200} width="100%" />{" "}
+              <Skeleton height={200} width="100%" />{" "}
+              <Skeleton height={200} width="100%" />{" "}
+              <Skeleton height={200} width="100%" />{" "}
+              <Skeleton height={200} width="100%" />
+            </div>
+          )}
         </div>
         <div className=" w-1/4 h-full hidden lg:flex">
           <div className="w-full h-96 py-6">
