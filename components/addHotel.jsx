@@ -16,7 +16,8 @@ import {
 } from "@tabler/icons";
 import dynamic from "next/dynamic.js";
 import { supabase } from "../lib/supabaseClient";
-import { useSelector, createSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { roomActions } from "../store/room";
 import AddRoom from "./addRoom";
 // let cities = [
 //   { value: "1", label: "تهران" },
@@ -59,6 +60,11 @@ export default function AddHotel({ lat, lng }) {
   });
 
   const [cityNames, setCityNames] = useState([]);
+
+  let room = useSelector((state) => state.room.room);
+  let room2 = useSelector((state) => state.room.room2);
+  let rooms = [room, room2];
+  const dispatch = useDispatch();
 
   // handing submit event
 
@@ -373,6 +379,15 @@ export default function AddHotel({ lat, lng }) {
                 data={cityNames}
               />
             </div>
+            <div className="flex">
+              {rooms.map((room) => {
+                return (
+                  <div className="border">
+                    {room.title} {room.price} {room.meal}
+                  </div>
+                );
+              })}
+            </div>
             <div className="flex w-full ">
               <Tabs className="w-full" variant="outline" defaultValue="gallery">
                 <Tabs.List grow position="center">
@@ -460,26 +475,72 @@ export default function AddHotel({ lat, lng }) {
                 </Tabs.Panel>
 
                 <Tabs.Panel value="messages" pt="xs">
-                  <div className="flex bg-white justify-around divide-y my-1 divide-gray-300 rounded-md flex-col w-full h-44 border">
-                    <div className="flex w-full justify-between">
-                      <div className="flex h-full items-end justify-center px-4">
-                        <button className="w-24 h-14 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue">
-                          افزودن
-                        </button>
+                  <div className="flex flex-col w-full h-full">
+                    <div className="flex bg-white justify-around divide-y my-1 divide-gray-300 rounded-md flex-col w-full h-44 border">
+                      <div className="flex w-full justify-between">
+                        <div className="flex h-full items-end justify-center px-4">
+                          <button
+                            onClick={() => {
+                              dispatch(
+                                roomActions.setRoom({
+                                  title: "سام اتاق",
+                                  price: 3000,
+                                  meal: "صبحانه",
+                                })
+                              );
+                            }}
+                            className="w-24 h-14 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                          >
+                            افزودن
+                          </button>
+                        </div>
+                        <div className="flex flex-col py-4 px-5 justify-center items-end ">
+                          <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
+                            سام اتاق
+                          </h1>
+                          <h2 className="my-3">وعده</h2>
+                        </div>
                       </div>
-                      <div className="flex flex-col py-4 px-5 justify-center items-end ">
-                        <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
-                          سام اتاق
-                        </h1>
-                        <h2 className="my-3">وعده</h2>
+                      <div className="flex items-center h-full w-full px-5 justify-between">
+                        <div className="flex space-x-1 p-2 justify-center items-center">
+                          <h2>ریال</h2>
+                          <h2 className="  text-3xl text-mainPurple">65555</h2>
+                        </div>
+                        <h1 className="text-lg">قیمت برای هرشب</h1>
                       </div>
                     </div>
-                    <div className="flex items-center h-full w-full px-5 justify-between">
-                      <div className="flex space-x-1 p-2 justify-center items-center">
-                        <h2>ریال</h2>
-                        <h2 className="  text-3xl text-mainPurple">65555</h2>
+                    <div className="flex bg-white justify-around divide-y my-1 divide-gray-300 rounded-md flex-col w-full h-44 border">
+                      <div className="flex w-full justify-between">
+                        <div className="flex h-full items-end justify-center px-4">
+                          <button
+                            onClick={() => {
+                              dispatch(
+                                roomActions.setRoom2({
+                                  title: "اتاق ملکه",
+                                  price: 655555,
+                                  meal: "کامل",
+                                })
+                              );
+                            }}
+                            className="w-24 h-14 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                          >
+                            افزودن
+                          </button>
+                        </div>
+                        <div className="flex flex-col py-4 px-5 justify-center items-end ">
+                          <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
+                            اتاق ملکه
+                          </h1>
+                          <h2 className="my-3">وعده کامل</h2>
+                        </div>
                       </div>
-                      <h1 className="text-lg">قیمت برای هرشب</h1>
+                      <div className="flex items-center h-full w-full px-5 justify-between">
+                        <div className="flex space-x-1 p-2 justify-center items-center">
+                          <h2>ریال</h2>
+                          <h2 className="  text-3xl text-mainPurple">65555</h2>
+                        </div>
+                        <h1 className="text-lg">قیمت برای هرشب</h1>
+                      </div>
                     </div>
                   </div>
                 </Tabs.Panel>
