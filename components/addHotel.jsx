@@ -13,6 +13,9 @@ import {
   IconPhoto,
   IconMessageCircle,
   IconSettings,
+  IconPlus,
+  IconMinus,
+  IconTrash,
 } from "@tabler/icons";
 import dynamic from "next/dynamic.js";
 import { supabase } from "../lib/supabaseClient";
@@ -65,6 +68,10 @@ export default function AddHotel({ lat, lng }) {
   let room2 = useSelector((state) => state.room.room2);
   let rooms = [room, room2];
   const dispatch = useDispatch();
+
+  function filterRoom(roomId) {
+    return rooms.filter((room) => room.id === roomId);
+  }
 
   // handing submit event
 
@@ -379,13 +386,41 @@ export default function AddHotel({ lat, lng }) {
                 data={cityNames}
               />
             </div>
-            <div className="flex">
-              {rooms.map((room) => {
-                return (
-                  <div className="border">
-                    {room.title} {room.price} {room.meal}
-                  </div>
-                );
+            <div className="flex flex-col">
+              {rooms.map((room, i) => {
+                if (room.quantity > 0) {
+                  return (
+                    <div key={room.id} className=" flex border">
+                      <div className="flex">
+                        <div className="flex">
+                          <div className="flex">
+                            <div className="flex flex-col">
+                              <p>
+                                <IconPlus />
+                              </p>
+                              <p>{room.quantity}</p>
+                              <p>
+                                <IconMinus />
+                              </p>
+                            </div>
+                            <div className="flex">
+                              <IconTrash
+                                onClick={() => {
+                                  filterRoom(room.id);
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <p>{room.price}</p>
+                        </div>
+                        <div className="flex flex-col">
+                          <h1> {room.title}</h1>
+                          <p> {room.meal}</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
               })}
             </div>
             <div className="flex w-full ">
@@ -486,6 +521,7 @@ export default function AddHotel({ lat, lng }) {
                                   title: "سام اتاق",
                                   price: 3000,
                                   meal: "صبحانه",
+                                  quantity: 1,
                                 })
                               );
                             }}
@@ -519,6 +555,7 @@ export default function AddHotel({ lat, lng }) {
                                   title: "اتاق ملکه",
                                   price: 655555,
                                   meal: "کامل",
+                                  quantity: 1,
                                 })
                               );
                             }}
