@@ -23,7 +23,7 @@ export default function RoomCard() {
             <Accordion
               variant="separated"
               chevronPosition="left"
-              color="violet"
+              color="yellow"
               size="sm"
             >
               <Accordion.Item value="customization">

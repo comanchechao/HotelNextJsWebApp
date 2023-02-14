@@ -81,7 +81,7 @@ export default function HotelList({ hotels }) {
             </div>
           )}
           <div className="h-full  w-full flex justify-center">
-            <Pagination total={10} color="violet" size="lg" />
+            <Pagination total={10} color="yellow" size="lg" />
           </div>
         </div>
         <div className=" w-1/4 h-full hidden lg:flex">

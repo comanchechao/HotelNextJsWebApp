@@ -59,7 +59,7 @@ export default function ReservationManagement() {
             />
           </div>
         </div>
-        <Tabs color="violet" variant="pills" defaultValue="gallery">
+        <Tabs color="yellow" variant="pills" defaultValue="gallery">
           <Tabs.List className="px-2" position="center">
             <Tabs.Tab
               value="messages"

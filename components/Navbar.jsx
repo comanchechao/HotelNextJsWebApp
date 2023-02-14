@@ -53,7 +53,7 @@ export default function Navbar() {
       <div className="text-lg flex items-center space-x-4">
         <Link
           href="/"
-          className="flex rounded-sm p-2 items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex rounded-sm p-3 border-r-8 border-transparent hover:border-r-mainBlue items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           locale={changeTo}
         >
           {router.locale === "tr" ? <p> فارسی 🇮🇷</p> : <p>Turkish 🇹🇷</p>}
@@ -61,7 +61,7 @@ export default function Navbar() {
         <div className="dropdown">
           <label
             tabIndex={0}
-            className="btn font-normal  text-lg  bg-transparent rounded-sm px-3 m-1 border-none text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
             <CaretDown className="mx-2" size={20} weight="bold" />
             اقامت
@@ -92,7 +92,7 @@ export default function Navbar() {
         </div>
         <Link
           href="/"
-          className=" hidden lg:flex  rounded-sm  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           <h4 className=" ">خونه</h4>
           <House className="mx-1" size={28} weight="light" />
@@ -104,21 +104,21 @@ export default function Navbar() {
       <div className="lg:text-lg text-sm lg:flex items-center lg:space-x-4 hidden">
         <Link
           href="/admin"
-          className="flex rounded-sm justify-center  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex rounded-sm justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           <h4 className=" ">ادمین</h4>
           <IdentificationCard className="mx-1" weight="light" size={30} />
         </Link>
         <Link
           href="/aboutUs"
-          className="flex rounded-sm  justify-center  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex rounded-sm  justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           <h4>درباره ما</h4>
           <Scroll className="mx-2" size={24} weight="light" />
         </Link>
         <Link
           href="/contactUs"
-          className="flex rounded-sm justify-center  items-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex rounded-sm justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           <h4>تماس با ما</h4>
           <Question className="ml-1" size={24} weight="light" />

@@ -253,7 +253,7 @@ export default function HotelDetailPage({ hotel }) {
                 </Popover>
                 <div className="flex">
                   <Link href="/checkout">
-                    <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-md-full  text-mainPurple my-5 px-12 bg-transparent  ">
+                    <button className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   ">
                       <p>رزرو اتاق</p>
                     </button>
                   </Link>
@@ -343,7 +343,7 @@ export default function HotelDetailPage({ hotel }) {
               <div className="flex p-5 items-center space-y-6 w-full flex-col  justify-center">
                 <h1 className=" text-gray-800 text-3xl self-end">اتاق ها</h1>
                 <div className="flex bg-white justify-center w-full text-lg">
-                  <Tabs color="violet" defaultValue="first">
+                  <Tabs color="yellow" defaultValue="first">
                     <Tabs.List grow position="center">
                       <Tabs.Tab value="second">
                         <span className="text-lg">صبحانه</span>

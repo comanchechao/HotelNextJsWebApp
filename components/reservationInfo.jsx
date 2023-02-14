@@ -140,7 +140,7 @@ export default function ReservationInfo() {
               <Accordion
                 variant="separated"
                 chevronPosition="left"
-                color="violet"
+                color="yellow"
                 className=""
               >
                 <Accordion.Item value="customization">
@@ -164,7 +164,7 @@ export default function ReservationInfo() {
               <Accordion
                 variant="separated"
                 chevronPosition="left"
-                color="violet"
+                color="yellow"
                 className=""
               >
                 <Accordion.Item value="customization">
@@ -188,7 +188,7 @@ export default function ReservationInfo() {
               <Accordion
                 variant="separated"
                 chevronPosition="left"
-                color="violet"
+                color="yellow"
               >
                 <Accordion.Item value="customization">
                   <Accordion.Control className="text-right w-full">

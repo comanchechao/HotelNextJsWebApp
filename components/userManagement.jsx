@@ -59,7 +59,7 @@ export default function userManagement() {
             />
           </div>
         </div>
-        <Tabs color="violet" variant="pills" defaultValue="gallery">
+        <Tabs color="yellow" variant="pills" defaultValue="gallery">
           <Tabs.List className="px-2" position="center">
             <Tabs.Tab value="settings" icon={<IconUserExclamation size={16} />}>
               در انتظار

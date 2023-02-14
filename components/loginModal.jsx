@@ -247,7 +247,7 @@ export default function LoginModal() {
 
                       {loading ? (
                         <div className="flex items-center justify-center my-4">
-                          <Loader color="violet" />
+                          <Loader color="yellow" />
                         </div>
                       ) : (
                         <button className="w-full rounded-md mt-4 transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
@@ -339,7 +339,7 @@ export default function LoginModal() {
           </div>
         ) : (
           <button
-            className=" flex rounded-sm  items-center justify-center cursor-pointer p-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
             onClick={() => setOpened(true)}
           >
             <SignIn className="mx-2" size={30} weight="light" />

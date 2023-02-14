@@ -51,7 +51,7 @@ export default function SuperUserModal() {
             <Accordion
               variant="separated"
               chevronPosition="left"
-              color="violet"
+              color="yellow"
             >
               <Accordion.Item value="customization">
                 <Accordion.Control className="text-right w-full">

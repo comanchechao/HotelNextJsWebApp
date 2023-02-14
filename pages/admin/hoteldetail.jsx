@@ -139,7 +139,7 @@ export default function HotelDetail() {
             <h1 className=" text-gray-800 text-3xl">اتاق ها</h1>
           </div>
           <div className="flex  justify-center w-full text-lg">
-            <Tabs color="violet" defaultValue="first">
+            <Tabs color="yellow" defaultValue="first">
               <Tabs.List grow position="center">
                 <Tabs.Tab value="second">
                   <span className="text-lg">صبحانه</span>

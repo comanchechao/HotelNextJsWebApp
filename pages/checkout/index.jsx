@@ -23,7 +23,7 @@ export default function Checkout() {
       <Navbar />
       <div className="w-screen h-full flex-col text-right flex items-center px-10 lg:px-0 pt-36 justify-center ">
         <Stepper
-          color="violet"
+          color="yellow"
           size="lg"
           active={active}
           onStepClick={setActive}
