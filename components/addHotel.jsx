@@ -69,7 +69,9 @@ export default function AddHotel({ lat, lng }) {
   function filterRoom(roomId) {
     console.log(rooms);
   }
-
+  function remove(fruit) {
+    return fruit.name === "cherries";
+  }
   // handing submit event
 
   async function handleSubmit() {
@@ -400,9 +402,7 @@ export default function AddHotel({ lat, lng }) {
                             </p>
                           </div>
                           <div
-                            onClick={() => {
-                              filterRoom(room.id);
-                            }}
+                            onClick={() => {}}
                             className="flex bg-red-500 rounded-full text-white justify-center items-center w-24"
                           >
                             <IconTrash size={25} />
@@ -514,21 +514,7 @@ export default function AddHotel({ lat, lng }) {
                       <div className="flex w-full justify-between">
                         <div className="flex h-full items-end justify-center px-4">
                           <button
-                            onClick={() => {
-                              if (
-                                rooms.find((room) => {
-                                  room.title === "اتاق کنیگ";
-                                })
-                              ) {
-                                console.log(rooms);
-                              } else {
-                                console.log(
-                                  rooms.find(
-                                    return (room) => room.title === "اتاق کنیگ"
-                                  )
-                                );
-                              }
-                            }}
+                            onClick={() => {}}
                             className="w-24 h-14 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
                           >
                             افزودن
