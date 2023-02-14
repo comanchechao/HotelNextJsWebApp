@@ -10,7 +10,7 @@ export default function Faq() {
     >
       <Accordion.Item value="customization">
         <Accordion.Control
-          icon={<Question size={40} color="#4405a8" weight="bold" />}
+          icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
           <span className=" text-gray-900 flex justify-end text-xl text-right">
             پیش از رزرو هتل، چگونه درباره هتل و فرآیند رزرو آن اطلاعات کسب کنم؟
@@ -27,7 +27,7 @@ export default function Faq() {
       </Accordion.Item>
       <Accordion.Item value="customization1">
         <Accordion.Control
-          icon={<Question size={40} color="#4405a8" weight="bold" />}
+          icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
           <span className=" text-gray-900 flex justify-end text-xl text-right">
             هزینه هتل خارجی را چه طور بپردازیم؟ آیا استفاده از کارت‌های شتاب
@@ -45,7 +45,7 @@ export default function Faq() {
       </Accordion.Item>
       <Accordion.Item value="customization2">
         <Accordion.Control
-          icon={<Question size={40} color="#4405a8" weight="bold" />}
+          icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
           <span className=" text-gray-900 flex justify-end text-xl text-right">
             آیا پس از اینکه هتل را رزرو کردیم، می‌توانیم رزرومان را کنسل کنیم و
@@ -71,7 +71,7 @@ export default function Faq() {
       </Accordion.Item>
       <Accordion.Item value="customization3">
         <Accordion.Control
-          icon={<Question size={40} color="#4405a8" weight="bold" />}
+          icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
           <span className=" text-gray-900 flex justify-end text-xl text-right">
             چه ساعتی می‌توانیم اتاق‌مان را تحویل بگیریم و چه ساعتی باید اتاق را
@@ -87,7 +87,7 @@ export default function Faq() {
       </Accordion.Item>
       <Accordion.Item value="customization4">
         <Accordion.Control
-          icon={<Question size={40} color="#4405a8" weight="bold" />}
+          icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
           <span className=" text-gray-900 flex justify-end text-xl text-right">
             نیم‌شارژ ورود و خروج چیست؟
@@ -105,7 +105,7 @@ export default function Faq() {
       </Accordion.Item>
       <Accordion.Item value="customization5">
         <Accordion.Control
-          icon={<Question size={40} color="#4405a8" weight="bold" />}
+          icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
           <span className=" text-gray-900 flex justify-end text-xl text-right">
             کودکان تا چه سنی رایگان پذیرش می‌شوند و تخت آنها چگونه است؟
@@ -120,7 +120,7 @@ export default function Faq() {
       </Accordion.Item>
       <Accordion.Item value="customization6">
         <Accordion.Control
-          icon={<Question size={40} color="#4405a8" weight="bold" />}
+          icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
           <span className=" text-gray-900 flex justify-end text-xl text-right">
             تفاوت اتاق‌ها با هم مانند دبل یا توئین بودن یا جونیور یا امپریال یا
@@ -139,7 +139,7 @@ export default function Faq() {
       </Accordion.Item>
       <Accordion.Item value="customization7">
         <Accordion.Control
-          icon={<Question size={40} color="#4405a8" weight="bold" />}
+          icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
           <span className=" text-gray-900 flex justify-end text-xl text-right">
             واچر چیست؟
@@ -155,7 +155,7 @@ export default function Faq() {
       </Accordion.Item>
       <Accordion.Item value="customization8">
         <Accordion.Control
-          icon={<Question size={40} color="#4405a8" weight="bold" />}
+          icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
           <span className=" text-gray-900 flex justify-end text-xl text-right">
             مبلغ درج شده در وب‌سایت مبلغ نهایی است؟ آیا امکان دارد بعدا تغییر

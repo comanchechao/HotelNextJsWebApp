@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import ProfileInfo from "./profileInfo";
 import PaymentHistory from "./paymentHistory";
 import SupportRequest from "./supportRequest";
+import ReservationList from "./reservationList";
 export default function UserProfile() {
   const [tab, setTab] = useState("Profile");
   return (
@@ -15,6 +16,8 @@ export default function UserProfile() {
         <div className=" lg:w-3/4 w-full h-full lg:p-6">
           {tab === "Profile" ? (
             <ProfileInfo />
+          ) : tab === "Reservation" ? (
+            <ReservationList />
           ) : tab === "Support" ? (
             <SupportRequest />
           ) : tab === "Payment" ? (
@@ -40,6 +43,15 @@ export default function UserProfile() {
               لیست هتل
               <Bed className="mx-2" size={20} />
             </button> */}
+            <button
+              onClick={() => {
+                setTab("Reservation");
+              }}
+              className="w-full p-6 flex text-sm font-light items-center justify-end font-mainFont transition ease-in duration-200 hover:bg-mainBlue text-gray-900"
+            >
+              لیست اتاق های رزرو شده
+              <Bed className="mx-2" size={20} />
+            </button>
             <button
               onClick={() => {
                 setTab("Support");
