@@ -138,6 +138,7 @@ export default function LoginModal() {
         transition="fade"
         transitionDuration={600}
         transitionTimingFunction="ease"
+        exitTransitionDuration={600}
         opened={opened}
         onClose={() => setOpened(false)}
         centered

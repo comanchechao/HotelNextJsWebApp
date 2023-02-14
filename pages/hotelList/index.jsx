@@ -2,7 +2,7 @@ import Navbar from "../../components/Navbar";
 import Link from "next/link";
 import { CaretLeft } from "phosphor-react";
 import HotelCard from "../../components/hotelCard";
-import { Skeleton } from "@mantine/core";
+import { Skeleton, Pagination } from "@mantine/core";
 import HotelListMenu from "../../components/hotelListMenu";
 import Footer from "../../components/Footer";
 import HotelListModal from "../../components/hotelListModal";
@@ -80,6 +80,9 @@ export default function HotelList({ hotels }) {
               <Skeleton height={200} width="100%" />
             </div>
           )}
+          <div className="h-full  w-full flex justify-center">
+            <Pagination total={10} color="violet" size="lg" />
+          </div>
         </div>
         <div className=" w-1/4 h-full hidden lg:flex">
           <div className="w-full h-96 py-6">

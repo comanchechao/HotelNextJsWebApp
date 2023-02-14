@@ -65,9 +65,12 @@ export default function Home(props) {
   return (
     <>
       <Head>
-        <title>وبسایت رزرو هتل بوتک</title>
-
-        <meta name="description" content="به وبسایت رزرو هتل بوتک خوش اومدین" />
+        <title>رزرو هتل راحت تر از همیشه با استفاده از سامانه رزرو بوتک</title>
+        <meta
+          name="description"
+          content="
+با بوتک رزرو هتل آسان و سریع است! بوتک، هتل و استراحتگاه های رفاهی فوق العاده را با بهترین قیمت ها و نرخ های ویژه ارائه می دهد. با ما بهترین قیمت و محل هتل خود را پیدا کنید. این سایت به شما انواع امکانات، عرضه های ویژه و کد های تخفیف اختصاصی را برای استفاده از برترین هتل ها، با مناسب ترین قیمت ها فراهم میکند"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
