@@ -69,9 +69,12 @@ export default function AddHotel({ lat, lng }) {
   function filterRoom(roomId) {
     console.log(rooms);
   }
-  function remove(fruit) {
-    return fruit.name === "cherries";
-  }
+  const deleteById = (id) => {
+    setRooms((oldValues) => {
+      return oldValues.filter((room) => room.id !== id);
+    });
+  };
+
   // handing submit event
 
   async function handleSubmit() {
@@ -402,7 +405,9 @@ export default function AddHotel({ lat, lng }) {
                             </p>
                           </div>
                           <div
-                            onClick={() => {}}
+                            onClick={() => {
+                              deleteById(room.id);
+                            }}
                             className="flex bg-red-500 rounded-full text-white justify-center items-center w-24"
                           >
                             <IconTrash size={25} />
@@ -514,7 +519,21 @@ export default function AddHotel({ lat, lng }) {
                       <div className="flex w-full justify-between">
                         <div className="flex h-full items-end justify-center px-4">
                           <button
-                            onClick={() => {}}
+                            onClick={() => {
+                              if (rooms.some((room) => room.id === 2)) {
+                                console.log("can't do ");
+                              } else {
+                                setRooms(
+                                  rooms.concat({
+                                    id: 2,
+                                    title: "اتاق کینگ",
+                                    price: 655555,
+                                    meal: "کامل",
+                                    quantity: 1,
+                                  })
+                                );
+                              }
+                            }}
                             className="w-24 h-14 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
                           >
                             افزودن
@@ -539,15 +558,20 @@ export default function AddHotel({ lat, lng }) {
                       <div className="flex w-full justify-between">
                         <div className="flex h-full items-end justify-center px-4">
                           <button
-                            onClick={() => {
-                              setRooms(
-                                rooms.concat({
-                                  title: "اتاق ملکه",
-                                  price: 655555,
-                                  meal: "کامل",
-                                  quantity: 1,
-                                })
-                              );
+                            onClick={(room) => {
+                              if (rooms.some((room) => room.id === 1)) {
+                                console.log("can't do ");
+                              } else {
+                                setRooms(
+                                  rooms.concat({
+                                    id: 1,
+                                    title: "اتاق ملکه",
+                                    price: 655555,
+                                    meal: "کامل",
+                                    quantity: 1,
+                                  })
+                                );
+                              }
                             }}
                             className="w-24 h-14 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
                           >
