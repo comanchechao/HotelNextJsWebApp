@@ -61,7 +61,7 @@ export default function ImagesModal() {
           onClick={() => {
             setOpened(true);
           }}
-          className="text-mainPurple rounded-md text-lg cursor-pointer border-2 border-dashed border-mainPurple  text-center flex items-center justify-center px-6 py-5 hover:bg-mainPurple hover:text-gray-100 transition"
+          className="text-white bg-mainPurple font-mainFont rounded-md text-lg cursor-pointer border-r-8 border-mainBlue  text-center flex items-center justify-center px-3 py-2 hover:bg-mainBlue duration-300 ease-in transition"
         >
           عکس های بیشتر
         </button>

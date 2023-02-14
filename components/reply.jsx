@@ -55,7 +55,7 @@ export default function Reply() {
           onClick={() => {
             setOpened(true);
           }}
-          className="w-52 py-3 border-2 text-lg border-darkPurple border-dashed bg-mainBlue transition ease-in duration-300 font-mainFont rounded-md text-gray-50 hover:text-darkPurple hover:bg-gray-50"
+          className="text-white my-4 bg-mainPurple font-mainFont rounded-md text-lg cursor-pointer border-r-8 border-mainBlue  text-center flex items-center justify-center px-6 py-2 hover:bg-mainBlue duration-300 ease-in transition"
         >
           نظر شما
         </button>

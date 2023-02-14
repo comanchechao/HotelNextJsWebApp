@@ -104,7 +104,7 @@ export default function LoginModal() {
       setTimeout(() => {
         setAlert(false);
         setOpened(false);
-      }, 5000);
+      }, 1000);
     }
   };
   // SignOut
@@ -117,7 +117,7 @@ export default function LoginModal() {
     } finally {
       setTimeout(() => {
         window.location.reload();
-      }, 3000);
+      }, 500);
     }
   };
   const select = (
@@ -155,6 +155,51 @@ export default function LoginModal() {
             <div className=" w-full h-rem33 flex flex-col items-center justify-around space-y-2">
               <div>
                 {register ? (
+                  <div className="flex flex-col items-center justify-center space-y-3">
+                    <div className="flex flex-col items-center justify-center space-y-3">
+                      <h1 className="text-3xl  "> ثبت‌نام </h1>
+                      <h4>ایمیل و رمز عبور خود را برای ثبت‌نام وارد کنید</h4>
+                    </div>
+                    <TextInput
+                      className="text-2xl   text-right flex flex-col items-end "
+                      type="email"
+                      placeholder="ایمیل"
+                      label="ایمیل"
+                      size="md"
+                      withAsterisk
+                      value={emailSignUp}
+                      onChange={(e) => setEmailSignUp(e.target.value)}
+                    />
+                    <TextInput
+                      className="text-2xl   text-right flex flex-col items-end "
+                      type="password"
+                      placeholder="رمز عبور"
+                      label="رمز عبور"
+                      size="md"
+                      withAsterisk
+                      value={passwordSignUp}
+                      onChange={(e) => setPasswordSignUp(e.target.value)}
+                    />
+                    <button
+                      onClick={handleSignUp}
+                      className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+                    >
+                      تایید
+                    </button>
+                    <button
+                      onClick={() => setRegister(false)}
+                      className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-gray-500 hover:text-gray-900 text-md font-mainFont"
+                    >
+                      ورود با ایمیل و پسوورد
+                    </button>
+                    <button
+                      onClick={() => setChange(false)}
+                      className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
+                    >
+                      ورود با رمز یکبار مصرف
+                    </button>
+                  </div>
+                ) : (
                   <div className="flex flex-col items-center justify-center space-y-5">
                     <div>
                       {alert ? (
@@ -213,58 +258,13 @@ export default function LoginModal() {
 
                     <div className="flex items-center h-9 justify-between space-x-3 w-full">
                       <button
-                        onClick={() => setRegister(false)}
+                        onClick={() => setRegister(true)}
                         className="w-full h-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent   text-md font-mainFont"
                       >
                         <p className=" w-36 mx-2">ثبت‌نام حساب کاربری</p>
                       </button>
                       <ForgotPasswordModal />
                     </div>
-                    <button
-                      onClick={() => setChange(false)}
-                      className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
-                    >
-                      ورود با رمز یکبار مصرف
-                    </button>
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center space-y-3">
-                    <div className="flex flex-col items-center justify-center space-y-3">
-                      <h1 className="text-3xl  "> ثبت‌نام </h1>
-                      <h4>ایمیل و رمز عبور خود را برای ثبت‌نام وارد کنید</h4>
-                    </div>
-                    <TextInput
-                      className="text-2xl   text-right flex flex-col items-end "
-                      type="email"
-                      placeholder="ایمیل"
-                      label="ایمیل"
-                      size="md"
-                      withAsterisk
-                      value={emailSignUp}
-                      onChange={(e) => setEmailSignUp(e.target.value)}
-                    />
-                    <TextInput
-                      className="text-2xl   text-right flex flex-col items-end "
-                      type="password"
-                      placeholder="رمز عبور"
-                      label="رمز عبور"
-                      size="md"
-                      withAsterisk
-                      value={passwordSignUp}
-                      onChange={(e) => setPasswordSignUp(e.target.value)}
-                    />
-                    <button
-                      onClick={handleSignUp}
-                      className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
-                    >
-                      تایید
-                    </button>
-                    <button
-                      onClick={() => setRegister(true)}
-                      className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-gray-500 hover:text-gray-900 text-md font-mainFont"
-                    >
-                      ورود با ایمیل و پسوورد
-                    </button>
                     <button
                       onClick={() => setChange(false)}
                       className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
@@ -295,7 +295,7 @@ export default function LoginModal() {
                 تایید و دریافت کد
               </button>
               <button
-                onClick={() => setChange(true)}
+                onClick={() => setChange(true) & setRegister(false)}
                 className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
               >
                 ورود با ایمیل و کلمه ی عبور

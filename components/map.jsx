@@ -58,7 +58,7 @@ function DisplayPosition({ map }) {
         latitude: {position.lat.toFixed(4)}, longitude:{" "}
         {position.lng.toFixed(4)}{" "}
         <button
-          className="bg-Sky-500 flex text-center font-bold text-gray-50 p-3 shadow-2xl rounded-lg"
+          className="text-white bg-mainPurple font-mainFont rounded-md text-lg cursor-pointer border-r-8 border-mainBlue  text-center flex items-center justify-center px-3 py-2 hover:bg-mainBlue duration-300 ease-in transition"
           onClick={onClick}
         >
           به هتل
