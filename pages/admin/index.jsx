@@ -19,6 +19,7 @@ import {
 } from "@tabler/icons";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
+import WebsiteInfo from "../../components/websiteInfo.jsx";
 
 export async function getServerSideProps() {
   // Fetch data from the database
@@ -42,11 +43,10 @@ export default function AdminPage({ hotels }) {
     <div className="w-full h-screen bg-gray-200">
       <Navbar />
       <div className="flex pt-5 w-full h-screen items-center justify-center lg:space-x-5 lg:px-44">
-        <div className="hidden pt-9 p-14 lg:flex flex-col items-center h-carousel justify-center w-full divide-y bg-white text-gray-800">
+        <div className="hidden pt-9 p-10 lg:flex flex-col items-center h-carousel justify-center w-full divide-y bg-white text-gray-800">
           <div className="flex w-full justify-center items-center ">
             <div className="flex h-28 justify-around items-center w-full">
-              <div className="w-10 h-10 rounded-full bg-gray-300"></div>
-              <div className="text-gray-800   text-2xl">
+              <div className="text-gray-800 mx-14 text-2xl">
                 <h1>ادمین</h1>
               </div>
             </div>
@@ -84,10 +84,15 @@ export default function AdminPage({ hotels }) {
               <h1 className="text-2xl  "> رزرو ها </h1>
             </div>
           </div>
-          <div className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full ">
+          <div
+            onClick={() => {
+              setTab("info");
+            }}
+            className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full "
+          >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconUser size={24} />
-              <h1 className="text-2xl  "> اطلاعات من </h1>
+              <h1 className="text-2xl  "> اطلاعات سایت </h1>
             </div>
           </div>
           <div className="flex cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-28 w-full ">
@@ -221,6 +226,8 @@ export default function AdminPage({ hotels }) {
               <HotelManagement hotels={hotels} />
             ) : tab === "user" ? (
               <UserManagement />
+            ) : tab === "info" ? (
+              <WebsiteInfo />
             ) : tab === "reserve" ? (
               <ReservationManagement />
             ) : null}

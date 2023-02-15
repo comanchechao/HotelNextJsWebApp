@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Raleway-VariableFont_wght.ttf");
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-007F;
+  /* unicode-range: U+0020-007F; */
+}
+
+@font-face {
   font-family: "IranSans";
   src: url("../assets/fonts/IRYekan.woff");
   font-style: normal;
@@ -37,7 +46,7 @@ body {
   font-display: swap;
 } */
 * {
-  font-family: "IranSans";
+  font-family: "Roboto", "IranSans";
 }
 * {
   scroll-behavior: smooth;
