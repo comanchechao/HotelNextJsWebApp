@@ -55,8 +55,34 @@ export default function AddHotel({ lat, lng }) {
   const [city, setCity] = useState("");
   const [get, setGet] = useState(false);
 
-  useEffect(() => {});
+  const [definedRoom, setDefinedRoom] = useState({
+    title: "",
+    price: null,
+    meal: null,
+    quantity: 1,
+  });
 
+  const [meal, setMeal] = useState("");
+
+  function handleNewRoom() {
+    setRooms(
+      rooms.concat({
+        id: Math.random(3, 50),
+        title: definedRoom.title,
+        price: 655555,
+        meal: meal,
+        quantity: 1,
+      })
+    );
+  }
+
+  useEffect(() => {
+    console.log(rooms);
+  });
+
+  useEffect(() => {
+    definedRoom.meal = meal;
+  }, [meal]);
   const DynamicMap = dynamic(() => import("./map"), {
     ssr: false,
   });
@@ -437,7 +463,12 @@ export default function AddHotel({ lat, lng }) {
                             </p>
                           </div>
                           <div className="flex bg-red-500 rounded-full text-white justify-center items-center w-24">
-                            <IconTrash size={25} />
+                            <IconTrash
+                              onClick={() => {
+                                deleteById(room.id);
+                              }}
+                              size={25}
+                            />
                           </div>
                         </div>
                         <div className="w-36 flex  justify-around">
@@ -480,6 +511,13 @@ export default function AddHotel({ lat, lng }) {
                           :عنوان اتاق
                         </label>
                         <input
+                          onChange={(e) => {
+                            setDefinedRoom((oldValues) => {
+                              let newObject = oldValues;
+                              oldValues.title = e.target.value;
+                              return newObject;
+                            });
+                          }}
                           className="py-2 text-right px-2 w-full bg-gray-200"
                           type="text"
                           name="title"
@@ -489,7 +527,9 @@ export default function AddHotel({ lat, lng }) {
                       <div className="flex w-full h-full text-right justify-center items-center">
                         <Select
                           searchable
+                          value={meal}
                           className="text-right w-full"
+                          onChange={setMeal}
                           label=":وعده غذایی اتاق"
                           data={[
                             { value: "صبحانه", label: "صبحانه" },
@@ -529,7 +569,7 @@ export default function AddHotel({ lat, lng }) {
                       <div className="flex">
                         <button
                           onClick={() => {
-                            setOpened(false);
+                            handleNewRoom();
                           }}
                           className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
                         >
