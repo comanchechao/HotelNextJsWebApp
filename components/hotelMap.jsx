@@ -10,9 +10,9 @@ export default function HotelMaps({ lat, lng }) {
     lng: 51.4167,
   };
 
-  useEffect(() => {
-    console.log(lat, lng);
-  }, []);
+  // useEffect(() => {
+  //   console.log(lat, lng);
+  // }, []);
   const [opened, setOpened] = useState(false);
 
   return (

@@ -86,7 +86,7 @@ export default function AdminPage({ hotels }) {
           </div>
           <div
             onClick={() => {
-              setTab("info");
+              setTab("websiteInfo");
             }}
             className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full "
           >
@@ -226,10 +226,10 @@ export default function AdminPage({ hotels }) {
               <HotelManagement hotels={hotels} />
             ) : tab === "user" ? (
               <UserManagement />
-            ) : tab === "info" ? (
-              <WebsiteInfo />
             ) : tab === "reserve" ? (
               <ReservationManagement />
+            ) : tab === "websiteInfo" ? (
+              <WebsiteInfo />
             ) : null}
           </div>
           <Drawer
@@ -274,6 +274,18 @@ export default function AdminPage({ hotels }) {
                 <div className="flex justify-around items-center  transition   text-gray-800 w-full">
                   <IconUserCheck size={24} />
                   <h1 className="text-2xl  "> همکاران </h1>
+                </div>
+              </div>
+              <div
+                onClick={() => {
+                  setTab("websiteInfo");
+                  console.log(tab);
+                }}
+                className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full "
+              >
+                <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+                  <IconUser size={24} />
+                  <h1 className="text-2xl  "> اطلاعات سایت </h1>
                 </div>
               </div>
               <div

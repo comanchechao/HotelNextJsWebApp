@@ -85,9 +85,9 @@ export default function ExternalStateExample({ city }) {
         setPosition(markedHotel);
       }
     }, []);
-    useEffect(() => {
-      console.log(city);
-    });
+    // useEffect(() => {
+    //   console.log(city);
+    // });
     const [position, setPosition] = useState(center);
     const markerRef = useRef(null);
 
