@@ -75,6 +75,30 @@ export default function AddHotel({ lat, lng }) {
     });
   };
 
+  function increaseQuantity(roomId) {
+    setRooms((oldValues) => {
+      return oldValues.map((item) => {
+        if (item.id === roomId) {
+          let newValue = item.quantity + 1;
+          return { ...item, quantity: newValue };
+        }
+        return item;
+      });
+    });
+  }
+
+  function decreaseQuantity(roomId) {
+    setRooms((oldValues) => {
+      return oldValues.map((item) => {
+        if (item.id === roomId) {
+          let newValue = item.quantity - 1;
+          return { ...item, quantity: newValue };
+        }
+        return item;
+      });
+    });
+  }
+
   // handing submit event
 
   async function handleSubmit() {
@@ -395,21 +419,24 @@ export default function AddHotel({ lat, lng }) {
                     <div className="flex w-full">
                       <div className="flex flex-col w-full">
                         <div className="flex text-darkPurple justify-center items-around h-full p-1 flex-col w-full">
-                          <div className="flex justify-around text-darkPurple w-24  flex">
+                          <div className="flex justify-around text-darkPurple w-14  flex">
                             <p>
-                              <IconCirclePlus />
+                              <IconCirclePlus
+                                onClick={() => {
+                                  increaseQuantity(room.id);
+                                }}
+                              />
                             </p>
                             <p>{room.quantity}</p>
                             <p>
-                              <IconCircleMinus />
+                              <IconCircleMinus
+                                onClick={() => {
+                                  decreaseQuantity(room.id);
+                                }}
+                              />
                             </p>
                           </div>
-                          <div
-                            onClick={() => {
-                              deleteById(room.id);
-                            }}
-                            className="flex bg-red-500 rounded-full text-white justify-center items-center w-24"
-                          >
+                          <div className="flex bg-red-500 rounded-full text-white justify-center items-center w-24">
                             <IconTrash size={25} />
                           </div>
                         </div>
