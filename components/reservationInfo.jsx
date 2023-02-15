@@ -218,7 +218,7 @@ export default function ReservationInfo() {
           onClick={() => {
             setOpened(true);
           }}
-          className="lg:w-32 w-24 py-2 border-2 text-gray-100 text-lg border-white border-dashed bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-darkPurple hover:bg-darkPurple"
+          className="lg:w-32 w-24 py-2 border-2 text-mainPurple text-lg border-mainPurple border-dashed  urple transition ease-in duration-300 font-mainFont rounded-md   hover:bg-mainBlue"
         >
           <p>جزئیات</p>
         </button>

@@ -26,7 +26,7 @@ export default function HotelManagement({ hotels }) {
     ssr: false,
   });
   return (
-    <div className="flex flex-col w-full h-full bg-gray-200">
+    <div className="flex flex-col w-full h-auto bg-gray-200">
       <div className="flex w-full space-y-4 flex-col">
         <div class="pt-4 px-2 flex w-full justify-center items-center relative text-black ">
           <div className="flex flex-reverse w-full items-center space-x-2 justify-center">
@@ -81,7 +81,7 @@ export default function HotelManagement({ hotels }) {
                           className="w-full h-full"
                           href="/admin/hoteldetail"
                         >
-                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-150 font-mainFont rounded-md text-white hover:bg-mainBlue">
+                          <button className="w-full py-4 bg-mainPurple border-r-8 border-2 hover:text-mainPurple border-mainBlue transition ease-in duration-150 font-mainFont rounded-md text-white hover:bg-mainBlue">
                             ویرایش هتل
                           </button>
                         </Link>

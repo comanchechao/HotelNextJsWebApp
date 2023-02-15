@@ -19,7 +19,7 @@ import {
 } from "@tabler/icons";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
-import WebsiteInfo from "../../components/websiteInfo.jsx";
+import WebsiteInfo from "./websiteInfo.jsx";
 
 export async function getServerSideProps() {
   // Fetch data from the database
@@ -40,9 +40,9 @@ export default function AdminPage({ hotels }) {
   const theme = useMantineTheme();
 
   return (
-    <div className="w-full h-screen bg-gray-200">
+    <div className="w-full h-full bg-gray-200 overflow-hidden">
       <Navbar />
-      <div className="flex pt-5 w-full h-screen items-center justify-center lg:space-x-5 lg:px-44">
+      <div className="flex pt-5 w-full h-screen bg-gray-200 items-center justify-center lg:space-x-5 lg:px-44">
         <div className="hidden pt-9 p-10 lg:flex flex-col items-center h-carousel justify-center w-full divide-y bg-white text-gray-800">
           <div className="flex w-full justify-center items-center ">
             <div className="flex h-28 justify-around items-center w-full">
@@ -167,7 +167,7 @@ export default function AdminPage({ hotels }) {
 
                     <Menu.Label>افزودن هتل</Menu.Label>
                     <Menu.Item className="font-medium text-right">
-                      <button className="w-full py-4 bg-darkPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue">
+                      <button className="w-full py-4 bg-mainPurple border-r-8 border-mainBlue transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue">
                         شهر جدید
                       </button>
                     </Menu.Item>
@@ -221,7 +221,7 @@ export default function AdminPage({ hotels }) {
               </div>
             </div>
           </div>
-          <div className="w-full h-full  justify-center items-center">
+          <div className="w-full h-full   justify-center items-center">
             {tab === "hotel" ? (
               <HotelManagement hotels={hotels} />
             ) : tab === "user" ? (

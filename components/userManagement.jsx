@@ -41,7 +41,7 @@ export default function userManagement() {
     },
   ];
   return (
-    <div className="flex w-full h-full bg-gray-300">
+    <div className="flex w-full h-auto  ">
       <div className="flex w-full space-y-4 flex-col">
         <div class="pt-4 px-2 flex w-full justify-center items-center relative text-black ">
           <div className="flex flex-reverse w-full items-center space-x-2 justify-center">
