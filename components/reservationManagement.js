@@ -60,7 +60,7 @@ export default function ReservationManagement() {
           </div>
         </div>
         <Tabs color="yellow" variant="pills" defaultValue="gallery">
-          <Tabs.List className="px-2" position="center">
+          <Tabs.List className="px-2" position="center" grow>
             <Tabs.Tab
               value="messages"
               icon={<IconBuildingSkyscraper size={16} />}
