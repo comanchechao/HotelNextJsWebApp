@@ -69,6 +69,7 @@ function DisplayPosition({ map }) {
 }
 
 export default function ExternalStateExample({ city }) {
+  const dispatch = useDispatch();
   const [map, setMap] = useState(null);
   let lat = useSelector((state) => state.map.lat);
   let lng = useSelector((state) => state.map.lng);
@@ -357,6 +358,8 @@ export default function ExternalStateExample({ city }) {
                 onClick={() => {
                   setShowMarker2(false);
                   console.log(showMarker2);
+                  dispatch(mapActions.setLat2(""));
+                  dispatch(mapActions.setLng2(""));
                 }}
                 className="flex justify-center items-center text-red-500"
               >
@@ -390,7 +393,9 @@ export default function ExternalStateExample({ city }) {
                 <IconTrash
                   onClick={() => {
                     setShowMarker3(false);
-                    console.log(showMarker2);
+                    console.log(showMarker3);
+                    dispatch(mapActions.setLat3(""));
+                    dispatch(mapActions.setLng3(""));
                   }}
                 />
               </div>
