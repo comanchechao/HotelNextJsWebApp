@@ -308,7 +308,6 @@ export default function AddHotel({ lat, lng }) {
         opened={opened}
         onClose={() => setOpened(false)}
         centered
-        title="Add new Hotel"
       >
         <div className="flex flex-col  w-full h-full">
           <div className="flex space-y-5 w-full h-full flex-col">
@@ -316,10 +315,12 @@ export default function AddHotel({ lat, lng }) {
               <DynamicMap city={city} />
             </div>
             <div className="flex justify-around flex-wrap">
-              <div className="flex p-2 w-full text-right justify-end">
-                :تصاویر هتل
+              <div className="   w-full text-center items-center flex justify-center">
+                <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                  تصاویر هتل
+                </h3>
               </div>
-              <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
+              <div className="w-14 h-14 cursor-pointer p-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="firstImage">
                   {uploading ? (
                     <Loader color="grape" />
@@ -334,7 +335,7 @@ export default function AddHotel({ lat, lng }) {
                   id="firstImage"
                 />
               </div>
-              <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
+              <div className="w-14 h-14 cursor-pointer p-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="secondImage">
                   {uploading ? (
                     <Loader color="grape" />
@@ -349,7 +350,7 @@ export default function AddHotel({ lat, lng }) {
                   id="secondImage"
                 />
               </div>
-              <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
+              <div className="w-14 h-14 cursor-pointer p-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="thirdImage">
                   {uploading ? (
                     <Loader color="grape" />
@@ -364,7 +365,7 @@ export default function AddHotel({ lat, lng }) {
                   id="thirdImage"
                 />
               </div>
-              <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
+              <div className="w-14 h-14 cursor-pointer p-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="fourthImage">
                   {uploading ? (
                     <Loader color="grape" />
@@ -379,7 +380,7 @@ export default function AddHotel({ lat, lng }) {
                   id="fourthImage"
                 />
               </div>
-              <div className="w-14 py-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
+              <div className="w-14 h-14 cursor-pointer p-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
                 <label htmlFor="fifthImage">
                   {uploading ? (
                     <Loader color="grape" />
@@ -390,10 +391,10 @@ export default function AddHotel({ lat, lng }) {
                 <input type="file" className="hidden" id="fifthImage" />
               </div>
             </div>
-            <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
-              <label className="w-24" htmlFor="title">
-                :عنوان هتل
-              </label>
+            <div className="flex  flex-col justify-center space-x-2 text-right items-center w-full h-full">
+              <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                عنوان هتل
+              </h3>
               <input
                 onChange={(e) => {
                   setTitle(e.target.value);
@@ -415,18 +416,22 @@ export default function AddHotel({ lat, lng }) {
                   { value: "شام", label: "سونا" },
                 ]}
               />
-              <p>:امکانات هتل را انتخاب کنید</p>
+              <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                امکانات هتل را انتخاب کنید
+              </h3>{" "}
             </div>
             <div className="flex w-full h-full text-right justify-center items-center">
               <div className="flex w-full justify-between items-center h-full">
                 <Rating value={value} onChange={setValue} size="lg" count={5} />
-                <p>:ستاره های هتل</p>
+                <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                  ستاره های هتل{" "}
+                </h3>{" "}
               </div>
             </div>
-            <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
-              <label className="w-24" htmlFor="price">
-                :قیمت هرشب
-              </label>
+            <div className="flex  flex-col justify-center space-x-2 text-right items-center w-full h-full">
+              <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                قیمت 1 شب
+              </h3>
               <input
                 onChange={(e) => {
                   setAvragePrice(e.target.value);
@@ -437,11 +442,13 @@ export default function AddHotel({ lat, lng }) {
                 placeholder="..."
               />
             </div>
-            <div className="flex w-full h-full text-right justify-center items-center">
+            <div className="flex w-full flex-col h-full text-right justify-center items-center">
+              <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                تعداد اتاق ها
+              </h3>
               <Select
                 searchable
                 className="text-right w-full"
-                label=":تعداد اتاق ها"
                 data={[
                   { value: "1", label: "1" },
                   { value: "2", label: "2" },
@@ -450,12 +457,14 @@ export default function AddHotel({ lat, lng }) {
                 ]}
               />
             </div>
-            <div className="flex w-full h-full text-right justify-center items-center">
+            <div className="flex flex-col w-full h-full text-right justify-center items-center">
+              <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                انتخاب شهر
+              </h3>
               <Select
                 value={city}
                 searchable
                 className="text-right w-full"
-                label=":شهر"
                 data={cityNames}
               />
             </div>
@@ -527,10 +536,10 @@ export default function AddHotel({ lat, lng }) {
                 <Tabs.Panel value="gallery" pt="xs">
                   <div className="flex flex-col  w-full h-full">
                     <div className="flex space-y-2 w-full h-full flex-col">
-                      <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
-                        <label className="w-24" htmlFor="title">
-                          :عنوان اتاق
-                        </label>
+                      <div className="flex  flex-col justify-center space-x-2 text-right items-center w-full h-full">
+                        <h3 className="text-lg my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                          عنوان اتاق{" "}
+                        </h3>
                         <input
                           onChange={(e) => {
                             setDefinedRoom((oldValues) => {
@@ -545,13 +554,15 @@ export default function AddHotel({ lat, lng }) {
                           placeholder="..."
                         />
                       </div>
-                      <div className="flex w-full h-full text-right justify-center items-center">
+                      <div className="flex w-full flex-col h-full text-right justify-center items-center">
+                        <h3 className="text-md my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                          وعده غذایی اتاق
+                        </h3>
                         <Select
                           searchable
                           value={meal}
                           className="text-right w-full"
                           onChange={setMeal}
-                          label=":وعده غذایی اتاق"
                           data={[
                             { value: "صبحانه", label: "صبحانه" },
                             { value: "صبحانه و نهار", label: "صبحانه و نهار" },
@@ -563,10 +574,10 @@ export default function AddHotel({ lat, lng }) {
                           ]}
                         />
                       </div>
-                      <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
-                        <label className="w-24" htmlFor="price">
-                          :قیمت هرشب
-                        </label>
+                      <div className="flex  flex-col justify-center space-x-2 text-right items-center w-full h-full">
+                        <h3 className="text-lg my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                          قیمت 1 شب
+                        </h3>
                         <input
                           className="py-2 text-right px-2 w-full bg-gray-200"
                           type="number"
@@ -574,11 +585,13 @@ export default function AddHotel({ lat, lng }) {
                           placeholder="..."
                         />
                       </div>
-                      <div className="flex w-full h-full text-right justify-center items-center">
+                      <div className="flex flex-col w-full h-full text-right justify-center items-center">
+                        <h3 className="text-lg my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                          ظرفیت اتاق
+                        </h3>
                         <Select
                           searchable
                           className="text-right w-full"
-                          label=":ظرفیت اتاق"
                           data={[
                             { value: "1", label: "1" },
                             { value: "2", label: "2" },
@@ -605,7 +618,7 @@ export default function AddHotel({ lat, lng }) {
                   <div className="flex flex-col w-full h-full">
                     <div className="flex bg-white justify-around divide-y my-1 divide-gray-300 rounded-md flex-col w-full h-44 border">
                       <div className="flex w-full justify-between">
-                        <div className="flex h-full items-end justify-center px-4">
+                        <div className="flex h-full items-center justify-center px-4">
                           <button
                             onClick={() => {
                               if (rooms.some((room) => room.id === 2)) {
@@ -627,7 +640,7 @@ export default function AddHotel({ lat, lng }) {
                             افزودن
                           </button>
                         </div>
-                        <div className="flex flex-col py-4 px-5 justify-center items-end ">
+                        <div className="flex flex-col py-4 px-5 justify-center items-center ">
                           <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
                             سام اتاق
                           </h1>
@@ -644,7 +657,7 @@ export default function AddHotel({ lat, lng }) {
                     </div>
                     <div className="flex bg-white justify-around divide-y my-1 divide-gray-300 rounded-md flex-col w-full h-44 border">
                       <div className="flex w-full justify-between">
-                        <div className="flex h-full items-end justify-center px-4">
+                        <div className="flex h-full items-center justify-center px-4">
                           <button
                             onClick={(room) => {
                               if (rooms.some((room) => room.id === 1)) {
@@ -666,7 +679,7 @@ export default function AddHotel({ lat, lng }) {
                             افزودن
                           </button>
                         </div>
-                        <div className="flex flex-col py-4 px-5 justify-center items-end ">
+                        <div className="flex flex-col py-4 px-5 justify-center items-center ">
                           <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
                             اتاق ملکه
                           </h1>

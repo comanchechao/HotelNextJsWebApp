@@ -56,13 +56,12 @@ function DisplayPosition({ map }) {
   return (
     <div className="flex flex-col items-end w-96 ">
       <div className="flex flex-row-reverse items-center justify-around w-full">
-        latitude: {position.lat.toFixed(4)}, longitude:{" "}
-        {position.lng.toFixed(4)}{" "}
+        {position.lat.toFixed(4)},{position.lng.toFixed(4)}{" "}
         <button
-          className="text-white bg-mainPurple font-mainFont rounded-md text-lg cursor-pointer border-r-8 border-mainBlue  text-center flex items-center justify-center px-3 py-2 hover:bg-mainBlue duration-300 ease-in transition"
+          className="py-1 px-3 w-64 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
           onClick={onClick}
         >
-          به هتل
+          برو به محل هتل{" "}
         </button>
       </div>
     </div>
@@ -364,12 +363,13 @@ export default function ExternalStateExample({ city }) {
         {showMarker3 ? <DraggableMarker3 /> : null}
       </MapContainer>
 
-      <div className="flex flex-col space-y-3 items-center  justify-center w-full">
+      <div className="flex    items-center  justify-center w-full">
         <div className="flex justify-center items-center w-full p-4">
           {showMarker2 ? (
             <div className="flex justify-around  w-full h-full">
-              <div className="flex justify-center items-center text-red-500">
+              <div className="flex justify-center items-center text-red-600">
                 <IconTrash
+                  className=" cursor-pointer transition ease-in duration-150 hover:text-mainBlue"
                   onClick={() => {
                     setShowMarker2(false);
                     console.log(showMarker2);
@@ -378,7 +378,8 @@ export default function ExternalStateExample({ city }) {
                   }}
                 />
                 <CircleWavyCheck
-                  size={30}
+                  className=" cursor-pointer transition ease-in duration-150 hover:text-mainBlue"
+                  size={25}
                   onClick={() => {
                     dispatch(mapActions.setMarker2(marker2Title));
                   }}
@@ -399,7 +400,7 @@ export default function ExternalStateExample({ city }) {
           ) : (
             <div>
               <button
-                className="bg-mainPurple hover:bg-darkPurple text-white transition px-8 py-3 rounded-lg shadow-2xl"
+                className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
                 onClick={() => {
                   setShowMarker2(true);
                   console.log(showMarker2);
@@ -416,6 +417,7 @@ export default function ExternalStateExample({ city }) {
             <div className="flex justify-around  w-full h-full">
               <div className="flex justify-center items-center text-red-500">
                 <IconTrash
+                  className=" cursor-pointer transition ease-in duration-150 hover:text-mainBlue"
                   onClick={() => {
                     setShowMarker3(false);
                     console.log(showMarker3);
@@ -424,7 +426,8 @@ export default function ExternalStateExample({ city }) {
                   }}
                 />
                 <CircleWavyCheck
-                  size={30}
+                  className=" cursor-pointer transition ease-in duration-150 hover:text-mainBlue"
+                  size={25}
                   onClick={() => {
                     dispatch(mapActions.setMarker3(marker3Title));
                   }}
@@ -444,7 +447,7 @@ export default function ExternalStateExample({ city }) {
             </div>
           ) : (
             <button
-              className="bg-mainPurple hover:bg-darkPurple text-white transition px-8 py-3 rounded-lg shadow-2xl"
+              className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
               onClick={() => {
                 setShowMarker3(true);
                 console.log(showMarker3);
