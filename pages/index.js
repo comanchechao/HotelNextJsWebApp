@@ -1,10 +1,14 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
-import Navbar from "../components/Navbar";
 import Faq from "../components/Faq";
 import Link from "next/link";
 import { gsap } from "gsap";
-import { Select, Popover, useMantineTheme, TextInput } from "@mantine/core";
+import {
+  Select,
+  Popover,
+  useMantineTheme,
+  TextInput,
+  Skeleton,
+} from "@mantine/core";
 import Image from "next/image";
 import mainBg from "../assets/images/mainBg.webp";
 import { DatePicker } from "@mantine/dates";
@@ -28,12 +32,11 @@ import Shiraz from "../assets/images/Shiraz.webp";
 import Tabriz from "../assets/images/Tabriz.webp";
 import Esfahan from "../assets/images/Esfahan.webp";
 import "dayjs/locale/fa";
-import Footer from "../components/Footer";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import HomePageCarousel from "../components/homePageCarousel";
 import { useRef, useEffect } from "react";
-
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 export async function getStaticProps({ locale }) {
   return {
     props: {
@@ -42,6 +45,18 @@ export async function getStaticProps({ locale }) {
   };
 }
 export default function Home(props) {
+  const Footer = dynamic(() => import("../components/Footer"), {
+    suspense: true,
+  });
+  const Navbar = dynamic(() => import("../components/Navbar"), {
+    suspense: true,
+  });
+  const HomePageCarousel = dynamic(
+    () => import("../components/homePageCarousel"),
+    {
+      suspense: true,
+    }
+  );
   const theme = useMantineTheme();
   const mainPageBg = useRef();
 
@@ -75,6 +90,15 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="h-full w-screen bg-gray-200 overflow-x-hidden">
+        <Suspense
+          fallback={
+            <div>
+              <Skeleton height={800} width="100%" />
+            </div>
+          }
+        >
+          <Navbar />
+        </Suspense>
         <Navbar />
         <div ref={mainPageBg} className="w-screen h-96  opacity-0">
           <Image
@@ -176,7 +200,15 @@ export default function Home(props) {
           </div>
         </div>
         <div className="w-full h-auto lg:px-44 z-40">
-          <HomePageCarousel />
+          <Suspense
+            fallback={
+              <div>
+                <Skeleton height={800} width="100%" />
+              </div>
+            }
+          >
+            <HomePageCarousel />
+          </Suspense>
         </div>
         {/* <div className="w-full h-auto  lg:h-60 lg:px-44 z-10">
           <div className="w-full h-full flex flex-col lg:flex-row-reverse items-center justify-around lg:mb-10 lg:py-0 my-10 py-14 space-y-5 lg:space-x-0 drop-shadow-xl bg-white rounded-md lg:p-14  ">
@@ -470,7 +502,15 @@ export default function Home(props) {
             <Faq />
           </div>
         </div>
-        <Footer />
+        <Suspense
+          fallback={
+            <div>
+              <Skeleton height={800} width="100%" />
+            </div>
+          }
+        >
+          <Footer />
+        </Suspense>
       </div>
     </>
   );
