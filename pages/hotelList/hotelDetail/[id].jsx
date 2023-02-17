@@ -58,6 +58,9 @@ export const getStaticProps = async (context) => {
 };
 
 export default function HotelDetailPage({ hotel }) {
+  useEffect(() => {
+    console.log(JSON.stringify(hotel.secondLocation.lat));
+  }, []);
   const [loading, setLoading] = useState(false);
   const [displayImages, setDisplayImages] = useState([]);
   const [singleImage, setSingleImage] = useState("");
@@ -334,6 +337,7 @@ export default function HotelDetailPage({ hotel }) {
               <div className="flex flex-col w-full  p-3 bg-white">
                 <div className="flex w-full">
                   <DynamicMap
+                    secondLocation={hotel.secondLocation}
                     firstLocation={hotel.firstLocation}
                     lat={hotel.locationLat}
                     lng={hotel.locationLng}

@@ -13,7 +13,7 @@ const locations = [
 ];
 const zoom = 8;
 
-function DisplayPosition({ map, lng, lat, firstLocation }) {
+function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
   const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(() => map.getCenter());
 
@@ -73,12 +73,45 @@ function DisplayPosition({ map, lng, lat, firstLocation }) {
             </div>
           </div>
         </div>
+        <div
+          onMouseOver={() => {
+            toLocation({
+              lat: JSON.stringify(secondLocation.lat),
+              lng: JSON.stringify(secondLocation.lng),
+            });
+          }}
+          className="flex flex-col justify-around items-around space-y-2 p-5 w-10/12"
+        >
+          <h1 className="text-lg self-end">
+            {JSON.stringify(secondLocation.name)}
+          </h1>
+          <div className="flex w-full">
+            <div className="flex w-full">
+              <p>23213</p>
+              <p>متر</p>
+            </div>
+            <div className="flex justify-end w-full">
+              <div className="flex">
+                <p>4 دقیقه</p>
+              </div>
+              <div className="flex">
+                <p>4</p>
+                <p>دقیقه</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-export default function ExternalStateExample({ lat, lng, firstLocation }) {
+export default function ExternalStateExample({
+  lat,
+  lng,
+  firstLocation,
+  secondLocation,
+}) {
   const [map, setMap] = useState(null);
 
   useEffect(() => {
@@ -107,6 +140,17 @@ export default function ExternalStateExample({ lat, lng, firstLocation }) {
             <Popup>firstLocation</Popup>
           </Marker>
         ) : null}
+        {secondLocation ? (
+          <Marker
+            position={{
+              lat: JSON.stringify(secondLocation.lat),
+              lng: JSON.stringify(secondLocation.lng),
+            }}
+          >
+            {" "}
+            <Popup>secondLOcatoin</Popup>
+          </Marker>
+        ) : null}
       </MapContainer>
     ),
     []
@@ -119,6 +163,7 @@ export default function ExternalStateExample({ lat, lng, firstLocation }) {
         <DisplayPosition
           map={map}
           firstLocation={firstLocation}
+          secondLocation={secondLocation}
           lat={lat}
           lng={lng}
         />
