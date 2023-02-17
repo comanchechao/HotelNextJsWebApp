@@ -60,6 +60,8 @@ export default function AddHotel({ lat, lng }) {
   let getlng = useSelector((state) => state.map.lng);
   let lat2 = useSelector((state) => state.map.lat2);
   let lng2 = useSelector((state) => state.map.lng2);
+  let lat3 = useSelector((state) => state.map.lat3);
+  let lng3 = useSelector((state) => state.map.lng3);
 
   const [definedRoom, setDefinedRoom] = useState({
     title: "",
@@ -134,6 +136,7 @@ export default function AddHotel({ lat, lng }) {
   // handing submit event
 
   let marker2 = useSelector((state) => state.map.marker2);
+  let marker3 = useSelector((state) => state.map.marker3);
 
   async function handleSubmit() {
     const { data, error } = await supabase
@@ -149,10 +152,15 @@ export default function AddHotel({ lat, lng }) {
         stars: value,
         locationLat: lat,
         locationLng: lng,
-        secondLocation: {
+        firstLocation: {
           name: marker2,
           lat: lat2,
           lng: lng2,
+        },
+        secondLocation: {
+          name: marker3,
+          lat: lat3,
+          lng: lng3,
         },
       })
       .select("id");

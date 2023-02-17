@@ -337,6 +337,7 @@ export default function ExternalStateExample({ city }) {
   let lat2 = useSelector((state) => state.map.lat2);
   let lat3 = useSelector((state) => state.map.lat3);
   let marker2 = useSelector((state) => state.map.marker2);
+  let marker3 = useSelector((state) => state.map.marker3);
 
   useEffect(() => {
     if (lat2 !== "") {
@@ -377,6 +378,7 @@ export default function ExternalStateExample({ city }) {
                   }}
                 />
                 <CircleWavyCheck
+                  size={30}
                   onClick={() => {
                     dispatch(mapActions.setMarker2(marker2Title));
                   }}
@@ -422,12 +424,14 @@ export default function ExternalStateExample({ city }) {
                   }}
                 />
                 <CircleWavyCheck
+                  size={30}
                   onClick={() => {
                     dispatch(mapActions.setMarker3(marker3Title));
                   }}
                 />
               </div>
-              <div className="flex">
+              <div className="flex flex-col justify-center items-center">
+                {marker3 !== "" ? <p>{marker3}</p> : null}
                 <input
                   onChange={(e) => {
                     setMarker3Title(e.target.value);

@@ -11,7 +11,7 @@ const locations = [
   { name: "نجف آباد", lat: 32.7, lng: 51.419 },
   { name: "کاشان", lat: 33.7, lng: 51.435 },
 ];
-const zoom = 8;
+const zoom = 15;
 
 function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
   const [draggable, setDraggable] = useState(false);
@@ -52,11 +52,16 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
       <div className="flex flex-col border items-end rounded-lg border-gray-200 divide-y divide-gray-200 w-full h-full">
         <div
           onMouseOver={() => {
-            toLocation({ lat: firstLocation[0], lng: firstLocation[1] });
+            toLocation({
+              lat: JSON.stringify(firstLocation.lat),
+              lng: JSON.stringify(firstLocation.lng),
+            });
           }}
           className="flex flex-col justify-around items-around space-y-2 p-5 w-10/12"
         >
-          <h1 className="text-lg self-end">first locatoin</h1>
+          <h1 className="text-lg self-end">
+            {JSON.stringify(firstLocation.name)}
+          </h1>
           <div className="flex w-full">
             <div className="flex w-full">
               <p>23213</p>
@@ -135,7 +140,12 @@ export default function ExternalStateExample({
           <Popup>مکان هتل</Popup>
         </Marker>
         {firstLocation ? (
-          <Marker position={{ lat: firstLocation[0], lng: firstLocation[1] }}>
+          <Marker
+            position={{
+              lat: JSON.stringify(firstLocation.lat),
+              lng: JSON.stringify(firstLocation.lng),
+            }}
+          >
             {" "}
             <Popup>firstLocation</Popup>
           </Marker>
