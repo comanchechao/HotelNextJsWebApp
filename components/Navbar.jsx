@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import NavDrawer from "./NavDrawer";
 import LoginModal from "./loginModal";
 import { gsap } from "gsap";
+import { useTranslation } from "next-i18next";
 
 export default function Navbar() {
   const router = useRouter();
@@ -35,6 +36,7 @@ export default function Navbar() {
   //     SetisLogged(false);
   //   }
   // }
+  const { t } = useTranslation();
 
   const [nextLocale, setNextLocale] = useState("tr");
   const { pathname, asPath, query } = router;
@@ -64,7 +66,7 @@ export default function Navbar() {
             className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
             <CaretDown className="mx-2" size={20} weight="bold" />
-            اقامت
+            {t("inhabitancy")}
           </label>
           <ul
             tabIndex={0}
@@ -106,21 +108,21 @@ export default function Navbar() {
           href="/admin"
           className="flex rounded-sm justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
-          <h4 className=" ">ادمین</h4>
+          <h4 className=" ">{t("admin")}</h4>
           <IdentificationCard className="mx-1" weight="light" size={30} />
         </Link>
         <Link
           href="/aboutUs"
           className="flex rounded-sm  justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
-          <h4>درباره ما</h4>
+          <h4>{t("aboutUs")}</h4>
           <Scroll className="mx-2" size={24} weight="light" />
         </Link>
         <Link
           href="/contactUs"
           className="flex rounded-sm justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
-          <h4>تماس با ما</h4>
+          <h4>{t("contactUs")}</h4>
           <Question className="ml-1" size={24} weight="light" />
         </Link>
       </div>

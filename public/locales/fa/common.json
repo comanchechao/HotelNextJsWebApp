@@ -1,9 +1,15 @@
 {
-  "destination": "مقصد",
+  // NAVBAR TRANSLATIONS
   "inhabitancy": "اقامت",
+  "admin": "ادمین",
+  "boob": "درباره ما",
+  "contactUs": "تماس با ما",
+  "home": "خونه",
+
+  // HOMEPAGE TRANSLATIONS
+  "destination": "مقصد",
   "support": "پشتیبانی آنلاین",
   "travels": "سفرهای من",
-  "admin": "ادمین",
   "inDate": "تاریخ ورود",
   "outDate": "تاریخ خروج",
   "passenger": "انتخاب مسافر",

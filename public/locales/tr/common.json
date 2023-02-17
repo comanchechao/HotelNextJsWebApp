@@ -1,12 +1,16 @@
 {
-  "destination": "Variş noktasi",
-  "inhabitancy": "Kalmak",
+  // NAVBAR TRANSLATIONS
+  "inhabitancy": "Konaklama",
+  "boob": "Hakkımızda",
+  "contactUs": "Bize Ulaşın",
+  "home": "Ev",
+  "admin": "Yönetici",
 
+  // HOMEPAGE TRANSLATIONS
+  "destination": "Variş noktasi",
   "support": "çevrimiçi destek",
 
   "travels": "Gezilerim",
-
-  "admin": "Yönetici",
 
   "inDate": "Giriş tarihi",
 
