@@ -304,12 +304,12 @@ export default function AddHotel({ lat, lng }) {
   return (
     <>
       <Modal
-        size="800px"
+        fullScreen
         opened={opened}
         onClose={() => setOpened(false)}
         centered
       >
-        <div className="flex flex-col  w-full h-full">
+        <div className="flex flex-col bg-gray-50 px-72  w-full h-full">
           <div className="flex space-y-5 w-full h-full flex-col">
             <div className="flex p-5 w-full justify-center items-center">
               <DynamicMap city={city} />
@@ -516,7 +516,12 @@ export default function AddHotel({ lat, lng }) {
               })}
             </div>
             <div className="flex w-full ">
-              <Tabs className="w-full" variant="outline" defaultValue="gallery">
+              <Tabs
+                color="yellow"
+                variant="pills"
+                className="w-full"
+                defaultValue="gallery"
+              >
                 <Tabs.List grow position="center">
                   <Tabs.Tab
                     position="center"
