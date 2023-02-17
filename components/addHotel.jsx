@@ -39,6 +39,7 @@ import AddRoom from "./addRoom";
 //   { value: "3", label: "رشت" },
 //   { value: "4", label: "تنکابن" },
 // ];
+import cities from "../assets/cities/ir.json";
 
 export default function AddHotel({ lat, lng }) {
   const [opened, setOpened] = useState(false);
@@ -132,6 +133,8 @@ export default function AddHotel({ lat, lng }) {
 
   // handing submit event
 
+  let marker2 = useSelector((state) => state.map.marker2);
+
   async function handleSubmit() {
     const { data, error } = await supabase
       .from("Hotels")
@@ -146,6 +149,11 @@ export default function AddHotel({ lat, lng }) {
         stars: value,
         locationLat: lat,
         locationLng: lng,
+        secondLocation: {
+          name: marker2,
+          lat: lat2,
+          lng: lng2,
+        },
       })
       .select("id");
     console.log(

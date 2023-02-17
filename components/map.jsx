@@ -6,6 +6,7 @@ import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { mapActions } from "../store/map";
 import { IconTrash } from "@tabler/icons";
+import { CircleWavyCheck } from "phosphor-react";
 
 const center = [35.7, 51.4167];
 const center2 = [35.8, 51.4167];
@@ -320,9 +321,12 @@ export default function ExternalStateExample({ city }) {
       </Marker>
     );
   }
+
+  const [marker2Title, setMarker2Title] = useState("");
+  const [marker3Title, setMarker3Title] = useState("");
   const [showMarker2, setShowMarker2] = useState(false);
   const [showMarker3, setShowMarker3] = useState(false);
-
+  const [theZoom, setZoom] = useState(8);
   let lat2 = useSelector((state) => state.map.lat2);
   let lat3 = useSelector((state) => state.map.lat3);
 
@@ -332,6 +336,7 @@ export default function ExternalStateExample({ city }) {
     }
     if (lat3 !== "") {
       setShowMarker3(true);
+      setZoom(15);
     }
   }, []);
   return (
@@ -340,7 +345,7 @@ export default function ExternalStateExample({ city }) {
         id="map"
         style={{ width: "600px", height: "500px" }}
         center={center}
-        zoom={zoom}
+        zoom={theZoom}
         scrollWheelZoom={false}
         ref={setMap}
       >
@@ -354,19 +359,27 @@ export default function ExternalStateExample({ city }) {
         <div className="flex justify-center items-center w-full p-4">
           {showMarker2 ? (
             <div className="flex justify-around  w-full h-full">
-              <div
-                onClick={() => {
-                  setShowMarker2(false);
-                  console.log(showMarker2);
-                  dispatch(mapActions.setLat2(""));
-                  dispatch(mapActions.setLng2(""));
-                }}
-                className="flex justify-center items-center text-red-500"
-              >
-                <IconTrash />
+              <div className="flex justify-center items-center text-red-500">
+                <IconTrash
+                  onClick={() => {
+                    setShowMarker2(false);
+                    console.log(showMarker2);
+                    dispatch(mapActions.setLat2(""));
+                    dispatch(mapActions.setLng2(""));
+                  }}
+                />
+                <CircleWavyCheck
+                  onClick={() => {
+                    setShowMarker2(false);
+                    dispatch(mapActions.setMarker2(marker2Title));
+                  }}
+                />
               </div>
               <div className="flex">
                 <input
+                  onChange={(e) => {
+                    setMarker2Title(e.target.value);
+                  }}
                   className="py-2 px-8 rounded-lg bg-gray-200"
                   type="text"
                   placeholder="نام مکان"
@@ -374,15 +387,18 @@ export default function ExternalStateExample({ city }) {
               </div>
             </div>
           ) : (
-            <button
-              className="bg-mainPurple hover:bg-darkPurple text-white transition px-8 py-3 rounded-lg shadow-2xl"
-              onClick={() => {
-                setShowMarker2(true);
-                console.log(showMarker2);
-              }}
-            >
-              افزودن مارکر
-            </button>
+            <div>
+              {marker2Title ? <p>{marker2Title}</p> : null}
+              <button
+                className="bg-mainPurple hover:bg-darkPurple text-white transition px-8 py-3 rounded-lg shadow-2xl"
+                onClick={() => {
+                  setShowMarker2(true);
+                  console.log(showMarker2);
+                }}
+              >
+                افزودن مارکر
+              </button>
+            </div>
           )}
         </div>
         <div className="flex justify-center items-center w-full p-4">
@@ -398,9 +414,17 @@ export default function ExternalStateExample({ city }) {
                     dispatch(mapActions.setLng3(""));
                   }}
                 />
+                <CircleWavyCheck
+                  onClick={() => {
+                    dispatch(mapActions.setMarker3(marker3Title));
+                  }}
+                />
               </div>
               <div className="flex">
                 <input
+                  onChange={(e) => {
+                    setMarker3Title(e.target.value);
+                  }}
                   className="py-2 px-8 rounded-lg bg-gray-200"
                   type="text"
                   placeholder="نام مکان"
