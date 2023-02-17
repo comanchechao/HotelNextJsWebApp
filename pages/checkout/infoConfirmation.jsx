@@ -2,20 +2,20 @@ import { Star, SignIn, SignOut, Bed } from "phosphor-react";
 
 export default function InfoConfirmation() {
   return (
-    <div className=" mb-10 h-auto w-full lg:w-textArea flex mt-5 flex-col items-center space-y-7">
-      <div className="h-24 w-full bg-white divide-x-2 flex">
-        <div className="h-full w-1/2 flex items-center justify-center ">
-          <div className="h-full w-1/2 flex flex-col items-center justify-center">
+    <div className=" mb-10 h-auto w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
+      <div className="lg:h-24 h-auto w-full bg-white divide-x-2 flex">
+        <div className="h-full lg:flex-row flex-col w-1/2 flex items-center justify-center ">
+          <div className="h-full lg:my-0 my-4 w-1/2 flex flex-col items-center justify-center">
             <div className="flex items-center space-x-2">
               <h2>تاریخ خروج</h2>
-              <SignOut size={40} color="#3c15d5" weight="fill" />
+              <SignOut size={40} color="#e0ab19" weight="fill" />
             </div>
             <h1 className="font text-lg">1401/11/06 - ساعت 12:00:00</h1>
           </div>
-          <div className="h-full w-1/2 flex flex-col justify-center items-center">
+          <div className="h-full lg:my-0 my-4 w-1/2 flex flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>تاریخ ورود</h2>
-              <SignIn size={40} color="#3c15d5" weight="fill" />
+              <SignIn size={40} color="#e0ab19" weight="fill" />
             </div>
             <h1 className="font text-lg">1401/11/05 - ساعت 14:00:00</h1>
           </div>
@@ -24,7 +24,7 @@ export default function InfoConfirmation() {
           <div className="flex items-center space-x-4">
             <h2 className="flex items-center">
               5 ستاره
-              <Star className="mx-2" size={19} color="#4405a8" weight="fill" />
+              <Star className="mx-2" size={19} color="#e0ab19" weight="fill" />
             </h2>
             <h1 className="text-xl font-bold">هتل پارسیان استقلال</h1>
           </div>
@@ -35,7 +35,7 @@ export default function InfoConfirmation() {
         <div className="h-20 w-full flex items-end justify-start  flex-col   py-3">
           <h1 className="text-2xl font-bold items-center flex">
             مشخصات اتاق و مسافران
-            <Bed className="ml-3" size={45} color="#3c15d5" weight="fill" />
+            <Bed className="ml-3" size={45} color="#e0ab19" weight="fill" />
           </h1>
         </div>
         <div className=" w-5/6 h-28 self-end flex flex-wrap-reverse items-center justify-end  py-4 space-x-5 ">

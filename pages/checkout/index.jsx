@@ -19,15 +19,14 @@ export default function Checkout() {
     setActive((current) => (current > 0 ? current - 1 : current));
 
   return (
-    <div className="w-screen  h-auto bg-gray-200">
+    <div className="w-screen flex items-center justify-start flex-col  h-auto bg-gray-200">
       <Navbar />
-      <div className="w-screen h-full flex-col text-right flex items-center px-10 lg:px-0 pt-36 justify-center ">
+      <div className="w-screen h-full flex-col text-right flex items-center p-10  lg:px-0 pt-36 justify-center ">
         <Stepper
           color="yellow"
           size="lg"
           active={active}
           onStepClick={setActive}
-          breakpoint="md"
           iconSize={47}
         >
           <Stepper.Step icon={<Buildings size={28} />} label="انتخاب هتل">
@@ -38,10 +37,14 @@ export default function Checkout() {
             icon={<Users size={28} />}
             label="مشخصات مسافران"
           >
-            <PassengerInfo />
+            <div className="flex items-center justify-center">
+              <PassengerInfo />
+            </div>
           </Stepper.Step>
           <Stepper.Step icon={<Files size={28} />} label="تایید اطلاعات">
-            <InfoConfirmation />
+            <div className="flex items-center justify-center">
+              <InfoConfirmation />
+            </div>
           </Stepper.Step>
           <Stepper.Step icon={<Money size={28} />} label="پرداخت">
             Step 3 content: Get full access
