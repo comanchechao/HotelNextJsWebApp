@@ -48,12 +48,60 @@ export default function WebsiteInfo() {
             </div>
           </Tabs.Panel>
 
-          <Tabs.Panel value="messages" pt="xs"></Tabs.Panel>
+          <Tabs.Panel value="messages" pt="xs">
+            {" "}
+            <div className="w-full   flex flex-col items-center p-10 h-60 space-y-9">
+              <div className="flex w-full items-start justify-end">
+                <h3 className="text-3xl">تماس با ما</h3>
+              </div>
+              <p className="text-lg self-end">آدرس</p>
+              <Textarea
+                className="text-2xl  text-right w-full"
+                placeholder="آدرس"
+                radius="xs"
+                autosize
+                minRows={2}
+                withAsterisk
+              />
+              <p className="text-lg self-end">شماره تلفن</p>
+              <Textarea
+                className="text-2xl  text-right w-full"
+                placeholder="تاریخچه و پیشینه"
+                radius="xs"
+                autosize
+                minRows={1}
+                withAsterisk
+              />
+              <div className="flex items-center justify-center space-x-9">
+                <Textarea
+                  className="text-2xl  text-right w-full"
+                  placeholder="تاریخچه و پیشینه"
+                  radius="xs"
+                  autosize
+                  minRows={1}
+                  withAsterisk
+                />{" "}
+                <p className="text-lg text-center w-full">ایمیل</p>
+                <Textarea
+                  className="text-2xl  text-right w-full"
+                  placeholder="تاریخچه و پیشینه"
+                  radius="xs"
+                  autosize
+                  minRows={1}
+                  withAsterisk
+                />
+                <p className="text-lg text-center w-full">کد پستی</p>
+              </div>{" "}
+              <button className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+                تایید تغییرات
+              </button>
+            </div>{" "}
+          </Tabs.Panel>
 
           <Tabs.Panel value="settings" pt="xs">
             <div className="w-full   flex flex-col items-center p-10 h-60 space-y-9">
               <div className="flex w-full items-start justify-end">
-                <h3 className="text-3xl">تماس با ما</h3>
+                <h3 className="text-3xl">فوتر</h3>
               </div>
               <p className="text-lg self-end">آدرس</p>
               <Textarea

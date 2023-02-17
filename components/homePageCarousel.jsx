@@ -115,6 +115,7 @@ export default function HomePageCarousel() {
       slidesToScroll={mobile ? 1 : 2}
       nextControlIcon={<IconArrowRight size={16} />}
       previousControlIcon={<IconArrowLeft size={16} />}
+      loop
     >
       {slides}
     </Carousel>

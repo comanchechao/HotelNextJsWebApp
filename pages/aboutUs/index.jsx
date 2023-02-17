@@ -35,7 +35,7 @@ export default function AboutUs() {
           <h2 className="text-gray-900  text-4xl pb-4 border-b-8 rounded-lg border-mainPurple">
             تاریخچه و پیشینه
           </h2>
-          <h4 className="text-center text-lg bg-gray-200 p-9 rounded-md ">
+          <h4 className="text-center text-lg   p-9 rounded-md ">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
             استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
             ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
@@ -44,7 +44,7 @@ export default function AboutUs() {
             می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
             الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد
           </h4>
-          <h4 className="text-center text-lg bg-gray-200 p-9 rounded-md ">
+          <h4 className="text-center text-lg   p-9 rounded-md ">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
             استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
             ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
@@ -53,7 +53,7 @@ export default function AboutUs() {
             می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
             الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد
           </h4>
-          <h4 className="text-center text-lg bg-gray-200 p-9 rounded-md ">
+          <h4 className="text-center text-lg   p-9 rounded-md ">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
             استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
             ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و

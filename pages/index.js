@@ -125,7 +125,13 @@ export default function Home(props) {
                 radius="md"
                 size="md"
               />
-              <Popover width={300} position="bottom" withArrow shadow="md">
+              <Popover
+                className="z-20"
+                width={300}
+                position="bottom"
+                withArrow
+                shadow="md"
+              >
                 <Popover.Target>
                   <TextInput
                     className="text-4xl text-right flex flex-col items-end"
@@ -185,7 +191,7 @@ export default function Home(props) {
               </svg>
               <h2 className="font-bold text-lg">درخواست استرداد</h2>
               <h3 className=" font-extralight text-sm">
-                سریع‌ترین راه برای کنسلی و لغو رزرو
+                سریع‌ترین راه برای لغو رزرو
               </h3>
               <a
                 href="/profile/orders"
