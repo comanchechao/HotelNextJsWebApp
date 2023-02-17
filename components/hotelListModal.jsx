@@ -21,6 +21,10 @@ export default function HotelListModal() {
         overlayOpacity={0.55}
         overlayBlur={3}
         centered
+        transition="fade"
+        transitionDuration={600}
+        transitionTimingFunction="ease"
+        exitTransitionDuration={600}
         opened={opened}
         size="md"
         onClose={() => setOpened(false)}
@@ -197,6 +201,12 @@ export default function HotelListModal() {
             </div>
           </Tabs.Panel>
         </Tabs>
+        <button
+          onClick={() => setOpened(false)}
+          className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
+        >
+          تایید
+        </button>
       </Modal>
       <button
         onClick={() => setOpened(true)}

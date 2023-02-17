@@ -2,10 +2,10 @@ import Navbar from "../../components/Navbar";
 import Link from "next/link";
 import { CaretLeft } from "phosphor-react";
 import HotelCard from "../../components/hotelCard";
-import { Skeleton, Pagination } from "@mantine/core";
-import HotelListMenu from "../../components/hotelListMenu";
+import { Skeleton, Pagination, Loader } from "@mantine/core";
 import Footer from "../../components/Footer";
-import HotelListModal from "../../components/hotelListModal";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useEffect, useState } from "react";
 
@@ -21,6 +21,21 @@ export async function getServerSideProps() {
 }
 
 export default function HotelList({ hotels }) {
+  const HotelListModal = dynamic(
+    () => import("../../components/hotelListModal"),
+    {
+      suspense: true,
+    }
+  );
+  const HotelListMenu = dynamic(
+    () => import("../../components/hotelListMenu"),
+    {
+      suspense: true,
+    }
+  );
+  const Footer = dynamic(() => import("../../components/Footer"), {
+    suspense: true,
+  });
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (hotels.data !== null) {
@@ -63,7 +78,15 @@ export default function HotelList({ hotels }) {
             <h3 className="w-28">مرتب سازی</h3>
           </div>
           <div className="w-full flex justify-end my-3 lg:hidden">
-            <HotelListModal />
+            <Suspense
+              fallback={
+                <div>
+                  <Loader color="grape" />
+                </div>
+              }
+            >
+              <HotelListModal />
+            </Suspense>
           </div>
           {loading === false ? (
             <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
@@ -86,11 +109,27 @@ export default function HotelList({ hotels }) {
         </div>
         <div className=" w-1/4 h-full hidden lg:flex">
           <div className="w-full h-96 py-6">
-            <HotelListMenu />
+            <Suspense
+              fallback={
+                <div>
+                  <Skeleton height={800} width="100%" />
+                </div>
+              }
+            >
+              <HotelListMenu />
+            </Suspense>
           </div>
         </div>
       </div>
-      <Footer />
+      <Suspense
+        fallback={
+          <div>
+            <Skeleton height={800} width="100%" />
+          </div>
+        }
+      >
+        <Footer />
+      </Suspense>
     </div>
   );
 }

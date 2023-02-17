@@ -37,7 +37,7 @@ export default function HotelCard({ hotel }) {
         >
           <Carousel.Slide>
             <Image
-              className=" object-fit h-full"
+              className=" object-fit h-full w-full"
               alt="antalia"
               src={hotelone}
             />
@@ -45,7 +45,7 @@ export default function HotelCard({ hotel }) {
           <Carousel.Slide>
             <div className="h-full w-full flex items-center">
               <Image
-                className=" object-fit h-full"
+                className=" object-fit h-full w-full"
                 alt="antalia"
                 src={hotelthree}
               />
@@ -54,7 +54,7 @@ export default function HotelCard({ hotel }) {
           <Carousel.Slide>
             <div className="h-full w-full flex items-center">
               <Image
-                className=" object-fit h-full"
+                className=" object-fit h-full w-full"
                 alt="antalia"
                 src={hotelfour}
               />

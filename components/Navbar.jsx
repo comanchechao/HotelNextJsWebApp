@@ -11,16 +11,18 @@ import {
 import i18next from "i18next";
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
-import NavDrawer from "./NavDrawer";
 import LoginModal from "./loginModal";
 import { gsap } from "gsap";
 import { useTranslation } from "next-i18next";
-
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 export default function Navbar() {
   const router = useRouter();
   const boxRef = useRef();
   const changeTo = router.locale === "fa" ? "tr" : "fa";
-
+  const NavDrawer = dynamic(() => import("./NavDrawer"), {
+    suspense: true,
+  });
   useEffect(() => {
     gsap.to(boxRef.current, { opacity: "1", duration: 1.3 });
   }, []);
@@ -53,13 +55,6 @@ export default function Navbar() {
       className=" w-screen h-16 opacity-0 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-32"
     >
       <div className="text-lg flex items-center space-x-4">
-        <Link
-          href="/"
-          className="flex rounded-sm p-3 border-r-8 border-transparent hover:border-r-mainBlue items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
-          locale={changeTo}
-        >
-          {router.locale === "tr" ? <p> فارسی 🇮🇷</p> : <p>Turkish 🇹🇷</p>}
-        </Link>
         <div className="dropdown">
           <label
             tabIndex={0}
@@ -101,6 +96,13 @@ export default function Navbar() {
         </Link>
 
         <LoginModal />
+        <Link
+          href="/"
+          className="flex rounded-sm p-3 border-r-8 border-transparent hover:border-r-mainBlue items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          locale={changeTo}
+        >
+          {router.locale === "tr" ? <p> فارسی 🇮🇷</p> : <p>Turkish 🇹🇷</p>}
+        </Link>
       </div>
 
       <div className="lg:text-lg text-sm lg:flex items-center lg:space-x-4 hidden">
@@ -127,7 +129,9 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="lg:hidden flex ">
-        <NavDrawer />
+        <Suspense fallback={<div>Loading...</div>}>
+          <NavDrawer />
+        </Suspense>
       </div>
     </div>
   );

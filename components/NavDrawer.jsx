@@ -7,6 +7,7 @@ import {
   Scroll,
   Question,
   User,
+  Bed,
 } from "phosphor-react";
 import Link from "next/link";
 export default function NavDrawer() {
@@ -26,13 +27,20 @@ export default function NavDrawer() {
         overlayOpacity={0.55}
         overlayBlur={3}
       >
-        <div className="w-full h-rem22 flex flex-col items-center justify-center space-y-4">
+        <div className="w-full h-rem22 flex flex-col items-center justify-center pt-16 space-y-4">
           <Link
             href="/"
             className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
             <House className="mx-1" size={30} weight="fill" />
             <h4 className=" ">خونه</h4>
+          </Link>
+          <Link
+            href="/hotelList"
+            className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          >
+            <Bed className="mx-1" size={30} weight="fill" />
+            <h4 className=" ">اقامت</h4>
           </Link>
           <Link
             href="/admin"
