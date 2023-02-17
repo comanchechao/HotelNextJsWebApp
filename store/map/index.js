@@ -5,6 +5,8 @@ export const map = createSlice({
   initialState: {
     lat: "",
     lng: "",
+    marker2: "",
+    marker3: "",
     lat2: "",
     lng2: "",
     lat3: "",
@@ -28,6 +30,12 @@ export const map = createSlice({
     },
     setLng3: (state, action) => {
       state.lng3 = action.payload;
+    },
+    setMarker2: (state, action) => {
+      state.marker2 = action.payload;
+    },
+    setMarker3: (state, action) => {
+      state.marker3 = action.payload;
     },
   },
 });

@@ -58,9 +58,6 @@ export const getStaticProps = async (context) => {
 };
 
 export default function HotelDetailPage({ hotel }) {
-  useEffect(() => {
-    console.log(JSON.stringify(hotel.secondLocation.lat));
-  }, []);
   const [loading, setLoading] = useState(false);
   const [displayImages, setDisplayImages] = useState([]);
   const [singleImage, setSingleImage] = useState("");

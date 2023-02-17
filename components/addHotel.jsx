@@ -39,6 +39,7 @@ import AddRoom from "./addRoom";
 //   { value: "3", label: "رشت" },
 //   { value: "4", label: "تنکابن" },
 // ];
+import cities from "../assets/cities/ir.json";
 
 export default function AddHotel({ lat, lng }) {
   const [opened, setOpened] = useState(false);
@@ -56,9 +57,11 @@ export default function AddHotel({ lat, lng }) {
   const [get, setGet] = useState(false);
 
   let getlat = useSelector((state) => state.map.lat);
-  let getlng = useSelector((state) => state.map.lng);
+  let getLng = useSelector((state) => state.map.lng);
   let lat2 = useSelector((state) => state.map.lat2);
   let lng2 = useSelector((state) => state.map.lng2);
+  let lat3 = useSelector((state) => state.map.lat3);
+  let lng3 = useSelector((state) => state.map.lng3);
 
   const [definedRoom, setDefinedRoom] = useState({
     title: "",
@@ -132,6 +135,9 @@ export default function AddHotel({ lat, lng }) {
 
   // handing submit event
 
+  let marker2 = useSelector((state) => state.map.marker2);
+  let marker3 = useSelector((state) => state.map.marker3);
+
   async function handleSubmit() {
     const { data, error } = await supabase
       .from("Hotels")
@@ -144,8 +150,18 @@ export default function AddHotel({ lat, lng }) {
         features: features,
         prices: avragePrice,
         stars: value,
-        locationLat: lat,
-        locationLng: lng,
+        locationLat: getlat,
+        locationLng: getLng,
+        firstLocation: {
+          name: marker2,
+          lat: lat2,
+          lng: lng2,
+        },
+        secondLocation: {
+          name: marker3,
+          lat: lat3,
+          lng: lng3,
+        },
       })
       .select("id");
     console.log(
