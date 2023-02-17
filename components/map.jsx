@@ -322,6 +322,17 @@ export default function ExternalStateExample({ city }) {
   const [showMarker2, setShowMarker2] = useState(false);
   const [showMarker3, setShowMarker3] = useState(false);
 
+  let lat2 = useSelector((state) => state.map.lat2);
+  let lat3 = useSelector((state) => state.map.lat3);
+
+  useEffect(() => {
+    if (lat2 !== "") {
+      setShowMarker2(true);
+    }
+    if (lat3 !== "") {
+      setShowMarker3(true);
+    }
+  }, []);
   return (
     <div className="flex flex-col items-center  w-full">
       <MapContainer

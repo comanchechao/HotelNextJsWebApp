@@ -55,6 +55,11 @@ export default function AddHotel({ lat, lng }) {
   const [city, setCity] = useState("");
   const [get, setGet] = useState(false);
 
+  let getlat = useSelector((state) => state.map.lat);
+  let getlng = useSelector((state) => state.map.lng);
+  let lat2 = useSelector((state) => state.map.lat2);
+  let lng2 = useSelector((state) => state.map.lng2);
+
   const [definedRoom, setDefinedRoom] = useState({
     title: "",
     price: null,
