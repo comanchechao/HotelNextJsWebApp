@@ -57,7 +57,7 @@ export default function AddHotel({ lat, lng }) {
   const [get, setGet] = useState(false);
 
   let getlat = useSelector((state) => state.map.lat);
-  let getlng = useSelector((state) => state.map.lng);
+  let getLng = useSelector((state) => state.map.lng);
   let lat2 = useSelector((state) => state.map.lat2);
   let lng2 = useSelector((state) => state.map.lng2);
   let lat3 = useSelector((state) => state.map.lat3);
@@ -150,8 +150,8 @@ export default function AddHotel({ lat, lng }) {
         features: features,
         prices: avragePrice,
         stars: value,
-        locationLat: lat,
-        locationLng: lng,
+        locationLat: getlat,
+        locationLng: getLng,
         firstLocation: {
           name: marker2,
           lat: lat2,
