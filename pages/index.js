@@ -91,6 +91,7 @@ export default function Home(props) {
           >
             <div className="flex w-full h-full items-center flex-col lg:flex-row-reverse justify-center space-x-5 mb-5">
               <Select
+                dropdownPosition="top"
                 className="text-2xl mx-6 text-right flex flex-col items-end"
                 data={["تهران", "تبریز", "ارومیه", "مشهد"]}
                 placeholder={t("destination")}
@@ -128,15 +129,15 @@ export default function Home(props) {
               <Popover
                 className="z-20"
                 width={300}
-                position="bottom"
+                position="top"
                 withArrow
                 shadow="md"
               >
                 <Popover.Target>
                   <TextInput
                     className="text-4xl text-right flex flex-col items-end"
-                    placeholder="انتخاب مسافر"
-                    label="انتخاب مسافر"
+                    placeholder={t("passenger")}
+                    label={t("passenger")}
                     variant="default"
                     radius="md"
                     size="md"
@@ -169,7 +170,7 @@ export default function Home(props) {
 
             <Link href="/hotelList">
               <button className="px-14 rounded-lg transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-                جستجو
+                {t("search")}
               </button>
             </Link>
           </div>
@@ -177,7 +178,7 @@ export default function Home(props) {
         <div className="w-full h-auto lg:px-44 z-40">
           <HomePageCarousel />
         </div>
-        <div className="w-full h-auto  lg:h-60 lg:px-44 z-10">
+        {/* <div className="w-full h-auto  lg:h-60 lg:px-44 z-10">
           <div className="w-full h-full flex flex-col lg:flex-row-reverse items-center justify-around lg:mb-10 lg:py-0 my-10 py-14 space-y-5 lg:space-x-0 drop-shadow-xl bg-white rounded-md lg:p-14  ">
             <div className="flex flex-col items-center space-y-2">
               <svg
@@ -270,7 +271,7 @@ export default function Home(props) {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="w-full h-auto lg:space-y-0 space-y-2 lg:h-rem26 py-6 flex-col lg:flex-row flex items-center justify-center space-x-5 lg:px-44 my-10">
           <div className=" w-full h-full flex flex-col items-center justify-around lg:space-y-0 space-y-4">
             <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">

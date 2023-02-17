@@ -1,5 +1,5 @@
 {
-  "destination": "Hedef",
+  "destination": "Variş noktasi",
   "inhabitancy": "Kalmak",
 
   "support": "çevrimiçi destek",
@@ -10,7 +10,8 @@
 
   "inDate": "Giriş tarihi",
 
-  "outDate": "çıkış tarihi",
+  "outDate": "Çikiş tarihi",
 
-  "passenger": "yolcu seçimi"
+  "passenger": "Misafir seçimi",
+  "search": "Araştir"
 }
