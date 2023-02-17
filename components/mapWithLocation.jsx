@@ -17,6 +17,10 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
   const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(() => map.getCenter());
 
+  useEffect(() => {
+    onClick();
+  }, []);
+
   const onClick = useCallback(() => {
     map.setView({ lat: lat, lng: lng }, zoom);
   }, [map]);
@@ -50,62 +54,66 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
         </button>
       </div>
       <div className="flex flex-col border items-end rounded-lg border-gray-200 divide-y divide-gray-200 w-full h-full">
-        <div
-          onMouseOver={() => {
-            toLocation({
-              lat: JSON.stringify(firstLocation.lat),
-              lng: JSON.stringify(firstLocation.lng),
-            });
-          }}
-          className="flex flex-col justify-around items-around space-y-2 p-5 w-10/12"
-        >
-          <h1 className="text-lg self-end">
-            {JSON.stringify(firstLocation.name)}
-          </h1>
-          <div className="flex w-full">
+        {firstLocation ? (
+          <div
+            onMouseOver={() => {
+              toLocation({
+                lat: JSON.stringify(firstLocation.lat),
+                lng: JSON.stringify(firstLocation.lng),
+              });
+            }}
+            className="flex flex-col justify-around items-around space-y-2 p-5 w-10/12"
+          >
+            <h1 className="text-lg self-end">
+              {JSON.stringify(firstLocation.name)}
+            </h1>
             <div className="flex w-full">
-              <p>23213</p>
-              <p>متر</p>
-            </div>
-            <div className="flex justify-end w-full">
-              <div className="flex">
-                <p>4 دقیقه</p>
+              <div className="flex w-full">
+                <p>23213</p>
+                <p>متر</p>
               </div>
-              <div className="flex">
-                <p>4</p>
-                <p>دقیقه</p>
+              <div className="flex justify-end w-full">
+                <div className="flex">
+                  <p>4 دقیقه</p>
+                </div>
+                <div className="flex">
+                  <p>4</p>
+                  <p>دقیقه</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          onMouseOver={() => {
-            toLocation({
-              lat: JSON.stringify(secondLocation.lat),
-              lng: JSON.stringify(secondLocation.lng),
-            });
-          }}
-          className="flex flex-col justify-around items-around space-y-2 p-5 w-10/12"
-        >
-          <h1 className="text-lg self-end">
-            {JSON.stringify(secondLocation.name)}
-          </h1>
-          <div className="flex w-full">
+        ) : null}
+        {secondLocation ? (
+          <div
+            onMouseOver={() => {
+              toLocation({
+                lat: JSON.stringify(secondLocation.lat),
+                lng: JSON.stringify(secondLocation.lng),
+              });
+            }}
+            className="flex flex-col justify-around items-around space-y-2 p-5 w-10/12"
+          >
+            <h1 className="text-lg self-end">
+              {JSON.stringify(secondLocation.name)}
+            </h1>
             <div className="flex w-full">
-              <p>23213</p>
-              <p>متر</p>
-            </div>
-            <div className="flex justify-end w-full">
-              <div className="flex">
-                <p>4 دقیقه</p>
+              <div className="flex w-full">
+                <p>23213</p>
+                <p>متر</p>
               </div>
-              <div className="flex">
-                <p>4</p>
-                <p>دقیقه</p>
+              <div className="flex justify-end w-full">
+                <div className="flex">
+                  <p>4 دقیقه</p>
+                </div>
+                <div className="flex">
+                  <p>4</p>
+                  <p>دقیقه</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );
@@ -118,10 +126,6 @@ export default function ExternalStateExample({
   secondLocation,
 }) {
   const [map, setMap] = useState(null);
-
-  useEffect(() => {
-    console.log({ lat, lng });
-  });
 
   const displayMap = useMemo(
     () => (
