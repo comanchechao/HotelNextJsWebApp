@@ -12,8 +12,8 @@ export default function UserProfile() {
     <div className="h-auto w-screen bg-gray-200">
       <Navbar />
 
-      <div className="h-full  w-full items-center pt-28 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-3 lg:px-64">
-        <div className=" lg:w-3/4 w-full h-full lg:p-6">
+      <div className="h-full  w-full items-center pt-14 lg:pt-28 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-3 lg:px-64">
+        <div className=" lg:w-3/4 w-full h-auto lg:p-6">
           {tab === "Profile" ? (
             <ProfileInfo />
           ) : tab === "Reservation" ? (

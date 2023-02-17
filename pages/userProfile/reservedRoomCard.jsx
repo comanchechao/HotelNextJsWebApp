@@ -4,8 +4,8 @@ import { Coffee, User, Tag } from "phosphor-react";
 
 export default function ReservedRoomCard() {
   return (
-    <div className="flex border border-gray-300 bg-white justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-44">
-      <div className="h-full w-1/4 flex flex-col items-center justify-around py-8 ">
+    <div className="flex border lg:flex-row flex-col-reverse border-gray-300 bg-white justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-44">
+      <div className="h-full w-full lg:w-1/4 flex flex-col items-center justify-around py-8 ">
         <div className="flex space-x-1 p-2 justify-center items-center">
           <h2>ریال</h2>
           <h2 className="  text-xl text-mainPurple">22,550,000</h2>
@@ -17,7 +17,7 @@ export default function ReservedRoomCard() {
           </p>
         </Link>
       </div>
-      <div className="h-full flex flex-col items-end justify-start  p-4 w-3/4  ">
+      <div className="h-full flex flex-col items-end justify-start  p-4 w-full lg:w-3/4  ">
         <div className="h-14 w-full flex items-center justify-between">
           <Accordion
             variant="separated"

@@ -52,7 +52,7 @@ export default function ProfileInfo() {
     }
   }
   return (
-    <div className="w-full h-carousel p-3 flex space-y-8 flex-col">
+    <div className="w-full h-full lg:h-carousel p-3 flex space-y-8 flex-col">
       <div className="w-full h-auto flex-col flex items-end justify-end bg-white drop-shadow-md rounded-lg">
         <h2 className="flex items-center text-xl m-3 ">
           اطلاعات حساب کاربری
