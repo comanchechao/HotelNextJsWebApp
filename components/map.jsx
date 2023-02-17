@@ -26,7 +26,7 @@ function DisplayPosition({ map }) {
 
   useEffect(() => {
     if ((Lat > 0) & (Lng > 0)) {
-      map.setView({ lat: Lat, lng: Lng }, 8);
+      map.setView({ lat: Lat, lng: Lng }, 15);
     }
   }, []);
 
@@ -140,12 +140,17 @@ export default function ExternalStateExample({ city }) {
     let lat2 = useSelector((state) => state.map.lat2);
     let lng2 = useSelector((state) => state.map.lng2);
 
+    let lng = useSelector((state) => state.map.lng);
+    let lat = useSelector((state) => state.map.lat);
+
     const dispatch = useDispatch();
     const [draggable, setDraggable] = useState(false);
 
     useEffect(() => {
       if ((lat2 > 0) & (lng2 > 0)) {
         setPosition({ lat: lat2, lng: lng2 });
+      } else {
+        setPosition({ lat: lat + 0.002, lng: lng + 0.002 });
       }
     }, []);
 
@@ -208,6 +213,8 @@ export default function ExternalStateExample({ city }) {
     useEffect(() => {
       if ((lat3 > 0) & (lng3 > 0)) {
         setPosition({ lat: lat3, lng: lng3 });
+      } else {
+        setPosition({ lat: lat - 0.002, lng: lng - 0.002 });
       }
     }, []);
 
@@ -329,6 +336,7 @@ export default function ExternalStateExample({ city }) {
   const [theZoom, setZoom] = useState(8);
   let lat2 = useSelector((state) => state.map.lat2);
   let lat3 = useSelector((state) => state.map.lat3);
+  let marker2 = useSelector((state) => state.map.marker2);
 
   useEffect(() => {
     if (lat2 !== "") {
@@ -370,12 +378,12 @@ export default function ExternalStateExample({ city }) {
                 />
                 <CircleWavyCheck
                   onClick={() => {
-                    setShowMarker2(false);
                     dispatch(mapActions.setMarker2(marker2Title));
                   }}
                 />
               </div>
-              <div className="flex">
+              <div className="flex flex-col justify-center items-center">
+                {marker2 !== "" ? <p>{marker2}</p> : null}
                 <input
                   onChange={(e) => {
                     setMarker2Title(e.target.value);
@@ -388,7 +396,6 @@ export default function ExternalStateExample({ city }) {
             </div>
           ) : (
             <div>
-              {marker2Title ? <p>{marker2Title}</p> : null}
               <button
                 className="bg-mainPurple hover:bg-darkPurple text-white transition px-8 py-3 rounded-lg shadow-2xl"
                 onClick={() => {
