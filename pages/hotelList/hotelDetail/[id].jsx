@@ -358,9 +358,9 @@ export default function HotelDetailPage({ hotel }) {
                     </Tabs.List>
                   </Tabs>
                 </div>
-             {hotel.rooms.map((room) => {
-              return(<RoomCard room={room} />)
-             })}
+                {hotel.rooms.map((room) => {
+                  return <RoomCard key={room.id} room={room} />;
+                })}
                 <div className="flex justify-around">
                   <button className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
                     بیشتر نشونم بده
