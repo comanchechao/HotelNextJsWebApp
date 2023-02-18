@@ -319,7 +319,7 @@ export default function AddHotel({ lat, lng }) {
             <div className="flex p-5 w-full justify-center items-center">
               <DynamicMap city={city} />
             </div>
-            <div className="flex justify-around flex-wrap">
+            <div className="flex justify-around flex-wrap ">
               <div className="   w-full text-center items-center flex justify-center">
                 <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
                   تصاویر هتل
