@@ -9,7 +9,7 @@ export default function RoomCard({ room }) {
         <div className="h-full w-1/4 flex flex-col items-center justify-around py-8 ">
           <div className="flex space-x-1 p-2 justify-center items-center">
             <h2>ریال</h2>
-            <h2 className="  text-3xl text-mainPurple">{room.price}</h2>
+            <h2 className="  text-3xl text-mainPurple">22,550,000</h2>
           </div>
           <h1 className="text-lg">قیمت برای 1 شب</h1>
           <Link href="/checkout">
