@@ -311,8 +311,7 @@ export default function Home(props) {
             <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Van} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>وان</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("van")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
@@ -320,24 +319,21 @@ export default function Home(props) {
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Irvan} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>ایروان</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("erivan")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Rome} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>رم</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("rome")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Moscow} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>مسکو</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("moscow")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
@@ -346,8 +342,7 @@ export default function Home(props) {
             <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Istanbul} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>استانبول</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("istanbul")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
@@ -355,24 +350,21 @@ export default function Home(props) {
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Paris} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>پاریس</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("paris")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Baku} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>باکو</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("baku")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Milan} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>میلان</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("milan")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
@@ -381,8 +373,7 @@ export default function Home(props) {
             <a className="h-20  w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Antalia} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>آنتالیا</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("antalya")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
@@ -390,24 +381,21 @@ export default function Home(props) {
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Dubai} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>دبی</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("dubai")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Amsterdam} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>آمستردام</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("amsterdam")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
             <a className="h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-drop-shadow-2xl bg-white">
               <div className="flex flex-row-reverse items-center">
                 <Image alt="antalia" src={Berlin} />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>برلین</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("berlin")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
@@ -422,8 +410,7 @@ export default function Home(props) {
                   alt="antalia"
                   src={Kish}
                 />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>کیش</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("kish")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
@@ -435,8 +422,7 @@ export default function Home(props) {
                   alt="antalia"
                   src={Shiraz}
                 />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>شیراز</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("shiraz")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
@@ -449,8 +435,7 @@ export default function Home(props) {
                   alt="antalia"
                   src={Tehran}
                 />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>تهران</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("tehran")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
@@ -462,8 +447,7 @@ export default function Home(props) {
                   alt="antalia"
                   src={Esfahan}
                 />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>اصفهان</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("isfahan")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
@@ -476,8 +460,7 @@ export default function Home(props) {
                   alt="antalia"
                   src={Mashhad}
                 />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>مشهد</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("mashhad")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>
@@ -489,8 +472,7 @@ export default function Home(props) {
                   alt="antalia"
                   src={Tabriz}
                 />
-                <h3 className="text-lg ml-1 mr-2">هتل‌های</h3>
-                <strong>تبریز</strong>
+                <h3 className="text-lg ml-1 mr-2">{t("tabriz")}</h3>
               </div>
               <CaretLeft size={20} weight="bold" />
             </a>

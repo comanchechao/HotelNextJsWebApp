@@ -2,9 +2,10 @@
   // NAVBAR TRANSLATIONS
   "inhabitancy": "اقامت",
   "admin": "ادمین",
-  "boob": "درباره ما",
+  "aboutUs": "درباره ما",
   "contactUs": "تماس با ما",
   "home": "خونه",
+  "profile": "حساب کاربری",
 
   // HOMEPAGE TRANSLATIONS
   "destination": "مقصد",
@@ -13,5 +14,26 @@
   "inDate": "تاریخ ورود",
   "outDate": "تاریخ خروج",
   "passenger": "انتخاب مسافر",
-  "search": "جستجو"
+  "search": "جستجو",
+  // HOTELS TRANSLATIONS
+  "van": "هتل های وان",
+  "erivan": "هتل های ایروان",
+  "rome": "هتل های رُم",
+  "istanbul": "هتل های استانبول",
+  "antalya": "هتل های آنتالیا",
+  "paris": "هتل های پاریس",
+  "dubai": "هتل های دوبی",
+  "baku": "هتل های باکو",
+  "amsterdam": "هتل های آمستردام",
+  "moscow": "هتل های مسکو",
+  "berlin": "هتل های برلین",
+  "milan": "هتل های میلان",
+
+  // IRAN HOTELS TRANSLATIONS
+  "kish": "هتل های کیش",
+  "shiraz": "هتل های شیراز",
+  "tehran": "هتل های تهران",
+  "isfahan": "هتل های اصفهان",
+  "mashhad": "هتل های مشهد",
+  "tabriz": "هتل های تبریز"
 }
