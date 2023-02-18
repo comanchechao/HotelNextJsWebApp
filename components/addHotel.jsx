@@ -138,6 +138,10 @@ export default function AddHotel({ lat, lng }) {
   let marker2 = useSelector((state) => state.map.marker2);
   let marker3 = useSelector((state) => state.map.marker3);
 
+  useEffect(() => {
+    console.log(rooms);
+  });
+
   async function handleSubmit() {
     const { data, error } = await supabase
       .from("Hotels")
@@ -150,6 +154,7 @@ export default function AddHotel({ lat, lng }) {
         features: features,
         prices: avragePrice,
         stars: value,
+        rooms: rooms,
         locationLat: getlat,
         locationLng: getLng,
         firstLocation: {

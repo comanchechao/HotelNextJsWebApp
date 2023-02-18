@@ -2,14 +2,14 @@ import { Accordion } from "@mantine/core";
 import Link from "next/link";
 import { Coffee, User, Tag } from "phosphor-react";
 
-export default function RoomCard() {
+export default function RoomCard({ room }) {
   {
     return (
       <div className="flex border border-gray-300 bg-white justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-60">
         <div className="h-full w-1/4 flex flex-col items-center justify-around py-8 ">
           <div className="flex space-x-1 p-2 justify-center items-center">
             <h2>ریال</h2>
-            <h2 className="  text-3xl text-mainPurple">22,550,000</h2>
+            <h2 className="  text-3xl text-mainPurple">{room.price}</h2>
           </div>
           <h1 className="text-lg">قیمت برای 1 شب</h1>
           <Link href="/checkout">
@@ -39,12 +39,12 @@ export default function RoomCard() {
                 </Accordion.Panel>
               </Accordion.Item>
             </Accordion>
-            <h1 className="text-2xl my-2">اتاق یک تخته</h1>
+            <h1 className="text-2xl my-2">{room.title}</h1>
           </div>
 
           <div className="flex flex-col items-end justify-center space-y-3   h-full">
             <h2 className="flex items-center  text-sm">
-              به همراه صبحانه
+              وعده {room.meal}
               <Coffee className="ml-2" size={19} weight="fill" />
             </h2>
             <h2 className="flex items-center  text-sm">
@@ -52,7 +52,7 @@ export default function RoomCard() {
               <User className="ml-2" size={19} weight="fill" />
             </h2>
             <h2 className="flex items-center  text-sm">
-              قیمت هر شب: 18,000,000 ریال
+              قیمت هر شب: {room.price} ریال
               <Tag className="ml-2" size={19} weight="fill" />
             </h2>
           </div>
