@@ -38,7 +38,7 @@ export default function Navbar() {
   //     SetisLogged(false);
   //   }
   // }
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   const [nextLocale, setNextLocale] = useState("tr");
   const { pathname, asPath, query } = router;

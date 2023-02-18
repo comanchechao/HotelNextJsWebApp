@@ -37,13 +37,15 @@ import { useTranslation } from "next-i18next";
 import { useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-export async function getStaticProps({ locale }) {
+
+export async function getServerSideProps({ locale }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
+
 export default function Home(props) {
   const Footer = dynamic(() => import("../components/Footer"), {
     suspense: true,

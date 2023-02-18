@@ -90,7 +90,7 @@ export default function AddHotel({ lat, lng }) {
 
   useEffect(() => {
     definedRoom.meal = meal;
-  }, [meal]);
+  }, [definedRoom, meal]);
   const DynamicMap = dynamic(() => import("./map"), {
     ssr: false,
   });

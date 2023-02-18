@@ -73,7 +73,6 @@ export default function HotelManagement({ hotels }) {
                       <div className="flex justify-center items-center w-full h-full">
                         <div className="flex text-center justify-center items-center">
                           <IconBed />
-                          <h2>{hotel.rooms}</h2>
                         </div>
                       </div>
                       <div className="flex flex-col p-5 h-full w-full justify-between  items-around">
@@ -142,7 +141,6 @@ export default function HotelManagement({ hotels }) {
                       <div className="flex justify-center items-center w-full h-full">
                         <div className="flex text-center justify-center items-center">
                           <IconBed />
-                          <h2>{hotel.rooms}</h2>
                         </div>
                       </div>
                       <div className="flex flex-col p-5 h-full w-full justify-between  items-around">
