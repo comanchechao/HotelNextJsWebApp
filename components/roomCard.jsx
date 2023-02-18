@@ -39,12 +39,12 @@ export default function RoomCard({ room }) {
                 </Accordion.Panel>
               </Accordion.Item>
             </Accordion>
-            <h1 className="text-2xl my-2">{room.title}</h1>
+            <h1 className="text-2xl my-2">{JSON.stringify(room.title)}</h1>
           </div>
 
           <div className="flex flex-col items-end justify-center space-y-3   h-full">
             <h2 className="flex items-center  text-sm">
-              وعده {room.meal}
+              وعده {JSON.stringify(room.meal)}
               <Coffee className="ml-2" size={19} weight="fill" />
             </h2>
             <h2 className="flex items-center  text-sm">
@@ -52,7 +52,7 @@ export default function RoomCard({ room }) {
               <User className="ml-2" size={19} weight="fill" />
             </h2>
             <h2 className="flex items-center  text-sm">
-              قیمت هر شب: {room.price} ریال
+              قیمت هر شب: {JSON.stringify(room.price)} ریال
               <Tag className="ml-2" size={19} weight="fill" />
             </h2>
           </div>

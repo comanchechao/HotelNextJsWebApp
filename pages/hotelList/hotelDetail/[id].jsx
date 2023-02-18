@@ -28,8 +28,8 @@ import FeaturesModal from "../../../components/FeaturesModal";
 import Reply from "../../../components/reply";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-import RoomCard from "./roomCard";
+import { useCallback, useEffect, useState } from "react";
+import RoomCard from "../../../components/roomCard";
 
 export const getStaticPaths = async () => {
   const { data, error } = await supabase.from("Hotels").select();
@@ -61,25 +61,27 @@ export default function HotelDetailPage({ hotel }) {
   const [loading, setLoading] = useState(false);
   const [displayImages, setDisplayImages] = useState([]);
   const [singleImage, setSingleImage] = useState("");
-  const downloadImage1 = async () => {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase.storage
-        .from("/public/hotel-images")
-        .download(hotel.firstImage);
+  const downloadImage1 = useCallback(() => {
+    async () => {
+      try {
+        setLoading(true);
+        const { data, error } = await supabase.storage
+          .from("/public/hotel-images")
+          .download(hotel.firstImage);
 
-      if (error) {
-        throw error;
+        if (error) {
+          throw error;
+        }
+        const url = URL.createObjectURL(data);
+        setSingleImage(url);
+      } catch (error) {
+        console.log("Error downloading image: ", error.message);
+      } finally {
+        setLoading(false);
+        downloadImage2();
       }
-      const url = URL.createObjectURL(data);
-      setSingleImage(url);
-    } catch (error) {
-      console.log("Error downloading image: ", error.message);
-    } finally {
-      setLoading(false);
-      downloadImage2();
-    }
-  };
+    };
+  });
   const downloadImage2 = async () => {
     try {
       setLoading(true);
@@ -119,7 +121,7 @@ export default function HotelDetailPage({ hotel }) {
   };
   useEffect(() => {
     downloadImage1();
-  }, []);
+  }, [downloadImage1]);
   const DynamicMap = dynamic(
     () => import("../../../components/mapWithLocation"),
     {
@@ -358,8 +360,8 @@ export default function HotelDetailPage({ hotel }) {
                     </Tabs.List>
                   </Tabs>
                 </div>
-                {hotel.rooms.map((room) => {
-                  return <RoomCard key={room.id} room={room} />;
+                {hotel.rooms.map((room, i) => {
+                  return <RoomCard key={i} room={room} />;
                 })}
                 <div className="flex justify-around">
                   <button className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
