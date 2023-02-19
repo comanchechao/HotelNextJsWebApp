@@ -182,10 +182,6 @@ export default function ExternalStateExample({ city }) {
       setDraggable((d) => !d);
     }, []);
 
-    useEffect(() => {
-      console.log(lat2, lng2);
-    }, [draggable]);
-
     return (
       <Marker
         draggable={draggable}
@@ -246,10 +242,6 @@ export default function ExternalStateExample({ city }) {
       setDraggable((d) => !d);
     }, []);
 
-    useEffect(() => {
-      console.log(lat3, lng3);
-    }, [draggable]);
-
     return (
       <Marker
         draggable={draggable}
@@ -308,10 +300,6 @@ export default function ExternalStateExample({ city }) {
       setDraggable((d) => !d);
     }, []);
 
-    useEffect(() => {
-      console.log(lat, lng);
-    }, [draggable]);
-
     return (
       <Marker
         draggable={draggable}
@@ -346,7 +334,7 @@ export default function ExternalStateExample({ city }) {
       setShowMarker3(true);
       setZoom(15);
     }
-  }, []);
+  }, [lat2, lat3]);
   return (
     <div className="flex flex-col items-center  w-full">
       <MapContainer

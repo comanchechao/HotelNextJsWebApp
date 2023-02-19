@@ -1,13 +1,14 @@
-import hotelOne from "../../assets/images/hotelone.jpg";
-import hotelTwo from "../../assets/images/hoteltwo.jpg";
-import hotelThree from "../../assets/images/hotelthree.jpg";
-import hotelFour from "../../assets/images/hotelfour.jpg";
+import hotelOne from "../../../assets/images/hotelone.jpg";
+import hotelTwo from "../../../assets/images/hoteltwo.jpg";
+import hotelThree from "../../../assets/images/hotelthree.jpg";
+import hotelFour from "../../../assets/images/hotelfour.jpg";
 import Image from "next/image";
-import Navbar from "../../components/Navbar";
-import AddRoom from "../../components/addRoom";
-import RoomModal from "../../components/roomModal";
-import Footer from "../../components/Footer";
+import Navbar from "../../../components/Navbar";
+import AddRoom from "../../../components/addRoom";
+import RoomModal from "../../../components/roomModal";
+import Footer from "../../../components/Footer";
 import { useEffect, useState } from "react";
+import { supabase } from "../../../lib/supabaseClient";
 import {
   IconStar,
   IconBarbell,
@@ -39,10 +40,39 @@ import {
 import { useSelector } from "react-redux";
 import dynamic from "next/dynamic";
 
-export default function HotelDetail() {
-  const DynamicMap = dynamic(() => import("../../components/displayMap"), {
-    ssr: false,
+export const getStaticPaths = async () => {
+  const { data, error } = await supabase.from("Hotels").select();
+  if (error) throw error;
+
+  const paths = data.map((hotel) => {
+    return {
+      params: { id: hotel.id.toString() },
+    };
   });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const id = context.params.id;
+  const { data, error } = await supabase.from("Hotels").select().eq("id", id);
+  if (error) throw error;
+
+  return {
+    props: { hotel: data[0] },
+  };
+};
+
+export default function HotelDetail({ hotel }) {
+  const DynamicMap = dynamic(
+    () => import("../../../components/mapWithLocation"),
+    {
+      ssr: false,
+    }
+  );
 
   const store = useSelector((state) => state.main.title);
 
@@ -116,7 +146,7 @@ export default function HotelDetail() {
           <div className="flex   text-4xl items-center space-x-1 w-full justify-end">
             <Editable
               textAlign="center"
-              defaultValue="Grand Hotel"
+              defaultValue={hotel.title}
               fontSize="4xl"
               isPreviewFocusable={false}
             >
@@ -128,7 +158,7 @@ export default function HotelDetail() {
           </div>
           <div className="flex space-x-1 justify-end w-full">
             <h2>ستاره</h2>
-            <h2>4</h2>
+            <h2>{hotel.stars}</h2>
             <h2>
               <IconStar />
             </h2>
@@ -155,7 +185,7 @@ export default function HotelDetail() {
           </div>
         </div>
         <div className="p-4 bg-gray-200 flex space-y-3 flex-col lg:px-20 w-full">
-          {rooms.map((room, i) => {
+          {hotel.rooms.map((room, i) => {
             return (
               <div
                 key={i}
@@ -355,7 +385,12 @@ export default function HotelDetail() {
         </div>
         <div className="flex bg-gray-200 items-center   justify-center p-5">
           <div className="flex  items-center   justify-center">
-            <DynamicMap />
+            <DynamicMap
+              secondLocation={hotel.secondLocation}
+              firstLocation={hotel.firstLocation}
+              lat={hotel.locationLat}
+              lng={hotel.locationLng}
+            />
           </div>
         </div>
         <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">

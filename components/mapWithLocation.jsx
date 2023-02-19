@@ -37,7 +37,6 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
   }, [map, onMove]);
 
   function toLocation(location) {
-    console.log(location);
     map.setView(location, zoom);
   }
 
