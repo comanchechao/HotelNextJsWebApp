@@ -194,72 +194,70 @@ export default function HotelDetailPage({ hotel }) {
               </div>
             </div>
           </div>
-          <div className="flex">
-            <div className="w-96 hidden lg:block h-96 sticky  border -top-14  rounded-md">
-              <div className="flex bg-white flex-col items-center sticky w-full h-full">
-                <DatePicker
-                  locale="fa"
-                  dropdownPosition="bottom-start"
-                  className="text-4xl text-center flex flex-col items-end"
-                  placeholder="تاریخ ورود"
-                  label="تاریخ ورود"
-                  withAsterisk
-                  variant="default"
-                  radius="md"
-                  size="md"
-                />
-                <DatePicker
-                  locale="fa"
-                  dropdownPosition="bottom-start"
-                  className="text-4xl text-center flex flex-col items-end"
-                  placeholder="تاریخ خروج"
-                  label="تاریخ خروج"
-                  withAsterisk
-                  variant="default"
-                  radius="md"
-                  size="md"
-                />
-                <Popover width={300} position="bottom" withArrow shadow="md">
-                  <Popover.Target>
-                    <TextInput
-                      className="text-4xl text-right flex flex-col items-end"
-                      placeholder="انتخاب مسافر"
-                      label="انتخاب مسافر"
-                      variant="default"
-                      radius="xl"
-                      size="md"
-                      withAsterisk
-                    />
-                  </Popover.Target>
-                  <Popover.Dropdown>
-                    <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
-                      <h1 className="text-sm ">اتاق اول</h1>
-                      <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
-                        <h1 className="text-sm">بزرگسال(۱۲ سال به بالا)</h1>
-                        <div className="flex text-blue-800  items-center justify-center space-x-5">
-                          <PlusCircle size={27} weight="fill" />
-                          <h1 className="text-sm ">1</h1>
-                          <MinusCircle size={27} weight="fill" />
-                        </div>
-                      </div>
-                      <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
-                        <h1 className="text-sm">کودک(تا ۱۲ سال)</h1>
-                        <div className="flex text-blue-800 items-center justify-center space-x-5">
-                          <PlusCircle size={27} weight="fill" />
-                          <h1 className="text-sm ">1</h1>
-                          <MinusCircle size={27} weight="fill" />
-                        </div>
+          <div className="flex items-center justify-start">
+            <div className="flex bg-white  flex-col items-center w-96 self-start h-full">
+              <DatePicker
+                locale="fa"
+                dropdownPosition="bottom-start"
+                className="text-4xl text-center flex flex-col items-end"
+                placeholder="تاریخ ورود"
+                label="تاریخ ورود"
+                withAsterisk
+                variant="default"
+                radius="md"
+                size="md"
+              />
+              <DatePicker
+                locale="fa"
+                dropdownPosition="bottom-start"
+                className="text-4xl text-center flex flex-col items-end"
+                placeholder="تاریخ خروج"
+                label="تاریخ خروج"
+                withAsterisk
+                variant="default"
+                radius="md"
+                size="md"
+              />
+              <Popover width={300} position="bottom" withArrow shadow="md">
+                <Popover.Target>
+                  <TextInput
+                    className="text-4xl text-right flex flex-col items-end"
+                    placeholder="انتخاب مسافر"
+                    label="انتخاب مسافر"
+                    variant="default"
+                    radius="md"
+                    size="md"
+                    withAsterisk
+                  />
+                </Popover.Target>
+                <Popover.Dropdown>
+                  <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
+                    <h1 className="text-sm ">اتاق اول</h1>
+                    <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
+                      <h1 className="text-sm">بزرگسال(۱۲ سال به بالا)</h1>
+                      <div className="flex text-blue-800  items-center justify-center space-x-5">
+                        <PlusCircle size={27} weight="fill" />
+                        <h1 className="text-sm ">1</h1>
+                        <MinusCircle size={27} weight="fill" />
                       </div>
                     </div>
-                  </Popover.Dropdown>
-                </Popover>
-                <div className="flex">
-                  <Link href="/checkout">
-                    <button className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   ">
-                      <p>رزرو اتاق</p>
-                    </button>
-                  </Link>
-                </div>
+                    <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
+                      <h1 className="text-sm">کودک(تا ۱۲ سال)</h1>
+                      <div className="flex text-blue-800 items-center justify-center space-x-5">
+                        <PlusCircle size={27} weight="fill" />
+                        <h1 className="text-sm ">1</h1>
+                        <MinusCircle size={27} weight="fill" />
+                      </div>
+                    </div>
+                  </div>
+                </Popover.Dropdown>
+              </Popover>
+              <div className="flex">
+                <Link href="/checkout">
+                  <button className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   ">
+                    <p>رزرو اتاق</p>
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="flex flex-col w-full mt-8   pl-7">
