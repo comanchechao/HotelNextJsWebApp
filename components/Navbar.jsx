@@ -91,7 +91,7 @@ export default function Navbar() {
           href="/"
           className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
-          <h4 className=" ">خونه</h4>
+          <h4 className=" ">{t("home")}</h4>
           <House className="mx-1" size={28} weight="light" />
         </Link>
 
