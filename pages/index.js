@@ -41,7 +41,7 @@ import { Suspense } from "react";
 export async function getServerSideProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common"], null, ["fa", "tr"])),
+      ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
@@ -64,7 +64,7 @@ export default function Home(props) {
 
   const firstContainer = useRef();
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation("common");
 
   useEffect(() => {
     var tl = gsap.timeline();
