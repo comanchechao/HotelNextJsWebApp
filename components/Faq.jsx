@@ -3,7 +3,7 @@ import { Question } from "phosphor-react";
 import { useTranslation } from "next-i18next";
 
 export default function Faq() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <Accordion

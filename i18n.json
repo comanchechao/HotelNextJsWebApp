@@ -1,0 +1,7 @@
+{
+  "locales": ["fa", "tr"],
+  "defaultLocale": "fa",
+  "pages": {
+    "*": ["common"]
+  }
+}

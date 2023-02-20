@@ -1,12 +1,10 @@
 {
-  // NAVBAR TRANSLATIONS
   "inhabitancy": "Konaklama",
   "aboutUs": "Hakkımızda",
   "contactUs": "Bize Ulaşın",
   "home": "Ev",
   "admin": "Yönetici",
   "profile": "Hesap",
-  // HOMEPAGE TRANSLATIONS
   "destination": "Variş noktasi",
   "support": "çevrimiçi destek",
   "travels": "Gezilerim",
@@ -14,7 +12,6 @@
   "outDate": "Çikiş tarihi",
   "passenger": "Misafir seçimi",
   "search": "Araştir",
-  // FOREIGN HOTELS TRANSLATIONS
   "van": "Van otelleri",
   "erivan": "Erivan otelleri",
   "rome": "Roma otelleri",
@@ -28,7 +25,6 @@
   "berlin": "Berlin otelleri",
   "milan": "Milano otelleri",
 
-  // IRAN HOTELS TRANSLATIONS
   "kish": "Kiş otelleri",
   "shiraz": "Şiraz otelleri",
   "tehran": "Tahran otelleri",
@@ -36,14 +32,13 @@
   "mashhad": "Mashhad otelleri",
   "tabriz": "Tebriz otelleri",
 
-  // FAQ TRANSLATIONS
   "faq": "Otel rezervasyonları hakkında sık sorulan sorular",
   "Q1": "Otel rezervasyonu yapmadan önce otel ve rezervasyon süreci hakkında nasıl bilgi alabilirim?",
   "A1": "Boutak'da çevrimiçi bir otel seçme ve rezervasyon yapma süreci çok basittir. Basitçe ve birkaç tıklamayla, gideceğiniz yeri ve seyahat tarihini seçerek istediğiniz oteli makul bir fiyata rezerve edebilirsiniz. Ancak, gerekirse, Boutak'nın destek merkezi 7/24 hizmetinizdedir.",
   "Q2": "Yabancı bir otel için ödeme nasıl yapılır? Iran'a özel kredi kartları kullanılabilir mi?",
   "A2": "Yabancı bir otel rezervasyonu yapmak için Boutak'nın web sitesini veya uygulamasını ziyaret ettiğinizde, nasıl ödeme yapacağınız konusunda rahat olabilirsiniz. Otel rezervasyonu ödemenizi Iran'a özel kredi kartlarınız ile yapabilirsiniz. Yabancı kredi kartı kullanmaya gerek yok.",
   "Q3": "Otel rezervasyonu yaptıktan sonra rezervasyonumuzu iptal edip para iadesi alabilir miyiz?",
-  "A3": "Bazen gezimizin herhangi bir nedenle iptal edilmesi normaldir. Her otelin kendi iptal kuralları vardır. Bazı oteller geri ödeme kabul eder; Tabii ki, bu geri ödeme çoğu durumda eksi para cezasıdır. Para cezasının miktarı, otelin kurallarına ve iptali bildirdiğiniz zamana bağlıdır. (İptal işlemini ne kadar geç duyurursanız, para cezası o kadar fazla olacaktir). Ancak iptal ve iade kabul etmeyen oteller de bulunmaktadır.Boutak'da online otel rezervasyonu yaparken iptal politikasını kolayca okuyabilirsiniz. Rezervasyon yaparken her otel odasının önünde "iptal kuralları" veya "iade yapılmaz" ibarelerini göreceksiniz. İadesiz, adından da anlaşılacağı gibi, size herhangi bir para iadesi yapmaz. Ancak otel ararken iptal politikası kelimesini görürseniz üzerine tıklayın ve bu kuralları okuyun.",
+  "A3": "Bazen gezimizin herhangi bir nedenle iptal edilmesi normaldir. Her otelin kendi iptal kuralları vardır. Bazı oteller geri ödeme kabul eder; Tabii ki, bu geri ödeme çoğu durumda eksi para cezasıdır. Para cezasının miktarı, otelin kurallarına ve iptali bildirdiğiniz zamana bağlıdır. (İptal işlemini ne kadar geç duyurursanız, para cezası o kadar fazla olacaktir). Ancak iptal ve iade kabul etmeyen oteller de bulunmaktadır.Boutak'da online otel rezervasyonu yaparken iptal politikasını kolayca okuyabilirsiniz. Rezervasyon yaparken her otel odasının önünde  ibarelerini göreceksiniz. İadesiz, adından da anlaşılacağı gibi, size herhangi bir para iadesi yapmaz. Ancak otel ararken iptal politikası kelimesini görürseniz üzerine tıklayın ve bu kuralları okuyun.",
   "Q4": "Odamızı ne zaman alabiliriz ve saat kaçta iade etmeliyiz?",
   "A4": "Genellikle yolcunun odaya girişi (check-in) saat 14:00'te, yolcu çıkışı (check-out) ise öğlen 12:00'de yapılır.",
   "Q5": "Giriş ve çıkış yarı ücreti nedir?",
@@ -56,8 +51,4 @@
   "A8": "Seyahat şirketleri uçak kapasitesinden fazla bilet sattıklarında gönüllü olarak, bazı yolcuların uçaklarını bir sonraki uçakla değiştirmelerini isterler ve bunun için o gönüllü yolculara para öderler fakat çoğu havayolu şirketi para ödemek yerine başka bir yolculukta kullanılmak üzere travel voucher denilen kuponlardan verirler.",
   "Q9": "Web sitesinde listelenen miktar nihai tutar mı? Daha sonra değiştirmek mümkün mü?",
   "A9": "Nevruz Bayramı gibi özel zamanlar dışında beyan edilen miktar kesindir; Bu durumda cari kurun hesapta olduğu rezervasyon sırasında bildirilmelidir."
-
-
-  
-  
 }
