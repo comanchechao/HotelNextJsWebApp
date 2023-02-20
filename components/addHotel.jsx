@@ -617,7 +617,7 @@ export default function AddHotel({ lat, lng }) {
                           }}
                           className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
                         >
-                          افزودن
+                          افزودن اتاق
                         </button>
                       </div>
                     </div>
@@ -645,7 +645,7 @@ export default function AddHotel({ lat, lng }) {
                                 );
                               }
                             }}
-                            className="w-24 h-14 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                            className="px-10 h-10 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
                           >
                             افزودن
                           </button>
@@ -684,7 +684,7 @@ export default function AddHotel({ lat, lng }) {
                                 );
                               }
                             }}
-                            className="w-24 h-14 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                            className="px-10 h-10 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
                           >
                             افزودن
                           </button>
@@ -704,6 +704,14 @@ export default function AddHotel({ lat, lng }) {
                         <h1 className="text-lg">قیمت برای هرشب</h1>
                       </div>
                     </div>
+                    <button
+                      onClick={() => {
+                        handleSubmit();
+                      }}
+                      className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                    >
+                      افزودن
+                    </button>
                   </div>
                 </Tabs.Panel>
 
@@ -713,16 +721,7 @@ export default function AddHotel({ lat, lng }) {
               </Tabs>
             </div>
 
-            <div className="flex">
-              <button
-                onClick={() => {
-                  handleSubmit();
-                }}
-                className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
-              >
-                افزودن
-              </button>
-            </div>
+            <div className="flex"></div>
           </div>
         </div>
       </Modal>
