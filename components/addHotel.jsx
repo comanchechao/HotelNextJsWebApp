@@ -55,6 +55,9 @@ export default function AddHotel({ lat, lng }) {
   const [location, setLocation] = useState({});
   const [city, setCity] = useState("");
   const [get, setGet] = useState(false);
+  const [aboutHotel, setAboutHotel] = useState("");
+  const [enteringHours, setEnteringHours] = useState(12);
+  const [exitingHours, setExitingHours] = useState(14);
 
   let getlat = useSelector((state) => state.map.lat);
   let getLng = useSelector((state) => state.map.lng);
@@ -167,6 +170,9 @@ export default function AddHotel({ lat, lng }) {
           lat: lat3,
           lng: lng3,
         },
+        aboutHotel: aboutHotel,
+        enteringHours: enteringHours,
+        exitingHours: exitingHours,
       })
       .select("id");
     console.log(
@@ -404,10 +410,21 @@ export default function AddHotel({ lat, lng }) {
                 onChange={(e) => {
                   setTitle(e.target.value);
                 }}
-                className="py-2 text-right px-2 w-full bg-gray-200"
+                className="py-6 text-right px-2 w-full bg-gray-200"
                 type="text"
                 name="title"
-                placeholder="..."
+                placeholder="عنوان هتل را وارد کنید"
+              />
+            </div>
+            <div className="flex flex-col w-full h-full text-right justify-center items-center">
+              <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                انتخاب شهر
+              </h3>
+              <Select
+                value={city}
+                searchable
+                className="text-right  w-full"
+                data={cityNames}
               />
             </div>
             <div className="flex w-full h-full text-right justify-between items-center">
@@ -435,13 +452,13 @@ export default function AddHotel({ lat, lng }) {
             </div>
             <div className="flex  flex-col justify-center space-x-2 text-right items-center w-full h-full">
               <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
-                قیمت 1 شب
+                میانگین قیمت هر شب
               </h3>
               <input
                 onChange={(e) => {
                   setAvragePrice(e.target.value);
                 }}
-                className="py-2 text-right px-2 w-full bg-gray-200"
+                className="py-6 text-right px-2 w-full bg-gray-200"
                 type="number"
                 name="price"
                 placeholder="..."
@@ -449,30 +466,45 @@ export default function AddHotel({ lat, lng }) {
             </div>
             <div className="flex w-full flex-col h-full text-right justify-center items-center">
               <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
-                تعداد اتاق ها
+                درباره هتل
               </h3>
-              <Select
-                searchable
-                className="text-right w-full"
-                data={[
-                  { value: "1", label: "1" },
-                  { value: "2", label: "2" },
-                  { value: "3", label: "3" },
-                  { value: "4", label: "4" },
-                ]}
-              />
+              <textarea
+                onChange={(e) => {
+                  setAboutHotel(e.target.value);
+                }}
+                name="about hotel"
+                className="bg-gray-200 rounded-xl w-full"
+                id=""
+                cols="30"
+                rows="10"
+              ></textarea>
             </div>
-            <div className="flex flex-col w-full h-full text-right justify-center items-center">
-              <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
-                انتخاب شهر
-              </h3>
-              <Select
-                value={city}
-                searchable
-                className="text-right w-full"
-                data={cityNames}
-              />
+
+            <div className="flex w-full justify-around items-center">
+              <div className="flex-col space-y-2 text-right flex">
+                <label htmlFor="entering hour">ساعت ورود</label>
+                <input
+                  onChange={(e) => {
+                    setEnteringHours(e.target.value);
+                  }}
+                  className="py-3  rounded-xl text-right px-2 w-full bg-gray-200"
+                  type="text"
+                  name="entering hour"
+                />
+              </div>
+              <div className="flex-col space-y-2 text-right flex">
+                <label htmlFor="exiting hour">ساعت خروج</label>
+                <input
+                  onChange={(e) => {
+                    setExitingHours(e.target.value);
+                  }}
+                  className="py-3 rounded-xl  text-right px-2 w-full bg-gray-200"
+                  type="text"
+                  name="exiting hour"
+                />
+              </div>
             </div>
+
             <div className="flex space-y-1 flex-col">
               {rooms.map((room, i) => {
                 return (
@@ -704,14 +736,6 @@ export default function AddHotel({ lat, lng }) {
                         <h1 className="text-lg">قیمت برای هرشب</h1>
                       </div>
                     </div>
-                    <button
-                      onClick={() => {
-                        handleSubmit();
-                      }}
-                      className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
-                    >
-                      افزودن
-                    </button>
                   </div>
                 </Tabs.Panel>
 
@@ -721,7 +745,17 @@ export default function AddHotel({ lat, lng }) {
               </Tabs>
             </div>
 
-            <div className="flex"></div>
+            <div className="flex">
+              {" "}
+              <button
+                onClick={() => {
+                  handleSubmit();
+                }}
+                className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+              >
+                افزودن
+              </button>
+            </div>
           </div>
         </div>
       </Modal>
