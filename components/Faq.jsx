@@ -41,8 +41,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-md text-right px-12"
-                : "text-gray-500 flex items-end text-md text-left px-12"
+                ? "text-gray-500 flex items-end text-md text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-md text-left px-12 leading-relaxed"
             }`}
           >
             {t("A1")}
@@ -67,8 +67,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-md text-right px-12"
-                : "text-gray-500 flex items-end text-md text-left px-12"
+                ? "text-gray-500 flex items-end text-md text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-md text-left px-12 leading-relaxed"
             }`}
           >
             {t("A2")}
@@ -93,8 +93,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-md text-right px-12"
-                : "text-gray-500 flex items-end text-md text-left px-12"
+                ? "text-gray-500 flex items-end text-md text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-md text-left px-12 leading-relaxed"
             }`}
           >
             {t("A3")}
@@ -139,8 +139,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-md text-right px-12"
-                : "text-gray-500 flex items-end text-md text-left px-12"
+                ? "text-gray-500 flex items-end text-md text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-md text-left px-12 leading-relaxed"
             }`}
           >
             {t("A5")}
@@ -185,8 +185,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-md text-right px-12"
-                : "text-gray-500 flex items-end text-md text-left px-12"
+                ? "text-gray-500 flex items-end text-md text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-md text-left px-12 leading-relaxed"
             }`}
           >
             {t("A7")}
@@ -211,8 +211,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-md text-right px-12"
-                : "text-gray-500 flex items-end text-md text-left px-12"
+                ? "text-gray-500 flex items-end text-md text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-md text-left px-12 leading-relaxed"
             }`}
           >
             {t("A8")}

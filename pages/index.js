@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import Image from "next/image";
 import mainBg from "../assets/images/mainBg.webp";
-import { DatePicker } from "@mantine/dates";
+import { DatePicker, DateRangePicker } from "@mantine/dates";
 import { MapPin, PlusCircle, MinusCircle, CaretLeft } from "phosphor-react";
 import Antalia from "../assets/images/Antalia.webp";
 import Istanbul from "../assets/images/Istanbul.webp";
@@ -59,6 +59,7 @@ export default function Home(props) {
       suspense: true,
     }
   );
+  const [value, setValue] = useState([Date | null, Date | null]);
   const theme = useMantineTheme();
   const mainPageBg = useRef();
 
@@ -67,7 +68,6 @@ export default function Home(props) {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   const [alignLeft, setAlignLeft] = useState(false);
-
   async function changeState() {
     console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
@@ -81,12 +81,10 @@ export default function Home(props) {
       delay: 1.3,
     });
     tl.to(firstContainer.current, { opacity: "1", duration: 0.4, y: -50 });
-  }, []);
-  useEffect(() => {
     changeState();
 
     window.scrollTo(0, 0);
-  }, []);
+  });
 
   return (
     <>
@@ -124,7 +122,7 @@ export default function Home(props) {
             ref={firstContainer}
             className="w-full opacity-0 z-30 h-full flex flex-col items-center justify-center space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-lg p-14  "
           >
-            <div className="flex w-full h-full items-center flex-col lg:flex-row-reverse justify-center space-x-5 mb-5">
+            <div className="flex w-full h-full items-center flex-col lg:flex-row-reverse justify-center space-x-8 mb-5">
               <Select
                 dropdownPosition="top"
                 className="text-2xl mx-6 text-right flex flex-col items-end"
@@ -139,7 +137,8 @@ export default function Home(props) {
                 size="md"
                 icon={<MapPin size={20} weight="fill" />}
               />
-              <DatePicker
+              <DateRangePicker
+                dropdownType="modal"
                 locale="fa"
                 dropdownPosition="top-start"
                 className="text-4xl text-right flex flex-col items-end"
@@ -147,10 +146,12 @@ export default function Home(props) {
                 label={t("inDate")}
                 withAsterisk
                 variant="default"
+                value={value}
+                onChange={setValue}
                 radius="md"
                 size="md"
               />
-              <DatePicker
+              {/* <DatePicker
                 locale="fa"
                 dropdownPosition="top-start"
                 className="text-4xl text-right flex flex-col items-end"
@@ -160,7 +161,7 @@ export default function Home(props) {
                 variant="default"
                 radius="md"
                 size="md"
-              />
+              /> */}
               <Popover
                 className="z-20"
                 width={300}
