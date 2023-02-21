@@ -21,7 +21,7 @@ import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import HotelImage from "./hotelImage";
 
-export default function HotelManagement({ hotels }) {
+export default function HotelManagement({ hotels, cities }) {
   const HotelMap = dynamic(() => import("./hotelMap"), {
     ssr: false,
   });
@@ -203,7 +203,7 @@ export default function HotelManagement({ hotels }) {
           </Tabs.Panel>
         </Tabs>
         <div className="absolute right-8 bottom-8">
-          <AddHotel />
+          <AddHotel cities={cities} />
         </div>
       </div>
     </div>
