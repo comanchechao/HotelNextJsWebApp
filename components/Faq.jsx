@@ -1,10 +1,21 @@
 import { Accordion } from "@mantine/core";
 import { Question } from "phosphor-react";
 import { useTranslation } from "next-i18next";
+import { useState, useEffect } from "react";
 
 export default function Faq() {
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
+  const lng = i18n.language;
+  useEffect(() => {
+    changeState();
+  });
 
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeState() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   return (
     <Accordion
       className="w-full  "
@@ -16,12 +27,24 @@ export default function Faq() {
         <Accordion.Control
           icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
-          <span className=" text-gray-900 flex justify-end text-xl text-right">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-900 flex justify-end text-xl text-right"
+                : "text-gray-900 flex justify-start text-xl text-left"
+            }`}
+          >
             {t("Q1")}
           </span>
         </Accordion.Control>
         <Accordion.Panel>
-          <span className="  text-gray-500 flex items-end text-xl text-right px-12">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-500 flex items-end text-md text-right px-12"
+                : "text-gray-500 flex items-end text-md text-left px-12"
+            }`}
+          >
             {t("A1")}
           </span>
         </Accordion.Panel>
@@ -30,12 +53,24 @@ export default function Faq() {
         <Accordion.Control
           icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
-          <span className=" text-gray-900 flex justify-end text-xl text-right">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-900 flex justify-end text-xl text-right"
+                : "text-gray-900 flex justify-start text-xl text-left"
+            }`}
+          >
             {t("Q2")}
           </span>
         </Accordion.Control>
         <Accordion.Panel>
-          <span className="  text-gray-500 flex items-end text-xl text-right px-12">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-500 flex items-end text-md text-right px-12"
+                : "text-gray-500 flex items-end text-md text-left px-12"
+            }`}
+          >
             {t("A2")}
           </span>
         </Accordion.Panel>
@@ -44,12 +79,24 @@ export default function Faq() {
         <Accordion.Control
           icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
-          <span className=" text-gray-900 flex justify-end text-xl text-right">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-900 flex justify-end text-xl text-right"
+                : "text-gray-900 flex justify-start text-xl text-left"
+            }`}
+          >
             {t("Q3")}
           </span>
         </Accordion.Control>
         <Accordion.Panel>
-          <span className="  text-gray-500 flex items-end text-xl text-right px-12">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-500 flex items-end text-md text-right px-12"
+                : "text-gray-500 flex items-end text-md text-left px-12"
+            }`}
+          >
             {t("A3")}
           </span>
         </Accordion.Panel>
@@ -58,7 +105,13 @@ export default function Faq() {
         <Accordion.Control
           icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
-          <span className=" text-gray-900 flex justify-end text-xl text-right">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-900 flex justify-end text-xl text-right"
+                : "text-gray-900 flex justify-start text-xl text-left"
+            }`}
+          >
             {t("Q4")}
           </span>
         </Accordion.Control>
@@ -72,12 +125,24 @@ export default function Faq() {
         <Accordion.Control
           icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
-          <span className=" text-gray-900 flex justify-end text-xl text-right">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-900 flex justify-end text-xl text-right"
+                : "text-gray-900 flex justify-start text-xl text-left"
+            }`}
+          >
             {t("Q5")}
           </span>
         </Accordion.Control>
         <Accordion.Panel>
-          <span className="  text-gray-500 flex items-end text-xl text-right px-12">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-500 flex items-end text-md text-right px-12"
+                : "text-gray-500 flex items-end text-md text-left px-12"
+            }`}
+          >
             {t("A5")}
           </span>
         </Accordion.Panel>
@@ -86,7 +151,13 @@ export default function Faq() {
         <Accordion.Control
           icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
-          <span className=" text-gray-900 flex justify-end text-xl text-right">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-900 flex justify-end text-xl text-right"
+                : "text-gray-900 flex justify-start text-xl text-left"
+            }`}
+          >
             {t("Q6")}
           </span>
         </Accordion.Control>
@@ -100,12 +171,24 @@ export default function Faq() {
         <Accordion.Control
           icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
-          <span className=" text-gray-900 flex justify-end text-xl text-right">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-900 flex justify-end text-xl text-right"
+                : "text-gray-900 flex justify-start text-xl text-left"
+            }`}
+          >
             {t("Q7")}
           </span>
         </Accordion.Control>
         <Accordion.Panel>
-          <span className="  text-gray-500 flex items-end text-xl text-right px-12">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-500 flex items-end text-md text-right px-12"
+                : "text-gray-500 flex items-end text-md text-left px-12"
+            }`}
+          >
             {t("A7")}
           </span>
         </Accordion.Panel>
@@ -114,12 +197,24 @@ export default function Faq() {
         <Accordion.Control
           icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
-          <span className=" text-gray-900 flex justify-end text-xl text-right">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-900 flex justify-end text-xl text-right"
+                : "text-gray-900 flex justify-start text-xl text-left"
+            }`}
+          >
             {t("Q8")}
           </span>
         </Accordion.Control>
         <Accordion.Panel>
-          <span className="  text-gray-500 flex items-end text-xl text-right px-12">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-500 flex items-end text-md text-right px-12"
+                : "text-gray-500 flex items-end text-md text-left px-12"
+            }`}
+          >
             {t("A8")}
           </span>
         </Accordion.Panel>
@@ -128,7 +223,13 @@ export default function Faq() {
         <Accordion.Control
           icon={<Question size={40} color="#ffb31c" weight="bold" />}
         >
-          <span className=" text-gray-900 flex justify-end text-xl text-right">
+          <span
+            className={`${
+              alignLeft === true
+                ? "text-gray-900 flex justify-end text-xl text-right"
+                : "text-gray-900 flex justify-start text-xl text-left"
+            }`}
+          >
             {t("Q9")}
           </span>
         </Accordion.Control>

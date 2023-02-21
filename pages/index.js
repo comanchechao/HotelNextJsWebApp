@@ -34,7 +34,7 @@ import Esfahan from "../assets/images/Esfahan.webp";
 import "dayjs/locale/fa";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
@@ -64,8 +64,15 @@ export default function Home(props) {
 
   const firstContainer = useRef();
 
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
+  const lng = i18n.language;
+  const [alignLeft, setAlignLeft] = useState(false);
 
+  async function changeState() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   useEffect(() => {
     var tl = gsap.timeline();
     tl.to(mainPageBg.current, {
@@ -76,6 +83,8 @@ export default function Home(props) {
     tl.to(firstContainer.current, { opacity: "1", duration: 0.4, y: -50 });
   }, []);
   useEffect(() => {
+    changeState();
+
     window.scrollTo(0, 0);
   }, []);
 
@@ -479,7 +488,13 @@ export default function Home(props) {
           </div>
         </div>
         <div className="w-full  h-auto lg:px-44 mb-7">
-          <div className="w-full h-full flex flex-col justify-center items-center lg:items-end space-y-3 rounded-sm">
+          <div
+            className={`${
+              alignLeft === true
+                ? "w-full h-full flex flex-col justify-center items-center lg:items-end space-y-3 rounded-sm"
+                : "w-full h-full flex flex-col justify-center items-center lg:items-start space-y-3 rounded-sm"
+            }`}
+          >
             <h1 className="font-bold mb-3 text-center">{t("faq")} </h1>
             <Faq />
           </div>
