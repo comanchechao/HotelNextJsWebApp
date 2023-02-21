@@ -32,12 +32,12 @@ export default function HotelManagement({ hotels, cities }) {
           <div className="flex flex-reverse w-full items-center space-x-2 justify-center">
             <button
               type="submit"
-              className="bg-gray-100 justify-center items-center border-2 h-10 px-3  flex"
+              className="bg-white justify-center items-center border-2 h-10 px-3  flex"
             >
               <MagnifyingGlass size={20} weight="bold" />
             </button>
             <input
-              className="border-2 p-0 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-textArea hover:bg-white   bg-gray-100 font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-sm  text-sm focus:outline-none"
+              className="border-2 p-0 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-textArea hover:bg-white   bg-white font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-sm  text-sm focus:outline-none"
               type="search"
               name="search"
               placeholder="جستجو نام هتل"
@@ -67,7 +67,7 @@ export default function HotelManagement({ hotels, cities }) {
                 return (
                   <div
                     key={i}
-                    className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-xl w-full rounded bg-gray-100"
+                    className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-xl w-full rounded bg-white"
                   >
                     <div className="flex lg:border-r border-gray-900 flex-col h-full w-full lg:w-2/3 justify-center items-center">
                       <div className="flex justify-center items-center w-full h-full">
@@ -130,12 +130,12 @@ export default function HotelManagement({ hotels, cities }) {
           </Tabs.Panel>
 
           <Tabs.Panel value="messages" pt="xs">
-            <div className="flex w-full p-5  lg:h-rem34 lg:overflow-y-scroll space-y-4 flex-col">
+            <div className="flex w-full p-5  lg:h-rem28 lg:overflow-y-scroll space-y-7  flex-col">
               {hotels.map((hotel, i) => {
                 return (
                   <div
                     key={i}
-                    className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-2xl w-full rounded bg-gray-100"
+                    className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-2xl w-full rounded bg-white"
                   >
                     <div className="flex lg:border-r border-gray-900 flex-col h-full w-full lg:w-2/3 justify-center items-center">
                       <div className="flex justify-center items-center w-full h-full">
@@ -202,7 +202,7 @@ export default function HotelManagement({ hotels, cities }) {
             Settings tab content
           </Tabs.Panel>
         </Tabs>
-        <div className="absolute right-8 bottom-8">
+        <div className="absolute right-8 bottom-3">
           <AddHotel cities={cities} />
         </div>
       </div>
