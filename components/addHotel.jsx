@@ -41,7 +41,7 @@ import AddRoom from "./addRoom";
 // ];
 import cities from "../assets/cities/ir.json";
 
-export default function AddHotel({ lat, lng }) {
+export default function AddHotel({ cities, lat, lng }) {
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
   const [title, setTitle] = useState("");
@@ -186,15 +186,15 @@ export default function AddHotel({ lat, lng }) {
       data
     );
   }
-  // useEffect(() => {
-  //   if (cities) {
-  //     cities.forEach((city, i) => {
-  //       if (cityNames.indexOf(city.name) === -1) {
-  //         cityNames.push(city.name);
-  //       }
-  //     });
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (cities) {
+      cities.forEach((city, i) => {
+        if (cityNames.indexOf(city.name) === -1) {
+          cityNames.push(city.name);
+        }
+      });
+    }
+  }, []);
 
   // uploading images
 
@@ -422,6 +422,7 @@ export default function AddHotel({ lat, lng }) {
               </h3>
               <Select
                 value={city}
+                onChange={setCity}
                 searchable
                 className="text-right  w-full"
                 data={cityNames}

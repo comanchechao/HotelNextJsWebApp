@@ -24,17 +24,20 @@ import WebsiteInfo from "./websiteInfo.jsx";
 export async function getServerSideProps() {
   // Fetch data from the database
 
-  const { data, error } = await supabase.from("Hotels").select();
+  const { data: hotels, error } = await supabase.from("Hotels").select();
+  const { data: cities, error2 } = await supabase.from("cities").select();
 
   if (error) throw error;
+  if (error2) throw error2;
   return {
     props: {
-      hotels: data,
+      cities: cities,
+      hotels: hotels,
     },
   };
 }
 
-export default function AdminPage({ hotels }) {
+export default function AdminPage({ hotels, cities }) {
   const [tab, setTab] = useState("user");
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
@@ -129,18 +132,18 @@ export default function AdminPage({ hotels }) {
 
                   <Menu.Dropdown className="text-right">
                     <Menu.Label>شهر های ایران</Menu.Label>
-                    <Menu.Item
-                      className="font-medium text-right"
-                      icon={<IconBuildingSkyscraper size={14} />}
-                    >
-                      مشهد
-                    </Menu.Item>
-                    <Menu.Item
-                      className="font-medium text-right"
-                      icon={<IconBuildingSkyscraper size={14} />}
-                    >
-                      مشهد
-                    </Menu.Item>
+                    {cities.map((city) => {
+                      return (
+                        <Menu.Item
+                          key={city.id}
+                          className="font-medium text-right"
+                          icon={<IconBuildingSkyscraper size={14} />}
+                        >
+                          {city.name}
+                        </Menu.Item>
+                      );
+                    })}
+
                     <Menu.Divider />
 
                     <Menu.Label>شهر های ترکیه</Menu.Label>
@@ -223,7 +226,7 @@ export default function AdminPage({ hotels }) {
           </div>
           <div className="w-full h-full   justify-center items-center">
             {tab === "hotel" ? (
-              <HotelManagement hotels={hotels} />
+              <HotelManagement hotels={hotels} cities={cities} />
             ) : tab === "user" ? (
               <UserManagement />
             ) : tab === "reserve" ? (
