@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export async function getServerSideProps() {
   // Fetch data from the database
@@ -21,6 +22,7 @@ export async function getServerSideProps() {
 }
 
 export default function HotelList({ hotels }) {
+  let entering = useSelector((state) => state.reserve.enterDate);
   const HotelListModal = dynamic(
     () => import("../../components/hotelListModal"),
     {
@@ -42,6 +44,7 @@ export default function HotelList({ hotels }) {
       setLoading(false);
       console.log("poozliq");
     }
+    console.log(entering);
   });
 
   return (

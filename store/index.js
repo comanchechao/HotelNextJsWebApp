@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { mapReducer } from "./map/index";
+import { reservationReducer } from "./reservation";
 import { roomReducer } from "./room/index";
 // create a slice
 export const mainSlice = createSlice({
@@ -16,6 +17,7 @@ const store = configureStore({
     main: mainSlice.reducer,
     map: mapReducer,
     room: roomReducer,
+    reserve: reservationReducer,
   },
 });
 

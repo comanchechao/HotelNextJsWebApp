@@ -33,7 +33,7 @@ export default function LoginModal() {
   // GET USER
   useEffect(() => {
     getSetUser();
-  });
+  }, []);
   async function getSetUser() {
     const {
       data: { user },

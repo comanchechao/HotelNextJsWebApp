@@ -37,10 +37,19 @@ import { useTranslation } from "next-i18next";
 import { useRef, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import { supabase } from "../lib/supabaseClient";
+import { useDispatch } from "react-redux";
+import { reservationActions } from "../store/reservation";
 
 export async function getServerSideProps({ locale }) {
+  // Fetch data from the database
+
+  const { data: cities, error2 } = await supabase.from("cities").select();
+
+  if (error2) throw error2;
   return {
     props: {
+      cities: cities,
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
@@ -59,7 +68,22 @@ export default function Home(props) {
       suspense: true,
     }
   );
-  const [value, setValue] = useState([Date | null, Date | null]);
+
+  // set cities
+  const [selectedCity, setSelectedCity] = useState("");
+
+  const [cityNames, setCityNames] = useState([]);
+  useEffect(() => {
+    if (props.cities) {
+      props.cities.forEach((city, i) => {
+        if (cityNames.indexOf(city.name) === -1) {
+          cityNames.push(city.name);
+        }
+      });
+    }
+  }, []);
+
+  const [dates, setDates] = useState([Date | null, Date | null]);
   const theme = useMantineTheme();
   const mainPageBg = useRef();
 
@@ -85,6 +109,15 @@ export default function Home(props) {
 
     window.scrollTo(0, 0);
   });
+
+  // dispatching the selection to the store
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (dates !== null) {
+      dispatch(reservationActions.setEnterting(dates[0]));
+    }
+  }, [dates, selectedCity]);
 
   return (
     <>
@@ -126,7 +159,8 @@ export default function Home(props) {
               <Select
                 dropdownPosition="top"
                 className="text-2xl mx-6 text-right flex flex-col items-end"
-                data={["تهران", "تبریز", "ارومیه", "مشهد"]}
+                data={cityNames}
+                onChange={setSelectedCity}
                 placeholder={t("destination")}
                 label={t("destination")}
                 variant="default"
@@ -146,8 +180,8 @@ export default function Home(props) {
                 label={t("inDate")}
                 withAsterisk
                 variant="default"
-                value={value}
-                onChange={setValue}
+                value={dates}
+                onChange={setDates}
                 radius="md"
                 size="md"
               />
