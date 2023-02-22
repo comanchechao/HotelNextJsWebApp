@@ -134,9 +134,7 @@ export default function HotelDetailPage({ hotel }) {
   return (
     <>
       <Head>
-        <title>
-          رزرو هتل بوتک : هتل {hotel.title} ، رزرو اتاق : {hotel.firstLocation}
-        </title>
+        <title>رزرو هتل بوتک : هتل {hotel.title} </title>
         <meta
           name="description"
           content="
