@@ -5,17 +5,28 @@ import hotelone from "../assets/images/hotelone.webp";
 import hotelthree from "../assets/images/hotelthree.webp";
 import hotelfour from "../assets/images/hotelfour.webp";
 import dynamic from "next/dynamic";
+import { useDispatch } from "react-redux";
+import { reservationActions } from "../store/reservation";
 
 export default function HotelCard({ hotel }) {
   const HotelMap = dynamic(() => import("./hotelMap"), {
     ssr: false,
   });
+
+  // setting reservatoin info
+
+  const dispatch = useDispatch();
   return (
     <div className=" w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row flex-col-reverse justify-between items-center ">
       <div className="w-56 h-full flex flex-col p-4 items-center justify-center space-y-2">
         <h2 className="text-mainPurple text-lg">{hotel.price}</h2>
         <Link href={"/hotelList/hotelDetail/" + hotel.id}>
-          <button className="px-6 w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xs font-mainFont">
+          <button
+            onClick={() => {
+              dispatch(reservationActions.setHotelInfo(hotel));
+            }}
+            className="px-6 w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xs font-mainFont"
+          >
             مشاهده ی اتاق ها و رزرو
           </button>
         </Link>

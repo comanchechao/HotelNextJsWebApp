@@ -22,7 +22,7 @@ export async function getServerSideProps() {
 }
 
 export default function HotelList({ hotels }) {
-  let entering = useSelector((state) => state.reserve.enterDate);
+  // dynamic imports
   const HotelListModal = dynamic(
     () => import("../../components/hotelListModal"),
     {
@@ -38,6 +38,7 @@ export default function HotelList({ hotels }) {
   const Footer = dynamic(() => import("../../components/Footer"), {
     suspense: true,
   });
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (hotels.data !== null) {
@@ -46,6 +47,10 @@ export default function HotelList({ hotels }) {
     }
     console.log(entering);
   });
+
+  // reservation info
+
+  let entering = useSelector((state) => state.reserve.enterDate);
 
   return (
     <div className="w-screen h-auto bg-gray-200">

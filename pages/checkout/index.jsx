@@ -1,5 +1,5 @@
 import Navbar from "../../components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Stepper } from "@mantine/core";
 import {
   Users,
@@ -11,7 +11,15 @@ import {
 import PassengerInfo from "./passengerInfo";
 import Link from "next/link";
 import InfoConfirmation from "./infoConfirmation";
+import { useSelector } from "react-redux";
 export default function Checkout() {
+  // getting and setting reservation info
+
+  let room = useSelector((state) => state.reserve.room);
+
+  useEffect(() => {
+    console.log(room);
+  });
   const [active, setActive] = useState(1);
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));

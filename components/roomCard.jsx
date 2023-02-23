@@ -1,8 +1,13 @@
 import { Accordion } from "@mantine/core";
 import Link from "next/link";
 import { Coffee, User, Tag } from "phosphor-react";
+import { useDispatch } from "react-redux";
+import { reservationActions } from "../store/reservation";
 
 export default function RoomCard({ room }) {
+  // setting reservation info
+
+  const dispatch = useDispatch();
   {
     return (
       <div className="flex border border-gray-300 bg-white justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-60">
@@ -13,7 +18,13 @@ export default function RoomCard({ room }) {
           </div>
           <h1 className="text-lg">قیمت برای 1 شب</h1>
           <Link href="/checkout">
-            <button className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   ">
+            <button
+              onClick={() => {
+                dispatch(reservationActions.setRoom(room));
+                console.log(room);
+              }}
+              className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   "
+            >
               <p>رزرو اتاق</p>
             </button>
           </Link>

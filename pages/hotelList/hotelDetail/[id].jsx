@@ -1,6 +1,6 @@
 import Navbar from "../../../components/Navbar";
 import Head from "next/head";
-
+import { reservationActions } from "../../../store/reservation/index";
 import { Tabs, Popover, TextInput, Accordion } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import { supabase } from "../../../lib/supabaseClient";
@@ -32,6 +32,7 @@ import Reply from "../../../components/reply";
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState } from "react";
 import RoomCard from "../../../components/roomCard";
+import { useDispatch, useSelector } from "react-redux";
 
 export const getStaticPaths = async () => {
   const { data, error } = await supabase.from("Hotels").select();
@@ -131,6 +132,14 @@ export default function HotelDetailPage({ hotel }) {
     }
   );
 
+  // getting reservtion info
+
+  const dispatch = useDispatch();
+
+  let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
+  useEffect(() => {
+    console.log(hotelInfo);
+  });
   return (
     <>
       <Head>
@@ -267,7 +276,12 @@ export default function HotelDetailPage({ hotel }) {
                 </Popover>
                 <div className="flex">
                   <Link href="/checkout">
-                    <button className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   ">
+                    <button
+                      onClick={() => {
+                        dispatch(reservationActions.setHotelInfo(hotel));
+                      }}
+                      className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   "
+                    >
                       <p>رزرو اتاق</p>
                     </button>
                   </Link>

@@ -1,6 +1,8 @@
 import { Star, SignIn, SignOut, Bed } from "phosphor-react";
+import { useSelector } from "react-redux";
 
 export default function InfoConfirmation() {
+  let room = useSelector((state) => state.reserve.room);
   return (
     <div className=" mb-10 h-auto w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
       <div className="lg:h-24 h-auto w-full bg-white divide-x-2 flex">
@@ -39,9 +41,10 @@ export default function InfoConfirmation() {
           </h1>
         </div>
         <div className=" w-5/6 h-28 self-end flex flex-wrap-reverse items-center justify-end  py-4 space-x-5 ">
-          <h5>به همراه صبحانه</h5>
+          <h5>{room.meal}</h5>
           <h4 className="text-lg">
-            <strong>نام اتاق : </strong>يک تخته
+            <strong>نام اتاق : </strong>
+            {room.title}
           </h4>
           <h4 className="text-lg">
             <strong>تعداد مسافران : </strong>1 نفر

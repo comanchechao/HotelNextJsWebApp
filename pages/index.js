@@ -116,6 +116,7 @@ export default function Home(props) {
   useEffect(() => {
     if (dates !== null) {
       dispatch(reservationActions.setEnterting(dates[0]));
+      dispatch(reservationActions.setExiting(dates[1]));
     }
   }, [dates, selectedCity]);
 

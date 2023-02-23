@@ -1,7 +1,11 @@
 import { Select, TextInput } from "@mantine/core";
 import { Star, SignIn, SignOut, Bed } from "phosphor-react";
+import { useSelector } from "react-redux";
 
 export default function PassengerInfo() {
+  // getting reservatoin info
+  let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
+  let room = useSelector((state) => state.reserve.room);
   return (
     <div className=" mb-10 h-auto lg:h-rem33 w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
       <div className=" h-auto lg:h-24 w-full bg-white divide-x-2 flex">
@@ -24,10 +28,10 @@ export default function PassengerInfo() {
         <div className="h-full w-1/2 px-5 lg:px-0 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3">
           <div className="flex items-center space-x-4">
             <h2 className="flex items-center">
-              5 ستاره
+              {hotelInfo.stars} ستاره
               <Star className="mx-2" size={19} color="#e0ab19" weight="fill" />
             </h2>
-            <h1 className="text-xl font-bold">هتل پارسیان استقلال</h1>
+            <h1 className="text-xl font-bold">هتل {hotelInfo.title}</h1>
           </div>
           <h2>آدرس: پارک وی- ابتدای اتوبان چمران</h2>
         </div>
@@ -40,8 +44,8 @@ export default function PassengerInfo() {
           </h1>
           <div className="flex items-center space-x-6">
             <h3 className="font-bold">1 بزرگسال</h3>
-            <h3>به همراه صبحانه</h3>
-            <h2 className="text-md font-bold">اتاق یک تخته ی شرقی</h2>
+            <h3>{room.meal}</h3>
+            <h2 className="text-md font-bold">اتاق {room.title}</h2>
           </div>
         </div>
         <div className="h-full w-full  flex items-end my-8 flex-col px-6">
