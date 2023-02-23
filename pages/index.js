@@ -118,7 +118,13 @@ export default function Home(props) {
       dispatch(reservationActions.setEnterting(dates[0]));
       dispatch(reservationActions.setExiting(dates[1]));
     }
-  }, [dates, selectedCity]);
+  }, [dates]);
+
+  useEffect(() => {
+    if (selectedCity !== "") {
+      dispatch(reservationActions.setCity(selectedCity));
+    }
+  }, [dispatch, selectedCity]);
 
   return (
     <>

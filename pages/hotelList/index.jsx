@@ -47,12 +47,11 @@ export default function HotelList({ hotels }) {
       setLoading(false);
       console.log("poozliq");
     }
-    console.log(entering);
   });
 
   // reservation info
 
-  let entering = useSelector((state) => state.reserve.enterDate);
+  let selectedCity = useSelector((state) => state.reserve.city);
 
   return (
     <div className="w-screen h-auto bg-gray-200">
@@ -62,7 +61,7 @@ export default function HotelList({ hotels }) {
           <div className="h-auto w-full space-x-3 flex items-center justify-end">
             <Link className="text-lg items-center flex text-black" href="/">
               <CaretLeft size={20} />
-              هتل های شهر استانبول
+              هتل های شهر {selectedCity}
             </Link>
             <Link className="text-lg items-center flex text-gray-700" href="/">
               <CaretLeft size={20} />
