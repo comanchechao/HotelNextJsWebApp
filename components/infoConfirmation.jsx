@@ -2,7 +2,10 @@ import { Star, SignIn, SignOut, Bed } from "phosphor-react";
 import { useSelector } from "react-redux";
 
 export default function InfoConfirmation() {
+  //getting reservation info
+
   let room = useSelector((state) => state.reserve.room);
+  let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
   return (
     <div className=" mb-10 h-auto w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
       <div className="lg:h-24 h-auto w-full bg-white divide-x-2 flex">
@@ -25,10 +28,10 @@ export default function InfoConfirmation() {
         <div className="h-full w-1/2 p-3 flex flex-col items-end justify-start space-y-3">
           <div className="flex items-center space-x-4">
             <h2 className="flex items-center">
-              5 ستاره
+              {hotelInfo.stars} ستاره
               <Star className="mx-2" size={19} color="#e0ab19" weight="fill" />
             </h2>
-            <h1 className="text-xl font-bold">هتل پارسیان استقلال</h1>
+            <h1 className="text-xl font-bold">هتل {hotelInfo.title}</h1>
           </div>
           <h2>آدرس: پارک وی - ابتدای اتوبان چمران</h2>
         </div>

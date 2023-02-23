@@ -8,9 +8,9 @@ import {
   Money,
   ClosedCaptioning,
 } from "phosphor-react";
-import PassengerInfo from "./passengerInfo";
+import PassengerInfo from "../../components/passengerInfo";
 import Link from "next/link";
-import InfoConfirmation from "./infoConfirmation";
+import InfoConfirmation from "../../components/infoConfirmation";
 import { useSelector } from "react-redux";
 export default function Checkout() {
   // getting and setting reservation info
