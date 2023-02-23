@@ -320,87 +320,99 @@ export default function AddHotel({ cities, lat, lng }) {
         onClose={() => setOpened(false)}
         centered
       >
-        <div className="flex flex-col bg-gray-50 px-72  w-full h-full">
+        <div className="flex flex-col bg-gray-50   w-full h-full">
           <div className="flex space-y-5 w-full h-full flex-col">
+            <div className="   w-full text-center items-center flex justify-center">
+              <h3 className="text-3xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                تصاویر هتل
+              </h3>
+            </div>
+            <div className="flex justify-around space-x-4 h-rem22 ">
+              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+                <div className="w-14 h-14 cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-mainPurple hover:bg-mainPurple">
+                  <label htmlFor="firstImage">
+                    {uploading ? (
+                      <Loader color="grape" />
+                    ) : (
+                      <IconUpload className="cursor-pointer" size={30} />
+                    )}
+                  </label>
+                  <input
+                    onChange={firstImageUpload}
+                    type="file"
+                    className="hidden"
+                    id="firstImage"
+                  />
+                </div>
+              </div>
+              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+                {" "}
+                <div className="w-14 h-14 cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-mainPurple hover:bg-mainPurple">
+                  <label htmlFor="fourthImage">
+                    {uploading ? (
+                      <Loader color="grape" />
+                    ) : (
+                      <IconUpload className="cursor-pointer" size={30} />
+                    )}
+                  </label>
+                  <input
+                    onChange={fourthImageUpload}
+                    type="file"
+                    className="hidden"
+                    id="fourthImage"
+                  />
+                </div>
+              </div>
+              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+                {" "}
+                <div className="w-14 h-14 cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-mainPurple hover:bg-mainPurple">
+                  <label htmlFor="fifthImage">
+                    {uploading ? (
+                      <Loader color="grape" />
+                    ) : (
+                      <IconUpload className="cursor-pointer" size={30} />
+                    )}
+                  </label>
+                  <input type="file" className="hidden" id="fifthImage" />
+                </div>
+              </div>
+              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+                <div className="w-14 h-14 cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-mainPurple hover:bg-mainPurple">
+                  <label htmlFor="thirdImage">
+                    {uploading ? (
+                      <Loader color="grape" />
+                    ) : (
+                      <IconUpload className="cursor-pointer" size={30} />
+                    )}
+                  </label>
+                  <input
+                    onChange={thirdImageUpload}
+                    type="file"
+                    className="hidden"
+                    id="thirdImage"
+                  />
+                </div>
+              </div>
+              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+                <div className="w-14 h-14 cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-mainPurple hover:bg-mainPurple">
+                  <label htmlFor="secondImage">
+                    {uploading ? (
+                      <Loader color="grape" />
+                    ) : (
+                      <IconUpload className="cursor-pointer" size={30} />
+                    )}
+                  </label>
+                  <input
+                    onChange={secondImageUpload}
+                    type="file"
+                    className="hidden"
+                    id="secondImage"
+                  />
+                </div>
+              </div>
+            </div>{" "}
             <div className="flex p-5 w-full justify-center items-center">
               <DynamicMap city={city} />
-            </div>
-            <div className="flex justify-around flex-wrap ">
-              <div className="   w-full text-center items-center flex justify-center">
-                <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
-                  تصاویر هتل
-                </h3>
-              </div>
-              <div className="w-14 h-14 cursor-pointer p-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
-                <label htmlFor="firstImage">
-                  {uploading ? (
-                    <Loader color="grape" />
-                  ) : (
-                    <IconUpload size={30} />
-                  )}
-                </label>
-                <input
-                  onChange={firstImageUpload}
-                  type="file"
-                  className="hidden"
-                  id="firstImage"
-                />
-              </div>
-              <div className="w-14 h-14 cursor-pointer p-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
-                <label htmlFor="secondImage">
-                  {uploading ? (
-                    <Loader color="grape" />
-                  ) : (
-                    <IconUpload size={30} />
-                  )}
-                </label>
-                <input
-                  onChange={secondImageUpload}
-                  type="file"
-                  className="hidden"
-                  id="secondImage"
-                />
-              </div>
-              <div className="w-14 h-14 cursor-pointer p-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
-                <label htmlFor="thirdImage">
-                  {uploading ? (
-                    <Loader color="grape" />
-                  ) : (
-                    <IconUpload size={30} />
-                  )}
-                </label>
-                <input
-                  onChange={thirdImageUpload}
-                  type="file"
-                  className="hidden"
-                  id="thirdImage"
-                />
-              </div>
-              <div className="w-14 h-14 cursor-pointer p-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
-                <label htmlFor="fourthImage">
-                  {uploading ? (
-                    <Loader color="grape" />
-                  ) : (
-                    <IconUpload size={30} />
-                  )}
-                </label>
-                <input
-                  onChange={fourthImageUpload}
-                  type="file"
-                  className="hidden"
-                  id="fourthImage"
-                />
-              </div>
-              <div className="w-14 h-14 cursor-pointer p-4 bg-darkPurple transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-white hover:bg-mainBlue">
-                <label htmlFor="fifthImage">
-                  {uploading ? (
-                    <Loader color="grape" />
-                  ) : (
-                    <IconUpload size={30} />
-                  )}
-                </label>
-                <input type="file" className="hidden" id="fifthImage" />
-              </div>
             </div>
             <div className="flex  flex-col justify-center space-x-2 text-right items-center w-full h-full">
               <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
@@ -480,7 +492,6 @@ export default function AddHotel({ cities, lat, lng }) {
                 rows="10"
               ></textarea>
             </div>
-
             <div className="flex w-full justify-around items-center">
               <div className="flex-col space-y-2 text-right flex">
                 <label htmlFor="entering hour">ساعت ورود</label>
@@ -505,7 +516,6 @@ export default function AddHotel({ cities, lat, lng }) {
                 />
               </div>
             </div>
-
             <div className="flex space-y-1 flex-col">
               {rooms.map((room, i) => {
                 return (
@@ -745,7 +755,6 @@ export default function AddHotel({ cities, lat, lng }) {
                 </Tabs.Panel>
               </Tabs>
             </div>
-
             <div className="flex">
               {" "}
               <button

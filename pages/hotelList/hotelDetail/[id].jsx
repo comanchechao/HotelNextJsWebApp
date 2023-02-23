@@ -1,7 +1,7 @@
 import Navbar from "../../../components/Navbar";
 import Head from "next/head";
 import { reservationActions } from "../../../store/reservation/index";
-import { Tabs, Popover, TextInput, Accordion } from "@mantine/core";
+import { Tabs, Popover, TextInput, Skeleton } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import { supabase } from "../../../lib/supabaseClient";
 import {
@@ -167,44 +167,55 @@ export default function HotelDetailPage({ hotel }) {
                 <p>هتل ها</p>
               </Link>
             </div>
-            <div className="flex py-5  flex-col">
-              <div className="flex cursor-pointer w-full justify-center  h-96 rounded-md">
-                <div className="hidden lg:flex">
-                  <Image
-                    width={400}
-                    height={400}
-                    alt=""
-                    className=" w-full h-full"
-                    src={singleImage}
-                  />
+            {loading ? (
+              <div className="flex py-5  flex-col  ">
+                <div className="flex cursor-pointer w-full justify-center  h-96 rounded-md">
+                  <div className="hidden lg:flex">
+                    <Image
+                      width={400}
+                      height={400}
+                      alt=""
+                      className=" w-full h-full"
+                      src={singleImage}
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 grid-rows-2">
+                    {displayImages.map((image) => {
+                      return (
+                        <div
+                          key={image}
+                          className="flex w-full h-full justify-center items-center"
+                        >
+                          <Image
+                            width={200}
+                            height={200}
+                            alt=""
+                            className=" w-full h-full"
+                            src={image}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-                <div className="grid grid-cols-2 grid-rows-2">
-                  {displayImages.map((image) => {
-                    return (
-                      <div
-                        key={image}
-                        className="flex w-full h-full justify-center items-center"
-                      >
-                        <Image
-                          width={200}
-                          height={200}
-                          alt=""
-                          className=" w-full h-full"
-                          src={image}
-                        />
-                      </div>
-                    );
-                  })}
+                <div className="flex justify-center py-5  w-full h-16 lg:h-10">
+                  <ImagesModal />
                 </div>
               </div>
-              <div className="flex justify-center py-5  w-full h-16 lg:h-10">
-                <ImagesModal />
+            ) : (
+              <div className="h-full my-8 w-full flex items-center justify-center space-x-5">
+                <Skeleton height={400} width={"100%"} />{" "}
+                <Skeleton height={400} width={"100%"} />{" "}
+                <Skeleton height={400} width={"100%"} />{" "}
+                <Skeleton height={400} width={"100%"} />{" "}
+                <Skeleton height={400} width={"100%"} />
               </div>
-            </div>
+            )}
+
             <div className="flex w-full justify-end h-32 lg:h-20">
               <div className="flex w-full justify-center items-end flex-col">
                 <h1 className="text-3xl my-2">هتل {hotel.title}</h1>
-                <div className="flex bg-gray-50 p-3 rounded-md space-x-8 justify-center items-center">
+                <div className="flex border border-gray-300 bg-gray-50 p-3 rounded-md space-x-8 justify-center items-center">
                   <div className="flex">
                     <p>اول بند ، روبه روی خیابان گلشهر</p>
                   </div>
@@ -294,7 +305,7 @@ export default function HotelDetailPage({ hotel }) {
                     امکانات و ویژگی ها
                   </h1>
                 </div>
-                <div className="rounded-md-lg border border-gray-200 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  ">
+                <div className="rounded-lg border border-gray-300 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  ">
                   <div className="flex px-3 justify-between items-center">
                     <h2>
                       <IconWashMachine size={32} />
@@ -368,9 +379,9 @@ export default function HotelDetailPage({ hotel }) {
                     />
                   </div>
                 </div>
-                <div className="flex p-5 items-center space-y-6 w-full flex-col  justify-center">
+                <div className="flex py-8 items-center space-y-6 w-full flex-col  justify-center">
                   <h1 className=" text-gray-800 text-3xl self-end">اتاق ها</h1>
-                  <div className="flex bg-white justify-center w-full text-lg">
+                  <div className="flex border border-gray-300 bg-white justify-center w-full text-lg">
                     <Tabs color="yellow" defaultValue="first">
                       <Tabs.List grow position="center">
                         <Tabs.Tab value="second">

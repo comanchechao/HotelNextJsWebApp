@@ -48,7 +48,7 @@ export default function AdminPage({ hotels, cities }) {
     <div className="w-screen h-auto bg-gray-200">
       <Navbar />
       <div className="flex  w-full h-screen   items-center justify-center lg:space-x-5 lg:pl-36 lg:py-32 ">
-        <div className="flex pt-20   flex-col w-3/4 h-screen ">
+        <div className="flex   px-12 py-24   flex-col w-3/4 h-screen ">
           {/* <div className="flex   bg-white   h-auto lg:justify-end justify-between w-full items-center">
             <div className="lg:hidden flex px-2 justify-center items-center">
               <IconMenu2
@@ -167,7 +167,7 @@ export default function AdminPage({ hotels, cities }) {
               </div>
             </div>
           </div> */}
-          <div className="w-full pb-14 px-10 border-2 rounded-md border-white  justify-center items-center">
+          <div className="w-full h-screen    rounded-md    justify-center items-center">
             {tab === "hotel" ? (
               <HotelManagement hotels={hotels} cities={cities} />
             ) : tab === "user" ? (

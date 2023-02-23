@@ -2,8 +2,8 @@ import { Textarea, Tabs } from "@mantine/core";
 
 export default function WebsiteInfo() {
   return (
-    <div className="flex flex-col items-center justify-start pt-14 w-full h-full  ">
-      <div className=" overflow-y-scroll w-textArea h-carousel  pb-8 px-14 bg-white flex flex-col items-center justify-start">
+    <div className="flex flex-col items-center justify-start  w-full h-full  ">
+      <div className=" overflow-y-scroll w-full h-full  py-20 px-14 bg-white flex flex-col items-center justify-start">
         <h1 className="border-b-4 pb-4 border-mainBlue my-3">
           تغییر اطلاعات وبسایت
         </h1>

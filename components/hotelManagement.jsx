@@ -26,7 +26,7 @@ export default function HotelManagement({ hotels, cities }) {
     ssr: false,
   });
   return (
-    <div className="flex flex-col w-full h-full  ">
+    <div className="flex flex-col w-full h-full   ">
       <div className="flex w-full space-y-4 flex-col">
         <div class="pt-4 px-2 flex w-full justify-center items-center relative text-black ">
           <div className="flex flex-reverse w-full items-center space-x-2 justify-center">
@@ -62,7 +62,7 @@ export default function HotelManagement({ hotels, cities }) {
 
           <Tabs.Panel value="gallery" pt="xs">
             <div
-              className="flex w-full p-5  lg:overscroll-y-contain lg:overflow-y-scroll lg:h-rem30
+              className="flex w-full p-5  lg:overscroll-y-contain lg:overflow-y-scroll lg:h-rem28
                space-y-7  flex-col"
             >
               {hotels.map((hotel, i) => {
