@@ -28,26 +28,22 @@ export default function SuperUserModal() {
         centered
         opened={opened}
         onClose={() => setOpened(false)}
-        title="اطلاعات کاربر"
         className="text-right w-full flex justify-end"
       >
         <div className="w-full h-full">
-          <div className="flex w-full justify-around items-center">
-            <div className="flex w-full items-center justify-around">
-              <div className="flex items-center space-x-1">
+          <div className="flex w-full justify-center items-center">
+            <div className="flex w-full items-center justify-center flex-col space-y-5">
+              <div className="flex items-center space-x-1 text-2xl">
                 <p>Hotel Ana</p>
                 <p>:نام کاربری</p>
               </div>
-              <div className="flex items-center space-x-1">
+              <div className="flex items-center space-x-1 text-2xl">
                 <p>آرنیک نرمال</p>
                 <p>:نام مالک</p>
               </div>
             </div>
-            <div className="flex">
-              <IconUserCircle size={50} />
-            </div>
           </div>
-          <div className="flex w-full justify-center items-center">
+          <div className="flex w-full justify-center items-center my-8">
             <Accordion
               variant="separated"
               chevronPosition="left"
@@ -74,9 +70,11 @@ export default function SuperUserModal() {
           </div>
           <div className="flex m-2 flex-col w-full">
             <div className="flex w-full border-b-2 border-gray-900 justify-end text-right">
-              <h1 className="bg-gray-900 p-3 text-gray-100">هتل های ثبت شده</h1>
+              <h1 className="bg-mainPurple text-mainBlue p-3  ">
+                هتل های ثبت شده
+              </h1>
             </div>
-            <div className="flex space-y-4 justify-center items-center  w-full h-full p-3 flex-col">
+            <div className="flex space-y-4 justify-center items-center  w-full h-full py-3 flex-col">
               {hotels.map((hotel, i) => {
                 return (
                   <div
@@ -135,7 +133,7 @@ export default function SuperUserModal() {
                     <div className="flex w-full h-full lg:h-52 justify-center items-center">
                       <Image
                         alt=""
-                        className="w-full lg:h-52 object-contain"
+                        className=" object-cover h-52"
                         src={hotel.image}
                       />
                     </div>

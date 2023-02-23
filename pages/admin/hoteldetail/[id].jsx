@@ -4,8 +4,8 @@ import hotelThree from "../../../assets/images/hotelthree.jpg";
 import hotelFour from "../../../assets/images/hotelfour.jpg";
 import Image from "next/image";
 import Navbar from "../../../components/Navbar";
-import AddRoom from "../../../components/addRoom";
 import RoomModal from "../../../components/roomModal";
+import AddRoom from "../addRoom";
 import Footer from "../../../components/Footer";
 import { useEffect, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
@@ -136,13 +136,13 @@ export default function HotelDetail({ hotel }) {
   return (
     <div className="w-full h-full">
       <Navbar />
-      <div className="flex pt-10 flex-col w-full">
+      <div className="flex pt-10 flex-col w-full px-20 bg-gray-200">
         <div className="flex w-full overflow-x-scroll">
           {images.map((image, i) => {
             return <Image key={i} alt="" className="h-96 w-96" src={image} />;
           })}
         </div>
-        <div className="p-5 mb-10 bg-white   flex flex-col w-full">
+        <div className="p-5 mt-8 mb-10 bg-white   flex flex-col ">
           <div className="flex   text-4xl items-center space-x-1 w-full justify-end">
             <Editable
               textAlign="center"
@@ -168,8 +168,8 @@ export default function HotelDetail({ hotel }) {
           <div className="flex p-5 items-center space-x-1 w-full justify-end">
             <h1 className=" text-gray-800 text-3xl">اتاق ها</h1>
           </div>
-          <div className="flex  justify-center w-full text-lg">
-            <Tabs color="yellow" defaultValue="first">
+          <div className="flex text-mainPurple  justify-center w-full text-lg">
+            <Tabs color="yellow" variant="pills" defaultValue="first">
               <Tabs.List grow position="center">
                 <Tabs.Tab value="second">
                   <span className="text-lg">صبحانه</span>
@@ -377,11 +377,11 @@ export default function HotelDetail({ hotel }) {
             </div>
           </Modal>
         </div>
-        <div className="flex p-5 items-center space-x-1 w-full justify-between">
+        <div className="flex p-5 items-center space-x-1 w-full bg-white justify-between">
           <h1 className="  text-mainPurple text-sm cursor-pointer hover:text-blue-800">
             تغییر موقعیت
           </h1>
-          <h1 className="  text-gray-700 text-2xl">مکان و موقیت </h1>
+          <h1 className="   text-gray-700 text-2xl">مکان و موقیت </h1>
         </div>
         <div className="flex bg-gray-200 items-center   justify-center p-5">
           <div className="flex  items-center   justify-center">
@@ -393,10 +393,10 @@ export default function HotelDetail({ hotel }) {
             />
           </div>
         </div>
-        <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
+        <div className="flex h-full p-5 items-center space-x-1 w-full justify-end bg-white">
           <h1 className="  text-gray-700 text-2xl">قوانین و مقررات </h1>
         </div>
-        <div className="flex p-5  bg-gray-200 px-8 justify-center w-full">
+        <div className="flex py-5  bg-gray-200  justify-center w-full">
           <div className="flex rounded-md   flex-col w-full bg-gray-50">
             <div className="flex p-2 justify-end  h-18 w-full">
               <div className="p-5  flex justify-end w-full lg:w-1/2">
@@ -482,7 +482,7 @@ export default function HotelDetail({ hotel }) {
         <div className="flex p-5 bg-white items-center space-x-1 w-full justify-end">
           <h1 className="  text-gray-700 text-2xl">درباره هتل </h1>
         </div>
-        <div className="flex p-5  bg-gray-200 px-8 justify-center w-full">
+        <div className="flex py-5  bg-gray-200  justify-center w-full">
           <div className="flex rounded-md   flex-col w-full bg-gray-50">
             <div className="p-5 flex w-full flex-col">
               <div className="flex  w-full justify-end items-center">
