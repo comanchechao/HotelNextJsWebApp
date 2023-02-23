@@ -1,8 +1,8 @@
 import Navbar from "../../components/Navbar.jsx";
 import { Menu, Button, Text } from "@mantine/core";
-import ReservationManagement from "../../components/reservationManagement.js";
-import UserManagement from "../../components/userManagement";
-import HotelManagement from "../../components/hotelManagement";
+import ReservationManagement from "./reservationManagement.js";
+import UserManagement from "./userManagement";
+import HotelManagement from "./hotelManagement";
 import { Drawer, Group, useMantineTheme } from "@mantine/core";
 import Footer from "../../components/Footer";
 import {
@@ -47,7 +47,7 @@ export default function AdminPage({ hotels, cities }) {
   return (
     <div className="w-screen h-auto bg-gray-200">
       <Navbar />
-      <div className="flex  w-full h-screen   items-center justify-center lg:space-x-5 lg:pl-36 lg:py-32 ">
+      <div className="flex  w-full h-screen   items-center justify-center lg:space-x-5 lg:pl-36 lg:py-36 ">
         <div className="flex   px-12 py-24   flex-col w-3/4 h-screen ">
           {/* <div className="flex   bg-white   h-auto lg:justify-end justify-between w-full items-center">
             <div className="lg:hidden flex px-2 justify-center items-center">
@@ -260,13 +260,13 @@ export default function AdminPage({ hotels, cities }) {
             </div>
           </Drawer>
         </div>
-        <div className="hidden px-12 py-6 lg:flex flex-col items-center h-full justify-center w-1/4 divide-y bg-white text-gray-800">
+        <div className="hidden  lg:flex flex-col items-center h-full justify-center w-1/4 divide-y bg-white text-gray-800">
           <div className="flex w-full justify-center items-center ">
-            <div className="flex h-28 justify-around items-center w-full">
+            {/* <div className="flex h-28 justify-around items-center w-full">
               <div className="text-gray-800 mx-14 text-2xl">
                 <h1>ادمین</h1>
               </div>
-            </div>
+            </div> */}
           </div>
           <div
             onClick={() => {

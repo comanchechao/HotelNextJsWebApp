@@ -170,7 +170,7 @@ export default function ExternalStateExample({
   );
 
   return (
-    <div className="flex w-full">
+    <div className="flex w-full z-10">
       {displayMap}
       {map ? (
         <DisplayPosition

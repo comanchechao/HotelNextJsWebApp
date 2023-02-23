@@ -56,12 +56,12 @@ function DisplayPosition({ map }) {
   return (
     <div className="flex flex-col items-end w-96 ">
       <div className="flex flex-row-reverse items-center justify-around w-full">
-        {position.lat.toFixed(4)},{position.lng.toFixed(4)}{" "}
+        {/* {position.lat.toFixed(4)},{position.lng.toFixed(4)}{" "} */}
         <button
-          className="py-1 px-3 w-64 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
+          className="py-1 px-8 mt-9 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
           onClick={onClick}
         >
-          برو به محل هتل{" "}
+          محل هتل{" "}
         </button>
       </div>
     </div>
@@ -351,10 +351,10 @@ export default function ExternalStateExample({ city }) {
         {showMarker3 ? <DraggableMarker3 /> : null}
       </MapContainer>
 
-      <div className="flex    items-center  justify-center w-full">
-        <div className="flex justify-center items-center w-full p-4">
+      <div className="flex flex-col pt-4 items-center space-y-3  justify-center w-full">
+        <div className="flex   justify-center items-center  ">
           {showMarker2 ? (
-            <div className="flex justify-around  w-full h-full">
+            <div className="flex justify-center space-x-4   w-full h-full">
               <div className="flex justify-center items-center text-red-600">
                 <IconTrash
                   className=" cursor-pointer transition ease-in duration-150 hover:text-mainBlue"
@@ -394,15 +394,14 @@ export default function ExternalStateExample({ city }) {
                   console.log(showMarker2);
                 }}
               >
-                افزودن مارکر
+                مارکر اول{" "}
               </button>
             </div>
           )}
         </div>
-        <div className="flex justify-center items-center w-full p-4">
-          {" "}
+        <div className="flex   justify-center items-center  ">
           {showMarker3 ? (
-            <div className="flex justify-around  w-full h-full">
+            <div className="flex justify-center space-x-4 w-full h-full">
               <div className="flex justify-center items-center text-red-500">
                 <IconTrash
                   className=" cursor-pointer transition ease-in duration-150 hover:text-mainBlue"
@@ -441,7 +440,7 @@ export default function ExternalStateExample({ city }) {
                 console.log(showMarker3);
               }}
             >
-              افزودن مارکر
+              مارکر دوم{" "}
             </button>
           )}
         </div>
