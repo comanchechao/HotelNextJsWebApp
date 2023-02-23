@@ -12,7 +12,15 @@ import PassengerInfo from "../../components/passengerInfo";
 import Link from "next/link";
 import InfoConfirmation from "../../components/infoConfirmation";
 import { useSelector } from "react-redux";
-export default function Checkout() {
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}
+export default function Checkout(props) {
   // getting and setting reservation info
 
   let room = useSelector((state) => state.reserve.room);

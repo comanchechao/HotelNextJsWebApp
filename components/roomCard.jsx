@@ -4,7 +4,7 @@ import { Coffee, User, Tag } from "phosphor-react";
 import { useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
 
-export default function RoomCard({ room }) {
+export default function RoomCard({ room, hotelDetail }) {
   // setting reservation info
 
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function RoomCard({ room }) {
             <button
               onClick={() => {
                 dispatch(reservationActions.setRoom(room));
-                console.log(room);
+                dispatch(reservationActions.setHotelInfo(hotelDetail));
               }}
               className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   "
             >

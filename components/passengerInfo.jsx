@@ -44,7 +44,7 @@ export default function PassengerInfo() {
           </h1>
           <div className="flex items-center space-x-6">
             <h3 className="font-bold">1 بزرگسال</h3>
-            <h3>{room.meal}</h3>
+            <h3>وعده {room.meal}</h3>
             <h2 className="text-md font-bold">اتاق {room.title}</h2>
           </div>
         </div>

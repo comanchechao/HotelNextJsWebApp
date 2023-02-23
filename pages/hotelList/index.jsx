@@ -9,14 +9,16 @@ import { Suspense } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale }) {
   // Fetch data from the database
   const { data, error } = await supabase.from("Hotels").select();
   if (error) throw error;
   return {
     props: {
       hotels: data,
+      ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }

@@ -44,7 +44,7 @@ export default function InfoConfirmation() {
           </h1>
         </div>
         <div className=" w-5/6 h-28 self-end flex flex-wrap-reverse items-center justify-end  py-4 space-x-5 ">
-          <h5>{room.meal}</h5>
+          <h5>وعده {room.meal}</h5>
           <h4 className="text-lg">
             <strong>نام اتاق : </strong>
             {room.title}
