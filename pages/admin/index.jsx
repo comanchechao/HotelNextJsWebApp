@@ -43,10 +43,10 @@ export default function AdminPage({ hotels, cities }) {
   const theme = useMantineTheme();
 
   return (
-    <div className="w-screen h-screen bg-gray-300">
+    <div className="w-screen h-auto bg-gray-200">
       <Navbar />
-      <div className="flex  w-full h-auto   items-center justify-center lg:space-x-5 lg:px-44">
-        <div className="flex pt-20   flex-col w-full h-screen ">
+      <div className="flex  w-full h-screen   items-center justify-center lg:space-x-5 lg:pl-36 lg:py-32 ">
+        <div className="flex pt-20   flex-col w-3/4 h-screen ">
           {/* <div className="flex   bg-white   h-auto lg:justify-end justify-between w-full items-center">
             <div className="lg:hidden flex px-2 justify-center items-center">
               <IconMenu2
@@ -165,7 +165,7 @@ export default function AdminPage({ hotels, cities }) {
               </div>
             </div>
           </div> */}
-          <div className="w-full h-full   justify-center items-center">
+          <div className="w-full h-screen px-10  justify-center items-center">
             {tab === "hotel" ? (
               <HotelManagement hotels={hotels} cities={cities} />
             ) : tab === "user" ? (
@@ -258,7 +258,7 @@ export default function AdminPage({ hotels, cities }) {
             </div>
           </Drawer>
         </div>
-        <div className="hidden pt-9 p-10 lg:flex flex-col items-center h-dialog justify-center w-full divide-y bg-white text-gray-800">
+        <div className="hidden px-12 py-6 lg:flex flex-col items-center h-full justify-center w-1/4 divide-y bg-white text-gray-800">
           <div className="flex w-full justify-center items-center ">
             <div className="flex h-28 justify-around items-center w-full">
               <div className="text-gray-800 mx-14 text-2xl">
