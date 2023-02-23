@@ -167,7 +167,7 @@ export default function AdminPage({ hotels, cities }) {
               </div>
             </div>
           </div> */}
-          <div className="w-full h-screen px-10  justify-center items-center">
+          <div className="w-full pb-14 px-10 border-2 rounded-md border-white  justify-center items-center">
             {tab === "hotel" ? (
               <HotelManagement hotels={hotels} cities={cities} />
             ) : tab === "user" ? (

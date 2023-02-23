@@ -2,8 +2,8 @@ import { Textarea, Tabs } from "@mantine/core";
 
 export default function WebsiteInfo() {
   return (
-    <div className="flex flex-col items-center justify-start w-full h-full p-10  ">
-      <div className=" overflow-y-scroll w-textArea h-carousel py-8 bg-white flex flex-col items-center justify-start">
+    <div className="flex flex-col items-center justify-start pt-14 w-full h-full  ">
+      <div className=" overflow-y-scroll w-textArea h-carousel  pb-8 px-14 bg-white flex flex-col items-center justify-start">
         <h1 className="border-b-4 pb-4 border-mainBlue my-3">
           تغییر اطلاعات وبسایت
         </h1>
@@ -42,8 +42,8 @@ export default function WebsiteInfo() {
                 minRows={15}
                 withAsterisk
               />
-              <button className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-                تایید تغییرات
+              <button className="px-14 mb-96 rounded-lg   transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+                ثبت تغییرات
               </button>
             </div>
           </Tabs.Panel>
