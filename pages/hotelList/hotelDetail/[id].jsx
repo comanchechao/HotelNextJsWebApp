@@ -245,7 +245,7 @@ export default function HotelDetailPage({ hotel }) {
                   locale="fa"
                   onChange={setEntering}
                   defaultValue={enterDate}
-                   inputFormat="MM/DD/YYYY"
+                  inputFormat="MM/DD/YYYY"
                   dropdownPosition="bottom-start"
                   className="text-4xl text-center flex flex-col items-end"
                   placeholder={t("inDate")}
@@ -259,7 +259,7 @@ export default function HotelDetailPage({ hotel }) {
                   locale="fa"
                   onChange={setExiting}
                   defaultValue={exitDate}
-                   inputFormat="MM/DD/YYYY"
+                  inputFormat="MM/DD/YYYY"
                   dropdownPosition="bottom-start"
                   className="text-4xl text-center flex flex-col items-end"
                   placeholder={t("inDate")}
@@ -272,6 +272,7 @@ export default function HotelDetailPage({ hotel }) {
                 <Popover width={300} position="bottom" withArrow shadow="md">
                   <Popover.Target>
                     <TextInput
+                      value={passenger}
                       defaultValue={passenger}
                       className="text-4xl text-right flex flex-col items-end"
                       label={t("passenger")}
