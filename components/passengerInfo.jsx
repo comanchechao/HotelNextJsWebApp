@@ -1,11 +1,18 @@
 import { Select, TextInput } from "@mantine/core";
 import { Star, SignIn, SignOut, Bed } from "phosphor-react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function PassengerInfo() {
   // getting reservatoin info
+  let enterDate = useSelector((state) => state.reserve.enterDate);
+  let exitDate = useSelector((state) => state.reserve.exitDate);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
   let room = useSelector((state) => state.reserve.room);
+
+  useEffect(() => {
+    console.log(enterDate, exitDate);
+  });
   return (
     <div className=" mb-10 h-auto lg:h-rem33 w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
       <div className=" h-auto lg:h-24 w-full bg-white divide-x-2 flex">
@@ -15,7 +22,9 @@ export default function PassengerInfo() {
               <h2>تاریخ خروج</h2>
               <SignOut size={40} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">1401/11/06 - ساعت 12:00:00</h1>
+            <h1 className="font text-lg">
+              {JSON.stringify(enterDate)} - ساعت 12:00:00
+            </h1>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">

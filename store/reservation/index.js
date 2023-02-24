@@ -5,6 +5,7 @@ export const reservation = createSlice({
   initialState: {
     enterDate: "",
     exitDate: "",
+    passenger: 1,
     city: "",
     hotelInfo: {
       title: "",
@@ -36,6 +37,16 @@ export const reservation = createSlice({
     },
     setEnterting: (state, actions) => {
       state.enterDate = actions.payload;
+    },
+    increasePassenger: (state, action) => {
+      if (state.passenger > 0) {
+        state.passenger++;
+      }
+    },
+    decreamentPassenger: (state, action) => {
+      if (state.passenger > 1) {
+        state.passenger--;
+      }
     },
   },
 });

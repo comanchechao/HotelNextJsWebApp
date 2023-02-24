@@ -4,6 +4,7 @@ import { reservationActions } from "../../../store/reservation/index";
 import { Tabs, Popover, TextInput, Skeleton } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import { supabase } from "../../../lib/supabaseClient";
+import { useTranslation } from "next-i18next";
 import {
   IconChevronLeft,
   IconStar,
@@ -33,6 +34,7 @@ import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState } from "react";
 import RoomCard from "../../../components/roomCard";
 import { useDispatch, useSelector } from "react-redux";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export const getStaticPaths = async () => {
   const { data, error } = await supabase.from("Hotels").select();
@@ -56,11 +58,15 @@ export const getStaticProps = async (context) => {
   if (error) throw error;
 
   return {
-    props: { hotel: data[0] },
+    props: {
+      hotel: data[0],
+      ...(await serverSideTranslations(context.locale, ["common"])),
+    },
   };
 };
 
 export default function HotelDetailPage({ hotel }) {
+  const { t } = useTranslation("");
   const [loading, setLoading] = useState(false);
   const [displayImages, setDisplayImages] = useState([]);
   const [singleImage, setSingleImage] = useState("");
@@ -134,8 +140,14 @@ export default function HotelDetailPage({ hotel }) {
 
   // getting reservtion info
 
-  const dispatch = useDispatch();
+  const [entering, setEntering] = useState(null);
+  const [exiting, setExiting] = useState(null);
 
+  const dispatch = useDispatch();
+  let city = useSelector((state) => state.reserve.city);
+  let passenger = useSelector((state) => state.reserve.passenger);
+  let enterDate = useSelector((state) => state.reserve.enterDate);
+  let exitDate = useSelector((state) => state.reserve.exitDate);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
   useEffect(() => {
     console.log(hotelInfo);
@@ -161,13 +173,13 @@ export default function HotelDetailPage({ hotel }) {
                 <p>هتل {hotel.title}</p>
               </Link>
               <IconChevronLeft />
-              <p>هتل های شهر تهران</p>
+              <p>هتل های شهر {city}</p>
               <IconChevronLeft />
               <Link href="/">
                 <p>هتل ها</p>
               </Link>
             </div>
-            {loading ? (
+            {!loading ? (
               <div className="flex py-5  flex-col  ">
                 <div className="flex cursor-pointer w-full justify-center  h-96 rounded-md">
                   <div className="hidden lg:flex">
@@ -228,13 +240,16 @@ export default function HotelDetailPage({ hotel }) {
               </div>
             </div>
             <div className="flex items-center justify-start">
-              <div className="flex bg-white  flex-col items-center w-96 self-start h-full">
+              <div className="flex p-4 bg-white  flex-col items-center w-96 self-start h-full">
                 <DatePicker
                   locale="fa"
+                  onChange={setEntering}
+                  defaultValue={enterDate}
+                   inputFormat="MM/DD/YYYY"
                   dropdownPosition="bottom-start"
                   className="text-4xl text-center flex flex-col items-end"
-                  placeholder="تاریخ ورود"
-                  label="تاریخ ورود"
+                  placeholder={t("inDate")}
+                  label={t("inDate")}
                   withAsterisk
                   variant="default"
                   radius="md"
@@ -242,10 +257,13 @@ export default function HotelDetailPage({ hotel }) {
                 />
                 <DatePicker
                   locale="fa"
+                  onChange={setExiting}
+                  defaultValue={exitDate}
+                   inputFormat="MM/DD/YYYY"
                   dropdownPosition="bottom-start"
                   className="text-4xl text-center flex flex-col items-end"
-                  placeholder="تاریخ خروج"
-                  label="تاریخ خروج"
+                  placeholder={t("inDate")}
+                  label={t("inDate")}
                   withAsterisk
                   variant="default"
                   radius="md"
@@ -254,9 +272,10 @@ export default function HotelDetailPage({ hotel }) {
                 <Popover width={300} position="bottom" withArrow shadow="md">
                   <Popover.Target>
                     <TextInput
+                      defaultValue={passenger}
                       className="text-4xl text-right flex flex-col items-end"
-                      placeholder="انتخاب مسافر"
-                      label="انتخاب مسافر"
+                      label={t("passenger")}
+                      placeholder={t("passenger")}
                       variant="default"
                       radius="md"
                       size="md"
@@ -269,9 +288,23 @@ export default function HotelDetailPage({ hotel }) {
                       <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
                         <h1 className="text-sm">بزرگسال(۱۲ سال به بالا)</h1>
                         <div className="flex text-blue-800  items-center justify-center space-x-5">
-                          <PlusCircle size={27} weight="fill" />
-                          <h1 className="text-sm ">1</h1>
-                          <MinusCircle size={27} weight="fill" />
+                          <PlusCircle
+                            onClick={() => {
+                              dispatch(reservationActions.increasePassenger());
+                            }}
+                            size={27}
+                            weight="fill"
+                          />
+                          <h1 className="text-sm font-bold">{passenger}</h1>
+                          <MinusCircle
+                            onClick={() => {
+                              dispatch(
+                                reservationActions.decreamentPassenger()
+                              );
+                            }}
+                            size={27}
+                            weight="fill"
+                          />
                         </div>
                       </div>
                       <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
@@ -290,6 +323,8 @@ export default function HotelDetailPage({ hotel }) {
                     <button
                       onClick={() => {
                         dispatch(reservationActions.setHotelInfo(hotel));
+                        dispatch(reservationActions.setEnterting(entering));
+                        dispatch(reservationActions.setExiting(exiting));
                       }}
                       className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   "
                     >

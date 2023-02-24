@@ -38,7 +38,7 @@ import { useRef, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { supabase } from "../lib/supabaseClient";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { reservationActions } from "../store/reservation";
 
 export async function getServerSideProps({ locale }) {
@@ -89,7 +89,7 @@ export default function Home(props) {
 
   const firstContainer = useRef();
 
-  const { t, i18n } = useTranslation("common");
+  const { t, i18n } = useTranslation("");
   const lng = i18n.language;
   const [alignLeft, setAlignLeft] = useState(false);
   async function changeState() {
@@ -111,20 +111,9 @@ export default function Home(props) {
   });
 
   // dispatching the selection to the store
+
+  let passenger = useSelector((state) => state.reserve.passenger);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (dates !== null) {
-      dispatch(reservationActions.setEnterting(dates[0]));
-      dispatch(reservationActions.setExiting(dates[1]));
-    }
-  }, [dates]);
-
-  useEffect(() => {
-    if (selectedCity !== "") {
-      dispatch(reservationActions.setCity(selectedCity));
-    }
-  }, [dispatch, selectedCity]);
 
   return (
     <>
@@ -212,6 +201,7 @@ export default function Home(props) {
               >
                 <Popover.Target>
                   <TextInput
+                  value={passenger}
                     className="text-4xl text-right flex flex-col items-end"
                     placeholder={t("passenger")}
                     label={t("passenger")}
@@ -227,9 +217,21 @@ export default function Home(props) {
                     <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
                       <h1 className="text-sm">بزرگسال(۱۲ سال به بالا)</h1>
                       <div className="flex text-blue-800  items-center justify-center space-x-5">
-                        <PlusCircle size={27} weight="fill" />
-                        <h1 className="text-sm font-bold">1</h1>
-                        <MinusCircle size={27} weight="fill" />
+                        <PlusCircle
+                          onClick={() => {
+                            dispatch(reservationActions.increasePassenger());
+                          }}
+                          size={27}
+                          weight="fill"
+                        />
+                        <h1 className="text-sm font-bold">{passenger}</h1>
+                        <MinusCircle
+                          onClick={() => {
+                            dispatch(reservationActions.decreamentPassenger());
+                          }}
+                          size={27}
+                          weight="fill"
+                        />
                       </div>
                     </div>
                     <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
@@ -246,7 +248,14 @@ export default function Home(props) {
             </div>
 
             <Link href="/hotelList">
-              <button className="px-14 rounded-lg transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+              <button
+                onClick={() => {
+                  dispatch(reservationActions.setEnterting(dates[0]));
+                  dispatch(reservationActions.setExiting(dates[1]));
+                  dispatch(reservationActions.setCity(selectedCity));
+                }}
+                className="px-14 rounded-lg transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+              >
                 {t("search")}
               </button>
             </Link>
