@@ -69,8 +69,8 @@ export default function HotelList({ hotels }) {
             </Link>
           </div>
 
-          <div className=" w-full lg:text-lg text-sm text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-4 space-x-4">
-            <div className="lg:h-10 h-auto py-2 w-full flex items-center justify-around bg-white drop-shadow-sm rounded-full">
+          <div className=" w-full lg:text-lg text-sm text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-7 space-x-4">
+            <div className="lg:h-10 h-auto py-8 w-full flex items-center justify-around bg-white drop-shadow-sm rounded-full">
               <h2 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue">
                 بیشترین رزرو
               </h2>

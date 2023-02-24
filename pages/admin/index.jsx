@@ -47,8 +47,8 @@ export default function AdminPage({ hotels, cities }) {
   return (
     <div className="w-screen h-auto bg-gray-200">
       <Navbar />
-      <div className="flex  w-full h-screen   items-center justify-center lg:space-x-5 lg:pl-36 lg:py-36 ">
-        <div className="flex   px-12 py-24   flex-col w-3/4 h-screen ">
+      <div className="flex  w-full h-screen lg:flex-row flex-col-reverse lg:pt-0 pt-40  items-center justify-center lg:space-x-5 lg:px-36 py-20 lg:py-36 ">
+        <div className="flex   lg:px-12 lg:py-24     flex-col w-full px-5 lg:w-3/4 h-screen ">
           {/* <div className="flex   bg-white   h-auto lg:justify-end justify-between w-full items-center">
             <div className="lg:hidden flex px-2 justify-center items-center">
               <IconMenu2
@@ -260,62 +260,55 @@ export default function AdminPage({ hotels, cities }) {
             </div>
           </Drawer>
         </div>
-        <div className="hidden  lg:flex flex-col items-center h-full justify-center w-1/4 divide-y bg-white text-gray-800">
-          <div className="flex w-full justify-center items-center ">
-            {/* <div className="flex h-28 justify-around items-center w-full">
-              <div className="text-gray-800 mx-14 text-2xl">
-                <h1>ادمین</h1>
-              </div>
-            </div> */}
-          </div>
+        <div className=" text-center flex-wrap   space-x-5 py-11  flex flex-row-reverse px-5  lg:space-x-0 mt-44   lg:space-y-0 lg:mt-0 lg:flex-col items-center  h-full justify-around lg:justify-center w-full lg:w-1/4 divide-y bg-white text-gray-800">
           <div
             onClick={() => {
               setTab("hotel");
             }}
-            className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-28 w-full "
+            className=" flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-auto lg:h-28 w-auto lg:w-full "
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconBuildingSkyscraper size={24} />
-              <h1 className="text-2xl  "> هتل ها </h1>
+              <h1 className="lg:text-2xl text-sm  "> هتل ها </h1>
             </div>
           </div>
           <div
             onClick={() => {
               setTab("user");
             }}
-            className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full "
+            className=" flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-auto lg:h-28 w-auto lg:w-full "
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconUserCheck size={24} />
-              <h1 className="text-2xl  "> همکاران </h1>
+              <h1 className="lg:text-2xl text-sm  "> همکاران </h1>
             </div>
           </div>
           <div
             onClick={() => {
               setTab("reserve");
             }}
-            className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full "
+            className=" flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-auto lg:h-28 w-auto lg:w-full "
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconBook size={24} />
-              <h1 className="text-2xl  "> رزرو ها </h1>
+              <h1 className="lg:text-2xl text-sm  "> رزرو ها </h1>
             </div>
           </div>
           <div
             onClick={() => {
               setTab("websiteInfo");
             }}
-            className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full "
+            className=" flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-auto lg:h-28 w-auto lg:w-full "
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconUser size={24} />
-              <h1 className="text-2xl  "> اطلاعات سایت </h1>
+              <h1 className="lg:text-2xl text-sm  "> اطلاعات سایت </h1>
             </div>
           </div>
-          <div className="flex cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-28 w-full ">
+          <div className=" flex lg:mt-0 mt-6 cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-auto lg:h-28 w-auto lg:w-full ">
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconLogout size={24} />
-              <h1 className="text-2xl  "> خروج </h1>
+              <h1 className="lg:text-2xl text-sm  "> خروج </h1>
             </div>
           </div>
         </div>

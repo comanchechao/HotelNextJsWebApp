@@ -151,10 +151,10 @@ export default function Home(props) {
             ref={firstContainer}
             className="w-full opacity-0 z-30 h-full flex flex-col items-center justify-center space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-lg p-14  "
           >
-            <div className="flex w-full h-full items-center flex-col lg:flex-row-reverse justify-center space-x-8 mb-5">
+            <div className="flex w-full bg-yellow-500 h-full items-center flex-col lg:flex-row-reverse justify-center space-y-4 lg:space-y-0 lg:space-x-8 mb-5">
               <Select
                 dropdownPosition="top"
-                className="text-2xl mx-6 text-right flex flex-col items-end"
+                className="text-2xl   text-right flex flex-col items-center lg:items-end"
                 data={cityNames}
                 onChange={setSelectedCity}
                 placeholder={t("destination")}
@@ -171,7 +171,7 @@ export default function Home(props) {
                 dropdownType="modal"
                 locale="fa"
                 dropdownPosition="top-start"
-                className="text-4xl text-right flex flex-col items-end"
+                className="text-4xl text-right flex flex-col items-center lg:items-end"
                 placeholder={t("inDate")}
                 label={t("inDate")}
                 withAsterisk
@@ -201,8 +201,8 @@ export default function Home(props) {
               >
                 <Popover.Target>
                   <TextInput
-                  value={passenger}
-                    className="text-4xl text-right flex flex-col items-end"
+                    value={passenger}
+                    className="text-4xl text-right flex flex-col items-center lg:items-end"
                     placeholder={t("passenger")}
                     label={t("passenger")}
                     variant="default"

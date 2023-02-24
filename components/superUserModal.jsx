@@ -24,7 +24,7 @@ export default function SuperUserModal() {
   return (
     <>
       <Modal
-        size="55%"
+        size="auto"
         centered
         opened={opened}
         onClose={() => setOpened(false)}
@@ -79,7 +79,7 @@ export default function SuperUserModal() {
                 return (
                   <div
                     key={i}
-                    className="lg:space-x-2 lg:flex-row flex-col-reverse border border-gray-400 border-dashed flex px-0 items-center justify-between h-full shadow-xl w-full rounded bg-gray-100"
+                    className="lg:space-x-2 lg:flex-row flex-col-reverse border border-gray-300   flex px-0 items-center justify-between h-full shadow-xl w-full rounded bg-gray-100"
                   >
                     <div className="flex lg:border-r border-gray-900 flex-col h-full w-full lg:w-2/3 justify-center items-center">
                       <div className="flex justify-center items-center w-full h-full">
