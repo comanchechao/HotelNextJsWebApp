@@ -1,8 +1,8 @@
 import Navbar from "../../components/Navbar.jsx";
 import { Menu, Button, Text } from "@mantine/core";
-import ReservationManagement from "./reservationManagement.js";
-import UserManagement from "./userManagement";
-import HotelManagement from "./hotelManagement";
+import ReservationManagement from "../../components/reservationManagement.js";
+import UserManagement from "../../components/userManagement";
+import HotelManagement from "../../components/hotelManagement";
 import { Drawer, Group, useMantineTheme } from "@mantine/core";
 import Footer from "../../components/Footer";
 import {
@@ -18,8 +18,8 @@ import {
   IconUser,
 } from "@tabler/icons";
 import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabaseClient";
-import WebsiteInfo from "./websiteInfo.jsx";
+import { supabase } from "../../lib/supabaseClient.js";
+import WebsiteInfo from "../../components/websiteInfo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export async function getServerSideProps({ locale }) {

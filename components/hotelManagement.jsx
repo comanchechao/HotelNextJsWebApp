@@ -1,7 +1,7 @@
-import hotelOne from "../../assets/images/hotelone.jpg";
-import hotelTwo from "../../assets/images/hoteltwo.jpg";
-import hotelThree from "../../assets/images/hotelthree.jpg";
-import hotelFour from "../../assets/images/hotelfour.jpg";
+import hotelOne from "../assets/images/hotelone.jpg";
+import hotelTwo from "../assets/images/hoteltwo.jpg";
+import hotelThree from "../assets/images/hotelthree.jpg";
+import hotelFour from "../assets/images/hotelfour.jpg";
 import Image from "next/image";
 import AddHotel from "./addHotel";
 import {
@@ -19,10 +19,10 @@ import { Tabs } from "@mantine/core";
 import { MagnifyingGlass } from "phosphor-react";
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
-import HotelImage from "../../components/hotelImage";
+import HotelImage from "./hotelImage";
 
 export default function HotelManagement({ hotels, cities }) {
-  const HotelMap = dynamic(() => import("../../components/hotelMap"), {
+  const HotelMap = dynamic(() => import("./hotelMap"), {
     ssr: false,
   });
   return (

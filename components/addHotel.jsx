@@ -17,29 +17,10 @@ import {
   IconCircleMinus,
 } from "@tabler/icons";
 import dynamic from "next/dynamic.js";
-import { supabase } from "../../lib/supabaseClient";
+import { supabase } from "../lib/supabaseClient";
 import { useSelector, useDispatch } from "react-redux";
-import { roomActions } from "../../store/room";
+import { roomActions } from "../store/room";
 import AddRoom from "./addRoom";
-// let cities = [
-//   { value: "1", label: "تهران" },
-//   { value: "2", label: "شیراز" },
-//   { value: "3", label: "رشت" },
-//   { value: "4", label: "تنکابن" },
-//   { value: "1", label: "بتریز" },
-//   { value: "2", label: "شهسوار" },
-//   { value: "3", label: "گنبد کاووس" },
-//   { value: "4", label: "کاشان" },
-//   { value: "1", label: "کرمان" },
-//   { value: "2", label: "شیراز" },
-//   { value: "3", label: "رشت" },
-//   { value: "4", label: "تنکابن" },
-//   { value: "1", label: "تهران" },
-//   { value: "2", label: "شیراز" },
-//   { value: "3", label: "رشت" },
-//   { value: "4", label: "تنکابن" },
-// ];
-import cities from "../../assets/cities/ir.json";
 
 export default function AddHotel({ cities, lat, lng }) {
   const [opened, setOpened] = useState(false);
@@ -94,7 +75,7 @@ export default function AddHotel({ cities, lat, lng }) {
   useEffect(() => {
     definedRoom.meal = meal;
   }, [definedRoom, meal]);
-  const DynamicMap = dynamic(() => import("../../components/map"), {
+  const DynamicMap = dynamic(() => import("./map"), {
     ssr: false,
   });
 
