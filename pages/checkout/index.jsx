@@ -25,9 +25,6 @@ export default function Checkout(props) {
 
   let room = useSelector((state) => state.reserve.room);
 
-  useEffect(() => {
-    console.log(room);
-  });
   const [active, setActive] = useState(1);
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));

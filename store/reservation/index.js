@@ -15,6 +15,31 @@ export const reservation = createSlice({
     },
     room: "",
     people: "",
+    passengers: [],
+    passengerOne: {
+      name: "",
+      socialNumber: null,
+      phoneNumber: null,
+      gender: null,
+    },
+    passengerTwo: {
+      name: "",
+      socialNumber: null,
+      phoneNumber: null,
+      gender: null,
+    },
+    passengerThree: {
+      name: "",
+      socialNumber: null,
+      phoneNumber: null,
+      gender: null,
+    },
+    passengerFour: {
+      name: "",
+      socialNumber: null,
+      phoneNumber: null,
+      gender: null,
+    },
   },
   reducers: {
     setEnterting: (state, actions) => {
@@ -35,18 +60,53 @@ export const reservation = createSlice({
     setRoom: (state, actions) => {
       state.room = actions.payload;
     },
+    setPassengers: (state, actions) => {
+      state.passengers = actions.payload;
+    },
     setEnterting: (state, actions) => {
       state.enterDate = actions.payload;
     },
     increasePassenger: (state, action) => {
-      if (state.passenger > 0) {
+      if (state.passenger > 0 && state.passenger < 4) {
         state.passenger++;
+      } else {
+        console.log("no");
       }
     },
     decreamentPassenger: (state, action) => {
       if (state.passenger > 1) {
         state.passenger--;
       }
+    },
+    setPassengerOne: (state, actions) => {
+      state.passengerOne.name = actions.payload.passengerOneName;
+      state.passengerOne.socialNumber =
+        actions.payload.passengerOneSocialNumber;
+      state.passengerOne.phoneNumber = actions.payload.passengerOnePhoneNumber;
+      state.passengerOne.gender = actions.payload.passengerOneGender;
+    },
+    setPassengerTwo: (state, actions) => {
+      state.passengerTwo.name = actions.payload.passengerTwoName;
+      state.passengerTwo.socialNumber =
+        actions.payload.passengerTwoSocialNumber;
+      state.passengerTwo.phoneNumber = actions.payload.passengerTwoPhoneNumber;
+      state.passengerTwo.gender = actions.payload.passengerTwoGender;
+    },
+    setPassengerThree: (state, actions) => {
+      state.passengerThree.name = actions.payload.passengerThreeName;
+      state.passengerThree.socialNumber =
+        actions.payload.passengerThreeSocialNumber;
+      state.passengerThree.phoneNumber =
+        actions.payload.passengerThreePhoneNumber;
+      state.passengerThree.gender = actions.payload.passengerThreeGender;
+    },
+    setPassengerFour: (state, actions) => {
+      state.passengerFour.name = actions.payload.passengerFourName;
+      state.passengerFour.socialNumber =
+        actions.payload.passengerFourSocialNumber;
+      state.passengerFour.phoneNumber =
+        actions.payload.passengerFourPhoneNumber;
+      state.passengerFour.gender = actions.payload.passengerFourGender;
     },
   },
 });

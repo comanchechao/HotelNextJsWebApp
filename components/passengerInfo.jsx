@@ -1,19 +1,103 @@
 import { Select, TextInput } from "@mantine/core";
 import { Star, SignIn, SignOut, Bed } from "phosphor-react";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { reservationActions } from "../store/reservation";
 
 export default function PassengerInfo() {
+  const [passengers, setPassengers] = useState([]);
   // getting reservatoin info
+  const dispatch = useDispatch();
   let enterDate = useSelector((state) => state.reserve.enterDate);
   let exitDate = useSelector((state) => state.reserve.exitDate);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
   let room = useSelector((state) => state.reserve.room);
   let passenger = useSelector((state) => state.reserve.passenger);
+  let passengerCount = passenger;
+  const [passengerOneName, setPassengerOneName] = useState("");
+  const [passengerOnePhoneNumber, setPassengerOnePhoneNumber] = useState("");
+  const [passengerOneSocialNumber, setPassengerOneSocialNumber] = useState("");
+  const [passengerOneGender, setPassengerOneGender] = useState(null);
+  const [passengerTwoName, setPassengerTwoName] = useState("");
+  const [passengerTwoPhoneNumber, setPassengerTwoPhoneNumber] = useState("");
+  const [passengerTwoSocialNumber, setPassengerTwoSocialNumber] = useState("");
+  const [passengerTwoGender, setPassengerTwoGender] = useState(null);
+  const [passengerThreeName, setPassengerThreeName] = useState("");
+  const [passengerThreePhoneNumber, setPassengerThreePhoneNumber] =
+    useState("");
+  const [passengerThreeSocialNumber, setPassengerThreeSocialNumber] =
+    useState("");
+  const [passengerThreeGender, setPassengerThreeGender] = useState(null);
+  const [passengerFourName, setPassengerFourName] = useState("");
+  const [passengerFourPhoneNumber, setPassengerFourPhoneNumber] = useState("");
+  const [passengerFourSocialNumber, setPassengerFourSocialNumber] =
+    useState("");
+  const [passengerFourGender, setPassengerFourGender] = useState(null);
 
   useEffect(() => {
-    console.log(enterDate, exitDate);
-  });
+    dispatch(
+      reservationActions.setPassengerOne({
+        passengerOneName,
+        passengerOnePhoneNumber,
+        passengerOneSocialNumber,
+        passengerOneGender,
+      })
+    );
+  }, [
+    passengerOneName,
+    passengerOnePhoneNumber,
+    passengerOneSocialNumber,
+    passengerOneGender,
+    dispatch,
+  ]);
+  useEffect(() => {
+    dispatch(
+      reservationActions.setPassengerTwo({
+        passengerTwoName,
+        passengerTwoPhoneNumber,
+        passengerTwoSocialNumber,
+        passengerTwoGender,
+      })
+    );
+  }, [
+    passengerTwoName,
+    passengerTwoPhoneNumber,
+    passengerTwoSocialNumber,
+    passengerTwoGender,
+    dispatch,
+  ]);
+  useEffect(() => {
+    dispatch(
+      reservationActions.setPassengerThree({
+        passengerThreeName,
+        passengerThreePhoneNumber,
+        passengerThreeSocialNumber,
+        passengerThreeGender,
+      })
+    );
+  }, [
+    passengerThreeName,
+    passengerThreePhoneNumber,
+    passengerThreeSocialNumber,
+    passengerThreeGender,
+    dispatch,
+  ]);
+  useEffect(() => {
+    dispatch(
+      reservationActions.setPassengerFour({
+        passengerFourName,
+        passengerFourPhoneNumber,
+        passengerFourSocialNumber,
+        passengerFourGender,
+      })
+    );
+  }, [
+    passengerFourName,
+    passengerFourPhoneNumber,
+    passengerFourSocialNumber,
+    passengerFourGender,
+    dispatch,
+  ]);
   return (
     <div className=" mb-10 h-auto lg:h-full w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
       <div className=" h-auto lg:h-24 w-full bg-white divide-x-2 flex">
@@ -58,68 +142,260 @@ export default function PassengerInfo() {
             <h2 className="text-md font-bold">اتاق {room.title}</h2>
           </div>
         </div>
-        <div className="h-full space-y-6 my-2 w-full  flex items-end flex-col px-6">
-          {[...Array(passenger)].map((pass, i) => {
-            return (
-              <div className="" key={i}>
-                <h2 className="px-7 mb-4 py-1 rounded-full border-dashed border-2 border-mainPurple">
-                  بزرگسال {i + 1}- سرپرست
-                </h2>
-                <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
-                  <TextInput
-                    className="text-4xl text-right flex flex-col items-end"
-                    placeholder="کد ملی"
-                    label="کد ملی"
-                    variant="default"
-                    radius="md"
-                    size="md"
-                    withAsterisk
-                  />
-                  <TextInput
-                    className="text-4xl text-right flex flex-col items-end"
-                    placeholder="شماره تلفن"
-                    label="شماره تلفن"
-                    variant="default"
-                    radius="md"
-                    size="md"
-                    withAsterisk
-                  />
-                  <TextInput
-                    className="text-4xl text-right flex flex-col items-end"
-                    placeholder="نام خانوادگی"
-                    label="نام خانوادگی"
-                    variant="default"
-                    radius="md"
-                    size="md"
-                    withAsterisk
-                  />
-                  <TextInput
-                    className="text-4xl text-right flex flex-col items-end"
-                    placeholder="نام"
-                    label="نام"
-                    variant="default"
-                    radius="md"
-                    size="md"
-                    withAsterisk
-                  />
-                  <Select
-                    className="text-2xl mx-6 text-right flex flex-col items-end"
-                    data={["مرد", "زن"]}
-                    placeholder="جنسیت مسافر "
-                    label="جنسیت"
-                    variant="default"
-                    radius="md"
-                    withAsterisk
-                    clearable
-                    searchable
-                    size="md"
-                  />
-                </div>
+        {passenger}
+        <form className="h-full space-y-6 my-2 w-full  flex items-end flex-col px-6">
+          {passenger >= 1 ? (
+            <div className="">
+              <h2 className="px-7 mb-4 py-1 rounded-full border-dashed border-2 border-mainPurple">
+                بزرگسال 1- سرپرست
+              </h2>
+              <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerOneSocialNumber(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="کد ملی"
+                  label="کد ملی"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerOnePhoneNumber(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="شماره تلفن"
+                  label="شماره تلفن"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerOneName(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="نام کامل"
+                  label="نام"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+                <Select
+                  onChange={setPassengerOneGender}
+                  className="text-2xl mx-6 text-right flex flex-col items-end"
+                  data={["مرد", "زن"]}
+                  placeholder="جنسیت مسافر "
+                  label="جنسیت"
+                  variant="default"
+                  radius="md"
+                  withAsterisk
+                  clearable
+                  searchable
+                  size="md"
+                />
               </div>
-            );
-          })}
-        </div>
+            </div>
+          ) : null}
+          {passenger >= 2 ? (
+            <div className="">
+              <h2 className="px-7 mb-4 py-1 rounded-full border-dashed border-2 border-mainPurple">
+                بزرگسال2 - سرپرست
+              </h2>
+              <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerTwoSocialNumber(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="کد ملی"
+                  label="کد ملی"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerTwoPhoneNumber(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="شماره تلفن"
+                  label="شماره تلفن"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerTwoName(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="نام کامل"
+                  label="نام"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+                <Select
+                  onChange={setPassengerTwoGender}
+                  className="text-2xl mx-6 text-right flex flex-col items-end"
+                  data={["مرد", "زن"]}
+                  placeholder="جنسیت مسافر "
+                  label="جنسیت"
+                  variant="default"
+                  radius="md"
+                  withAsterisk
+                  clearable
+                  searchable
+                  size="md"
+                />
+              </div>
+            </div>
+          ) : null}
+          {passenger >= 3 ? (
+            <div className="">
+              <h2 className="px-7 mb-4 py-1 rounded-full border-dashed border-2 border-mainPurple">
+                بزرگسال3 - سرپرست
+              </h2>
+              <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerThreeSocialNumber(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="کد ملی"
+                  label="کد ملی"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerThreePhoneNumber(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="شماره تلفن"
+                  label="شماره تلفن"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerThreeName(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="نام کامل"
+                  label="نام"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+                <Select
+                  onChange={setPassengerThreeGender}
+                  className="text-2xl mx-6 text-right flex flex-col items-end"
+                  data={["مرد", "زن"]}
+                  placeholder="جنسیت مسافر "
+                  label="جنسیت"
+                  variant="default"
+                  radius="md"
+                  withAsterisk
+                  clearable
+                  searchable
+                  size="md"
+                />
+              </div>
+            </div>
+          ) : null}
+          {passenger >= 4 ? (
+            <div className="">
+              <h2 className="px-7 mb-4 py-1 rounded-full border-dashed border-2 border-mainPurple">
+                بزرگسال 4- سرپرست
+              </h2>
+              <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerFourSocialNumber(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="کد ملی"
+                  label="کد ملی"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerFourPhoneNumber(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="شماره تلفن"
+                  label="شماره تلفن"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+
+                <TextInput
+                  onChange={(e) => {
+                    setPassengerFourName(e.target.value);
+                  }}
+                  className="text-4xl text-right flex flex-col items-end"
+                  placeholder="نام کامل"
+                  label="نام"
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
+                <Select
+                  onChange={setPassengerFourGender}
+                  className="text-2xl mx-6 text-right flex flex-col items-end"
+                  data={["مرد", "زن"]}
+                  placeholder="جنسیت مسافر "
+                  label="جنسیت"
+                  variant="default"
+                  radius="md"
+                  withAsterisk
+                  clearable
+                  searchable
+                  size="md"
+                />
+              </div>
+            </div>
+          ) : null}
+        </form>
       </div>
+      <button
+        onClick={() => {
+          dispatch(reservationActions.increasePassenger());
+        }}
+        className="px-14 rounded-lg transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+      >
+        مسافر
+      </button>
+      <button
+        onClick={() => {
+          dispatch(reservationActions.decreamentPassenger());
+        }}
+        className="px-14 rounded-lg transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+      >
+        مسافر نه
+      </button>
       <div className="w-full h-auto lg:h-24 flex lg:flex-row flex-col-reverse items-center justify-around py-2 lg:justify-between bg-white px-7">
         <TextInput
           className="text-4xl text-right flex flex-col items-end lg:mb-0 mb-5"

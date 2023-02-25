@@ -5,7 +5,11 @@ export default function InfoConfirmation() {
   //getting reservation info
 
   let room = useSelector((state) => state.reserve.room);
+  let passengerOne = useSelector((state) => state.reserve.passengerOne);
+  let passengerTwo = useSelector((state) => state.reserve.passengerTwo);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
+  let passengerThree = useSelector((state) => state.reserve.passengerThree);
+  let passengerFour = useSelector((state) => state.reserve.passengerFour);
   return (
     <div className=" mb-10 h-auto w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
       <div className="lg:h-24 h-auto w-full bg-white divide-x-2 flex">
@@ -68,9 +72,27 @@ export default function InfoConfirmation() {
           <h4 className="font-bold text-lg">نوع مسافر</h4>
         </div>
         <div className="h-16 mb-9 w-full  flex items-center justify-around">
-          <h4 className="text-lg">زن</h4>
-          <h4 className="text-lg">002357744</h4>
-          <h4 className="text-lg">آروین نیک بین</h4>
+          <h4 className="text-lg">{passengerOne.gender}</h4>
+          <h4 className="text-lg">{passengerOne.phoneNumber}</h4>
+          <h4 className="text-lg">{passengerOne.name}</h4>
+          <h4 className="text-lg">بزرگسال</h4>
+        </div>
+        <div className="h-16 mb-9 w-full  flex items-center justify-around">
+          <h4 className="text-lg">{passengerTwo.gender}</h4>
+          <h4 className="text-lg">{passengerTwo.phoneNumber}</h4>
+          <h4 className="text-lg">{passengerTwo.name}</h4>
+          <h4 className="text-lg">بزرگسال</h4>
+        </div>
+        <div className="h-16 mb-9 w-full  flex items-center justify-around">
+          <h4 className="text-lg">{passengerThree.gender}</h4>
+          <h4 className="text-lg">{passengerThree.phoneNumber}</h4>
+          <h4 className="text-lg">{passengerThree.name}</h4>
+          <h4 className="text-lg">بزرگسال</h4>
+        </div>
+        <div className="h-16 mb-9 w-full  flex items-center justify-around">
+          <h4 className="text-lg">{passengerFour.gender}</h4>
+          <h4 className="text-lg">{passengerFour.phoneNumber}</h4>
+          <h4 className="text-lg">{passengerFour.name}</h4>
           <h4 className="text-lg">بزرگسال</h4>
         </div>
       </div>
