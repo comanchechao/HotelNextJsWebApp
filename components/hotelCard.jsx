@@ -48,28 +48,24 @@ export default function HotelCard({ hotel }) {
         >
           <Carousel.Slide>
             <Image
-              className=" object-fit h-full w-full"
+              className="  object-cover w-full lg:object-fit h-full lg:w-full"
               alt="antalia"
               src={hotelone}
             />
           </Carousel.Slide>
           <Carousel.Slide>
-            <div className="h-full w-full flex items-center">
-              <Image
-                className=" object-fit h-full w-full"
-                alt="antalia"
-                src={hotelthree}
-              />
-            </div>
+            <Image
+              className="  object-cover w-full lg:object-fit h-full lg:w-full"
+              alt="antalia"
+              src={hotelthree}
+            />
           </Carousel.Slide>
           <Carousel.Slide>
-            <div className="h-full w-full flex items-center">
-              <Image
-                className=" object-fit h-full w-full"
-                alt="antalia"
-                src={hotelfour}
-              />
-            </div>
+            <Image
+              className="  object-cover w-full lg:object-fit h-full lg:w-full"
+              alt="antalia"
+              src={hotelfour}
+            />
           </Carousel.Slide>
         </Carousel>
       </div>

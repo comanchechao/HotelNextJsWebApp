@@ -18,6 +18,8 @@ import {
 } from "@tabler/icons";
 import Link from "next/link";
 import Image from "next/image";
+import { Suspense } from "react";
+
 import {
   PlusCircle,
   MinusCircle,
@@ -68,8 +70,10 @@ export const getStaticProps = async (context) => {
 export default function HotelDetailPage({ hotel }) {
   const { t } = useTranslation("");
   const [loading, setLoading] = useState(false);
+
   const [displayImages, setDisplayImages] = useState([]);
   const [singleImage, setSingleImage] = useState("");
+
   const downloadImage1 = useCallback(() => {
     async () => {
       try {
@@ -180,6 +184,14 @@ export default function HotelDetailPage({ hotel }) {
               </Link>
             </div>
             {!loading ? (
+              <div className="h-full my-8 w-full flex items-center justify-center space-x-5">
+                <Skeleton height={400} width={"100%"} />{" "}
+                <Skeleton height={400} width={"100%"} />{" "}
+                <Skeleton height={400} width={"100%"} />{" "}
+                <Skeleton height={400} width={"100%"} />{" "}
+                <Skeleton height={400} width={"100%"} />
+              </div>
+            ) : (
               <div className="flex py-5  flex-col  ">
                 <div className="flex cursor-pointer w-full justify-center  h-96 rounded-md">
                   <div className="hidden lg:flex">
@@ -214,17 +226,9 @@ export default function HotelDetailPage({ hotel }) {
                   <ImagesModal />
                 </div>
               </div>
-            ) : (
-              <div className="h-full my-8 w-full flex items-center justify-center space-x-5">
-                <Skeleton height={400} width={"100%"} />{" "}
-                <Skeleton height={400} width={"100%"} />{" "}
-                <Skeleton height={400} width={"100%"} />{" "}
-                <Skeleton height={400} width={"100%"} />{" "}
-                <Skeleton height={400} width={"100%"} />
-              </div>
             )}
 
-            <div className="flex w-full justify-end h-32 lg:h-20">
+            <div className="flex w-full   justify-end h-32 lg:h-20">
               <div className="flex w-full justify-center items-end flex-col">
                 <h1 className="text-3xl my-2">هتل {hotel.title}</h1>
                 <div className="flex border border-gray-300 bg-gray-50 p-3 rounded-md space-x-8 justify-center items-center">
@@ -239,8 +243,8 @@ export default function HotelDetailPage({ hotel }) {
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-start">
-              <div className="flex p-4 bg-white  flex-col items-center w-96 self-start h-full">
+            <div className="flex items-start relative justify-center  ">
+              <div className="flex p-4 bg-white  flex-col items-center w-96  h-96">
                 <DatePicker
                   locale="fa"
                   onChange={setEntering}
@@ -334,7 +338,7 @@ export default function HotelDetailPage({ hotel }) {
                   </Link>
                 </div>
               </div>
-              <div className="flex flex-col w-full mt-8   pl-7">
+              <div className="flex flex-col w-full mt-8     pl-7">
                 <div className="flex items-center py-4 space-x-1  w-full justify-between ">
                   <FeaturesModal />
                   <h1 className="w-full text-right  text-gray-900  text-xl lg:text-2xl">
@@ -407,12 +411,20 @@ export default function HotelDetailPage({ hotel }) {
                 </div>
                 <div className="flex flex-col w-full  p-3 bg-white">
                   <div className="flex w-full">
-                    <DynamicMap
-                      secondLocation={hotel.secondLocation}
-                      firstLocation={hotel.firstLocation}
-                      lat={hotel.locationLat}
-                      lng={hotel.locationLng}
-                    />
+                    <Suspense
+                      fallback={
+                        <div>
+                          <Skeleton height={800} width="100%" />
+                        </div>
+                      }
+                    >
+                      <DynamicMap
+                        secondLocation={hotel.secondLocation}
+                        firstLocation={hotel.firstLocation}
+                        lat={hotel.locationLat}
+                        lng={hotel.locationLng}
+                      />
+                    </Suspense>
                   </div>
                 </div>
                 <div className="flex py-8 items-center space-y-6 w-full flex-col  justify-center">

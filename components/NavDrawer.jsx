@@ -34,13 +34,20 @@ export default function NavDrawer() {
           >
             <House className="mx-1" size={30} weight="fill" />
             <h4 className=" ">خونه</h4>
-          </Link>
+          </Link>{" "}
           <Link
             href="/hotelList"
             className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
             <Bed className="mx-1" size={30} weight="fill" />
             <h4 className=" ">اقامت</h4>
+          </Link>
+          <Link
+            href="/userProfile"
+            className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          >
+            <User className="mx-1" size={30} weight="fill" />
+            <h4 className=" ">حساب کاربری</h4>
           </Link>
           <Link
             href="/admin"
@@ -62,13 +69,6 @@ export default function NavDrawer() {
           >
             <Question className="mx-1" size={30} weight="fill" />
             <h4 className=" ">تماس با ما</h4>
-          </Link>
-          <Link
-            href="/userProfile"
-            className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
-          >
-            <User className="mx-1" size={30} weight="fill" />
-            <h4 className=" ">حساب کاربری</h4>
           </Link>
         </div>
       </Drawer>
