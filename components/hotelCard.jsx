@@ -36,33 +36,32 @@ export default function HotelCard({ hotel }) {
         <h1 className="text-center text-lg">{hotel.title}</h1>
         <HotelMap lat={hotel.locationLat} lng={hotel.locationLng} />
       </div>
-      <div className=" w-full flex items-center lg:w-56 h-full">
+      <div className=" w-auto flex items-center lg:w-56 h-full">
         <Carousel
           slideSize="100%"
+          width="100%"
           height="190px"
-          slideGap="xs"
           controlSize={25}
           loop
-          dragFree
           withIndicators
         >
           <Carousel.Slide>
             <Image
-              className="  object-cover w-full lg:object-fit h-full lg:w-full"
+              className=" w-full  lg:object-fit h-full lg:w-full"
               alt="antalia"
               src={hotelone}
             />
           </Carousel.Slide>
           <Carousel.Slide>
             <Image
-              className="  object-cover w-full lg:object-fit h-full lg:w-full"
+              className=" w-full lg:object-fit h-full lg:w-full"
               alt="antalia"
               src={hotelthree}
             />
           </Carousel.Slide>
           <Carousel.Slide>
             <Image
-              className="  object-cover w-full lg:object-fit h-full lg:w-full"
+              className="  w-full lg:object-fit h-full lg:w-full"
               alt="antalia"
               src={hotelfour}
             />

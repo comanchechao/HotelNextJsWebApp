@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Faq from "../components/Faq";
 import Link from "next/link";
@@ -139,7 +140,7 @@ export default function Home(props) {
         </Suspense>
         <Navbar />
         <div ref={mainPageBg} className="w-screen h-96  opacity-0">
-          <Image
+          <img
             className=" h-rem26 w-full object-cover"
             src={mainBg}
             alt="Main Background"
@@ -151,7 +152,7 @@ export default function Home(props) {
             ref={firstContainer}
             className="w-full opacity-0 z-30 h-full flex flex-col items-center justify-center space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-lg p-14  "
           >
-            <div className="flex w-full   h-full items-center flex-col lg:flex-row-reverse justify-center lg:space-y-0 space-y-4  lg:space-x-8 mb-5">
+            <div className="flex w-full   h-full items-end flex-col lg:flex-row-reverse justify-around mb-10 lg:space-y-0 space-y-4   ">
               <Select
                 dropdownPosition="top"
                 className="text-2xl   text-right flex flex-col items-center lg:items-end"
@@ -171,7 +172,7 @@ export default function Home(props) {
                 dropdownType="modal"
                 locale="fa"
                 dropdownPosition="top-start"
-                className="text-4xl text-right flex flex-col items-center lg:items-end"
+                className="text-4xl text-right  flex flex-col  "
                 placeholder={t("inDate")}
                 label={t("inDate")}
                 withAsterisk

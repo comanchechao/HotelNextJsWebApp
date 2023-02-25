@@ -45,6 +45,27 @@ body {
 
   font-display: swap;
 } */
+
+.mantine-Select-item {
+  font-family: "Roboto", "IranSans";
+  text-align: right;
+}
+.mantine-DateRangePicker-input {
+  font-family: "Roboto", "IranSans";
+  text-align: right;
+}
+.mantine-Input-input {
+  font-family: "Roboto", "IranSans";
+  text-align: right;
+}
+#mantine-rd {
+  font-family: "Roboto", "IranSans";
+  text-align: right;
+}
+#mantine-Rqmncm-target {
+  font-family: "Roboto", "IranSans";
+  text-align: right;
+}
 * {
   font-family: "Roboto", "IranSans";
 }

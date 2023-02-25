@@ -43,9 +43,11 @@ export default function HotelList({ hotels }) {
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (hotels.data !== null) {
       setLoading(false);
-      console.log("poozliq");
+    } else {
+      setLoading(true);
     }
   });
 

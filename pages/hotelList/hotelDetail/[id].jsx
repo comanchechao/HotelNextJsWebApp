@@ -37,6 +37,7 @@ import { useCallback, useEffect, useState } from "react";
 import RoomCard from "../../../components/roomCard";
 import { useDispatch, useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import ReserveInfoModal from "../../../components/reserveInfoModal";
 
 export const getStaticPaths = async () => {
   const { data, error } = await supabase.from("Hotels").select();
@@ -170,7 +171,7 @@ export default function HotelDetailPage({ hotel }) {
       </Head>
       <div className="w-full h-full">
         <Navbar />
-        <div className="flex w-full p-4 lg:p-20 h-full bg-gray-200">
+        <div className="flex w-full   lg:p-20 h-full bg-gray-200">
           <div className="flex flex-col p-5 w-full h-full  ">
             <div className="flex justify-end lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24">
               <Link href={"/hotelList/hotelDetail/" + hotel.id}>
@@ -228,7 +229,7 @@ export default function HotelDetailPage({ hotel }) {
               </div>
             )}
 
-            <div className="flex w-full   justify-end h-32 lg:h-20">
+            <div className="flex w-full justify-end h-32 lg:h-20">
               <div className="flex w-full justify-center items-end flex-col">
                 <h1 className="text-3xl my-2">هتل {hotel.title}</h1>
                 <div className="flex border border-gray-300 bg-gray-50 p-3 rounded-md space-x-8 justify-center items-center">
@@ -243,8 +244,8 @@ export default function HotelDetailPage({ hotel }) {
                 </div>
               </div>
             </div>
-            <div className="flex items-start relative justify-center  ">
-              <div className="flex p-4 bg-white  flex-col items-center w-96  h-96">
+            <div className="flex items-start lg:flex-row flex-col justify-center  ">
+              <div className="lg:flex hidden p-4 bg-white  flex-col items-center w-96  h-96">
                 <DatePicker
                   locale="fa"
                   onChange={setEntering}
@@ -338,6 +339,7 @@ export default function HotelDetailPage({ hotel }) {
                   </Link>
                 </div>
               </div>
+              <ReserveInfoModal />
               <div className="flex flex-col w-full mt-8     pl-7">
                 <div className="flex items-center py-4 space-x-1  w-full justify-between ">
                   <FeaturesModal />
