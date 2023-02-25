@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 export default function InfoConfirmation() {
   //getting reservation info
 
+  let passenger = useSelector((state) => state.reserve.passenger);
   let room = useSelector((state) => state.reserve.room);
   let passengerOne = useSelector((state) => state.reserve.passengerOne);
   let passengerTwo = useSelector((state) => state.reserve.passengerTwo);
@@ -54,7 +55,7 @@ export default function InfoConfirmation() {
             {room.title}
           </h4>
           <h4 className="text-lg">
-            <strong>تعداد مسافران : </strong>1 نفر
+            <strong>تعداد مسافران :{passenger} </strong> نفر
           </h4>
           <h4 className="text-lg">
             <strong>اطلاعات تلفن تماس: </strong>

@@ -5,7 +5,7 @@ import hotelFour from "../../../assets/images/hotelfour.jpg";
 import Image from "next/image";
 import Navbar from "../../../components/Navbar";
 import RoomModal from "../../../components/roomModal";
-import AddRoom from "../addRoom";
+import AddRoom from "../../../components/addRoom";
 import Footer from "../../../components/Footer";
 import { useEffect, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
