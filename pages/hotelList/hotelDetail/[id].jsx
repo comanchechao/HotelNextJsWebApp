@@ -27,7 +27,6 @@ import {
   ThumbsDown,
   StarHalf,
 } from "phosphor-react";
-import Footer from "../../../components/Footer";
 import ImagesModal from "../../../components/imagesModal";
 import FeaturesModal from "../../../components/FeaturesModal";
 import Reply from "../../../components/reply";
@@ -37,7 +36,6 @@ import { useCallback, useEffect, useState } from "react";
 import RoomCard from "../../../components/roomCard";
 import { useDispatch, useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import ReserveInfoModal from "../../../components/reserveInfoModal";
 
 export const getStaticPaths = async () => {
   const { data, error } = await supabase.from("Hotels").select();
@@ -69,6 +67,15 @@ export const getStaticProps = async (context) => {
 };
 
 export default function HotelDetailPage({ hotel }) {
+  const ReserveInfoModal = dynamic(
+    () => import("../../../components/reserveInfoModal"),
+    {
+      suspense: true,
+    }
+  );
+  const Footer = dynamic(() => import("../../../components/Footer"), {
+    suspense: true,
+  });
   const { t } = useTranslation("");
   const [loading, setLoading] = useState(false);
 
@@ -339,7 +346,18 @@ export default function HotelDetailPage({ hotel }) {
                   </Link>
                 </div>
               </div>
-              <ReserveInfoModal />
+
+              <div className="lg:hidden w-full items-center justify-end flex">
+                <Suspense
+                  fallback={
+                    <div>
+                      <Skeleton height={800} width="100%" />
+                    </div>
+                  }
+                >
+                  <ReserveInfoModal />
+                </Suspense>
+              </div>
               <div className="flex flex-col w-full mt-8     pl-7">
                 <div className="flex items-center py-4 space-x-1  w-full justify-between ">
                   <FeaturesModal />
@@ -579,7 +597,16 @@ export default function HotelDetailPage({ hotel }) {
             </div>
           </div>
         </div>
-        <Footer />
+
+        <Suspense
+          fallback={
+            <div>
+              <Skeleton height={800} width="100%" />
+            </div>
+          }
+        >
+          <Footer />
+        </Suspense>
       </div>
     </>
   );

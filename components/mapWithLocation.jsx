@@ -43,10 +43,10 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
   return (
     <div className="flex flex-col items-end w-96 ">
       <div className="flex flex-row-reverse items-center justify-around w-full">
-        latitude: {position.lat.toFixed(4)}, longitude:{" "}
-        {position.lng.toFixed(4)}{" "}
+        {/* latitude: {position.lat.toFixed(4)}, longitude:{" "}
+        {position.lng.toFixed(4)}{" "} */}
         <button
-          className="text-white bg-mainPurple font-mainFont rounded-md text-lg cursor-pointer border-r-8 border-mainBlue  text-center flex items-center justify-center px-3 py-2 hover:bg-mainBlue duration-300 ease-in transition"
+          className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
           onClick={onClick}
         >
           به هتل
@@ -61,7 +61,7 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
                 lng: JSON.stringify(firstLocation.lng),
               });
             }}
-            className="flex flex-col justify-around items-around space-y-2 p-5 w-10/12"
+            className="flex flex-col justify-around items-around  cursor-pointer transition ease-in duration-200 hover:bg-mainBlue hover:text-mainPurple  space-y-2 p-5 w-10/12"
           >
             <h1 className="text-lg self-end">
               {JSON.stringify(firstLocation.name)}
@@ -91,7 +91,7 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
                 lng: JSON.stringify(secondLocation.lng),
               });
             }}
-            className="flex flex-col justify-around items-around space-y-2 p-5 w-10/12"
+            className="flex flex-col justify-around items-around  cursor-pointer transition ease-in duration-200 hover:bg-mainBlue hover:text-mainPurple  space-y-2 p-5 w-10/12"
           >
             <h1 className="text-lg self-end">
               {JSON.stringify(secondLocation.name)}
@@ -170,7 +170,7 @@ export default function ExternalStateExample({
   );
 
   return (
-    <div className="flex w-full z-10">
+    <div className="flex lg:flex-row flex-col w-auto items-center justify-center lg:w-full z-10">
       {displayMap}
       {map ? (
         <DisplayPosition

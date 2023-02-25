@@ -10,8 +10,8 @@ export default function RoomCard({ room, hotelDetail }) {
   const dispatch = useDispatch();
   {
     return (
-      <div className="flex border border-gray-300 bg-white justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-60">
-        <div className="h-full w-1/4 flex flex-col items-center justify-around py-8 ">
+      <div className="flex border border-gray-300 bg-white lg:flex-row flex-col justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-60">
+        <div className="h-full lg:w-1/4 flex flex-col items-center justify-around py-8 ">
           <div className="flex space-x-1 p-2 justify-center items-center">
             <h2>ریال</h2>
             <h2 className="  text-3xl text-mainPurple">
@@ -31,7 +31,7 @@ export default function RoomCard({ room, hotelDetail }) {
             </button>
           </Link>
         </div>
-        <div className="h-full flex flex-col items-end justify-start  p-4 w-3/4  ">
+        <div className="h-full flex flex-col items-end justify-start  p-4 lg:w-3/4  ">
           <div className="h-14 w-full flex items-center justify-between">
             <Accordion
               variant="separated"
