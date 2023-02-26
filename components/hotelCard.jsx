@@ -19,7 +19,7 @@ export default function HotelCard({ hotel }) {
   return (
     <div className=" w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row flex-col-reverse justify-between items-center ">
       <div className="w-56 h-full flex flex-col p-4 items-center justify-center space-y-2">
-        <h2 className="text-mainPurple text-lg">{hotel.price}</h2>
+        <h2 className="text-mainPurple text-lg">{hotel.prices}</h2>
         <Link href={"/hotelList/hotelDetail/" + hotel.id}>
           <button
             onClick={() => {

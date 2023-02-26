@@ -82,27 +82,26 @@ export default function HotelDetailPage({ hotel }) {
   const [displayImages, setDisplayImages] = useState([]);
   const [singleImage, setSingleImage] = useState("");
 
-  const downloadImage1 = useCallback(() => {
-    async () => {
-      try {
-        setLoading(true);
-        const { data, error } = await supabase.storage
-          .from("/public/hotel-images")
-          .download(hotel.firstImage);
+  const downloadImage1 = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.firstImage);
 
-        if (error) {
-          throw error;
-        }
-        const url = URL.createObjectURL(data);
-        setSingleImage(url);
-      } catch (error) {
-        console.log("Error downloading image: ", error.message);
-      } finally {
-        setLoading(false);
-        downloadImage2();
+      if (error) {
+        throw error;
       }
-    };
-  });
+      const url = URL.createObjectURL(data);
+      setSingleImage(url);
+    } catch (error) {
+      console.log("Error downloading image: ", error.message);
+    } finally {
+      setLoading(false);
+      downloadImage2();
+    }
+  };
+
   const downloadImage2 = async () => {
     try {
       setLoading(true);
@@ -142,7 +141,8 @@ export default function HotelDetailPage({ hotel }) {
   };
   useEffect(() => {
     downloadImage1();
-  }, [downloadImage1]);
+    downloadImage2();
+  }, []);
   const DynamicMap = dynamic(
     () => import("../../../components/mapWithLocation"),
     {
@@ -191,7 +191,7 @@ export default function HotelDetailPage({ hotel }) {
                 <p>هتل ها</p>
               </Link>
             </div>
-            {!loading ? (
+            {loading ? (
               <div className="h-full my-8 w-full flex items-center justify-center space-x-5">
                 <Skeleton height={400} width={"100%"} />{" "}
                 <Skeleton height={400} width={"100%"} />{" "}
