@@ -3,7 +3,10 @@ import { Switch } from "@mantine/core";
 import { MagnifyingGlass } from "phosphor-react";
 import { Checkbox } from "@mantine/core";
 import { RangeSlider } from "@mantine/core";
+import { filterActions } from "../store/filterActivation";
+import { useDispatch } from "react-redux";
 export default function HotelListMenu() {
+  const dispatch = useDispatch();
   return (
     <div className="flex flex-col items-center space-y-4 bg-white p-4 drop-shadow-lg">
       <div class="pt-2 relative text-black ">
@@ -34,9 +37,27 @@ export default function HotelListMenu() {
           </Accordion.Control>
           <Accordion.Panel>
             <div className="  text-gray-500 flex items-end text-xl flex-col justify-center space-y-2">
-              <Switch label="کمتر از سه ستاره" color="yellow" />
-              <Switch label="چهار ستاره" color="yellow" />
-              <Switch label="پنج ستاره" color="yellow" />
+              <Switch
+                onClick={() => {
+                  dispatch(filterActions.setStars(3));
+                }}
+                label="کمتر از سه ستاره"
+                color="yellow"
+              />
+              <Switch
+                onClick={() => {
+                  dispatch(filterActions.setStars(4));
+                }}
+                label="چهار ستاره"
+                color="yellow"
+              />
+              <Switch
+                onClick={() => {
+                  dispatch(filterActions.setStars(5));
+                }}
+                label="پنج ستاره"
+                color="yellow"
+              />
             </div>
           </Accordion.Panel>
         </Accordion.Item>

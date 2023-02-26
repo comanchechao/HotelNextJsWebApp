@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
+import { filterReducer } from "./filterActivation";
 import { mapReducer } from "./map/index";
 import { reservationReducer } from "./reservation";
 import { roomReducer } from "./room/index";
@@ -18,6 +19,7 @@ const store = configureStore({
     map: mapReducer,
     room: roomReducer,
     reserve: reservationReducer,
+    filter: filterReducer,
   },
 });
 

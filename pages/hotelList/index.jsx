@@ -44,6 +44,12 @@ export default function HotelList({ hotels }) {
 
   const [filteredHotels, setFilteredHotels] = useState([]);
 
+  let stars = useSelector((state) => state.filter.stars);
+
+  useEffect(() => {
+    sortFetch(stars);
+  }, [stars]);
+
   async function filterFetch(ascention) {
     const { data, error } = await supabase
       .from("Hotels")
@@ -54,6 +60,30 @@ export default function HotelList({ hotels }) {
     setFilters(true);
     setFilteredHotels(data);
     console.log(filteredHotels);
+  }
+
+  async function sortFetch(stars) {
+    if (stars >= 4) {
+      const { data, error } = await supabase
+        .from("Hotels")
+        .select()
+        .gte("stars", stars);
+
+      if (error) throw error;
+      setFilters(true);
+      setFilteredHotels(data);
+      console.log(filteredHotels);
+    } else {
+      const { data, error } = await supabase
+        .from("Hotels")
+        .select()
+        .lte("stars", stars);
+
+      if (error) throw error;
+      setFilters(true);
+      setFilteredHotels(data);
+      console.log(filteredHotels);
+    }
   }
   const [loading, setLoading] = useState(true);
   useEffect(() => {
