@@ -584,6 +584,9 @@ export default function AddHotel({ cities, lat, lng }) {
                 );
               })}
             </div>
+            <div className="flex p-5 w-full justify-center   items-center">
+              <DynamicMap city={city} />
+            </div>
             <div className="flex w-full  border border-gray-300 px-8">
               <Tabs
                 color="yellow"
@@ -787,9 +790,6 @@ export default function AddHotel({ cities, lat, lng }) {
                   Settings tab content
                 </Tabs.Panel>
               </Tabs>
-            </div>
-            <div className="flex p-5 w-full justify-center   items-center">
-              <DynamicMap city={city} />
             </div>
             <div className="flex">
               <button
