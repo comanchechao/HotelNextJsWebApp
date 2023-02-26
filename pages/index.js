@@ -89,6 +89,8 @@ export default function Home(props) {
   const mainPageBg = useRef();
 
   const firstContainer = useRef();
+  const secondContainer = useRef();
+  const thirdContainer = useRef();
 
   const { t, i18n } = useTranslation("");
   const lng = i18n.language;
@@ -106,6 +108,9 @@ export default function Home(props) {
       delay: 1.3,
     });
     tl.to(firstContainer.current, { opacity: "1", duration: 0.4, y: -50 });
+    tl.to(secondContainer.current, { opacity: "1", duration: 0.4, delay: 0.5 });
+    tl.to(thirdContainer.current, { opacity: "1", duration: 0.4, delay: 0.5 });
+
     changeState();
 
     window.scrollTo(0, 0);
@@ -275,7 +280,10 @@ export default function Home(props) {
             </Link>
           </div>
         </div>
-        <div className="w-full h-auto lg:px-44 z-40">
+        <div
+          ref={secondContainer}
+          className="w-full h-auto lg:px-44 z-40 opacity-0"
+        >
           <Suspense
             fallback={
               <div>
@@ -380,7 +388,10 @@ export default function Home(props) {
             </div>
           </div>
         </div> */}
-        <div className="w-full h-auto lg:space-y-0 space-y-2 lg:h-rem26 py-6 flex-col lg:flex-row flex items-center justify-center space-x-5 lg:px-44 my-10">
+        <div
+          ref={thirdContainer}
+          className="w-full opacity-0 h-auto lg:space-y-0 space-y-2 lg:h-rem26 py-6 flex-col lg:flex-row flex items-center justify-center space-x-5 lg:px-44 my-10"
+        >
           <div className=" w-full h-full flex flex-col items-center justify-around lg:space-y-0 space-y-4">
             <a
               className={`${
