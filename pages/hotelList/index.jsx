@@ -24,6 +24,7 @@ export async function getServerSideProps({ locale }) {
 }
 
 export default function HotelList({ hotels }) {
+  const [filters, setFilters] = useState(false);
   // dynamic imports
   const HotelListModal = dynamic(
     () => import("../../components/hotelListModal"),
@@ -41,6 +42,19 @@ export default function HotelList({ hotels }) {
     suspense: true,
   });
 
+  const [filteredHotels, setFilteredHotels] = useState([]);
+
+  async function filterFetch(ascention) {
+    const { data, error } = await supabase
+      .from("Hotels")
+      .select()
+      .order("prices", { ascending: ascention });
+
+    if (error) throw error;
+    setFilters(true);
+    setFilteredHotels(data);
+    console.log(filteredHotels);
+  }
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -79,10 +93,20 @@ export default function HotelList({ hotels }) {
               <h2 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue">
                 بالاترین امتیاز
               </h2>
-              <h2 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue">
+              <h2
+                onClick={() => {
+                  filterFetch(true);
+                }}
+                className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue"
+              >
                 کمترین قیمت
               </h2>
-              <h2 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue">
+              <h2
+                onClick={() => {
+                  filterFetch(false);
+                }}
+                className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue"
+              >
                 بیشترین قیمت
               </h2>
             </div>
@@ -101,9 +125,13 @@ export default function HotelList({ hotels }) {
           </div>
           {loading === false ? (
             <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
-              {hotels.map((hotel) => {
-                return <HotelCard key={hotel.id} hotel={hotel} />;
-              })}
+              {!filters
+                ? hotels.map((hotel) => {
+                    return <HotelCard key={hotel.id} hotel={hotel} />;
+                  })
+                : filteredHotels.map((hotel) => {
+                    return <HotelCard key={hotel.id} hotel={hotel} />;
+                  })}
             </div>
           ) : (
             <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
