@@ -10,7 +10,7 @@ import { supabase } from "../../lib/supabaseClient";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
+import HotelListMenu from "../../components/hotelListMenu";
 export async function getServerSideProps({ locale }) {
   // Fetch data from the database
   const { data, error } = await supabase.from("Hotels").select();
@@ -25,6 +25,8 @@ export async function getServerSideProps({ locale }) {
 
 export default function HotelList({ hotels }) {
   const [filters, setFilters] = useState(false);
+  const [loading, setLoading] = useState(true);
+
   // dynamic imports
   const HotelListModal = dynamic(
     () => import("../../components/hotelListModal"),
@@ -32,12 +34,7 @@ export default function HotelList({ hotels }) {
       suspense: true,
     }
   );
-  const HotelListMenu = dynamic(
-    () => import("../../components/hotelListMenu"),
-    {
-      suspense: true,
-    }
-  );
+
   const Footer = dynamic(() => import("../../components/Footer"), {
     suspense: true,
   });
@@ -47,10 +44,18 @@ export default function HotelList({ hotels }) {
   let stars = useSelector((state) => state.filter.stars);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+    if (hotels.data !== null) {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+
     sortFetch(stars);
   }, [stars]);
 
   async function filterFetch(ascention) {
+    setLoading(true);
     const { data, error } = await supabase
       .from("Hotels")
       .select()
@@ -60,9 +65,12 @@ export default function HotelList({ hotels }) {
     setFilters(true);
     setFilteredHotels(data);
     console.log(filteredHotels);
+    setLoading(false);
   }
 
   async function sortFetch(stars) {
+    setLoading(true);
+
     if (stars >= 4) {
       const { data, error } = await supabase
         .from("Hotels")
@@ -71,6 +79,8 @@ export default function HotelList({ hotels }) {
 
       if (error) throw error;
       setFilters(true);
+      setLoading(false);
+
       setFilteredHotels(data);
       console.log(filteredHotels);
     } else {
@@ -82,18 +92,11 @@ export default function HotelList({ hotels }) {
       if (error) throw error;
       setFilters(true);
       setFilteredHotels(data);
+      setLoading(false);
+
       console.log(filteredHotels);
     }
   }
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    if (hotels.data !== null) {
-      setLoading(false);
-    } else {
-      setLoading(true);
-    }
-  });
 
   // reservation info
 
@@ -165,28 +168,20 @@ export default function HotelList({ hotels }) {
             </div>
           ) : (
             <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
-              <Skeleton height={200} width="100%" />{" "}
-              <Skeleton height={200} width="100%" />{" "}
-              <Skeleton height={200} width="100%" />{" "}
-              <Skeleton height={200} width="100%" />{" "}
-              <Skeleton height={200} width="100%" />
+              <Skeleton height={200} width="88%" />{" "}
+              <Skeleton height={200} width="88%" />{" "}
+              <Skeleton height={200} width="88%" />{" "}
+              <Skeleton height={200} width="88%" />{" "}
+              <Skeleton height={200} width="88%" />
             </div>
           )}
           <div className="h-full  w-full flex justify-center">
             <Pagination total={10} color="yellow" size="lg" />
           </div>
         </div>
-        <div className=" w-1/4 h-full hidden lg:flex">
+        <div className=" w-1/4 h-screen hidden lg:flex">
           <div className="w-full h-96 py-6">
-            <Suspense
-              fallback={
-                <div>
-                  <Skeleton height={800} width="100%" />
-                </div>
-              }
-            >
-              <HotelListMenu />
-            </Suspense>
+            <HotelListMenu />
           </div>
         </div>
       </div>
