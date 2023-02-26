@@ -13,6 +13,13 @@
   "phone": "Telefon Numaranız",
   "confirm": "Onaylayın",
   "logInEmail": "E-posta ve şifre ile giriş yapın",
+  "log": "Giriş yap",
+  "enterEmail": "Giriş yapmak için e-posta ve şifre girin",
+  "email": "E-posta",
+  "password": "Şifre",
+  "recover": "Şifre kurtarma",
+  "signUp": "Kayıt ol",
+  "logInPhone": "Telefon numarası ile giriş yapın",
 
   "destination": "Variş noktasi",
   "support": "çevrimiçi destek",

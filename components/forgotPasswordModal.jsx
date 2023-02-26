@@ -1,12 +1,14 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
+import { useTranslation } from "next-i18next";
 
 export default function ForgotPasswordModal() {
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
   const [recoveryEmail, setRecoveryEmail] = useState("");
   // password recovery
+  const { t, i18n } = useTranslation("common");
 
   const passwordRecovery = async () => {
     try {
@@ -79,7 +81,7 @@ export default function ForgotPasswordModal() {
         onClick={() => setOpened(true)}
         className="w-full  h-full rounded-md flex items-center justify-center text-center  transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent   text-md font-mainFont"
       >
-        <p className=" w-28">بازیابی رمز عبور</p>
+        <p className=" w-28"> {t("recover")}</p>
       </button>
     </div>
   );

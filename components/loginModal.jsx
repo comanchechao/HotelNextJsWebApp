@@ -241,25 +241,33 @@ export default function LoginModal() {
                       )}
                     </div>
                     <div className="flex flex-col items-center justify-center space-y-3">
-                      <h1 className="text-3xl  "> ورود </h1>
-                      <h4>ایمیل و رمز عبور خود را برای ورود وارد کنید</h4>
+                      <h1 className="text-3xl  "> {t("log")}</h1>
+                      <h4> {t("enterEmail")}</h4>
                     </div>
                     <form onSubmit={handleLogin}>
                       <TextInput
-                        className="text-2xl   text-right flex flex-col items-end "
+                        className={`${
+                          alignLeft === true
+                            ? "text-2xl   text-right flex flex-col items-end"
+                            : "text-2xl   text-right flex flex-col items-start"
+                        }`}
                         type="email"
-                        placeholder="ایمیل"
-                        label="ایمیل"
+                        placeholder={t("email")}
+                        label={t("email")}
                         size="md"
                         withAsterisk
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
                       <TextInput
-                        className="text-2xl   text-right flex flex-col items-end "
+                        className={`${
+                          alignLeft === true
+                            ? "text-2xl   text-right flex flex-col items-end"
+                            : "text-2xl   text-right flex flex-col items-start"
+                        }`}
                         type="password"
-                        placeholder="رمز عبور"
-                        label="رمز عبور"
+                        placeholder={t("password")}
+                        label={t("password")}
                         size="md"
                         withAsterisk
                         value={password}
@@ -272,7 +280,7 @@ export default function LoginModal() {
                         </div>
                       ) : (
                         <button className="w-full rounded-md mt-4 transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-                          تایید
+                          {t("confirm")}
                         </button>
                       )}
                     </form>
@@ -282,7 +290,7 @@ export default function LoginModal() {
                         onClick={() => setRegister(true)}
                         className="w-full h-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent   text-md font-mainFont"
                       >
-                        <p className=" w-36 mx-2">ثبت‌نام حساب کاربری</p>
+                        <p className=" w-36 mx-2"> {t("signUp")}</p>
                       </button>
                       <ForgotPasswordModal />
                     </div>
@@ -290,7 +298,7 @@ export default function LoginModal() {
                       onClick={() => setChange(false)}
                       className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
                     >
-                      ورود با رمز یکبار مصرف
+                      {t("logInPhone")}
                     </button>
                   </div>
                 )}

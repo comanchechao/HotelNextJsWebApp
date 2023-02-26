@@ -302,10 +302,7 @@ export default function AddHotel({ cities, lat, lng }) {
         onClose={() => setOpened(false)}
         centered
       >
-        <div
-          preventDefault
-          className="flex flex-col bg-gray-100   w-full h-full px-36"
-        >
+        <div className="flex flex-col bg-gray-100   w-full h-full px-36">
           <div className="flex space-y-5 w-full h-full flex-col">
             <div className="   w-full text-center items-center flex justify-center">
               <h3 className="text-3xl my-8 border-b-2 rounded-sm border-mainBlue pb-4">
