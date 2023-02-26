@@ -9,8 +9,11 @@ import {
 } from "@mantine/core";
 import { SignIn, CaretDown, User, SignOut } from "phosphor-react";
 import { supabase } from "../lib/supabaseClient";
+import { useTranslation } from "next-i18next";
+
 import { useDispatch } from "react-redux";
 import ForgotPasswordModal from "./forgotPasswordModal";
+
 import Link from "next/link";
 export default function LoginModal() {
   const data = [
@@ -18,7 +21,16 @@ export default function LoginModal() {
     { value: "+90", label: "🇹🇷 +90" },
   ];
   const theme = useMantineTheme();
+  const { t, i18n } = useTranslation("common");
 
+  const lng = i18n.language;
+
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeState() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   const [opened, setOpened] = useState(false);
   const [change, setChange] = useState(false);
   const [register, setRegister] = useState(false);
@@ -32,6 +44,7 @@ export default function LoginModal() {
 
   // GET USER
   useEffect(() => {
+    changeState();
     getSetUser();
   }, []);
   async function getSetUser() {
@@ -124,9 +137,17 @@ export default function LoginModal() {
     <NativeSelect
       data={data}
       styles={{
+        wrapper: {
+          height: "100%",
+          width: "100%",
+
+          fontFamily: "Roboto",
+          fontWeight: 500,
+        },
         input: {
-          height: "1.2cm",
-          fontFamily: "IranSans",
+          height: "100%",
+
+          fontFamily: "Roboto",
           fontWeight: 500,
         },
       }}
@@ -276,29 +297,32 @@ export default function LoginModal() {
               </div>
             </div>
           ) : (
-            <div className=" h-rem26 flex flex-col items-center justify-center space-y-5">
+            <div className=" h-rem26 text-center flex flex-col items-center justify-center space-y-5">
               <div className="flex flex-col items-center justify-center space-y-3">
-                <h1 className="text-3xl  "> ورود یا ثبت‌نام </h1>
-                <h4>شماره تلفن خود را برای ورود یا ثبت‌نام وارد کنید</h4>
+                <h1 className="text-3xl  "> {t("logIn")} </h1>
+                <h4>{t("enterPhone")}</h4>
               </div>
               <TextInput
-                className="text-2xl mx-6 text-right flex flex-col items-end "
+                className={`${
+                  alignLeft === true
+                    ? "text-2xl mx-6 text-right flex flex-col items-end"
+                    : "text-2xl mx-6 text-left flex flex-col items-start"
+                }`}
                 type="number"
-                placeholder="شماره تلفن"
-                label="شماره تلفن"
+                label={t("phone")}
                 rightSection={select}
                 rightSectionWidth={85}
                 size="lg"
                 withAsterisk
               />
               <button className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-                تایید و دریافت کد
+                {t("confirm")}
               </button>
               <button
                 onClick={() => setChange(true) & setRegister(false)}
                 className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
               >
-                ورود با ایمیل و کلمه ی عبور
+                {t("logInEmail")}
               </button>
             </div>
           )}
@@ -321,18 +345,28 @@ export default function LoginModal() {
               <li className="text-gray-900 ">
                 <Link
                   href="/userProfile"
-                  className="w-full text-center text-sm flex items-center justify-end"
+                  className={`${
+                    alignLeft === true
+                      ? "w-full text-center text-sm flex items-center justify-end"
+                      : "w-full text-center text-sm flex flex-row-reverse items-center justify-end"
+                  }`}
                 >
-                  اطلاعات حساب کاربری
+                  {t("accountInfo")}
+
                   <User size={20} />
                 </Link>
               </li>
               <li className="text-gray-900">
                 <button
                   onClick={handleSignOut}
-                  className="w-full font-mainFont text-center text-sm flex items-center justify-end"
+                  className={`${
+                    alignLeft === true
+                      ? "w-full font-mainFont text-center text-sm flex items-center justify-end"
+                      : "w-full font-mainFont text-center text-sm flex flex-row-reverse items-center justify-end"
+                  }`}
                 >
-                  خروج از حساب کاربری <SignOut size={20} />
+                  {t("logOut")}
+                  <SignOut size={20} />
                 </button>
               </li>
             </ul>
@@ -343,7 +377,7 @@ export default function LoginModal() {
             onClick={() => setOpened(true)}
           >
             <SignIn className="mx-2" size={30} weight="light" />
-            <h4 className="hidden lg:flex"> ورود یا ثبت‌نام </h4>
+            <h4 className="hidden lg:flex"> {t("logIn")}</h4>
           </button>
         )}
       </div>

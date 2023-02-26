@@ -72,17 +72,9 @@ export default function Navbar() {
                 href="/hotelList"
                 className="w-full text-center flex items-center justify-end"
               >
-                هتل
+                {t("hotel")}
+
                 <Bed size={30} />
-              </Link>
-            </li>
-            <li className="text-gray-900">
-              <Link
-                href="#"
-                className="w-full text-center flex items-center justify-end"
-              >
-                ویلا و اقامتگاه
-                <HouseLine size={40} />
               </Link>
             </li>
           </ul>

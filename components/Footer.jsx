@@ -47,7 +47,7 @@ export default function Footer() {
           </div>
           <div className="flex  items-end flex-col space-y-1">
             <h3 className="font-bold text-lg my-1">تماس با مشتریان</h3>
-            <Link
+            {/* <Link
               className="transition ease-in duration-200 hover:text-mainBlue"
               href="/"
             >
@@ -58,7 +58,7 @@ export default function Footer() {
               href="/"
             >
               راهنمای خرید
-            </Link>
+            </Link> */}
             <Link
               className="transition ease-in duration-200 hover:text-mainBlue"
               href="/"
@@ -76,33 +76,6 @@ export default function Footer() {
               href="/"
             >
               پرسش و پاسخ
-            </Link>
-          </div>
-          <div className="flex items-end flex-col space-y-1">
-            <h3 className="font-bold text-lg my-1">اطلاعات تکمیلی</h3>
-            {/* <Link
-              className="transition ease-in duration-200 hover:text-mainBlue"
-              href="/"
-            >
-              باشگاه همسفران
-            </Link> */}
-            <Link
-              className="transition ease-in duration-200 hover:text-mainBlue"
-              href="/"
-            >
-              فروش سازمانی
-            </Link>
-            <Link
-              className="transition ease-in duration-200 hover:text-mainBlue"
-              href="/"
-            >
-              همکاری با آژانس ها
-            </Link>
-            <Link
-              className="transition ease-in duration-200 hover:text-mainBlue"
-              href="/"
-            >
-              فرصت های شغلی
             </Link>
           </div>
         </div>
