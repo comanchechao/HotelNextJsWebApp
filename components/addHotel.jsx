@@ -430,9 +430,6 @@ export default function AddHotel({ cities, lat, lng }) {
                 placeholder="آدرس هتل را وارد کنید"
               />
             </div>
-            <div className="flex p-5 w-full justify-center   items-center">
-              <DynamicMap city={city} />
-            </div>
             <div className="flex flex-col w-full h-full text-right justify-center items-end">
               <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
                 انتخاب شهر
@@ -790,6 +787,9 @@ export default function AddHotel({ cities, lat, lng }) {
                   Settings tab content
                 </Tabs.Panel>
               </Tabs>
+            </div>
+            <div className="flex p-5 w-full justify-center   items-center">
+              <DynamicMap city={city} />
             </div>
             <div className="flex">
               <button

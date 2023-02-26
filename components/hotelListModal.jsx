@@ -7,9 +7,15 @@ import {
 } from "@mantine/core";
 import { useState } from "react";
 import { Tabs } from "@mantine/core";
+import { useDispatch, useSelector } from "react-redux";
+import { filterActions } from "../store/filterActivation";
 export default function HotelListModal() {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
+
+  let stars = useSelector((state) => state.filter.stars);
+
+  const dispatch = useDispatch();
   return (
     <div>
       <Modal
@@ -46,9 +52,30 @@ export default function HotelListModal() {
 
           <Tabs.Panel value="gallery" pl="xs">
             <div className="  text-gray-500 flex items-end text-xl flex-col p-6 justify-center space-y-2">
-              <Switch label="کمتر از سه ستاره" color="yellow" />
-              <Switch label="چهار ستاره" color="yellow" />
-              <Switch label="پنج ستاره" color="yellow" />
+              <Switch
+                checked={stars === 3}
+                onClick={() => {
+                  dispatch(filterActions.setStars(3));
+                }}
+                label="کمتر از سه ستاره"
+                color="yellow"
+              />
+              <Switch
+                checked={stars === 4}
+                onClick={() => {
+                  dispatch(filterActions.setStars(4));
+                }}
+                label="چهار ستاره"
+                color="yellow"
+              />
+              <Switch
+                checked={stars === 5}
+                onClick={() => {
+                  dispatch(filterActions.setStars(5));
+                }}
+                label="پنج ستاره"
+                color="yellow"
+              />
             </div>
           </Tabs.Panel>
 

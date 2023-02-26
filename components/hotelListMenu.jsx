@@ -4,8 +4,9 @@ import { MagnifyingGlass } from "phosphor-react";
 import { Checkbox } from "@mantine/core";
 import { RangeSlider } from "@mantine/core";
 import { filterActions } from "../store/filterActivation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 export default function HotelListMenu() {
+  let stars = useSelector((state) => state.filter.stars);
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col items-center space-y-4 bg-white p-4 drop-shadow-lg">
@@ -38,6 +39,7 @@ export default function HotelListMenu() {
           <Accordion.Panel>
             <div className="  text-gray-500 flex items-end text-xl flex-col justify-center space-y-2">
               <Switch
+                checked={stars === 3}
                 onClick={() => {
                   dispatch(filterActions.setStars(3));
                 }}
@@ -45,6 +47,7 @@ export default function HotelListMenu() {
                 color="yellow"
               />
               <Switch
+                checked={stars === 4}
                 onClick={() => {
                   dispatch(filterActions.setStars(4));
                 }}
@@ -52,6 +55,7 @@ export default function HotelListMenu() {
                 color="yellow"
               />
               <Switch
+                checked={stars === 5}
                 onClick={() => {
                   dispatch(filterActions.setStars(5));
                 }}
