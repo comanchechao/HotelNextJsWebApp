@@ -1,5 +1,5 @@
 import { Select, TextInput } from "@mantine/core";
-import { Star, SignIn, SignOut, Bed } from "phosphor-react";
+import { Star, SignIn, SignOut, Bed, Plus, Minus } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
@@ -119,7 +119,7 @@ export default function PassengerInfo() {
             <h1 className="font text-lg">1401/11/05 - ساعت 14:00:00</h1>
           </div>
         </div>
-        <div className="h-full w-1/2 px-5 lg:px-0 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3">
+        <div className="h-full w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3">
           <div className="flex items-center space-x-4">
             <h2 className="flex items-center">
               {hotelInfo.stars} ستاره
@@ -130,8 +130,8 @@ export default function PassengerInfo() {
           <h2>آدرس: پارک وی- ابتدای اتوبان چمران</h2>
         </div>
       </div>
-      <div className=" h-full lg:h-full w-full bg-white flex flex-col items-center">
-        <div className="h-20 w-full flex items-end justify-start  flex-col  px-9 py-3">
+      <div className=" h-full lg:h-full w-full my-6 bg-white flex flex-col items-center">
+        <div className="h-20 w-full flex items-end justify-start    flex-col  px-9 py-3">
           <h1 className="text-2xl font-bold items-center flex">
             اتاق اول
             <Bed className="ml-3" size={45} color="#e0ab19" weight="fill" />
@@ -143,12 +143,14 @@ export default function PassengerInfo() {
           </div>
         </div>
         {passenger}
-        <form className="h-full space-y-6 my-2 w-full  flex items-end flex-col px-6">
+        <form className="h-full    space-y-9 my-10 w-full    flex items-start flex-col px-9">
           {passenger >= 1 ? (
-            <div className="">
-              <h2 className="px-7 mb-4 py-1 rounded-full border-dashed border-2 border-mainPurple">
-                بزرگسال 1- سرپرست
-              </h2>
+            <div className="  border-2 border-dashed border-mainPurple  my-5 py-6 px-3 rounded-lg">
+              <div className="w-full flex items-center justify-end">
+                <h2 className="   items-center mb-4 py-1   rounded-full border-2 px-6 border-dashed border-mainPurple ">
+                  بزرگسال 1- سرپرست
+                </h2>
+              </div>
               <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
                 <TextInput
                   onChange={(e) => {
@@ -203,8 +205,8 @@ export default function PassengerInfo() {
             </div>
           ) : null}
           {passenger >= 2 ? (
-            <div className="">
-              <h2 className="px-7 mb-4 py-1 rounded-full border-dashed border-2 border-mainPurple">
+            <div className="border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
+              <h2 className="items-center mb-4 py-1 font-bold rounded-full  ">
                 بزرگسال2 - سرپرست
               </h2>
               <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
@@ -261,8 +263,8 @@ export default function PassengerInfo() {
             </div>
           ) : null}
           {passenger >= 3 ? (
-            <div className="">
-              <h2 className="px-7 mb-4 py-1 rounded-full border-dashed border-2 border-mainPurple">
+            <div className="border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
+              <h2 className="items-center mb-4 py-1 font-bold rounded-full  ">
                 بزرگسال3 - سرپرست
               </h2>
               <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
@@ -320,8 +322,8 @@ export default function PassengerInfo() {
             </div>
           ) : null}
           {passenger >= 4 ? (
-            <div className="">
-              <h2 className="px-7 mb-4 py-1 rounded-full border-dashed border-2 border-mainPurple">
+            <div className="border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
+              <h2 className="items-center mb-4 py-1 font-bold rounded-full  ">
                 بزرگسال 4- سرپرست
               </h2>
               <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
@@ -379,23 +381,28 @@ export default function PassengerInfo() {
             </div>
           ) : null}
         </form>
+        <div className="w-full flex items-center justify-around">
+          <button
+            onClick={() => {
+              dispatch(reservationActions.decreamentPassenger());
+            }}
+            className="px-4 rounded-lg flex items-center justify-center transition ease-in duration-300 hover:bg-gray-200 border-r-8 border-red-500  border  py-2 bg-white text-red-500 text-sm font-mainFont"
+          >
+            پاک کردن
+            <Minus className="ml-2" size={20} weight="fill" />
+          </button>
+          <button
+            onClick={() => {
+              dispatch(reservationActions.increasePassenger());
+            }}
+            className="px-4 rounded-lg self-end m-4 transition flex justify-center items-center ease-in duration-300 hover:text-white border-2 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-white text-mainPurple text-sm font-mainFont"
+          >
+            اضافه کردن مسافر
+            <Plus className="ml-2" size={20} weight="fill" />
+          </button>
+        </div>
       </div>
-      <button
-        onClick={() => {
-          dispatch(reservationActions.increasePassenger());
-        }}
-        className="px-14 rounded-lg transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
-      >
-        مسافر
-      </button>
-      <button
-        onClick={() => {
-          dispatch(reservationActions.decreamentPassenger());
-        }}
-        className="px-14 rounded-lg transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
-      >
-        مسافر نه
-      </button>
+
       <div className="w-full h-auto lg:h-24 flex lg:flex-row flex-col-reverse items-center justify-around py-2 lg:justify-between bg-white px-7">
         <TextInput
           className="text-4xl text-right flex flex-col items-end lg:mb-0 mb-5"
