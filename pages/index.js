@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+
 import Head from "next/head";
 import Faq from "../components/Faq";
 import Link from "next/link";
@@ -33,6 +34,7 @@ import Shiraz from "../assets/images/Shiraz.webp";
 import Tabriz from "../assets/images/Tabriz.webp";
 import Esfahan from "../assets/images/Esfahan.webp";
 import "dayjs/locale/fa";
+import dayjs from "dayjs";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { useRef, useEffect, useState } from "react";
@@ -186,6 +188,7 @@ export default function Home(props) {
                 }`}
                 dropdownType="modal"
                 locale="fa"
+                minDate={dayjs(new Date()).toDate()}
                 dropdownPosition="top-start"
                 placeholder={t("inDate")}
                 label={t("inDate")}
