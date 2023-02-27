@@ -45,7 +45,11 @@ body {
 
   font-display: swap;
 } */
-
+.mantine-Stepper-steps {
+  text-align: left;
+  display: flex;
+  flex-direction: row-reverse;
+}
 .mantine-Select-item {
   font-family: "Roboto", "IranSans";
   text-align: right;
