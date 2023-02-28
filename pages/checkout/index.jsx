@@ -1,6 +1,6 @@
 import Navbar from "../../components/Navbar";
 import { useEffect, useState } from "react";
-import { Stepper } from "@mantine/core";
+import { Stepper, StepperProps } from "@mantine/core";
 import {
   Users,
   Buildings,
@@ -13,6 +13,41 @@ import Link from "next/link";
 import InfoConfirmation from "../../components/infoConfirmation";
 import { useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+function StyledStepper(props) {
+  return (
+    <Stepper
+      styles={{
+        stepBody: {
+          display: "flex",
+          "@media (max-width: 600px)": {
+            display: "none",
+          },
+        },
+
+        step: {
+          padding: 10,
+          "@media (max-width: 600px)": {
+            padding: 25,
+          },
+        },
+
+        stepIcon: {
+          borderWidth: 2,
+        },
+
+        separator: {
+          marginLeft: -2,
+          marginRight: -2,
+          height: 10,
+          "@media (max-width: 600px)": {
+            display: "none",
+          },
+        },
+      }}
+      {...props}
+    />
+  );
+}
 export async function getServerSideProps({ locale }) {
   return {
     props: {
@@ -20,6 +55,7 @@ export async function getServerSideProps({ locale }) {
     },
   };
 }
+
 export default function Checkout(props) {
   // getting and setting reservation info
 
@@ -35,12 +71,13 @@ export default function Checkout(props) {
     <div className="w-screen flex items-center justify-start flex-col  h-auto bg-gray-200">
       <Navbar />
       <div className="w-screen h-full flex-col text-right flex items-center p-10  lg:px-0 pt-36 justify-center ">
-        <Stepper
+        <StyledStepper
           color="yellow"
           size="lg"
           active={active}
           onStepClick={setActive}
           iconSize={47}
+          breakpoint="md"
         >
           <Stepper.Step icon={<Buildings size={28} />} label="انتخاب هتل">
             Step 1 content: Create an account
@@ -68,7 +105,7 @@ export default function Checkout(props) {
           <Stepper.Completed>
             Completed, click back button to get to previous step
           </Stepper.Completed>
-        </Stepper>
+        </StyledStepper>
         <div className=" h-44 lg:space-y-0  lg:flex-row flex-col-reverse lg:h-24 w-full bg-white flex lg:px-7 items-center justify-center lg:justify-around">
           <button
             onClick={nextStep}

@@ -7,6 +7,8 @@ import hotelfour from "../assets/images/hotelfour.webp";
 import dynamic from "next/dynamic";
 import { useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
+import { Star } from "phosphor-react";
+import { Chip } from "@mantine/core";
 
 export default function HotelCard({ hotel }) {
   const HotelMap = dynamic(() => import("./hotelMap"), {
@@ -32,8 +34,21 @@ export default function HotelCard({ hotel }) {
         </Link>
         <p className="text-gray-500 text-xs">قیمت برای 1 شب</p>
       </div>
-      <div className=" w-96 h-full flex flex-col items-center justify-between p-3 border-l border-mainBlue">
-        <h1 className="text-center text-lg">{hotel.title}</h1>
+      <div className=" w-96 h-full flex flex-col items-end justify-between p-3 border-l border-mainBlue">
+        <div className="flex items-center justify-center space-x-2">
+          <Chip defaultChecked color="green" variant="filled" size="md">
+            <span className="text-xs">بالاترین درصد رضایتمندی</span>{" "}
+          </Chip>
+          <Chip defaultChecked color="pink" variant="filled" size="md">
+            <span className="text-sm">تحفیف ویژه بوتک</span>{" "}
+          </Chip>
+        </div>
+        <h1 className="text-center   text-lg">{hotel.title}</h1>
+        <div className="flex items-center   text-sm space-x-1">
+          <h2>ستاره</h2>
+          <h2>{hotel.stars}</h2>
+          <Star size={15} weight="fill" />{" "}
+        </div>
         <HotelMap lat={hotel.locationLat} lng={hotel.locationLng} />
       </div>
       <div className=" w-auto flex items-center lg:w-56 h-full">

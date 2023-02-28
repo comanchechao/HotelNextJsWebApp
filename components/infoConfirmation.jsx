@@ -1,10 +1,14 @@
+import { Loader, Notification } from "@mantine/core";
 import { Star, SignIn, SignOut, Bed } from "phosphor-react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { supabase } from "../lib/supabaseClient";
+
 export default function InfoConfirmation() {
   const [seshId, setSeshId] = useState();
   //getting reservation info
+  const [loading, setLoading] = useState(false);
+  const [confirm, setConfirm] = useState(false);
 
   let passenger = useSelector((state) => state.reserve.passenger);
   let room = useSelector((state) => state.reserve.room);
@@ -19,6 +23,7 @@ export default function InfoConfirmation() {
   }
 
   async function handleReservation() {
+    setLoading(true);
     getSession();
     let passengers = [];
     if (passengerOne.name !== "") {
@@ -43,6 +48,9 @@ export default function InfoConfirmation() {
       passengerCount: passengers.length(),
       room: room,
     });
+    setLoading(false);
+    setConfirm(true);
+
     if (error) throw error;
     console.log(
       "passenger count",
@@ -142,13 +150,33 @@ export default function InfoConfirmation() {
         </div>
       </div>
       <div className="flex">
-        <button
-          onClick={() => {
-            handleReservation();
-          }}
-        >
-          ثبت
-        </button>
+        {confirm ? (
+          <Notification
+            transition="fade"
+            transitionDuration={600}
+            transitionTimingFunction="ease"
+            color="green"
+            withCloseButton
+            variant="outline"
+          >
+            <h1 className="text-2xl text-center">
+              ثبت اطلاعات موفقیت آمیز بود
+            </h1>
+          </Notification>
+        ) : (
+          <button
+            className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont"
+            onClick={() => {
+              handleReservation();
+            }}
+          >
+            {loading ? (
+              <Loader size="sm" color="yellow" variant="bars" />
+            ) : (
+              <p> تایید اطلاعات</p>
+            )}
+          </button>
+        )}
       </div>
       <div className="h-28 w-full bg-white flex flex-col justify-center items-end px-9">
         <h1 className="text-2xl font-bold items-center flex py-2">
