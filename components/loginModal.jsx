@@ -65,24 +65,24 @@ export default function LoginModal() {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    try {
-      setLoading(true);
-      const { error } = await supabase.auth.signUp({
-        email: emailSignUp,
-        password: passwordSignUp,
-      });
-      if (error) throw error;
-    } catch (error) {
-      // alert(error.error_description || error.message);
-    } finally {
-      setLoading(false);
-      setAlert(true);
-      setTimeout(() => {
-        setAlert(false);
+    setLoading(true);
+    const { data, error } = await supabase.auth.signUp({
+      email: emailSignUp,
+      password: passwordSignUp,
+      options: {
+        data: {
+          email: emailSignUp,
+        },
+      },
+    });
+    if (error) throw error;
+    setLoading(false);
+    setAlert(true);
+    setTimeout(() => {
+      setAlert(false);
 
-        setOpened(false);
-      }, 2000);
-    }
+      setOpened(false);
+    }, 2000);
   };
 
   // LOGIN
@@ -202,7 +202,9 @@ export default function LoginModal() {
                       onChange={(e) => setPasswordSignUp(e.target.value)}
                     />
                     <button
-                      onClick={handleSignUp}
+                      onClick={(e) => {
+                        handleSignUp(e);
+                      }}
                       className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
                     >
                       تایید

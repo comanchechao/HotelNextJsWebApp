@@ -162,9 +162,7 @@ export default function HotelDetailPage({ hotel }) {
   let enterDate = useSelector((state) => state.reserve.enterDate);
   let exitDate = useSelector((state) => state.reserve.exitDate);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
-  useEffect(() => {
-    console.log(hotelInfo);
-  });
+
   return (
     <>
       <Head>

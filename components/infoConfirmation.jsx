@@ -1,7 +1,9 @@
 import { Star, SignIn, SignOut, Bed } from "phosphor-react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-
+import { supabase } from "../lib/supabaseClient";
 export default function InfoConfirmation() {
+  const [seshId, setSeshId] = useState();
   //getting reservation info
 
   let passenger = useSelector((state) => state.reserve.passenger);
@@ -11,6 +13,48 @@ export default function InfoConfirmation() {
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
   let passengerThree = useSelector((state) => state.reserve.passengerThree);
   let passengerFour = useSelector((state) => state.reserve.passengerFour);
+  async function getSession() {
+    const { data, error } = await supabase.auth.getSession();
+    setSeshId(data.session.user.id);
+  }
+
+  async function handleReservation() {
+    getSession();
+    let passengers = [];
+    if (passengerOne.name !== "") {
+      passengers.push(passengerOne);
+    }
+    if (passengerTwo.name !== "") {
+      passengers.push(passengerTwo);
+    }
+    if (passengerThree.name !== "") {
+      passengers.push(passengerThree);
+    }
+    if (passengerFour.name !== "") {
+      passengers.push(passengerFour);
+    }
+
+    const { error } = await supabase.from("reservations").insert({
+      name: passengers[0].name,
+      hotel_name: hotelInfo.title,
+      hotel_id: hotelInfo.id,
+      passengers: passengers,
+      user_id: seshId,
+      passengerCount: passengers.length(),
+      room: room,
+    });
+    if (error) throw error;
+    console.log(
+      "passenger count",
+      passenger,
+      "roomDetail ",
+      room,
+      "passengers",
+      passengers,
+      "hotel info",
+      hotelInfo.id
+    );
+  }
   return (
     <div className=" mb-10 h-auto w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
       <div className="lg:h-24 h-auto w-full bg-white divide-x-2 flex">
@@ -96,6 +140,15 @@ export default function InfoConfirmation() {
           <h4 className="text-lg">{passengerFour.name}</h4>
           <h4 className="text-lg">بزرگسال</h4>
         </div>
+      </div>
+      <div className="flex">
+        <button
+          onClick={() => {
+            handleReservation();
+          }}
+        >
+          ثبت
+        </button>
       </div>
       <div className="h-28 w-full bg-white flex flex-col justify-center items-end px-9">
         <h1 className="text-2xl font-bold items-center flex py-2">

@@ -24,17 +24,19 @@ export default function ProfileInfo() {
     } = await supabase.auth.getUser();
     if (user) {
       let userData = await supabase.from("profiles").select().eq("id", user.id);
-      console.log(userData);
-      setEmail(userData.data[0].email);
-      setFullName(userData.data[0].fullName);
-      setPhone(userData.data[0].phone);
-      setCard(userData.data[0].card);
-      setIdCard(userData.data[0].idCard);
-      setShaba(userData.data[0].shaba);
-      setLoading(false);
+      if (user.data) {
+        console.log(userData);
+        setEmail(userData.data[0].email);
+        setFullName(userData.data[0].fullName);
+        setPhone(userData.data[0].phone);
+        setCard(userData.data[0].card);
+        setIdCard(userData.data[0].idCard);
+        setShaba(userData.data[0].shaba);
+      }
     } else {
       console.log("Logged out");
     }
+     setLoading(false);
   }
 
   async function editUser() {

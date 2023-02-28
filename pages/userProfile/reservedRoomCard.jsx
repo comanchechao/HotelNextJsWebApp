@@ -2,7 +2,7 @@ import { Accordion } from "@mantine/core";
 import Link from "next/link";
 import { Coffee, User, Tag } from "phosphor-react";
 
-export default function ReservedRoomCard() {
+export default function ReservedRoomCard({ reserve }) {
   return (
     <div className="flex border lg:flex-row flex-col-reverse border-gray-300 bg-white justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-44">
       <div className="h-full w-full lg:w-1/4 flex flex-col items-center justify-around py-8 ">
@@ -38,7 +38,9 @@ export default function ReservedRoomCard() {
               </Accordion.Panel>
             </Accordion.Item>
           </Accordion>
-          <h1 className="text-2xl my-2">اتاق یک تخته</h1>
+          <h1 className="text-2xl my-2">
+            اتاق {JSON.stringify(reserve.hotel_name)}
+          </h1>
         </div>
 
         <div className="flex flex-col items-end justify-center space-y-3   h-full">
