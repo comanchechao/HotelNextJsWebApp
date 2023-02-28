@@ -8,7 +8,7 @@ import { IconBrandCitymapper } from "@tabler/icons";
 import L from "leaflet";
 import cityIcon from "../assets/cities/icon/city.png";
 
-export default function MapWithNoSSR({ LatLng, cities }) {
+export default function DisplayCities({ LatLng, cities }) {
   const center = {
     lat: 35.7,
     lng: 51.4167,
@@ -35,13 +35,9 @@ export default function MapWithNoSSR({ LatLng, cities }) {
       zoom={5}
       scrollWheelZoom={false}
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {LatLng ? (
+      {/* {LatLng ? (
         <Marker position={{ lat: LatLng[0], lng: LatLng[1] }}></Marker>
-      ) : null}
+      ) : null} */}
       {cities.map((city, i) => {
         return (
           <Marker key={i} position={[city.lat, city.lng]}>

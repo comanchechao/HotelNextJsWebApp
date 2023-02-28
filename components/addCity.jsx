@@ -1,9 +1,11 @@
 import { Loader, Select } from "@mantine/core";
-import { latLng } from "leaflet";
 import dynamic from "next/dynamic.js";
 import { useEffect, useState } from "react";
 import IRCities from "../assets/cities/ir";
 import { supabase } from "../lib/supabaseClient";
+const DisplayCities = dynamic(() => import("./displayMap"), {
+  ssr: false,
+});
 
 export default function WebsiteInfo({ cities }) {
   const [loading, setLoading] = useState(false);
@@ -11,9 +13,6 @@ export default function WebsiteInfo({ cities }) {
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [searchValue, onSearchChange] = useState("");
-  const DynamicMap = dynamic(() => import("./displayMap"), {
-    ssr: false,
-  });
   useEffect(() => {
     IRCities.forEach((city) => {
       if (city.value === value) {
@@ -37,7 +36,7 @@ export default function WebsiteInfo({ cities }) {
     <div className="flex flex-col items-center justify-start  w-full h-full  ">
       <div className="py-20 overflow-y-scroll w-full h-full   px-14 bg-white flex flex-col items-center justify-start">
         <h1 className="border-b-4 pb-4 border-mainBlue my-3">افزودن شهر</h1>
-        <DynamicMap LatLng={[lat, lng]} cities={cities} />
+        <DisplayCities LatLng={[lat, lng]} cities={cities} />
         <div className="flex justify-center items-center w-full h-full">
           <Select
             value={value}
