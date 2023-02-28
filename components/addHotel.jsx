@@ -22,6 +22,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { roomActions } from "../store/room";
 import AddRoom from "./addRoom";
 
+const DynamicMap = dynamic(() => import("./map"), {
+  ssr: false,
+});
+
 export default function AddHotel({ cities, lat, lng }) {
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
@@ -76,9 +80,6 @@ export default function AddHotel({ cities, lat, lng }) {
   useEffect(() => {
     definedRoom.meal = meal;
   }, [definedRoom, meal]);
-  const DynamicMap = dynamic(() => import("./map"), {
-    ssr: false,
-  });
 
   const [cityNames, setCityNames] = useState([]);
 

@@ -10,11 +10,10 @@ import { reservationActions } from "../store/reservation";
 import { Star } from "phosphor-react";
 import { Chip } from "@mantine/core";
 
+const HotelMap = dynamic(() => import("./hotelMap"), {
+  ssr: false,
+});
 export default function HotelCard({ hotel }) {
-  const HotelMap = dynamic(() => import("./hotelMap"), {
-    ssr: false,
-  });
-
   // setting reservatoin info
 
   const dispatch = useDispatch();

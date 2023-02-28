@@ -21,10 +21,10 @@ import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import HotelImage from "./hotelImage";
 
+const HotelMap = dynamic(() => import("./hotelMap"), {
+  ssr: false,
+});
 export default function HotelManagement({ hotels, cities }) {
-  const HotelMap = dynamic(() => import("./hotelMap"), {
-    ssr: false,
-  });
   return (
     <div className="flex flex-col w-full h-full   ">
       <div className="flex w-full space-y-4 flex-col">
