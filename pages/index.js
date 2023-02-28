@@ -44,7 +44,7 @@ import { supabase } from "../lib/supabaseClient";
 import { useDispatch, useSelector } from "react-redux";
 import { reservationActions } from "../store/reservation";
 
-export async function getServerSideProps({ locale }) {
+export async function getServerSideProps(context) {
   // Fetch data from the database
 
   const { data: cities, error2 } = await supabase.from("cities").select();
@@ -53,7 +53,7 @@ export async function getServerSideProps({ locale }) {
   return {
     props: {
       cities: cities,
-      ...(await serverSideTranslations(locale, ["common"])),
+      ...(await serverSideTranslations(context.locale, ["common"])),
     },
   };
 }
