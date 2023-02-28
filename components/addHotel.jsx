@@ -34,6 +34,7 @@ export default function AddHotel({ cities, lat, lng }) {
   const [features, setFeatures] = useState([]);
   const [avragePrice, setAvragePrice] = useState(0);
   const [location, setLocation] = useState({});
+  const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [get, setGet] = useState(false);
   const [aboutHotel, setAboutHotel] = useState("");
@@ -138,6 +139,7 @@ export default function AddHotel({ cities, lat, lng }) {
         fourthImage: fourthImage,
         features: features,
         prices: avragePrice,
+        address: address,
         stars: value,
         rooms: rooms,
         locationLat: getlat,
@@ -419,7 +421,7 @@ export default function AddHotel({ cities, lat, lng }) {
               </h3>
               <input
                 onChange={(e) => {
-                  setLocation(e.target.value);
+                  setAddress(e.target.value);
                 }}
                 className=" py-2 text-right px-2 w-full bg-gray-200"
                 type="text"

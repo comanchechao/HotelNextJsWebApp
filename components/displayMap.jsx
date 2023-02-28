@@ -3,12 +3,12 @@ import { TileLayer } from "react-leaflet/TileLayer";
 import { useMap } from "react-leaflet/hooks";
 import { Marker, DraggableMarker, render, Popup } from "react-leaflet";
 import { useState, useRef, useMemo, useCallback, useEffect } from "react";
-import IRCities from "../assets/cities/ir.json";
+import IRCities from "../assets/cities/ir";
 import { IconBrandCitymapper } from "@tabler/icons";
 import L from "leaflet";
 import cityIcon from "../assets/cities/icon/city.png";
 
-export default function MapWithNoSSR() {
+export default function MapWithNoSSR({ LatLng, cities }) {
   const center = {
     lat: 35.7,
     lng: 51.4167,
@@ -23,6 +23,10 @@ export default function MapWithNoSSR() {
     popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
   });
 
+  useEffect(() => {
+    console.log(cities);
+  });
+
   return (
     <MapContainer
       id="map"
@@ -35,14 +39,15 @@ export default function MapWithNoSSR() {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {IRCities.map((city, i) => {
-        if (city.population >= 201184) {
-          return (
-            <Marker key={i} position={[city.lat, city.lng]}>
-              <Popup>{city.city}</Popup>
-            </Marker>
-          );
-        }
+      {LatLng ? (
+        <Marker position={{ lat: LatLng[0], lng: LatLng[1] }}></Marker>
+      ) : null}
+      {cities.map((city, i) => {
+        return (
+          <Marker key={i} position={[city.lat, city.lng]}>
+            <Popup>{city.city}</Popup>
+          </Marker>
+        );
       })}
     </MapContainer>
   );

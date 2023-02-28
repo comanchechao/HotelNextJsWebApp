@@ -16,10 +16,12 @@ import {
   IconLogout,
   IconBook,
   IconUser,
+  IconBuildingCommunity,
 } from "@tabler/icons";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient.js";
 import WebsiteInfo from "../../components/websiteInfo";
+import AddCity from "../../components/addCity";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export async function getServerSideProps({ locale }) {
@@ -176,6 +178,8 @@ export default function AdminPage({ hotels, cities }) {
               <ReservationManagement />
             ) : tab === "websiteInfo" ? (
               <WebsiteInfo />
+            ) : tab === "city" ? (
+              <AddCity cities={cities} />
             ) : null}
           </div>
           <Drawer
@@ -220,6 +224,17 @@ export default function AdminPage({ hotels, cities }) {
                 <div className="flex justify-around items-center  transition   text-gray-800 w-full">
                   <IconUserCheck size={24} />
                   <h1 className="text-2xl  "> همکاران </h1>
+                </div>
+              </div>
+              <div
+                onClick={() => {
+                  setTab("city");
+                }}
+                className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-24 w-full "
+              >
+                <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+                  <IconBuildingCommunity size={24} />
+                  <h1 className="text-2xl  "> شهر ها </h1>
                 </div>
               </div>
               <div
@@ -281,6 +296,17 @@ export default function AdminPage({ hotels, cities }) {
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconUserCheck size={24} />
               <h1 className="lg:text-2xl text-sm  "> همکاران </h1>
+            </div>
+          </div>
+          <div
+            onClick={() => {
+              setTab("city");
+            }}
+            className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-24 w-full "
+          >
+            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+              <IconBuildingCommunity size={24} />
+              <h1 className="text-2xl  "> شهر ها </h1>
             </div>
           </div>
           <div
