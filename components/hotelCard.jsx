@@ -39,7 +39,7 @@ export default function HotelCard({ hotel }) {
             <span className="text-xs">بالاترین درصد رضایتمندی</span>{" "}
           </Chip>
           <Chip defaultChecked color="pink" variant="filled" size="md">
-            <span className="text-sm">تحفیف ویژه بوتک</span>{" "}
+            <span className="text-xs">تحفیف ویژه بوتک</span>{" "}
           </Chip>
         </div>
         <h1 className="text-center   text-lg">{hotel.title}</h1>

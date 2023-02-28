@@ -2,8 +2,8 @@ import { Textarea, Tabs } from "@mantine/core";
 
 export default function WebsiteInfo() {
   return (
-    <div className="flex flex-col items-center justify-start  w-full h-full  ">
-      <div className=" overflow-y-scroll w-full h-full  py-20 px-14 bg-white flex flex-col items-center justify-start">
+    <div className="flex flex-col items-center justify-start pt-5 w-full h-carousel lg:h-full  ">
+      <div className=" overflow-y-scroll w-full h-full  py-20 lg:px-14 bg-white flex flex-col items-center justify-start">
         <h1 className="border-b-4 pb-4 border-mainBlue my-3">
           تغییر اطلاعات وبسایت
         </h1>
@@ -42,10 +42,10 @@ export default function WebsiteInfo() {
                 minRows={15}
                 withAsterisk
               />
-              <button className="px-14 mb-96 rounded-lg   transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-                ثبت تغییرات
-              </button>
             </div>
+            <button className="px-14 mb-96 rounded-lg   transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+              ثبت تغییرات
+            </button>
           </Tabs.Panel>
 
           <Tabs.Panel value="messages" pt="xs">
@@ -66,16 +66,16 @@ export default function WebsiteInfo() {
               <p className="text-lg self-end">شماره تلفن</p>
               <Textarea
                 className="text-2xl  text-right w-full"
-                placeholder="تاریخچه و پیشینه"
+                placeholder="شماره تلفن"
                 radius="xs"
                 autosize
                 minRows={1}
                 withAsterisk
               />
-              <div className="flex items-center justify-center space-x-9">
+              <div className="flex items-center flex-col-reverse lg:flex-row lg:space-y-0 space-y-2 justify-center lg:space-x-9">
                 <Textarea
                   className="text-2xl  text-right w-full"
-                  placeholder="تاریخچه و پیشینه"
+                  placeholder="ایمیل"
                   radius="xs"
                   autosize
                   minRows={1}
@@ -84,7 +84,7 @@ export default function WebsiteInfo() {
                 <p className="text-lg text-center w-full">ایمیل</p>
                 <Textarea
                   className="text-2xl  text-right w-full"
-                  placeholder="تاریخچه و پیشینه"
+                  placeholder="کد پستی"
                   radius="xs"
                   autosize
                   minRows={1}
@@ -92,10 +92,10 @@ export default function WebsiteInfo() {
                 />
                 <p className="text-lg text-center w-full">کد پستی</p>
               </div>{" "}
-              <button className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-                تایید تغییرات
+              <button className="px-14 mb-96 rounded-lg   transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+                ثبت تغییرات
               </button>
-            </div>{" "}
+            </div>
           </Tabs.Panel>
 
           <Tabs.Panel value="settings" pt="xs">
@@ -161,10 +161,12 @@ export default function WebsiteInfo() {
                 />
                 <p className="text-lg text-center w-full">لینک واتسپ</p>
               </div>
+            </div>{" "}
+            <div className="absolute right-8 bottom-3">
               <button className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
                 تایید تغییرات
               </button>
-            </div>{" "}
+            </div>
           </Tabs.Panel>
         </Tabs>
       </div>
