@@ -24,6 +24,7 @@ export default function ProfileInfo() {
     } = await supabase.auth.getUser();
     if (user) {
       let userData = await supabase.from("profiles").select().eq("id", user.id);
+      console.log(userData);
       setEmail(userData.data[0].email);
       setFullName(userData.data[0].fullName);
       setPhone(userData.data[0].phone);
