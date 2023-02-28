@@ -2,10 +2,10 @@ import Navbar from "../../components/Navbar";
 import { useState } from "react";
 import { User, Bed, Info, Money } from "phosphor-react";
 import Footer from "../../components/Footer";
-import ProfileInfo from "./profileInfo";
-import PaymentHistory from "./paymentHistory";
-import SupportRequest from "./supportRequest";
-import ReservationList from "./reservationList";
+import ProfileInfo from "../../components/profileInfo";
+import PaymentHistory from "../../components/paymentHistory";
+import SupportRequest from "../../components/supportRequest";
+import ReservationList from "../../components/reservationList";
 export default function UserProfile() {
   const [tab, setTab] = useState("Profile");
   return (

@@ -1,7 +1,7 @@
 import { TextInput, Loader } from "@mantine/core";
 import { Money, User } from "phosphor-react";
 import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabaseClient";
+import { supabase } from "../lib/supabaseClient";
 
 export default function ProfileInfo() {
   const [edit, setEdit] = useState(false);

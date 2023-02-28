@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ReservedRoomCard from "./reservedRoomCard";
-import { supabase } from "../../lib/supabaseClient";
+import { supabase } from "../lib/supabaseClient";
 
 export default function ReservationList() {
   const [reservations, setReservations] = useState([]);
@@ -17,9 +17,13 @@ export default function ReservationList() {
         اتاق های رزرو شده{" "}
       </h1>
       <div className="w-full overflow-y-scroll px-4 flex items-center justify-start flex-col space-y-6 ">
-        {reservations.map((reserveData, i) => {
-          return <ReservedRoomCard key={i} reserve={reserveData} />;
-        })}
+        {reservations === [] ? (
+          <div>no reservation</div>
+        ) : reservations !== [] ? (
+          reservations.map((reserveData, i) => {
+            return <ReservedRoomCard key={i} reserve={reserveData} />;
+          })
+        ) : null}
       </div>
     </div>
   );
