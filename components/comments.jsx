@@ -2,17 +2,17 @@ import { StarHalf, ThumbsUp, ThumbsDown } from "phosphor-react";
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
 import Reply from "./reply";
-export default function Comments({ comment }) {
+export default function Comments({ comment, hotel }) {
   const [loading, setLoading] = useState(false);
 
   return (
     <div className="flex space-y-2 flex-col  text-right  rounded-md  ">
       <div className="flex border border-gray-300 p-4 rounded-lg text-gray-600 bg-white space-y-2 w-full h-full flex-col">
         <div className="flex space-x-2 text-sm justify-end items-center">
-          <div className="flex">{createdAt}</div>
+          <div className="flex">{comment.createdAt}</div>
           <div className="flex">
             <p>امتیاز</p>
-            <p>{stars}/10</p>
+            <p>{comment.stars}/10</p>
           </div>
           <div className="flex justify-center items-center">
             <StarHalf className="text-mainBlue" size={25} />
