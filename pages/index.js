@@ -13,7 +13,8 @@ import {
 } from "@mantine/core";
 import Image from "next/image";
 import mainBg from "../assets/images/mainBg.webp";
-import { DatePicker, DateRangePicker } from "@mantine/dates";
+import { DateRangePicker } from "@mantine/dates";
+import { createStyles } from "@mantine/core";
 import { MapPin, PlusCircle, MinusCircle, CaretLeft } from "phosphor-react";
 import Antalia from "../assets/images/Antalia.webp";
 import Istanbul from "../assets/images/Istanbul.webp";
@@ -117,7 +118,18 @@ export default function Home(props) {
 
     window.scrollTo(0, 0);
   });
-
+  var isToday = require("dayjs/plugin/isToday");
+  var utc = require("dayjs/plugin/utc");
+  dayjs.extend(utc);
+  dayjs.extend(isToday);
+  const myDate = dayjs().utcOffset(3.5).isToday();
+  // const myDateFormatted = myDate.utc().format("MM/DD/YYYY");
+  const useStyles = createStyles((theme) => ({
+    firstInRange: {
+      color: `${theme.colors.blue[6]} !important`,
+    },
+  }));
+  const { classes, cx } = useStyles();
   // dispatching the selection to the store
 
   let passenger = useSelector((state) => state.reserve.passenger);
@@ -187,8 +199,8 @@ export default function Home(props) {
                     : "text-4xl text-right  flex flex-col  items-start"
                 }`}
                 dropdownType="modal"
-                locale="fa"
-                minDate={dayjs(new Date()).toDate()}
+                locale="{myDate}"
+                minDate={myDate}
                 dropdownPosition="top-start"
                 placeholder={t("inDate")}
                 label={t("inDate")}
@@ -197,6 +209,11 @@ export default function Home(props) {
                 value={dates}
                 onChange={setDates}
                 radius="md"
+                dayClassName={(date, modifiers) =>
+                  cx({
+                    [classes.firstInRange]: modifiers.outside,
+                  })
+                }
                 size="md"
               />
               {/* <DatePicker

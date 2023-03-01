@@ -25,7 +25,7 @@ export default function Comments(props) {
     console.log(comment);
   }
   return (
-    <div className="flex space-y-2 flex-col  text-right  rounded-md bg-green-400">
+    <div className="flex space-y-2 flex-col  text-right  rounded-md  ">
       <div className="flex border border-gray-300 p-4 rounded-lg text-gray-600 bg-white space-y-2 w-full h-full flex-col">
         <div className="flex space-x-2 text-sm justify-end items-center">
           <div className="flex">دی ماه 10</div>
@@ -69,13 +69,13 @@ export default function Comments(props) {
           </div>
         </div>
         <div className="flex justify-end items-end">
-          <h1 className="text-2xl text-gray-900">هتل راحت</h1>
+          <h1 className="text-2xl text-gray-900">{title}</h1>
         </div>
         <div className="flex">
           <p className="text-sm">
             می‌خواهند و هم دلشان می‌خواهد به مرکز شهر، شرکت‌های خصوصی و دولتی و
             مکان‌هایی از این دست نزدیک باشند. البته موقعیت مکانی یکی از امتیازات
-            این هتل است؛{" "}
+            این هتل است؛
           </p>
         </div>
         <div className="flex items-center justify-between">
@@ -92,7 +92,7 @@ export default function Comments(props) {
           </div>
         </div>
       </div>
-      <div className="flex">
+      <div className="flex items-start w-full">
         <Reply />
       </div>
     </div>
