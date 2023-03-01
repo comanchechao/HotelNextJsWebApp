@@ -7,6 +7,7 @@ import { filterActions } from "../store/filterActivation";
 import { useDispatch, useSelector } from "react-redux";
 export default function HotelListMenu() {
   let stars = useSelector((state) => state.filter.stars);
+
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col items-center space-y-4 bg-white p-4 drop-shadow-lg">

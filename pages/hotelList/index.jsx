@@ -27,6 +27,8 @@ export default function HotelList({ hotels }) {
   const [filters, setFilters] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const [to, setTo] = useState(2);
+  const [from, setFrom] = useState(1);
   // dynamic imports
   const HotelListModal = dynamic(
     () => import("../../components/hotelListModal"),
@@ -59,7 +61,8 @@ export default function HotelList({ hotels }) {
     const { data, error } = await supabase
       .from("Hotels")
       .select()
-      .order("prices", { ascending: ascention });
+      .order("prices", { ascending: ascention })
+      .range(from - 1, to * 4);
 
     if (error) throw error;
     setFilters(true);
@@ -75,7 +78,8 @@ export default function HotelList({ hotels }) {
       const { data, error } = await supabase
         .from("Hotels")
         .select()
-        .gte("stars", stars);
+        .gte("stars", stars)
+        .range(from - 1, to * 4);
 
       if (error) throw error;
       setFilters(true);
@@ -176,7 +180,14 @@ export default function HotelList({ hotels }) {
             </div>
           )}
           <div className="h-full  w-full flex justify-center">
-            <Pagination total={10} color="yellow" size="lg" />
+            <Pagination
+              onClick={(e) => {
+                setTo(to + 1);
+              }}
+              total={10}
+              color="yellow"
+              size="lg"
+            />
           </div>
         </div>
         <div className=" w-1/4 h-screen hidden lg:flex">
