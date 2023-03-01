@@ -50,11 +50,16 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   const { data, error } = await supabase.from("Hotels").select().eq("id", id);
+  const { data: commentData } = await supabase
+    .from("comments")
+    .select()
+    .eq("hotelId", id);
   if (error) throw error;
 
   return {
     props: {
       hotel: data[0],
+      comments: commentData,
       ...(await serverSideTranslations(context.locale, ["common"])),
     },
   };
@@ -67,7 +72,7 @@ const DynamicMap = dynamic(
   }
 );
 
-export default function HotelDetailPage({ hotel }) {
+export default function HotelDetailPage({ hotel, comments }) {
   const ReserveInfoModal = dynamic(
     () => import("../../../components/reserveInfoModal"),
     {
@@ -511,7 +516,9 @@ export default function HotelDetailPage({ hotel }) {
                 <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
                   <h1 className="  text-gray-700 text-2xl">نظرات مسافران </h1>
                 </div>
-                <Comments Hotel={hotel} />
+                {comments.map((comment, i) => {
+                  return <Comments key={i} comment={comment} />;
+                })}
               </div>
             </div>
           </div>

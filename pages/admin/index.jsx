@@ -174,12 +174,12 @@ export default function AdminPage({ hotels, cities }) {
               <HotelManagement hotels={hotels} cities={cities} />
             ) : tab === "user" ? (
               <UserManagement />
+            ) : tab === "city" ? (
+              <AddCity cities={cities} />
             ) : tab === "reserve" ? (
               <ReservationManagement />
             ) : tab === "websiteInfo" ? (
               <WebsiteInfo />
-            ) : tab === "city" ? (
-              <AddCity cities={cities} />
             ) : null}
           </div>
           <Drawer

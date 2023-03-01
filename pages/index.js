@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-
+import isToday from "dayjs/plugin/isToday";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import Head from "next/head";
 import Faq from "../components/Faq";
 import Link from "next/link";
@@ -118,11 +120,14 @@ export default function Home(props) {
 
     window.scrollTo(0, 0);
   });
-  var isToday = require("dayjs/plugin/isToday");
-  var utc = require("dayjs/plugin/utc");
+
   dayjs.extend(utc);
   dayjs.extend(isToday);
-  const myDate = dayjs().utcOffset(3.5).isToday();
+  const myDate = dayjs().utcOffset(3.5);
+
+  useEffect(() => {
+    dayjs().utcOffset(3.5);
+  });
   // const myDateFormatted = myDate.utc().format("MM/DD/YYYY");
   const useStyles = createStyles((theme) => ({
     firstInRange: {
