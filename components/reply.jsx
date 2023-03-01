@@ -3,7 +3,7 @@ import { Modal, Rating, Group, Loader } from "@mantine/core";
 import { supabase } from "../lib/supabaseClient";
 
 export default function Reply(props) {
-  let hotel = props.Hotel;
+  let hotel = props.hotel;
 
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(0);
@@ -19,11 +19,15 @@ export default function Reply(props) {
     } = await supabase.auth.getUser();
 
     if (user) {
-      const { data, error } = await supabase
-        .from("comments")
-        .insert([
-          { id: user.id, comment: comment, stars: stars, title: title },
-        ]);
+      const { data, error } = await supabase.from("comments").insert([
+        {
+          id: user.id,
+          hotelId: hotel.id,
+          comment: comment,
+          stars: stars,
+          title: title,
+        },
+      ]);
       console.log(user.id);
       console.log(comment);
       console.log(stars);

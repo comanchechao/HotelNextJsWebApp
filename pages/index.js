@@ -199,7 +199,7 @@ export default function Home(props) {
                     : "text-4xl text-right  flex flex-col  items-start"
                 }`}
                 dropdownType="modal"
-                locale="{myDate}"
+                locale="fa"
                 minDate={myDate}
                 dropdownPosition="top-start"
                 placeholder={t("inDate")}

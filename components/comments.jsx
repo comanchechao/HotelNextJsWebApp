@@ -6,6 +6,10 @@ export default function Comments(props) {
   let hotel = props.Hotel;
 
   const [comment, setComment] = useState("");
+  const [title, setTitle] = useState("");
+  const [stars, setStars] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [createdAt, setCreatedAt] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -20,6 +24,10 @@ export default function Comments(props) {
       .eq("hotelId", hotel.id);
     commentData.map((object) => {
       setComment(object.comment);
+      setTitle(object.title);
+      setStars(object.stars);
+      setFullName(object.fullName);
+      setCreatedAt(object.createdAt);
     });
     setLoading(false);
     console.log(comment);
@@ -28,23 +36,23 @@ export default function Comments(props) {
     <div className="flex space-y-2 flex-col  text-right  rounded-md  ">
       <div className="flex border border-gray-300 p-4 rounded-lg text-gray-600 bg-white space-y-2 w-full h-full flex-col">
         <div className="flex space-x-2 text-sm justify-end items-center">
-          <div className="flex">دی ماه 10</div>
+          <div className="flex">{createdAt}</div>
           <div className="flex">
             <p>امتیاز</p>
-            <p>5/10</p>
+            <p>{stars}/10</p>
           </div>
           <div className="flex justify-center items-center">
             <StarHalf className="text-mainBlue" size={25} />
           </div>
         </div>
         <div className="flex justify-end items-end">
-          <h1 className="text-2xl text-gray-900">هتل راحت</h1>
+          <h1 className="text-2xl text-gray-900">{title}</h1>
         </div>
         <div className="flex">
           <p className="text-sm">{comment}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p>مهسا لاجویی</p>
+          <p>{fullName}</p>
           <div className="flex space-x-2">
             <ThumbsUp
               className="text-mainBlue  hover:scale-125 cursor-pointer hover:text-mainPurple transition"
@@ -57,12 +65,12 @@ export default function Comments(props) {
           </div>
         </div>
       </div>
-      <div className="flex border border-gray-300 p-4 rounded-lg text-gray-600 bg-white space-y-2 w-full h-full flex-col">
+      {/* <div className="flex border border-gray-300 p-4 rounded-lg text-gray-600 bg-white space-y-2 w-full h-full flex-col">
         <div className="flex space-x-2 text-sm justify-end items-center">
           <div className="flex">دی ماه 10</div>
           <div className="flex">
             <p>امتیاز</p>
-            <p>5/10</p>
+            <p>{stars}/10</p>
           </div>
           <div className="flex justify-center items-center">
             <StarHalf className="text-mainBlue" size={25} />
@@ -91,9 +99,9 @@ export default function Comments(props) {
             />
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="flex items-start w-full">
-        <Reply />
+        <Reply hotel={hotel} />
       </div>
     </div>
   );
