@@ -68,7 +68,7 @@ function DisplayPosition({ map }) {
   );
 }
 
-export default function ExternalStateExample({ city }) {
+export default function ExternalStateExample({ cityLatLng }) {
   const dispatch = useDispatch();
   const [map, setMap] = useState(null);
   let lat = useSelector((state) => state.map.lat);
@@ -258,7 +258,7 @@ export default function ExternalStateExample({ city }) {
     );
   }
 
-  function MainMarker() {
+  function MainMarker({ cityLatLng }) {
     let lat = useSelector((state) => state.map.lat);
     let lng = useSelector((state) => state.map.lng);
 
@@ -272,8 +272,10 @@ export default function ExternalStateExample({ city }) {
     }, []);
 
     useEffect(() => {
-      console.log("lat", lat, "lng", lng);
-    });
+      if (cityLatLng) {
+        setPosition({ lat: cityLatLng[0], lng: cityLatLng[1] });
+      }
+    }, [cityLatLng]);
     const [position, setPosition] = useState(center);
     const markerRef = useRef(null);
 
@@ -346,7 +348,7 @@ export default function ExternalStateExample({ city }) {
         ref={setMap}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <MainMarker />
+        <MainMarker cityLatLng={cityLatLng} />
         {showMarker2 ? <DraggableMarker2 /> : null}
         {showMarker3 ? <DraggableMarker3 /> : null}
       </MapContainer>

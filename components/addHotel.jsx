@@ -59,6 +59,18 @@ export default function AddHotel({ cities, lat, lng }) {
     quantity: 1,
   });
 
+  const [mapLat, setMapLat] = useState(null);
+  const [mapLng, setMapLng] = useState(null);
+
+  useEffect(() => {
+    cities.forEach((theCity) => {
+      if (theCity.name === city) {
+        setMapLat(theCity.lat);
+        setMapLng(theCity.lng);
+      }
+    });
+  }, [city]);
+
   const [meal, setMeal] = useState("");
 
   function handleNewRoom() {
@@ -537,6 +549,9 @@ export default function AddHotel({ cities, lat, lng }) {
                 rows="10"
               ></textarea>
             </div>
+            <div className="flex p-5 w-full justify-center   items-center">
+              <DynamicMap city={city} cityLatLng={[mapLat, mapLng]} />
+            </div>
             <div className="flex space-y-1 flex-col">
               {rooms.map((room, i) => {
                 return (
@@ -583,9 +598,6 @@ export default function AddHotel({ cities, lat, lng }) {
                   </div>
                 );
               })}
-            </div>
-            <div className="flex p-5 w-full justify-center   items-center">
-              <DynamicMap city={city} />
             </div>
             <div className="flex w-full  border border-gray-300 px-8">
               <Tabs

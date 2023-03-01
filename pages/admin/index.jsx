@@ -302,11 +302,11 @@ export default function AdminPage({ hotels, cities }) {
             onClick={() => {
               setTab("city");
             }}
-            className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-24 w-full "
+            className=" flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-full lg:h-28 w-auto lg:w-full "
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
-              <IconBuildingCommunity size={24} />
-              <h1 className="text-2xl  "> شهر ها </h1>
+              <IconUserCheck size={24} />
+              <h1 className="lg:text-2xl text-sm  "> شهر </h1>
             </div>
           </div>
           <div
