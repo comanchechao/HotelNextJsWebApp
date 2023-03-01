@@ -4,15 +4,9 @@ import { useEffect, useState } from "react";
 import IRCities from "../assets/cities/ir";
 import { supabase } from "../lib/supabaseClient";
 
-const DisplayCities = dynamic(
-  () => import("./displayMap"),
-  {
-    ssr: false,
-  },
-  {
-    loading: () => "Loading...",
-  }
-);
+const DisplayCities = dynamic(() => import("./displayMap"), {
+  ssr: false,
+});
 export default function WebsiteInfo({ cities }) {
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState(null);

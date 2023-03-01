@@ -66,13 +66,13 @@ export const getStaticProps = async (context) => {
   };
 };
 
-const DynamicMap = dynamic(
-  () => import("../../../components/mapWithLocation"),
-  {
-    ssr: false,
-  }
-);
 export default function HotelDetail({ hotel }) {
+  const DynamicMap = dynamic(
+    () => import("../../../components/mapWithLocation"),
+    {
+      ssr: false,
+    }
+  );
   const store = useSelector((state) => state.main.title);
 
   useEffect(() => {
