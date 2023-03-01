@@ -226,7 +226,13 @@ export default function LoginModal() {
                       }}
                       className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
                     >
-                      تایید
+                      {loading ? (
+                        <div className="flex items-center justify-center ">
+                          <Loader color="yellow" />
+                        </div>
+                      ) : (
+                        <h3>تایید</h3>
+                      )}
                     </button>
                     <button
                       onClick={() => setRegister(false)}

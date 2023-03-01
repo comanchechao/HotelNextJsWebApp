@@ -55,7 +55,7 @@ export default function HotelCard({ hotel }) {
       </div>
       <div className=" w-auto flex items-center lg:w-56 h-full">
         <Carousel
-          slideSize="20%"
+          slideSize="100%"
           width="100%"
           height="190px"
           controlSize={25}
