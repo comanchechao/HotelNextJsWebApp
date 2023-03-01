@@ -1,4 +1,4 @@
-import { Select, TextInput } from "@mantine/core";
+import { Select, TextInput, NumberInput } from "@mantine/core";
 import { Star, SignIn, SignOut, Bed, Plus, Minus } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -152,25 +152,28 @@ export default function PassengerInfo() {
                 </h2>
               </div>
               <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
-                <TextInput
+                <NumberInput
                   onChange={(e) => {
                     setPassengerOneSocialNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   placeholder="کد ملی"
                   label="کد ملی"
+                  hideControls
                   variant="default"
                   radius="md"
                   size="md"
                   withAsterisk
                 />
-                <TextInput
+                <NumberInput
                   onChange={(e) => {
                     setPassengerOnePhoneNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
+                  required
                   placeholder="شماره تلفن"
                   label="شماره تلفن"
+                  hideControls
                   variant="default"
                   radius="md"
                   size="md"
@@ -181,6 +184,7 @@ export default function PassengerInfo() {
                     setPassengerOneName(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
+                  required
                   placeholder="نام کامل"
                   label="نام"
                   variant="default"
@@ -189,12 +193,15 @@ export default function PassengerInfo() {
                   withAsterisk
                 />
                 <Select
+                  transitionDuration={150}
+                  transition="pop-top-left"
+                  transitionTimingFunction="ease"
+                  variant="default"
                   onChange={setPassengerOneGender}
                   className="text-2xl mx-6 text-right flex flex-col items-end"
                   data={["مرد", "زن"]}
                   placeholder="جنسیت مسافر "
                   label="جنسیت"
-                  variant="default"
                   radius="md"
                   withAsterisk
                   clearable
@@ -210,25 +217,30 @@ export default function PassengerInfo() {
                 بزرگسال2 - سرپرست
               </h2>
               <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
-                <TextInput
+                <NumberInput
                   onChange={(e) => {
                     setPassengerTwoSocialNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
+                  required
                   placeholder="کد ملی"
                   label="کد ملی"
+                  hideControls
                   variant="default"
                   radius="md"
                   size="md"
                   withAsterisk
                 />
-                <TextInput
+
+                <NumberInput
                   onChange={(e) => {
                     setPassengerTwoPhoneNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
+                  required
                   placeholder="شماره تلفن"
                   label="شماره تلفن"
+                  hideControls
                   variant="default"
                   radius="md"
                   size="md"
@@ -239,6 +251,7 @@ export default function PassengerInfo() {
                     setPassengerTwoName(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
+                  required
                   placeholder="نام کامل"
                   label="نام"
                   variant="default"
@@ -268,25 +281,29 @@ export default function PassengerInfo() {
                 بزرگسال3 - سرپرست
               </h2>
               <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
-                <TextInput
+                <NumberInput
                   onChange={(e) => {
                     setPassengerThreeSocialNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
+                  required
                   placeholder="کد ملی"
                   label="کد ملی"
+                  hideControls
                   variant="default"
                   radius="md"
                   size="md"
                   withAsterisk
                 />
-                <TextInput
+                <NumberInput
                   onChange={(e) => {
                     setPassengerThreePhoneNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
+                  required
                   placeholder="شماره تلفن"
                   label="شماره تلفن"
+                  hideControls
                   variant="default"
                   radius="md"
                   size="md"
@@ -298,6 +315,7 @@ export default function PassengerInfo() {
                     setPassengerThreeName(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
+                  required
                   placeholder="نام کامل"
                   label="نام"
                   variant="default"
@@ -327,25 +345,29 @@ export default function PassengerInfo() {
                 بزرگسال 4- سرپرست
               </h2>
               <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
-                <TextInput
+                <NumberInput
                   onChange={(e) => {
                     setPassengerFourSocialNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
+                  required
                   placeholder="کد ملی"
                   label="کد ملی"
+                  hideControls
                   variant="default"
                   radius="md"
                   size="md"
                   withAsterisk
                 />
-                <TextInput
+                <NumberInput
                   onChange={(e) => {
                     setPassengerFourPhoneNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
+                  required
                   placeholder="شماره تلفن"
                   label="شماره تلفن"
+                  hideControls
                   variant="default"
                   radius="md"
                   size="md"
@@ -357,6 +379,7 @@ export default function PassengerInfo() {
                     setPassengerFourName(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
+                  required
                   placeholder="نام کامل"
                   label="نام"
                   variant="default"

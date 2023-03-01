@@ -45,6 +45,9 @@ body {
 
   font-display: swap;
 } */
+.mantine-TextInput-error {
+  font-family: "Roboto", "IranSans";
+}
 .mantine-Stepper-stepLabel {
   font-family: "Roboto", "IranSans";
 }

@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function Comments({ comment, hotel }) {
   return (
     <div className="flex space-y-2 flex-col  text-right  rounded-md  ">
-      <div className="flex border border-gray-300 p-4 rounded-lg text-gray-600 bg-white space-y-2 w-full h-full flex-col">
+      <div className="flex border border-gray-300 p-4 rounded-lg text-gray-600 my-3 bg-white space-y-2 w-full h-full flex-col">
         <div className="flex space-x-2 text-sm justify-end items-center">
           <div className="flex">{comment.createdAt}</div>
           <div className="flex">

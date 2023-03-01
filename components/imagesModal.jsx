@@ -10,20 +10,20 @@ export default function ImagesModal() {
   return (
     <>
       <Modal
-        size="xl"
+        size="lg"
         opened={opened}
         onClose={() => setOpened(false)}
         centered
       >
-        <div className="flex w-full h-full items-center ">
-          <Carousel
-            height="100%"
-            width="100%"
-            slideSize="100%"
-            controlSize={25}
-            loop
-            withIndicators
-          >
+        <Carousel
+          mx="auto"
+          slideSize="100%"
+          width="80%"
+          controlSize={25}
+          loop
+          withIndicators
+        >
+          <div className="flex w-full h-full items-center ">
             <Carousel.Slide>
               <div className="h-full w-full flex items-center">
                 <Image
@@ -51,8 +51,8 @@ export default function ImagesModal() {
                 />
               </div>
             </Carousel.Slide>
-          </Carousel>
-        </div>
+          </div>
+        </Carousel>
       </Modal>
 
       <Group position="center">

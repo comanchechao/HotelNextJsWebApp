@@ -23,7 +23,6 @@ export default function Reply(props) {
     if (user) {
       const { data, error } = await supabase.from("comments").insert([
         {
-          id: user.id,
           hotelId: hotel.id,
           comment: comment,
           stars: stars,

@@ -20,8 +20,8 @@ export default function HotelCard({ hotel }) {
   return (
     <div className=" w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row flex-col-reverse justify-between items-center ">
       <div className="w-56 h-full flex flex-col p-4 items-center justify-center space-y-2">
-        <h2 className="text-mainPurple text-lg">
-          <p>تومان</p>
+        <h2 className="text-mainPurple text-lg flex items-center justify-center">
+          <p className="text-xs mx-2">تومان</p>
           {hotel.prices}
         </h2>
         <Link href={"/hotelList/hotelDetail/" + hotel.id}>
@@ -55,7 +55,7 @@ export default function HotelCard({ hotel }) {
       </div>
       <div className=" w-auto flex items-center lg:w-56 h-full">
         <Carousel
-          slideSize="100%"
+          slideSize="20%"
           width="100%"
           height="190px"
           controlSize={25}

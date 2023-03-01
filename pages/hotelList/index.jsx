@@ -3,66 +3,93 @@ import Link from "next/link";
 import { CaretLeft } from "phosphor-react";
 import HotelCard from "../../components/hotelCard";
 import { Skeleton, Pagination, Loader } from "@mantine/core";
-import Footer from "../../components/Footer";
 import dynamic from "next/dynamic";
+import { gsap } from "gsap";
+
 import { Suspense } from "react";
 import { supabase } from "../../lib/supabaseClient";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import HotelListMenu from "../../components/hotelListMenu";
 export async function getServerSideProps({ locale }) {
   // Fetch data from the database
-  const { data, error } = await supabase.from("Hotels").select();
-  if (error) throw error;
+
   return {
     props: {
-      hotels: data,
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
 
-export default function HotelList({ hotels }) {
+export default function HotelList() {
   const [filters, setFilters] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [to, setTo] = useState(4);
+  const [ascention, setAscention] = useState("");
+  const [hotels, setHotels] = useState([]);
 
-  const [to, setTo] = useState(2);
   const [from, setFrom] = useState(1);
   // dynamic imports
   const HotelListModal = dynamic(
     () => import("../../components/hotelListModal"),
     {
-      suspense: true,
+      suspense: false,
     }
   );
 
   const Footer = dynamic(() => import("../../components/Footer"), {
-    suspense: true,
+    suspense: false,
   });
 
   const [filteredHotels, setFilteredHotels] = useState([]);
 
   let stars = useSelector((state) => state.filter.stars);
 
+  const mainPageBg = useRef();
+  const firstContainer = useRef();
+  const secondContainer = useRef();
+  const thirdContainer = useRef();
+  useEffect(() => {
+    var tl = gsap.timeline();
+    tl.to(mainPageBg.current, {
+      opacity: "1",
+      duration: 0.8,
+    });
+    tl.to(firstContainer.current, { opacity: "1", duration: 0.4 });
+    tl.to(secondContainer.current, { opacity: "1", duration: 0.4, delay: 0.5 });
+    tl.to(thirdContainer.current, { opacity: "1", duration: 0.4, delay: 0.5 });
+  });
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (hotels.data !== null) {
+    getHotels();
+    if (getHotels.data !== null) {
       setLoading(false);
     } else {
       setLoading(true);
     }
-
     sortFetch(stars);
   }, [stars]);
-
-  async function filterFetch(ascention) {
+  async function getHotels() {
+    setTo(to + 2);
     setLoading(true);
     const { data, error } = await supabase
       .from("Hotels")
       .select()
-      .order("prices", { ascending: ascention })
-      .range(from - 1, to * 4);
+      .range(from, to);
+    setHotels(data);
+    if (error) throw error;
+    setFilters(true);
+    setFilteredHotels(data);
+    console.log(filteredHotels);
+    setLoading(false);
+  }
+  async function filterFetch() {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from("Hotels")
+      .select()
+      .order("prices", { ascending: ascention });
 
     if (error) throw error;
     setFilters(true);
@@ -78,8 +105,7 @@ export default function HotelList({ hotels }) {
       const { data, error } = await supabase
         .from("Hotels")
         .select()
-        .gte("stars", stars)
-        .range(from - 1, to * 4);
+        .gte("stars", stars);
 
       if (error) throw error;
       setFilters(true);
@@ -110,8 +136,11 @@ export default function HotelList({ hotels }) {
     <div className="w-screen h-auto bg-gray-200">
       <Navbar />
       <div className="h-full w-full pt-28 flex lg:px-44 space-x-16">
-        <div className=" w-full lg:w-3/4 h-full  p-6 ">
-          <div className="h-auto w-full space-x-3 flex items-center justify-end">
+        <div className=" w-full lg:w-3/4 h-full  p-6  ">
+          <div
+            ref={mainPageBg}
+            className="h-auto w-full space-x-3 flex items-center justify-end opacity-0"
+          >
             <Link className="text-lg items-center flex text-black" href="/">
               <CaretLeft size={20} />
               هتل های شهر {selectedCity}
@@ -122,7 +151,10 @@ export default function HotelList({ hotels }) {
             </Link>
           </div>
 
-          <div className=" w-full lg:text-lg text-xs text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-7 space-x-4">
+          <div
+            ref={firstContainer}
+            className=" w-full  opacity-0 lg:text-lg text-xs text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-7 space-x-4"
+          >
             <div className="lg:h-10 h-auto py-2 lg:py-8 w-full flex items-center justify-around bg-white drop-shadow-sm rounded-full">
               <h2 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue">
                 بیشترین رزرو
@@ -132,7 +164,8 @@ export default function HotelList({ hotels }) {
               </h2>
               <h2
                 onClick={() => {
-                  filterFetch(true);
+                  setAscention(false);
+                  filterFetch();
                 }}
                 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue"
               >
@@ -140,7 +173,8 @@ export default function HotelList({ hotels }) {
               </h2>
               <h2
                 onClick={() => {
-                  filterFetch(false);
+                  setAscention(true);
+                  filterFetch();
                 }}
                 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue"
               >
@@ -180,31 +214,27 @@ export default function HotelList({ hotels }) {
             </div>
           )}
           <div className="h-full  w-full flex justify-center">
-            <Pagination
-              onClick={(e) => {
-                setTo(to + 1);
+            <button
+              onClick={() => {
+                getHotels();
               }}
-              total={10}
-              color="yellow"
-              size="lg"
-            />
+              className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+            >
+              بیشتر نشونم بده
+            </button>
           </div>
         </div>
-        <div className=" w-1/4 h-screen hidden lg:flex">
+        <div
+          ref={secondContainer}
+          className=" w-1/4 h-screen hidden lg:flex opacity-0"
+        >
           <div className="w-full h-96 py-6">
             <HotelListMenu />
           </div>
         </div>
       </div>
-      <Suspense
-        fallback={
-          <div>
-            <Skeleton height={800} width="100%" />
-          </div>
-        }
-      >
-        <Footer />
-      </Suspense>
+
+      <Footer />
     </div>
   );
 }

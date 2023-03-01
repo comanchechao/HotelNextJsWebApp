@@ -76,6 +76,7 @@ export default function LoginModal() {
       },
     });
     if (error) throw error;
+
     setLoading(false);
     setAlert(true);
     setTimeout(() => {
@@ -177,6 +178,24 @@ export default function LoginModal() {
               <div>
                 {register ? (
                   <div className="flex flex-col items-center justify-center space-y-3">
+                    <div>
+                      {alert ? (
+                        <Notification
+                          transition="fade"
+                          transitionDuration={600}
+                          transitionTimingFunction="ease"
+                          color="blue"
+                          withCloseButton
+                          variant="outline"
+                        >
+                          <h1 className="text-xl text-center">
+                            ایمیل خودتون رو برای تایید حساب کاربری چک کنید
+                          </h1>
+                        </Notification>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
                     <div className="flex flex-col items-center justify-center space-y-3">
                       <h1 className="text-3xl  "> ثبت‌نام </h1>
                       <h4>ایمیل و رمز عبور خود را برای ثبت‌نام وارد کنید</h4>
