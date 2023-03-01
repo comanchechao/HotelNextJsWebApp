@@ -20,16 +20,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Suspense } from "react";
 
-import {
-  PlusCircle,
-  MinusCircle,
-  ThumbsUp,
-  ThumbsDown,
-  StarHalf,
-} from "phosphor-react";
+import { PlusCircle, MinusCircle } from "phosphor-react";
 import ImagesModal from "../../../components/imagesModal";
 import FeaturesModal from "../../../components/FeaturesModal";
-import Reply from "../../../components/reply";
 
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState } from "react";
@@ -517,7 +510,7 @@ export default function HotelDetailPage({ hotel }) {
                 <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
                   <h1 className="  text-gray-700 text-2xl">نظرات مسافران </h1>
                 </div>
-                <Comments />
+                <Comments Hotel={hotel} />
               </div>
             </div>
           </div>

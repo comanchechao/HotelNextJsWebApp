@@ -50,7 +50,7 @@ export default function ProfileInfo() {
         id: user.id,
         email: email,
       };
-      await supabase.from("profiles").upsert(updates);
+      await supabase.from("profiles").update(updates);
       setLoading(false);
       setEdit(false);
     } else {

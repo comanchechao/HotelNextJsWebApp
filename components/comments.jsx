@@ -2,7 +2,9 @@ import { StarHalf, ThumbsUp, ThumbsDown } from "phosphor-react";
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
 import Reply from "./reply";
-export default function Comments() {
+export default function Comments(props) {
+  let hotel = props.Hotel;
+
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -11,16 +13,16 @@ export default function Comments() {
   }, []);
   async function getComments() {
     setLoading(true);
-
-    let { data } = await supabase.from("comments").select();
-    console.log(data);
-    setComment(data);
-    // setFullName(userData.data[0].fullName);
-    // setPhone(userData.data[0].phone);
-    // setCard(userData.data[0].card);
-    // setIdCard(userData.data[0].idCard);
-    // setShaba(userData.data[0].shaba);
+    // const hotels = await supabase.from("Hotels").select().eq("id", hotel.id);
+    const { data: commentData } = await supabase
+      .from("comments")
+      .select()
+      .eq("hotelId", hotel.id);
+    commentData.map((object) => {
+      setComment(object.comment);
+    });
     setLoading(false);
+    console.log(comment);
   }
   return (
     <div className="flex space-y-2 flex-col  text-right  rounded-md bg-green-400">

@@ -1,10 +1,36 @@
-import { useState } from "react";
-import { Modal, Rating, Group } from "@mantine/core";
+import { useEffect, useState } from "react";
+import { Modal, Rating, Group, Loader } from "@mantine/core";
+import { supabase } from "../lib/supabaseClient";
 
-export default function Reply() {
+export default function Reply(props) {
+  let hotel = props.Hotel;
+
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [comment, setComment] = useState(false);
+  const [stars, setStars] = useState(0);
 
+  async function addComment() {
+    setLoading(true);
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user) {
+      const { data, error } = await supabase
+        .from("comments")
+        .insert([{ id: user.id, comment: comment, stars: stars }]);
+      console.log(user.id);
+      console.log(comment);
+      console.log(stars);
+      setLoading(false);
+      setOpened(false);
+    } else {
+      console.log("User not found");
+    }
+  }
   return (
     <>
       <Modal
@@ -12,38 +38,40 @@ export default function Reply() {
         opened={opened}
         onClose={() => setOpened(false)}
         centered
-        title="نظر شما"
       >
         <div className="w-full h-full">
           <div className=" py-5 flex flex-col w-full justify-center items-center">
-            <div className="flex w-full justify-around items-center h-full p-4">
-              <Rating
-                value={value}
-                defaultValue={5}
-                onChange={setValue}
-                size="lg"
-                count={10}
-              />
-              <p>:انتخاب کنید</p>
-            </div>
             <div className="flex space-y-2 py-2 text-right flex-col w-full h-full p-4 bg-gray-100">
-              <label htmlFor="reply">شروع به نوشتن کنید</label>
+              <label htmlFor="reply">نظر خودتون رو راجب هتل بنویسید</label>
               <textarea
                 className="bg-gray-100 border border-gray-400"
                 name="reply"
                 id=""
                 cols="30"
                 rows="10"
+                onChange={(e) => setComment(e.target.value)}
               ></textarea>
+            </div>{" "}
+            <div className="flex w-full justify-around items-center h-full p-4">
+              <Rating
+                value={stars}
+                defaultValue={5}
+                onChange={setStars}
+                size="lg"
+                count={10}
+              />
+              <p>:انتخاب کنید</p>
             </div>
             <div className="flex">
               <button
-                onClick={() => {
-                  setOpened(false);
-                }}
-                className="w-52 py-3 border-2 text-lg border-darkPurple border-dashed bg-mainBlue transition ease-in duration-300 font-mainFont rounded-md text-gray-50 hover:text-darkPurple hover:bg-gray-50"
+                onClick={addComment}
+                className="text-white my-4 bg-mainPurple font-mainFont rounded-md text-lg cursor-pointer border-r-8 border-mainBlue  text-center flex items-center justify-center px-6 py-2 hover:bg-mainBlue duration-300 ease-in transition"
               >
-                ثبت نظر
+                {loading ? (
+                  <Loader size="sm" color="yellow" variant="bars" />
+                ) : (
+                  <p> ثبت نظر</p>
+                )}
               </button>
             </div>
           </div>
@@ -55,7 +83,7 @@ export default function Reply() {
           onClick={() => {
             setOpened(true);
           }}
-          className="text-white my-4 bg-mainPurple font-mainFont rounded-md text-lg cursor-pointer border-r-8 border-mainBlue  text-center flex items-center justify-center px-6 py-2 hover:bg-mainBlue duration-300 ease-in transition"
+          className="text-white self-end my-4 bg-mainPurple font-mainFont rounded-md text-lg cursor-pointer border-r-8 border-mainBlue  text-center flex items-center justify-center px-6 py-2 hover:bg-mainBlue duration-300 ease-in transition"
         >
           نظر شما
         </button>
