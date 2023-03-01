@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import isToday from "dayjs/plugin/isToday";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
+import isToday from "dayjs/plugin/isToday.js";
+import utc from "dayjs/plugin/utc.js";
+import timezone from "dayjs/plugin/timezone.js";
 import Head from "next/head";
 import Faq from "../components/Faq";
 import Link from "next/link";
@@ -123,10 +123,11 @@ export default function Home(props) {
 
   dayjs.extend(utc);
   dayjs.extend(isToday);
+  dayjs.extend(timezone);
   const myDate = dayjs().utcOffset(3.5);
 
   useEffect(() => {
-    dayjs().utcOffset(3.5);
+    console.log(dayjs(dates).local("fa").format());
   });
   // const myDateFormatted = myDate.utc().format("MM/DD/YYYY");
   const useStyles = createStyles((theme) => ({
@@ -205,7 +206,7 @@ export default function Home(props) {
                 }`}
                 dropdownType="modal"
                 locale="fa"
-                minDate={myDate}
+                minDate={dayjs().toDate()}
                 dropdownPosition="top-start"
                 placeholder={t("inDate")}
                 label={t("inDate")}
