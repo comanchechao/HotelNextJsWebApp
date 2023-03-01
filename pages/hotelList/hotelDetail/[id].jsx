@@ -30,6 +30,7 @@ import RoomCard from "../../../components/roomCard";
 import { useDispatch, useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Comments from "../../../components/comments";
+import Reply from "../../../components/reply";
 
 export const getStaticPaths = async () => {
   const { data, error } = await supabase.from("Hotels").select();
@@ -519,6 +520,7 @@ export default function HotelDetailPage({ hotel, comments }) {
                 {comments.map((comment, i) => {
                   return <Comments key={i} comment={comment} />;
                 })}
+                <Reply hotel={hotel} />
               </div>
             </div>
           </div>

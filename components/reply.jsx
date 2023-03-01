@@ -11,6 +11,8 @@ export default function Reply(props) {
   const [comment, setComment] = useState(false);
   const [stars, setStars] = useState(0);
   const [title, setTitle] = useState("");
+  const [fullName, setFullname] = useState("");
+
   async function addComment() {
     setLoading(true);
 
@@ -26,6 +28,7 @@ export default function Reply(props) {
           comment: comment,
           stars: stars,
           title: title,
+          fullName: fullName,
         },
       ]);
       console.log(user.id);
@@ -48,6 +51,15 @@ export default function Reply(props) {
         <div className="w-full h-full">
           <div className=" py-5 flex flex-col w-full justify-center items-center">
             <div className="flex space-y-2 py-2 text-right flex-col w-full h-full p-4 bg-gray-100">
+              <label htmlFor="reply">نام کاربری</label>
+              <textarea
+                className="bg-gray-100 border border-gray-400"
+                name="reply"
+                id=""
+                cols="30"
+                rows="1"
+                onChange={(e) => setFullname(e.target.value)}
+              ></textarea>
               <label htmlFor="reply">عنوان</label>
               <textarea
                 className="bg-gray-100 border border-gray-400"

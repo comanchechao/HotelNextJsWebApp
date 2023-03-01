@@ -8,52 +8,51 @@ import Image from "next/image";
 export default function ImagesModal() {
   const [opened, setOpened] = useState(false);
   return (
-    <div className="w-full h-full">
+    <>
       <Modal
-        size="800px"
+        size="xl"
         opened={opened}
         onClose={() => setOpened(false)}
         centered
-        title="گالری عکس "
       >
-        <Carousel
-          slideSize="70%"
-          height={600}
-          width="100%"
-          align="start"
-          slideGap="md"
-          controlSize={34}
-          loop
-          withIndicators
-        >
-          <Carousel.Slide size="70%" gap="xl">
-            <div className="h-full w-full flex items-center">
-              <Image
-                className="lg:w-full lg:h-full object-contain"
-                alt="antalia"
-                src={hotelone}
-              />
-            </div>
-          </Carousel.Slide>
-          <Carousel.Slide size="70%" gap="xl">
-            <div className="h-full w-full flex items-center">
-              <Image
-                className="lg:w-full lg:h-full object-contain"
-                alt="antalia"
-                src={hotelfour}
-              />
-            </div>
-          </Carousel.Slide>
-          <Carousel.Slide size="70%" gap="xl">
-            <div className="h-full w-full flex items-center">
-              <Image
-                className="lg:w-full lg:h-full object-contain"
-                alt="antalia"
-                src={hotelthree}
-              />
-            </div>
-          </Carousel.Slide>
-        </Carousel>
+        <div className="flex w-full h-full items-center ">
+          <Carousel
+            height="100%"
+            width="100%"
+            slideSize="100%"
+            controlSize={25}
+            loop
+            withIndicators
+          >
+            <Carousel.Slide>
+              <div className="h-full w-full flex items-center">
+                <Image
+                  className=" w-full  lg:object-fit h-full lg:w-full"
+                  alt="antalia"
+                  src={hotelone}
+                />
+              </div>
+            </Carousel.Slide>
+            <Carousel.Slide>
+              <div className="h-full w-full flex items-center">
+                <Image
+                  className=" w-full lg:object-fit h-full lg:w-full"
+                  alt="antalia"
+                  src={hotelfour}
+                />
+              </div>
+            </Carousel.Slide>
+            <Carousel.Slide>
+              <div className="h-full w-full flex items-center">
+                <Image
+                  className="  w-full lg:object-fit h-full lg:w-full"
+                  alt="antalia"
+                  src={hotelthree}
+                />
+              </div>
+            </Carousel.Slide>
+          </Carousel>
+        </div>
       </Modal>
 
       <Group position="center">
@@ -66,6 +65,6 @@ export default function ImagesModal() {
           عکس های بیشتر
         </button>
       </Group>
-    </div>
+    </>
   );
 }

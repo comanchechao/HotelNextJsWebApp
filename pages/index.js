@@ -258,33 +258,43 @@ export default function Home(props) {
                 </Popover.Target>
                 <Popover.Dropdown>
                   <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
-                    <h1 className="text-sm font-bold">اتاق اول</h1>
+                    <h1 className="text-lg font-bold">اتاق اول</h1>
                     <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
-                      <h1 className="text-sm">بزرگسال(۱۲ سال به بالا)</h1>
+                      <h1 className="text-sm    ">بزرگسال(۱۲ سال به بالا)</h1>
                       <div className="flex text-blue-800  items-center justify-center space-x-5">
                         <PlusCircle
+                          className="cursor-pointer"
                           onClick={() => {
                             dispatch(reservationActions.increasePassenger());
                           }}
-                          size={27}
+                          size={30}
                           weight="fill"
                         />
-                        <h1 className="text-sm font-bold">{passenger}</h1>
+                        <h1 className="text-lg  ">{passenger}</h1>
                         <MinusCircle
+                          className="cursor-pointer"
                           onClick={() => {
                             dispatch(reservationActions.decreamentPassenger());
                           }}
-                          size={27}
+                          size={30}
                           weight="fill"
                         />
                       </div>
                     </div>
                     <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
-                      <h1 className="text-sm">کودک(تا ۱۲ سال)</h1>
+                      <h1 className="text-sm    ">کودک(تا ۱۲ سال)</h1>
                       <div className="flex text-blue-800 items-center justify-center space-x-5">
-                        <PlusCircle size={27} weight="fill" />
-                        <h1 className="text-sm font-bold">1</h1>
-                        <MinusCircle size={27} weight="fill" />
+                        <PlusCircle
+                          className="cursor-pointer"
+                          size={30}
+                          weight="fill"
+                        />
+                        <h1 className="text-lg ">{passenger}</h1>
+                        <MinusCircle
+                          className="cursor-pointer"
+                          size={30}
+                          weight="fill"
+                        />
                       </div>
                     </div>
                   </div>

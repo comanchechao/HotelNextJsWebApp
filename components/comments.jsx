@@ -1,10 +1,7 @@
 import { StarHalf, ThumbsUp, ThumbsDown } from "phosphor-react";
-import { useState, useEffect } from "react";
-import { supabase } from "../lib/supabaseClient";
-import Reply from "./reply";
-export default function Comments({ comment, hotel }) {
-  const [loading, setLoading] = useState(false);
+import { useState } from "react";
 
+export default function Comments({ comment, hotel }) {
   return (
     <div className="flex space-y-2 flex-col  text-right  rounded-md  ">
       <div className="flex border border-gray-300 p-4 rounded-lg text-gray-600 bg-white space-y-2 w-full h-full flex-col">
@@ -25,7 +22,7 @@ export default function Comments({ comment, hotel }) {
           <p className="text-sm">{comment.comment}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p>مهسا لاجویی</p>
+          <p>{comment.fullName}</p>
           <div className="flex space-x-2">
             <ThumbsUp
               className="text-mainBlue  hover:scale-125 cursor-pointer hover:text-mainPurple transition"
@@ -37,10 +34,6 @@ export default function Comments({ comment, hotel }) {
             />
           </div>
         </div>
-      </div>
-
-      <div className="flex items-start w-full">
-        <Reply hotel={hotel} />
       </div>
     </div>
   );
