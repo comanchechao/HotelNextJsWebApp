@@ -14,6 +14,7 @@ export default function DisplayCities({ LatLng, cities }) {
       className="w-96 h-96"
       center={center}
       zoom={4}
+      style={{ width: "600px", height: "500px" }}
       scrollWheelZoom={false}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

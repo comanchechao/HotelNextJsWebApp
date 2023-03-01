@@ -60,6 +60,13 @@ export const getStaticProps = async (context) => {
   };
 };
 
+const DynamicMap = dynamic(
+  () => import("../../../components/mapWithLocation"),
+  {
+    ssr: false,
+  }
+);
+
 export default function HotelDetailPage({ hotel }) {
   const ReserveInfoModal = dynamic(
     () => import("../../../components/reserveInfoModal"),
@@ -137,12 +144,6 @@ export default function HotelDetailPage({ hotel }) {
     downloadImage1();
     downloadImage2();
   }, []);
-  const DynamicMap = dynamic(
-    () => import("../../../components/mapWithLocation"),
-    {
-      ssr: false,
-    }
-  );
 
   // getting reservtion info
 

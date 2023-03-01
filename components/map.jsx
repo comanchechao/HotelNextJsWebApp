@@ -20,15 +20,17 @@ const locations = [
 ];
 const zoom = 8;
 
-function DisplayPosition({ map }) {
+function DisplayPosition({ map, cityLatLng }) {
   const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(() => map.getCenter());
 
   useEffect(() => {
     if ((Lat > 0) & (Lng > 0)) {
       map.setView({ lat: Lat, lng: Lng }, 15);
+    } else if (cityLatLng) {
+      map.setView({ lat: cityLatLng[0], lng: cityLatLng[1] }, 6);
     }
-  }, []);
+  }, [cityLatLng, map]);
 
   let Lat = useSelector((state) => state.map.lat);
   let Lng = useSelector((state) => state.map.lng);
@@ -268,14 +270,12 @@ export default function ExternalStateExample({ cityLatLng }) {
     useEffect(() => {
       if ((lat > 0) & (lng > 0)) {
         setPosition({ lat: lat, lng: lng });
-      }
-    }, []);
-
-    useEffect(() => {
-      if (cityLatLng) {
+      } else if (cityLatLng) {
         setPosition({ lat: cityLatLng[0], lng: cityLatLng[1] });
       }
     }, [cityLatLng]);
+
+    useEffect(() => {}, [cityLatLng]);
     const [position, setPosition] = useState(center);
     const markerRef = useRef(null);
 
@@ -448,7 +448,13 @@ export default function ExternalStateExample({ cityLatLng }) {
         </div>
       </div>
 
-      {map ? <DisplayPosition markedHotel={markedHotel} map={map} /> : null}
+      {map ? (
+        <DisplayPosition
+          cityLatLng={cityLatLng}
+          markedHotel={markedHotel}
+          map={map}
+        />
+      ) : null}
     </div>
   );
 }
