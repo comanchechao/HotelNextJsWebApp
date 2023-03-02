@@ -351,7 +351,7 @@ export default function LoginModal() {
                 withAsterisk
               />
               <button className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-                {t("confirm")}
+                {t("confirmCode")}
               </button>
               <button
                 onClick={() => setChange(true) & setRegister(false)}
