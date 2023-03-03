@@ -45,7 +45,7 @@ export default function InfoConfirmation() {
       hotel_id: hotelInfo.id,
       passengers: passengers,
       user_id: seshId,
-      passengerCount: passengers.length,
+      passengerCount: passenger,
       room: room,
     });
     setLoading(false);
