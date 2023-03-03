@@ -5,8 +5,21 @@ import { Checkbox } from "@mantine/core";
 import { RangeSlider } from "@mantine/core";
 import { filterActions } from "../store/filterActivation";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 export default function HotelListMenu() {
   let stars = useSelector((state) => state.filter.stars);
+  // let minPrice = useSelector((state) => state.filter.minPrice);
+  // let maxPrice = useSelector((state) => state.filter.maxPrice);
+  // const [maxRange, setMaxRange] = useState(maxPrice);
+
+  // const [minRange, setMinRange] = useState(maxPrice);
+  // const MARKS = [
+  //   { value: minPrice, label: "0" },
+  //   { value: maxPrice, label: "1000000" },
+  // ];
+  // useEffect(() => {
+  //   console.log(maxRange, minRange);
+  // });
 
   const dispatch = useDispatch();
   return (
@@ -83,6 +96,7 @@ export default function HotelListMenu() {
             <div className=" w-full h-full text-xs text-gray-800 px-5 py-10">
               <RangeSlider
                 color="yellow"
+                thumbSize={19}
                 radius="xl"
                 size="sm"
                 marks={[

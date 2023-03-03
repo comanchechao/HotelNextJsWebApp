@@ -28,6 +28,7 @@ export default function HotelList() {
   const [to, setTo] = useState(4);
   const [ascention, setAscention] = useState("");
   const [hotels, setHotels] = useState([]);
+  const [order, setOrder] = useState("");
 
   const [from, setFrom] = useState(1);
   // dynamic imports
@@ -89,7 +90,7 @@ export default function HotelList() {
     const { data, error } = await supabase
       .from("Hotels")
       .select()
-      .order("prices", { ascending: ascention });
+      .order(order, { ascending: ascention });
 
     if (error) throw error;
     setFilters(true);
@@ -159,12 +160,21 @@ export default function HotelList() {
               <h2 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue">
                 بیشترین رزرو
               </h2>
-              <h2 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue">
+              <h2
+                onClick={() => {
+                  setAscention(false);
+                  setOrder("stars");
+                  filterFetch();
+                }}
+                className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue"
+              >
                 بالاترین امتیاز
               </h2>
               <h2
                 onClick={() => {
                   setAscention(false);
+                  setOrder("prices");
+
                   filterFetch();
                 }}
                 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue"
@@ -174,6 +184,8 @@ export default function HotelList() {
               <h2
                 onClick={() => {
                   setAscention(true);
+                  setOrder("prices");
+
                   filterFetch();
                 }}
                 className="text-gray-600 cursor-pointer flex items-center transition ease-in duration-100 hover:text-mainBlue"

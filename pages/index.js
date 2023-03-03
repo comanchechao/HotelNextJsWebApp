@@ -935,15 +935,8 @@ export default function Home(props) {
             <Faq />
           </div>
         </div>
-        <Suspense
-          fallback={
-            <div>
-              <Skeleton height={800} width="100%" />
-            </div>
-          }
-        >
-          <Footer />
-        </Suspense>
+
+        <Footer />
       </div>
     </>
   );

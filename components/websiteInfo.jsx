@@ -2,8 +2,8 @@ import { Textarea, Tabs } from "@mantine/core";
 
 export default function WebsiteInfo() {
   return (
-    <div className="flex flex-col items-center justify-start pt-5 w-full h-carousel lg:h-full  ">
-      <div className=" overflow-y-scroll w-full h-full  py-20 lg:px-14 bg-white flex flex-col items-center justify-start">
+    <div className="flex flex-col items-center justify-start pt-5 w-full h-auto  ">
+      <div className="   w-full h-full  py-20 lg:px-14 bg-white flex flex-col items-center justify-start">
         <h1 className="border-b-4 pb-4 border-mainBlue my-3">
           تغییر اطلاعات وبسایت
         </h1>
@@ -20,7 +20,7 @@ export default function WebsiteInfo() {
           </Tabs.List>
 
           <Tabs.Panel value="gallery">
-            <div className="w-full   flex flex-col items-center p-10 h-60 space-y-3">
+            <div className="w-full overflow-y-scroll   flex flex-col items-center p-10 h-full space-y-3">
               <div className="flex w-full items-start justify-end">
                 <h3 className="text-3xl">درباره ما</h3>
               </div>
@@ -39,18 +39,15 @@ export default function WebsiteInfo() {
                 placeholder="تاریخچه و پیشینه"
                 radius="xs"
                 autosize
-                minRows={15}
+                minRows={8}
                 withAsterisk
               />
             </div>
-            <button className="px-14 mb-96 rounded-lg   transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-              ثبت تغییرات
-            </button>
           </Tabs.Panel>
 
           <Tabs.Panel value="messages" pt="xs">
             {" "}
-            <div className="w-full   flex flex-col items-center p-10 h-60 space-y-9">
+            <div className="w-full   flex flex-col items-center p-10 h-full space-y-9">
               <div className="flex w-full items-start justify-end">
                 <h3 className="text-3xl">تماس با ما</h3>
               </div>
@@ -92,14 +89,11 @@ export default function WebsiteInfo() {
                 />
                 <p className="text-lg text-center w-full">کد پستی</p>
               </div>{" "}
-              <button className="px-14 mb-96 rounded-lg   transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-                ثبت تغییرات
-              </button>
             </div>
           </Tabs.Panel>
 
           <Tabs.Panel value="settings" pt="xs">
-            <div className="w-full   flex flex-col items-center p-10 h-60 space-y-9">
+            <div className="w-full   flex flex-col items-center p-10 h-full space-y-9">
               <div className="flex w-full items-start justify-end">
                 <h3 className="text-3xl">فوتر</h3>
               </div>
@@ -162,12 +156,12 @@ export default function WebsiteInfo() {
                 <p className="text-lg text-center w-full">لینک واتسپ</p>
               </div>
             </div>{" "}
-            <div className="absolute right-8 bottom-3">
-              <button className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-                تایید تغییرات
-              </button>
-            </div>
           </Tabs.Panel>
+          <div className="absolute right-8 bottom-3">
+            <button className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+              تایید تغییرات
+            </button>
+          </div>
         </Tabs>
       </div>
     </div>
