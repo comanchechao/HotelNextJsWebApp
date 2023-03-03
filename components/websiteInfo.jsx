@@ -1,6 +1,43 @@
-import { Textarea, Tabs } from "@mantine/core";
-
+import { Textarea, Tabs, Loader } from "@mantine/core";
+import { useState } from "react";
+import { supabase } from "../lib/supabaseClient";
 export default function WebsiteInfo() {
+  const [loading, setLoading] = useState(false);
+  const [aboutUs, setAboutUs] = useState("");
+  const [aboutUsMore, setAboutUsMore] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [email, setEmail] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [telegram, setTelegram] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  async function changeWebsiteInfo() {
+    setLoading(true);
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (user) {
+      const { data, error } = await supabase.from("websiteInfo").upsert([
+        {
+          aboutUs: aboutUs,
+          aboutUsMore: aboutUsMore,
+          address: address,
+          phoneNumber: phoneNumber,
+          postalCode: postalCode,
+          email: email,
+          instagram: instagram,
+          telegram: telegram,
+          facebook: facebook,
+          whatsapp: whatsapp,
+        },
+      ]);
+    } else {
+      console.log(error);
+    }
+    setLoading(false);
+  }
   return (
     <div className="flex flex-col items-center justify-start pt-5 w-full h-auto  ">
       <div className="   w-full h-full  py-20 lg:px-14 bg-white flex flex-col items-center justify-start">
@@ -14,9 +51,15 @@ export default function WebsiteInfo() {
           defaultValue="gallery"
         >
           <Tabs.List grow position="center">
-            <Tabs.Tab value="settings">فوتر</Tabs.Tab>
-            <Tabs.Tab value="messages">تماس با ما</Tabs.Tab>
-            <Tabs.Tab value="gallery">درباره ما</Tabs.Tab>
+            <Tabs.Tab color="pink" value="settings">
+              فوتر
+            </Tabs.Tab>
+            <Tabs.Tab color="violet" value="messages">
+              تماس با ما
+            </Tabs.Tab>
+            <Tabs.Tab color="indigo" value="gallery">
+              درباره ما
+            </Tabs.Tab>
           </Tabs.List>
 
           <Tabs.Panel value="gallery">
@@ -32,6 +75,7 @@ export default function WebsiteInfo() {
                 autosize
                 minRows={7}
                 withAsterisk
+                onChange={(e) => setAboutUs(e.target.value)}
               />
               <p className="text-lg self-end">تاریخچه و پیشینه</p>
               <Textarea
@@ -41,6 +85,7 @@ export default function WebsiteInfo() {
                 autosize
                 minRows={8}
                 withAsterisk
+                onChange={(e) => setAboutUsMore(e.target.value)}
               />
             </div>
           </Tabs.Panel>
@@ -59,6 +104,7 @@ export default function WebsiteInfo() {
                 autosize
                 minRows={2}
                 withAsterisk
+                onChange={(e) => setAddress(e.target.value)}
               />
               <p className="text-lg self-end">شماره تلفن</p>
               <Textarea
@@ -68,6 +114,7 @@ export default function WebsiteInfo() {
                 autosize
                 minRows={1}
                 withAsterisk
+                onChange={(e) => setPhoneNumber(e.target.value)}
               />
               <div className="flex items-center flex-col-reverse lg:flex-row lg:space-y-0 space-y-2 justify-center lg:space-x-9">
                 <Textarea
@@ -77,6 +124,7 @@ export default function WebsiteInfo() {
                   autosize
                   minRows={1}
                   withAsterisk
+                  onChange={(e) => setEmail(e.target.value)}
                 />{" "}
                 <p className="text-lg text-center w-full">ایمیل</p>
                 <Textarea
@@ -86,6 +134,7 @@ export default function WebsiteInfo() {
                   autosize
                   minRows={1}
                   withAsterisk
+                  onChange={(e) => setPostalCode(e.target.value)}
                 />
                 <p className="text-lg text-center w-full">کد پستی</p>
               </div>{" "}
@@ -105,6 +154,7 @@ export default function WebsiteInfo() {
                 autosize
                 minRows={2}
                 withAsterisk
+                onChange={(e) => setAddress(e.target.value)}
               />
               <p className="text-lg self-end">شماره تلفن</p>
               <Textarea
@@ -114,6 +164,7 @@ export default function WebsiteInfo() {
                 autosize
                 minRows={1}
                 withAsterisk
+                onChange={(e) => setPhoneNumber(e.target.value)}
               />
               <div className="flex items-center justify-center space-x-9">
                 <Textarea
@@ -123,6 +174,7 @@ export default function WebsiteInfo() {
                   autosize
                   minRows={1}
                   withAsterisk
+                  onChange={(e) => setTelegram(e.target.value)}
                 />{" "}
                 <p className="text-lg text-center w-full">لینک تلگرام</p>
                 <Textarea
@@ -132,6 +184,7 @@ export default function WebsiteInfo() {
                   autosize
                   minRows={1}
                   withAsterisk
+                  onChange={(e) => setInstagram(e.target.value)}
                 />
                 <p className="text-lg text-center w-full">لینک اینستاگرام</p>
               </div>{" "}
@@ -143,6 +196,7 @@ export default function WebsiteInfo() {
                   autosize
                   minRows={1}
                   withAsterisk
+                  onChange={(e) => setFacebook(e.target.value)}
                 />{" "}
                 <p className="text-lg text-center w-full">لینک فیسبوک</p>
                 <Textarea
@@ -152,14 +206,22 @@ export default function WebsiteInfo() {
                   autosize
                   minRows={1}
                   withAsterisk
+                  onChange={(e) => setWhatsapp(e.target.value)}
                 />
                 <p className="text-lg text-center w-full">لینک واتسپ</p>
               </div>
             </div>{" "}
           </Tabs.Panel>
           <div className="absolute right-8 bottom-3">
-            <button className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-              تایید تغییرات
+            <button
+              onClick={changeWebsiteInfo}
+              className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+            >
+              {loading ? (
+                <Loader color="yellow" />
+              ) : (
+                <span> تایید تغییرات</span>
+              )}
             </button>
           </div>
         </Tabs>

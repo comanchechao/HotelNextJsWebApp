@@ -46,13 +46,22 @@ export default function HotelManagement({ hotels, cities, features }) {
         </div>
         <Tabs color="yellow" variant="pills" defaultValue="gallery">
           <Tabs.List grow position="center" className="px-2">
-            <Tabs.Tab value="settings" icon={<IconUsers size={14} />}>
+            <Tabs.Tab
+              color="pink"
+              value="settings"
+              icon={<IconUsers size={14} />}
+            >
               هتل های همکاران
             </Tabs.Tab>
-            <Tabs.Tab value="messages" icon={<IconUser size={14} />}>
+            <Tabs.Tab
+              color="violet"
+              value="messages"
+              icon={<IconUser size={14} />}
+            >
               هتل های من
             </Tabs.Tab>
             <Tabs.Tab
+              color="indigo"
               value="gallery"
               icon={<IconBuildingSkyscraper size={14} />}
             >

@@ -194,15 +194,15 @@ export default function AdminPage({ hotels, cities, features }) {
             ) : null}
           </div>
         </div>
-        <div className=" text-right flex-row-reverse lg:py-11  flex   px-5  lg:space-x-0 mt-44   lg:space-y-0 lg:mt-0  lg:flex-col items-end  h-full justify-around lg:justify-center w-full lg:w-1/4 divide-y bg-white text-gray-800">
+        <div className=" text-right flex-row-reverse rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0  lg:flex-col items-end lg:h-rem33 h-full justify-around lg:justify-center w-full lg:w-1/4   bg-white text-gray-800">
           <div
             onClick={() => {
               setTab("hotel");
             }}
             className={`${
               tab === "hotel"
-                ? "flex cursor-pointer  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
-                : "flex cursor-pointer  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
             }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
@@ -216,8 +216,8 @@ export default function AdminPage({ hotels, cities, features }) {
             }}
             className={`${
               tab === "user"
-                ? "flex cursor-pointer  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
-                : "flex cursor-pointer  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
             }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
@@ -231,8 +231,8 @@ export default function AdminPage({ hotels, cities, features }) {
             }}
             className={`${
               tab === "city"
-                ? "flex cursor-pointer  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
-                : "flex cursor-pointer  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
             }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
@@ -246,8 +246,8 @@ export default function AdminPage({ hotels, cities, features }) {
             }}
             className={`${
               tab === "reserve"
-                ? "flex cursor-pointer  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
-                : "flex cursor-pointer  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
             }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
@@ -261,8 +261,8 @@ export default function AdminPage({ hotels, cities, features }) {
             }}
             className={`${
               tab === "websiteInfo"
-                ? "flex cursor-pointer  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
-                : "flex cursor-pointer  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
             }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
@@ -270,7 +270,7 @@ export default function AdminPage({ hotels, cities, features }) {
               <h1 className="lg:text-2xl text-sm  "> اطلاعات سایت </h1>
             </div>
           </div>
-          <div className=" flex lg:mt-0 mt-6 cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-28 w-auto lg:w-full ">
+          <div className="rounded-md flex lg:mt-0 mt-6 cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-28 w-auto lg:w-full ">
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconLogout size={24} />
               <h1 className="lg:text-2xl text-sm  "> خروج </h1>

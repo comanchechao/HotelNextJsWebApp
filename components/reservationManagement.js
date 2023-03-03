@@ -62,12 +62,17 @@ export default function ReservationManagement() {
         <Tabs color="yellow" variant="pills" defaultValue="gallery">
           <Tabs.List className="px-2" position="center" grow>
             <Tabs.Tab
+              color="pink"
               value="messages"
               icon={<IconBuildingSkyscraper size={16} />}
             >
               هتل های من
             </Tabs.Tab>
-            <Tabs.Tab value="gallery" icon={<IconUser size={16} />}>
+            <Tabs.Tab
+              color="indigo"
+              value="gallery"
+              icon={<IconUser size={16} />}
+            >
               همه همکاران
             </Tabs.Tab>
           </Tabs.List>

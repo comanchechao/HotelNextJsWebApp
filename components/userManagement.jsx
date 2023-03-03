@@ -61,13 +61,25 @@ export default function userManagement() {
         </div>
         <Tabs color="yellow" variant="pills" defaultValue="gallery">
           <Tabs.List className="px-2" position="center" grow>
-            <Tabs.Tab value="settings" icon={<IconUserExclamation size={16} />}>
+            <Tabs.Tab
+              color="pink"
+              value="settings"
+              icon={<IconUserExclamation size={16} />}
+            >
               در انتظار
             </Tabs.Tab>
-            <Tabs.Tab value="messages" icon={<IconUserCheck size={16} />}>
+            <Tabs.Tab
+              color="violet"
+              value="messages"
+              icon={<IconUserCheck size={16} />}
+            >
               تایید شده
             </Tabs.Tab>
-            <Tabs.Tab value="gallery" icon={<IconUser size={16} />}>
+            <Tabs.Tab
+              color="indigo"
+              value="gallery"
+              icon={<IconUser size={16} />}
+            >
               همه همکاران
             </Tabs.Tab>
           </Tabs.List>
