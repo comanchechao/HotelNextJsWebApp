@@ -29,19 +29,24 @@ export async function getServerSideProps({ locale }) {
 
   const { data: hotels, error } = await supabase.from("Hotels").select();
   const { data: cities, error2 } = await supabase.from("cities").select();
+  const { data: features, error3 } = await supabase
+    .from("features")
+    .select("title");
 
   if (error) throw error;
   if (error2) throw error2;
+  if (error3) throw error3;
   return {
     props: {
       cities: cities,
       hotels: hotels,
+      features: features,
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
 
-export default function AdminPage({ hotels, cities }) {
+export default function AdminPage({ hotels, cities, features }) {
   const [tab, setTab] = useState("user");
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
@@ -171,7 +176,11 @@ export default function AdminPage({ hotels, cities }) {
           </div> */}
           <div className="w-full h-screen    rounded-md    justify-center items-center">
             {tab === "hotel" ? (
-              <HotelManagement hotels={hotels} cities={cities} />
+              <HotelManagement
+                features={features}
+                hotels={hotels}
+                cities={cities}
+              />
             ) : tab === "user" ? (
               <UserManagement />
             ) : tab === "city" ? (

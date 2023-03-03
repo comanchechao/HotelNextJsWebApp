@@ -26,7 +26,7 @@ const DynamicMap = dynamic(() => import("./map"), {
   ssr: false,
 });
 
-export default function AddHotel({ cities, lat, lng }) {
+export default function AddHotel({ featuresData, cities }) {
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
   const [title, setTitle] = useState("");
@@ -188,6 +188,19 @@ export default function AddHotel({ cities, lat, lng }) {
       cities.forEach((city, i) => {
         if (cityNames.indexOf(city.name) === -1) {
           cityNames.push(city.name);
+        }
+      });
+    }
+  }, []);
+
+  const [allFeatures, setAllFeatures] = useState([]);
+
+  useEffect(() => {
+    console.log(featuresData);
+    if (featuresData) {
+      featuresData.forEach((feature, i) => {
+        if (allFeatures.indexOf(feature.title) === -1) {
+          allFeatures.push(feature.title);
         }
       });
     }
@@ -470,12 +483,7 @@ export default function AddHotel({ cities, lat, lng }) {
                 size="md"
                 value={features}
                 onChange={setFeatures}
-                data={[
-                  { value: "صبحانه", label: "استخر" },
-                  { value: "صبحانه و نهار", label: "خشکشویی" },
-                  { value: "بدون وعده غذایی", label: "اینترنت بی سیم" },
-                  { value: "شام", label: "سونا" },
-                ]}
+                data={allFeatures}
               />
               <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
                 امکانات هتل را انتخاب کنید

@@ -24,7 +24,7 @@ import HotelImage from "./hotelImage";
 const HotelMap = dynamic(() => import("./hotelMap"), {
   ssr: false,
 });
-export default function HotelManagement({ hotels, cities }) {
+export default function HotelManagement({ hotels, cities, features }) {
   return (
     <div className="flex flex-col w-full h-full   ">
       <div className="flex w-full space-y-4 flex-col">
@@ -206,7 +206,7 @@ export default function HotelManagement({ hotels, cities }) {
           </Tabs.Panel>
         </Tabs>
         <div className="absolute right-8 bottom-3">
-          <AddHotel cities={cities} />
+          <AddHotel featuresData={features} cities={cities} />
         </div>
       </div>
     </div>
