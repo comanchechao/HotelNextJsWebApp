@@ -90,23 +90,19 @@ export default function HotelDetailPage({ hotel, comments }) {
   const [singleImage, setSingleImage] = useState("");
 
   const downloadImage1 = async () => {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase.storage
-        .from("/public/hotel-images")
-        .download(hotel.firstImage);
+    setLoading(true);
+    const { data, error } = await supabase.storage
+      .from("/public/hotel-images")
+      .download(hotel.firstImage);
 
-      if (error) {
-        throw error;
-      }
-      const url = URL.createObjectURL(data);
-      setSingleImage(url);
-    } catch (error) {
-      console.log("Error downloading image: ", error.message);
-    } finally {
-      setLoading(false);
-      downloadImage2();
+    if (error) {
+      throw error;
     }
+    const url = URL.createObjectURL(data);
+    setSingleImage(url);
+
+    setLoading(false);
+    downloadImage2();
   };
 
   const downloadImage2 = async () => {
@@ -148,7 +144,6 @@ export default function HotelDetailPage({ hotel, comments }) {
   };
   useEffect(() => {
     downloadImage1();
-    downloadImage2();
   }, []);
 
   // getting reservtion info

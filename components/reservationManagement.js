@@ -9,37 +9,7 @@ import {
 } from "@tabler/icons";
 import ReservationInfo from "./reservationInfo";
 
-export default function ReservationManagement() {
-  let reservations = [
-    {
-      title: "ساحل هتل",
-      name: "محمدی",
-    },
-    {
-      title: "هتل رامسر",
-      name: "محبی",
-    },
-    {
-      title: "مروارید هتل",
-      name: "سشوان",
-    },
-    {
-      title: "هتل استقلال",
-      name: "لیونل",
-    },
-    {
-      title: "انا هتل",
-      name: "لیونل",
-    },
-    {
-      title: "انا هتل",
-      name: "لیونل",
-    },
-    {
-      title: "ستاره هتل",
-      name: "کریمی",
-    },
-  ];
+export default function ReservationManagement({ reservations }) {
   return (
     <div className="flex w-full h-auto   ">
       <div className="flex w-full space-y-4 flex-col">
@@ -87,9 +57,14 @@ export default function ReservationManagement() {
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                       <IconUserCircle size={50} />
                     </div>
-                    <h1 className=" text-sm lg:text-xl">{user.title}</h1>
+                    <h1 className=" text-sm lg:text-xl">{user.hotel_name}</h1>
                     <p className="hidden lg:block">{user.name}</p>
-                    <ReservationInfo />
+                    <ReservationInfo
+                      passengerCount={user.passengerCount}
+                      room={user.room}
+                      hotel={user.hotel_name}
+                      passengers={user.passengers}
+                    />
                   </div>
                 );
               })}
@@ -97,8 +72,8 @@ export default function ReservationManagement() {
           </Tabs.Panel>
 
           <Tabs.Panel value="messages" pt="xs">
-            <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
-              {reservations.map((user, i) => {
+            {/* <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
+              {reservations.passengers.map((user, i) => {
                 return (
                   <div
                     key={i}
@@ -107,13 +82,13 @@ export default function ReservationManagement() {
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                       <IconUserCircle size={50} />
                     </div>
-                    <h1 className=" text-sm lg:text-xl">{user.title}</h1>
-                    <p className="hidden lg:block">{user.name}</p>
+                    <h1 className=" text-sm lg:text-xl">{user.name}</h1>
+                    <p className="hidden lg:block">{user.gender}</p>
                     <ReservationInfo />
                   </div>
                 );
               })}
-            </div>
+            </div> */}
           </Tabs.Panel>
         </Tabs>
       </div>
