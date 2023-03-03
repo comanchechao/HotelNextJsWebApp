@@ -6,7 +6,7 @@ import { RangeSlider } from "@mantine/core";
 import { filterActions } from "../store/filterActivation";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-export default function HotelListMenu() {
+export default function HotelListMenu({ features }) {
   let stars = useSelector((state) => state.filter.stars);
   // let minPrice = useSelector((state) => state.filter.minPrice);
   // let maxPrice = useSelector((state) => state.filter.maxPrice);
@@ -122,83 +122,18 @@ export default function HotelListMenu() {
           </Accordion.Control>
           <Accordion.Panel>
             <div className=" flex text-right   items-end text-xl flex-col justify-center space-y-2">
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="react"
-                label="امکانات برگزاری جلسات و ضیافت"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="svelte"
-                label="زمین تنیس"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="ng"
-                label="زمین گلف"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue"
-                label="خدمات نگهداری نوزاد و کودک"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue2"
-                label="امکانات ویژه برای معلولان"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue3"
-                label="مرکز اسپا و ماساژ"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue4"
-                label="فروشگاه و خرید"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue5"
-                label="سالن بولینگ"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue6"
-                label="حمام ترکی"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue7"
-                label="امکانات غواصی"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue8"
-                label="استخر سرپوشیده"
-              />
+              {features.map((feature, i) => {
+                return (
+                  <Checkbox
+                    key={i}
+                    labelPosition="left"
+                    color="yellow"
+                    radius="xl"
+                    value="react"
+                    label={feature.title}
+                  />
+                );
+              })}
             </div>
           </Accordion.Panel>
         </Accordion.Item>

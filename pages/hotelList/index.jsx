@@ -15,14 +15,17 @@ import HotelListMenu from "../../components/hotelListMenu";
 export async function getServerSideProps({ locale }) {
   // Fetch data from the database
 
+  const { data, error } = await supabase.from("features").select("title");
+
   return {
     props: {
+      features: data,
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
 
-export default function HotelList() {
+export default function HotelList({ features }) {
   const [filters, setFilters] = useState(false);
   const [loading, setLoading] = useState(true);
   const [to, setTo] = useState(4);
@@ -241,7 +244,7 @@ export default function HotelList() {
           className=" w-1/4 h-screen hidden lg:flex opacity-0"
         >
           <div className="w-full h-96 py-6">
-            <HotelListMenu />
+            <HotelListMenu features={features} />
           </div>
         </div>
       </div>
