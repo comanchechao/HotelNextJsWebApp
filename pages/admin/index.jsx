@@ -32,12 +32,17 @@ export async function getServerSideProps({ locale }) {
   const { data: features, error3 } = await supabase
     .from("features")
     .select("title");
+  const { data: reservations, error4 } = await supabase
+    .from("reservations")
+    .select();
 
   if (error) throw error;
   if (error2) throw error2;
   if (error3) throw error3;
+  if (error4) throw error4;
   return {
     props: {
+      reservations: reservations,
       cities: cities,
       hotels: hotels,
       features: features,
@@ -46,7 +51,7 @@ export async function getServerSideProps({ locale }) {
   };
 }
 
-export default function AdminPage({ hotels, cities, features }) {
+export default function AdminPage({ hotels, cities, features, reservations }) {
   const [tab, setTab] = useState("user");
   const [bg, setBg] = useState("");
 
@@ -188,7 +193,7 @@ export default function AdminPage({ hotels, cities, features }) {
             ) : tab === "city" ? (
               <AddCity cities={cities} />
             ) : tab === "reserve" ? (
-              <ReservationManagement />
+              <ReservationManagement reservations={reservations} />
             ) : tab === "websiteInfo" ? (
               <WebsiteInfo />
             ) : null}
