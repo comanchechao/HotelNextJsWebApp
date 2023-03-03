@@ -13,6 +13,7 @@ export default function WebsiteInfo({ cities }) {
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [searchValue, onSearchChange] = useState("");
+
   useEffect(() => {
     IRCities.forEach((city) => {
       if (city.value === value) {
@@ -33,21 +34,31 @@ export default function WebsiteInfo({ cities }) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-start  w-full h-full  ">
-      <div className="py-20 overflow-y-scroll w-full h-full   px-14 bg-white flex flex-col items-center justify-start">
+    <div className="flex flex-col items-center justify-center  w-full h-full  ">
+      <div className="py-20 overflow-y-scroll w-full h-full   px-14 bg-white flex flex-col items-center justify-center">
         <h1 className="border-b-4 pb-4 border-mainBlue my-3">افزودن شهر</h1>
-        <DisplayCities LatLng={[lat, lng]} cities={cities} />
+        <DisplayCities className="z-10" LatLng={[lat, lng]} cities={cities} />
         <div className="flex justify-center items-center w-full h-full">
           <Select
             value={value}
             onChange={setValue}
             onSearchChange={onSearchChange}
             searchValue={searchValue}
-            label="Your favorite framework/library"
-            placeholder="Pick one"
+            label="یک شهر رو انتخاب کنید"
+            placeholder="انتخاب شهر"
             searchable
             nothingFound="No options"
+            dropdownPosition="bottom"
             data={IRCities}
+            transitionDuration={150}
+            transition="pop-top-left"
+            transitionTimingFunction="ease"
+            variant="default"
+            className="text-2xl z-50 mx-6 text-right flex flex-col items-end"
+            radius="md"
+            withAsterisk
+            clearable
+            size="md"
           />
         </div>
         <div className="flex space-y-4 flex-col items-center w-full justify-center">

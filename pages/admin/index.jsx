@@ -48,6 +48,8 @@ export async function getServerSideProps({ locale }) {
 
 export default function AdminPage({ hotels, cities, features }) {
   const [tab, setTab] = useState("user");
+  const [bg, setBg] = useState("");
+
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
 
@@ -191,105 +193,17 @@ export default function AdminPage({ hotels, cities, features }) {
               <WebsiteInfo />
             ) : null}
           </div>
-          <Drawer
-            opened={opened}
-            onClose={() => setOpened(false)}
-            className=""
-            size="lg"
-            overlayOpacity={0.1}
-            overlayBlur={0.1}
-            overlayColor={
-              theme.colorScheme === "dark"
-                ? theme.colors.dark[9]
-                : theme.colors.gray[2]
-            }
-          >
-            <div className=" lg:flex flex-col items-center h-screen justify-center w-full divide-y bg-white text-gray-800">
-              <div className="flex w-full justify-center items-center ">
-                <div className="flex h-24 justify-around items-center w-full">
-                  <div className="w-10 h-10 rounded-full bg-gray-300"></div>
-                  <div className="text-gray-800   text-2xl">
-                    <h1>ادمین</h1>
-                  </div>
-                </div>
-              </div>
-              <div
-                onClick={() => {
-                  setTab("hotel");
-                }}
-                className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-24 w-full "
-              >
-                <div className="flex justify-around items-center  transition   text-gray-800 w-full">
-                  <IconBuildingSkyscraper size={24} />
-                  <h1 className="text-2xl  "> هتل ها </h1>
-                </div>
-              </div>
-              <div
-                onClick={() => {
-                  setTab("user");
-                }}
-                className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-24 w-full "
-              >
-                <div className="flex justify-around items-center  transition   text-gray-800 w-full">
-                  <IconUserCheck size={24} />
-                  <h1 className="text-2xl  "> همکاران </h1>
-                </div>
-              </div>
-              <div
-                onClick={() => {
-                  setTab("city");
-                }}
-                className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-24 w-full "
-              >
-                <div className="flex justify-around items-center  transition   text-gray-800 w-full">
-                  <IconBuildingCommunity size={24} />
-                  <h1 className="text-2xl  "> شهر ها </h1>
-                </div>
-              </div>
-              <div
-                onClick={() => {
-                  setTab("websiteInfo");
-                  console.log(tab);
-                }}
-                className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-28 w-full "
-              >
-                <div className="flex justify-around items-center  transition   text-gray-800 w-full">
-                  <IconUser size={24} />
-                  <h1 className="text-2xl  "> اطلاعات سایت </h1>
-                </div>
-              </div>
-              <div
-                onClick={() => {
-                  setTab("reserve");
-                }}
-                className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-24 w-full "
-              >
-                <div className="flex justify-around items-center  transition   text-gray-800 w-full">
-                  <IconBook size={24} />
-                  <h1 className="text-2xl  "> رزرو ها </h1>
-                </div>
-              </div>
-              <div className="flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-24 w-full ">
-                <div className="flex justify-around items-center  transition   text-gray-800 w-full">
-                  <IconBuildingSkyscraper size={24} />
-                  <h1 className="text-2xl  "> هتل ها </h1>
-                </div>
-              </div>
-              <div className="flex cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-24 w-full ">
-                <div className="flex justify-around items-center  transition   text-gray-800 w-full">
-                  <IconLogout size={24} />
-                  <h1 className="text-2xl  "> خروج </h1>
-                </div>
-              </div>
-            </div>
-          </Drawer>
         </div>
         <div className=" text-right flex-row-reverse lg:py-11  flex   px-5  lg:space-x-0 mt-44   lg:space-y-0 lg:mt-0  lg:flex-col items-end  h-full justify-around lg:justify-center w-full lg:w-1/4 divide-y bg-white text-gray-800">
           <div
             onClick={() => {
               setTab("hotel");
             }}
-            className=" flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full "
+            className={`${
+              tab === "hotel"
+                ? "flex cursor-pointer  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                : "flex cursor-pointer  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+            }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconBuildingSkyscraper size={24} />
@@ -300,7 +214,11 @@ export default function AdminPage({ hotels, cities, features }) {
             onClick={() => {
               setTab("user");
             }}
-            className=" flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-full lg:h-28 w-auto lg:w-full "
+            className={`${
+              tab === "user"
+                ? "flex cursor-pointer  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                : "flex cursor-pointer  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+            }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconUserCheck size={24} />
@@ -311,7 +229,11 @@ export default function AdminPage({ hotels, cities, features }) {
             onClick={() => {
               setTab("city");
             }}
-            className=" flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-full lg:h-28 w-auto lg:w-full "
+            className={`${
+              tab === "city"
+                ? "flex cursor-pointer  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                : "flex cursor-pointer  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+            }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconUserCheck size={24} />
@@ -322,7 +244,11 @@ export default function AdminPage({ hotels, cities, features }) {
             onClick={() => {
               setTab("reserve");
             }}
-            className=" flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-full lg:h-28 w-auto lg:w-full "
+            className={`${
+              tab === "reserve"
+                ? "flex cursor-pointer  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                : "flex cursor-pointer  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+            }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconBook size={24} />
@@ -333,7 +259,11 @@ export default function AdminPage({ hotels, cities, features }) {
             onClick={() => {
               setTab("websiteInfo");
             }}
-            className=" flex cursor-pointer hover:bg-mainBlue ease-in duration-150 transition hover justify-center items-center h-full lg:h-28 w-auto lg:w-full "
+            className={`${
+              tab === "websiteInfo"
+                ? "flex cursor-pointer  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                : "flex cursor-pointer  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+            }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconUser size={24} />
