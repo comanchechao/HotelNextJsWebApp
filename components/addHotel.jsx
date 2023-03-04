@@ -339,7 +339,7 @@ export default function AddHotel({ featuresData, cities }) {
             </div>
             <div className="flex justify-around space-x-4 h-rem22 ">
               <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
-                <div className="w-14 h-14 cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-mainPurple hover:bg-mainPurple">
+                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="firstImage">
                     {uploading ? (
                       <Loader color="grape" />
@@ -356,7 +356,7 @@ export default function AddHotel({ featuresData, cities }) {
                 </div>
               </div>
               <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
-                <div className="w-14 h-14 cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-mainPurple hover:bg-mainPurple">
+                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="fourthImage">
                     {uploading ? (
                       <Loader color="grape" />
@@ -373,7 +373,7 @@ export default function AddHotel({ featuresData, cities }) {
                 </div>
               </div>
               <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
-                <div className="w-14 h-14 cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-mainPurple hover:bg-mainPurple">
+                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="fifthImage">
                     {uploading ? (
                       <Loader color="grape" />
@@ -385,7 +385,7 @@ export default function AddHotel({ featuresData, cities }) {
                 </div>
               </div>
               <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
-                <div className="w-14 h-14 cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-mainPurple hover:bg-mainPurple">
+                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="thirdImage">
                     {uploading ? (
                       <Loader color="grape" />
@@ -402,7 +402,7 @@ export default function AddHotel({ featuresData, cities }) {
                 </div>
               </div>
               <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
-                <div className="w-14 h-14 cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont rounded-full text-center text-mainPurple hover:bg-mainPurple">
+                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="secondImage">
                     {uploading ? (
                       <Loader color="grape" />
@@ -463,7 +463,7 @@ export default function AddHotel({ featuresData, cities }) {
                 transitionDuration={150}
                 transition="pop-top-left"
                 transitionTimingFunction="ease"
-                variant="filled"
+                variant="default"
                 radius="md"
                 size="md"
                 value={city}
@@ -478,7 +478,7 @@ export default function AddHotel({ featuresData, cities }) {
                 transitionDuration={150}
                 transition="pop-top-left"
                 transitionTimingFunction="ease"
-                variant="filled"
+                variant="default"
                 radius="md"
                 size="md"
                 value={features}
@@ -512,7 +512,7 @@ export default function AddHotel({ featuresData, cities }) {
                   setAboutHotel(e.target.value);
                 }}
                 name="about hotel"
-                className="bg-gray-200 rounded-xl w-full"
+                className="bg-gray-200 rounded-md w-full"
                 id=""
                 cols="10"
                 rows="5"
@@ -565,9 +565,9 @@ export default function AddHotel({ featuresData, cities }) {
                 return (
                   <div key={i} className="py-2 flex border rounded-lg">
                     <div className="flex w-full">
-                      <div className="flex flex-col w-full">
+                      <div className="flex items-center justify-around w-full">
                         <div className="flex text-darkPurple justify-center items-around h-full p-1 flex-col w-full">
-                          <div className="flex justify-around text-darkPurple w-14  flex">
+                          <div className="flex justify-around text-darkPurple w-14 space-x-4   ">
                             <p>
                               <IconCirclePlus
                                 onClick={() => {
@@ -584,7 +584,7 @@ export default function AddHotel({ featuresData, cities }) {
                               />
                             </p>
                           </div>
-                          <div className="flex bg-red-500 rounded-full text-white justify-center items-center w-24">
+                          <div className="flex bg-red-500 rounded-md py-2 cursor-pointer transition ease-in duration-200 hover:bg-white hover:text-red-700 text-white justify-center items-center w-24">
                             <IconTrash
                               onClick={() => {
                                 deleteById(room.id);
@@ -634,7 +634,7 @@ export default function AddHotel({ featuresData, cities }) {
                   <div className="flex flex-col  w-full h-full">
                     <div className="flex space-y-2 w-full h-full flex-col">
                       <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
-                        <h3 className="text-xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                        <h3 className="text-2xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
                           عنوان اتاق
                         </h3>
                         <input
@@ -659,7 +659,7 @@ export default function AddHotel({ featuresData, cities }) {
                           transitionDuration={150}
                           transition="pop-top-left"
                           transitionTimingFunction="ease"
-                          variant="filled"
+                          variant="default"
                           radius="md"
                           size="md"
                           searchable
@@ -696,7 +696,7 @@ export default function AddHotel({ featuresData, cities }) {
                           transitionDuration={150}
                           transition="pop-top-left"
                           transitionTimingFunction="ease"
-                          variant="filled"
+                          variant="default"
                           radius="md"
                           size="md"
                           searchable
@@ -759,9 +759,9 @@ export default function AddHotel({ featuresData, cities }) {
                       <div className="flex items-center h-full w-full px-5 justify-between">
                         <div className="flex space-x-1 p-2 justify-center items-center">
                           <h2>ریال</h2>
-                          <h2 className="  text-3xl text-mainPurple">65555</h2>
+                          <h2 className="  text-xl text-mainPurple">65555</h2>
                         </div>
-                        <h1 className="text-lg">قیمت برای هرشب</h1>
+                        <h1 className="text-sm">قیمت برای هرشب</h1>
                       </div>
                     </div>
                     <div className="flex bg-white justify-around divide-y my-1 divide-gray-300 rounded-md flex-col w-full h-44 border">
@@ -798,9 +798,9 @@ export default function AddHotel({ featuresData, cities }) {
                       <div className="flex items-center h-full w-full px-5 justify-between">
                         <div className="flex space-x-1 p-2 justify-center items-center">
                           <h2>ریال</h2>
-                          <h2 className="  text-3xl text-mainPurple">65555</h2>
+                          <h2 className="  text-xl text-mainPurple">65555</h2>
                         </div>
-                        <h1 className="text-lg">قیمت برای هرشب</h1>
+                        <h1 className="text-sm">قیمت برای هرشب</h1>
                       </div>
                     </div>
                   </div>
@@ -830,7 +830,7 @@ export default function AddHotel({ featuresData, cities }) {
           onClick={() => {
             setOpened(true);
           }}
-          className="w-52 py-3 border-2 text-lg text-darkPurple border-r-8 border-mainPurple bg-mainBlue transition ease-in duration-300 font-mainFont rounded-md hover:text-darkPurple hover:bg-gray-50"
+          className="w-52 py-3 border-2 text-lg text-mainPurple border-r-8 border-mainBlue bg-white   transition ease-in duration-300 font-mainFont rounded-md   hover:bg-mainBlue"
         >
           هتل جدید
         </button>

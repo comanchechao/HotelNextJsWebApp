@@ -100,10 +100,10 @@ export default function InfoConfirmation() {
             <Bed className="ml-3" size={45} color="#e0ab19" weight="fill" />
           </h1>
         </div>
-        <div className=" w-5/6 h-28 self-end flex flex-wrap-reverse items-center justify-end  py-4 space-x-5 ">
+        <div className="  lg:flex-row flex-col  lg:self-end flex flex-wrap-reverse items-start justify-center  py-4 space-x-5 ">
           <h5>وعده {room.meal}</h5>
           <h4 className="text-lg">
-            <strong>نام اتاق : </strong>
+            <strong>نام اتاق: </strong>
             {room.title}
           </h4>
           <h4 className="text-lg">
@@ -128,24 +128,32 @@ export default function InfoConfirmation() {
           <h4 className="text-lg">{passengerOne.gender}</h4>
           <h4 className="text-lg">{passengerOne.phoneNumber}</h4>
           <h4 className="text-lg">{passengerOne.name}</h4>
+          <h4 className="text-lg">{passengerOne.socialNumber}</h4>
+
           <h4 className="text-lg">بزرگسال</h4>
         </div>
         <div className="h-16 mb-9 w-full  flex items-center justify-around">
           <h4 className="text-lg">{passengerTwo.gender}</h4>
           <h4 className="text-lg">{passengerTwo.phoneNumber}</h4>
           <h4 className="text-lg">{passengerTwo.name}</h4>
+          <h4 className="text-lg">{passengerTwo.socialNumber}</h4>
+
           <h4 className="text-lg">بزرگسال</h4>
         </div>
         <div className="h-16 mb-9 w-full  flex items-center justify-around">
           <h4 className="text-lg">{passengerThree.gender}</h4>
           <h4 className="text-lg">{passengerThree.phoneNumber}</h4>
           <h4 className="text-lg">{passengerThree.name}</h4>
+          <h4 className="text-lg">{passengerThree.socialNumber}</h4>
+
           <h4 className="text-lg">بزرگسال</h4>
         </div>
         <div className="h-16 mb-9 w-full  flex items-center justify-around">
           <h4 className="text-lg">{passengerFour.gender}</h4>
           <h4 className="text-lg">{passengerFour.phoneNumber}</h4>
           <h4 className="text-lg">{passengerFour.name}</h4>
+          <h4 className="text-lg">{passengerFour.socialNumber}</h4>
+
           <h4 className="text-lg">بزرگسال</h4>
         </div>
       </div>

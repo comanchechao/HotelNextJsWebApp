@@ -27,7 +27,7 @@ function StyledStepper(props) {
         step: {
           padding: 10,
           "@media (max-width: 600px)": {
-            padding: 25,
+            padding: 15,
           },
         },
 

@@ -41,12 +41,12 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
   }
 
   return (
-    <div className="flex flex-col items-end w-96 ">
+    <div className="flex flex-col items-center w-96 ml-9 space-y-7  ">
       <div className="flex flex-row-reverse items-center justify-around w-full">
         {/* latitude: {position.lat.toFixed(4)}, longitude:{" "}
         {position.lng.toFixed(4)}{" "} */}
         <button
-          className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
+          className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white hover:bg-mainBlue   transition ease-in duration-300 text-gray-700 text-lg"
           onClick={onClick}
         >
           به هتل
@@ -170,7 +170,7 @@ export default function ExternalStateExample({
   );
 
   return (
-    <div className="flex lg:flex-row flex-col w-auto items-center justify-center lg:w-full z-10">
+    <div className="flex lg:flex-row flex-col w-auto items-center justify-center lg:w-full z-10 mx-9">
       {displayMap}
       {map ? (
         <DisplayPosition

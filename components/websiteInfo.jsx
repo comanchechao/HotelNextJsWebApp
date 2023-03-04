@@ -1,4 +1,4 @@
-import { Textarea, Tabs, Loader } from "@mantine/core";
+import { Textarea, Tabs, Loader, NumberInput } from "@mantine/core";
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 export default function WebsiteInfo() {
@@ -107,7 +107,7 @@ export default function WebsiteInfo() {
                 onChange={(e) => setAddress(e.target.value)}
               />
               <p className="text-lg self-end">شماره تلفن</p>
-              <Textarea
+              <NumberInput
                 className="text-2xl  text-right w-full"
                 placeholder="شماره تلفن"
                 radius="xs"
@@ -127,7 +127,7 @@ export default function WebsiteInfo() {
                   onChange={(e) => setEmail(e.target.value)}
                 />{" "}
                 <p className="text-lg text-center w-full">ایمیل</p>
-                <Textarea
+                <NumberInput
                   className="text-2xl  text-right w-full"
                   placeholder="کد پستی"
                   radius="xs"
@@ -157,9 +157,9 @@ export default function WebsiteInfo() {
                 onChange={(e) => setAddress(e.target.value)}
               />
               <p className="text-lg self-end">شماره تلفن</p>
-              <Textarea
+              <NumberInput
                 className="text-2xl  text-right w-full"
-                placeholder="تاریخچه و پیشینه"
+                placeholder="شماره تلفن"
                 radius="xs"
                 autosize
                 minRows={1}
@@ -169,7 +169,7 @@ export default function WebsiteInfo() {
               <div className="flex items-center justify-center space-x-9">
                 <Textarea
                   className="text-2xl  text-right w-full"
-                  placeholder="تاریخچه و پیشینه"
+                  placeholder="لینک تلگرام"
                   radius="xs"
                   autosize
                   minRows={1}
@@ -179,7 +179,7 @@ export default function WebsiteInfo() {
                 <p className="text-lg text-center w-full">لینک تلگرام</p>
                 <Textarea
                   className="text-2xl  text-right w-full"
-                  placeholder="تاریخچه و پیشینه"
+                  placeholder="لینک اینستاگرام"
                   radius="xs"
                   autosize
                   minRows={1}

@@ -151,7 +151,7 @@ export default function PassengerInfo() {
                   بزرگسال 1- سرپرست
                 </h2>
               </div>
-              <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+              <form className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
                 <NumberInput
                   onChange={(e) => {
                     setPassengerOneSocialNumber(e.target.value);
@@ -208,7 +208,7 @@ export default function PassengerInfo() {
                   searchable
                   size="md"
                 />
-              </div>
+              </form>
             </div>
           ) : null}
           {passenger >= 2 ? (
@@ -216,7 +216,7 @@ export default function PassengerInfo() {
               <h2 className="items-center mb-4 py-1 font-bold rounded-full  ">
                 بزرگسال2 - سرپرست
               </h2>
-              <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+              <form className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
                 <NumberInput
                   onChange={(e) => {
                     setPassengerTwoSocialNumber(e.target.value);
@@ -272,7 +272,7 @@ export default function PassengerInfo() {
                   searchable
                   size="md"
                 />
-              </div>
+              </form>
             </div>
           ) : null}
           {passenger >= 3 ? (
@@ -280,7 +280,7 @@ export default function PassengerInfo() {
               <h2 className="items-center mb-4 py-1 font-bold rounded-full  ">
                 بزرگسال3 - سرپرست
               </h2>
-              <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+              <form className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
                 <NumberInput
                   onChange={(e) => {
                     setPassengerThreeSocialNumber(e.target.value);
@@ -336,7 +336,7 @@ export default function PassengerInfo() {
                   searchable
                   size="md"
                 />
-              </div>
+              </form>
             </div>
           ) : null}
           {passenger >= 4 ? (
@@ -344,7 +344,7 @@ export default function PassengerInfo() {
               <h2 className="items-center mb-4 py-1 font-bold rounded-full  ">
                 بزرگسال 4- سرپرست
               </h2>
-              <div className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+              <form className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
                 <NumberInput
                   onChange={(e) => {
                     setPassengerFourSocialNumber(e.target.value);
@@ -400,16 +400,16 @@ export default function PassengerInfo() {
                   searchable
                   size="md"
                 />
-              </div>
+              </form>
             </div>
           ) : null}
         </form>
-        <div className="w-full flex items-center justify-around">
+        <div className="w-full flex lg:flex-row flex-col-reverse   items-center justify-center  lg:justify-around">
           <button
             onClick={() => {
               dispatch(reservationActions.decreamentPassenger());
             }}
-            className="px-4 rounded-lg flex items-center justify-center transition ease-in duration-300 hover:bg-gray-200 border-r-8 border-red-500  border  py-2 bg-white text-red-500 text-sm font-mainFont"
+            className="px-4 rounded-md flex items-center justify-center lg:mb-0 mb-4 transition ease-in duration-300 hover:bg-gray-200 border-r-8 border-red-500  border  py-2 bg-white text-red-500 text-sm font-mainFont"
           >
             پاک کردن
             <Minus className="ml-2" size={20} weight="fill" />
@@ -418,7 +418,7 @@ export default function PassengerInfo() {
             onClick={() => {
               dispatch(reservationActions.increasePassenger());
             }}
-            className="px-4 rounded-lg self-end m-4 transition flex justify-center items-center ease-in duration-300 hover:text-white border-2 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-white text-mainPurple text-sm font-mainFont"
+            className="px-4 rounded-md lg:self-end m-4 transition flex justify-center items-center ease-in duration-300 hover:text-white border-2 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-white text-mainPurple text-sm font-mainFont"
           >
             اضافه کردن مسافر
             <Plus className="ml-2" size={20} weight="fill" />

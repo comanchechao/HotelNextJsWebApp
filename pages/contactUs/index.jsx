@@ -2,8 +2,32 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import Image from "next/image";
 import contactUsBg from "../../assets/images/contactUsBg.webp";
+import { supabase } from "../../lib/supabaseClient";
+
+import { useState, useEffect } from "react";
+
 import { Phone, MapPin, Envelope, Signpost } from "phosphor-react";
 export default function ContactUs() {
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  useEffect(() => {
+    getWebsiteInfo();
+  });
+
+  async function getWebsiteInfo() {
+    setLoading(true);
+    const { data } = await supabase.from("websiteInfo").select();
+    data.map((object) => {
+      setEmail(object.email);
+      setAddress(object.address);
+      setPhoneNumber(object.phoneNumber);
+      setPostalCode(object.postalCode);
+    });
+    setLoading(false);
+  }
   return (
     <div className="h-full w-screen bg-gray-200">
       <Navbar />
@@ -35,10 +59,7 @@ export default function ContactUs() {
                     weight="fill"
                   />
                 </h4>
-                <h3 className="text-lg">
-                  خیابان فردوس - کوچه ی دو - رو به روی شیرینی فروشی مالدیو، پلاک
-                  22
-                </h3>
+                <h3 className="text-lg">{address}</h3>
               </div>
               <div className="flex flex-col items-center space-y-2 mt-3">
                 <h4 className="text-xl flex items-center">
@@ -50,7 +71,7 @@ export default function ContactUs() {
                     weight="fill"
                   />
                 </h4>
-                <h3 className="text-lg">۱۳۹۳۷۳۳۶۹۱</h3>
+                <h3 className="text-lg">{postalCode}</h3>
               </div>
             </div>
             <div className="w-1/2 h-44   flex flex-col items-center justify-around">
@@ -64,7 +85,7 @@ export default function ContactUs() {
                     weight="fill"
                   />
                 </h4>
-                <h3 className="text-lg">1223-2323</h3>
+                <h3 className="text-lg">{phoneNumber}</h3>
               </div>
               <div className="flex flex-col items-center space-y-2">
                 <h4 className="text-xl flex items-center">
@@ -76,7 +97,7 @@ export default function ContactUs() {
                     weight="fill"
                   />
                 </h4>
-                <h3 className="text-lg">@chao.comanche.gmail.com</h3>
+                <h3 className="text-lg">{email}</h3>
               </div>
             </div>
           </div>

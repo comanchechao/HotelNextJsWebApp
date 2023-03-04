@@ -423,8 +423,8 @@ export default function HotelDetailPage({ hotel, comments }) {
                     مکان های مهم اطراف هتل
                   </h1>
                 </div>
-                <div className="flex flex-col w-full  p-3 bg-white">
-                  <div className="flex w-full">
+                <div className="flex flex-col w-full justify-around  bg-white">
+                  <div className="flex w-full justify-start items-start">
                     <Suspense
                       fallback={
                         <div>
@@ -444,7 +444,12 @@ export default function HotelDetailPage({ hotel, comments }) {
                 <div className="flex py-8 items-center space-y-6 w-full flex-col  justify-center">
                   <h1 className=" text-gray-800 text-3xl self-end">اتاق ها</h1>
                   <div className="flex border border-gray-300 bg-white justify-center w-full text-lg">
-                    <Tabs color="yellow" defaultValue="first">
+                    <Tabs
+                      radius="xs"
+                      variant="pills"
+                      color="yellow"
+                      defaultValue="first"
+                    >
                       <Tabs.List grow position="center">
                         <Tabs.Tab value="second">
                           <span className="text-lg">صبحانه</span>

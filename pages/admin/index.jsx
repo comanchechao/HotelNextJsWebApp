@@ -52,7 +52,7 @@ export async function getServerSideProps({ locale }) {
 }
 
 export default function AdminPage({ hotels, cities, features, reservations }) {
-  const [tab, setTab] = useState("user");
+  const [tab, setTab] = useState("hotel");
   const [bg, setBg] = useState("");
 
   const [opened, setOpened] = useState(false);
