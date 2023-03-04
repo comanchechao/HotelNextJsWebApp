@@ -1,3 +1,7 @@
+const LocationsMap = dynamic(() => import("./map"), {
+  ssr: false,
+  Suspense: true,
+});
 import { useCallback, useEffect, useState } from "react";
 import {
   Modal,
@@ -21,10 +25,7 @@ import { supabase } from "../lib/supabaseClient";
 import { useSelector, useDispatch } from "react-redux";
 import { roomActions } from "../store/room";
 import AddRoom from "./addRoom";
-
-const DynamicMap = dynamic(() => import("./map"), {
-  ssr: false,
-});
+import { Suspense } from "react";
 
 export default function AddHotel({ featuresData, cities }) {
   const [opened, setOpened] = useState(false);
@@ -473,6 +474,10 @@ export default function AddHotel({ featuresData, cities }) {
                 data={cityNames}
               />
             </div>
+            <div className="">
+              {" "}
+              <LocationsMap city={city} cityLatLng={[mapLat, mapLng]} />
+            </div>
             <div className="flex   w-full h-full text-right justify-between items-center">
               <MultiSelect
                 transitionDuration={150}
@@ -557,9 +562,7 @@ export default function AddHotel({ featuresData, cities }) {
                 rows="10"
               ></textarea>
             </div>
-            <div className="flex p-5 w-full justify-center   items-center">
-              <DynamicMap city={city} cityLatLng={[mapLat, mapLng]} />
-            </div>
+            <div className="flex p-5 w-full justify-center   items-center"></div>
             <div className="flex space-y-1 flex-col">
               {rooms.map((room, i) => {
                 return (

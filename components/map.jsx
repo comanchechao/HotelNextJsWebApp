@@ -341,6 +341,7 @@ export default function ExternalStateExample({ cityLatLng }) {
     <div className="flex flex-col items-center  w-full">
       <MapContainer
         id="map"
+        className='z-0'
         style={{ width: "600px", height: "500px" }}
         center={center}
         zoom={theZoom}

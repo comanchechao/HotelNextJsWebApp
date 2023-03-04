@@ -3,11 +3,13 @@ import dynamic from "next/dynamic.js";
 import { useEffect, useState } from "react";
 import IRCities from "../assets/cities/ir";
 import { supabase } from "../lib/supabaseClient";
+import { Suspense } from "react";
 
-const DisplayCities = dynamic(() => import("./displayMap"), {
-  ssr: false,
-});
 export default function WebsiteInfo({ cities }) {
+  const DisplayCities = dynamic(() => import("./displayMap"), {
+    ssr: false,
+    suspense: true,
+  });
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState(null);
   const [lat, setLat] = useState(null);
