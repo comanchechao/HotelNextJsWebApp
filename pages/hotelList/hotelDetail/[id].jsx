@@ -5,6 +5,10 @@ import { Tabs, Popover, TextInput, Skeleton } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import { supabase } from "../../../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
+import isToday from "dayjs/plugin/isToday.js";
+import utc from "dayjs/plugin/utc.js";
+import timezone from "dayjs/plugin/timezone.js";
+import dayjs from "dayjs";
 import {
   IconChevronLeft,
   IconStar,
@@ -150,6 +154,15 @@ export default function HotelDetailPage({ hotel, comments }) {
 
   const [entering, setEntering] = useState(null);
   const [exiting, setExiting] = useState(null);
+
+  useEffect(() => {
+    dispatch(
+      reservationActions.setEnterting(dayjs(entering).format("YYYY/MM/DD"))
+    );
+    dispatch(
+      reservationActions.setExiting(dayjs(exiting).format("YYYY/MM/DD"))
+    );
+  }, [entering, exiting]);
 
   const dispatch = useDispatch();
   let city = useSelector((state) => state.reserve.city);

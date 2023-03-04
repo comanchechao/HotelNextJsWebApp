@@ -116,7 +116,10 @@ export default function PassengerInfo() {
               <h2>تاریخ ورود</h2>
               <SignIn size={40} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">1401/11/05 - ساعت 14:00:00</h1>
+            <h1 className="font text-lg">
+              {" "}
+              {JSON.stringify(exitDate)}- ساعت 14:00:00
+            </h1>
           </div>
         </div>
         <div className="h-full w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3">

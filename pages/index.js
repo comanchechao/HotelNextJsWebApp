@@ -127,7 +127,7 @@ export default function Home(props) {
   const myDate = dayjs().utcOffset(3.5);
 
   useEffect(() => {
-    console.log(dayjs(dates).local("fa").format());
+    console.log(dayjs(dates[0], { timezone: "Iran" }).local("fa"));
   });
   // const myDateFormatted = myDate.utc().format("MM/DD/YYYY");
   const useStyles = createStyles((theme) => ({
@@ -206,7 +206,7 @@ export default function Home(props) {
                 }`}
                 dropdownType="modal"
                 locale="fa"
-                minDate={dayjs().toDate()}
+                minDate={dayjs().subtract(4, "month")}
                 dropdownPosition="top-start"
                 placeholder={t("inDate")}
                 label={t("inDate")}
@@ -305,8 +305,16 @@ export default function Home(props) {
             <Link href="/hotelList">
               <button
                 onClick={() => {
-                  dispatch(reservationActions.setEnterting(dates[0]));
-                  dispatch(reservationActions.setExiting(dates[1]));
+                  dispatch(
+                    reservationActions.setEnterting(
+                      dayjs(dates[0]).format("YYYY/MM/DD")
+                    )
+                  );
+                  dispatch(
+                    reservationActions.setExiting(
+                      dayjs(dates[1]).format("YYYY/MM/DD")
+                    )
+                  );
                   dispatch(reservationActions.setCity(selectedCity));
                 }}
                 className="px-14 rounded-lg transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
