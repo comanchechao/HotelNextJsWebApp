@@ -39,8 +39,8 @@ export default function WebsiteInfo() {
     setLoading(false);
   }
   return (
-    <div className="flex flex-col items-center justify-start pt-5 w-full h-auto  ">
-      <div className="   w-full h-full  py-20 lg:px-14 bg-white flex flex-col items-center justify-start">
+    <div className="flex flex-col items-center justify-start pt-5 w-full h-screen  ">
+      <div className="   w-full lg:py-20 h-carousel lg:px-14 bg-white flex flex-col items-center lg:justify-center">
         <h1 className="border-b-4 pb-4 border-mainBlue my-3">
           تغییر اطلاعات وبسایت
         </h1>
@@ -73,7 +73,7 @@ export default function WebsiteInfo() {
                 placeholder="درباره بوتک"
                 radius="xs"
                 autosize
-                minRows={7}
+                minRows={5}
                 withAsterisk
                 onChange={(e) => setAboutUs(e.target.value)}
               />
@@ -83,7 +83,7 @@ export default function WebsiteInfo() {
                 placeholder="تاریخچه و پیشینه"
                 radius="xs"
                 autosize
-                minRows={8}
+                minRows={5}
                 withAsterisk
                 onChange={(e) => setAboutUsMore(e.target.value)}
               />
@@ -146,7 +146,7 @@ export default function WebsiteInfo() {
               <div className="flex w-full items-start justify-end">
                 <h3 className="text-3xl">فوتر</h3>
               </div>
-              <p className="text-lg self-end">آدرس</p>
+              {/* <p className="text-lg self-end">آدرس</p>
               <Textarea
                 className="text-2xl  text-right w-full"
                 placeholder="آدرس"
@@ -165,7 +165,7 @@ export default function WebsiteInfo() {
                 minRows={1}
                 withAsterisk
                 onChange={(e) => setPhoneNumber(e.target.value)}
-              />
+              /> */}
               <div className="flex items-center justify-center space-x-9">
                 <Textarea
                   className="text-2xl  text-right w-full"
