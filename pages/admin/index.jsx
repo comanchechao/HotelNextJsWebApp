@@ -63,132 +63,8 @@ export default function AdminPage({ hotels, cities, features, reservations }) {
       <Navbar />
       <div className="flex  w-full h-screen lg:flex-row flex-col-reverse lg:pt-20 pt-40  items-center justify-center lg:space-x-5 lg:px-36 py-20 lg:py-36 ">
         <div className="flex   lg:px-12 lg:py-24     flex-col w-full px-5 lg:w-3/4 h-screen     lg:h-screen ">
-          {/* <div className="flex   bg-white   h-auto lg:justify-end justify-between w-full items-center">
-            <div className="lg:hidden flex px-2 justify-center items-center">
-              <IconMenu2
-                onClick={() => setOpened(true)}
-                size={32}
-                className="text-gray-900"
-              />
-            </div>
-
-            <div className="flex   h-full items-center justify-around">
-              <div className="flex justify-center items-center h-full">
-                <Menu
-                  trigger="hover"
-                  openDelay={100}
-                  closeDelay={200}
-                  shadow="md"
-                  width={200}
-                >
-                  <Menu.Target>
-                    <Button className="hover:bg-gray-100 font-normal text-lg transition text-gray-900 w-full h-full rounded-none">
-                      شهر ها
-                    </Button>
-                  </Menu.Target>
-
-                  <Menu.Dropdown className="text-right">
-                    <Menu.Label>شهر های ایران</Menu.Label>
-                    {cities.map((city) => {
-                      return (
-                        <Menu.Item
-                          key={city.id}
-                          className="font-medium text-right"
-                          icon={<IconBuildingSkyscraper size={14} />}
-                        >
-                          {city.name}
-                        </Menu.Item>
-                      );
-                    })}
-
-                    <Menu.Divider />
-
-                    <Menu.Label>شهر های ترکیه</Menu.Label>
-                    <Menu.Item
-                      className="font-medium text-right"
-                      icon={<IconBuildingSkyscraper size={14} />}
-                    >
-                      استانبول
-                    </Menu.Item>
-                    <Menu.Item
-                      className="font-medium text-right"
-                      icon={<IconBuildingSkyscraper size={14} />}
-                    >
-                      استانبول
-                    </Menu.Item>
-                    <Menu.Item
-                      className="font-medium text-right"
-                      icon={<IconBuildingSkyscraper size={14} />}
-                    >
-                      استانبول
-                    </Menu.Item>
-
-                    <Menu.Divider />
-
-                    <Menu.Label>افزودن هتل</Menu.Label>
-                    <Menu.Item className="font-medium text-right">
-                      <button className="w-full py-4 bg-mainPurple border-r-8 border-mainBlue transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue">
-                        شهر جدید
-                      </button>
-                    </Menu.Item>
-                  </Menu.Dropdown>
-                </Menu>
-              </div>
-
-              <div className="flex h-full">
-                <Menu
-                  trigger="hover"
-                  openDelay={100}
-                  closeDelay={200}
-                  shadow="md"
-                  width={200}
-                >
-                  <Menu.Target>
-                    <Button className="hover:bg-gray-100 font-normal text-lg hover:text-gray-900 transition w-full h-full rounded-none text-gray-900">
-                      مرتب سازی
-                    </Button>
-                  </Menu.Target>
-
-                  <Menu.Dropdown>
-                    <Menu.Label>بروز رسانی</Menu.Label>
-                    <Menu.Item
-                      className="text-right"
-                      icon={<IconSortAscending size={14} />}
-                    >
-                      تازه ترین
-                    </Menu.Item>
-                    <Menu.Item
-                      className="text-right"
-                      icon={<IconSortDescending2 size={14} />}
-                    >
-                      قدیمی ترین
-                    </Menu.Item>
-                    <Menu.Label>ستاره ها</Menu.Label>
-                    <Menu.Item
-                      className="text-right"
-                      icon={<IconStars size={14} />}
-                    >
-                      بیشترین
-                    </Menu.Item>
-                    <Menu.Item
-                      className="text-right"
-                      icon={<IconStarsOff size={14} />}
-                    >
-                      کمترین
-                    </Menu.Item>
-                  </Menu.Dropdown>
-                </Menu>
-              </div>
-            </div>
-          </div> */}
           <div className="w-full h-screen    rounded-md    justify-center items-center">
-            {tab === "hotel" ? (
-              <HotelManagement
-                features={features}
-                hotels={hotels}
-                cities={cities}
-              />
-            ) : tab === "user" ? (
+            {tab === "user" ? (
               <UserManagement />
             ) : tab === "city" ? (
               <AddCity cities={cities} />
@@ -196,6 +72,12 @@ export default function AdminPage({ hotels, cities, features, reservations }) {
               <ReservationManagement reservations={reservations} />
             ) : tab === "websiteInfo" ? (
               <WebsiteInfo />
+            ) : tab === "hotel" ? (
+              <HotelManagement
+                features={features}
+                hotels={hotels}
+                cities={cities}
+              />
             ) : null}
           </div>
         </div>

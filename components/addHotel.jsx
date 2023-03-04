@@ -143,46 +143,29 @@ export default function AddHotel({ featuresData, cities }) {
   });
 
   async function handleSubmit() {
-    const { data, error } = await supabase
-      .from("Hotels")
-      .insert({
-        title: title,
-        firstImage: firstImage,
-        secondImage: secondImage,
-        thirdImage: thirdImage,
-        fourthImage: fourthImage,
-        features: features,
-        prices: avragePrice,
-        address: address,
-        stars: value,
-        rooms: rooms,
-        locationLat: getlat,
-        locationLng: getLng,
-        firstLocation: {
-          name: marker2,
-          lat: lat2,
-          lng: lng2,
-        },
-        secondLocation: {
-          name: marker3,
-          lat: lat3,
-          lng: lng3,
-        },
-        aboutHotel: aboutHotel,
-        enteringHours: enteringHours,
-        exitingHours: exitingHours,
-      })
-      .select("id");
-    console.log(
-      "title:",
-      title,
-      "features",
-      features,
-      "stars",
-      value,
-      "hotel id",
-      data
-    );
+    const { data, error } = await supabase.from("Hotels").insert({
+      title: title,
+      firstImage: firstImage,
+      secondImage: secondImage,
+      thirdImage: thirdImage,
+      fourthImage: fourthImage,
+      features: features,
+      prices: avragePrice,
+      stars: value,
+      rooms: rooms,
+      locationLat: getlat,
+      locationLng: getLng,
+      firstLocation: {
+        name: marker2,
+        lat: lat2,
+        lng: lng2,
+      },
+      secondLocation: {
+        name: marker3,
+        lat: lat3,
+        lng: lng3,
+      },
+    });
   }
   useEffect(() => {
     if (cities) {
