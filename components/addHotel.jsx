@@ -1,7 +1,7 @@
-const LocationsMap = dynamic(() => import("./map"), {
-  ssr: false,
-  Suspense: true,
-});
+// const LocationsMap = dynamic(() => import("./map"), {
+//   ssr: false,
+//   Suspense: true,
+// });
 import { useCallback, useEffect, useState } from "react";
 import {
   Modal,
@@ -457,10 +457,10 @@ export default function AddHotel({ featuresData, cities }) {
                 data={cityNames}
               />
             </div>
-            <div className="">
+            {/* <div className="">
               {" "}
               <LocationsMap city={city} cityLatLng={[mapLat, mapLng]} />
-            </div>
+            </div> */}
             <div className="flex   w-full h-full text-right justify-between items-center">
               <MultiSelect
                 transitionDuration={150}

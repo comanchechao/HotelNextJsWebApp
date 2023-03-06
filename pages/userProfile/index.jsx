@@ -6,7 +6,33 @@ import ProfileInfo from "../../components/profileInfo";
 import PaymentHistory from "../../components/paymentHistory";
 import SupportRequest from "../../components/supportRequest";
 import ReservationList from "../../components/reservationList";
-export default function UserProfile() {
+import { supabase } from "../../lib/supabaseClient";
+
+export async function getServerSideProps({ req }) {
+  const refreshToken = req.cookies["my-refresh-token"];
+  const accessToken = req.cookies["my-access-token"];
+
+  if (refreshToken && accessToken) {
+    await supabase.auth.setSession({
+      refresh_token: refreshToken,
+      access_token: accessToken,
+    });
+  } else {
+    // make sure you handle this case!
+    throw new Error("User is not authenticated.");
+  }
+
+  // returns user information
+
+  if (!(await supabase.auth.getUser())) {
+    // If no user, redirect to index.
+    return { props: {}, redirect: { destination: "/", permanent: false } };
+  }
+
+  // If there is a user, return it.
+  return { props: {} };
+}
+export default function UserProfile({ user }) {
   const [tab, setTab] = useState("Profile");
   return (
     <div className="h-auto w-screen bg-gray-100">

@@ -24,6 +24,10 @@
     "@mantine/notifications": "^5.10.0",
     "@next/font": "13.1.1",
     "@reduxjs/toolkit": "^1.9.2",
+    "@supabase/auth-helpers-nextjs": "^0.5.5",
+    "@supabase/auth-helpers-react": "^0.3.1",
+    "@supabase/auth-ui-react": "^0.3.3",
+    "@supabase/auth-ui-shared": "^0.1.2",
     "@supabase/supabase-js": "^2.6.0",
     "@tabler/icons": "^1.119.0",
     "daisyui": "^2.46.1",
@@ -42,9 +46,11 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.4",
     "react-leaflet": "^4.2.0",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "swr": "^2.0.4"
   },
   "devDependencies": {
+    "@types/node": "18.14.6",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4"

@@ -23,9 +23,16 @@ import { supabase } from "../../lib/supabaseClient.js";
 import WebsiteInfo from "../../components/websiteInfo";
 import AddCity from "../../components/addCity";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router.js";
 
-export async function getServerSideProps({ locale }) {
+export async function getServerSideProps(context) {
   // Fetch data from the database
+
+  const { data: session, error5 } = await supabase.auth.api.getUserByCookie(
+    context.req
+  );
+
+  console.log(session);
 
   const { data: hotels, error } = await supabase.from("Hotels").select();
   const { data: cities, error2 } = await supabase.from("cities").select();
@@ -43,20 +50,41 @@ export async function getServerSideProps({ locale }) {
   return {
     props: {
       reservations: reservations,
+      session: session,
       cities: cities,
       hotels: hotels,
       features: features,
-      ...(await serverSideTranslations(locale, ["common"])),
+      ...(await serverSideTranslations(context.locale, ["common"])),
     },
   };
 }
 
-export default function AdminPage({ hotels, cities, features, reservations }) {
-  const [tab, setTab] = useState("hotel");
+export default function AdminPage({
+  session,
+  hotels,
+  cities,
+  features,
+  reservations,
+}) {
+  const router = useRouter();
+  const [tab, setTab] = useState("users");
   const [bg, setBg] = useState("");
+
+  useEffect(() => {
+    console.log(session);
+  });
 
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
+  const user = session;
+
+  if (user === null) {
+    return (
+      <>
+        <div>you should not be here</div>
+      </>
+    );
+  }
 
   return (
     <div className="w-screen h-auto bg-gray-100 overflow-y-hidden">
@@ -72,12 +100,6 @@ export default function AdminPage({ hotels, cities, features, reservations }) {
               <ReservationManagement reservations={reservations} />
             ) : tab === "websiteInfo" ? (
               <WebsiteInfo />
-            ) : tab === "hotel" ? (
-              <HotelManagement
-                features={features}
-                hotels={hotels}
-                cities={cities}
-              />
             ) : null}
           </div>
         </div>

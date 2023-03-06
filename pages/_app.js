@@ -3,11 +3,15 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { appWithTranslation } from "next-i18next";
+import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import "../styles/transition.css";
 import Transitions from "../components/Transitions";
 import store from "../store/index";
+import { useState } from "react";
 import { Provider } from "react-redux";
 function App({ Component, pageProps }) {
+  const [supabaseClient] = useState(() => createBrowserSupabaseClient());
   return (
     <>
       <Head>
@@ -31,11 +35,16 @@ function App({ Component, pageProps }) {
           colorScheme: "light",
         }}
       >
-        <Transitions>
-          <Provider store={store}>
-            <Component {...pageProps} />
-          </Provider>
-        </Transitions>
+        <SessionContextProvider
+          supabaseClient={supabaseClient}
+          initialSession={pageProps.initialSession}
+        >
+          <Transitions>
+            <Provider store={store}>
+              <Component {...pageProps} />
+            </Provider>
+          </Transitions>
+        </SessionContextProvider>
       </MantineProvider>
     </>
   );
