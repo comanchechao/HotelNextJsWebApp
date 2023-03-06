@@ -28,12 +28,6 @@ import { useRouter } from "next/router.js";
 export async function getServerSideProps(context) {
   // Fetch data from the database
 
-  const { data: session, error5 } = await supabase.auth.api.getUserByCookie(
-    context.req
-  );
-
-  console.log(session);
-
   const { data: hotels, error } = await supabase.from("Hotels").select();
   const { data: cities, error2 } = await supabase.from("cities").select();
   const { data: features, error3 } = await supabase
@@ -50,7 +44,6 @@ export async function getServerSideProps(context) {
   return {
     props: {
       reservations: reservations,
-      session: session,
       cities: cities,
       hotels: hotels,
       features: features,
@@ -100,6 +93,12 @@ export default function AdminPage({
               <ReservationManagement reservations={reservations} />
             ) : tab === "websiteInfo" ? (
               <WebsiteInfo />
+            ) : tab === "hotel" ? (
+              <HotelManagement
+                hotels={hotels}
+                cities={cities}
+                features={features}
+              />
             ) : null}
           </div>
         </div>
