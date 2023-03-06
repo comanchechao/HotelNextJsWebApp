@@ -52,7 +52,7 @@ export async function getServerSideProps({ locale }) {
 }
 
 export default function AdminPage({ hotels, cities, features, reservations }) {
-  const [tab, setTab] = useState("users");
+  const [tab, setTab] = useState("hotel");
   const [bg, setBg] = useState("");
 
   const [opened, setOpened] = useState(false);
@@ -61,7 +61,7 @@ export default function AdminPage({ hotels, cities, features, reservations }) {
   return (
     <div className="w-screen h-auto bg-gray-100 overflow-y-hidden">
       <Navbar />
-      <div className="flex  w-full h-screen lg:flex-row flex-col-reverse lg:pt-20 pt-40  items-center justify-center lg:space-x-5 lg:px-36 py-20 lg:py-36 ">
+      <div className="flex  w-full h-screen lg:flex-row flex-col-reverse lg:pt-20 pt-44  items-center justify-center lg:space-x-20 lg:px-20 py-20 lg:py-36 ">
         <div className="flex   lg:px-12 lg:py-24     flex-col w-full px-5 lg:w-3/4 h-screen     lg:h-screen ">
           <div className="w-full h-screen    rounded-md    justify-center items-center">
             {tab === "user" ? (

@@ -10,15 +10,15 @@ export default function RoomCard({ room, hotelDetail }) {
   const dispatch = useDispatch();
   {
     return (
-      <div className="flex border border-gray-300 bg-white lg:flex-row flex-col justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-60">
+      <div className="flex border border-gray-300 bg-white lg:flex-row flex-col justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-44">
         <div className="h-full lg:w-1/4 flex flex-col items-center justify-around py-8 ">
           <div className="flex space-x-1 p-2 justify-center items-center">
             <h2>ریال</h2>
-            <h2 className="  text-3xl text-mainPurple">
+            <h2 className="  text-xl text-mainPurple">
               {JSON.stringify(room.price)}
             </h2>
           </div>
-          <h1 className="text-lg">قیمت برای 1 شب</h1>
+          <h1 className="text-sm">قیمت برای 1 شب</h1>
           <Link href="/checkout">
             <button
               onClick={() => {

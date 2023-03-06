@@ -162,7 +162,12 @@ export default function HotelDetailPage({ hotel, comments }) {
           "top-10"
         );
       } else {
-        myDivRef.current.classList.remove("fixed", "left-24", "inset-y-0");
+        myDivRef.current.classList.remove(
+          "fixed",
+          "left-24",
+          "inset-y-0",
+          "top-10"
+        );
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -272,8 +277,8 @@ export default function HotelDetailPage({ hotel, comments }) {
                     <p>اول بند ، روبه روی خیابان گلشهر</p>
                   </div>
                   <div className="flex justify-center items-center space-x-2">
-                    <p className="text-base">ستاره</p>
-                    <p className="text-base">{hotel.stars}</p>
+                    <p className="text-sm">ستاره</p>
+                    <p className="text-sm">{hotel.stars}</p>
                     <IconStar />
                   </div>
                 </div>
@@ -457,7 +462,7 @@ export default function HotelDetailPage({ hotel, comments }) {
                   </div>
                 </div>
                 <div className="flex py-4 mt-10 items-center space-x-1 w-full justify-between ">
-                  <h1 className="  text-mainPurple   text-xs cursor-pointer hover:text-blue-800">
+                  <h1 className="  text-mainPurple   text-sm cursor-pointer hover:text-blue-800">
                     تغییر موقعیت
                   </h1>
                   <h1 className="  text-gray-900 text-lg ">
@@ -484,7 +489,7 @@ export default function HotelDetailPage({ hotel, comments }) {
                 </div>
                 <div className="flex py-8 items-center space-y-6 w-full flex-col  justify-center">
                   <h1 className=" text-gray-800 text-2xl self-end">اتاق ها</h1>
-                  <div className="flex border border-gray-300 bg-white justify-center w-full text-base">
+                  <div className="flex border border-gray-300 bg-white justify-center w-full text-sm">
                     <Tabs
                       radius="xs"
                       variant="pills"
@@ -493,13 +498,13 @@ export default function HotelDetailPage({ hotel, comments }) {
                     >
                       <Tabs.List grow position="center">
                         <Tabs.Tab value="second">
-                          <span className="text-base">صبحانه</span>
+                          <span className="text-sm">صبحانه</span>
                         </Tabs.Tab>
                         <Tabs.Tab value="third">
-                          <span className="text-base">بدون وعده غذایی</span>
+                          <span className="text-sm">بدون وعده غذایی</span>
                         </Tabs.Tab>
                         <Tabs.Tab value="first">
-                          <span className="text-base">همه موارد</span>
+                          <span className="text-sm">همه موارد</span>
                         </Tabs.Tab>
                       </Tabs.List>
                     </Tabs>
@@ -508,7 +513,7 @@ export default function HotelDetailPage({ hotel, comments }) {
                     return <RoomCard hotelDetail={hotel} key={i} room={room} />;
                   })}
                   <div className="flex justify-around">
-                    <button className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont">
+                    <button className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-base font-mainFont">
                       بیشتر نشونم بده
                     </button>
                   </div>
@@ -516,7 +521,7 @@ export default function HotelDetailPage({ hotel, comments }) {
                 <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
                   <h1 className="  text-gray-700 text-xl">قوانین و مقررات </h1>
                 </div>
-                <div className="flex divide-x divide-gray-300 p-5 border border-gray-300 rounded-md bg-white">
+                <div className="flex divide-x divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm">
                   <div className="flex justify-end text-right px-4 w-full h-full">
                     <ul>
                       <li>هزینه های جانبی</li>
@@ -544,7 +549,7 @@ export default function HotelDetailPage({ hotel, comments }) {
                 <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
                   <h1 className="  text-gray-700 text-xl">درباره هتل آنا </h1>
                 </div>
-                <div className="flex text-right p-5 border border-gray-300 rounded-md bg-white">
+                <div className="flex text-right p-5 border border-gray-300 rounded-md bg-white text-sm">
                   <p>
                     گزینه‌ای بسیار مطلوب برای کسانی است که هم هتلی مجلل و شیک
                     می‌خواهند و هم دلشان می‌خواهد به مرکز شهر، شرکت‌های خصوصی و
