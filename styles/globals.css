@@ -27,35 +27,27 @@ html,
 body {
   overflow-x: hidden;
 }
-
-/* @font-face {
-  font-family: "SultanFont";
-  src: url("../src/assets/fonts/Cookie-Regular.ttf");
-  font-style: normal;
-  font-display: swap;
-
-  unicode-range: U+0020-007F;
+input {
+  font-family: "Roboto", "IranSans";
 }
-
-@font-face {
-  font-family: "Rezvan";
-  src: url("../src/assets/fonts/Qs_Iranyekan.ttf");
-  font-style: normal;
-  font-weight: 700;
-
-  font-display: swap;
-} */
-.mantine-MultiSelect-values {
+.mantine-MultiSelect-item {
   font-family: "Roboto", "IranSans";
   text-align: right;
   display: flex;
-  align-items: end;
+  align-items: flex-start;
+  justify-content: end;
+}
+
+.mantine-MultiSelect-searchInput {
+  font-family: "Roboto", "IranSans";
+  display: flex;
+  flex-direction: row;
 }
 .mantine-MultiSelect-wrapper {
   font-family: "Roboto", "IranSans";
   text-align: right;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 .mantine-TextInput-error {
   font-family: "Roboto", "IranSans";

@@ -41,8 +41,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-base text-right px-12 leading-relaxed"
-                : "text-gray-500 flex items-end text-base text-left px-12 leading-relaxed"
+                ? "text-gray-500 flex items-end text-sm text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-sm text-left px-12 leading-relaxed"
             }`}
           >
             {t("A1")}
@@ -67,8 +67,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-base text-right px-12 leading-relaxed"
-                : "text-gray-500 flex items-end text-base text-left px-12 leading-relaxed"
+                ? "text-gray-500 flex items-end text-sm text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-sm text-left px-12 leading-relaxed"
             }`}
           >
             {t("A2")}
@@ -93,8 +93,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-base text-right px-12 leading-relaxed"
-                : "text-gray-500 flex items-end text-base text-left px-12 leading-relaxed"
+                ? "text-gray-500 flex items-end text-sm text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-sm text-left px-12 leading-relaxed"
             }`}
           >
             {t("A3")}
@@ -116,7 +116,7 @@ export default function Faq() {
           </span>
         </Accordion.Control>
         <Accordion.Panel>
-          <span className="  text-gray-500 flex justify-end text-lg text-right px-12">
+          <span className="  text-gray-500 flex justify-end text-sm text-right px-12">
             {t("A4")}
           </span>
         </Accordion.Panel>
@@ -139,8 +139,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-base text-right px-12 leading-relaxed"
-                : "text-gray-500 flex items-end text-base text-left px-12 leading-relaxed"
+                ? "text-gray-500 flex items-end text-sm text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-sm text-left px-12 leading-relaxed"
             }`}
           >
             {t("A5")}
@@ -162,7 +162,7 @@ export default function Faq() {
           </span>
         </Accordion.Control>
         <Accordion.Panel>
-          <span className="  text-gray-500 flex justify-end text-lg text-right px-12">
+          <span className="  text-gray-500 flex justify-end text-sm text-right px-12">
             {t("A6")}
           </span>
         </Accordion.Panel>
@@ -185,8 +185,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-base text-right px-12 leading-relaxed"
-                : "text-gray-500 flex items-end text-base text-left px-12 leading-relaxed"
+                ? "text-gray-500 flex items-end text-sm text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-sm text-left px-12 leading-relaxed"
             }`}
           >
             {t("A7")}
@@ -211,8 +211,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-500 flex items-end text-base text-right px-12 leading-relaxed"
-                : "text-gray-500 flex items-end text-base text-left px-12 leading-relaxed"
+                ? "text-gray-500 flex items-end text-sm text-right px-12 leading-relaxed"
+                : "text-gray-500 flex items-end text-sm text-left px-12 leading-relaxed"
             }`}
           >
             {t("A8")}
@@ -234,7 +234,7 @@ export default function Faq() {
           </span>
         </Accordion.Control>
         <Accordion.Panel>
-          <span className="  text-gray-500 flex justify-end text-lg text-right px-12">
+          <span className="  text-gray-500 flex justify-end text-sm text-right px-12">
             {t("A9")}
           </span>
         </Accordion.Panel>

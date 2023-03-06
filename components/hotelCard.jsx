@@ -18,7 +18,7 @@ export default function HotelCard({ hotel }) {
 
   const dispatch = useDispatch();
   return (
-    <div className=" w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row flex-col-reverse justify-between items-center ">
+    <div className=" w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row flex-col-reverse justify-between items-center border ">
       <div className="w-56 h-full flex flex-col p-4 items-center justify-center space-y-2">
         <h2 className="text-mainPurple text-lg flex items-center justify-center">
           <p className="text-xs mx-2">تومان</p>

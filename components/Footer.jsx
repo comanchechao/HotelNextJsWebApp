@@ -44,7 +44,7 @@ export default function Footer() {
         </div>
         <div className="lg:w-1/2 lg:h-3/5 w-full h-auto flex items-start py-6 justify-around">
           <div className="flex items-end flex-col space-y-1">
-            <h3 className="font-bold text-lg my-1">هتل</h3>
+            <h3 className="font-bold text-base my-1">هتل</h3>
             <Link
               className="transition ease-in duration-200 hover:text-mainBlue"
               href="/aboutUs"
@@ -65,7 +65,7 @@ export default function Footer() {
             </Link> */}
           </div>
           <div className="flex  items-end flex-col space-y-1">
-            <h3 className="font-bold text-lg my-1">تماس با مشتریان</h3>
+            <h3 className="font-bold text-base my-1">تماس با مشتریان</h3>
             {/* <Link
               className="transition ease-in duration-200 hover:text-mainBlue"
               href="/"
@@ -127,7 +127,7 @@ export default function Footer() {
             weight="fill"
           />
         </div>
-        <h4 className="text-gray-600 text-lg">کلیه حقوق این سرویس محفوظ است</h4>
+        <h4 className="text-gray-600 text-xs">کلیه حقوق این سرویس محفوظ است</h4>
       </div>
     </div>
   );
