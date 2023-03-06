@@ -1,11 +1,10 @@
 {
-  "inhabitancy": "Konaklama",
   "aboutUs": "Hakkımızda",
   "contactUs": "Bize Ulaşın",
   "home": "Ev",
   "admin": "Yönetici",
   "profile": "Hesap",
-  "hotel": "Otel",
+  "hotel": "Otel Konaklama",
   "accountInfo": "Hesap Bilgileri",
   "logOut": "Hesaptan çıkış",
   "logIn": "Giriş yap / Kayıt ol",

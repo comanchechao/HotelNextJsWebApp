@@ -135,7 +135,7 @@ export default function HotelDetail({ hotel }) {
   return (
     <div className="w-full h-full">
       <Navbar />
-      <div className="flex pt-10 flex-col w-full px-20 bg-gray-200">
+      <div className="flex pt-10 flex-col w-full px-20 bg-gray-100">
         <div className="flex w-full overflow-x-scroll">
           {images.map((image, i) => {
             return <Image key={i} alt="" className="h-96 w-96" src={image} />;
@@ -183,7 +183,7 @@ export default function HotelDetail({ hotel }) {
             </Tabs>
           </div>
         </div>
-        <div className="p-4 bg-gray-200 flex space-y-3 flex-col lg:px-20 w-full">
+        <div className="p-4 bg-gray-100 flex space-y-3 flex-col lg:px-20 w-full">
           {hotel.rooms.map((room, i) => {
             return (
               <div
@@ -225,7 +225,7 @@ export default function HotelDetail({ hotel }) {
           </h1>
           <h1 className="  text-gray-700 text-2xl">امکانات و ویژگی ها</h1>
         </div>
-        <div className="flex w-full bg-gray-200 px-4 lg:px-20 flex-col">
+        <div className="flex w-full bg-gray-100 px-4 lg:px-20 flex-col">
           <div className="rounded-md bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  m-4 ">
             <div className="flex px-3 justify-between items-center">
               <h2>
@@ -382,7 +382,7 @@ export default function HotelDetail({ hotel }) {
           </h1>
           <h1 className="   text-gray-700 text-2xl">مکان و موقیت </h1>
         </div>
-        <div className="flex bg-gray-200 items-center   justify-center p-5">
+        <div className="flex bg-gray-100 items-center   justify-center p-5">
           <div className="flex  items-center   justify-center">
             <DynamicMap
               secondLocation={hotel.secondLocation}
@@ -395,7 +395,7 @@ export default function HotelDetail({ hotel }) {
         <div className="flex h-full p-5 items-center space-x-1 w-full justify-end bg-white">
           <h1 className="  text-gray-700 text-2xl">قوانین و مقررات </h1>
         </div>
-        <div className="flex py-5  bg-gray-200  justify-center w-full">
+        <div className="flex py-5  bg-gray-100  justify-center w-full">
           <div className="flex rounded-md   flex-col w-full bg-gray-50">
             <div className="flex p-2 justify-end  h-18 w-full">
               <div className="p-5  flex justify-end w-full lg:w-1/2">
@@ -481,7 +481,7 @@ export default function HotelDetail({ hotel }) {
         <div className="flex p-5 bg-white items-center space-x-1 w-full justify-end">
           <h1 className="  text-gray-700 text-2xl">درباره هتل </h1>
         </div>
-        <div className="flex py-5  bg-gray-200  justify-center w-full">
+        <div className="flex py-5  bg-gray-100  justify-center w-full">
           <div className="flex rounded-md   flex-col w-full bg-gray-50">
             <div className="p-5 flex w-full flex-col">
               <div className="flex  w-full justify-end items-center">

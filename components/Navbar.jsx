@@ -54,37 +54,22 @@ export default function Navbar() {
       ref={boxRef}
       className=" w-screen h-16 opacity-0 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-52"
     >
-      <div className="text-lg flex items-center space-x-4">
-        <div className="dropdown">
-          <label
-            tabIndex={0}
-            className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
-          >
-            <CaretDown className="mx-2" size={20} weight="bold" />
-            {t("inhabitancy")}
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu  text-right bg-white rounded-sm     w-auto"
-          >
-            <li className="text-gray-900 ">
-              <Link
-                href="/hotelList"
-                className="w-full text-center flex items-center justify-end"
-              >
-                {t("hotel")}
+      <div className="text-base flex items-center space-x-4">
+        <Link
+          href="/hotelList"
+          className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+        >
+          {t("hotel")}
 
-                <Bed size={30} />
-              </Link>
-            </li>
-          </ul>
-        </div>
+          <Bed className="mx-2" size={30} />
+        </Link>
+
         <Link
           href="/"
           className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           <h4 className=" ">{t("home")}</h4>
-          <House className="mx-1" size={28} weight="light" />
+          <House className="mx-2" size={28} weight="light" />
         </Link>
 
         <LoginModal />
@@ -97,7 +82,7 @@ export default function Navbar() {
         </Link>
       </div>
 
-      <div className="lg:text-lg text-sm lg:flex items-center lg:space-x-4 hidden">
+      <div className="lg:text-base text-sm lg:flex items-center lg:space-x-4 hidden">
         <Link
           href="/admin"
           className="flex rounded-sm justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
@@ -107,7 +92,7 @@ export default function Navbar() {
         </Link>
         <Link
           href="/aboutUs"
-          className="flex rounded-sm  justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex  rounded-sm  justify-center  items-center cursor-pointer md:text-xs p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           <h4>{t("aboutUs")}</h4>
           <Scroll className="mx-2" size={24} weight="light" />

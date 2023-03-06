@@ -137,7 +137,7 @@ export default function HotelList({ features }) {
   let selectedCity = useSelector((state) => state.reserve.city);
 
   return (
-    <div className="w-screen h-auto bg-gray-200">
+    <div className="w-screen h-auto bg-gray-100">
       <Navbar />
       <div className="h-full w-full pt-28 flex lg:px-44 space-x-16">
         <div className=" w-full lg:w-3/4 h-full  p-6  ">

@@ -9,7 +9,7 @@ import ReservationList from "../../components/reservationList";
 export default function UserProfile() {
   const [tab, setTab] = useState("Profile");
   return (
-    <div className="h-auto w-screen bg-gray-200">
+    <div className="h-auto w-screen bg-gray-100">
       <Navbar />
 
       <div className="h-full  w-full items-center pt-14 lg:pt-28 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-3 lg:px-64">

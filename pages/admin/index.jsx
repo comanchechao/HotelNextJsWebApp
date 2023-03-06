@@ -59,7 +59,7 @@ export default function AdminPage({ hotels, cities, features, reservations }) {
   const theme = useMantineTheme();
 
   return (
-    <div className="w-screen h-auto bg-gray-200 overflow-y-hidden">
+    <div className="w-screen h-auto bg-gray-100 overflow-y-hidden">
       <Navbar />
       <div className="flex  w-full h-screen lg:flex-row flex-col-reverse lg:pt-20 pt-40  items-center justify-center lg:space-x-5 lg:px-36 py-20 lg:py-36 ">
         <div className="flex   lg:px-12 lg:py-24     flex-col w-full px-5 lg:w-3/4 h-screen     lg:h-screen ">

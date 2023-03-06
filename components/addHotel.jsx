@@ -411,7 +411,7 @@ export default function AddHotel({ featuresData, cities }) {
                 onChange={(e) => {
                   setTitle(e.target.value);
                 }}
-                className=" py-2 text-right px-2 w-full bg-gray-200"
+                className=" py-2 text-right px-2 w-full bg-gray-100"
                 type="text"
                 name="title"
                 placeholder="عنوان هتل را وارد کنید"
@@ -433,7 +433,7 @@ export default function AddHotel({ featuresData, cities }) {
                 onChange={(e) => {
                   setAddress(e.target.value);
                 }}
-                className=" py-2 text-right px-2 w-full bg-gray-200"
+                className=" py-2 text-right px-2 w-full bg-gray-100"
                 type="text"
                 name="title"
                 placeholder="آدرس هتل را وارد کنید"
@@ -485,7 +485,7 @@ export default function AddHotel({ featuresData, cities }) {
                 onChange={(e) => {
                   setAvragePrice(e.target.value);
                 }}
-                className="py-6 text-right px-2 w-full bg-gray-200"
+                className="py-6 text-right px-2 w-full bg-gray-100"
                 type="number"
                 name="price"
                 placeholder="..."
@@ -500,7 +500,7 @@ export default function AddHotel({ featuresData, cities }) {
                   setAboutHotel(e.target.value);
                 }}
                 name="about hotel"
-                className="bg-gray-200 rounded-md w-full"
+                className="bg-gray-100 rounded-md w-full"
                 id=""
                 cols="10"
                 rows="5"
@@ -513,7 +513,7 @@ export default function AddHotel({ featuresData, cities }) {
                   onChange={(e) => {
                     setExitingHours(e.target.value);
                   }}
-                  className="py-3 rounded-xl  text-right px-2 w-full bg-gray-200"
+                  className="py-3 rounded-xl  text-right px-2 w-full bg-gray-100"
                   type="text"
                   name="exiting hour"
                 />
@@ -524,7 +524,7 @@ export default function AddHotel({ featuresData, cities }) {
                   onChange={(e) => {
                     setEnteringHours(e.target.value);
                   }}
-                  className="py-3  rounded-xl text-right px-2 w-full bg-gray-200"
+                  className="py-3  rounded-xl text-right px-2 w-full bg-gray-100"
                   type="text"
                   name="entering hour"
                 />
@@ -539,7 +539,7 @@ export default function AddHotel({ featuresData, cities }) {
                   setAboutHotel(e.target.value);
                 }}
                 name="about hotel"
-                className="bg-gray-200 rounded-xl w-full"
+                className="bg-gray-100 rounded-xl w-full"
                 id=""
                 cols="30"
                 rows="10"
@@ -631,7 +631,7 @@ export default function AddHotel({ featuresData, cities }) {
                               return newObject;
                             });
                           }}
-                          className="py-2 text-right px-2 w-full bg-gray-200"
+                          className="py-2 text-right px-2 w-full bg-gray-100"
                           type="text"
                           name="title"
                           placeholder="..."
@@ -668,7 +668,7 @@ export default function AddHotel({ featuresData, cities }) {
                           قیمت 1 شب
                         </h3>
                         <input
-                          className="py-2 text-right px-2 w-full bg-gray-200"
+                          className="py-2 text-right px-2 w-full bg-gray-100"
                           type="number"
                           name="price"
                           placeholder="..."

@@ -20,7 +20,7 @@ export default function AddRoom() {
                 :عنوان اتاق
               </label>
               <input
-                className="py-2 text-right px-2 w-full bg-gray-200"
+                className="py-2 text-right px-2 w-full bg-gray-100"
                 type="text"
                 name="title"
                 placeholder="..."
@@ -44,7 +44,7 @@ export default function AddRoom() {
                 :قیمت هرشب
               </label>
               <input
-                className="py-2 text-right px-2 w-full bg-gray-200"
+                className="py-2 text-right px-2 w-full bg-gray-100"
                 type="number"
                 name="price"
                 placeholder="..."

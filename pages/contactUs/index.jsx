@@ -29,7 +29,7 @@ export default function ContactUs() {
     setLoading(false);
   }
   return (
-    <div className="h-full w-screen bg-gray-200">
+    <div className="h-full w-screen bg-gray-100">
       <Navbar />
       <div className="w-full h-auto  ">
         <div className="w-screen h-96 ">

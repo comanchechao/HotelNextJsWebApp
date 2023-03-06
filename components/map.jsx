@@ -341,7 +341,7 @@ export default function ExternalStateExample({ cityLatLng }) {
     <div className="flex flex-col items-center  w-full">
       <MapContainer
         id="map"
-        className='z-0'
+        className="z-0"
         style={{ width: "600px", height: "500px" }}
         center={center}
         zoom={theZoom}
@@ -382,7 +382,7 @@ export default function ExternalStateExample({ cityLatLng }) {
                   onChange={(e) => {
                     setMarker2Title(e.target.value);
                   }}
-                  className="py-2 px-8 rounded-lg bg-gray-200"
+                  className="py-2 px-8 rounded-lg bg-gray-100"
                   type="text"
                   placeholder="نام مکان"
                 />
@@ -429,7 +429,7 @@ export default function ExternalStateExample({ cityLatLng }) {
                   onChange={(e) => {
                     setMarker3Title(e.target.value);
                   }}
-                  className="py-2 px-8 rounded-lg bg-gray-200"
+                  className="py-2 px-8 rounded-lg bg-gray-100"
                   type="text"
                   placeholder="نام مکان"
                 />

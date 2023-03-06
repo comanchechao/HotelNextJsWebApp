@@ -29,7 +29,7 @@ import ImagesModal from "../../../components/imagesModal";
 import FeaturesModal from "../../../components/FeaturesModal";
 
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import RoomCard from "../../../components/roomCard";
 import { useDispatch, useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -70,12 +70,12 @@ export const getStaticProps = async (context) => {
   };
 };
 
-const DynamicMap = dynamic(
-  () => import("../../../components/mapWithLocation"),
-  {
-    ssr: false,
-  }
-);
+// const DynamicMap = dynamic(
+//   () => import("../../../components/mapWithLocation"),
+//   {
+//     ssr: false,
+//   }
+// );
 
 export default function HotelDetailPage({ hotel, comments }) {
   const ReserveInfoModal = dynamic(
@@ -149,6 +149,27 @@ export default function HotelDetailPage({ hotel, comments }) {
   useEffect(() => {
     downloadImage1();
   }, []);
+  const myDivRef = useRef(null);
+  useEffect(() => {
+    const divTop = myDivRef.current.offsetTop;
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY >= divTop) {
+        myDivRef.current.classList.add(
+          "fixed",
+          "left-24",
+          "inset-y-0",
+          "top-10"
+        );
+      } else {
+        myDivRef.current.classList.remove("fixed", "left-24", "inset-y-0");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // getting reservtion info
 
@@ -185,7 +206,7 @@ export default function HotelDetailPage({ hotel, comments }) {
       </Head>
       <div className="w-full h-full">
         <Navbar />
-        <div className="flex w-full   lg:p-20 h-full bg-gray-200">
+        <div className="flex w-full   lg:p-20 h-full bg-gray-100">
           <div className="flex flex-col p-5 w-full h-full  ">
             <div className="flex justify-end lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24">
               <Link href={"/hotelList/hotelDetail/" + hotel.id}>
@@ -243,118 +264,125 @@ export default function HotelDetailPage({ hotel, comments }) {
               </div>
             )}
 
-            <div className="flex w-full justify-end h-32 lg:h-20">
+            <div className="flex w-full justify-end h-32 lg:h-20  ">
               <div className="flex w-full justify-center items-end flex-col">
-                <h1 className="text-3xl my-2">هتل {hotel.title}</h1>
+                <h1 className="text-2xl my-2">هتل {hotel.title}</h1>
                 <div className="flex border border-gray-300 bg-gray-50 p-3 rounded-md space-x-8 justify-center items-center">
                   <div className="flex">
                     <p>اول بند ، روبه روی خیابان گلشهر</p>
                   </div>
                   <div className="flex justify-center items-center space-x-2">
-                    <p className="text-lg">ستاره</p>
-                    <p className="text-lg">{hotel.stars}</p>
+                    <p className="text-base">ستاره</p>
+                    <p className="text-base">{hotel.stars}</p>
                     <IconStar />
                   </div>
                 </div>
               </div>
             </div>
             <div className="flex items-start lg:flex-row flex-col justify-center  ">
-              <div className="lg:flex hidden p-4 bg-white  flex-col items-center w-96  h-96">
-                <DatePicker
-                  locale="fa"
-                  onChange={setEntering}
-                  defaultValue={enterDate}
-                  inputFormat="MM/DD/YYYY"
-                  dropdownPosition="bottom-start"
-                  className="text-4xl text-center flex flex-col items-end"
-                  placeholder={t("inDate")}
-                  label={t("inDate")}
-                  withAsterisk
-                  variant="default"
-                  radius="md"
-                  size="md"
-                />
-                <DatePicker
-                  locale="fa"
-                  onChange={setExiting}
-                  defaultValue={exitDate}
-                  inputFormat="MM/DD/YYYY"
-                  dropdownPosition="bottom-start"
-                  className="text-4xl text-center flex flex-col items-end"
-                  placeholder={t("inDate")}
-                  label={t("inDate")}
-                  withAsterisk
-                  variant="default"
-                  radius="md"
-                  size="md"
-                />
-                <Popover width={300} position="bottom" withArrow shadow="md">
-                  <Popover.Target>
-                    <TextInput
-                      value={passenger}
-                      defaultValue={passenger}
-                      className="text-4xl text-right flex flex-col items-end"
-                      label={t("passenger")}
-                      placeholder={t("passenger")}
-                      variant="default"
-                      radius="md"
-                      size="md"
-                      withAsterisk
-                    />
-                  </Popover.Target>
-                  <Popover.Dropdown>
-                    <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
-                      <h1 className="text-sm ">اتاق اول</h1>
-                      <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
-                        <h1 className="text-sm">بزرگسال(۱۲ سال به بالا)</h1>
-                        <div className="flex text-blue-800  items-center justify-center space-x-5">
-                          <PlusCircle
-                            onClick={() => {
-                              dispatch(reservationActions.increasePassenger());
-                            }}
-                            size={27}
-                            weight="fill"
-                          />
-                          <h1 className="text-sm font-bold">{passenger}</h1>
-                          <MinusCircle
-                            onClick={() => {
-                              dispatch(
-                                reservationActions.decreamentPassenger()
-                              );
-                            }}
-                            size={27}
-                            weight="fill"
-                          />
+              <div className="flex items-start h-screen   w-72 pt-8 ">
+                <div
+                  ref={myDivRef}
+                  className="lg:flex hidden p-4 bg-white  flex-col items-center w-72  h-96 mt-10 ml-2"
+                >
+                  <DatePicker
+                    locale="fa"
+                    onChange={setEntering}
+                    defaultValue={enterDate}
+                    inputFormat="MM/DD/YYYY"
+                    dropdownPosition="bottom-start"
+                    className="text-3xl text-center flex flex-col items-end"
+                    placeholder={t("inDate")}
+                    label={t("inDate")}
+                    withAsterisk
+                    variant="default"
+                    radius="md"
+                    size="md"
+                  />
+                  <DatePicker
+                    locale="fa"
+                    onChange={setExiting}
+                    defaultValue={exitDate}
+                    inputFormat="MM/DD/YYYY"
+                    dropdownPosition="bottom-start"
+                    className="text-3xl text-center flex flex-col items-end"
+                    placeholder={t("inDate")}
+                    label={t("inDate")}
+                    withAsterisk
+                    variant="default"
+                    radius="md"
+                    size="md"
+                  />
+                  <Popover width={300} position="bottom" withArrow shadow="md">
+                    <Popover.Target>
+                      <TextInput
+                        value={passenger}
+                        defaultValue={passenger}
+                        className="text-3xl text-right flex flex-col items-end"
+                        label={t("passenger")}
+                        placeholder={t("passenger")}
+                        variant="default"
+                        radius="md"
+                        size="md"
+                        withAsterisk
+                      />
+                    </Popover.Target>
+                    <Popover.Dropdown>
+                      <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
+                        <h1 className="text-xs ">اتاق اول</h1>
+                        <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
+                          <h1 className="text-xs">بزرگسال(۱۲ سال به بالا)</h1>
+                          <div className="flex text-blue-800  items-center justify-center space-x-5">
+                            <PlusCircle
+                              onClick={() => {
+                                dispatch(
+                                  reservationActions.increasePassenger()
+                                );
+                              }}
+                              size={27}
+                              weight="fill"
+                            />
+                            <h1 className="text-xs font-bold">{passenger}</h1>
+                            <MinusCircle
+                              onClick={() => {
+                                dispatch(
+                                  reservationActions.decreamentPassenger()
+                                );
+                              }}
+                              size={27}
+                              weight="fill"
+                            />
+                          </div>
+                        </div>
+                        <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
+                          <h1 className="text-xs">کودک(تا ۱۲ سال)</h1>
+                          <div className="flex text-blue-800 items-center justify-center space-x-5">
+                            <PlusCircle size={27} weight="fill" />
+                            <h1 className="text-xs ">1</h1>
+                            <MinusCircle size={27} weight="fill" />
+                          </div>
                         </div>
                       </div>
-                      <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
-                        <h1 className="text-sm">کودک(تا ۱۲ سال)</h1>
-                        <div className="flex text-blue-800 items-center justify-center space-x-5">
-                          <PlusCircle size={27} weight="fill" />
-                          <h1 className="text-sm ">1</h1>
-                          <MinusCircle size={27} weight="fill" />
-                        </div>
-                      </div>
-                    </div>
-                  </Popover.Dropdown>
-                </Popover>
-                <div className="flex">
-                  <Link href="/checkout">
-                    <button
-                      onClick={() => {
-                        dispatch(reservationActions.setHotelInfo(hotel));
-                        dispatch(reservationActions.setEnterting(entering));
-                        dispatch(reservationActions.setExiting(exiting));
-                      }}
-                      className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   "
-                    >
-                      <p>رزرو اتاق</p>
-                    </button>
-                  </Link>
+                    </Popover.Dropdown>
+                  </Popover>
+                  <div className="flex">
+                    <Link href="/checkout">
+                      <button
+                        onClick={() => {
+                          dispatch(reservationActions.setHotelInfo(hotel));
+                          dispatch(reservationActions.setEnterting(entering));
+                          dispatch(reservationActions.setExiting(exiting));
+                        }}
+                        className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   "
+                      >
+                        <p>رزرو اتاق</p>
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
 
-              <div className="lg:hidden w-full items-center justify-end flex">
+              <div className="lg:hidden w-full items-center justify-end flex  ">
                 <Suspense
                   fallback={
                     <div>
@@ -365,10 +393,10 @@ export default function HotelDetailPage({ hotel, comments }) {
                   <ReserveInfoModal />
                 </Suspense>
               </div>
-              <div className="flex flex-col w-full mt-8     pl-7">
+              <div className="flex flex-col w-4/5 mt-8  -500 pl-7">
                 <div className="flex items-center py-4 space-x-1  w-full justify-between ">
                   <FeaturesModal />
-                  <h1 className="w-full text-right  text-gray-900  text-xl lg:text-2xl">
+                  <h1 className="w-full text-right  text-gray-900  text-lg lg:text-xl">
                     امکانات و ویژگی ها
                   </h1>
                 </div>
@@ -429,10 +457,10 @@ export default function HotelDetailPage({ hotel, comments }) {
                   </div>
                 </div>
                 <div className="flex py-4 mt-10 items-center space-x-1 w-full justify-between ">
-                  <h1 className="  text-mainPurple   text-sm cursor-pointer hover:text-blue-800">
+                  <h1 className="  text-mainPurple   text-xs cursor-pointer hover:text-blue-800">
                     تغییر موقعیت
                   </h1>
-                  <h1 className="  text-gray-900 text-xl ">
+                  <h1 className="  text-gray-900 text-lg ">
                     مکان های مهم اطراف هتل
                   </h1>
                 </div>
@@ -445,18 +473,18 @@ export default function HotelDetailPage({ hotel, comments }) {
                         </div>
                       }
                     >
-                      <DynamicMap
+                      {/* <DynamicMap
                         secondLocation={hotel.secondLocation}
                         firstLocation={hotel.firstLocation}
                         lat={hotel.locationLat}
                         lng={hotel.locationLng}
-                      />
+                      /> */}
                     </Suspense>
                   </div>
                 </div>
                 <div className="flex py-8 items-center space-y-6 w-full flex-col  justify-center">
-                  <h1 className=" text-gray-800 text-3xl self-end">اتاق ها</h1>
-                  <div className="flex border border-gray-300 bg-white justify-center w-full text-lg">
+                  <h1 className=" text-gray-800 text-2xl self-end">اتاق ها</h1>
+                  <div className="flex border border-gray-300 bg-white justify-center w-full text-base">
                     <Tabs
                       radius="xs"
                       variant="pills"
@@ -465,13 +493,13 @@ export default function HotelDetailPage({ hotel, comments }) {
                     >
                       <Tabs.List grow position="center">
                         <Tabs.Tab value="second">
-                          <span className="text-lg">صبحانه</span>
+                          <span className="text-base">صبحانه</span>
                         </Tabs.Tab>
                         <Tabs.Tab value="third">
-                          <span className="text-lg">بدون وعده غذایی</span>
+                          <span className="text-base">بدون وعده غذایی</span>
                         </Tabs.Tab>
                         <Tabs.Tab value="first">
-                          <span className="text-lg">همه موارد</span>
+                          <span className="text-base">همه موارد</span>
                         </Tabs.Tab>
                       </Tabs.List>
                     </Tabs>
@@ -480,13 +508,13 @@ export default function HotelDetailPage({ hotel, comments }) {
                     return <RoomCard hotelDetail={hotel} key={i} room={room} />;
                   })}
                   <div className="flex justify-around">
-                    <button className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
+                    <button className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont">
                       بیشتر نشونم بده
                     </button>
                   </div>
                 </div>
                 <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
-                  <h1 className="  text-gray-700 text-2xl">قوانین و مقررات </h1>
+                  <h1 className="  text-gray-700 text-xl">قوانین و مقررات </h1>
                 </div>
                 <div className="flex divide-x divide-gray-300 p-5 border border-gray-300 rounded-md bg-white">
                   <div className="flex justify-end text-right px-4 w-full h-full">
@@ -514,7 +542,7 @@ export default function HotelDetailPage({ hotel, comments }) {
                   </div>
                 </div>
                 <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
-                  <h1 className="  text-gray-700 text-2xl">درباره هتل آنا </h1>
+                  <h1 className="  text-gray-700 text-xl">درباره هتل آنا </h1>
                 </div>
                 <div className="flex text-right p-5 border border-gray-300 rounded-md bg-white">
                   <p>
@@ -528,7 +556,7 @@ export default function HotelDetailPage({ hotel, comments }) {
                   </p>
                 </div>
                 <div className="flex h-full p-5 items-center space-x-1 w-full justify-end">
-                  <h1 className="  text-gray-700 text-2xl">نظرات مسافران </h1>
+                  <h1 className="  text-gray-700 text-xl">نظرات مسافران </h1>
                 </div>
                 {comments.map((comment, i) => {
                   return <Comments key={i} comment={comment} />;
