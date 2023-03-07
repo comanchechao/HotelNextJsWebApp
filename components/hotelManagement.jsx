@@ -26,8 +26,8 @@ const HotelMap = dynamic(() => import("./hotelMap"), {
 });
 export default function HotelManagement({ hotels, cities, features }) {
   return (
-    <div className="flex flex-col w-full h-full   ">
-      <div className="flex w-full space-y-4 flex-col">
+    <div className="flex flex-col w-full h-full  lg:h-carousel   ">
+      <div className="flex w-full space-y-4 flex-col   h-full">
         <div class="pt-4 px-2 flex w-full justify-center items-center relative text-black ">
           <div className="flex flex-reverse w-full items-center space-x-2 justify-center">
             <button
@@ -214,7 +214,7 @@ export default function HotelManagement({ hotels, cities, features }) {
             Settings tab content
           </Tabs.Panel>
         </Tabs>
-        <div className="absolute right-8 bottom-3">
+        <div className="lg:absolute right-8 bottom-3   fixed">
           <AddHotel featuresData={features} cities={cities} />
         </div>
       </div>

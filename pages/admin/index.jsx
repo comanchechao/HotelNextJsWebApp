@@ -60,7 +60,7 @@ export default function AdminPage({
   reservations,
 }) {
   const router = useRouter();
-  const [tab, setTab] = useState("users");
+  const [tab, setTab] = useState("hotel");
   const [bg, setBg] = useState("");
 
   useEffect(() => {
@@ -80,37 +80,35 @@ export default function AdminPage({
   }
 
   return (
-    <div className="w-screen h-auto bg-gray-100 overflow-y-hidden">
+    <div className="h-auto w-screen bg-gray-100  ">
       <Navbar />
-      <div className="flex  w-full h-screen lg:flex-row flex-col-reverse lg:pt-20 pt-44  items-center justify-center lg:space-x-20 lg:px-20 py-20 lg:py-36 ">
-        <div className="flex   lg:px-12 lg:py-24     flex-col w-full px-5 lg:w-3/4 h-screen     lg:h-screen ">
-          <div className="w-full h-screen    rounded-md    justify-center items-center">
-            {tab === "user" ? (
-              <UserManagement />
-            ) : tab === "city" ? (
-              <AddCity cities={cities} />
-            ) : tab === "reserve" ? (
-              <ReservationManagement reservations={reservations} />
-            ) : tab === "websiteInfo" ? (
-              <WebsiteInfo />
-            ) : tab === "hotel" ? (
-              <HotelManagement
-                hotels={hotels}
-                cities={cities}
-                features={features}
-              />
-            ) : null}
-          </div>
+      <div className="h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-8 lg:px-40">
+        <div className="lg:w-3/4 w-full flex items-center justify-center h-screen lg:p-6 py-6">
+          {tab === "user" ? (
+            <UserManagement />
+          ) : tab === "city" ? (
+            <AddCity cities={cities} />
+          ) : tab === "reserve" ? (
+            <ReservationManagement reservations={reservations} />
+          ) : tab === "websiteInfo" ? (
+            <WebsiteInfo />
+          ) : tab === "hotel" ? (
+            <HotelManagement
+              hotels={hotels}
+              cities={cities}
+              features={features}
+            />
+          ) : null}
         </div>
-        <div className=" text-right flex-row-reverse rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0  lg:flex-col items-end lg:h-rem33 h-full justify-around lg:justify-center w-full lg:w-1/4   bg-white text-gray-800">
+        <div className=" text-right  rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-center lg:items-end  justify-around lg:justify-center lg:w-1/4 w-full h-full  bg-white text-gray-800">
           <div
             onClick={() => {
               setTab("hotel");
             }}
             className={`${
               tab === "hotel"
-                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
-                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
             }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
@@ -124,8 +122,8 @@ export default function AdminPage({
             }}
             className={`${
               tab === "user"
-                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
-                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
             }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
@@ -139,8 +137,8 @@ export default function AdminPage({
             }}
             className={`${
               tab === "city"
-                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
-                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
             }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
@@ -154,8 +152,8 @@ export default function AdminPage({
             }}
             className={`${
               tab === "reserve"
-                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
-                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
             }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
@@ -169,8 +167,8 @@ export default function AdminPage({
             }}
             className={`${
               tab === "websiteInfo"
-                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
-                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-28 w-auto lg:w-full"
+                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
             }`}
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
@@ -178,7 +176,7 @@ export default function AdminPage({
               <h1 className="lg:text-2xl text-sm  "> اطلاعات سایت </h1>
             </div>
           </div>
-          <div className="rounded-md flex lg:mt-0 mt-6 cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-28 w-auto lg:w-full ">
+          <div className="rounded-md flex lg:mt-0 mt-6 cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full ">
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconLogout size={24} />
               <h1 className="lg:text-2xl text-sm  "> خروج </h1>

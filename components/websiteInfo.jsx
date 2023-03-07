@@ -39,9 +39,9 @@ export default function WebsiteInfo() {
     setLoading(false);
   }
   return (
-    <div className="flex flex-col items-center justify-start pt-5 w-full h-screen  ">
+    <div className="flex flex-col items-center justify-start pt-5 w-full h-full lg:h-carousel  ">
       <div className="   w-full lg:py-20 h-carousel lg:px-14 bg-white flex flex-col items-center lg:justify-center">
-        <h1 className="border-b-4 pb-4 border-mainBlue my-3">
+        <h1 className="border-b-4   border-mainBlue pb-2  px-2  rounded-md text-xl   my-3">
           تغییر اطلاعات وبسایت
         </h1>
         <Tabs

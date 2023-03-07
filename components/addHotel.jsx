@@ -26,7 +26,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { roomActions } from "../store/room";
 import AddRoom from "./addRoom";
 import { Suspense } from "react";
-import { X } from "phosphor-react";
+import { X, Buildings } from "phosphor-react";
 export default function AddHotel({ featuresData, cities }) {
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
@@ -826,9 +826,10 @@ export default function AddHotel({ featuresData, cities }) {
           onClick={() => {
             setOpened(true);
           }}
-          className="w-52 py-3 border-2 text-lg text-mainPurple border-r-8 border-mainBlue bg-white   transition ease-in duration-300 font-mainFont rounded-md   hover:bg-mainBlue"
+          className="w-52 py-3 flex justify-center items-center border-2 text-lg text-mainPurple border-r-8 border-mainBlue bg-white   transition ease-in duration-300 font-mainFont rounded-md   hover:bg-mainBlue"
         >
           هتل جدید
+          <Buildings className="ml-2" size={32} weight="light" />
         </button>
       </Group>
     </>
