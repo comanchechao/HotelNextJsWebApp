@@ -32,7 +32,7 @@ export default function UserProfile({ user }) {
     <div className="h-auto w-screen bg-gray-100">
       <Navbar />
 
-      <div className="h-full  w-full items-center pt-14 lg:pt-28 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-3 lg:px-64">
+      <div className="h-full  w-full items-center pt-14 lg:pt-28 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-8 lg:px-40">
         <div className=" lg:w-3/4 w-full h-auto lg:p-6">
           {tab === "Profile" ? (
             <ProfileInfo user={user} />

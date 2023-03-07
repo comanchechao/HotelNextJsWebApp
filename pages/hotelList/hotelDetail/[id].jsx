@@ -157,14 +157,14 @@ export default function HotelDetailPage({ hotel, comments }) {
       if (scrollY >= divTop) {
         myDivRef.current.classList.add(
           "fixed",
-          "left-24",
+          "left-44",
           "inset-y-0",
           "top-10"
         );
       } else {
         myDivRef.current.classList.remove(
           "fixed",
-          "left-24",
+          "left-44",
           "inset-y-0",
           "top-10"
         );
@@ -273,7 +273,9 @@ export default function HotelDetailPage({ hotel, comments }) {
                 </div>
               </div>
             )}
-
+            <div className="w-full flex items-center">
+              <ImagesModal />
+            </div>
             <div className="flex w-full justify-end h-32 lg:h-20  ">
               <div className="flex w-full justify-center items-end flex-col">
                 <h1 className="text-2xl my-2">هتل {hotel.title}</h1>
