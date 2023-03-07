@@ -1,5 +1,5 @@
 import Navbar from "../../components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { User, Bed, Info, Money } from "phosphor-react";
 import Footer from "../../components/Footer";
 import ProfileInfo from "../../components/profileInfo";
@@ -12,25 +12,21 @@ export async function getServerSideProps({ req }) {
   const refreshToken = req.cookies["my-refresh-token"];
   const accessToken = req.cookies["my-access-token"];
 
-  if (refreshToken && accessToken) {
-    await supabase.auth.setSession({
-      refresh_token: refreshToken,
-      access_token: accessToken,
-    });
-  } else {
-    // make sure you handle this case!
+  if (!refreshToken && !accessToken) {
     throw new Error("User is not authenticated.");
   }
 
-  // returns user information
+  await supabase.auth.setSession({
+    refresh_token: refreshToken,
+    access_token: accessToken,
+  });
 
-  if (!(await supabase.auth.getUser())) {
-    // If no user, redirect to index.
-    return { props: {}, redirect: { destination: "/", permanent: false } };
-  }
+  // returns user information
+  supabase.auth.refreshSession();
+  const { data, error } = await supabase.auth.getUser(accessToken);
 
   // If there is a user, return it.
-  return { props: {} };
+  return { props: { user: data } };
 }
 export default function UserProfile({ user }) {
   const [tab, setTab] = useState("Profile");
@@ -41,7 +37,7 @@ export default function UserProfile({ user }) {
       <div className="h-full  w-full items-center pt-14 lg:pt-28 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-3 lg:px-64">
         <div className=" lg:w-3/4 w-full h-auto lg:p-6">
           {tab === "Profile" ? (
-            <ProfileInfo />
+            <ProfileInfo user={user} />
           ) : tab === "Reservation" ? (
             <ReservationList />
           ) : tab === "Support" ? (
