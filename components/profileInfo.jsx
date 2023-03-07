@@ -3,7 +3,7 @@ import { Money, User } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 
-export default function ProfileInfo() {
+export default function ProfileInfo({ user }) {
   const [edit, setEdit] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -19,11 +19,12 @@ export default function ProfileInfo() {
   }, []);
   async function getSetUser() {
     setLoading(true);
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+
     if (user) {
-      let userData = await supabase.from("profiles").select().eq("id", user.id);
+      let userData = await supabase
+        .from("profiles")
+        .select()
+        .eq("id", user.user.id);
 
       console.log(userData);
       if (userData !== null) {
@@ -43,13 +44,9 @@ export default function ProfileInfo() {
   async function editUser() {
     setLoading(true);
 
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
     if (user) {
       const updates = {
-        id: user.id,
+        id: user.user.id,
         email: email,
       };
       await supabase.from("profiles").update(updates);

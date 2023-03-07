@@ -67,7 +67,7 @@ export default function LoginModal() {
         document.cookie = `my-access-token=; path=/; expires=${expires}; SameSite=Lax; secure`;
         document.cookie = `my-refresh-token=; path=/; expires=${expires}; SameSite=Lax; secure`;
       } else if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
-        const maxAge = 100 * 365 * 24 * 60 * 60; // 100 years, never expires
+        const maxAge = 3600;
         document.cookie = `my-access-token=${session.access_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`;
         document.cookie = `my-refresh-token=${session.refresh_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`;
       }
@@ -111,22 +111,23 @@ export default function LoginModal() {
     });
     if (error) throw error;
     else {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (user) {
-        console.log("logged in");
-        const updates = {
-          id: user.id,
-          email: user.email,
-        };
-        SetisLogged(true);
-        await supabase.from("profiles").upsert(updates);
-      } else {
-        console.log("Logged out");
-        SetisLogged(false);
-      }
+      // const {
+      //   data: { user },
+      // } = await supabase.auth.getUser();
+      // if (user) {
+      //   console.log("logged in");
+      //   const updates = {
+      //     id: user.id,
+      //     email: user.email,
+      //   };
+      //   SetisLogged(true);
+      //   await supabase.from("profiles").upsert(updates);
+      // } else {
+      //   console.log("Logged out");
+      //   SetisLogged(false);
+      // }
       setLoading(false);
+      SetisLogged(true);
       // getSetUser();
       setAlert(true);
       setTimeout(() => {
