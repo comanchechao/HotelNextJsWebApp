@@ -321,7 +321,7 @@ export default function AddHotel({ featuresData, cities }) {
           size={32}
           weight="bold"
         />{" "}
-        <div className="flex flex-col bg-gray-100   w-full h-full px-6 lg:px-36">
+        <div className="flex flex-col     w-full h-full px-6 lg:px-36">
           <div className="flex space-y-5 w-full h-full flex-col">
             <div className="   w-full text-center items-center flex justify-center">
               <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md ">
@@ -603,26 +603,17 @@ export default function AddHotel({ featuresData, cities }) {
                 );
               })}
             </div>
-            <div className="flex w-full  border border-gray-300 px-8">
+            <div className="flex w-full ">
               <Tabs
-                color="yellow"
+                color="blue"
                 variant="pills"
                 className="w-full"
                 defaultValue="gallery"
               >
                 <Tabs.List grow position="center">
-                  <Tabs.Tab
-                    position="center"
-                    value="gallery"
-                    icon={<IconPhoto size={14} />}
-                  >
+                  {/* <Tabs.Tab value="messages">اتاق پیش فرض</Tabs.Tab> */}
+                  <Tabs.Tab position="center" value="gallery">
                     تعریف اتاق
-                  </Tabs.Tab>
-                  <Tabs.Tab
-                    value="messages"
-                    icon={<IconMessageCircle size={14} />}
-                  >
-                    اتاق پیش فرض
                   </Tabs.Tab>
                 </Tabs.List>
 
@@ -630,7 +621,7 @@ export default function AddHotel({ featuresData, cities }) {
                   <div className="flex flex-col  w-full h-full">
                     <div className="flex space-y-2 w-full h-full flex-col">
                       <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
-                        <h3 className="text-2xl my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                        <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
                           عنوان اتاق
                         </h3>
                         <input
@@ -641,14 +632,14 @@ export default function AddHotel({ featuresData, cities }) {
                               return newObject;
                             });
                           }}
-                          className="py-2 text-right px-2 w-full bg-gray-100"
+                          className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                           type="text"
                           name="title"
-                          placeholder="..."
+                          placeholder=" عنوان اتاق را وارد کنید"
                         />
                       </div>
                       <div className="flex w-full flex-col h-full text-right justify-center items-end">
-                        <h3 className="text-md my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                        <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
                           وعده غذایی اتاق
                         </h3>
                         <Select
@@ -674,18 +665,18 @@ export default function AddHotel({ featuresData, cities }) {
                         />
                       </div>
                       <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
-                        <h3 className="text-lg my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                        <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
                           قیمت 1 شب
                         </h3>
                         <input
-                          className="py-2 text-right px-2 w-full bg-gray-100"
+                          className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                           type="number"
                           name="price"
-                          placeholder="..."
+                          placeholder="قیمت برای یک شب را وارد کنید"
                         />
                       </div>
                       <div className="flex flex-col w-full h-full text-right justify-center items-end">
-                        <h3 className="text-lg my-8 border-b-2 rounded-sm border-mainBlue pb-2">
+                        <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
                           ظرفیت اتاق
                         </h3>
                         <Select
@@ -719,7 +710,7 @@ export default function AddHotel({ featuresData, cities }) {
                   </div>
                 </Tabs.Panel>
 
-                <Tabs.Panel value="messages" pt="xs">
+                {/* <Tabs.Panel value="messages" pt="xs">
                   <div className="flex flex-col w-full h-full">
                     <div className="flex bg-white justify-around divide-y my-1 divide-gray-300 rounded-md flex-col w-full h-44 border">
                       <div className="flex w-full justify-between">
@@ -800,7 +791,7 @@ export default function AddHotel({ featuresData, cities }) {
                       </div>
                     </div>
                   </div>
-                </Tabs.Panel>
+                </Tabs.Panel> */}
 
                 <Tabs.Panel value="settings" pt="xs">
                   Settings tab content
@@ -826,7 +817,7 @@ export default function AddHotel({ featuresData, cities }) {
           onClick={() => {
             setOpened(true);
           }}
-          className="w-52 py-3 flex justify-center items-center border-2 text-lg text-mainPurple border-r-8 border-mainBlue bg-white   transition ease-in duration-300 font-mainFont rounded-md   hover:bg-mainBlue"
+          className="w-52 py-2 flex justify-center items-center border-2 text-lg text-white border-r-8 border-mainBlue bg-mainPurple   transition ease-in duration-300 font-mainFont rounded-md   hover:bg-mainBlue"
         >
           هتل جدید
           <Buildings className="ml-2" size={32} weight="light" />
