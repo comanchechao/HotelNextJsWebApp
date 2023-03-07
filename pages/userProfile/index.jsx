@@ -21,8 +21,6 @@ export async function getServerSideProps({ req }) {
     access_token: accessToken,
   });
 
-  // returns user information
-  supabase.auth.refreshSession();
   const { data, error } = await supabase.auth.getUser(accessToken);
 
   // If there is a user, return it.
