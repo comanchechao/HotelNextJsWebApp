@@ -16,7 +16,6 @@ export default function ProfileInfo({ user }) {
 
   useEffect(() => {
     getSetUser();
-    console.log(user.user.id);
   }, []);
   async function getSetUser() {
     setLoading(true);
@@ -47,7 +46,7 @@ export default function ProfileInfo({ user }) {
 
     if (user) {
       const updates = {
-        id: user.id,
+        id: user.user.id,
         email: email,
       };
       await supabase.from("profiles").update(updates);
