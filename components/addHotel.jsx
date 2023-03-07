@@ -26,7 +26,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { roomActions } from "../store/room";
 import AddRoom from "./addRoom";
 import { Suspense } from "react";
-
+import { X } from "phosphor-react";
 export default function AddHotel({ featuresData, cities }) {
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
@@ -311,10 +311,16 @@ export default function AddHotel({ featuresData, cities }) {
       <Modal
         padding={1}
         fullScreen
+        withCloseButton={false}
         opened={opened}
-        onClose={() => setOpened(false)}
         centered
       >
+        <X
+          onClick={() => setOpened(false)}
+          className="cursor-pointer transition ease-in duration-200    hover:bg-mainPurple hover:text-mainBlue m-5  rounded-md text-mainPurple"
+          size={32}
+          weight="bold"
+        />{" "}
         <div className="flex flex-col bg-gray-100   w-full h-full px-6 lg:px-36">
           <div className="flex space-y-5 w-full h-full flex-col">
             <div className="   w-full text-center items-center flex justify-center">
@@ -543,7 +549,7 @@ export default function AddHotel({ featuresData, cities }) {
                   setAboutHotel(e.target.value);
                 }}
                 name="about hotel"
-                className="py-2 text-right font-mainFont px-2 w-full bg-gray-200"
+                className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                 id=""
                 cols="30"
                 rows="10"

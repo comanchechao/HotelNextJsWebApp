@@ -40,8 +40,6 @@ input {
 
 .mantine-MultiSelect-searchInput {
   font-family: "Roboto", "IranSans";
-  display: flex;
-  flex-direction: row;
 }
 .mantine-MultiSelect-wrapper {
   font-family: "Roboto", "IranSans";

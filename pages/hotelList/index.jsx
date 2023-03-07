@@ -159,8 +159,8 @@ export default function HotelList({ features }) {
             ref={firstContainer}
             className=" w-full  opacity-0 lg:text-lg text-xs text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-7 space-x-4"
           >
-            <div className="lg:h-10 h-auto py-2 lg:py-8 w-full flex items-center justify-around   ">
-              <h2 className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md">
+            <div className="lg:h-10 h-auto py-2 lg:py-8 w-full flex items-center justify-center space-x-4   ">
+              <h2 className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md text-base">
                 بیشترین رزرو
               </h2>
               <h2
@@ -169,7 +169,7 @@ export default function HotelList({ features }) {
                   setOrder("stars");
                   filterFetch();
                 }}
-                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple"
+                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-base"
               >
                 بالاترین امتیاز
               </h2>
@@ -180,7 +180,7 @@ export default function HotelList({ features }) {
 
                   filterFetch();
                 }}
-                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple"
+                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-base"
               >
                 کمترین قیمت
               </h2>
@@ -191,7 +191,7 @@ export default function HotelList({ features }) {
 
                   filterFetch();
                 }}
-                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple"
+                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-base"
               >
                 بیشترین قیمت
               </h2>

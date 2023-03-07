@@ -200,7 +200,9 @@ export default function HotelDetailPage({ hotel, comments }) {
   return (
     <>
       <Head>
-        <title>رزرو هتل بوتک : هتل {hotel.title} </title>
+        <title>
+          {hotel.city} | {hotel.title} | ارزان قیمت : رزرو بوتک{" "}
+        </title>
         <meta
           name="description"
           content="
@@ -211,7 +213,7 @@ export default function HotelDetailPage({ hotel, comments }) {
       </Head>
       <div className="w-full h-full">
         <Navbar />
-        <div className="flex w-full   lg:p-20 h-full bg-gray-100">
+        <div className="flex w-full lg:py-20  lg:px-44 h-full bg-gray-100">
           <div className="flex flex-col p-5 w-full h-full  ">
             <div className="flex justify-end lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24">
               <Link href={"/hotelList/hotelDetail/" + hotel.id}>
@@ -233,38 +235,41 @@ export default function HotelDetailPage({ hotel, comments }) {
                 <Skeleton height={400} width={"100%"} />
               </div>
             ) : (
-              <div className="flex py-5  flex-col  ">
-                <div className="flex cursor-pointer w-full justify-center  h-96 rounded-md">
-                  <div className="hidden lg:flex">
-                    <Image
-                      width={400}
-                      height={400}
-                      alt=""
-                      className=" w-full h-full"
-                      src={singleImage}
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 grid-rows-2">
-                    {displayImages.map((image) => {
-                      return (
-                        <div
-                          key={image}
-                          className="flex w-full h-full justify-center items-center"
-                        >
-                          <Image
-                            width={200}
-                            height={200}
-                            alt=""
-                            className=" w-full h-full"
-                            src={image}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
+              <div className="flex py-5 h-rem22 w-full     ">
+                <div className="h-full w-1/2 grid grid-flow-row justify-items-center grid-rows-2 grid-cols-2 cursor-pointer gap-2 rounded-md">
+                  {displayImages.map((image) => {
+                    return (
+                      <Image
+                        key={image}
+                        width={300}
+                        height={300}
+                        alt=""
+                        className=" w-full h-full object-contain"
+                        src={image}
+                      />
+                    );
+                  })}
+                  {displayImages.map((image) => {
+                    return (
+                      <Image
+                        key={image}
+                        width={300}
+                        height={300}
+                        alt=""
+                        className=" w-full h-full object-contain"
+                        src={image}
+                      />
+                    );
+                  })}
                 </div>
-                <div className="flex justify-center py-5  w-full h-16 lg:h-10">
-                  <ImagesModal />
+                <div className="flex cursor-pointer   justify-center items-center  h-full w-1/2   rounded-md">
+                  <Image
+                    width={744}
+                    height={352}
+                    alt=""
+                    className=" w-full h-rem22 object-contain rounded-md"
+                    src={singleImage}
+                  />
                 </div>
               </div>
             )}
