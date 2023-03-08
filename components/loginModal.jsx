@@ -68,8 +68,8 @@ export default function LoginModal() {
         document.cookie = `my-refresh-token=; path=/; expires=${expires}; SameSite=Lax; secure`;
       } else if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
         const maxAge = 3600;
-        document.cookie = `my-access-token=${session.access_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`;
-        document.cookie = `my-refresh-token=${session.refresh_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`;
+        document.cookie = `my-access-token=${session.access_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure; HttpOnly`;
+        document.cookie = `my-refresh-token=${session.refresh_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure; HttpOnly`;
       }
     });
   }, []);
