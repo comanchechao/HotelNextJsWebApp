@@ -5,6 +5,7 @@ import HotelCard from "../../components/hotelCard";
 import { Skeleton, Pagination, Loader } from "@mantine/core";
 import dynamic from "next/dynamic";
 import { gsap } from "gsap";
+import { useTranslation } from "next-i18next";
 
 import { Suspense } from "react";
 import { supabase } from "../../lib/supabaseClient";
@@ -32,6 +33,10 @@ export default function HotelList({ features }) {
   const [ascention, setAscention] = useState("");
   const [hotels, setHotels] = useState([]);
   const [order, setOrder] = useState("");
+  const [alignLeft, setAlignLeft] = useState(false);
+
+  const { t, i18n } = useTranslation("common");
+  const lng = i18n.language;
 
   const [from, setFrom] = useState(1);
   // dynamic imports
@@ -41,7 +46,11 @@ export default function HotelList({ features }) {
       suspense: false,
     }
   );
-
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   const Footer = dynamic(() => import("../../components/Footer"), {
     suspense: false,
   });
@@ -53,7 +62,6 @@ export default function HotelList({ features }) {
   const mainPageBg = useRef();
   const firstContainer = useRef();
   const secondContainer = useRef();
-  const thirdContainer = useRef();
   useEffect(() => {
     var tl = gsap.timeline();
     tl.to(mainPageBg.current, {
@@ -62,10 +70,10 @@ export default function HotelList({ features }) {
     });
     tl.to(firstContainer.current, { opacity: "1", duration: 0.4 });
     tl.to(secondContainer.current, { opacity: "1", duration: 0.4, delay: 0.5 });
-    tl.to(thirdContainer.current, { opacity: "1", duration: 0.4, delay: 0.5 });
   });
   useEffect(() => {
     window.scrollTo(0, 0);
+    changeAlignment();
     getHotels();
     if (getHotels.data !== null) {
       setLoading(false);
@@ -85,7 +93,7 @@ export default function HotelList({ features }) {
     if (error) throw error;
     setFilters(true);
     setFilteredHotels(data);
-    console.log(filteredHotels);
+    console.log(data);
     setLoading(false);
   }
   async function filterFetch() {
@@ -143,25 +151,43 @@ export default function HotelList({ features }) {
         <div className=" w-full lg:w-3/4 h-full  p-6  ">
           <div
             ref={mainPageBg}
-            className="h-auto w-full space-x-3 flex items-center justify-end opacity-0"
+            className={`${
+              alignLeft === true
+                ? "h-auto w-full space-x-3 flex items-center justify-end opacity-0"
+                : "h-auto w-full   space-x-3 flex flex-row-reverse items-center justify-end opacity-0"
+            }`}
           >
             <Link className="text-lg items-center flex text-black" href="/">
-              <CaretLeft size={20} />
-              هتل های شهر {selectedCity}
+              <CaretLeft
+                className={`${
+                  alignLeft === true ? " " : "transform rotate-180"
+                }`}
+                size={20}
+              />
+              {t("hotels")} {selectedCity}
             </Link>
             <Link className="text-lg items-center flex text-gray-700" href="/">
-              <CaretLeft size={20} />
-              خونه
+              <CaretLeft
+                className={`${
+                  alignLeft === true ? " " : "transform rotate-180"
+                }`}
+                size={20}
+              />
+              {t("home")}
             </Link>
           </div>
 
           <div
             ref={firstContainer}
-            className=" w-full  opacity-0 lg:text-lg text-xs text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-7 space-x-4"
+            className={`${
+              alignLeft === true
+                ? "w-full  opacity-0 lg:text-lg text-xs text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-7 space-x-4 "
+                : "w-full  opacity-0 lg:text-lg text-xs text-center py-2 h-10 lg:pl-44 flex items-center flex-row-reverse justify-end my-7 space-x-4"
+            }`}
           >
             <div className="lg:h-10 h-auto py-2 lg:py-8 w-full flex items-center justify-center space-x-4   ">
               <h2 className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md text-base">
-                بیشترین رزرو
+                {t("mRerserve")}{" "}
               </h2>
               <h2
                 onClick={() => {
@@ -171,7 +197,7 @@ export default function HotelList({ features }) {
                 }}
                 className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-base"
               >
-                بالاترین امتیاز
+                {t("mStar")}{" "}
               </h2>
               <h2
                 onClick={() => {
@@ -182,7 +208,7 @@ export default function HotelList({ features }) {
                 }}
                 className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-base"
               >
-                کمترین قیمت
+                {t("mPrice")}{" "}
               </h2>
               <h2
                 onClick={() => {
@@ -193,10 +219,10 @@ export default function HotelList({ features }) {
                 }}
                 className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-base"
               >
-                بیشترین قیمت
+                {t("lPrice")}{" "}
               </h2>
             </div>
-            <h3 className="w-28">مرتب سازی</h3>
+            <h3 className="w-28">{t("sortBy")}</h3>
           </div>
           <div className="w-full flex justify-end my-3 lg:hidden">
             <Suspense
@@ -235,7 +261,7 @@ export default function HotelList({ features }) {
               }}
               className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
             >
-              بیشتر نشونم بده
+              {t("showMore")}
             </button>
           </div>
         </div>

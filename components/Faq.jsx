@@ -7,11 +7,11 @@ export default function Faq() {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   useEffect(() => {
-    changeState();
-  });
+    changeAlignment();
+  }, []);
 
   const [alignLeft, setAlignLeft] = useState(false);
-  async function changeState() {
+  async function changeAlignment() {
     console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);

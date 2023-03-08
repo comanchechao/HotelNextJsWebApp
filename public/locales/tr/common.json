@@ -1,7 +1,7 @@
 {
   "aboutUs": "Hakkımızda",
   "contactUs": "Bize Ulaşın",
-  "home": "Ev",
+  "home": "Ana Sayfa",
   "admin": "Yönetici",
   "profile": "Hesap",
   "hotel": "Otel Konaklama",
@@ -10,7 +10,7 @@
   "logIn": "Giriş yap / Kayıt ol",
   "enterPhone": "Giriş yapmak veya kaydolmak için telefon numaranızı girin",
   "phone": "Telefon Numaranız",
-  "confirm": "Onaylayın",
+  "confirm": "Kayıt ol",
   "confirmCode": "Onaylayın",
   "logInEmail": "E-posta ve şifre ile giriş yapın",
   "log": "Giriş yap",
@@ -40,7 +40,7 @@
   "moscow": "Moskova otelleri",
   "berlin": "Berlin otelleri",
   "milan": "Milano otelleri",
-
+  "hotels": "otelleri",
   "kish": "Kiş otelleri",
   "shiraz": "Şiraz otelleri",
   "tehran": "Tahran otelleri",
@@ -66,5 +66,16 @@
   "Q8": "Voucher nedir?",
   "A8": "Seyahat şirketleri uçak kapasitesinden fazla bilet sattıklarında gönüllü olarak, bazı yolcuların uçaklarını bir sonraki uçakla değiştirmelerini isterler ve bunun için o gönüllü yolculara para öderler fakat çoğu havayolu şirketi para ödemek yerine başka bir yolculukta kullanılmak üzere travel voucher denilen kuponlardan verirler.",
   "Q9": "Web sitesinde listelenen miktar nihai tutar mı? Daha sonra değiştirmek mümkün mü?",
-  "A9": "Nevruz Bayramı gibi özel zamanlar dışında beyan edilen miktar kesindir; Bu durumda cari kurun hesapta olduğu rezervasyon sırasında bildirilmelidir."
+  "A9": "Nevruz Bayramı gibi özel zamanlar dışında beyan edilen miktar kesindir; Bu durumda cari kurun hesapta olduğu rezervasyon sırasında bildirilmelidir.",
+
+  "mRerserve": "En Ayrılmış",
+  "mPrice": "En Pahalı",
+  "mStar": "En Çok Oy Alanlar",
+  "lPrice": "En Az Pahalı",
+  "sortBy": "Sıralama Ölçütü",
+  "showMore": "Bana daha fazlasını göster",
+  "currency": "TL",
+  "seeRoom": "Odayı ve rezervasyonu görün",
+  "price1Night": "Bir gecelik fiyat",
+  "star": "Star"
 }

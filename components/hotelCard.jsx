@@ -9,19 +9,33 @@ import { useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
 import { Star } from "phosphor-react";
 import { Chip } from "@mantine/core";
+import { useTranslation } from "next-i18next";
+import { useEffect, useState } from "react";
 
 const HotelMap = dynamic(() => import("./hotelMap"), {
   ssr: false,
 });
 export default function HotelCard({ hotel }) {
   // setting reservatoin info
+  const { t, i18n } = useTranslation("common");
+  const lng = i18n.language;
 
+  useEffect(() => {
+    changeAlignment();
+  }, []);
+
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   const dispatch = useDispatch();
   return (
     <div className=" w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row flex-col-reverse justify-between items-center border ">
       <div className="w-56 h-full flex flex-col p-4 items-center justify-center space-y-2">
         <h2 className="text-mainPurple text-lg flex items-center justify-center">
-          <p className="text-xs mx-2">تومان</p>
+          <p className="text-xs mx-2">{t("currency")}</p>
           {hotel.prices}
         </h2>
         <Link href={"/hotelList/hotelDetail/" + hotel.id}>
@@ -31,10 +45,10 @@ export default function HotelCard({ hotel }) {
             }}
             className="px-6 w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xs font-mainFont"
           >
-            مشاهده ی اتاق ها و رزرو
+            {t("seeRoom")}{" "}
           </button>
         </Link>
-        <p className="text-gray-500 text-xs">قیمت برای 1 شب</p>
+        <p className="text-gray-500 text-xs">{t("price1Night")}</p>
       </div>
       <div className=" w-96 h-full flex flex-col items-end justify-between p-3 border-l border-mainBlue">
         <div className="flex items-center justify-center space-x-2">
@@ -47,7 +61,7 @@ export default function HotelCard({ hotel }) {
         </div>
         <h1 className="text-center   text-lg">{hotel.title}</h1>
         <div className="flex items-center   text-sm space-x-1">
-          <h2>ستاره</h2>
+          <h2>{t("star")}</h2>
           <h2>{hotel.stars}</h2>
           <Star size={15} weight="fill" />{" "}
         </div>
