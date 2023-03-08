@@ -206,7 +206,7 @@ export default function HotelList({ features }) {
                 </div>
               }
             >
-              <HotelListModal />
+              <HotelListModal features={features} />
             </Suspense>
           </div>
           {loading === false ? (
