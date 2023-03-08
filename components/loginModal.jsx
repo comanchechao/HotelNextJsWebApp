@@ -64,12 +64,12 @@ export default function LoginModal() {
       if (event === "SIGNED_OUT" || event === "USER_DELETED") {
         // delete cookies on sign out
         const expires = new Date(0).toUTCString();
-        document.cookie = `my-access-token=; path=/; expires=${expires}; SameSite=Lax; secure`;
-        document.cookie = `my-refresh-token=; path=/; expires=${expires}; SameSite=Lax; secure`;
+        document.cookie = `my-access-token=; path=/; expires=${expires}; SameSite=Lax; secure httpOnly; `;
+        document.cookie = `my-refresh-token=; path=/; expires=${expires}; SameSite=Lax; secure httpOnly; `;
       } else if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
         const maxAge = 3600;
-        document.cookie = `my-access-token=${session.access_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure; HttpOnly`;
-        document.cookie = `my-refresh-token=${session.refresh_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure; HttpOnly`;
+        document.cookie = `my-access-token=${session.access_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure httpOnly;`;
+        document.cookie = `my-refresh-token=${session.refresh_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure; httpOnly;`;
       }
     });
   }, []);

@@ -10,8 +10,8 @@ module.exports = {
   async headers() {
     return [
       {
+        source: "/(.*)",
         headers: createSecureHeaders({
-          source: "/(.*)",
           contentSecurityPolicy: {
             directives: {
               defaultSrc: ["'self'", "boutak.com"],
