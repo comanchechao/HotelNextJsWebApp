@@ -20,6 +20,7 @@ import {
 } from "@tabler/icons";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient.js";
+import { adminAuthClient } from "../../lib/supbaseServer";
 import WebsiteInfo from "../../components/websiteInfo";
 import AddCity from "../../components/addCity";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -28,8 +29,40 @@ import { useRouter } from "next/router.js";
 export async function getServerSideProps(context) {
   // Fetch data from the database
 
+  const refreshToken = context.req.cookies["my-refresh-token"];
+  const accessToken = context.req.cookies["my-access-token"];
+
+  if (refreshToken && accessToken) {
+    await supabase.auth.setSession({
+      refresh_token: refreshToken,
+      access_token: accessToken,
+    });
+  } else {
+    throw new Error("user not authenticated");
+  }
+
+  const { data: user, error5 } = await supabase.auth.getUser(accessToken);
+  if (error5) throw error;
+
+  const { data: userRole, error6 } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.user.id);
+
+  console.log(userRole[0].role);
+
+  if (userRole[0].role !== "admin") {
+    throw new Error("you are not authorized");
+  }
+
+  const {
+    data: { users },
+    error7,
+  } = await adminAuthClient.listUsers();
+
   const { data: hotels, error } = await supabase.from("Hotels").select();
   const { data: cities, error2 } = await supabase.from("cities").select();
+
   const { data: features, error3 } = await supabase
     .from("features")
     .select("title");
@@ -44,6 +77,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       reservations: reservations,
+      users: users,
       cities: cities,
       hotels: hotels,
       features: features,
@@ -58,6 +92,7 @@ export default function AdminPage({
   cities,
   features,
   reservations,
+  users,
 }) {
   const router = useRouter();
   const [tab, setTab] = useState("hotel");
@@ -85,7 +120,7 @@ export default function AdminPage({
       <div className="h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-8 lg:px-40">
         <div className="lg:w-3/4 w-full flex items-center justify-center h-screen lg:p-6 py-6">
           {tab === "user" ? (
-            <UserManagement />
+            <UserManagement users={users} />
           ) : tab === "city" ? (
             <AddCity cities={cities} />
           ) : tab === "reserve" ? (

@@ -8,38 +8,9 @@ import {
 } from "@tabler/icons";
 import SuperUser from "./superUserModal";
 import SuperUserValidation from "./superUserValidation";
+import { useEffect } from "react";
 
-export default function userManagement() {
-  let users = [
-    {
-      title: "انا هتل",
-      name: "لیونل",
-    },
-    {
-      title: "ستاره هتل",
-      name: "کریمی",
-    },
-    {
-      title: "مروارید هتل",
-      name: "سالاری",
-    },
-    {
-      title: "انا هتل",
-      name: "لیونل",
-    },
-    {
-      title: "انا هتل",
-      name: "لیونل",
-    },
-    {
-      title: "انا هتل",
-      name: "لیونل",
-    },
-    {
-      title: "ستاره هتل",
-      name: "کریمی",
-    },
-  ];
+export default function UserManagement({ users }) {
   return (
     <div className="flex w-full h-full lg:h-carousel ">
       <div className="flex w-full space-y-4 flex-col">
@@ -94,7 +65,7 @@ export default function userManagement() {
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                       <IconUserCircle size={50} />
                     </div>
-                    <h1 className=" text-sm lg:text-xl">{user.title}</h1>
+                    <h1 className=" text-sm lg:text-xl">{user.email}</h1>
                     <p className="hidden lg:block">{user.name}</p>
                     <SuperUser />
                   </div>
@@ -114,7 +85,7 @@ export default function userManagement() {
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                       <IconUserCircle size={50} />
                     </div>
-                    <h1 className=" text-sm lg:text-xl">{user.title}</h1>
+                    <h1 className=" text-sm lg:text-xl">{user.email}</h1>
                     <p className="hidden lg:block">{user.name}</p>
                     <SuperUser />
                   </div>

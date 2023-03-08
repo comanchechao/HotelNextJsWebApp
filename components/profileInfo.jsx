@@ -27,7 +27,7 @@ export default function ProfileInfo({ user }) {
         .eq("id", user.user.id);
 
       console.log(userData);
-      if (userData !== null) {
+      if (!userData) {
         setEmail(userData.data[0].email);
         setFullName(userData.data[0].fullName);
         setPhone(userData.data[0].phone);
