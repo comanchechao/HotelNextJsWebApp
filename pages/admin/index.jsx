@@ -49,8 +49,6 @@ export async function getServerSideProps(context) {
     .select("role")
     .eq("id", user.user.id);
 
-  console.log(userRole[0].role);
-
   if (userRole[0].role !== "admin") {
     throw new Error("you are not authorized");
   }
