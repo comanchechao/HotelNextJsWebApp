@@ -44,7 +44,11 @@ export default function HotelCard({ hotel }) {
           <p className="text-xs mx-2">{t("currency")}</p>
           {hotel.prices}
         </h2>
-        <Link href={"/hotelList/hotelDetail/" + hotel.id}>
+        <Link
+          href={`${alignLeft === true ? "" : "tr/hotelList/"}/hotelDetail/${
+            hotel.id
+          }`}
+        >
           <button
             onClick={() => {
               dispatch(reservationActions.setHotelInfo(hotel));

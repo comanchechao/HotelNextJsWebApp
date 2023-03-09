@@ -201,13 +201,9 @@ export default function HotelDetailPage({ hotel, comments }) {
     <>
       <Head>
         <title>
-          {hotel.city} | {hotel.title} | ارزان قیمت : رزرو بوتک{" "}
+          {hotel.city} | {hotel.title} | {t("boutak")}
         </title>
-        <meta
-          name="description"
-          content="
-با بوتک رزرو هتل آسان و سریع است! بوتک، هتل و استراحتگاه های رفاهی فوق العاده را با بهترین قیمت ها و نرخ های ویژه ارائه می دهد. با ما بهترین قیمت و محل هتل خود را پیدا کنید. این سایت به شما انواع امکانات، عرضه های ویژه و کد های تخفیف اختصاصی را برای استفاده از برترین هتل ها، با مناسب ترین قیمت ها فراهم میکند"
-        />
+        <meta name="description" content={t("description")} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -500,7 +496,7 @@ export default function HotelDetailPage({ hotel, comments }) {
                   <h1 className=" text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md self-end">
                     اتاق ها
                   </h1>
-                  <div className="flex border border-gray-300 bg-white justify-center w-full text-sm">
+                  <div className="flex border border-gray-300 bg-white justify-center w-full text-sm rounded-md">
                     <Tabs
                       radius="xs"
                       variant="pills"
