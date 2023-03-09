@@ -64,7 +64,13 @@ export default function HotelListMenu({ features, residenceTypes }) {
             </span>
           </Accordion.Control>
           <Accordion.Panel>
-            <div className="  text-gray-500 flex items-end text-xl flex-col justify-center space-y-2">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex text-right   items-end text-xl flex-col justify-center space-y-2"
+                  : "flex text-left   items-start text-xl flex-col justify-center space-y-2"
+              }`}
+            >
               <Switch
                 checked={stars === 3}
                 onClick={() => {
@@ -134,7 +140,13 @@ export default function HotelListMenu({ features, residenceTypes }) {
             </span>
           </Accordion.Control>
           <Accordion.Panel>
-            <div className=" flex text-right   items-end text-xl flex-col justify-center space-y-2">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex text-right   items-end text-xl flex-col justify-center space-y-2"
+                  : "flex text-left   items-start text-xl flex-col justify-center space-y-2"
+              }`}
+            >
               {alignLeft
                 ? features.map((feature, i) => {
                     return (
@@ -173,11 +185,17 @@ export default function HotelListMenu({ features, residenceTypes }) {
         <Accordion.Item value="customization">
           <Accordion.Control>
             <span className=" text-gray-900 flex justify-end  text-md text-right">
-              نوع اقامتگاه
+              {t("residenceTypes")}
             </span>
           </Accordion.Control>
           <Accordion.Panel>
-            <div className=" flex text-right   items-end text-xl flex-col justify-center space-y-2">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex text-right   items-end text-xl flex-col justify-center space-y-2"
+                  : "flex text-left   items-start text-xl flex-col justify-center space-y-2"
+              }`}
+            >
               {alignLeft
                 ? residenceTypes.map((residenceType, i) => {
                     return (
