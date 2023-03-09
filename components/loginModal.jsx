@@ -204,7 +204,6 @@ export default function LoginModal() {
                           variant="outline"
                         >
                           <h1 className="text-xl text-center">
-                            ایمیل خودتون رو برای تایید حساب کاربری چک کنید
                             {t("emailConfirm")}
                           </h1>
                         </Notification>
