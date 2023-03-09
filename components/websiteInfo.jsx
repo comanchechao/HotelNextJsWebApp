@@ -214,7 +214,9 @@ export default function WebsiteInfo() {
           </Tabs.Panel>
           <div className="absolute right-8 bottom-3">
             <button
-              onClick={changeWebsiteInfo}
+              onClick={() => {
+                changeWebsiteInfo();
+              }}
               className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
             >
               {loading ? (

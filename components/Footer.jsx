@@ -17,7 +17,7 @@ export default function Footer() {
 
   useEffect(() => {
     getWebsiteInfo();
-  });
+  }, []);
 
   async function getWebsiteInfo() {
     setLoading(true);
