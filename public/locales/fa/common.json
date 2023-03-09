@@ -19,6 +19,10 @@
   "recover": "بازیابی رمز عبور",
   "signUp": "ثبت نام حساب کاربری",
   "logInPhone": "ورود با رمز یکبار مصرف",
+  "signUp": "Üye olmak",
+  "enterSignUp": "Kaydolmak için E-posta ve Şifreyi Girin",
+  "emailConfirm": "Hesabınızı onaylamak için e-postanızı kontrol edin",
+  "loginSuccess": "Başarıyla giriş yapıldı",
 
   "destination": "مقصد",
   "support": "پشتیبانی آنلاین",

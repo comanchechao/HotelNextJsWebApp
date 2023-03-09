@@ -205,6 +205,7 @@ export default function LoginModal() {
                         >
                           <h1 className="text-xl text-center">
                             ایمیل خودتون رو برای تایید حساب کاربری چک کنید
+                            {t("emailConfirm")}
                           </h1>
                         </Notification>
                       ) : (
@@ -212,14 +213,14 @@ export default function LoginModal() {
                       )}
                     </div>
                     <div className="flex flex-col items-center justify-center space-y-3">
-                      <h1 className="text-3xl  "> ثبت‌نام </h1>
-                      <h4>ایمیل و رمز عبور خود را برای ثبت‌نام وارد کنید</h4>
+                      <h1 className="text-3xl  "> {t("signUp")} </h1>
+                      <h4>{t("enterSignUp")}</h4>
                     </div>
                     <TextInput
                       className="text-2xl   text-right flex flex-col items-end "
                       type="email"
-                      placeholder="ایمیل"
-                      label="ایمیل"
+                      placeholder={t("email")}
+                      label={t("email")}
                       size="md"
                       withAsterisk
                       value={emailSignUp}
@@ -228,8 +229,8 @@ export default function LoginModal() {
                     <TextInput
                       className="text-2xl   text-right flex flex-col items-end "
                       type="password"
-                      placeholder="رمز عبور"
-                      label="رمز عبور"
+                      placeholder={t("password")}
+                      label={t("password")}
                       size="md"
                       withAsterisk
                       value={passwordSignUp}
@@ -246,20 +247,20 @@ export default function LoginModal() {
                           <Loader color="yellow" />
                         </div>
                       ) : (
-                        <h3>تایید</h3>
+                        <h3>{t("logInEmail")}</h3>
                       )}
                     </button>
                     <button
                       onClick={() => setRegister(false)}
                       className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-gray-500 hover:text-gray-900 text-md font-mainFont"
                     >
-                      ورود با ایمیل و پسوورد
+                      {t("confirm")}
                     </button>
                     <button
                       onClick={() => setChange(false)}
                       className="w-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border border-dashed border-mainBlue py-2 bg-transparent   text-md font-mainFont"
                     >
-                      ورود با رمز یکبار مصرف
+                      {t("logInPhone")}
                     </button>
                   </div>
                 ) : (
@@ -275,7 +276,7 @@ export default function LoginModal() {
                           variant="outline"
                         >
                           <h1 className="text-2xl text-center">
-                            ورود موفقیت آمیز بود
+                            {t("loginSuccess")}
                           </h1>
                         </Notification>
                       ) : (

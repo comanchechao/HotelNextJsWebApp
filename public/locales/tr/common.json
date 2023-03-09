@@ -20,6 +20,10 @@
   "recover": "Şifre kurtarma",
   "signUp": "Kayıt ol",
   "logInPhone": "Telefon numarası ile giriş yapın",
+  "signUp": "Üye olmak",
+  "enterSignUp": "Kaydolmak için E-posta ve Şifreyi Girin",
+  "emailConfirm": "Hesabınızı onaylamak için e-postanızı kontrol edin",
+  "loginSuccess": "Başarıyla giriş yapıldı",
 
   "destination": "Variş noktasi",
   "support": "çevrimiçi destek",
