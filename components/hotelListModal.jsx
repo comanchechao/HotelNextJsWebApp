@@ -5,16 +5,30 @@ import {
   RangeSlider,
   Checkbox,
 } from "@mantine/core";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Accordion } from "@mantine/core";
 import { useDispatch, useSelector } from "react-redux";
 import { filterActions } from "../store/filterActivation";
-export default function HotelListModal({ features }) {
+import { useTranslation } from "next-i18next";
+
+export default function HotelListModal({ features, residenceTypes }) {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
 
   let stars = useSelector((state) => state.filter.stars);
+  const { t, i18n } = useTranslation("common");
+  const lng = i18n.language;
 
+  useEffect(() => {
+    changeAlignment();
+  }, []);
+
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   const dispatch = useDispatch();
   return (
     <div>
@@ -44,17 +58,23 @@ export default function HotelListModal({ features }) {
           <Accordion.Item value="customization">
             <Accordion.Control>
               <span className=" text-gray-900 flex justify-end text-md text-right">
-                ستاره هتل
+                {t("hotelStars")}
               </span>
             </Accordion.Control>
             <Accordion.Panel>
-              <div className="  text-gray-500 flex items-end text-xl flex-col justify-center space-y-2">
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex text-right   items-end text-xl flex-col justify-center space-y-2"
+                    : "flex text-left   items-start text-xl flex-col justify-center space-y-2"
+                }`}
+              >
                 <Switch
                   checked={stars === 3}
                   onClick={() => {
                     dispatch(filterActions.setStars(3));
                   }}
-                  label="کمتر از سه ستاره"
+                  label={t("3Stars")}
                   color="yellow"
                 />
                 <Switch
@@ -62,7 +82,7 @@ export default function HotelListModal({ features }) {
                   onClick={() => {
                     dispatch(filterActions.setStars(4));
                   }}
-                  label="چهار ستاره"
+                  label={t("4Stars")}
                   color="yellow"
                 />
                 <Switch
@@ -70,7 +90,7 @@ export default function HotelListModal({ features }) {
                   onClick={() => {
                     dispatch(filterActions.setStars(5));
                   }}
-                  label="پنج ستاره"
+                  label={t("5Stars")}
                   color="yellow"
                 />
               </div>
@@ -86,7 +106,7 @@ export default function HotelListModal({ features }) {
           <Accordion.Item value="customization">
             <Accordion.Control>
               <span className=" text-gray-900 flex justify-end  text-md text-right">
-                رنج قیمتی
+                {t("priceRange")}{" "}
               </span>
             </Accordion.Control>
             <Accordion.Panel>
@@ -114,23 +134,42 @@ export default function HotelListModal({ features }) {
           <Accordion.Item value="customization">
             <Accordion.Control>
               <span className=" text-gray-900 flex justify-end  text-md text-right">
-                امکانات هتل
+                {t("hotelFacilities")}
               </span>
             </Accordion.Control>
             <Accordion.Panel>
-              <div className=" flex text-right   items-end text-xl flex-col justify-center space-y-2">
-                {features.map((feature, i) => {
-                  return (
-                    <Checkbox
-                      key={i}
-                      labelPosition="left"
-                      color="yellow"
-                      radius="xl"
-                      value="react"
-                      label={feature.title}
-                    />
-                  );
-                })}
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex text-right   items-end text-xl flex-col justify-center space-y-2"
+                    : "flex text-left   items-start text-xl flex-col justify-center space-y-2"
+                }`}
+              >
+                {alignLeft
+                  ? features.map((feature, i) => {
+                      return (
+                        <Checkbox
+                          key={i}
+                          labelPosition="left"
+                          color="yellow"
+                          radius="xl"
+                          value="react"
+                          label={feature.title}
+                        />
+                      );
+                    })
+                  : features.map((feature, i) => {
+                      return (
+                        <Checkbox
+                          key={i}
+                          labelPosition="left"
+                          color="yellow"
+                          radius="xl"
+                          value="react"
+                          label={feature.trTitle}
+                        />
+                      );
+                    })}
               </div>
             </Accordion.Panel>
           </Accordion.Item>
@@ -144,60 +183,42 @@ export default function HotelListModal({ features }) {
           <Accordion.Item value="customization">
             <Accordion.Control>
               <span className=" text-gray-900 flex justify-end  text-md text-right">
-                نوع اقامتگاه
+                {t("residenceTypes")}
               </span>
             </Accordion.Control>
             <Accordion.Panel>
-              <div className=" w-flex text-right   items-end text-xl flex-col justify-center space-y-2">
-                <Checkbox
-                  labelPosition="left"
-                  color="yellow"
-                  radius="xl"
-                  value="react1"
-                  label="متفرقه"
-                />
-                <Checkbox
-                  labelPosition="left"
-                  color="yellow"
-                  radius="xl"
-                  value="svelte2"
-                  label="آپارتمان"
-                />
-                <Checkbox
-                  labelPosition="left"
-                  color="yellow"
-                  radius="xl"
-                  value="ng3"
-                  label="خوابگاه"
-                />
-                <Checkbox
-                  labelPosition="left"
-                  color="yellow"
-                  radius="xl"
-                  value="vue11"
-                  label="هتل"
-                />
-                <Checkbox
-                  labelPosition="left"
-                  color="yellow"
-                  radius="xl"
-                  value="vue12"
-                  label="تخت و صبحانه"
-                />
-                <Checkbox
-                  labelPosition="left"
-                  color="yellow"
-                  radius="xl"
-                  value="vue13"
-                  label="خانه مهمان پذیر"
-                />
-                <Checkbox
-                  labelPosition="left"
-                  color="yellow"
-                  radius="xl"
-                  value="vue14"
-                  label="هتل آپارتمان"
-                />
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex text-right   items-end text-xl flex-col justify-center space-y-2"
+                    : "flex text-left   items-start text-xl flex-col justify-center space-y-2"
+                }`}
+              >
+                {alignLeft
+                  ? residenceTypes.map((residenceType, i) => {
+                      return (
+                        <Checkbox
+                          key={i}
+                          labelPosition="left"
+                          color="yellow"
+                          radius="xl"
+                          value="react"
+                          label={residenceType.title}
+                        />
+                      );
+                    })
+                  : residenceTypes.map((residenceType, i) => {
+                      return (
+                        <Checkbox
+                          key={i}
+                          labelPosition="left"
+                          color="yellow"
+                          radius="xl"
+                          value="react"
+                          label={residenceType.trTitle}
+                        />
+                      );
+                    })}
               </div>
             </Accordion.Panel>
           </Accordion.Item>
@@ -206,14 +227,14 @@ export default function HotelListModal({ features }) {
           onClick={() => setOpened(false)}
           className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
         >
-          تایید
+          {t("confirmFilters")}
         </button>
       </Modal>
       <button
         onClick={() => setOpened(true)}
         className="py-1 px-8 mt-6 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
       >
-        فیلترها
+        {t("filters")}
       </button>
     </div>
   );

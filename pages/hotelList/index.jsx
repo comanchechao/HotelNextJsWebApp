@@ -241,7 +241,10 @@ export default function HotelList({ features, residenceTypes }) {
                 </div>
               }
             >
-              <HotelListModal features={features} />
+              <HotelListModal
+                residenceTypes={residenceTypes}
+                features={features}
+              />
             </Suspense>
           </div>
           {loading === false ? (

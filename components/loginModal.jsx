@@ -246,14 +246,14 @@ export default function LoginModal() {
                           <Loader color="yellow" />
                         </div>
                       ) : (
-                        <h3>{t("logInEmail")}</h3>
+                        <h3>{t("confirm")}</h3>
                       )}
                     </button>
                     <button
                       onClick={() => setRegister(false)}
                       className="w-full rounded-md transition ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent text-gray-500 hover:text-gray-900 text-md font-mainFont"
                     >
-                      {t("confirm")}
+                      {t("logInEmail")}
                     </button>
                     <button
                       onClick={() => setChange(false)}
@@ -332,7 +332,7 @@ export default function LoginModal() {
                         onClick={() => setRegister(true)}
                         className="w-full h-full rounded-md transition text-gray-500 hover:text-gray-900 ease-in duration-300  hover:border-mainPurple border-r-8 border-mainBlue py-2 bg-transparent   text-md font-mainFont"
                       >
-                        <p className=" w-36 mx-2"> {t("signUp")}</p>
+                        <p className=" w-36 mx-2"> {t("signUpEmail")}</p>
                       </button>
                       <ForgotPasswordModal />
                     </div>
@@ -366,7 +366,7 @@ export default function LoginModal() {
                 withAsterisk
               />
               <button className="w-full rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont">
-                {t("confirmCode")}
+                {t("signUp")}
               </button>
               <button
                 onClick={() => setChange(true) & setRegister(false)}

@@ -23,6 +23,7 @@
   "enterSignUp": "ایمیل و رمز عبور خود را برای ثبت‌نام وارد کنید",
   "emailConfirm": "ایمیل خودتون رو برای تایید حساب کاربری چک کنید",
   "loginSuccess": "ورود موفقیت آمیز بود",
+  "signUpEmail": "ثبت‌نام",
 
   "destination": "مقصد",
   "support": "پشتیبانی آنلاین",
@@ -81,7 +82,8 @@
   "seeRoom": "مشاهده ی اتاق ها و رزرو",
   "price1Night": "قیمت برای 1 شب",
   "star": "ستاره",
-
+  "filters": "فیلترها",
+  "confirmFilters": "تایید",
   "hotelNameSearch": "جستجو نام هتل",
   "hotelStars": "ستاره هتل",
   "3Stars": "کمتر از سه ستاره",

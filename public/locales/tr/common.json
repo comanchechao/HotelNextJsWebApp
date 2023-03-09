@@ -20,10 +20,10 @@
   "recover": "Şifre kurtarma",
   "signUp": "Kayıt ol",
   "logInPhone": "Telefon numarası ile giriş yapın",
-  "signUp": "Üye olmak",
   "enterSignUp": "Kaydolmak için E-posta ve Şifreyi Girin",
   "emailConfirm": "Hesabınızı onaylamak için e-postanızı kontrol edin",
   "loginSuccess": "Başarıyla giriş yapıldı",
+  "signUpEmail": "Üye olmak",
 
   "destination": "Variş noktasi",
   "support": "çevrimiçi destek",
@@ -82,7 +82,8 @@
   "seeRoom": "Odayı ve rezervasyonu görün",
   "price1Night": "Bir gecelik fiyat",
   "star": "Star",
-
+  "filters": "Filtreler",
+  "confirmFilters": "Onaylamak",
   "hotelNameSearch": "Otel Adı Arama",
   "hotelStars": "Otel Yıldızları",
   "3Stars": "3 yıldızdan az",
