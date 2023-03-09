@@ -32,7 +32,13 @@ export default function HotelCard({ hotel }) {
   }
   const dispatch = useDispatch();
   return (
-    <div className=" w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row flex-col-reverse justify-between items-center border ">
+    <div
+      className={`${
+        alignLeft === true
+          ? "w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row flex-col-reverse justify-between items-center border"
+          : "w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row-reverse flex-col-reverse justify-between items-center border"
+      }`}
+    >
       <div className="w-56 h-full flex flex-col p-4 items-center justify-center space-y-2">
         <h2 className="text-mainPurple text-lg flex items-center justify-center">
           <p className="text-xs mx-2">{t("currency")}</p>
@@ -50,12 +56,18 @@ export default function HotelCard({ hotel }) {
         </Link>
         <p className="text-gray-500 text-xs">{t("price1Night")}</p>
       </div>
-      <div className=" w-96 h-full flex flex-col items-end justify-between p-3 border-l border-mainBlue">
+      <div
+        className={`${
+          alignLeft === true
+            ? "w-96 h-full flex flex-col items-end justify-between p-3 border-l border-mainBlue"
+            : "w-96 h-full flex flex-col items-start justify-between p-3 border-l border-mainBlue"
+        }`}
+      >
         <div className="flex items-center justify-center space-x-2">
           <Chip defaultChecked color="green" variant="filled" size="md">
             <span className="text-xs">بالاترین درصد رضایتمندی</span>{" "}
           </Chip>
-          <Chip defaultChecked color="pink" variant="filled" size="md">
+          <Chip defaultChecked color="red" variant="filled" size="md">
             <span className="text-xs">تحفیف ویژه بوتک</span>{" "}
           </Chip>
         </div>

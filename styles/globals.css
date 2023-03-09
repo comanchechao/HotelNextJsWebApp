@@ -35,7 +35,7 @@ input {
   text-align: right;
   display: flex;
   align-items: flex-start;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .mantine-MultiSelect-searchInput {

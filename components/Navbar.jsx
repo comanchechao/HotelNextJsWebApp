@@ -1,12 +1,10 @@
 import Link from "next/link";
 import {
-  CaretDown,
   Question,
   Scroll,
-  Bed,
-  HouseLine,
   IdentificationCard,
   House,
+  Buildings,
 } from "phosphor-react";
 import i18next from "i18next";
 import { useEffect, useState, useRef } from "react";
@@ -61,7 +59,7 @@ export default function Navbar() {
         >
           {t("hotel")}
 
-          <Bed className="mx-2" size={30} />
+          <Buildings className="mx-2" size={30} />
         </Link>
 
         <Link

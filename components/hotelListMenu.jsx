@@ -6,6 +6,7 @@ import { RangeSlider } from "@mantine/core";
 import { filterActions } from "../store/filterActivation";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 export default function HotelListMenu({ features }) {
   let stars = useSelector((state) => state.filter.stars);
   // let minPrice = useSelector((state) => state.filter.minPrice);
@@ -20,7 +21,19 @@ export default function HotelListMenu({ features }) {
   // useEffect(() => {
   //   console.log(maxRange, minRange);
   // });
+  const { t, i18n } = useTranslation("common");
+  const lng = i18n.language;
 
+  useEffect(() => {
+    changeAlignment();
+  }, []);
+
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col items-center space-y-4 bg-white p-4 drop-shadow-xl rounded-md">
@@ -29,7 +42,7 @@ export default function HotelListMenu({ features }) {
           className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-52 hover:bg-white   bg-gray-100 font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-full  text-sm focus:outline-none"
           type="search"
           name="search"
-          placeholder="جستجو نام هتل"
+          placeholder={t("hotelNameSearch")}
         />
         <button
           type="submit"
@@ -47,7 +60,7 @@ export default function HotelListMenu({ features }) {
         <Accordion.Item value="customization">
           <Accordion.Control>
             <span className=" text-gray-900 flex justify-end text-md text-right">
-              ستاره هتل
+              {t("hotelStars")}
             </span>
           </Accordion.Control>
           <Accordion.Panel>
@@ -57,7 +70,7 @@ export default function HotelListMenu({ features }) {
                 onClick={() => {
                   dispatch(filterActions.setStars(3));
                 }}
-                label="کمتر از سه ستاره"
+                label={t("3Stars")}
                 color="yellow"
               />
               <Switch
@@ -65,7 +78,7 @@ export default function HotelListMenu({ features }) {
                 onClick={() => {
                   dispatch(filterActions.setStars(4));
                 }}
-                label="چهار ستاره"
+                label={t("4Stars")}
                 color="yellow"
               />
               <Switch
@@ -73,7 +86,7 @@ export default function HotelListMenu({ features }) {
                 onClick={() => {
                   dispatch(filterActions.setStars(5));
                 }}
-                label="پنج ستاره"
+                label={t("5Stars")}
                 color="yellow"
               />
             </div>
@@ -89,7 +102,7 @@ export default function HotelListMenu({ features }) {
         <Accordion.Item value="customization">
           <Accordion.Control>
             <span className=" text-gray-900 flex justify-end  text-md text-right">
-              رنج قیمتی
+              {t("priceRange")}{" "}
             </span>
           </Accordion.Control>
           <Accordion.Panel>
@@ -117,23 +130,36 @@ export default function HotelListMenu({ features }) {
         <Accordion.Item value="customization">
           <Accordion.Control>
             <span className=" text-gray-900 flex justify-end  text-md text-right">
-              امکانات هتل
+              {t("hotelFacilities")}
             </span>
           </Accordion.Control>
           <Accordion.Panel>
             <div className=" flex text-right   items-end text-xl flex-col justify-center space-y-2">
-              {features.map((feature, i) => {
-                return (
-                  <Checkbox
-                    key={i}
-                    labelPosition="left"
-                    color="yellow"
-                    radius="xl"
-                    value="react"
-                    label={feature.title}
-                  />
-                );
-              })}
+              {alignLeft
+                ? features.map((feature, i) => {
+                    return (
+                      <Checkbox
+                        key={i}
+                        labelPosition="left"
+                        color="yellow"
+                        radius="xl"
+                        value="react"
+                        label={feature.title}
+                      />
+                    );
+                  })
+                : features.map((feature, i) => {
+                    return (
+                      <Checkbox
+                        key={i}
+                        labelPosition="left"
+                        color="yellow"
+                        radius="xl"
+                        value="react"
+                        label={feature.trTitle}
+                      />
+                    );
+                  })}
             </div>
           </Accordion.Panel>
         </Accordion.Item>

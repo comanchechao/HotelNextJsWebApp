@@ -76,5 +76,13 @@
   "currency": "تومان",
   "seeRoom": "مشاهده ی اتاق ها و رزرو",
   "price1Night": "قیمت برای 1 شب",
-  "star": "ستاره"
+  "star": "ستاره",
+
+  "hotelNameSearch": "جستجو نام هتل",
+  "hotelStars": "ستاره هتل",
+  "3Stars": "کمتر از سه ستاره",
+  "4Stars": "چهار ستاره",
+  "5Stars": "پنج ستاره",
+  "priceRange": "رنج قیمتی",
+  "hotelFacilities": "امکانات هتل"
 }

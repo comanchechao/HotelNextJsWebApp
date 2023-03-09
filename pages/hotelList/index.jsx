@@ -16,7 +16,7 @@ import HotelListMenu from "../../components/hotelListMenu";
 export async function getServerSideProps({ locale }) {
   // Fetch data from the database
 
-  const { data, error } = await supabase.from("features").select("title");
+  const { data, error } = await supabase.from("features").select();
 
   return {
     props: {
