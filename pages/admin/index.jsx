@@ -32,14 +32,13 @@ export async function getServerSideProps(context) {
   const refreshToken = context.req.cookies["my-refresh-token"];
   const accessToken = context.req.cookies["my-access-token"];
 
-  if (refreshToken && accessToken) {
-    await supabase.auth.setSession({
-      refresh_token: refreshToken,
-      access_token: accessToken,
-    });
-  } else {
+  if (!refreshToken && !accessToken) {
     throw new Error("user not authenticated");
   }
+  await supabase.auth.setSession({
+    refresh_token: refreshToken,
+    access_token: accessToken,
+  });
 
   const { data: user, error5 } = await supabase.auth.getUser(accessToken);
   if (error5) throw error;
