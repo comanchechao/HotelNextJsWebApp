@@ -10,7 +10,7 @@ export default function AboutUs() {
   const [aboutUsMore, setAboutUsMore] = useState("");
   useEffect(() => {
     getWebsiteInfo();
-  });
+  }, []);
 
   async function getWebsiteInfo() {
     setLoading(true);

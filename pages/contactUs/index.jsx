@@ -15,7 +15,7 @@ export default function ContactUs() {
   const [postalCode, setPostalCode] = useState("");
   useEffect(() => {
     getWebsiteInfo();
-  });
+  }, []);
 
   async function getWebsiteInfo() {
     setLoading(true);
