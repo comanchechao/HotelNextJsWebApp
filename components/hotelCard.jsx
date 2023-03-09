@@ -39,16 +39,13 @@ export default function HotelCard({ hotel }) {
           : "w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row-reverse flex-col-reverse justify-between items-center border"
       }`}
     >
-      <div className="w-56 h-full flex flex-col p-4 items-center justify-center space-y-2">
-        <h2 className="text-mainPurple text-lg flex items-center justify-center">
-          <p className="text-xs mx-2">{t("currency")}</p>
-          {hotel.prices}
+      <div className="w-56 h-full flex flex-col p-4 items-center lg:items-center justify-center space-y-4">
+        <h2 className="text-mainPurple   flex items-start justify-center">
+          <p className="text-sm font-bold mx-2">{t("currency")}</p>
+
+          <p className="text-2xl "> {hotel.prices}</p>
         </h2>
-        <Link
-          href={`${alignLeft === true ? "" : "tr/hotelList/"}/hotelDetail/${
-            hotel.id
-          }`}
-        >
+        <Link href={"/hotelList/hotelDetail/" + hotel.id}>
           <button
             onClick={() => {
               dispatch(reservationActions.setHotelInfo(hotel));
@@ -63,8 +60,8 @@ export default function HotelCard({ hotel }) {
       <div
         className={`${
           alignLeft === true
-            ? "w-96 h-full flex flex-col items-end justify-between p-3 border-l border-mainBlue"
-            : "w-96 h-full flex flex-col items-start justify-between p-3 border-l border-mainBlue"
+            ? "w-96 h-full flex flex-col items-center lg:space-y-0 space-y-3 lg:items-end justify-between p-3 lg:border-l border-mainBlue"
+            : "w-96 h-full flex flex-col items-center lg:space-y-0 space-y-3 lg:items-start justify-between p-3 lg:border-l border-mainBlue"
         }`}
       >
         <div className="flex items-center justify-center space-x-2">

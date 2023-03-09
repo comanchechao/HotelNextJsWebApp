@@ -190,12 +190,12 @@ export default function HotelList({ features, residenceTypes }) {
             ref={firstContainer}
             className={`${
               alignLeft === true
-                ? "w-full  opacity-0 lg:text-lg text-xs text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-7 space-x-4 "
-                : "w-full  opacity-0 lg:text-lg text-xs text-center py-2 h-10 lg:pl-44 flex items-center flex-row-reverse justify-end my-7 space-x-4"
+                ? "w-full  opacity-0 lg:text-lg text-sm text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-7 space-x-4 "
+                : "w-full  opacity-0 lg:text-lg text-sm text-center py-2 h-10 lg:pl-44 flex items-center flex-row-reverse justify-end my-7 space-x-4"
             }`}
           >
             <div className="lg:h-10 h-auto py-2 lg:py-8 w-full flex items-center justify-center space-x-4   ">
-              <h2 className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md text-base">
+              <h2 className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue lg:px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md text-xs lg:text-base">
                 {t("mRerserve")}{" "}
               </h2>
               <h2
@@ -204,7 +204,7 @@ export default function HotelList({ features, residenceTypes }) {
                   setOrder("stars");
                   filterFetch();
                 }}
-                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-base"
+                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
               >
                 {t("mStar")}{" "}
               </h2>
@@ -215,7 +215,7 @@ export default function HotelList({ features, residenceTypes }) {
 
                   filterFetch();
                 }}
-                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-base"
+                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
               >
                 {t("mPrice")}{" "}
               </h2>
@@ -226,14 +226,20 @@ export default function HotelList({ features, residenceTypes }) {
 
                   filterFetch();
                 }}
-                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-base"
+                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
               >
                 {t("lPrice")}{" "}
               </h2>
             </div>
             <h3 className="w-28">{t("sortBy")}</h3>
           </div>
-          <div className="w-full flex justify-end my-3 lg:hidden">
+          <div
+            className={`${
+              alignLeft === true
+                ? "w-full flex justify-end my-3 lg:hidden"
+                : "w-full flex justify-start my-3 lg:hidden "
+            }`}
+          >
             <Suspense
               fallback={
                 <div>

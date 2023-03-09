@@ -10,11 +10,11 @@ import { Accordion } from "@mantine/core";
 import { useDispatch, useSelector } from "react-redux";
 import { filterActions } from "../store/filterActivation";
 import { useTranslation } from "next-i18next";
-
+import { useMediaQuery } from "@mantine/hooks";
 export default function HotelListModal({ features, residenceTypes }) {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
-
+  const isMobile = useMediaQuery("(max-width: 50em)");
   let stars = useSelector((state) => state.filter.stars);
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
@@ -45,6 +45,7 @@ export default function HotelListModal({ features, residenceTypes }) {
         transitionDuration={600}
         transitionTimingFunction="ease"
         exitTransitionDuration={600}
+        fullScreen={isMobile}
         opened={opened}
         size="md"
         onClose={() => setOpened(false)}
@@ -225,14 +226,14 @@ export default function HotelListModal({ features, residenceTypes }) {
         </Accordion>
         <button
           onClick={() => setOpened(false)}
-          className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
+          className="py-1 px-8 mt-6 border-2 lg:self-start font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
         >
           {t("confirmFilters")}
         </button>
       </Modal>
       <button
         onClick={() => setOpened(true)}
-        className="py-1 px-8 mt-6 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
+        className="py-1 px-8 mt-6 font-mainFont border border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
       >
         {t("filters")}
       </button>

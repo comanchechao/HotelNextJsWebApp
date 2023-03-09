@@ -104,7 +104,7 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="lg:hidden flex ">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div> </div>}>
           <NavDrawer />
         </Suspense>
       </div>

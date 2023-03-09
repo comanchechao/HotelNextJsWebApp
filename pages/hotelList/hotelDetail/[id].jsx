@@ -277,7 +277,7 @@ export default function HotelDetailPage({ hotel, comments }) {
                 <h1 className="text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md my-5">
                   هتل {hotel.title}
                 </h1>
-                <div className="flex border border-gray-300 bg-gray-50 p-3 rounded-md space-x-8 justify-center items-center">
+                <div className="flex border border-gray-300 bg-white my-3 lg:my-0 p-3 rounded-md space-x-8 justify-center items-center">
                   <div className="flex">
                     <p>اول بند ، روبه روی خیابان گلشهر</p>
                   </div>
@@ -289,11 +289,11 @@ export default function HotelDetailPage({ hotel, comments }) {
                 </div>
               </div>
             </div>
-            <div className="flex items-start lg:flex-row flex-col justify-center  ">
-              <div className="flex items-start h-screen   w-72 pt-8 ">
+            <div className="flex items-end lg:items-start lg:flex-row flex-col justify-center ">
+              <div className="lg:flex  hidden items-start h-screen   w-72 pt-8 ">
                 <div
                   ref={myDivRef}
-                  className="lg:flex hidden p-4 bg-white   flex-col items-center w-72  h-96 mt-10 ml-2 rounded-md border "
+                  className=" flex   p-4 bg-white   flex-col items-center w-72  h-96 mt-10 ml-2 rounded-md border "
                 >
                   <DatePicker
                     locale="fa"
@@ -403,7 +403,7 @@ export default function HotelDetailPage({ hotel, comments }) {
                   <ReserveInfoModal />
                 </Suspense>
               </div>
-              <div className="flex flex-col w-4/5 mt-8  -500 pl-7">
+              <div className="flex flex-col w-full lg:w-4/5 mt-8  lg:pl-7">
                 <div className="flex items-center py-4 space-x-1  w-full justify-between ">
                   <FeaturesModal />
                   <h2 className="  text-right w-56  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md">
