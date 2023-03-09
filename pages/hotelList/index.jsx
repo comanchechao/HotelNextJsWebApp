@@ -17,16 +17,19 @@ export async function getServerSideProps({ locale }) {
   // Fetch data from the database
 
   const { data, error } = await supabase.from("features").select();
-
+  const { data: residenceTypes } = await supabase
+    .from("residenceTypes")
+    .select();
   return {
     props: {
       features: data,
+      residenceTypes: residenceTypes,
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
 
-export default function HotelList({ features }) {
+export default function HotelList({ features, residenceTypes }) {
   const [filters, setFilters] = useState(false);
   const [loading, setLoading] = useState(true);
   const [to, setTo] = useState(4);
@@ -276,7 +279,10 @@ export default function HotelList({ features }) {
           className=" w-1/4 h-screen hidden lg:flex opacity-0"
         >
           <div className="w-full h-96 py-6">
-            <HotelListMenu features={features} />
+            <HotelListMenu
+              features={features}
+              residenceTypes={residenceTypes}
+            />
           </div>
         </div>
       </div>

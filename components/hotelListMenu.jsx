@@ -7,7 +7,7 @@ import { filterActions } from "../store/filterActivation";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
-export default function HotelListMenu({ features }) {
+export default function HotelListMenu({ features, residenceTypes }) {
   let stars = useSelector((state) => state.filter.stars);
   // let minPrice = useSelector((state) => state.filter.minPrice);
   // let maxPrice = useSelector((state) => state.filter.maxPrice);
@@ -177,56 +177,32 @@ export default function HotelListMenu({ features }) {
             </span>
           </Accordion.Control>
           <Accordion.Panel>
-            <div className=" w-flex text-right   items-end text-xl flex-col justify-center space-y-2">
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="react1"
-                label="متفرقه"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="svelte2"
-                label="آپارتمان"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="ng3"
-                label="خوابگاه"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue11"
-                label="هتل"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue12"
-                label="تخت و صبحانه"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue13"
-                label="خانه مهمان پذیر"
-              />
-              <Checkbox
-                labelPosition="left"
-                color="yellow"
-                radius="xl"
-                value="vue14"
-                label="هتل آپارتمان"
-              />
+            <div className=" flex text-right   items-end text-xl flex-col justify-center space-y-2">
+              {alignLeft
+                ? residenceTypes.map((residenceType, i) => {
+                    return (
+                      <Checkbox
+                        key={i}
+                        labelPosition="left"
+                        color="yellow"
+                        radius="xl"
+                        value="react"
+                        label={residenceType.title}
+                      />
+                    );
+                  })
+                : residenceTypes.map((residenceType, i) => {
+                    return (
+                      <Checkbox
+                        key={i}
+                        labelPosition="left"
+                        color="yellow"
+                        radius="xl"
+                        value="react"
+                        label={residenceType.trTitle}
+                      />
+                    );
+                  })}
             </div>
           </Accordion.Panel>
         </Accordion.Item>
