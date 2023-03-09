@@ -7,8 +7,9 @@ import PaymentHistory from "../../components/paymentHistory";
 import SupportRequest from "../../components/supportRequest";
 import ReservationList from "../../components/reservationList";
 import { supabase } from "../../lib/supabaseClient";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req, locale }) {
   const refreshToken = req.cookies["my-refresh-token"];
   const accessToken = req.cookies["my-access-token"];
 
@@ -24,7 +25,12 @@ export async function getServerSideProps({ req }) {
   const { data, error } = await supabase.auth.getUser(accessToken);
 
   // If there is a user, return it.
-  return { props: { user: data } };
+  return {
+    props: {
+      user: data,
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 }
 export default function UserProfile({ user }) {
   const [tab, setTab] = useState("Profile");
