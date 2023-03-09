@@ -52,7 +52,7 @@ export default function RoomCard({ room, hotelDetail }) {
                 </Accordion.Panel>
               </Accordion.Item>
             </Accordion>
-            <h1 className="text-2xl my-2">{JSON.stringify(room.title)}</h1>
+            <h1 className="text-xl my-2">{JSON.stringify(room.title)}</h1>
           </div>
 
           <div className="flex flex-col items-end justify-center space-y-3   h-full">

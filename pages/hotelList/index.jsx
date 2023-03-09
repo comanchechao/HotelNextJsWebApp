@@ -147,7 +147,13 @@ export default function HotelList({ features }) {
   return (
     <div className="w-screen h-auto bg-gray-100">
       <Navbar />
-      <div className="h-full w-full pt-28 flex lg:px-36 space-x-20">
+      <div
+        className={`${
+          alignLeft === true
+            ? "h-full w-full pt-28 flex lg:px-36 space-x-20"
+            : "h-full w-full pt-28 flex flex-row-reverse lg:px-36 space-x-20"
+        }`}
+      >
         <div className=" w-full lg:w-3/4 h-full  p-6  ">
           <div
             ref={mainPageBg}

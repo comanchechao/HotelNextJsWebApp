@@ -276,9 +276,11 @@ export default function HotelDetailPage({ hotel, comments }) {
             <div className="w-full flex items-center">
               <ImagesModal />
             </div>
-            <div className="flex w-full justify-end h-32 lg:h-20  ">
+            <div className="flex w-full justify-end h-25 lg:h-20  ">
               <div className="flex w-full justify-center items-end flex-col">
-                <h1 className="text-2xl my-2">هتل {hotel.title}</h1>
+                <h1 className="text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md my-5">
+                  هتل {hotel.title}
+                </h1>
                 <div className="flex border border-gray-300 bg-gray-50 p-3 rounded-md space-x-8 justify-center items-center">
                   <div className="flex">
                     <p>اول بند ، روبه روی خیابان گلشهر</p>
@@ -295,7 +297,7 @@ export default function HotelDetailPage({ hotel, comments }) {
               <div className="flex items-start h-screen   w-72 pt-8 ">
                 <div
                   ref={myDivRef}
-                  className="lg:flex hidden p-4 bg-white  flex-col items-center w-72  h-96 mt-10 ml-2"
+                  className="lg:flex hidden p-4 bg-white   flex-col items-center w-72  h-96 mt-10 ml-2 rounded-md border "
                 >
                   <DatePicker
                     locale="fa"
@@ -408,62 +410,62 @@ export default function HotelDetailPage({ hotel, comments }) {
               <div className="flex flex-col w-4/5 mt-8  -500 pl-7">
                 <div className="flex items-center py-4 space-x-1  w-full justify-between ">
                   <FeaturesModal />
-                  <h1 className="w-full text-right  text-gray-900  text-lg lg:text-xl">
+                  <h2 className="  text-right w-56  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md">
                     امکانات و ویژگی ها
-                  </h1>
+                  </h2>
                 </div>
-                <div className="rounded-lg border border-gray-300 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  ">
-                  <div className="flex px-3 justify-between items-center">
+                <div className="rounded-lg border text-sm  border-gray-300 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  ">
+                  <div className="flex px-3  justify-between items-center">
                     <h2>
-                      <IconWashMachine size={32} />
+                      <IconWashMachine size={25} />
                     </h2>
                     <h2>خشکشویی</h2>
                   </div>
                   <div className="flex px-3 justify-between items-center">
                     <h2>
-                      <IconWashMachine size={32} />
+                      <IconWashMachine size={25} />
                     </h2>
                     <h2>خشکشویی</h2>
                   </div>
                   <div className="flex px-3 justify-between items-center">
                     <h2>
-                      <IconWashMachine size={32} />
+                      <IconWashMachine size={25} />
                     </h2>
                     <h2>خشکشویی</h2>
                   </div>
                   <div className="flex px-3 justify-between items-center">
                     <h2>
-                      <IconBarbell size={32} />
+                      <IconBarbell size={25} />
                     </h2>
                     <h2>سالن بدنسازی</h2>
                   </div>
                   <div className="flex px-3 justify-between items-center">
                     <h2>
-                      <IconCoffee size={32} />
+                      <IconCoffee size={25} />
                     </h2>
                     <h2>کافی شاپ</h2>
                   </div>
                   <div className="flex px-3 justify-between items-center">
                     <h2>
-                      <IconChefHat size={32} />
+                      <IconChefHat size={25} />
                     </h2>
                     <h2>رستوران</h2>
                   </div>
                   <div className=" hidden lg:flex px-3 justify-between items-center">
                     <h2>
-                      <IconHotelService size={32} />
+                      <IconHotelService size={25} />
                     </h2>
                     <h2>سرویس روزانه</h2>
                   </div>
                   <div className=" hidden lg:flex px-3 justify-between items-center">
                     <h2>
-                      <IconBath size={32} />
+                      <IconBath size={25} />
                     </h2>
                     <h2>حمام</h2>
                   </div>
                   <div className=" hidden lg:flex px-3 justify-between items-center">
                     <h2>
-                      <IconWifi size={32} />
+                      <IconWifi size={25} />
                     </h2>
                     <h2>خدمات اینترنت</h2>
                   </div>
@@ -495,7 +497,9 @@ export default function HotelDetailPage({ hotel, comments }) {
                   </div>
                 </div>
                 <div className="flex py-8 items-center space-y-6 w-full flex-col  justify-center">
-                  <h1 className=" text-gray-800 text-2xl self-end">اتاق ها</h1>
+                  <h1 className=" text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md self-end">
+                    اتاق ها
+                  </h1>
                   <div className="flex border border-gray-300 bg-white justify-center w-full text-sm">
                     <Tabs
                       radius="xs"
