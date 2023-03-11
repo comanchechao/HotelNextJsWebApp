@@ -8,8 +8,24 @@ import {
   IconUserCheck,
 } from "@tabler/icons";
 import ReservationInfo from "./reservationInfo";
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
 
-export default function ReservationManagement({ reservations }) {
+export default function ReservationManagement({ Hotels }) {
+  const [reservations, setReservations] = useState(null);
+  async function getReservations() {
+    const { data: reservations, error4 } = await supabase
+      .from("reservations")
+      .select()
+      .in("hotel_id", Hotels);
+    console.log(reservations);
+    setReservations(reservations);
+  }
+
+  useEffect(() => {
+    getReservations();
+    console.log(reservations, "reservatoins");
+  }, [Hotels]);
   return (
     <div className="flex w-full h-auto   ">
       <div className="flex w-full space-y-4 flex-col">
@@ -48,26 +64,30 @@ export default function ReservationManagement({ reservations }) {
           </Tabs.List>
           <Tabs.Panel value="gallery" pt="xs">
             <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
-              {reservations.map((user, i) => {
-                return (
-                  <div
-                    key={i}
-                    className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
-                  >
-                    <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
-                      <IconUserCircle size={50} />
+              {!reservations ? (
+                <div> no item </div>
+              ) : (
+                reservations.map((user, i) => {
+                  return (
+                    <div
+                      key={i}
+                      className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                    >
+                      <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
+                        <IconUserCircle size={50} />
+                      </div>
+                      <h1 className=" text-sm lg:text-xl">{user.hotel_name}</h1>
+                      <p className="hidden lg:block">{user.name}</p>
+                      <ReservationInfo
+                        passengerCount={user.passengerCount}
+                        room={user.room}
+                        hotel={user.hotel_name}
+                        passengers={user.passengers}
+                      />
                     </div>
-                    <h1 className=" text-sm lg:text-xl">{user.hotel_name}</h1>
-                    <p className="hidden lg:block">{user.name}</p>
-                    <ReservationInfo
-                      passengerCount={user.passengerCount}
-                      room={user.room}
-                      hotel={user.hotel_name}
-                      passengers={user.passengers}
-                    />
-                  </div>
-                );
-              })}
+                  );
+                })
+              )}
             </div>
           </Tabs.Panel>
 

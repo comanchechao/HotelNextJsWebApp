@@ -57,9 +57,7 @@ export async function getServerSideProps(context) {
   const { data: features, error3 } = await supabase
     .from("features")
     .select("title");
-  const { data: reservations, error4 } = await supabase
-    .from("reservations")
-    .select();
+
   const { data: userRole, error6 } = await supabase
     .from("profiles")
     .select()
@@ -70,7 +68,6 @@ export async function getServerSideProps(context) {
   if (error) throw error;
   if (error2) throw error2;
   if (error3) throw error3;
-  if (error4) throw error4;
 
   console.log(userRole);
 
@@ -79,7 +76,6 @@ export async function getServerSideProps(context) {
   }
   return {
     props: {
-      reservations: reservations,
       users: users,
       cities: cities,
       hotels: hotels,
@@ -94,16 +90,23 @@ export default function AdminPage({
   hotels,
   cities,
   features,
-  reservations,
   users,
 }) {
+  const [hotelIds, setHotelIds] = useState([]);
+  useEffect(() => {
+    if (hotels) {
+      hotels.forEach((hotel, i) => {
+        if (hotelIds.indexOf(hotel.id) === -1) {
+          hotelIds.push(hotel.id);
+        }
+      });
+    }
+
+    console.log(hotelIds);
+  }, []);
   const router = useRouter();
   const [tab, setTab] = useState("hotel");
   const [bg, setBg] = useState("");
-
-  useEffect(() => {
-    console.log(session);
-  });
 
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
@@ -127,7 +130,7 @@ export default function AdminPage({
           ) : tab === "city" ? (
             <AddCity cities={cities} />
           ) : tab === "reserve" ? (
-            <ReservationManagement reservations={reservations} />
+            <ReservationManagement Hotels={hotelIds} />
           ) : tab === "websiteInfo" ? (
             <WebsiteInfo />
           ) : tab === "hotel" ? (
