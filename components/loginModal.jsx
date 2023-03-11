@@ -80,7 +80,7 @@ export default function LoginModal() {
     e.preventDefault();
 
     setLoading(true);
-    const { data, error } = await supabase.auth.signUp({
+    const { user, error } = await supabase.auth.signUp({
       email: emailSignUp,
       password: passwordSignUp,
       options: {
@@ -89,16 +89,28 @@ export default function LoginModal() {
         },
       },
     });
-    if (error) throw error;
+    if (!error) {
+      setLoading(false);
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
 
-    setLoading(false);
-    setAlert(true);
-    setTimeout(() => {
-      setAlert(false);
-
-      setOpened(false);
-    }, 2000);
+        setOpened(false);
+      }, 2000);
+    } else {
+      throw error;
+    }
+    if (user) {
+      createProfile(user);
+    }
   };
+
+  async function createProfile(user) {
+    const { data, error } = await supabase.from("profiles").insert({
+      id: user.id,
+      email: user.email,
+    });
+  }
 
   // LOGIN
   const handleLogin = async (e, req, res) => {

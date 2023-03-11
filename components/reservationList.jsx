@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import ReservedRoomCard from "./reservedRoomCard";
 import { supabase } from "../lib/supabaseClient";
 
-export default function ReservationList() {
+export default function ReservationList({ user }) {
   const [reservations, setReservations] = useState([]);
   async function getReservatoins() {
-    const { data, error } = await supabase.from("reservations").select();
+    const { data, error } = await supabase
+      .from("reservations")
+      .select()
+      .eq("user_id", user.user.id);
     setReservations(data);
   }
   useEffect(() => {

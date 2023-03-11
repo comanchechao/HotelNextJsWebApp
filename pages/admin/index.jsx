@@ -43,21 +43,15 @@ export async function getServerSideProps(context) {
   const { data: user, error5 } = await supabase.auth.getUser(accessToken);
   if (error5) throw error;
 
-  const { data: userRole, error6 } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.user.id);
-
-  if (userRole[0].role !== "admin") {
-    throw new Error("you are not authorized");
-  }
-
   const {
     data: { users },
     error7,
   } = await adminAuthClient.listUsers();
 
-  const { data: hotels, error } = await supabase.from("Hotels").select();
+  const { data: hotels, error } = await supabase
+    .from("Hotels")
+    .select()
+    .eq("owner", user.user.id);
   const { data: cities, error2 } = await supabase.from("cities").select();
 
   const { data: features, error3 } = await supabase
@@ -66,11 +60,23 @@ export async function getServerSideProps(context) {
   const { data: reservations, error4 } = await supabase
     .from("reservations")
     .select();
+  const { data: userRole, error6 } = await supabase
+    .from("profiles")
+    .select()
+    .eq("id", user.user.id);
+
+  if (error6) throw error6;
 
   if (error) throw error;
   if (error2) throw error2;
   if (error3) throw error3;
   if (error4) throw error4;
+
+  console.log(userRole);
+
+  if (userRole[0].role !== "admin") {
+    throw new Error("you are not authorized");
+  }
   return {
     props: {
       reservations: reservations,

@@ -22,12 +22,20 @@ export async function getServerSideProps({ req, locale }) {
     access_token: accessToken,
   });
 
-  const { data, error } = await supabase.auth.getUser(accessToken);
+  const { data: user, error } = await supabase.auth.getUser(accessToken);
+
+  const { data: reservations, error2 } = await supabase
+    .from("reservations")
+    .select()
+    .eq("user_id", user.user.id);
+
+  console.log(reservations);
 
   // If there is a user, return it.
   return {
     props: {
-      user: data,
+      user: user,
+      reservations: reservations,
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
@@ -43,7 +51,7 @@ export default function UserProfile({ user }) {
           {tab === "Profile" ? (
             <ProfileInfo user={user} />
           ) : tab === "Reservation" ? (
-            <ReservationList />
+            <ReservationList user={user} />
           ) : tab === "Support" ? (
             <SupportRequest />
           ) : tab === "Payment" ? (
