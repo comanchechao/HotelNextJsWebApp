@@ -16,7 +16,7 @@ export default function ReservationList({ Hotels }) {
   }, []);
   return (
     <div className="w-full   h-carousel flex items-center justify-center flex-col space-y-6 bg-white px-14 py-10 text-center">
-      <h1 className="border-b-2 border-mainPurple pb-2 rounded-sm">
+      <h1 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md ">
         اتاق های رزرو شده{" "}
       </h1>
       <div className="w-full overflow-y-scroll px-4 flex items-center justify-start flex-col space-y-6 ">

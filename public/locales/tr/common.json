@@ -5,7 +5,6 @@
   "admin": "Yönetici",
   "profile": "Hesap",
   "hotel": "Otel Konaklama",
-  "accountInfo": "Hesap Bilgileri",
   "logOut": "Hesaptan çıkış",
   "logIn": "Giriş yap / Kayıt ol",
   "enterPhone": "Giriş yapmak veya kaydolmak için telefon numaranızı girin",
@@ -17,6 +16,12 @@
   "enterEmail": "Giriş yapmak için e-posta ve şifre girin",
   "email": "E-posta",
   "password": "Şifre",
+  "fullName": "Ad ve soyad",
+  "idCode": "Ulusal Kod",
+  "bankCode": "banka hesabı numarası",
+  "shabaCode": "Şaba numarası",
+  "editInfo": "Bilgi düzenle",
+  "bankInfo": "Banka hesap bilgileri",
   "recover": "Şifre kurtarma",
   "signUp": "Kayıt ol",
   "logInPhone": "Telefon numarası ile giriş yapın",
@@ -94,5 +99,11 @@
   "residenceTypes": "Konaklama biçimi",
 
   "boutak": "Boutak Hotel Rezervasyon | Ucuz",
-  "description": "Otel rezervasyonu Butik ile kolay ve hızlı! Butik, otel ve lüks tatil köylerini en iyi fiyatlar ve özel fiyatlar ile sunmaktadır. Otelinizin en iyi fiyatını ve yerini bizimle bulun. Bu site size en iyi otelleri en uygun fiyatlarla kullanmanız için her türlü imkanı, özel teklifleri ve özel indirim kodlarını sunmaktadır."
+  "description": "Otel rezervasyonu Butik ile kolay ve hızlı! Butik, otel ve lüks tatil köylerini en iyi fiyatlar ve özel fiyatlar ile sunmaktadır. Otelinizin en iyi fiyatını ve yerini bizimle bulun. Bu site size en iyi otelleri en uygun fiyatlarla kullanmanız için her türlü imkanı, özel teklifleri ve özel indirim kodlarını sunmaktadır.",
+
+  "accountInfo": "Hesap Bilgileri",
+  "userAccount": "Kullanıcı hesabı",
+  "reservedRoom": "Önceden ayrılmış odalar",
+  "support": "Destek iste",
+  "finances": "Envanter ve işlemler"
 }
