@@ -10,12 +10,16 @@ import Transitions from "../components/Transitions";
 import store from "../store/index";
 import { useState } from "react";
 import { Provider } from "react-redux";
+import { useTranslation } from "next-i18next";
+
 function App({ Component, pageProps }) {
+  const { t, i18n } = useTranslation("");
+
   const [supabaseClient] = useState(() => createBrowserSupabaseClient());
   return (
     <>
       <Head>
-        <title>رزرو هتل راحت تر از همیشه با استفاده از سامانه رزرو بوتک</title>
+        <title>{t("title")}</title>
         <meta
           name="description"
           content="

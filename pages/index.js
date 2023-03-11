@@ -144,7 +144,7 @@ export default function Home(props) {
   return (
     <>
       <Head>
-        <title>رزرو هتل راحت تر از همیشه با استفاده از سامانه رزرو بوتک</title>
+        <title>{t("title")}</title>
         <meta
           name="description"
           content="

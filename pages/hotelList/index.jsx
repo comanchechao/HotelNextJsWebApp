@@ -194,8 +194,8 @@ export default function HotelList({ features, residenceTypes }) {
                 : "w-full  opacity-0 lg:text-lg text-sm text-center py-2 h-10 lg:pl-44 flex items-center flex-row-reverse justify-end my-7 space-x-4"
             }`}
           >
-            <div className="lg:h-10 h-auto py-2 lg:py-8 w-full flex items-center justify-center space-x-4   ">
-              <h2 className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue lg:px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md text-xs lg:text-base">
+            <div className="lg:h-10 h-auto py-2 lg:py-8 w-full flex lg:flex-nowrap space-y-2 lg:space-y-0 flex-wrap items-center justify-center space-x-4   ">
+              <h2 className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md text-xs lg:text-base">
                 {t("mRerserve")}{" "}
               </h2>
               <h2
@@ -204,7 +204,7 @@ export default function HotelList({ features, residenceTypes }) {
                   setOrder("stars");
                   filterFetch();
                 }}
-                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
+                className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
               >
                 {t("mStar")}{" "}
               </h2>
@@ -215,7 +215,7 @@ export default function HotelList({ features, residenceTypes }) {
 
                   filterFetch();
                 }}
-                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
+                className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
               >
                 {t("mPrice")}{" "}
               </h2>
@@ -226,7 +226,7 @@ export default function HotelList({ features, residenceTypes }) {
 
                   filterFetch();
                 }}
-                className="text-gray-600 cursor-pointer flex items-center transition border ease-in duration-100 hover:text-mainBlue lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
+                className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
               >
                 {t("lPrice")}{" "}
               </h2>

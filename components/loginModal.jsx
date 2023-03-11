@@ -435,7 +435,7 @@ export default function LoginModal() {
           </div>
         ) : (
           <button
-            className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            className="border-r-8 border-transparent hover:border-r-mainBlue   flex   p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
             onClick={() => setOpened(true)}
           >
             <SignIn className="mx-2" size={30} weight="light" />

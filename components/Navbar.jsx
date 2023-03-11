@@ -69,8 +69,8 @@ export default function Navbar() {
           <h4 className=" ">{t("home")}</h4>
           <House className="mx-2" size={28} weight="light" />
         </Link>
-
         <LoginModal />
+
         <Link
           href="/"
           className="flex rounded-sm p-3 border-r-8 border-transparent hover:border-r-mainBlue items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
