@@ -105,5 +105,16 @@
   "userAccount": "Kullanıcı hesabı",
   "reservedRoom": "Önceden ayrılmış odalar",
   "support": "Destek iste",
-  "finances": "Envanter ve işlemler"
+  "finances": "Envanter ve işlemler",
+
+  "reservedRoom": "Ayrılmış Oda",
+  "cancelRules": "İptal Kuralları",
+  "room": "Oda",
+  "person": "Kişi",
+
+  "supporth1": "Henüz bir çevrimiçi destek talebi kaydetmediniz",
+  "supportp": "Herhangi bir sorunuz veya sorununuz varsa, destek talebi oluşturarak en kısa sürede takip edebilirsiniz.",
+  "supportReq": "Destek için ricada bulunun",
+  "reqTitle": "talebin başlığı",
+  "reqExplen": "talebin açıklaması"
 }
