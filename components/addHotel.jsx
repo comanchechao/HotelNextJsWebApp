@@ -1,7 +1,3 @@
-// const LocationsMap = dynamic(() => import("./map"), {
-//   ssr: false,
-//   Suspense: true,
-// });
 import { useCallback, useEffect, useState } from "react";
 import {
   Modal,
@@ -27,7 +23,11 @@ import { roomActions } from "../store/room";
 import AddRoom from "./addRoom";
 import { Suspense } from "react";
 import { X, Buildings } from "phosphor-react";
-export default function AddHotel({ featuresData, cities }) {
+const LocationsMap = dynamic(() => import("./map"), {
+  ssr: false,
+  Suspense: true,
+});
+export default function AddHotel({ featuresData, cities, user }) {
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
   const [title, setTitle] = useState("");
@@ -87,10 +87,6 @@ export default function AddHotel({ featuresData, cities }) {
   }
 
   useEffect(() => {
-    console.log(rooms);
-  });
-
-  useEffect(() => {
     definedRoom.meal = meal;
   }, [definedRoom, meal]);
 
@@ -137,14 +133,15 @@ export default function AddHotel({ featuresData, cities }) {
   let marker2 = useSelector((state) => state.map.marker2);
   let marker3 = useSelector((state) => state.map.marker3);
 
-  useEffect(() => {
-    console.log(rooms);
-    window.scrollTo(0, 0);
-  });
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
 
   async function handleSubmit() {
     const { data, error } = await supabase.from("Hotels").insert({
       title: title,
+      owner: user.id,
+      city: city,
       firstImage: firstImage,
       secondImage: secondImage,
       thirdImage: thirdImage,
@@ -166,6 +163,7 @@ export default function AddHotel({ featuresData, cities }) {
         lng: lng3,
       },
     });
+    if (error) throw error;
   }
   useEffect(() => {
     if (cities) {
@@ -180,7 +178,6 @@ export default function AddHotel({ featuresData, cities }) {
   const [allFeatures, setAllFeatures] = useState([]);
 
   useEffect(() => {
-    console.log(featuresData);
     if (featuresData) {
       featuresData.forEach((feature, i) => {
         if (allFeatures.indexOf(feature.title) === -1) {
@@ -339,6 +336,7 @@ export default function AddHotel({ featuresData, cities }) {
                     )}
                   </label>
                   <input
+                    required
                     onChange={firstImageUpload}
                     type="file"
                     className="hidden"
@@ -356,6 +354,7 @@ export default function AddHotel({ featuresData, cities }) {
                     )}
                   </label>
                   <input
+                    required
                     onChange={fourthImageUpload}
                     type="file"
                     className="hidden"
@@ -372,7 +371,12 @@ export default function AddHotel({ featuresData, cities }) {
                       <IconUpload className="cursor-pointer" size={30} />
                     )}
                   </label>
-                  <input type="file" className="hidden" id="fifthImage" />
+                  <input
+                    required
+                    type="file"
+                    className="hidden"
+                    id="fifthImage"
+                  />
                 </div>
               </div>
               <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
@@ -385,6 +389,7 @@ export default function AddHotel({ featuresData, cities }) {
                     )}
                   </label>
                   <input
+                    required
                     onChange={thirdImageUpload}
                     type="file"
                     className="hidden"
@@ -402,6 +407,7 @@ export default function AddHotel({ featuresData, cities }) {
                     )}
                   </label>
                   <input
+                    required
                     onChange={secondImageUpload}
                     type="file"
                     className="hidden"
@@ -415,6 +421,7 @@ export default function AddHotel({ featuresData, cities }) {
                 عنوان هتل
               </h2>
               <input
+                required
                 onChange={(e) => {
                   setTitle(e.target.value);
                 }}
@@ -437,6 +444,7 @@ export default function AddHotel({ featuresData, cities }) {
                 آدرس هتل
               </h3>
               <input
+                required
                 onChange={(e) => {
                   setAddress(e.target.value);
                 }}
@@ -466,10 +474,10 @@ export default function AddHotel({ featuresData, cities }) {
                 data={cityNames}
               />
             </div>
-            {/* <div className="">
+            <div className="">
               {" "}
               <LocationsMap city={city} cityLatLng={[mapLat, mapLng]} />
-            </div> */}
+            </div>
             <div className="flex flex-col   w-full h-full text-right justify-between items-end">
               <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
                 امکانات هتل را انتخاب کنید
@@ -492,6 +500,7 @@ export default function AddHotel({ featuresData, cities }) {
                 میانگین قیمت هر شب
               </h3>
               <input
+                required
                 onChange={(e) => {
                   setAvragePrice(e.target.value);
                 }}
