@@ -30,8 +30,6 @@ export async function getServerSideProps({ req, locale }) {
     .select()
     .eq("user_id", user.user.id);
 
-  console.log(reservations);
-
   // If there is a user, return it.
   return {
     props: {

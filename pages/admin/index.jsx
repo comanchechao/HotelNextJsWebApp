@@ -69,13 +69,12 @@ export async function getServerSideProps(context) {
   if (error2) throw error2;
   if (error3) throw error3;
 
-  console.log(userRole);
-
   if (userRole[0].role !== "admin") {
     throw new Error("you are not authorized");
   }
   return {
     props: {
+      user: user.user,
       users: users,
       cities: cities,
       hotels: hotels,
@@ -87,6 +86,7 @@ export async function getServerSideProps(context) {
 
 export default function AdminPage({
   session,
+  user,
   hotels,
   cities,
   features,
@@ -101,8 +101,6 @@ export default function AdminPage({
         }
       });
     }
-
-    console.log(hotelIds);
   }, []);
   const router = useRouter();
   const [tab, setTab] = useState("hotel");
@@ -110,15 +108,6 @@ export default function AdminPage({
 
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
-  const user = session;
-
-  if (user === null) {
-    return (
-      <>
-        <div>you should not be here</div>
-      </>
-    );
-  }
 
   return (
     <div className="h-auto w-screen bg-gray-100  ">
@@ -135,6 +124,7 @@ export default function AdminPage({
             <WebsiteInfo />
           ) : tab === "hotel" ? (
             <HotelManagement
+              user={user}
               hotels={hotels}
               cities={cities}
               features={features}

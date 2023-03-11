@@ -37,7 +37,6 @@ function DisplayPosition({ map, cityLatLng }) {
 
   const onClick = useCallback(() => {
     map.setView({ lat: Lat, lng: Lng }, 16);
-    console.log({ lat: Lat, lng: Lng });
   }, [map]);
 
   const onMove = useCallback(() => {
@@ -88,9 +87,7 @@ export default function ExternalStateExample({ cityLatLng }) {
         setPosition(markedHotel);
       }
     }, []);
-    // useEffect(() => {
-    //   console.log(city);
-    // });
+
     const [position, setPosition] = useState(center);
     const markerRef = useRef(null);
 
@@ -116,10 +113,6 @@ export default function ExternalStateExample({ cityLatLng }) {
       const marker = markerRef.current;
       setDraggable((d) => !d);
     }, []);
-
-    useEffect(() => {
-      console.log(lat, lng);
-    }, [draggable]);
 
     return (
       <Marker
@@ -155,9 +148,6 @@ export default function ExternalStateExample({ cityLatLng }) {
       }
     }, []);
 
-    useEffect(() => {
-      console.log("lat2", lat2, "lng2", lng2);
-    });
     const [position, setPosition] = useState(center2);
     const markerRef2 = useRef(null);
 
@@ -215,9 +205,6 @@ export default function ExternalStateExample({ cityLatLng }) {
       }
     }, []);
 
-    useEffect(() => {
-      console.log("lat3", lat3, "lng3", lng3);
-    });
     const [position, setPosition] = useState(center3);
     const markerRef3 = useRef(null);
 
@@ -363,7 +350,6 @@ export default function ExternalStateExample({ cityLatLng }) {
                   className=" cursor-pointer transition ease-in duration-150 hover:text-mainBlue"
                   onClick={() => {
                     setShowMarker2(false);
-                    console.log(showMarker2);
                     dispatch(mapActions.setLat2(""));
                     dispatch(mapActions.setLng2(""));
                   }}
@@ -394,7 +380,6 @@ export default function ExternalStateExample({ cityLatLng }) {
                 className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
                 onClick={() => {
                   setShowMarker2(true);
-                  console.log(showMarker2);
                 }}
               >
                 مارکر اول{" "}
@@ -410,7 +395,6 @@ export default function ExternalStateExample({ cityLatLng }) {
                   className=" cursor-pointer transition ease-in duration-150 hover:text-mainBlue"
                   onClick={() => {
                     setShowMarker3(false);
-                    console.log(showMarker3);
                     dispatch(mapActions.setLat3(""));
                     dispatch(mapActions.setLng3(""));
                   }}
@@ -440,7 +424,6 @@ export default function ExternalStateExample({ cityLatLng }) {
               className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
               onClick={() => {
                 setShowMarker3(true);
-                console.log(showMarker3);
               }}
             >
               مارکر دوم{" "}

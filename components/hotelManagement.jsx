@@ -24,7 +24,7 @@ import HotelImage from "./hotelImage";
 const HotelMap = dynamic(() => import("./hotelMap"), {
   ssr: false,
 });
-export default function HotelManagement({ hotels, cities, features }) {
+export default function HotelManagement({ hotels, cities, features, user }) {
   return (
     <div className="flex flex-col w-full h-full  lg:h-carousel   ">
       <div className="flex w-full space-y-4 flex-col   h-full">
@@ -215,7 +215,7 @@ export default function HotelManagement({ hotels, cities, features }) {
           </Tabs.Panel>
         </Tabs>
         <div className="lg:absolute right-8 bottom-3   fixed">
-          <AddHotel featuresData={features} cities={cities} />
+          <AddHotel user={user} featuresData={features} cities={cities} />
         </div>
       </div>
     </div>
