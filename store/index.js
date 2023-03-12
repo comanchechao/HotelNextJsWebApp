@@ -4,6 +4,7 @@ import { filterReducer } from "./filterActivation";
 import { mapReducer } from "./map/index";
 import { reservationReducer } from "./reservation";
 import { roomReducer } from "./room/index";
+import { userReducer } from "./user/user";
 // create a slice
 export const mainSlice = createSlice({
   name: "name",
@@ -18,6 +19,7 @@ const store = configureStore({
     main: mainSlice.reducer,
     map: mapReducer,
     room: roomReducer,
+    user: userReducer,
     reserve: reservationReducer,
     filter: filterReducer,
   },

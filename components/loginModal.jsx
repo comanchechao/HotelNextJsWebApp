@@ -10,10 +10,9 @@ import {
 import { SignIn, CaretDown, User, SignOut } from "phosphor-react";
 import { supabase } from "../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
-
 import { useDispatch } from "react-redux";
 import ForgotPasswordModal from "./forgotPasswordModal";
-
+import { userActions } from "../store/user/user";
 import Link from "next/link";
 export default function LoginModal() {
   const data = [
@@ -48,15 +47,21 @@ export default function LoginModal() {
     getSetUser();
   }, []);
   async function getSetUser() {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (user) {
-      SetisLogged(true);
+    const { data: user, error } = await supabase.auth.getSession();
 
-      console.log("logged in");
+    if (user.session) {
+      SetisLogged(true);
+      const { data: userRole, error6 } = await supabase
+        .from("profiles")
+        .select()
+        .eq("id", user.session.user.id);
+
+      if (userRole[0].role === "admin") {
+        dispatch(userActions.isManagerFunction(true));
+      } else if (userRole[0].role === "colleage") {
+        dispatch(userActions.isManagerFunction(true));
+      }
     } else {
-      console.log("Logged out");
     }
   }
   useEffect(() => {
@@ -117,27 +122,24 @@ export default function LoginModal() {
     e.preventDefault();
 
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data: user, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
     if (error) throw error;
     else {
-      // const {
-      //   data: { user },
-      // } = await supabase.auth.getUser();
-      // if (user) {
-      //   console.log("logged in");
-      //   const updates = {
-      //     id: user.id,
-      //     email: user.email,
-      //   };
-      //   SetisLogged(true);
-      //   await supabase.from("profiles").upsert(updates);
-      // } else {
-      //   console.log("Logged out");
-      //   SetisLogged(false);
-      // }
+      if (user.session) {
+        SetisLogged(true);
+        const { data: userRole, error6 } = await supabase
+          .from("profiles")
+          .select()
+          .eq("id", user.session.user.id);
+        if (userRole[0].role === "admin") {
+          dispatch(userActions.isManagerFunction(true));
+        } else if (userRole[0].role === "colleage") {
+          dispatch(userActions.isManagerFunction(true));
+        }
+      }
       setLoading(false);
       SetisLogged(true);
       // getSetUser();

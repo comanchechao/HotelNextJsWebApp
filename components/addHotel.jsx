@@ -95,9 +95,6 @@ export default function AddHotel({ featuresData, cities, user }) {
   const [rooms, setRooms] = useState([]);
   const dispatch = useDispatch();
 
-  function filterRoom(roomId) {
-    console.log(rooms);
-  }
   const deleteById = (id) => {
     setRooms((oldValues) => {
       return oldValues.filter((room) => room.id !== id);

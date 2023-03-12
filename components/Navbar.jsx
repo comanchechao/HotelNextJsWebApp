@@ -14,6 +14,7 @@ import { gsap } from "gsap";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import { useSelector } from "react-redux";
 export default function Navbar() {
   const router = useRouter();
   const boxRef = useRef();
@@ -37,6 +38,8 @@ export default function Navbar() {
   //   }
   // }
   const { t } = useTranslation("common");
+
+  let isManager = useSelector((state) => state.user.isManager);
 
   const [nextLocale, setNextLocale] = useState("tr");
   const { pathname, asPath, query } = router;
@@ -81,13 +84,15 @@ export default function Navbar() {
       </div>
 
       <div className="lg:text-base text-sm lg:flex items-center lg:space-x-4 hidden">
-        <Link
-          href="/admin"
-          className="flex rounded-sm justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
-        >
-          <h4 className=" ">{t("admin")}</h4>
-          <IdentificationCard className="mx-1" weight="light" size={30} />
-        </Link>
+        {isManager ? (
+          <Link
+            href="/admin"
+            className="flex rounded-sm justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          >
+            <h4 className=" ">{t("admin")}</h4>
+            <IdentificationCard className="mx-1" weight="light" size={30} />
+          </Link>
+        ) : null}
         <Link
           href="/aboutUs"
           className="flex  rounded-sm  justify-center  items-center cursor-pointer md:text-xs p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"

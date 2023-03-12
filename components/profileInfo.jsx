@@ -60,7 +60,8 @@ export default function ProfileInfo({ user }) {
         id: user.user.id,
         email: email,
       };
-      await supabase.from("profiles").update(updates);
+      const { data, error } = await supabase.from("profiles").insert(updates);
+      if (error) throw error;
       setLoading(false);
       setEdit(false);
     } else {

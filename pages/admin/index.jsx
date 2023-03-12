@@ -68,8 +68,7 @@ export async function getServerSideProps(context) {
   if (error) throw error;
   if (error2) throw error2;
   if (error3) throw error3;
-
-  if (userRole[0].role !== "admin") {
+  if (userRole[0].role !== "admin" && userRole[0].role !== "colleage") {
     throw new Error("you are not authorized");
   }
   return {
