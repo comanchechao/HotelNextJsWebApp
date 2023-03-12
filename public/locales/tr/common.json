@@ -117,5 +117,15 @@
   "supportp": "Herhangi bir sorunuz veya sorununuz varsa, destek talebi oluşturarak en kısa sürede takip edebilirsiniz.",
   "supportReq": "Destek için ricada bulunun",
   "reqTitle": "talebin başlığı",
-  "reqExplen": "talebin açıklaması"
+  "reqExplen": "talebin açıklaması",
+
+  "hotels": "Oteller",
+  "colleagues": "İş arkadaşları",
+  "city": "Şehir",
+  "reservations": "rezervasyonlar",
+  "websiteInfo": "Web Sitesi Bilgileri",
+  "exit": "çıkış",
+
+  "myHotels": "Otellerim",
+  "otherHotels": "Diğer Oteller"
 }

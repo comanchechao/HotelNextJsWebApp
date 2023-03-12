@@ -25,6 +25,7 @@ import WebsiteInfo from "../../components/websiteInfo";
 import AddCity from "../../components/addCity";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router.js";
+import { useTranslation } from "next-i18next";
 
 export async function getServerSideProps(context) {
   // Fetch data from the database
@@ -93,6 +94,8 @@ export default function AdminPage({
 }) {
   const [hotelIds, setHotelIds] = useState([]);
   useEffect(() => {
+    changeAlignment();
+
     if (hotels) {
       hotels.forEach((hotel, i) => {
         if (hotelIds.indexOf(hotel.id) === -1) {
@@ -104,14 +107,27 @@ export default function AdminPage({
   const router = useRouter();
   const [tab, setTab] = useState("hotel");
   const [bg, setBg] = useState("");
-
+  const { t, i18n } = useTranslation("common");
+  const lng = i18n.language;
   const [opened, setOpened] = useState(false);
-  const theme = useMantineTheme();
+  const [alignLeft, setAlignLeft] = useState(false);
 
+  const theme = useMantineTheme();
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   return (
     <div className="h-auto w-screen bg-gray-100  ">
       <Navbar />
-      <div className="h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-8 lg:px-40">
+      <div
+        className={`${
+          alignLeft === true
+            ? "h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-8 lg:px-40"
+            : "h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row-reverse flex-col-reverse space-y-3 lg:space-x-8 lg:px-40"
+        }`}
+      >
         <div className="lg:w-3/4 w-full flex items-center justify-center h-screen lg:p-6 py-6">
           {tab === "user" ? (
             <UserManagement users={users} />
@@ -143,7 +159,7 @@ export default function AdminPage({
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconBuildingSkyscraper size={24} />
-              <h1 className="lg:text-2xl text-sm  "> هتل ها </h1>
+              <h1 className="lg:text-2xl text-sm  "> {t("hotels")} </h1>
             </div>
           </div>
           <div
@@ -158,7 +174,7 @@ export default function AdminPage({
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconUserCheck size={24} />
-              <h1 className="lg:text-2xl text-sm  "> همکاران </h1>
+              <h1 className="lg:text-2xl text-sm  "> {t("colleagues")} </h1>
             </div>
           </div>
           <div
@@ -173,7 +189,7 @@ export default function AdminPage({
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconUserCheck size={24} />
-              <h1 className="lg:text-2xl text-sm  "> شهر </h1>
+              <h1 className="lg:text-2xl text-sm  "> {t("city")} </h1>
             </div>
           </div>
           <div
@@ -188,7 +204,7 @@ export default function AdminPage({
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconBook size={24} />
-              <h1 className="lg:text-2xl text-sm  "> رزرو ها </h1>
+              <h1 className="lg:text-2xl text-sm  "> {t("reservations")} </h1>
             </div>
           </div>
           <div
@@ -203,13 +219,13 @@ export default function AdminPage({
           >
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconUser size={24} />
-              <h1 className="lg:text-2xl text-sm  "> اطلاعات سایت </h1>
+              <h1 className="lg:text-2xl text-sm  "> {t("websiteInfo")} </h1>
             </div>
           </div>
           <div className="rounded-md flex lg:mt-0 mt-6 cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full ">
             <div className="flex justify-around items-center  transition   text-gray-800 w-full">
               <IconLogout size={24} />
-              <h1 className="lg:text-2xl text-sm  "> خروج </h1>
+              <h1 className="lg:text-2xl text-sm  "> {t("exit")} </h1>
             </div>
           </div>
         </div>

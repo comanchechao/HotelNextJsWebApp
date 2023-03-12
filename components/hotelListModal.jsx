@@ -58,7 +58,13 @@ export default function HotelListModal({ features, residenceTypes }) {
         >
           <Accordion.Item value="customization">
             <Accordion.Control>
-              <span className=" text-gray-900 flex justify-end text-md text-right">
+              <span
+                className={`${
+                  alignLeft === true
+                    ? "text-gray-900 flex justify-end text-md text-right"
+                    : "text-gray-900 flex flex-row-reverse justify-end text-md text-right"
+                }`}
+              >
                 {t("hotelStars")}
               </span>
             </Accordion.Control>
@@ -106,7 +112,13 @@ export default function HotelListModal({ features, residenceTypes }) {
         >
           <Accordion.Item value="customization">
             <Accordion.Control>
-              <span className=" text-gray-900 flex justify-end  text-md text-right">
+              <span
+                className={`${
+                  alignLeft === true
+                    ? "text-gray-900 flex justify-end text-md text-right"
+                    : "text-gray-900 flex flex-row-reverse justify-end text-md text-right"
+                }`}
+              >
                 {t("priceRange")}{" "}
               </span>
             </Accordion.Control>
@@ -134,7 +146,13 @@ export default function HotelListModal({ features, residenceTypes }) {
         >
           <Accordion.Item value="customization">
             <Accordion.Control>
-              <span className=" text-gray-900 flex justify-end  text-md text-right">
+              <span
+                className={`${
+                  alignLeft === true
+                    ? "text-gray-900 flex justify-end text-md text-right"
+                    : "text-gray-900 flex flex-row-reverse justify-end text-md text-right"
+                }`}
+              >
                 {t("hotelFacilities")}
               </span>
             </Accordion.Control>
@@ -183,7 +201,13 @@ export default function HotelListModal({ features, residenceTypes }) {
         >
           <Accordion.Item value="customization">
             <Accordion.Control>
-              <span className=" text-gray-900 flex justify-end  text-md text-right">
+              <span
+                className={`${
+                  alignLeft === true
+                    ? "text-gray-900 flex justify-end text-md text-right"
+                    : "text-gray-900 flex flex-row-reverse justify-end text-md text-right"
+                }`}
+              >
                 {t("residenceTypes")}
               </span>
             </Accordion.Control>
