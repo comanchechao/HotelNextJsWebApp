@@ -24,6 +24,7 @@ export default function ReservationManagement({ Hotels }) {
 
   useEffect(() => {
     getReservations();
+
     console.log(reservations, "reservatoins");
   }, [Hotels]);
   return (

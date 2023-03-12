@@ -17,17 +17,36 @@ import {
 import Link from "next/link";
 import { Tabs } from "@mantine/core";
 import { MagnifyingGlass } from "phosphor-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import HotelImage from "./hotelImage";
 import { useTranslation } from "next-i18next";
 import AdminHotelCard from "./adminHotelCard";
+import { supabase } from "../lib/supabaseClient";
 
 const HotelMap = dynamic(() => import("./hotelMap"), {
   ssr: false,
 });
-export default function HotelManagement({ hotels, cities, features, user }) {
+export default function HotelManagement({ user, hotels }) {
   const { t, i18n } = useTranslation("common");
+
+  const [cities, setCities] = useState([]);
+  const [features, setFeatures] = useState([]);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  async function getData() {
+    const { data: cities, error2 } = await supabase.from("cities").select();
+
+    const { data: features, error3 } = await supabase
+      .from("features")
+      .select("title");
+
+    setCities(cities);
+    setFeatures(features);
+  }
 
   return (
     <div className="flex flex-col w-full h-full  lg:h-carousel   ">

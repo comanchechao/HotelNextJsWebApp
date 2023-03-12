@@ -55,16 +55,10 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   const { data, error } = await supabase.from("Hotels").select().eq("id", id);
-  const { data: commentData } = await supabase
-    .from("comments")
-    .select()
-    .eq("hotelId", id);
-  if (error) throw error;
 
   return {
     props: {
       hotel: data[0],
-      comments: commentData,
       ...(await serverSideTranslations(context.locale, ["common"])),
     },
   };
@@ -77,7 +71,7 @@ export const getStaticProps = async (context) => {
 //   }
 // );
 
-export default function HotelDetailPage({ hotel, comments }) {
+export default function HotelDetailPage({ hotel }) {
   const ReserveInfoModal = dynamic(
     () => import("../../../components/reserveInfoModal"),
     {
@@ -148,6 +142,7 @@ export default function HotelDetailPage({ hotel, comments }) {
   };
   useEffect(() => {
     downloadImage1();
+    getComments(hotel);
   }, []);
   const myDivRef = useRef(null);
   useEffect(() => {
@@ -176,6 +171,18 @@ export default function HotelDetailPage({ hotel, comments }) {
     };
   }, []);
 
+  // get comments
+
+  const [comments, setComments] = useState([]);
+
+  async function getComments(hotel) {
+    const { data: commentData, error } = await supabase
+      .from("comments")
+      .select()
+      .eq("hotelId", hotel.id);
+    if (error) throw error;
+    setComments(commentData);
+  }
   // getting reservtion info
 
   const [entering, setEntering] = useState(null);

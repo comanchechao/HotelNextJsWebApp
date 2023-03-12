@@ -42,22 +42,6 @@ export async function getServerSideProps(context) {
   });
 
   const { data: user, error5 } = await supabase.auth.getUser(accessToken);
-  if (error5) throw error;
-
-  const {
-    data: { users },
-    error7,
-  } = await adminAuthClient.listUsers();
-
-  const { data: hotels, error } = await supabase
-    .from("Hotels")
-    .select()
-    .eq("owner", user.user.id);
-  const { data: cities, error2 } = await supabase.from("cities").select();
-
-  const { data: features, error3 } = await supabase
-    .from("features")
-    .select("title");
 
   const { data: userRole, error6 } = await supabase
     .from("profiles")
@@ -66,35 +50,33 @@ export async function getServerSideProps(context) {
 
   if (error6) throw error6;
 
-  if (error) throw error;
-  if (error2) throw error2;
-  if (error3) throw error3;
   if (userRole[0].role !== "admin" && userRole[0].role !== "colleage") {
     throw new Error("you are not authorized");
   }
   return {
     props: {
       user: user.user,
-      users: users,
-      cities: cities,
-      hotels: hotels,
-      features: features,
       ...(await serverSideTranslations(context.locale, ["common"])),
     },
   };
 }
 
-export default function AdminPage({
-  session,
-  user,
-  hotels,
-  cities,
-  features,
-  users,
-}) {
+export default function AdminPage({ user }) {
   const [hotelIds, setHotelIds] = useState([]);
+  const [hotels, setHotels] = useState([]);
+
+  async function getHotels() {
+    const { data: hotels, error } = await supabase
+      .from("Hotels")
+      .select()
+      .eq("owner", user.id);
+    if (error) throw error;
+
+    setHotels(hotels);
+  }
   useEffect(() => {
     changeAlignment();
+    getHotels();
 
     if (hotels) {
       hotels.forEach((hotel, i) => {
@@ -130,7 +112,7 @@ export default function AdminPage({
       >
         <div className="lg:w-3/4 w-full flex items-center justify-center h-screen lg:p-6 py-6">
           {tab === "user" ? (
-            <UserManagement users={users} />
+            <UserManagement />
           ) : tab === "city" ? (
             <AddCity cities={cities} />
           ) : tab === "reserve" ? (
@@ -138,12 +120,7 @@ export default function AdminPage({
           ) : tab === "websiteInfo" ? (
             <WebsiteInfo />
           ) : tab === "hotel" ? (
-            <HotelManagement
-              user={user}
-              hotels={hotels}
-              cities={cities}
-              features={features}
-            />
+            <HotelManagement hotels={hotels} user={user} />
           ) : null}
         </div>
         <div className=" text-right  rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-center lg:items-end  justify-around lg:justify-center lg:w-1/4 w-full h-full  bg-white text-gray-800">
