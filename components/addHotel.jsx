@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Modal,
   Select,
@@ -22,12 +22,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { roomActions } from "../store/room";
 import AddRoom from "./addRoom";
 import { Suspense } from "react";
+import { useTranslation } from "next-i18next";
+
 import { X, Buildings } from "phosphor-react";
 const LocationsMap = dynamic(() => import("./map"), {
   ssr: false,
   Suspense: true,
 });
 export default function AddHotel({ featuresData, cities, user }) {
+  const { t, i18n } = useTranslation("common");
+  const lng = i18n.language;
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(3);
   const [title, setTitle] = useState("");
@@ -45,6 +49,7 @@ export default function AddHotel({ featuresData, cities, user }) {
   const [aboutHotel, setAboutHotel] = useState("");
   const [enteringHours, setEnteringHours] = useState(12);
   const [exitingHours, setExitingHours] = useState(14);
+  const [alignLeft, setAlignLeft] = useState(false);
 
   let getlat = useSelector((state) => state.map.lat);
   let getLng = useSelector((state) => state.map.lng);
@@ -52,7 +57,11 @@ export default function AddHotel({ featuresData, cities, user }) {
   let lng2 = useSelector((state) => state.map.lng2);
   let lat3 = useSelector((state) => state.map.lat3);
   let lng3 = useSelector((state) => state.map.lng3);
-
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   const [definedRoom, setDefinedRoom] = useState({
     title: "",
     price: null,
@@ -64,6 +73,7 @@ export default function AddHotel({ featuresData, cities, user }) {
   const [mapLng, setMapLng] = useState(null);
 
   useEffect(() => {
+    changeAlignment();
     cities.forEach((theCity) => {
       if (theCity.name === city) {
         setMapLat(theCity.lat);
@@ -319,7 +329,7 @@ export default function AddHotel({ featuresData, cities, user }) {
           <div className="flex space-y-5 w-full h-full flex-col">
             <div className="   w-full text-center items-center flex justify-center">
               <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md ">
-                تصاویر هتل
+                {t("hotelPics")}
               </h3>
             </div>
             <div className="flex justify-around space-x-1 lg:space-x-4 lg:px-0 px-4 h-28 lg:h-rem22 ">
@@ -413,9 +423,15 @@ export default function AddHotel({ featuresData, cities, user }) {
                 </div>
               </div>
             </div>
-            <div className="flex    flex-col justify-center  space-x-2 text-right items-end w-full h-full  ">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex    flex-col justify-center  space-x-2 text-right items-end w-full h-full"
+                  : "flex    flex-col justify-center  space-x-2 text-left items-start w-full h-full"
+              }`}
+            >
               <h2 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                عنوان هتل
+                {t("hotelName")}
               </h2>
               <input
                 required
@@ -425,20 +441,32 @@ export default function AddHotel({ featuresData, cities, user }) {
                 className=" py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                 type="text"
                 name="title"
-                placeholder="عنوان هتل را وارد کنید"
+                placeholder={t("enterHotelName")}
               />
             </div>
             <div className="flex   w-full h-full text-right justify-center items-center">
               <div className="flex w-full justify-between flex-col items-center h-full">
-                <h3 className="text-xl self-end my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                  ستاره های هتل
+                <h3
+                  className={`${
+                    alignLeft === true
+                      ? "text-xl self-end my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md"
+                      : "text-xl self-start my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md"
+                  }`}
+                >
+                  {t("hotelStars")}
                 </h3>
                 <Rating value={value} onChange={setValue} size="xl" count={5} />
               </div>
             </div>
-            <div className="flex    flex-col justify-center  space-x-2 text-right items-end w-full h-full">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex    flex-col justify-center  space-x-2 text-right items-end w-full h-full"
+                  : "flex    flex-col justify-center  space-x-2 text-right items-start w-full h-full"
+              }`}
+            >
               <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                آدرس هتل
+                {t("hotelAddress")}
               </h3>
               <input
                 required
@@ -448,12 +476,18 @@ export default function AddHotel({ featuresData, cities, user }) {
                 className=" py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                 type="text"
                 name="title"
-                placeholder="آدرس هتل را وارد کنید"
+                placeholder={t("enterHotelAdd")}
               />
             </div>
-            <div className="flex flex-col w-full h-full text-right justify-center items-end">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex flex-col w-full h-full text-right justify-center items-end"
+                  : "flex flex-col w-full h-full text-right justify-center items-start"
+              }`}
+            >
               <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                انتخاب شهر
+                {t("hotelCity")}
               </h3>
               <Select
                 transitionDuration={150}
@@ -461,7 +495,7 @@ export default function AddHotel({ featuresData, cities, user }) {
                 transitionTimingFunction="ease"
                 variant="default"
                 radius="md"
-                placeholder="شهر رو انتخاب کنید"
+                placeholder={t("enterCity")}
                 size="md"
                 required
                 value={city}
@@ -472,19 +506,24 @@ export default function AddHotel({ featuresData, cities, user }) {
               />
             </div>
             <div className="">
-              {" "}
               <LocationsMap city={city} cityLatLng={[mapLat, mapLng]} />
             </div>
-            <div className="flex flex-col   w-full h-full text-right justify-between items-end">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex flex-col   w-full h-full text-right justify-between items-end"
+                  : "flex flex-col   w-full h-full text-right justify-between items-start"
+              }`}
+            >
               <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                امکانات هتل را انتخاب کنید
+                {t("hotelFacilities")}
               </h3>
               <MultiSelect
                 transitionDuration={150}
                 transition="pop-top-left"
                 transitionTimingFunction="ease"
                 variant="default"
-                placeholder="امکانات هتل را انتخاب کنید"
+                placeholder={t("enterHotelFacil")}
                 radius="md"
                 size="md"
                 value={features}
@@ -492,9 +531,15 @@ export default function AddHotel({ featuresData, cities, user }) {
                 data={allFeatures}
               />
             </div>
-            <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex  flex-col justify-center space-x-2 text-right items-end w-full h-full"
+                  : "flex  flex-col justify-center space-x-2 text-right items-start w-full h-full"
+              }`}
+            >
               <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                میانگین قیمت هر شب
+                {t("avrgNight")}
               </h3>
               <input
                 required
@@ -504,12 +549,18 @@ export default function AddHotel({ featuresData, cities, user }) {
                 className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                 type="number"
                 name="price"
-                placeholder="قیمت را وارد کنید"
+                placeholder={t("enterPrice")}
               />
             </div>{" "}
-            <div className="flex w-full flex-col h-full text-right justify-center items-end">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex  flex-col justify-center space-x-2 text-right items-end w-full h-full"
+                  : "flex  flex-col justify-center space-x-2 text-right items-start w-full h-full"
+              }`}
+            >
               <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                قوانین و مقررات هتل
+                {t("hotelRules")}
               </h3>
               <textarea
                 onChange={(e) => {
@@ -524,7 +575,7 @@ export default function AddHotel({ featuresData, cities, user }) {
             </div>
             <div className="flex w-full justify-around space-x-2 items-center  ">
               <div className="flex-col space-y-2 text-right flex">
-                <label htmlFor="exiting hour">ساعت خروج</label>
+                <label htmlFor="exiting hour">{t("exitTime")}</label>
                 <input
                   onChange={(e) => {
                     setExitingHours(e.target.value);
@@ -535,7 +586,7 @@ export default function AddHotel({ featuresData, cities, user }) {
                 />
               </div>
               <div className="flex-col space-y-2 text-right flex">
-                <label htmlFor="entering hour">ساعت ورود</label>
+                <label htmlFor="entering hour">{t("enterTime")}</label>
                 <input
                   onChange={(e) => {
                     setEnteringHours(e.target.value);
@@ -546,9 +597,15 @@ export default function AddHotel({ featuresData, cities, user }) {
                 />
               </div>
             </div>
-            <div className="flex w-full flex-col h-full text-right justify-center items-end">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex  flex-col justify-center space-x-2 text-right items-end w-full h-full"
+                  : "flex  flex-col justify-center space-x-2 text-right items-start w-full h-full"
+              }`}
+            >
               <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                درباره هتل
+                {t("aboutHotel")}
               </h3>
               <textarea
                 onChange={(e) => {
@@ -596,7 +653,7 @@ export default function AddHotel({ featuresData, cities, user }) {
                           </div>
                         </div>
                         <div className="w-36 flex  justify-around">
-                          <p>تومان</p>
+                          <p>{t("currency")}</p>
                           <p className="text-lg">{room.price}</p>
                         </div>
                       </div>
@@ -619,16 +676,22 @@ export default function AddHotel({ featuresData, cities, user }) {
                 <Tabs.List grow position="center">
                   {/* <Tabs.Tab value="messages">اتاق پیش فرض</Tabs.Tab> */}
                   <Tabs.Tab position="center" value="gallery">
-                    تعریف اتاق
+                    <p className="text-2xl">{t("newRoom")}</p>
                   </Tabs.Tab>
                 </Tabs.List>
 
                 <Tabs.Panel value="gallery" pt="xs">
                   <div className="flex flex-col  w-full h-full">
                     <div className="flex space-y-2 w-full h-full flex-col">
-                      <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
+                      <div
+                        className={`${
+                          alignLeft === true
+                            ? "flex  flex-col justify-center space-x-2 text-right items-end w-full h-full"
+                            : "flex  flex-col justify-center space-x-2 text-right items-start w-full h-full"
+                        }`}
+                      >
                         <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                          عنوان اتاق
+                          {t("roomName")}
                         </h3>
                         <input
                           onChange={(e) => {
@@ -641,12 +704,18 @@ export default function AddHotel({ featuresData, cities, user }) {
                           className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                           type="text"
                           name="title"
-                          placeholder=" عنوان اتاق را وارد کنید"
+                          placeholder={t("enterRoomName")}
                         />
                       </div>
-                      <div className="flex w-full flex-col h-full text-right justify-center items-end">
+                      <div
+                        className={`${
+                          alignLeft === true
+                            ? "flex  flex-col justify-center space-x-2 text-right items-end w-full h-full"
+                            : "flex  flex-col justify-center space-x-2 text-right items-start w-full h-full"
+                        }`}
+                      >
                         <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                          وعده غذایی اتاق
+                          {t("roomMeal")}
                         </h3>
                         <Select
                           transitionDuration={150}
@@ -670,20 +739,32 @@ export default function AddHotel({ featuresData, cities, user }) {
                           ]}
                         />
                       </div>
-                      <div className="flex  flex-col justify-center space-x-2 text-right items-end w-full h-full">
+                      <div
+                        className={`${
+                          alignLeft === true
+                            ? "flex  flex-col justify-center space-x-2 text-right items-end w-full h-full"
+                            : "flex  flex-col justify-center space-x-2 text-right items-start w-full h-full"
+                        }`}
+                      >
                         <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                          قیمت 1 شب
+                          {t("avrgNight")}
                         </h3>
                         <input
                           className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                           type="number"
                           name="price"
-                          placeholder="قیمت برای یک شب را وارد کنید"
+                          placeholder={t("avrgNight")}
                         />
                       </div>
-                      <div className="flex flex-col w-full h-full text-right justify-center items-end">
+                      <div
+                        className={`${
+                          alignLeft === true
+                            ? "flex  flex-col justify-center space-x-2 text-right items-end w-full h-full"
+                            : "flex  flex-col justify-center space-x-2 text-right items-start w-full h-full"
+                        }`}
+                      >
                         <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
-                          ظرفیت اتاق
+                          {t("roomCapacity")}
                         </h3>
                         <Select
                           transitionDuration={150}
@@ -709,7 +790,7 @@ export default function AddHotel({ featuresData, cities, user }) {
                           }}
                           className="w-52 py-3 border-r-8   border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
                         >
-                          تایید و افزودن اتاق{" "}
+                          {t("confirmRoom")}{" "}
                         </button>
                       </div>
                     </div>
@@ -798,10 +879,6 @@ export default function AddHotel({ featuresData, cities, user }) {
                     </div>
                   </div>
                 </Tabs.Panel> */}
-
-                <Tabs.Panel value="settings" pt="xs">
-                  Settings tab content
-                </Tabs.Panel>
               </Tabs>
             </div>
             <div className="flex">
@@ -809,9 +886,13 @@ export default function AddHotel({ featuresData, cities, user }) {
                 onClick={() => {
                   handleSubmit();
                 }}
-                className="w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                className={`${
+                  alignLeft === true
+                    ? "w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                    : "w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue self-start"
+                }`}
               >
-                افزودن هتل
+                {t("confirmHotel")}
               </button>
             </div>
           </div>
@@ -825,7 +906,7 @@ export default function AddHotel({ featuresData, cities, user }) {
           }}
           className="w-52 py-2 flex justify-center items-center border-2 text-lg text-white border-r-8 border-mainBlue bg-mainPurple   transition ease-in duration-300 font-mainFont rounded-md   hover:bg-mainBlue"
         >
-          هتل جدید
+          {t("newHotel")}
           <Buildings className="ml-2" size={32} weight="light" />
         </button>
       </Group>

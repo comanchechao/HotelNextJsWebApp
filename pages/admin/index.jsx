@@ -26,6 +26,7 @@ import AddCity from "../../components/addCity";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router.js";
 import { useTranslation } from "next-i18next";
+import { Desktop, MapTrifold } from "phosphor-react";
 
 export async function getServerSideProps(context) {
   // Fetch data from the database
@@ -134,7 +135,13 @@ export default function AdminPage({ user }) {
                 : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
             }`}
           >
-            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+              }`}
+            >
               <IconBuildingSkyscraper size={24} />
               <h1 className="lg:text-2xl text-sm  "> {t("hotels")} </h1>
             </div>
@@ -149,7 +156,13 @@ export default function AdminPage({ user }) {
                 : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
             }`}
           >
-            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+              }`}
+            >
               <IconUserCheck size={24} />
               <h1 className="lg:text-2xl text-sm  "> {t("colleagues")} </h1>
             </div>
@@ -164,8 +177,14 @@ export default function AdminPage({ user }) {
                 : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
             }`}
           >
-            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
-              <IconUserCheck size={24} />
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+              }`}
+            >
+              <MapTrifold size={24} />
               <h1 className="lg:text-2xl text-sm  "> {t("city")} </h1>
             </div>
           </div>
@@ -179,7 +198,13 @@ export default function AdminPage({ user }) {
                 : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
             }`}
           >
-            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+              }`}
+            >
               <IconBook size={24} />
               <h1 className="lg:text-2xl text-sm  "> {t("reservations")} </h1>
             </div>
@@ -194,13 +219,25 @@ export default function AdminPage({ user }) {
                 : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
             }`}
           >
-            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
-              <IconUser size={24} />
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+              }`}
+            >
+              <Desktop size={24} />
               <h1 className="lg:text-2xl text-sm  "> {t("websiteInfo")} </h1>
             </div>
           </div>
           <div className="rounded-md flex lg:mt-0 mt-6 cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full ">
-            <div className="flex justify-around items-center  transition   text-gray-800 w-full">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+              }`}
+            >
               <IconLogout size={24} />
               <h1 className="lg:text-2xl text-sm  "> {t("exit")} </h1>
             </div>

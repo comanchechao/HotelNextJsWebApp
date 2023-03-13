@@ -127,5 +127,30 @@
   "exit": "çıkış",
 
   "myHotels": "Otellerim",
-  "otherHotels": "Diğer Oteller"
+  "otherHotels": "Diğer Oteller",
+
+  "newHotel": "Yeni Otel",
+  "hotelPics": "Otel Resimleri",
+  "hotelName": "Otel Adı",
+  "enterHotelName": "Otel Adını Yazın",
+  "hotelStars": "otel yıldızları",
+  "hotelAddress": "Otel Adresi",
+  "enterHotelAdd": "Otel Adresini Yazın",
+  "hotelCity": "Otel Şehri",
+  "enterCity": "Otel şehrini Yazın",
+  "hotelFacilities": "Otel tesisleri",
+  "enterHotelFacil": "Otel tesisleri Yazın",
+  "avrgNight": "Bir gecelik ortalama fiyat",
+  "enterPrice": "Bir gecelik fiyat yazın",
+  "hotelRules": "otel kuralları",
+  "enterTime": "girme zamanı",
+  "exitTime": "çıkış zamanı",
+  "aboutHotel": "otel hakkında",
+  "newRoom": "Yeni oda",
+  "roomName": "Oda ismi",
+  "enterRoomName": "Oda ismi Yazın",
+  "roomMeal": "oda yemeği",
+  "roomCapacity": "oda kapasitesi",
+  "confirmRoom": "oda ekle",
+  "confirmHotel": "otel ekle"
 }
