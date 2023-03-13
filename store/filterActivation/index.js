@@ -6,7 +6,7 @@ export const filter = createSlice({
     stars: 5,
     maxPrice: 1000000,
     minPrice: 0,
-    feature: null,
+    features: [],
   },
   reducers: {
     setStars: (state, action) => {
@@ -17,6 +17,13 @@ export const filter = createSlice({
     },
     setMinPrice: (state, action) => {
       state.minPrice = action.payload;
+    },
+    setFeatures: (state, action) => {
+      if (state.features.indexOf(action.payload) === -1) {
+        state.features.push(action.payload);
+      } else {
+        state.features.splice(state.features.indexOf(action.payload), 1);
+      }
     },
   },
 });

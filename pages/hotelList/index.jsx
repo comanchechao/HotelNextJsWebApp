@@ -32,10 +32,7 @@ export async function getServerSideProps({ locale }) {
 export default function HotelList({ features, residenceTypes }) {
   const [filters, setFilters] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [to, setTo] = useState(4);
-  const [ascention, setAscention] = useState("");
-  const [hotels, setHotels] = useState([]);
-  const [order, setOrder] = useState("");
+
   const [alignLeft, setAlignLeft] = useState(false);
 
   const { t, i18n } = useTranslation("common");
@@ -60,7 +57,8 @@ export default function HotelList({ features, residenceTypes }) {
 
   const [filteredHotels, setFilteredHotels] = useState([]);
 
-  let stars = useSelector((state) => state.filter.stars);
+  // let stars = useSelector((state) => state.filter.stars);
+  // let filterFeatures = useSelector((state) => state.filter.features);
 
   const mainPageBg = useRef();
   const firstContainer = useRef();
@@ -73,74 +71,55 @@ export default function HotelList({ features, residenceTypes }) {
     });
     tl.to(firstContainer.current, { opacity: "1", duration: 0.4 });
     tl.to(secondContainer.current, { opacity: "1", duration: 0.4, delay: 0.5 });
-  });
+  }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
     changeAlignment();
     getHotels();
-    if (getHotels.data !== null) {
-      setLoading(false);
-    } else {
-      setLoading(true);
-    }
-    sortFetch(stars);
-  }, [stars]);
+  }, []);
+
+  const [to, setTo] = useState(4);
+  const [hotels, setHotels] = useState([]);
+  const [order, setOrder] = useState("");
+  const [ascention, setAscention] = useState(null);
+  // useEffect(() => {
+  //   getFilteredHotels();
+  // }, [filterFeatures]);
+  // handling products
+
   async function getHotels() {
+    setTo(to + 2);
+    setLoading(true);
+    const { data, error } = await supabase.from("Hotels").select();
+    setHotels(data);
+    if (error) throw error;
+    setLoading(false);
+  }
+
+  async function getFilteredHotels() {
     setTo(to + 2);
     setLoading(true);
     const { data, error } = await supabase
       .from("Hotels")
       .select()
-      .range(from, to);
+      .containedBy("features", filterFeatures);
     setHotels(data);
     if (error) throw error;
-    setFilters(true);
-    setFilteredHotels(data);
-    console.log(data);
     setLoading(false);
   }
-  async function filterFetch() {
+
+  // handling products
+
+  async function orderFetch() {
+    setTo(to + 2);
     setLoading(true);
     const { data, error } = await supabase
       .from("Hotels")
       .select()
       .order(order, { ascending: ascention });
-
+    setHotels(data);
     if (error) throw error;
-    setFilters(true);
-    setFilteredHotels(data);
-    console.log(filteredHotels);
     setLoading(false);
-  }
-
-  async function sortFetch(stars) {
-    setLoading(true);
-
-    if (stars >= 4) {
-      const { data, error } = await supabase
-        .from("Hotels")
-        .select()
-        .gte("stars", stars);
-
-      if (error) throw error;
-      setFilters(true);
-      setLoading(false);
-
-      setFilteredHotels(data);
-      console.log(filteredHotels);
-    } else {
-      const { data, error } = await supabase
-        .from("Hotels")
-        .select()
-        .lte("stars", stars);
-
-      if (error) throw error;
-      setFilters(true);
-      setFilteredHotels(data);
-      setLoading(false);
-
-      console.log(filteredHotels);
-    }
   }
 
   // reservation info
@@ -202,7 +181,7 @@ export default function HotelList({ features, residenceTypes }) {
                 onClick={() => {
                   setAscention(false);
                   setOrder("stars");
-                  filterFetch();
+                  orderFetch();
                 }}
                 className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
               >
@@ -212,8 +191,7 @@ export default function HotelList({ features, residenceTypes }) {
                 onClick={() => {
                   setAscention(false);
                   setOrder("prices");
-
-                  filterFetch();
+                  orderFetch();
                 }}
                 className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
               >
@@ -223,8 +201,7 @@ export default function HotelList({ features, residenceTypes }) {
                 onClick={() => {
                   setAscention(true);
                   setOrder("prices");
-
-                  filterFetch();
+                  orderFetch();
                 }}
                 className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
               >
@@ -259,9 +236,11 @@ export default function HotelList({ features, residenceTypes }) {
                 ? hotels.map((hotel) => {
                     return <HotelCard key={hotel.id} hotel={hotel} />;
                   })
-                : filteredHotels.map((hotel) => {
+                : filteredHotels !== null
+                ? filteredHotels.map((hotel) => {
                     return <HotelCard key={hotel.id} hotel={hotel} />;
-                  })}
+                  })
+                : null}
             </div>
           ) : (
             <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">

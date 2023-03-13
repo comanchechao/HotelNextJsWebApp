@@ -169,6 +169,9 @@ export default function HotelListMenu({ features, residenceTypes }) {
                 ? features.map((feature, i) => {
                     return (
                       <Checkbox
+                        onClick={() => {
+                          dispatch(filterActions.setFeatures(feature.title));
+                        }}
                         key={i}
                         labelPosition="left"
                         color="yellow"
