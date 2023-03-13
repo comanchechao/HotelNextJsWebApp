@@ -21,6 +21,7 @@ export default function HotelListMenu({ features, residenceTypes }) {
   // useEffect(() => {
   //   console.log(maxRange, minRange);
   // });
+  let filterFeatures = useSelector((state) => state.filter.features);
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
 
@@ -172,6 +173,7 @@ export default function HotelListMenu({ features, residenceTypes }) {
                         onClick={() => {
                           dispatch(filterActions.setFeatures(feature.title));
                         }}
+                        checked={filterFeatures.includes(feature.title)}
                         key={i}
                         labelPosition="left"
                         color="yellow"

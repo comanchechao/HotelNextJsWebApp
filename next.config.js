@@ -30,10 +30,4 @@ module.exports = {
   },
 };
 
-module.exports = {
-  env: {
-    PAGE_DATA_COLLECTION_TIMEOUT_MS: 60000,
-  },
-};
-
 module.exports = nextConfig;

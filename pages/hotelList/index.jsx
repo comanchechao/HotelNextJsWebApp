@@ -57,8 +57,8 @@ export default function HotelList({ features, residenceTypes }) {
 
   const [filteredHotels, setFilteredHotels] = useState([]);
 
-  // let stars = useSelector((state) => state.filter.stars);
-  // let filterFeatures = useSelector((state) => state.filter.features);
+  let stars = useSelector((state) => state.filter.stars);
+  let filterFeatures = useSelector((state) => state.filter.features);
 
   const mainPageBg = useRef();
   const firstContainer = useRef();
@@ -82,31 +82,44 @@ export default function HotelList({ features, residenceTypes }) {
   const [hotels, setHotels] = useState([]);
   const [order, setOrder] = useState("");
   const [ascention, setAscention] = useState(null);
-  // useEffect(() => {
-  //   getFilteredHotels();
-  // }, [filterFeatures]);
+  const [initialHotels, setInitialHotels] = useState([]);
   // handling products
 
   async function getHotels() {
     setTo(to + 2);
     setLoading(true);
     const { data, error } = await supabase.from("Hotels").select();
+
     setHotels(data);
+    setInitialHotels(data);
+
     if (error) throw error;
     setLoading(false);
   }
 
-  async function getFilteredHotels() {
-    setTo(to + 2);
-    setLoading(true);
-    const { data, error } = await supabase
-      .from("Hotels")
-      .select()
-      .containedBy("features", filterFeatures);
-    setHotels(data);
-    if (error) throw error;
-    setLoading(false);
+  useEffect(() => {
+    filter(filterFeatures);
+  }, [filterFeatures]);
+
+  function filter(filterFeatures) {
+    let filteredArray = initialHotels.filter((obj) =>
+      obj.features.some((hobby) => filterFeatures.includes(hobby))
+    );
+
+    setHotels(filteredArray);
   }
+
+  // async function getFilteredHotels() {
+  //   setTo(to + 2);
+  //   setLoading(true);
+  //   const { data, error } = await supabase
+  //     .from("Hotels")
+  //     .select()
+  //     .containedBy("features", filterFeatures);
+  //   setHotels(data);
+  //   if (error) throw error;
+  //   setLoading(false);
+  // }
 
   // handling products
 
@@ -189,7 +202,7 @@ export default function HotelList({ features, residenceTypes }) {
               </h2>
               <h2
                 onClick={() => {
-                  setAscention(false);
+                  setAscention(true);
                   setOrder("prices");
                   orderFetch();
                 }}
@@ -199,7 +212,7 @@ export default function HotelList({ features, residenceTypes }) {
               </h2>
               <h2
                 onClick={() => {
-                  setAscention(true);
+                  setAscention(false);
                   setOrder("prices");
                   orderFetch();
                 }}
@@ -207,6 +220,11 @@ export default function HotelList({ features, residenceTypes }) {
               >
                 {t("lPrice")}{" "}
               </h2>
+            </div>
+            <div className="">
+              {filterFeatures.map((filter, i) => {
+                return <div key={i}>{filter}</div>;
+              })}
             </div>
             <h3 className="w-28">{t("sortBy")}</h3>
           </div>

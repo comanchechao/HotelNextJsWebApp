@@ -25,10 +25,10 @@ import { Suspense } from "react";
 import { useTranslation } from "next-i18next";
 
 import { X, Buildings } from "phosphor-react";
-const LocationsMap = dynamic(() => import("./map"), {
-  ssr: false,
-  Suspense: true,
-});
+// const LocationsMap = dynamic(() => import("./map"), {
+//   ssr: false,
+//   Suspense: true,
+// });
 export default function AddHotel({ featuresData, cities, user }) {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
@@ -505,9 +505,9 @@ export default function AddHotel({ featuresData, cities, user }) {
                 data={cityNames}
               />
             </div>
-            <div className="">
+            {/* <div className="">
               <LocationsMap city={city} cityLatLng={[mapLat, mapLng]} />
-            </div>
+            </div> */}
             <div
               className={`${
                 alignLeft === true
