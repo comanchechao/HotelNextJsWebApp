@@ -107,6 +107,47 @@ export default function HotelList({ features, residenceTypes }) {
     );
 
     setHotels(filteredArray);
+    if (hotels === []) {
+      setHotels(initialHotels);
+    }
+  }
+
+  useEffect(() => {
+    sortStars();
+  }, [stars]);
+
+  function sortStars() {
+    function more(a, b) {
+      if (a.stars > b.stars) {
+        return -1;
+      }
+      if (a.stars < b.stars) {
+        return 1;
+      }
+      return 0;
+    }
+    function less(a, b) {
+      if (a.stars > b.stars) {
+        return 1;
+      }
+      if (a.stars < b.stars) {
+        return -1;
+      }
+      return 0;
+    }
+
+    if (stars >= 5) {
+      let comparedHotels = initialHotels.sort(less);
+      setHotels(comparedHotels);
+    } else if ((stars = 3)) {
+      let comparedHotels = initialHotels.sort(more);
+      setHotels(comparedHotels);
+    } else {
+      let comparedHotels = initialHotels.sort(more);
+      setHotels(comparedHotels);
+    }
+
+    console.log(hotels);
   }
 
   // async function getFilteredHotels() {
@@ -126,12 +167,15 @@ export default function HotelList({ features, residenceTypes }) {
   async function orderFetch() {
     setTo(to + 2);
     setLoading(true);
-    const { data, error } = await supabase
-      .from("Hotels")
-      .select()
-      .order(order, { ascending: ascention });
-    setHotels(data);
-    if (error) throw error;
+
+    if (ascention) {
+      let orderedHotels = initialHotels.sort((a, b) => a.prices - b.prices);
+      setHotels(orderedHotels);
+    } else {
+      let orderedHotels = initialHotels.sort((a, b) => b.prices - a.prices);
+      setHotels(orderedHotels);
+    }
+
     setLoading(false);
   }
 
@@ -221,11 +265,7 @@ export default function HotelList({ features, residenceTypes }) {
                 {t("lPrice")}{" "}
               </h2>
             </div>
-            <div className="">
-              {filterFeatures.map((filter, i) => {
-                return <div key={i}>{filter}</div>;
-              })}
-            </div>
+
             <h3 className="w-28">{t("sortBy")}</h3>
           </div>
           <div
