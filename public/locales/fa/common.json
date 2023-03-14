@@ -149,5 +149,21 @@
   "roomMeal": "وعده غذایی اتاق",
   "roomCapacity": "ظرفیت اتاق",
   "confirmRoom": "تایید و افزودن اتاق",
-  "confirmHotel": "افزودن هتل"
+  "confirmHotel": "افزودن هتل",
+
+  "hotelsOf": "هتل های",
+  "singleHotel": "هتل",
+  "searchRoom": "در بین اتاق ها جستجو کن",
+  "kid": "کودک(تا ۱۲ سال)",
+  "adult": "بزرگسال(۱۲ سال به بالا)",
+
+  "hotelPick": "انتخاب هتل",
+  "passengerInfo": "مشخصات مسافران",
+  "confirmInfo": "تایید اطلاعات",
+  "payment": "پرداخت",
+  "voucher": "صدور واچر",
+  "confirmToNext": "تایید و مرحله بعدی",
+  "confirmRules": "با کلیک روی تایید و ادامه خرید با",
+  "websiteRules": "قوانین سایت",
+  "ifYouClick": "موافقت کرده‌اید"
 }

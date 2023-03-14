@@ -152,5 +152,21 @@
   "roomMeal": "oda yemeği",
   "roomCapacity": "oda kapasitesi",
   "confirmRoom": "oda ekle",
-  "confirmHotel": "otel ekle"
+  "confirmHotel": "otel ekle",
+
+  "hotelsOf": "oteller",
+  "singleHotel": "otel",
+  "searchRoom": "Odalar arasında ara",
+  "kid": "Çocuklar (12 yaş ve altı)",
+  "adult": "Yetişkin (12 yaş ve üstü)",
+
+  "hotelPick": "otel seçimi",
+  "passengerInfo": "Yolcu Bilgileri",
+  "confirmInfo": "Bilgileri Onayla",
+  "payment": "Ödeme",
+  "voucher": "Kupon Kodu",
+  "confirmToNext": "Onaylayın ve Sonraki Seviyeye geçin",
+  "confirmRules": "katılıyorum",
+  "websiteRules": "Web Sitesi Kuralları",
+  "ifYouClick": "."
 }

@@ -81,11 +81,19 @@ export default function HotelDetailPage({ hotel }) {
   const Footer = dynamic(() => import("../../../components/Footer"), {
     suspense: true,
   });
-  const { t } = useTranslation("");
-  const [loading, setLoading] = useState(false);
 
+  const [alignLeft, setAlignLeft] = useState(false);
+  const { t, i18n } = useTranslation("");
+  const [loading, setLoading] = useState(false);
   const [displayImages, setDisplayImages] = useState([]);
   const [singleImage, setSingleImage] = useState("");
+  const lng = i18n.language;
+
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
 
   const downloadImage1 = async () => {
     setLoading(true);
@@ -141,6 +149,8 @@ export default function HotelDetailPage({ hotel }) {
     }
   };
   useEffect(() => {
+    changeAlignment();
+
     downloadImage1();
     getComments(hotel);
   }, []);
@@ -218,15 +228,25 @@ export default function HotelDetailPage({ hotel }) {
         <Navbar />
         <div className="flex w-full lg:py-20  lg:px-44 h-full bg-gray-100">
           <div className="flex flex-col p-5 w-full h-full  ">
-            <div className="flex justify-end lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24">
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex justify-end lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24"
+                  : "flex justify-start lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24"
+              }`}
+            >
               <Link href={"/hotelList/hotelDetail/" + hotel.id}>
-                <p>هتل {hotel.title}</p>
+                <p>
+                  {t("singleHotel")} {hotel.title}
+                </p>
               </Link>
               <IconChevronLeft />
-              <p>هتل های شهر {city}</p>
+              <p>
+                {t("hotels")} {city}
+              </p>
               <IconChevronLeft />
               <Link href="/">
-                <p>هتل ها</p>
+                <p>{t("hotelsOf")}</p>
               </Link>
             </div>
             {loading ? (
@@ -346,9 +366,8 @@ export default function HotelDetailPage({ hotel }) {
                     </Popover.Target>
                     <Popover.Dropdown>
                       <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
-                        <h1 className="text-xs ">اتاق اول</h1>
                         <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
-                          <h1 className="text-xs">بزرگسال(۱۲ سال به بالا)</h1>
+                          <h1 className="text-xs">{t("adult")}</h1>
                           <div className="flex text-blue-800  items-center justify-center space-x-5">
                             <PlusCircle
                               onClick={() => {
@@ -372,7 +391,7 @@ export default function HotelDetailPage({ hotel }) {
                           </div>
                         </div>
                         <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
-                          <h1 className="text-xs">کودک(تا ۱۲ سال)</h1>
+                          <h1 className="text-xs"> {t("kid")} </h1>
                           <div className="flex text-blue-800 items-center justify-center space-x-5">
                             <PlusCircle size={27} weight="fill" />
                             <h1 className="text-xs ">1</h1>
@@ -392,7 +411,7 @@ export default function HotelDetailPage({ hotel }) {
                         }}
                         className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   "
                       >
-                        <p>رزرو اتاق</p>
+                        <p>{t("searchRoom")}</p>
                       </button>
                     </Link>
                   </div>

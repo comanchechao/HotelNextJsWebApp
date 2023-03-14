@@ -43,16 +43,16 @@ export default function UserProfile({ user }) {
   const [tab, setTab] = useState("Profile");
   const { t, i18n } = useTranslation("");
   const lng = i18n.language;
-  useEffect(() => {
-    changeAlignment();
-  }, []);
-
   const [alignLeft, setAlignLeft] = useState(false);
   async function changeAlignment() {
     console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
+  useEffect(() => {
+    changeAlignment();
+  }, []);
+
   return (
     <div className="h-auto w-screen bg-gray-100">
       <Navbar />

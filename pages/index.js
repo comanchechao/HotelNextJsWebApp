@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import isToday from "dayjs/plugin/isToday.js";
-import utc from "dayjs/plugin/utc.js";
-import timezone from "dayjs/plugin/timezone.js";
-import Head from "next/head";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import calendar from "dayjs/plugin/calendar";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import "dayjs/locale/fa"; // Load the fa localeimport Head from "next/head";
+
 import Faq from "../components/Faq";
 import Link from "next/link";
 import { gsap } from "gsap";
@@ -36,7 +38,6 @@ import Mashhad from "../assets/images/Mashhad.webp";
 import Shiraz from "../assets/images/Shiraz.webp";
 import Tabriz from "../assets/images/Tabriz.webp";
 import Esfahan from "../assets/images/Esfahan.webp";
-import "dayjs/locale/fa";
 import dayjs from "dayjs";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -46,6 +47,7 @@ import { Suspense } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useDispatch, useSelector } from "react-redux";
 import { reservationActions } from "../store/reservation";
+import Head from "next/head";
 
 export async function getServerSideProps(context) {
   // Fetch data from the database
@@ -121,13 +123,18 @@ export default function Home(props) {
     window.scrollTo(0, 0);
   });
 
+  dayjs.extend(customParseFormat);
+  dayjs.extend(calendar);
   dayjs.extend(utc);
-  dayjs.extend(isToday);
   dayjs.extend(timezone);
-  const myDate = dayjs().utcOffset(3.5);
 
+  const today = dayjs
+    .utc()
+    .tz("Asia/Tehran")
+    .locale("fa")
+    .format("dddd، jYYYY/jM/jD");
   useEffect(() => {
-    console.log(dayjs(dates[0], { timezone: "Iran" }).local("fa"));
+    console.log(today);
   });
   // const myDateFormatted = myDate.utc().format("MM/DD/YYYY");
   const useStyles = createStyles((theme) => ({
@@ -179,7 +186,6 @@ export default function Home(props) {
           >
             <div className="flex w-full   h-full items-end flex-col lg:flex-row-reverse justify-around mb-10 lg:space-y-0 space-y-4   ">
               <Select
-                preventDefault
                 dropdownPosition="top"
                 className={`${
                   alignLeft === true
@@ -196,7 +202,6 @@ export default function Home(props) {
                 clearable
                 searchable
                 size="md"
-                icon={<MapPin size={20} weight="fill" />}
               />
               <DateRangePicker
                 className={`${

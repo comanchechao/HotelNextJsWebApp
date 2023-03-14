@@ -13,6 +13,8 @@ import Link from "next/link";
 import InfoConfirmation from "../../components/infoConfirmation";
 import { useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
+
 function StyledStepper(props) {
   return (
     <Stepper
@@ -57,6 +59,19 @@ export async function getServerSideProps({ locale }) {
 }
 
 export default function Checkout(props) {
+  const { t, i18n } = useTranslation("");
+  const lng = i18n.language;
+  const [alignLeft, setAlignLeft] = useState(false);
+
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
+  useEffect(() => {
+    changeAlignment();
+  }, []);
+
   // getting and setting reservation info
 
   let room = useSelector((state) => state.reserve.room);
@@ -79,27 +94,30 @@ export default function Checkout(props) {
           iconSize={47}
           breakpoint="md"
         >
-          <Stepper.Step icon={<Buildings size={28} />} label="انتخاب هتل">
+          <Stepper.Step icon={<Buildings size={28} />} label={t("hotelPick")}>
             Step 1 content: Create an account
           </Stepper.Step>
           <Stepper.Step
             size="xl"
             icon={<Users size={28} />}
-            label="مشخصات مسافران"
+            label={t("passengerInfo")}
           >
             <div className="flex items-center justify-center">
               <PassengerInfo />
             </div>
           </Stepper.Step>
-          <Stepper.Step icon={<Files size={28} />} label="تایید اطلاعات">
+          <Stepper.Step icon={<Files size={28} />} label={t("confirmInfo")}>
             <div className="flex items-center justify-center">
               <InfoConfirmation />
             </div>
           </Stepper.Step>
-          <Stepper.Step icon={<Money size={28} />} label="پرداخت">
+          <Stepper.Step icon={<Money size={28} />} label={t("payment")}>
             Step 3 content: Get full access
           </Stepper.Step>
-          <Stepper.Step icon={<ClosedCaptioning size={28} />} label="صدور واچر">
+          <Stepper.Step
+            icon={<ClosedCaptioning size={28} />}
+            label={t("voucher")}
+          >
             Step 3 content: Get full access
           </Stepper.Step>
           <Stepper.Completed>
@@ -111,18 +129,18 @@ export default function Checkout(props) {
             onClick={nextStep}
             className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont"
           >
-            تایید و ادامه ی خرید
+            {t("confirmToNext")}
           </button>
           <h3 className="lg:text-right text-center my-3">
-            با کلیک روی تایید و ادامه خرید با
+            {t("confirmRules")}
             <Link className=" underline text-Indigo-500 mx-1" href="/">
-              قوانین سایت
+              {t("hotelRules")}
             </Link>
             و
             <Link className=" underline text-Indigo-500 mx-1" href="/">
-              قوانین هتل
+              {t("websiteRules")}
             </Link>
-            موافقت کرده‌اید
+            {t("ifYouClick")}
           </h3>
         </div>
       </div>
