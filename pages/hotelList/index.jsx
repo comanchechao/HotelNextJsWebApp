@@ -88,7 +88,11 @@ export default function HotelList({ features, residenceTypes }) {
   async function getHotels() {
     setTo(to + 2);
     setLoading(true);
-    const { data, error } = await supabase.from("Hotels").select();
+    const { data, error } = await supabase
+      .from("Hotels")
+      .select(
+        "id ,features, stars , title , prices , locationLng , locationLat"
+      );
 
     setHotels(data);
     setInitialHotels(data);

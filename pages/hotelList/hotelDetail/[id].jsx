@@ -122,7 +122,9 @@ export default function HotelDetailPage({ hotel }) {
         throw error;
       }
       const url = URL.createObjectURL(data);
-      displayImages.push(url);
+      if (displayImages.indexOf(url) === -1) {
+        displayImages.push(url);
+      }
     } catch (error) {
       console.log("Error downloading image: ", error.message);
     } finally {
@@ -141,7 +143,9 @@ export default function HotelDetailPage({ hotel }) {
         throw error;
       }
       const url = URL.createObjectURL(data);
-      displayImages.push(url);
+      if (displayImages.indexOf(url) === -1) {
+        displayImages.push(url);
+      }
     } catch (error) {
       console.log("Error downloading image: ", error.message);
     } finally {
@@ -524,27 +528,81 @@ export default function HotelDetailPage({ hotel }) {
                   </h1>
                   <div className="flex border border-gray-300 bg-white justify-center w-full text-sm rounded-md">
                     <Tabs
+                    className="w-full px-2"
                       radius="xs"
                       variant="pills"
                       color="yellow"
                       defaultValue="first"
                     >
                       <Tabs.List grow position="center">
+                        <Tabs.Tab value="fourth">
+                          <span className="text-sm">کامل</span>
+                        </Tabs.Tab>
                         <Tabs.Tab value="second">
                           <span className="text-sm">صبحانه</span>
                         </Tabs.Tab>
                         <Tabs.Tab value="third">
-                          <span className="text-sm">بدون وعده غذایی</span>
+                          <span className="text-sm">شام</span>
                         </Tabs.Tab>
                         <Tabs.Tab value="first">
                           <span className="text-sm">همه موارد</span>
                         </Tabs.Tab>
                       </Tabs.List>
+                      <Tabs.Panel className="w-full" value="first" pt="xs">
+                        {hotel.rooms.map((room, i) => {
+                          console.log(room);
+                          return (
+                            <RoomCard hotelDetail={hotel} key={i} room={room} />
+                          );
+                        })}
+                      </Tabs.Panel>
+
+                      <Tabs.Panel className="w-full" value="second" pt="xs">
+                        {hotel.rooms.map((room, i) => {
+                          console.log(room.meal);
+                          if (room.meal === "صبحانه") {
+                            return (
+                              <RoomCard
+                                hotelDetail={hotel}
+                                key={i}
+                                room={room}
+                              />
+                            );
+                          }
+                        })}
+                      </Tabs.Panel>
+                      <Tabs.Panel className="w-full" value="fourth" pt="xs">
+                        {hotel.rooms.map((room, i) => {
+                          console.log(room.meal);
+                          if (room.meal === "کامل") {
+                            return (
+                              <RoomCard
+                                hotelDetail={hotel}
+                                key={i}
+                                room={room}
+                              />
+                            );
+                          }
+                        })}
+                      </Tabs.Panel>
+
+                      <Tabs.Panel value="third" pt="xs">
+                        {hotel.rooms.map((room, i) => {
+                          console.log(room);
+                          if (room.meal === "شام") {
+                            return (
+                              <RoomCard
+                                hotelDetail={hotel}
+                                key={i}
+                                room={room}
+                              />
+                            );
+                          }
+                        })}
+                      </Tabs.Panel>
                     </Tabs>
                   </div>
-                  {hotel.rooms.map((room, i) => {
-                    return <RoomCard hotelDetail={hotel} key={i} room={room} />;
-                  })}
+
                   <div className="flex justify-around">
                     <button className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-base font-mainFont">
                       بیشتر نشونم بده
