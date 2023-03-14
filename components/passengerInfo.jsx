@@ -3,8 +3,21 @@ import { Star, SignIn, SignOut, Bed, Plus, Minus } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
+import { useTranslation } from "next-i18next";
 
 export default function PassengerInfo() {
+  const { t, i18n } = useTranslation("");
+  const lng = i18n.language;
+  useEffect(() => {
+    changeAlignment();
+  }, []);
+
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   const [passengers, setPassengers] = useState([]);
   // getting reservatoin info
   const dispatch = useDispatch();
@@ -99,69 +112,94 @@ export default function PassengerInfo() {
     dispatch,
   ]);
   return (
-    <div className=" mb-10 h-auto lg:h-full w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
-      <div className=" h-auto lg:h-24 w-full bg-white divide-x-2 flex">
+    <div className=" mb-10 h-auto lg:h-full w-screen lg:w-full flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
+      <div
+        className={`${
+          alignLeft === true
+            ? "h-auto lg:h-24 w-full bg-white divide-x-2 flex"
+            : "h-auto lg:h-24 w-full bg-white divide-x-2 flex flex-row-reverse"
+        }`}
+      >
         <div className="h-full w-1/2 flex lg:flex-row flex-col items-center justify-center ">
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col items-center justify-center">
             <div className="flex items-center space-x-2">
-              <h2>تاریخ خروج</h2>
+              <h2>{t("exitTime")}</h2>
               <SignOut size={40} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">
-              {JSON.stringify(enterDate)} - ساعت 12:00:00
-            </h1>
+            <h1 className="font text-lg">{JSON.stringify(enterDate)}</h1>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
-              <h2>تاریخ ورود</h2>
+              <h2>{t("enterTime")}</h2>
               <SignIn size={40} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">
-              {" "}
-              {JSON.stringify(exitDate)}- ساعت 14:00:00
-            </h1>
+            <h1 className="font text-lg"> {JSON.stringify(exitDate)}</h1>
           </div>
         </div>
         <div className="h-full w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3">
           <div className="flex items-center space-x-4">
             <h2 className="flex items-center">
-              {hotelInfo.stars} ستاره
+              {hotelInfo.stars} {t("star")}
               <Star className="mx-2" size={19} color="#e0ab19" weight="fill" />
             </h2>
-            <h1 className="text-xl font-bold">هتل {hotelInfo.title}</h1>
+            <h1 className="text-xl font-bold">
+              {t("singleHotel")} {hotelInfo.title}
+            </h1>
           </div>
-          <h2>آدرس: پارک وی- ابتدای اتوبان چمران</h2>
+          <h2>{hotelInfo.address}</h2>
         </div>
       </div>
       <div className=" h-full lg:h-full w-full my-6 bg-white flex flex-col items-center">
-        <div className="h-20 w-full flex items-end justify-start    flex-col  px-9 py-3">
+        <div
+          className={`${
+            alignLeft === true
+              ? "h-20 w-full flex items-end justify-start    flex-col  px-9 py-3"
+              : "h-20 w-full flex items-start justify-start    flex-col  px-9 py-3"
+          }`}
+        >
           <h1 className="text-2xl font-bold items-center flex">
-            اتاق اول
+            {t("firstRoom")}
             <Bed className="ml-3" size={45} color="#e0ab19" weight="fill" />
           </h1>
           <div className="flex items-center space-x-6">
-            <h3 className="font-bold">1 بزرگسال</h3>
-            <h3>وعده {room.meal}</h3>
-            <h2 className="text-md font-bold">اتاق {room.title}</h2>
+            <h3 className="font-bold">1 {t("adult")}</h3>
+            <h3>
+              {t("roomMeal")} {room.meal}
+            </h3>
+            <h2 className="text-md font-bold">
+              {t("roomName")} {room.title}
+            </h2>
           </div>
         </div>
         {passenger}
         <form className="h-full    space-y-9 my-10 w-full    flex items-start flex-col px-9">
           {passenger >= 1 ? (
             <div className="  border-2 border-dashed border-mainPurple  my-5 py-6 px-3 rounded-lg">
-              <div className="w-full flex items-center justify-end">
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "w-full flex items-center justify-end"
+                    : "w-full flex items-center justify-start"
+                }`}
+              >
                 <h2 className="   items-center mb-4 py-1   rounded-full border-2 px-6 border-dashed border-mainPurple ">
-                  بزرگسال 1- سرپرست
+                  {t("adultSupervisor")} <strong>1</strong> {t("supervisor")}
                 </h2>
               </div>
-              <form className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+              <form
+                className={`${
+                  alignLeft === true
+                    ? "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
+                    : "w-full h-full flex lg:flex-row-reverse flex-col  justify-center items-center space-x-4 px-6"
+                }`}
+              >
                 <NumberInput
                   onChange={(e) => {
                     setPassengerOneSocialNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
-                  placeholder="کد ملی"
-                  label="کد ملی"
+                  placeholder={t("idCode")}
+                  label={t("idCode")}
                   hideControls
                   variant="default"
                   radius="md"
@@ -174,8 +212,8 @@ export default function PassengerInfo() {
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   required
-                  placeholder="شماره تلفن"
-                  label="شماره تلفن"
+                  placeholder={t("phone")}
+                  label={t("phone")}
                   hideControls
                   variant="default"
                   radius="md"
@@ -188,8 +226,8 @@ export default function PassengerInfo() {
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   required
-                  placeholder="نام کامل"
-                  label="نام"
+                  placeholder={t("fullName")}
+                  label={t("fullName")}
                   variant="default"
                   radius="md"
                   size="md"
@@ -202,9 +240,9 @@ export default function PassengerInfo() {
                   variant="default"
                   onChange={setPassengerOneGender}
                   className="text-2xl mx-6 text-right flex flex-col items-end"
-                  data={["مرد", "زن"]}
-                  placeholder="جنسیت مسافر "
-                  label="جنسیت"
+                  data={[t("man"), t("woman")]}
+                  placeholder={t("gender")}
+                  label={t("gender")}
                   radius="md"
                   withAsterisk
                   clearable
@@ -216,18 +254,32 @@ export default function PassengerInfo() {
           ) : null}
           {passenger >= 2 ? (
             <div className="border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
-              <h2 className="items-center mb-4 py-1 font-bold rounded-full  ">
-                بزرگسال2 - سرپرست
-              </h2>
-              <form className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "w-full flex items-center justify-end"
+                    : "w-full flex items-center justify-start"
+                }`}
+              >
+                <h2 className="   items-center mb-4 py-1   rounded-full border-2 px-6 border-dashed border-mainPurple ">
+                  {t("adultSupervisor")} <strong>2</strong> {t("supervisor")}
+                </h2>
+              </div>
+              <form
+                className={`${
+                  alignLeft === true
+                    ? "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
+                    : "w-full h-full flex lg:flex-row-reverse flex-col  justify-center items-center space-x-4 px-6"
+                }`}
+              >
                 <NumberInput
                   onChange={(e) => {
                     setPassengerTwoSocialNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   required
-                  placeholder="کد ملی"
-                  label="کد ملی"
+                  placeholder={t("idCode")}
+                  label={t("idCode")}
                   hideControls
                   variant="default"
                   radius="md"
@@ -241,8 +293,8 @@ export default function PassengerInfo() {
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   required
-                  placeholder="شماره تلفن"
-                  label="شماره تلفن"
+                  placeholder={t("phone")}
+                  label={t("phone")}
                   hideControls
                   variant="default"
                   radius="md"
@@ -255,8 +307,8 @@ export default function PassengerInfo() {
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   required
-                  placeholder="نام کامل"
-                  label="نام"
+                  placeholder={t("fullName")}
+                  label={t("fullName")}
                   variant="default"
                   radius="md"
                   size="md"
@@ -265,9 +317,9 @@ export default function PassengerInfo() {
                 <Select
                   onChange={setPassengerTwoGender}
                   className="text-2xl mx-6 text-right flex flex-col items-end"
-                  data={["مرد", "زن"]}
-                  placeholder="جنسیت مسافر "
-                  label="جنسیت"
+                  data={[t("man"), t("woman")]}
+                  placeholder={t("gender")}
+                  label={t("gender")}
                   variant="default"
                   radius="md"
                   withAsterisk
@@ -280,18 +332,32 @@ export default function PassengerInfo() {
           ) : null}
           {passenger >= 3 ? (
             <div className="border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
-              <h2 className="items-center mb-4 py-1 font-bold rounded-full  ">
-                بزرگسال3 - سرپرست
-              </h2>
-              <form className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "w-full flex items-center justify-end"
+                    : "w-full flex items-center justify-start"
+                }`}
+              >
+                <h2 className="   items-center mb-4 py-1   rounded-full border-2 px-6 border-dashed border-mainPurple ">
+                  {t("adultSupervisor")} <strong>3</strong> {t("supervisor")}
+                </h2>
+              </div>
+              <form
+                className={`${
+                  alignLeft === true
+                    ? "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
+                    : "w-full h-full flex lg:flex-row-reverse flex-col  justify-center items-center space-x-4 px-6"
+                }`}
+              >
                 <NumberInput
                   onChange={(e) => {
                     setPassengerThreeSocialNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   required
-                  placeholder="کد ملی"
-                  label="کد ملی"
+                  placeholder={t("idCode")}
+                  label={t("idCode")}
                   hideControls
                   variant="default"
                   radius="md"
@@ -304,8 +370,8 @@ export default function PassengerInfo() {
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   required
-                  placeholder="شماره تلفن"
-                  label="شماره تلفن"
+                  placeholder={t("phone")}
+                  label={t("phone")}
                   hideControls
                   variant="default"
                   radius="md"
@@ -319,8 +385,8 @@ export default function PassengerInfo() {
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   required
-                  placeholder="نام کامل"
-                  label="نام"
+                  placeholder={t("fullName")}
+                  label={t("fullName")}
                   variant="default"
                   radius="md"
                   size="md"
@@ -329,9 +395,9 @@ export default function PassengerInfo() {
                 <Select
                   onChange={setPassengerThreeGender}
                   className="text-2xl mx-6 text-right flex flex-col items-end"
-                  data={["مرد", "زن"]}
-                  placeholder="جنسیت مسافر "
-                  label="جنسیت"
+                  data={[t("man"), t("woman")]}
+                  placeholder={t("gender")}
+                  label={t("gender")}
                   variant="default"
                   radius="md"
                   withAsterisk
@@ -344,18 +410,32 @@ export default function PassengerInfo() {
           ) : null}
           {passenger >= 4 ? (
             <div className="border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
-              <h2 className="items-center mb-4 py-1 font-bold rounded-full  ">
-                بزرگسال 4- سرپرست
-              </h2>
-              <form className="w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6">
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "w-full flex items-center justify-end"
+                    : "w-full flex items-center justify-start"
+                }`}
+              >
+                <h2 className="   items-center mb-4 py-1   rounded-full border-2 px-6 border-dashed border-mainPurple ">
+                  {t("adultSupervisor")} <strong>4</strong> {t("supervisor")}
+                </h2>
+              </div>
+              <form
+                className={`${
+                  alignLeft === true
+                    ? "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
+                    : "w-full h-full flex lg:flex-row-reverse flex-col  justify-center items-center space-x-4 px-6"
+                }`}
+              >
                 <NumberInput
                   onChange={(e) => {
                     setPassengerFourSocialNumber(e.target.value);
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   required
-                  placeholder="کد ملی"
-                  label="کد ملی"
+                  placeholder={t("idCode")}
+                  label={t("idCode")}
                   hideControls
                   variant="default"
                   radius="md"
@@ -368,8 +448,8 @@ export default function PassengerInfo() {
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   required
-                  placeholder="شماره تلفن"
-                  label="شماره تلفن"
+                  placeholder={t("phone")}
+                  label={t("phone")}
                   hideControls
                   variant="default"
                   radius="md"
@@ -383,8 +463,8 @@ export default function PassengerInfo() {
                   }}
                   className="text-4xl text-right flex flex-col items-end"
                   required
-                  placeholder="نام کامل"
-                  label="نام"
+                  placeholder={t("fullName")}
+                  label={t("fullName")}
                   variant="default"
                   radius="md"
                   size="md"
@@ -393,9 +473,9 @@ export default function PassengerInfo() {
                 <Select
                   onChange={setPassengerFourGender}
                   className="text-2xl mx-6 text-right flex flex-col items-end"
-                  data={["مرد", "زن"]}
-                  placeholder="جنسیت مسافر "
-                  label="جنسیت"
+                  data={[t("man"), t("woman")]}
+                  placeholder={t("gender")}
+                  label={t("gender")}
                   variant="default"
                   radius="md"
                   withAsterisk
@@ -414,7 +494,7 @@ export default function PassengerInfo() {
             }}
             className="px-4 rounded-md flex items-center justify-center lg:mb-0 mb-4 transition ease-in duration-300 hover:bg-gray-100 border-r-8 border-red-500  border  py-2 bg-white text-red-500 text-sm font-mainFont"
           >
-            پاک کردن
+            {t("removePassenger")}{" "}
             <Minus className="ml-2" size={20} weight="fill" />
           </button>
           <button
@@ -423,7 +503,7 @@ export default function PassengerInfo() {
             }}
             className="px-4 rounded-md lg:self-end m-4 transition flex justify-center items-center ease-in duration-300 hover:text-white border-2 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-white text-mainPurple text-sm font-mainFont"
           >
-            اضافه کردن مسافر
+            {t("addPassenger")}
             <Plus className="ml-2" size={20} weight="fill" />
           </button>
         </div>
@@ -432,18 +512,14 @@ export default function PassengerInfo() {
       <div className="w-full h-auto lg:h-24 flex lg:flex-row flex-col-reverse items-center justify-around py-2 lg:justify-between bg-white px-7">
         <TextInput
           className="text-4xl text-right flex flex-col items-end lg:mb-0 mb-5"
-          placeholder="ساعت ورود"
-          label="ساعت ورود"
+          placeholder={t("enterTime")}
+          label={t("enterTime")}
           variant="default"
           radius="md"
           size="sm"
           withAsterisk
         />
-        <h1 className="text-sm  lg:w-carousel lg:my-0 my-4">
-          در صورتی که زمان ورود شما به هتل پس از ساعت ۸ شب به وقت مقصد میباشد،
-          لطفا ساعات ورود خود را به هتل انتخاب کنید، در غیر اینصورت بوتک
-          هیچ‌گونه مسولیتی در خصوص لغو یا کنسلی هتل نمی‌پذیرد
-        </h1>
+        <h1 className="text-sm  lg:w-carousel lg:my-0 my-4">{t("ifLate")}</h1>
       </div>
     </div>
   );

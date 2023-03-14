@@ -168,5 +168,14 @@
   "confirmToNext": "Onaylayın ve Sonraki Seviyeye geçin",
   "confirmRules": "katılıyorum",
   "websiteRules": "Web Sitesi Kuralları",
-  "ifYouClick": "."
+  "ifYouClick": ".",
+  "firstRoom": "ilk oda",
+  "gender": "cinsiyet",
+  "supervisor": "süpervizör",
+  "man": "Adam",
+  "woman": "Kadın",
+  "adultSupervisor": "Yetişkin",
+  "addPassenger": "yolcu ekle",
+  "removePassenger": "Yolcuyu kaldır",
+  "ifLate": "Otele varış saatiniz varış saatinde 20:00'den sonra ise lütfen otele varış saatinizi seçiniz, aksi takdirde butik otelin iptali ile ilgili herhangi bir sorumluluk kabul etmeyecektir."
 }

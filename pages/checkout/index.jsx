@@ -94,9 +94,10 @@ export default function Checkout(props) {
           iconSize={47}
           breakpoint="md"
         >
-          <Stepper.Step icon={<Buildings size={28} />} label={t("hotelPick")}>
-            Step 1 content: Create an account
-          </Stepper.Step>
+          <Stepper.Step
+            icon={<Buildings size={28} />}
+            label={t("hotelPick")}
+          ></Stepper.Step>
           <Stepper.Step
             size="xl"
             icon={<Users size={28} />}
