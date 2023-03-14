@@ -36,15 +36,29 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Comments from "../../../components/comments";
 import Reply from "../../../components/reply";
 
-export const getStaticPaths = async () => {
+export const getStaticPaths = async ({ locales }) => {
   const { data, error } = await supabase.from("Hotels").select();
   if (error) throw error;
 
-  const paths = data.map((hotel) => {
-    return {
-      params: { id: hotel.id.toString() },
-    };
-  });
+  // const paths = data.map((hotel) => {
+  //   locales
+  //     .map((locale) => {
+  //       return {
+  //         params: { id: hotel.id.toString() },
+  //         locale,
+  //       };
+  //     })
+  //     .flat();
+  // });
+
+  const paths = data
+    .map((hotel) =>
+      locales.map((locale) => ({
+        params: { id: hotel.id.toString() },
+        locale, // Pass locale here
+      }))
+    )
+    .flat(); // Flatten array to avoid nested arrays
 
   return {
     paths,
@@ -528,7 +542,7 @@ export default function HotelDetailPage({ hotel }) {
                   </h1>
                   <div className="flex border border-gray-300 bg-white justify-center w-full text-sm rounded-md">
                     <Tabs
-                    className="w-full px-2"
+                      className="w-full px-2"
                       radius="xs"
                       variant="pills"
                       color="yellow"
