@@ -36,7 +36,7 @@ export default function ProfileInfo({ user }) {
       let userData = await supabase
         .from("profiles")
         .select()
-        .eq("id", user.user.id);
+        .eq("id", user.id);
 
       console.log(userData);
       if (!userData) {

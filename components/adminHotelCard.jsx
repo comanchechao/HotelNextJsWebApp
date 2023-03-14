@@ -41,7 +41,12 @@ export default function AdminHotelCard({ hotel, user, features, cities }) {
 
           <p className="text-2xl "> {hotel.prices}</p>
         </h2>
-        <EditHotel user={user} featuresData={features} cities={cities} />
+        <EditHotel
+          identifier={hotel.id}
+          user={user}
+          featuresData={features}
+          cities={cities}
+        />
         <p className="text-gray-500 text-xs">Ana Hotel ساخته شده توسط</p>
       </div>
 
