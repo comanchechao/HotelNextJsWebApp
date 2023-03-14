@@ -1,10 +1,23 @@
 import { Loader, Notification } from "@mantine/core";
 import { Star, SignIn, SignOut, Bed } from "phosphor-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { supabase } from "../lib/supabaseClient";
+import { useTranslation } from "next-i18next";
 
 export default function InfoConfirmation() {
+  const { t, i18n } = useTranslation("");
+  const lng = i18n.language;
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
+  useEffect(() => {
+    changeAlignment();
+  }, []);
+
   const [seshId, setSeshId] = useState();
   //getting reservation info
   const [loading, setLoading] = useState(false);
@@ -12,6 +25,10 @@ export default function InfoConfirmation() {
 
   let passenger = useSelector((state) => state.reserve.passenger);
   let room = useSelector((state) => state.reserve.room);
+  let enterDate = useSelector((state) => state.reserve.enterDate);
+
+  let exitDate = useSelector((state) => state.reserve.exitDate);
+
   let passengerOne = useSelector((state) => state.reserve.passengerOne);
   let passengerTwo = useSelector((state) => state.reserve.passengerTwo);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
@@ -65,32 +82,40 @@ export default function InfoConfirmation() {
   }
   return (
     <div className=" mb-10 h-auto w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
-      <div className="lg:h-24 h-auto w-full bg-white divide-x-2 flex">
-        <div className="h-full lg:flex-row flex-col w-1/2 flex items-center justify-center ">
-          <div className="h-full lg:my-0 my-4 w-1/2 flex flex-col items-center justify-center">
+      <div
+        className={`${
+          alignLeft === true
+            ? "h-auto lg:h-24 w-full bg-white divide-x-2 flex"
+            : "h-auto lg:h-24 w-full bg-white divide-x-2 flex flex-row-reverse"
+        }`}
+      >
+        <div className="h-full w-1/2 flex lg:flex-row flex-col items-center justify-center ">
+          <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col items-center justify-center">
             <div className="flex items-center space-x-2">
-              <h2>تاریخ خروج</h2>
+              <h2>{t("exitTime")}</h2>
               <SignOut size={40} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">1401/11/06 - ساعت 12:00:00</h1>
+            <h1 className="font text-lg">{JSON.stringify(enterDate)}</h1>
           </div>
-          <div className="h-full lg:my-0 my-4 w-1/2 flex flex-col justify-center items-center">
+          <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
-              <h2>تاریخ ورود</h2>
+              <h2>{t("enterTime")}</h2>
               <SignIn size={40} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">1401/11/05 - ساعت 14:00:00</h1>
+            <h1 className="font text-lg"> {JSON.stringify(exitDate)}</h1>
           </div>
         </div>
-        <div className="h-full w-1/2 p-3 flex flex-col items-end justify-start space-y-3">
+        <div className="h-full w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3">
           <div className="flex items-center space-x-4">
             <h2 className="flex items-center">
-              {hotelInfo.stars} ستاره
+              {hotelInfo.stars} {t("star")}
               <Star className="mx-2" size={19} color="#e0ab19" weight="fill" />
             </h2>
-            <h1 className="text-xl font-bold">هتل {hotelInfo.title}</h1>
+            <h1 className="text-xl font-bold">
+              {t("singleHotel")} {hotelInfo.title}
+            </h1>
           </div>
-          <h2>آدرس: پارک وی - ابتدای اتوبان چمران</h2>
+          <h2>{hotelInfo.address}</h2>
         </div>
       </div>
       <div className="h-auto w-full bg-white flex flex-col justify-start items-center px-9">

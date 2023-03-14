@@ -49,7 +49,7 @@ export default function HotelManagement({ user, hotels }) {
   }
 
   return (
-    <div className="flex flex-col w-full h-full  lg:h-carousel   ">
+    <div className="flex flex-col w-full h-full  lg:h-carousel   px-4 py-7">
       <div className="flex w-full space-y-4 flex-col   h-full">
         <div class="pt-4 px-2 flex w-full justify-center items-center relative text-black ">
           <div className="flex flex-reverse w-full items-center space-x-2 justify-center">
@@ -99,7 +99,15 @@ export default function HotelManagement({ user, hotels }) {
             >
               {hotels.map((hotel, i) => {
                 console.log(hotel.locationLat);
-                return <AdminHotelCard key={hotel.id} hotel={hotel} />;
+                return (
+                  <AdminHotelCard
+                    user={user}
+                    featuresData={features}
+                    cities={cities}
+                    key={hotel.id}
+                    hotel={hotel}
+                  />
+                );
               })}
             </div>
           </Tabs.Panel>

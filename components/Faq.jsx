@@ -30,8 +30,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-900 flex justify-end text-lg text-right"
-                : "text-gray-900 flex justify-start text-lg text-left"
+                ? "text-gray-900 flex justify-end text-lg text-left"
+                : "text-gray-900 flex justify-start text-lg text-right"
             }`}
           >
             {t("Q1")}
@@ -56,8 +56,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-900 flex justify-end text-lg text-right"
-                : "text-gray-900 flex justify-start text-lg text-left"
+                ? "text-gray-900 flex justify-end text-lg text-left"
+                : "text-gray-900 flex justify-start text-lg text-right"
             }`}
           >
             {t("Q2")}
@@ -82,8 +82,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-900 flex justify-end text-lg text-right"
-                : "text-gray-900 flex justify-start text-lg text-left"
+                ? "text-gray-900 flex justify-end text-lg text-left"
+                : "text-gray-900 flex justify-start text-lg text-right"
             }`}
           >
             {t("Q3")}
@@ -108,8 +108,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-900 flex justify-end text-lg text-right"
-                : "text-gray-900 flex justify-start text-lg text-left"
+                ? "text-gray-900 flex justify-end text-lg text-left"
+                : "text-gray-900 flex justify-start text-lg text-right"
             }`}
           >
             {t("Q4")}
@@ -128,8 +128,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-900 flex justify-end text-lg text-right"
-                : "text-gray-900 flex justify-start text-lg text-left"
+                ? "text-gray-900 flex justify-end text-lg text-left"
+                : "text-gray-900 flex justify-start text-lg text-right"
             }`}
           >
             {t("Q5")}
@@ -154,8 +154,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-900 flex justify-end text-lg text-right"
-                : "text-gray-900 flex justify-start text-lg text-left"
+                ? "text-gray-900 flex justify-end text-lg text-left"
+                : "text-gray-900 flex justify-start text-lg text-right"
             }`}
           >
             {t("Q6")}
@@ -174,8 +174,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-900 flex justify-end text-lg text-right"
-                : "text-gray-900 flex justify-start text-lg text-left"
+                ? "text-gray-900 flex justify-end text-lg text-left"
+                : "text-gray-900 flex justify-start text-lg text-right"
             }`}
           >
             {t("Q7")}
@@ -200,8 +200,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-900 flex justify-end text-lg text-right"
-                : "text-gray-900 flex justify-start text-lg text-left"
+                ? "text-gray-900 flex justify-end text-lg text-left"
+                : "text-gray-900 flex justify-start text-lg text-right"
             }`}
           >
             {t("Q8")}
@@ -226,8 +226,8 @@ export default function Faq() {
           <span
             className={`${
               alignLeft === true
-                ? "text-gray-900 flex justify-end text-lg text-right"
-                : "text-gray-900 flex justify-start text-lg text-left"
+                ? "text-gray-900 flex justify-end text-lg text-left"
+                : "text-gray-900 flex justify-start text-lg text-right"
             }`}
           >
             {t("Q9")}

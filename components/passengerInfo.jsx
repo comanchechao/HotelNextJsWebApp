@@ -8,16 +8,16 @@ import { useTranslation } from "next-i18next";
 export default function PassengerInfo() {
   const { t, i18n } = useTranslation("");
   const lng = i18n.language;
-  useEffect(() => {
-    changeAlignment();
-  }, []);
-
   const [alignLeft, setAlignLeft] = useState(false);
   async function changeAlignment() {
     console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
+  useEffect(() => {
+    changeAlignment();
+  }, []);
+
   const [passengers, setPassengers] = useState([]);
   // getting reservatoin info
   const dispatch = useDispatch();
@@ -190,14 +190,18 @@ export default function PassengerInfo() {
                 className={`${
                   alignLeft === true
                     ? "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
-                    : "w-full h-full flex lg:flex-row-reverse flex-col  justify-center items-center space-x-4 px-6"
+                    : "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
                 }`}
               >
                 <NumberInput
                   onChange={(e) => {
                     setPassengerOneSocialNumber(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   placeholder={t("idCode")}
                   label={t("idCode")}
                   hideControls
@@ -210,7 +214,11 @@ export default function PassengerInfo() {
                   onChange={(e) => {
                     setPassengerOnePhoneNumber(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   required
                   placeholder={t("phone")}
                   label={t("phone")}
@@ -224,7 +232,11 @@ export default function PassengerInfo() {
                   onChange={(e) => {
                     setPassengerOneName(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   required
                   placeholder={t("fullName")}
                   label={t("fullName")}
@@ -239,7 +251,11 @@ export default function PassengerInfo() {
                   transitionTimingFunction="ease"
                   variant="default"
                   onChange={setPassengerOneGender}
-                  className="text-2xl mx-6 text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   data={[t("man"), t("woman")]}
                   placeholder={t("gender")}
                   label={t("gender")}
@@ -269,14 +285,18 @@ export default function PassengerInfo() {
                 className={`${
                   alignLeft === true
                     ? "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
-                    : "w-full h-full flex lg:flex-row-reverse flex-col  justify-center items-center space-x-4 px-6"
+                    : "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
                 }`}
               >
                 <NumberInput
                   onChange={(e) => {
                     setPassengerTwoSocialNumber(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   required
                   placeholder={t("idCode")}
                   label={t("idCode")}
@@ -291,7 +311,11 @@ export default function PassengerInfo() {
                   onChange={(e) => {
                     setPassengerTwoPhoneNumber(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   required
                   placeholder={t("phone")}
                   label={t("phone")}
@@ -305,7 +329,11 @@ export default function PassengerInfo() {
                   onChange={(e) => {
                     setPassengerTwoName(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   required
                   placeholder={t("fullName")}
                   label={t("fullName")}
@@ -316,7 +344,11 @@ export default function PassengerInfo() {
                 />
                 <Select
                   onChange={setPassengerTwoGender}
-                  className="text-2xl mx-6 text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   data={[t("man"), t("woman")]}
                   placeholder={t("gender")}
                   label={t("gender")}
@@ -347,14 +379,18 @@ export default function PassengerInfo() {
                 className={`${
                   alignLeft === true
                     ? "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
-                    : "w-full h-full flex lg:flex-row-reverse flex-col  justify-center items-center space-x-4 px-6"
+                    : "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
                 }`}
               >
                 <NumberInput
                   onChange={(e) => {
                     setPassengerThreeSocialNumber(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   required
                   placeholder={t("idCode")}
                   label={t("idCode")}
@@ -368,7 +404,11 @@ export default function PassengerInfo() {
                   onChange={(e) => {
                     setPassengerThreePhoneNumber(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   required
                   placeholder={t("phone")}
                   label={t("phone")}
@@ -383,7 +423,11 @@ export default function PassengerInfo() {
                   onChange={(e) => {
                     setPassengerThreeName(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   required
                   placeholder={t("fullName")}
                   label={t("fullName")}
@@ -394,7 +438,11 @@ export default function PassengerInfo() {
                 />
                 <Select
                   onChange={setPassengerThreeGender}
-                  className="text-2xl mx-6 text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   data={[t("man"), t("woman")]}
                   placeholder={t("gender")}
                   label={t("gender")}
@@ -425,14 +473,18 @@ export default function PassengerInfo() {
                 className={`${
                   alignLeft === true
                     ? "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
-                    : "w-full h-full flex lg:flex-row-reverse flex-col  justify-center items-center space-x-4 px-6"
+                    : "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
                 }`}
               >
                 <NumberInput
                   onChange={(e) => {
                     setPassengerFourSocialNumber(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   required
                   placeholder={t("idCode")}
                   label={t("idCode")}
@@ -446,7 +498,11 @@ export default function PassengerInfo() {
                   onChange={(e) => {
                     setPassengerFourPhoneNumber(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   required
                   placeholder={t("phone")}
                   label={t("phone")}
@@ -461,7 +517,11 @@ export default function PassengerInfo() {
                   onChange={(e) => {
                     setPassengerFourName(e.target.value);
                   }}
-                  className="text-4xl text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   required
                   placeholder={t("fullName")}
                   label={t("fullName")}
@@ -472,7 +532,11 @@ export default function PassengerInfo() {
                 />
                 <Select
                   onChange={setPassengerFourGender}
-                  className="text-2xl mx-6 text-right flex flex-col items-end"
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
                   data={[t("man"), t("woman")]}
                   placeholder={t("gender")}
                   label={t("gender")}
@@ -509,9 +573,15 @@ export default function PassengerInfo() {
         </div>
       </div>
 
-      <div className="w-full h-auto lg:h-24 flex lg:flex-row flex-col-reverse items-center justify-around py-2 lg:justify-between bg-white px-7">
+      <div
+        className={`${
+          alignLeft === true
+            ? "w-full h-auto lg:h-24 flex lg:flex-row flex-col-reverse text-left items-center justify-around py-2 lg:justify-between bg-white px-7"
+            : "w-full h-auto lg:h-24 flex lg:flex-row-reverse text-left flex-col-reverse items-center justify-around py-2 lg:justify-between bg-white px-7"
+        }`}
+      >
         <TextInput
-          className="text-4xl text-right flex flex-col items-end lg:mb-0 mb-5"
+          className="text-4xl  flex flex-col items-end lg:mb-0 mb-5"
           placeholder={t("enterTime")}
           label={t("enterTime")}
           variant="default"

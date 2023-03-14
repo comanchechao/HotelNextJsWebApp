@@ -9,8 +9,9 @@ import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { Star } from "phosphor-react";
 import dynamic from "next/dynamic";
+import EditHotel from "./editHotel";
 
-export default function AdminHotelCard({ hotel }) {
+export default function AdminHotelCard({ hotel, user, features, cities }) {
   const HotelMap = dynamic(() => import("./hotelMap"), {
     ssr: false,
   });
@@ -30,8 +31,8 @@ export default function AdminHotelCard({ hotel }) {
     <div
       className={`${
         alignLeft === true
-          ? "w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row flex-col-reverse justify-between items-center border"
-          : "w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row-reverse flex-col-reverse justify-between items-center border"
+          ? "w-full lg:w-full h-auto lg:h-40 bg-white rounded-md flex lg:flex-row flex-col-reverse justify-between items-center border"
+          : "w-full lg:w-full h-auto lg:h-40 bg-white rounded-md flex lg:flex-row-reverse flex-col-reverse justify-between items-center border"
       }`}
     >
       <div className="w-56 h-full flex flex-col p-4 items-center lg:items-center justify-center space-y-4">
@@ -40,11 +41,7 @@ export default function AdminHotelCard({ hotel }) {
 
           <p className="text-2xl "> {hotel.prices}</p>
         </h2>
-        <Link className="w-full h-full" href={"/admin/hoteldetail/" + hotel.id}>
-          <button className="w-full py-4 bg-mainPurple border-r-8 border-2 hover:text-mainPurple border-mainBlue transition ease-in duration-150 font-mainFont rounded-md text-white hover:bg-mainBlue">
-            ویرایش هتل
-          </button>
-        </Link>
+        <EditHotel user={user} featuresData={features} cities={cities} />
         <p className="text-gray-500 text-xs">Ana Hotel ساخته شده توسط</p>
       </div>
 
@@ -52,7 +49,7 @@ export default function AdminHotelCard({ hotel }) {
         className={`${
           alignLeft === true
             ? "w-96 h-full flex flex-col items-center lg:space-y-0 space-y-3 lg:items-end justify-between p-3 lg:border-l border-mainBlue"
-            : "w-96 h-full flex flex-col items-center lg:space-y-0 space-y-3 lg:items-start justify-between p-3 lg:border-l border-mainBlue"
+            : "w-96 h-full flex flex-col items-center lg:space-y-0 space-y-3 lg:items-start justify-between p-3   border-mainBlue"
         }`}
       >
         <h1 className="text-center   text-lg">{hotel.title}</h1>
@@ -67,7 +64,7 @@ export default function AdminHotelCard({ hotel }) {
         <Carousel
           slideSize="100%"
           width="100%"
-          height="190px"
+          height="155px"
           controlSize={25}
           loop
           withIndicators

@@ -177,5 +177,26 @@
   "adultSupervisor": "Yetişkin",
   "addPassenger": "yolcu ekle",
   "removePassenger": "Yolcuyu kaldır",
-  "ifLate": "Otele varış saatiniz varış saatinde 20:00'den sonra ise lütfen otele varış saatinizi seçiniz, aksi takdirde butik otelin iptali ile ilgili herhangi bir sorumluluk kabul etmeyecektir."
+  "ifLate": "Otele varış saatiniz varış saatinde 20:00'den sonra ise lütfen otele varış saatinizi seçiniz, aksi takdirde butik otelin iptali ile ilgili herhangi bir sorumluluk kabul etmeyecektir.",
+
+  "editHotel": "Oteli Düzenle",
+  "editHotelPictures": "Otel Resimlerini Düzenle",
+  "editHotelName": "otel adını düzenle",
+  "editHotelStars": "otel yıldızlarını düzenle",
+  "editHotelAddress": "otel adresini düzenle",
+  "editHotelCity": "Otel Şehri Düzenle",
+  "editHotelFacilities": "Otel Tesislerini Düzenle",
+  "editAvrgPrice": "Oteli Düzenle Bir gecelik ortalama fiyat",
+  "editHotelRules": "Otel Kurallarını Düzenle",
+  "editExitTime": "Çıkış Zamanını Düzenle",
+  "editEnterTime": "giriş Zamanını Düzenle",
+  "editHotelAbout": "hakkında oteli düzenle",
+  "editRoom": "Oda düzenle",
+  "editRoomName": "Oda Adını Düzenle",
+  "editRoomMeal": "Oda Yemeğini Düzenle",
+  "editRoomAvrgPrice": "Odayı Düzenle Bir gecelik ortalama fiyat",
+  "editRoomCapacity": "Oda Kapasitesini Düzenle",
+
+  "confirmEditRoom": "Oda düzenlemeyi onaylayın",
+  "confirmEditHotel": "Otel düzenleme onayı"
 }
