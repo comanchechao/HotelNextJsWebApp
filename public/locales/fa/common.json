@@ -195,5 +195,17 @@
   "editRoomAvrgPrice": "ویرایش قیمت برای یک شب",
   "editRoomCapacity": "ویرایش ظرفیت اتاق",
   "confirmEditRoom": "تایید ویرایش اتاق",
-  "confirmEditHotel": "تایید ویرایش هتل"
+  "confirmEditHotel": "تایید ویرایش هتل",
+
+  "hotelPlaces": "مکان های مهم اطراف هتل",
+  "rooms": "اتاق ها",
+  "fullMeal": "وعده کامل",
+  "breakfast": "صبحانه",
+  "dinner": "شام",
+  "allMeals": "همه موارد",
+  "comments": "نظرات مسافران",
+  "yourComment": "نظر شما",
+  "commentTitle": "عنوان",
+  "writeComment": "نظر خودتون رو راجب هتل بنویسید",
+  "confirmComment": "ثبت نظر"
 }

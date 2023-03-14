@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { Modal, Rating, Group, Loader } from "@mantine/core";
 import { supabase } from "../lib/supabaseClient";
+import { useTranslation } from "next-i18next";
 
 export default function Reply(props) {
   let hotel = props.hotel;
+  const { t, i18n } = useTranslation("");
+  const lng = i18n.language;
 
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(0);
@@ -12,7 +15,15 @@ export default function Reply(props) {
   const [stars, setStars] = useState(0);
   const [title, setTitle] = useState("");
   const [fullName, setFullname] = useState("");
-
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
+  useEffect(() => {
+    changeAlignment();
+  }, []);
   async function addComment() {
     setLoading(true);
 
@@ -49,8 +60,14 @@ export default function Reply(props) {
       >
         <div className="w-full h-full">
           <div className=" py-5 flex flex-col w-full justify-center items-center">
-            <div className="flex space-y-2 py-2 text-right flex-col w-full h-full p-4 bg-gray-100">
-              <label htmlFor="reply">عنوان</label>
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex space-y-2 py-2 text-right flex-col w-full h-full p-4 bg-gray-100"
+                  : "flex space-y-2 py-2 text-left flex-col w-full h-full p-4 bg-gray-100"
+              }`}
+            >
+              <label htmlFor="reply">{t("commentTitle")}</label>
               <textarea
                 className="bg-gray-100 border border-gray-400"
                 name="reply"
@@ -59,7 +76,7 @@ export default function Reply(props) {
                 rows="1"
                 onChange={(e) => setTitle(e.target.value)}
               ></textarea>
-              <label htmlFor="reply">نظر خودتون رو راجب هتل بنویسید</label>
+              <label htmlFor="reply">{t("writeComment")}</label>
               <textarea
                 className="bg-gray-100 border border-gray-400"
                 name="reply"
@@ -77,7 +94,7 @@ export default function Reply(props) {
                 size="lg"
                 count={5}
               />
-              <p>:انتخاب کنید</p>
+              <p>:{t("hotelStars")}</p>
             </div>
             <div className="flex">
               <button
@@ -87,7 +104,7 @@ export default function Reply(props) {
                 {loading ? (
                   <Loader size="sm" color="yellow" variant="bars" />
                 ) : (
-                  <p> ثبت نظر</p>
+                  <p> {t("confirmComment")}</p>
                 )}
               </button>
             </div>
@@ -102,7 +119,7 @@ export default function Reply(props) {
           }}
           className="text-white self-end my-4 bg-mainPurple font-mainFont rounded-md text-lg cursor-pointer border-r-8 border-mainBlue  text-center flex items-center justify-center px-6 py-2 hover:bg-mainBlue duration-300 ease-in transition"
         >
-          نظر شما
+          {t("yourComment")}
         </button>
       </Group>
     </>

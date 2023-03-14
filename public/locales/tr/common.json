@@ -198,5 +198,17 @@
   "editRoomCapacity": "Oda Kapasitesini Düzenle",
 
   "confirmEditRoom": "Oda düzenlemeyi onaylayın",
-  "confirmEditHotel": "Otel düzenleme onayı"
+  "confirmEditHotel": "Otel düzenleme onayı",
+
+  "hotelPlaces": "Otel çevresindeki önemli yerler",
+  "rooms": "Odalar",
+  "fullMeal": "tam yemek",
+  "breakfast": "Kahvaltı",
+  "dinner": "Akşam yemeği",
+  "allMeals": "Tüm yemekler",
+  "comments": "Yorumlar",
+  "yourComment": "Senin yorumun",
+  "commentTitle": "Başlık",
+  "writeComment": "Otel hakkındaki düşüncelerinizi yazın",
+  "confirmComment": "Yorum yap"
 }
