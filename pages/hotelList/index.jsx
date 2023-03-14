@@ -117,34 +117,15 @@ export default function HotelList({ features, residenceTypes }) {
   }, [stars]);
 
   function sortStars() {
-    function more(a, b) {
-      if (a.stars > b.stars) {
-        return -1;
-      }
-      if (a.stars < b.stars) {
-        return 1;
-      }
-      return 0;
-    }
-    function less(a, b) {
-      if (a.stars > b.stars) {
-        return 1;
-      }
-      if (a.stars < b.stars) {
-        return -1;
-      }
-      return 0;
-    }
-
-    if (stars >= 5) {
-      let comparedHotels = initialHotels.sort(less);
-      setHotels(comparedHotels);
-    } else if ((stars = 3)) {
-      let comparedHotels = initialHotels.sort(more);
-      setHotels(comparedHotels);
-    } else {
-      let comparedHotels = initialHotels.sort(more);
-      setHotels(comparedHotels);
+    if (stars === 5) {
+      const filteredProducts = initialHotels.filter((hotel) => hotel.stars < 6);
+      setHotels(filteredProducts);
+    } else if (stars === 4) {
+      const filteredProducts = initialHotels.filter((hotel) => hotel.stars < 5);
+      setHotels(filteredProducts);
+    } else if (stars === 3) {
+      const filteredProducts = initialHotels.filter((hotel) => hotel.stars < 4);
+      setHotels(filteredProducts);
     }
 
     console.log(hotels);
