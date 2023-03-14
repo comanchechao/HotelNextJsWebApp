@@ -29,7 +29,7 @@ import { X, Buildings } from "phosphor-react";
 //   ssr: false,
 //   Suspense: true,
 // });
-export default function EditHotel({ featuresData, cities, user }) {
+export default function EditHotel({ identifier, featuresData, cities, user }) {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   const [opened, setOpened] = useState(false);
@@ -144,32 +144,42 @@ export default function EditHotel({ featuresData, cities, user }) {
   //   window.scrollTo(0, 0);
   // });
 
+  function something() {
+    let updates = {};
+    if (title) updates.title = title;
+    if (city) updates.city = city;
+    if (firstImage) updates.firstImage = firstImage;
+    if (secondImage) updates.secondImage = secondImage;
+    if (thirdImage) updates.thirdImage = thirdImage;
+    if (fourthImage) updates.fourthImage = fourthImage;
+    if (features) updates.features = features;
+    if (avragePrice) updates.prices = avragePrice;
+    if (rooms) updates.rooms = rooms;
+    if (getlat) updates.locationLat = getlat;
+    if (getLng) updates.locationLng = getLng;
+
+    console.log(updates);
+  }
+
   async function handleSubmit() {
-    const { data, error } = await supabase.from("Hotels").insert({
-      title: title,
-      owner: user.id,
-      city: city,
-      firstImage: firstImage,
-      secondImage: secondImage,
-      thirdImage: thirdImage,
-      fourthImage: fourthImage,
-      features: features,
-      prices: avragePrice,
-      stars: value,
-      rooms: rooms,
-      locationLat: getlat,
-      locationLng: getLng,
-      firstLocation: {
-        name: marker2,
-        lat: lat2,
-        lng: lng2,
-      },
-      secondLocation: {
-        name: marker3,
-        lat: lat3,
-        lng: lng3,
-      },
-    });
+    let updates = {};
+    if (title) updates.title = title;
+    if (city) updates.city = city;
+    if (firstImage) updates.firstImage = firstImage;
+    if (secondImage) updates.secondImage = secondImage;
+    if (thirdImage) updates.thirdImage = thirdImage;
+    if (fourthImage) updates.fourthImage = fourthImage;
+    if (features !== []) updates.features = features;
+    if (avragePrice) updates.prices = avragePrice;
+    if (rooms) updates.rooms = rooms;
+    if (getlat) updates.locationLat = getlat;
+    if (getLng) updates.locationLng = getLng;
+
+    const { data, error } = await supabase
+      .from("Hotels")
+      .update(updates)
+      .eq("id", identifier);
+
     if (error) throw error;
   }
   useEffect(() => {

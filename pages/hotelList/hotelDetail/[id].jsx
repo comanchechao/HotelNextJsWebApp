@@ -481,61 +481,21 @@ export default function HotelDetailPage({ hotel }) {
                     {t("hotelFacilities")}
                   </h2>
                 </div>
-                <div className="rounded-lg my-3 border text-sm  border-gray-300 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  ">
-                  <div className="flex px-3  justify-between items-center">
-                    <h2>
-                      <IconWashMachine size={25} />
-                    </h2>
-                    <h2>خشکشویی</h2>
-                  </div>
-                  <div className="flex px-3 justify-between items-center">
-                    <h2>
-                      <IconWashMachine size={25} />
-                    </h2>
-                    <h2>خشکشویی</h2>
-                  </div>
-                  <div className="flex px-3 justify-between items-center">
-                    <h2>
-                      <IconWashMachine size={25} />
-                    </h2>
-                    <h2>خشکشویی</h2>
-                  </div>
-                  <div className="flex px-3 justify-between items-center">
-                    <h2>
-                      <IconBarbell size={25} />
-                    </h2>
-                    <h2>سالن بدنسازی</h2>
-                  </div>
-                  <div className="flex px-3 justify-between items-center">
-                    <h2>
-                      <IconCoffee size={25} />
-                    </h2>
-                    <h2>کافی شاپ</h2>
-                  </div>
-                  <div className="flex px-3 justify-between items-center">
-                    <h2>
-                      <IconChefHat size={25} />
-                    </h2>
-                    <h2>رستوران</h2>
-                  </div>
-                  <div className=" hidden lg:flex px-3 justify-between items-center">
-                    <h2>
-                      <IconHotelService size={25} />
-                    </h2>
-                    <h2>سرویس روزانه</h2>
-                  </div>
-                  <div className=" hidden lg:flex px-3 justify-between items-center">
-                    <h2>
-                      <IconBath size={25} />
-                    </h2>
-                    <h2>حمام</h2>
-                  </div>
-                  <div className=" hidden lg:flex px-3 justify-between items-center">
-                    <h2>
-                      <IconWifi size={25} />
-                    </h2>
-                    <h2>خدمات اینترنت</h2>
-                  </div>
+                <div className="rounded-lg border text-sm  border-gray-300 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  ">
+                  {hotel.features.map((feature, i) => {
+                    console.log(feature);
+                    return (
+                      <div
+                        key={i}
+                        className="flex px-3  justify-between items-center"
+                      >
+                        <h2>
+                          <IconWashMachine size={25} />
+                        </h2>
+                        <h2 className="text-gray-900">{feature}</h2>
+                      </div>
+                    );
+                  })}
                 </div>
                 <FeaturesModal />
                 <div
