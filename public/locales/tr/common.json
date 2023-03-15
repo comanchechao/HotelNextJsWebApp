@@ -210,5 +210,6 @@
   "yourComment": "Senin yorumun",
   "commentTitle": "Başlık",
   "writeComment": "Otel hakkındaki düşüncelerinizi yazın",
-  "confirmComment": "Yorum yap"
+  "confirmComment": "Yorum yap",
+  "uploadSuccess": "Yükleme başarılı"
 }

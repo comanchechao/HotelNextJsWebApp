@@ -207,5 +207,6 @@
   "yourComment": "نظر شما",
   "commentTitle": "عنوان",
   "writeComment": "نظر خودتون رو راجب هتل بنویسید",
-  "confirmComment": "ثبت نظر"
+  "confirmComment": "ثبت نظر",
+  "uploadSuccess": "با موفقیت آپلود شد"
 }

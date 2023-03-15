@@ -3,7 +3,6 @@ import hotelTwo from "../assets/images/hoteltwo.jpg";
 import hotelThree from "../assets/images/hotelthree.jpg";
 import hotelFour from "../assets/images/hotelfour.jpg";
 import Image from "next/image";
-import AddHotel from "./addHotel";
 import {
   IconBed,
   IconToolsKitchen,
@@ -23,7 +22,7 @@ import HotelImage from "./hotelImage";
 import { useTranslation } from "next-i18next";
 import AdminHotelCard from "./adminHotelCard";
 import { supabase } from "../lib/supabaseClient";
-
+const AddHotel = dynamic(() => import("./addHotel"));
 const HotelMap = dynamic(() => import("./hotelMap"), {
   ssr: false,
 });
@@ -113,69 +112,20 @@ export default function HotelManagement({ user, hotels }) {
           </Tabs.Panel>
 
           <Tabs.Panel value="messages" pt="xs">
-            <div className="flex w-full p-5  lg:h-rem28 lg:overflow-y-scroll space-y-7  flex-col">
+            <div
+              className="flex w-full  overflow-y-scroll  h-rem28
+               space-y-7  flex-col"
+            >
               {hotels.map((hotel, i) => {
+                console.log(hotel.locationLat);
                 return (
-                  <div
-                    key={i}
-                    className="lg:space-x-2 lg:flex-row flex-col-reverse  flex px-0 items-center justify-between h-full shadow-2xl w-full rounded bg-white"
-                  >
-                    <div className="flex lg:border-r border-gray-900 flex-col h-full w-full lg:w-2/3 justify-center items-center">
-                      <div className="flex justify-center items-center w-full h-full">
-                        <div className="flex text-center justify-center items-center">
-                          <IconBed />
-                        </div>
-                      </div>
-                      <div className="flex flex-col p-5 h-full w-full justify-between  items-around">
-                        <Link
-                          className="w-full h-full"
-                          href={"/admin/hoteldetail/" + hotel.id}
-                        >
-                          <button className="w-full py-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue">
-                            ویرایش هتل
-                          </button>
-                        </Link>
-                      </div>
-                      <div className="flex space-x-2 p-1 justify-start items-end w-full h-full font-medium text-sm">
-                        <p>من</p> <p>ساخته شده توسط</p>
-                      </div>
-                    </div>
-                    <div className="flex px-4 lg:px-0  border-black w-full justify-end items-center text-right flex-col">
-                      <div className="flex flex-col text-right">
-                        <h2 className="text-2xl">{hotel.title}</h2>
-                        <div className="flex justify-center text-md">
-                          <IconStar size={15} />
-                          <h3>5</h3>
-                        </div>
-                      </div>
-                      <div className="flex w-full flex-col text-right">
-                        <div className="flex space-y-1 flex-col w-full">
-                          <div className="flex  border-black justify-between w-full items-center">
-                            <IconBath />
-                            <h2>حمام ترکی</h2>
-                          </div>
-                          <div className="flex justify-between w-full items-center">
-                            <IconToolsKitchen />
-                            <h2>رستوران</h2>
-                          </div>
-                          <div className="flex justify-between w-full items-center">
-                            <IconMassage />
-                            <h2>ماساژ</h2>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex text-blue-500 transition hover:text-blue-600 cursor-pointer justify-center items-center">
-                        <HotelMap location={hotel.location} />
-                      </div>
-                    </div>
-                    <div className="flex w-full h-full lg:h-52 justify-center items-center">
-                      <Image
-                        alt=""
-                        src={hotelOne}
-                        className="w-full lg:h-52 object-contain"
-                      />
-                    </div>
-                  </div>
+                  <AdminHotelCard
+                    user={user}
+                    featuresData={features}
+                    cities={cities}
+                    key={hotel.id}
+                    hotel={hotel}
+                  />
                 );
               })}
             </div>

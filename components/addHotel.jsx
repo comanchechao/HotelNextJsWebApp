@@ -7,6 +7,7 @@ import {
   Loader,
   Group,
   Tabs,
+  Notification,
 } from "@mantine/core";
 import {
   IconUpload,
@@ -50,6 +51,7 @@ export default function AddHotel({ featuresData, cities, user }) {
   const [enteringHours, setEnteringHours] = useState(12);
   const [exitingHours, setExitingHours] = useState(14);
   const [alignLeft, setAlignLeft] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   let getlat = useSelector((state) => state.map.lat);
   let getLng = useSelector((state) => state.map.lng);
@@ -224,6 +226,10 @@ export default function AddHotel({ featuresData, cities, user }) {
       alert(error.message);
     } finally {
       setUploading(false);
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 2000);
     }
   };
   const secondImageUpload = async (event) => {
@@ -252,6 +258,10 @@ export default function AddHotel({ featuresData, cities, user }) {
       alert(error.message);
     } finally {
       setUploading(false);
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 2000);
     }
   };
   const thirdImageUpload = async (event) => {
@@ -280,6 +290,10 @@ export default function AddHotel({ featuresData, cities, user }) {
       alert(error.message);
     } finally {
       setUploading(false);
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 2000);
     }
   };
   const fourthImageUpload = async (event) => {
@@ -308,6 +322,10 @@ export default function AddHotel({ featuresData, cities, user }) {
       alert(error.message);
     } finally {
       setUploading(false);
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 2000);
     }
   };
   return (
@@ -332,12 +350,26 @@ export default function AddHotel({ featuresData, cities, user }) {
                 {t("hotelPics")}
               </h3>
             </div>
+            {alert ? (
+              <Notification
+                transition="fade"
+                transitionDuration={600}
+                transitionTimingFunction="ease"
+                color="green"
+                withCloseButton
+                variant="outline"
+              >
+                <h1 className="text-2xl text-center">{t("uploadSuccess")}</h1>
+              </Notification>
+            ) : (
+              <div></div>
+            )}
             <div className="flex justify-around space-x-1 lg:space-x-4 lg:px-0 px-4 h-28 lg:h-rem22 ">
               <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="firstImage">
                     {uploading ? (
-                      <Loader color="grape" />
+                      <Loader color="dark" />
                     ) : (
                       <IconUpload className="cursor-pointer" size={30} />
                     )}
@@ -355,7 +387,7 @@ export default function AddHotel({ featuresData, cities, user }) {
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="fourthImage">
                     {uploading ? (
-                      <Loader color="grape" />
+                      <Loader color="dark" />
                     ) : (
                       <IconUpload className="cursor-pointer" size={30} />
                     )}
@@ -373,7 +405,7 @@ export default function AddHotel({ featuresData, cities, user }) {
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="fifthImage">
                     {uploading ? (
-                      <Loader color="grape" />
+                      <Loader color="dark" />
                     ) : (
                       <IconUpload className="cursor-pointer" size={30} />
                     )}
@@ -390,7 +422,7 @@ export default function AddHotel({ featuresData, cities, user }) {
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="thirdImage">
                     {uploading ? (
-                      <Loader color="grape" />
+                      <Loader color="dark" />
                     ) : (
                       <IconUpload className="cursor-pointer" size={30} />
                     )}
@@ -408,7 +440,7 @@ export default function AddHotel({ featuresData, cities, user }) {
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="secondImage">
                     {uploading ? (
-                      <Loader color="grape" />
+                      <Loader color="dark" />
                     ) : (
                       <IconUpload className="cursor-pointer" size={30} />
                     )}
@@ -618,54 +650,6 @@ export default function AddHotel({ featuresData, cities, user }) {
                 rows="10"
               ></textarea>
             </div>
-            <div className="flex p-5 w-full justify-center   items-center"></div>
-            <div className="flex space-y-1 flex-col">
-              {rooms.map((room, i) => {
-                return (
-                  <div key={i} className="py-2 flex border rounded-lg">
-                    <div className="flex w-full">
-                      <div className="flex items-center justify-around w-full">
-                        <div className="flex text-darkPurple justify-center items-around h-full p-1 flex-col w-full">
-                          <div className="flex justify-around text-darkPurple w-14 space-x-4   ">
-                            <p>
-                              <IconCirclePlus
-                                onClick={() => {
-                                  increaseQuantity(room.id);
-                                }}
-                              />
-                            </p>
-                            <p>{room.quantity}</p>
-                            <p>
-                              <IconCircleMinus
-                                onClick={() => {
-                                  decreaseQuantity(room.id);
-                                }}
-                              />
-                            </p>
-                          </div>
-                          <div className="flex bg-red-500 rounded-md py-2 cursor-pointer transition ease-in duration-200 hover:bg-white hover:text-red-700 text-white justify-center items-center w-24">
-                            <IconTrash
-                              onClick={() => {
-                                deleteById(room.id);
-                              }}
-                              size={25}
-                            />
-                          </div>
-                        </div>
-                        <div className="w-36 flex  justify-around">
-                          <p>{t("currency")}</p>
-                          <p className="text-lg">{room.price}</p>
-                        </div>
-                      </div>
-                      <div className="flex self-end w-52 text-right px-2  flex-col">
-                        <h1> {room.title}</h1>
-                        <p> {room.meal}</p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
             <div className="flex w-full ">
               <Tabs
                 color="blue"
@@ -782,6 +766,59 @@ export default function AddHotel({ featuresData, cities, user }) {
                             { value: "4", label: "4" },
                           ]}
                         />
+                        {rooms.map((room, i) => {
+                          return (
+                            <div
+                              key={i}
+                              className="w-full h-32 bg-white rounded-md px-4  border-2 border-mainPurple my-6 flex items-center justify-center"
+                            >
+                              <div className="flex   w-3/4 flex-col  items-start space-y-3 justify-center ">
+                                <div className="  flex  justify-center items-center space-x-2">
+                                  <p className="text-xs">{t("currency")}</p>
+                                  <p className="text-lg font-bold">
+                                    {room.price}
+                                  </p>
+                                </div>
+                                <div className="flex   text-darkPurple justify-center items-center h-full space-x-3 ">
+                                  <div className="flex justify-around text-darkPurple space-x-1   ">
+                                    <p>
+                                      <IconCirclePlus
+                                        className="cursor-pointer"
+                                        onClick={() => {
+                                          increaseQuantity(room.id);
+                                        }}
+                                      />
+                                    </p>
+                                    <p className="font-bold">{room.quantity}</p>
+                                    <p>
+                                      <IconCircleMinus
+                                        className="cursor-pointer"
+                                        onClick={() => {
+                                          decreaseQuantity(room.id);
+                                        }}
+                                      />
+                                    </p>
+                                  </div>
+                                  <div className="flex bg-white rounded-md px-2 py-2 cursor-pointer transition ease-in duration-200 hover:bg-red-700 hover:text-white text-red-700 justify-center items-center ">
+                                    <IconTrash
+                                      onClick={() => {
+                                        deleteById(room.id);
+                                      }}
+                                      size={25}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="flex  w-1/4 text-right px-2  flex-col">
+                                <h1 className="text-2xl font-bold">
+                                  {" "}
+                                  {room.title}
+                                </h1>
+                                <p className="text-xs"> {room.meal}</p>
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
                       <div className="flex items-end justify-center w-full">
                         <button

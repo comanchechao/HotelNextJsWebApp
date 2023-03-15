@@ -9,8 +9,7 @@ import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { Star } from "phosphor-react";
 import dynamic from "next/dynamic";
-import EditHotel from "./editHotel";
-
+const EditHotel = dynamic(() => import("./editHotel"));
 export default function AdminHotelCard({ hotel, user, features, cities }) {
   const HotelMap = dynamic(() => import("./hotelMap"), {
     ssr: false,

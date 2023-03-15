@@ -22,7 +22,6 @@ export default function Comments({ comment, hotel }) {
           <p className="text-sm">{comment.comment}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p>{comment.fullName}</p>
           <div className="flex space-x-2">
             <ThumbsUp
               className="text-mainBlue  hover:scale-125 cursor-pointer hover:text-mainPurple transition"
