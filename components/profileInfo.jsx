@@ -36,16 +36,16 @@ export default function ProfileInfo({ user }) {
       let userData = await supabase
         .from("profiles")
         .select()
-        .eq("id", user.id);
+        .eq("id", user.user.id);
 
-      console.log(userData);
-      if (!userData) {
+      if (userData) {
         setEmail(userData.data[0].email);
         setFullName(userData.data[0].fullName);
         setPhone(userData.data[0].phone);
         setCard(userData.data[0].card);
         setIdCard(userData.data[0].idCard);
         setShaba(userData.data[0].shaba);
+        setCreate(true);
       }
     } else {
       console.log("Logged out");
@@ -126,6 +126,7 @@ export default function ProfileInfo({ user }) {
                         placeholder={t("email")}
                         size="xs"
                         withAsterisk
+                        defaultValue={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
                       <h2 className="text-sm text-gray-500">{t("fullName")}</h2>
