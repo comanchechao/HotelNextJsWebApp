@@ -9,6 +9,14 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 export default function HotelListMenu({ features, residenceTypes }) {
   let stars = useSelector((state) => state.filter.stars);
+  const [min, setMin] = useState();
+  const [max, setMax] = useState();
+
+  useEffect(() => {
+    dispatch(filterActions.setMinPrice(min));
+    console.log(min);
+  }, [min]);
+
   // let minPrice = useSelector((state) => state.filter.minPrice);
   // let maxPrice = useSelector((state) => state.filter.maxPrice);
   // const [maxRange, setMaxRange] = useState(maxPrice);
@@ -129,11 +137,15 @@ export default function HotelListMenu({ features, residenceTypes }) {
               <RangeSlider
                 color="yellow"
                 thumbSize={19}
+                onChange={setMin}
+                onChangeEnd={setMin}
                 radius="xl"
+                max={500000000}
+                min={0}
                 size="sm"
                 marks={[
-                  { value: 5, label: "5,000,000" },
-                  { value: 100, label: "100,000,000" },
+                  { value: 5, label: "5" },
+                  { value: 500000000, label: "500000000" },
                 ]}
               />
             </div>

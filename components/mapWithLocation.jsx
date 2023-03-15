@@ -130,7 +130,7 @@ export default function ExternalStateExample({
     () => (
       <MapContainer
         id="map"
-        style={{ width: "600px", height: "500px" }}
+        style={{ width: "600px", height: "400px" }}
         center={center}
         zoom={zoom}
         scrollWheelZoom={false}

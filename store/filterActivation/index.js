@@ -4,8 +4,8 @@ export const filter = createSlice({
   name: "filter",
   initialState: {
     stars: 5,
-    maxPrice: 1000000,
-    minPrice: 0,
+
+    minPrice: [],
     features: [],
   },
   reducers: {

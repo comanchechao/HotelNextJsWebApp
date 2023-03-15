@@ -164,9 +164,22 @@ export default function HotelList({ features, residenceTypes }) {
     setLoading(false);
   }
 
+  async function priceRange() {
+    const filteredData = initialHotels.filter(
+      (obj) => obj.prices >= minPrice[0] && obj.prices <= minPrice[1]
+    );
+
+    setHotels(filteredData);
+  }
+
   // reservation info
 
   let selectedCity = useSelector((state) => state.reserve.city);
+  let minPrice = useSelector((state) => state.filter.minPrice);
+
+  useEffect(() => {
+    priceRange();
+  }, [minPrice]);
 
   return (
     <div className="w-screen h-auto bg-gray-100">

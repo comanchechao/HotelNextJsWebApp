@@ -78,12 +78,12 @@ export const getStaticProps = async (context) => {
   };
 };
 
-// const DynamicMap = dynamic(
-//   () => import("../../../components/mapWithLocation"),
-//   {
-//     ssr: false,
-//   }
-// );
+const DynamicMap = dynamic(
+  () => import("../../../components/mapWithLocation"),
+  {
+    ssr: false,
+  }
+);
 
 export default function HotelDetailPage({ hotel }) {
   const ReserveInfoModal = dynamic(
@@ -180,14 +180,14 @@ export default function HotelDetailPage({ hotel }) {
       if (scrollY >= divTop) {
         myDivRef.current.classList.add(
           "fixed",
-          "left-44",
+          "left-48",
           "inset-y-0",
           "top-10"
         );
       } else {
         myDivRef.current.classList.remove(
           "fixed",
-          "left-44",
+          "left-48",
           "inset-y-0",
           "top-10"
         );
@@ -228,6 +228,7 @@ export default function HotelDetailPage({ hotel }) {
   const dispatch = useDispatch();
   let city = useSelector((state) => state.reserve.city);
   let passenger = useSelector((state) => state.reserve.passenger);
+
   let enterDate = useSelector((state) => state.reserve.enterDate);
   let exitDate = useSelector((state) => state.reserve.exitDate);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
@@ -517,12 +518,12 @@ export default function HotelDetailPage({ hotel }) {
                 </div>
                 <div className="flex flex-col w-full justify-around  bg-white">
                   <div className="flex w-full justify-start items-start">
-                    {/* <DynamicMap
-                        secondLocation={hotel.secondLocation}
-                        firstLocation={hotel.firstLocation}
-                        lat={hotel.locationLat}
-                        lng={hotel.locationLng}
-                      /> */}
+                    <DynamicMap
+                      secondLocation={hotel.secondLocation}
+                      firstLocation={hotel.firstLocation}
+                      lat={hotel.locationLat}
+                      lng={hotel.locationLng}
+                    />
                   </div>
                 </div>
                 <div className="flex py-8 items-center space-y-6 w-full flex-col  justify-center">
