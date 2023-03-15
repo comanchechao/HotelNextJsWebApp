@@ -63,6 +63,17 @@ export async function getServerSideProps(context) {
 }
 
 export default function AdminPage({ user }) {
+  const [cities, setCities] = useState([]);
+  const [features, setFeatures] = useState([]);
+
+  async function getData() {
+    const { data: cities, error2 } = await supabase.from("cities").select();
+    const { data: features, error3 } = await supabase
+      .from("features")
+      .select("title");
+    setFeatures(features);
+    setCities(cities);
+  }
   const [hotelIds, setHotelIds] = useState([]);
   const [hotels, setHotels] = useState([]);
 
@@ -78,6 +89,7 @@ export default function AdminPage({ user }) {
   useEffect(() => {
     changeAlignment();
     getHotels();
+    getData();
 
     if (hotels) {
       hotels.forEach((hotel, i) => {
@@ -121,7 +133,12 @@ export default function AdminPage({ user }) {
           ) : tab === "websiteInfo" ? (
             <WebsiteInfo />
           ) : tab === "hotel" ? (
-            <HotelManagement hotels={hotels} user={user} />
+            <HotelManagement
+              features={features}
+              hotels={hotels}
+              cities={cities}
+              user={user}
+            />
           ) : null}
         </div>
         <div className=" text-right  rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800">

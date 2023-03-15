@@ -26,26 +26,8 @@ const AddHotel = dynamic(() => import("./addHotel"));
 const HotelMap = dynamic(() => import("./hotelMap"), {
   ssr: false,
 });
-export default function HotelManagement({ user, hotels }) {
+export default function HotelManagement({ cities, features, user, hotels }) {
   const { t, i18n } = useTranslation("common");
-
-  const [cities, setCities] = useState([]);
-  const [features, setFeatures] = useState([]);
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  async function getData() {
-    const { data: cities, error2 } = await supabase.from("cities").select();
-
-    const { data: features, error3 } = await supabase
-      .from("features")
-      .select("title");
-
-    setCities(cities);
-    setFeatures(features);
-  }
 
   return (
     <div className="flex flex-col w-full h-full  lg:h-carousel   px-4 py-7">
@@ -97,7 +79,6 @@ export default function HotelManagement({ user, hotels }) {
                space-y-7  flex-col"
             >
               {hotels.map((hotel, i) => {
-                console.log(hotel.locationLat);
                 return (
                   <AdminHotelCard
                     user={user}
@@ -117,7 +98,6 @@ export default function HotelManagement({ user, hotels }) {
                space-y-7  flex-col"
             >
               {hotels.map((hotel, i) => {
-                console.log(hotel.locationLat);
                 return (
                   <AdminHotelCard
                     user={user}

@@ -10,7 +10,7 @@ import SuperUser from "./superUserModal";
 import SuperUserValidation from "./superUserValidation";
 import { useEffect } from "react";
 
-export default function UserManagement({ users }) {
+export default function UserManagement() {
   return (
     <div className="flex w-full h-full lg:h-carousel ">
       <div className="flex w-full space-y-4 flex-col">
@@ -76,7 +76,7 @@ export default function UserManagement({ users }) {
 
           <Tabs.Panel value="messages" pt="xs">
             <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
-              {users.map((user, i) => {
+              {/* {users.map((user, i) => {
                 return (
                   <div
                     key={i}
@@ -90,12 +90,12 @@ export default function UserManagement({ users }) {
                     <SuperUser />
                   </div>
                 );
-              })}
+              })} */}
             </div>
           </Tabs.Panel>
           <Tabs.Panel value="settings" pt="xs">
             <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
-              {users.map((user, i) => {
+              {/* {users.map((user, i) => {
                 return (
                   <div
                     key={i}
@@ -109,7 +109,7 @@ export default function UserManagement({ users }) {
                     <SuperUserValidation />
                   </div>
                 );
-              })}
+              })} */}
             </div>
           </Tabs.Panel>
         </Tabs>
