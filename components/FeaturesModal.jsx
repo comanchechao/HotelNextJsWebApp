@@ -9,8 +9,22 @@ import {
   IconWashMachine,
 } from "@tabler/icons";
 import { Modal, Group } from "@mantine/core";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTranslation } from "next-i18next";
+
 export default function FeaturesModal() {
+  const { t, i18n } = useTranslation();
+  const lng = i18n.language;
+  useEffect(() => {
+    changeAlignment();
+  }, [lng]);
+
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   const [opened, setOpened] = useState(false);
   return (
     <div className="w-full h-full">
@@ -68,9 +82,9 @@ export default function FeaturesModal() {
           onClick={() => {
             setOpened(true);
           }}
-          className="  text-mainPurple   text-sm cursor-pointer hover:text-blue-800"
+          className="  text-mainPurple my-4  text-sm cursor-pointer hover:text-blue-800"
         >
-          مشاهده همه
+          {t("seeAll")}
         </h1>
       </Group>
     </div>

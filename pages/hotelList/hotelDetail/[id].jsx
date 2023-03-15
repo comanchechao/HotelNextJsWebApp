@@ -276,7 +276,7 @@ export default function HotelDetailPage({ hotel }) {
                 <Skeleton height={400} width={"100%"} />
               </div>
             ) : (
-              <div className="flex bg-mainBlue my-4 items-center justify-between space-x-6 h-rem22 w-full     ">
+              <div className="flex   my-4 items-center justify-between space-x-6 h-rem22 w-full     ">
                 <div className="h-96 w-1/2 grid  justify-items-center grid-rows-2 gap-2    grid-cols-2  cursor-pointer  rounded-md">
                   {displayImages.map((image) => {
                     return (

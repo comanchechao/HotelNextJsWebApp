@@ -3,22 +3,35 @@ import Link from "next/link";
 import { Coffee, User, Tag } from "phosphor-react";
 import { useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
+import { useTranslation } from "next-i18next";
+import { useState, useEffect } from "react";
 
 export default function RoomCard({ room, hotelDetail }) {
   // setting reservation info
+  const [alignLeft, setAlignLeft] = useState(false);
 
+  const { t, i18n } = useTranslation("");
+  const lng = i18n.language;
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
+  useEffect(() => {
+    changeAlignment();
+  }, []);
   const dispatch = useDispatch();
   {
     return (
       <div className="flex border border-gray-300 bg-white lg:flex-row flex-col justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-44">
         <div className="h-full lg:w-1/4 flex flex-col items-center justify-around py-8 ">
           <div className="flex space-x-1 p-2 justify-center items-center">
-            <h2>ریال</h2>
+            <h2>{t("currency")}</h2>
             <h2 className="  text-xl text-mainPurple">
               {JSON.stringify(room.price)}
             </h2>
           </div>
-          <h1 className="text-sm">قیمت برای 1 شب</h1>
+          <h1 className="text-sm">{t("avrgNight")}</h1>
           <Link href="/checkout">
             <button
               onClick={() => {
@@ -27,7 +40,7 @@ export default function RoomCard({ room, hotelDetail }) {
               }}
               className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   "
             >
-              <p>رزرو اتاق</p>
+              <p>{t("roomReserve")}</p>
             </button>
           </Link>
         </div>
