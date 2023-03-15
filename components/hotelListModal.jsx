@@ -12,10 +12,12 @@ import { filterActions } from "../store/filterActivation";
 import { useTranslation } from "next-i18next";
 import { useMediaQuery } from "@mantine/hooks";
 export default function HotelListModal({ features, residenceTypes }) {
+  let filterFeatures = useSelector((state) => state.filter.features);
+
+  let stars = useSelector((state) => state.filter.stars);
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
   const isMobile = useMediaQuery("(max-width: 50em)");
-  let stars = useSelector((state) => state.filter.stars);
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
 
@@ -174,6 +176,10 @@ export default function HotelListModal({ features, residenceTypes }) {
                           radius="xl"
                           value="react"
                           label={feature.title}
+                          onClick={() => {
+                            dispatch(filterActions.setFeatures(feature.title));
+                          }}
+                          checked={filterFeatures.includes(feature.title)}
                         />
                       );
                     })

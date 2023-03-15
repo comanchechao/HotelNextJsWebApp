@@ -211,5 +211,9 @@
   "commentTitle": "Başlık",
   "writeComment": "Otel hakkındaki düşüncelerinizi yazın",
   "confirmComment": "Yorum yap",
-  "uploadSuccess": "Yükleme başarılı"
+  "uploadSuccess": "Yükleme başarılı",
+
+  "address": "Adres",
+  "rules": "kuralları",
+  "copyright": "Her hakkı saklıdır"
 }

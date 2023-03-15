@@ -208,5 +208,9 @@
   "commentTitle": "عنوان",
   "writeComment": "نظر خودتون رو راجب هتل بنویسید",
   "confirmComment": "ثبت نظر",
-  "uploadSuccess": "با موفقیت آپلود شد"
+  "uploadSuccess": "با موفقیت آپلود شد",
+
+  "address": "آدرس",
+  "rules": "قوانین",
+  "copyright": "کلیه حقوق این سرویس محفوظ است"
 }
