@@ -41,7 +41,7 @@ export default function Footer() {
     setLoading(false);
   }
   return (
-    <div className="w-screen h-auto lg:h-rem26 bg-white drop-shadow-lg lg:px-28 flex flex-col items-center mt-5">
+    <div className="w-screen h-auto lg:h-rem26 bg-white drop-shadow-lg lg:px-28 flex flex-col items-center mt-5 -z-50">
       <div
         className={`${
           alignLeft === true

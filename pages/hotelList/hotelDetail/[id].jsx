@@ -233,7 +233,7 @@ export default function HotelDetailPage({ hotel }) {
     <>
       <Head>
         <title>
-          {hotel.city} | {hotel.title} | {t("boutak")}
+          {hotel.city} , {hotel.title} , {t("boutak")} , {t("seo")}
         </title>
         <meta name="description" content={t("description")} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -287,7 +287,7 @@ export default function HotelDetailPage({ hotel }) {
                       />
                     );
                   })}
-                  {displayImages.map((image) => {
+                  {/* {displayImages.map((image) => {
                     return (
                       <Image
                         key={image}
@@ -298,7 +298,7 @@ export default function HotelDetailPage({ hotel }) {
                         src={image}
                       />
                     );
-                  })}
+                  })} */}
                 </div>
                 <div className="flex cursor-pointer h-96 justify-center items-center   w-1/2   rounded-md">
                   <Image

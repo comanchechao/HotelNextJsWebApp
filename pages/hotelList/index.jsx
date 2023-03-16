@@ -13,6 +13,7 @@ import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import HotelListMenu from "../../components/hotelListMenu";
+import Head from "next/head";
 export async function getServerSideProps({ locale }) {
   // Fetch data from the database
 
@@ -94,7 +95,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
     const { data, error } = await supabase
       .from("Hotels")
       .select(
-        "id ,features, stars , title , prices , locationLng , locationLat"
+        "id ,features, stars , title , prices , locationLng , locationLat, firstImage, secondImage, thirdImage"
       );
 
     setHotels(data);
@@ -185,157 +186,162 @@ export default function HotelList({ features, residenceTypes, cities }) {
   }, [minPrice]);
 
   return (
-    <div className="w-screen  bg-gray-100">
-      <Navbar />
-      <div
-        className={`${
-          alignLeft === true
-            ? "h-auto w-full pt-24 flex lg:px-36 space-x-20 "
-            : "h-auto w-full pt-24 flex flex-row-reverse lg:px-36 space-x-20"
-        }`}
-      >
-        <div className=" w-full lg:w-3/4 h-full  p-6  ">
-          <div
-            ref={mainPageBg}
-            className={`${
-              alignLeft === true
-                ? "h-auto w-full space-x-3 flex items-center justify-end opacity-0"
-                : "h-auto w-full   space-x-3 flex flex-row-reverse items-center justify-end opacity-0"
-            }`}
-          >
-            <Link className="text-lg items-center flex text-black" href="/">
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? " " : "transform rotate-180"
-                }`}
-                size={20}
-              />
-              {t("hotels")} {selectedCity}
-            </Link>
-            <Link className="text-lg items-center flex text-gray-700" href="/">
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? " " : "transform rotate-180"
-                }`}
-                size={20}
-              />
-              {t("home")}
-            </Link>
-          </div>
-
-          <div
-            ref={firstContainer}
-            className={`${
-              alignLeft === true
-                ? "w-full  opacity-0 lg:text-lg text-sm text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-7 space-x-4 "
-                : "w-full  opacity-0 lg:text-lg text-sm text-center py-2 h-10 lg:pl-44 flex items-center flex-row-reverse justify-end my-7 space-x-4"
-            }`}
-          >
-            <div className="lg:h-10 h-auto py-2 lg:py-8 w-full flex lg:flex-nowrap space-y-2 lg:space-y-0 flex-wrap items-center justify-center space-x-4   ">
-              <h2 className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md text-xs lg:text-base">
-                {t("mRerserve")}{" "}
-              </h2>
-              <h2
-                onClick={() => {
-                  setAscention(false);
-                  setOrder("stars");
-                  orderFetch();
-                }}
-                className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
+    <>
+      <Head>
+        <title>
+          {hotels.city} , {t("boutak")} , {t("seo")}
+        </title>
+        <meta name="description" content={t("description")} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="w-screen  bg-gray-100 h-full">
+        <Navbar />
+        <div
+          className={`${
+            alignLeft === true
+              ? "h-auto w-full pt-24 flex lg:px-36 space-x-20 "
+              : "h-auto w-full pt-24 flex flex-row-reverse lg:px-36 space-x-20"
+          }`}
+        >
+          <div className=" w-full lg:w-3/4 h-full  p-6  ">
+            <div
+              ref={mainPageBg}
+              className={`${
+                alignLeft === true
+                  ? "h-auto w-full space-x-3 flex items-center justify-end opacity-0"
+                  : "h-auto w-full   space-x-3 flex flex-row-reverse items-center justify-end opacity-0"
+              }`}
+            >
+              <Link className="text-lg items-center flex text-black" href="/">
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? " " : "transform rotate-180"
+                  }`}
+                  size={20}
+                />
+                {t("hotels")} {selectedCity}
+              </Link>
+              <Link
+                className="text-lg items-center flex text-gray-700"
+                href="/"
               >
-                {t("mStar")}{" "}
-              </h2>
-              <h2
-                onClick={() => {
-                  setAscention(true);
-                  setOrder("prices");
-                  orderFetch();
-                }}
-                className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
-              >
-                {t("mPrice")}{" "}
-              </h2>
-              <h2
-                onClick={() => {
-                  setAscention(false);
-                  setOrder("prices");
-                  orderFetch();
-                }}
-                className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
-              >
-                {t("lPrice")}{" "}
-              </h2>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? " " : "transform rotate-180"
+                  }`}
+                  size={20}
+                />
+                {t("home")}
+              </Link>
             </div>
 
-            <h3 className="w-28">{t("sortBy")}</h3>
-          </div>
-          <div
-            className={`${
-              alignLeft === true
-                ? "w-full flex justify-end my-3 lg:hidden"
-                : "w-full flex justify-start my-3 lg:hidden "
-            }`}
-          >
-            <Suspense
-              fallback={
-                <div>
-                  <Loader color="grape" />
-                </div>
-              }
+            <div
+              ref={firstContainer}
+              className={`${
+                alignLeft === true
+                  ? "w-full  opacity-0 lg:text-lg text-sm text-center py-2 h-10 lg:pl-44 flex items-center justify-end my-7 space-x-4 "
+                  : "w-full  opacity-0 lg:text-lg text-sm text-center py-2 h-10 lg:pl-44 flex items-center flex-row-reverse justify-end my-7 space-x-4"
+              }`}
+            >
+              <div className="lg:h-10 h-auto py-2 lg:py-8 w-full flex lg:flex-nowrap space-y-2 lg:space-y-0 flex-wrap items-center justify-center space-x-4   ">
+                <h2 className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md text-xs lg:text-base">
+                  {t("mRerserve")}{" "}
+                </h2>
+                <h2
+                  onClick={() => {
+                    setAscention(false);
+                    setOrder("stars");
+                    orderFetch();
+                  }}
+                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
+                >
+                  {t("mStar")}{" "}
+                </h2>
+                <h2
+                  onClick={() => {
+                    setAscention(true);
+                    setOrder("prices");
+                    orderFetch();
+                  }}
+                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
+                >
+                  {t("mPrice")}{" "}
+                </h2>
+                <h2
+                  onClick={() => {
+                    setAscention(false);
+                    setOrder("prices");
+                    orderFetch();
+                  }}
+                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
+                >
+                  {t("lPrice")}{" "}
+                </h2>
+              </div>
+
+              <h3 className="w-28">{t("sortBy")}</h3>
+            </div>
+            <div
+              className={`${
+                alignLeft === true
+                  ? "w-full flex justify-end my-3 lg:hidden"
+                  : "w-full flex justify-start my-3 lg:hidden "
+              }`}
             >
               <HotelListModal
                 residenceTypes={residenceTypes}
                 features={features}
               />
-            </Suspense>
+            </div>
+            {loading === false ? (
+              <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
+                {!filters
+                  ? hotels.map((hotel) => {
+                      return <HotelCard key={hotel.id} hotel={hotel} />;
+                    })
+                  : filteredHotels !== null
+                  ? filteredHotels.map((hotel) => {
+                      return <HotelCard key={hotel.id} hotel={hotel} />;
+                    })
+                  : null}
+              </div>
+            ) : (
+              <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
+                <Skeleton height={200} width="88%" />{" "}
+                <Skeleton height={200} width="88%" />{" "}
+                <Skeleton height={200} width="88%" />{" "}
+                <Skeleton height={200} width="88%" />{" "}
+                <Skeleton height={200} width="88%" />
+              </div>
+            )}
+            <div className="h-full  w-full flex justify-center">
+              <button
+                onClick={() => {
+                  getHotels();
+                }}
+                className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+              >
+                {t("showMore")}
+              </button>
+            </div>
           </div>
-          {loading === false ? (
-            <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
-              {!filters
-                ? hotels.map((hotel) => {
-                    return <HotelCard key={hotel.id} hotel={hotel} />;
-                  })
-                : filteredHotels !== null
-                ? filteredHotels.map((hotel) => {
-                    return <HotelCard key={hotel.id} hotel={hotel} />;
-                  })
-                : null}
+          <div
+            ref={secondContainer}
+            className=" w-1/4 h-rem50 hidden lg:flex opacity-0"
+          >
+            <div className="w-full   py-6 ">
+              <HotelListMenu
+                features={features}
+                residenceTypes={residenceTypes}
+                cities={cities}
+              />
             </div>
-          ) : (
-            <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
-              <Skeleton height={200} width="88%" />{" "}
-              <Skeleton height={200} width="88%" />{" "}
-              <Skeleton height={200} width="88%" />{" "}
-              <Skeleton height={200} width="88%" />{" "}
-              <Skeleton height={200} width="88%" />
-            </div>
-          )}
-          <div className="h-full  w-full flex justify-center">
-            <button
-              onClick={() => {
-                getHotels();
-              }}
-              className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
-            >
-              {t("showMore")}
-            </button>
           </div>
         </div>
-        <div
-          ref={secondContainer}
-          className=" w-1/4 h-screen hidden lg:flex opacity-0"
-        >
-          <div className="w-full h-screen   py-6">
-            <HotelListMenu
-              features={features}
-              residenceTypes={residenceTypes}
-              cities={cities}
-            />
-          </div>
-        </div>
-      </div>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }

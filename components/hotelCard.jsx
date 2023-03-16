@@ -11,6 +11,7 @@ import { Star } from "phosphor-react";
 import { Chip } from "@mantine/core";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
 
 const HotelMap = dynamic(() => import("./hotelMap"), {
   ssr: false,
@@ -19,11 +20,72 @@ export default function HotelCard({ hotel }) {
   // setting reservatoin info
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
+  const [singleImage, setSingleImage] = useState("");
+  const [secondImage, setSecondImage] = useState("");
+  const [thirdImage, setThirdImage] = useState("");
+
+  const [displayImages, setDisplayImages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     changeAlignment();
+    downloadImage1();
   }, []);
+  const downloadImage1 = async () => {
+    setLoading(true);
+    const { data, error } = await supabase.storage
+      .from("/public/hotel-images")
+      .download(hotel.firstImage);
 
+    if (error) {
+      throw error;
+    }
+    const url = URL.createObjectURL(data);
+    setSingleImage(url);  
+    setLoading(false);
+    downloadImage2();
+  };
+  const downloadImage2 = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.secondImage);
+
+      if (error) {
+        throw error;
+      }
+      if (data == !null) {
+        const url = URL.createObjectURL(data);
+        setSecondImage(url);
+      }
+    } catch (error) {
+      console.log("Error downloading image: ", error.message);
+    } finally {
+      setLoading(false);
+      downloadImage3();
+    }
+  };
+  const downloadImage3 = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.thirdImage);
+
+      if (error) {
+        throw error;
+      }
+      if (data == !null) {
+        const url = URL.createObjectURL(data);
+        setThirdImage(url);
+      }
+    } catch (error) {
+      console.log("Error downloading image: ", error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   const [alignLeft, setAlignLeft] = useState(false);
   async function changeAlignment() {
     console.log(lng);
@@ -93,21 +155,27 @@ export default function HotelCard({ hotel }) {
             <Image
               className=" w-full  lg:object-fit h-full lg:w-full"
               alt="antalia"
-              src={hotelone}
+              src={singleImage}
+              width={400}
+              height={200}
             />
           </Carousel.Slide>
           <Carousel.Slide>
             <Image
+              alt="antalia"
               className=" w-full lg:object-fit h-full lg:w-full"
-              alt="antalia"
-              src={hotelthree}
+              src={secondImage}
+              width={400}
+              height={200}
             />
           </Carousel.Slide>
           <Carousel.Slide>
             <Image
-              className="  w-full lg:object-fit h-full lg:w-full"
               alt="antalia"
-              src={hotelfour}
+              className="  w-full lg:object-fit h-full lg:w-full"
+              src={thirdImage}
+              width={400}
+              height={200}
             />
           </Carousel.Slide>
         </Carousel>
