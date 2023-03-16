@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Modal, Rating, Group, Loader } from "@mantine/core";
 import { supabase } from "../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
+import LoginModal from "./loginModal";
 
 export default function Reply(props) {
   let hotel = props.hotel;
@@ -14,8 +15,9 @@ export default function Reply(props) {
   const [comment, setComment] = useState(false);
   const [stars, setStars] = useState(0);
   const [title, setTitle] = useState("");
-  const [fullName, setFullname] = useState("");
   const [alignLeft, setAlignLeft] = useState(false);
+  const [userSignedIn, setUserSignedIn] = useState(false);
+
   async function changeAlignment() {
     console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
@@ -23,7 +25,19 @@ export default function Reply(props) {
   }
   useEffect(() => {
     changeAlignment();
+    checkUser();
   }, []);
+  async function checkUser() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user) {
+      setUserSignedIn(true);
+    } else {
+      console.log("User not found");
+    }
+  }
   async function addComment() {
     setLoading(true);
 
@@ -32,13 +46,13 @@ export default function Reply(props) {
     } = await supabase.auth.getUser();
 
     if (user) {
+      setUserSignedIn(true);
       const { data, error } = await supabase.from("comments").insert([
         {
           hotelId: hotel.id,
           comment: comment,
           stars: stars,
           title: title,
-          fullName: fullName,
         },
       ]);
       console.log(user.id);
@@ -113,14 +127,18 @@ export default function Reply(props) {
       </Modal>
 
       <Group position="center">
-        <button
-          onClick={() => {
-            setOpened(true);
-          }}
-          className="text-white self-end my-4 bg-mainPurple font-mainFont rounded-md text-lg cursor-pointer border-r-8 border-mainBlue  text-center flex items-center justify-center px-6 py-2 hover:bg-mainBlue duration-300 ease-in transition"
-        >
-          {t("yourComment")}
-        </button>
+        {userSignedIn ? (
+          <button
+            onClick={() => {
+              setOpened(true);
+            }}
+            className="text-white self-end my-4 bg-mainPurple font-mainFont rounded-md text-lg cursor-pointer border-r-8 border-mainBlue  text-center flex items-center justify-center px-6 py-2 hover:bg-mainBlue duration-300 ease-in transition"
+          >
+            {t("yourComment")}
+          </button>
+        ) : (
+          <LoginModal />
+        )}
       </Group>
     </>
   );

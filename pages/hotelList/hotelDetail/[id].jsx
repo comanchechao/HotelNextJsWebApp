@@ -2,7 +2,7 @@ import Navbar from "../../../components/Navbar";
 import Head from "next/head";
 import { reservationActions } from "../../../store/reservation/index";
 import { Tabs, Popover, TextInput, Skeleton } from "@mantine/core";
-import { DatePicker } from "@mantine/dates";
+import { DateRangePicker } from "@mantine/dates";
 import { supabase } from "../../../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
 import isToday from "dayjs/plugin/isToday.js";
@@ -23,8 +23,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { Suspense } from "react";
-
-import { PlusCircle, MinusCircle } from "phosphor-react";
+import { PlusCircle, MinusCircle, Star } from "phosphor-react";
 import ImagesModal from "../../../components/imagesModal";
 import FeaturesModal from "../../../components/FeaturesModal";
 
@@ -78,12 +77,12 @@ export const getStaticProps = async (context) => {
   };
 };
 
-const DynamicMap = dynamic(
-  () => import("../../../components/mapWithLocation"),
-  {
-    ssr: false,
-  }
-);
+// const DynamicMap = dynamic(
+//   () => import("../../../components/mapWithLocation"),
+//   {
+//     ssr: false,
+//   }
+// );
 
 export default function HotelDetailPage({ hotel }) {
   const ReserveInfoModal = dynamic(
@@ -173,24 +172,21 @@ export default function HotelDetailPage({ hotel }) {
     getComments(hotel);
   }, []);
   const myDivRef = useRef(null);
+  const myTopDiv = useRef(null);
+  const myBottomDiv = useRef(null);
   useEffect(() => {
-    const divTop = myDivRef.current.offsetTop;
+    const divTop = myTopDiv.current.offsetTop;
+    const divBottom = myBottomDiv.current.offsetTop;
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
       if (scrollY >= divTop) {
-        myDivRef.current.classList.add(
-          "fixed",
-          "left-48",
-          "inset-y-0",
-          "top-10"
-        );
+        myDivRef.current.classList.add("fixed", "inset-y-0", "top-10");
       } else {
-        myDivRef.current.classList.remove(
-          "fixed",
-          "left-48",
-          "inset-y-0",
-          "top-10"
-        );
+        myDivRef.current.classList.remove("fixed", "inset-y-0", "top-10");
+      }
+      if (scrollY >= divBottom) {
+        myDivRef.current.classList.remove("fixed", "inset-y-0", "top-10");
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -250,7 +246,7 @@ export default function HotelDetailPage({ hotel }) {
             <div
               className={`${
                 alignLeft === true
-                  ? "flex justify-end lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24"
+                  ? "flex justify-end lg:items-center items-end text-sm  text-gray-700 w-full lg:h-10 h-24"
                   : "flex justify-start lg:items-center items-end  text-gray-700 w-full lg:h-10 h-24"
               }`}
             >
@@ -322,9 +318,9 @@ export default function HotelDetailPage({ hotel }) {
                   : "w-full flex  h-full   justify-end"
               }`}
             >
-              <ImagesModal />
+              {/* <ImagesModal /> */}
             </div>
-            <div className="flex w-full justify-end h-25 lg:h-20  ">
+            <div className="flex w-full justify-end h-auto  ">
               <div
                 className={`${
                   alignLeft === true
@@ -332,61 +328,50 @@ export default function HotelDetailPage({ hotel }) {
                     : "flex w-full justify-center items-start flex-col"
                 }`}
               >
-                <h1 className="text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md my-5">
+                <h1 className="text-2xl font-bold  border-b-4   border-mainBlue pb-2  px-2  rounded-md my-5">
                   {t("singleHotel")} {hotel.title}
                 </h1>
-                <div className="flex border border-gray-300 bg-white my-3 lg:my-0 p-3 rounded-md space-x-8 justify-center items-center">
+                <div className="flex border border-gray-300 bg-white my-3 lg:my-0 p-2 rounded-md space-x-2 justify-center items-center">
                   <div className="flex">
-                    <p>اول بند ، روبه روی خیابان گلشهر</p>
+                    <p className="text-sm">اول بند ، روبه روی خیابان گلشهر -</p>
                   </div>
-                  <div className="flex justify-center items-center space-x-2">
-                    <p className="text-sm">{t("star")}</p>
-                    <p className="text-sm">{hotel.stars}</p>
-                    <IconStar />
+                  <div className="flex justify-center items-center space-x-1">
+                    <p className="text-xs">{t("star")}</p>
+                    <p className="text-xs">{hotel.stars}</p>
+                    <Star size={15} weight="fill" />{" "}
                   </div>
                 </div>
               </div>
             </div>
             <div className="flex   items-end lg:items-start lg:flex-row flex-col justify-center ">
-              <div className="lg:flex  hidden items-start h-screen   w-72 pt-8 ">
+              <div
+                ref={myTopDiv}
+                className="lg:flex   hidden items-start h-screen w-96 pt-8 "
+              >
                 <div
                   ref={myDivRef}
-                  className=" flex   p-4 bg-white   flex-col items-center w-72  h-96 mt-10 ml-2 rounded-md border "
+                  className=" flex   p-4 bg-white   flex-col items-center w-68  h-72 mt-10 ml-2 rounded-md border "
                 >
-                  <DatePicker
-                    locale="fa"
-                    onChange={setEntering}
-                    defaultValue={enterDate}
-                    inputFormat="MM/DD/YYYY"
-                    dropdownPosition="bottom-start"
+                  <DateRangePicker
                     className={`${
                       alignLeft === true
-                        ? "text-3xl text-center flex flex-col items-end"
-                        : "text-3xl text-center flex flex-col items-start"
+                        ? "text-3xl text-right  flex flex-col  items-end"
+                        : "text-3xl text-right  flex flex-col  items-start"
                     }`}
+                    dropdownType="modal"
+                    locale="fa"
+                    minDate={dayjs().subtract(4, "month")}
+                    dropdownPosition="top-start"
                     placeholder={t("inDate")}
                     label={t("inDate")}
                     withAsterisk
                     variant="default"
                     radius="md"
-                    size="md"
-                  />
-                  <DatePicker
-                    locale="fa"
-                    onChange={setExiting}
-                    defaultValue={exitDate}
-                    inputFormat="MM/DD/YYYY"
-                    dropdownPosition="bottom-start"
-                    className={`${
-                      alignLeft === true
-                        ? "text-3xl text-center flex flex-col items-end"
-                        : "text-3xl text-center flex flex-col items-start"
-                    }`}
-                    placeholder={t("inDate")}
-                    label={t("inDate")}
-                    withAsterisk
-                    variant="default"
-                    radius="md"
+                    dayClassName={(date, modifiers) =>
+                      cx({
+                        [classes.firstInRange]: modifiers.outside,
+                      })
+                    }
                     size="md"
                   />
                   <Popover width={300} position="bottom" withArrow shadow="md">
@@ -475,8 +460,8 @@ export default function HotelDetailPage({ hotel }) {
                   <h2
                     className={`${
                       alignLeft === true
-                        ? "text-right w-56  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md"
-                        : "text-left w-40  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md"
+                        ? "text-right text-lg"
+                        : "text-left  text-lg"
                     }`}
                   >
                     {t("hotelFacilities")}
@@ -486,13 +471,10 @@ export default function HotelDetailPage({ hotel }) {
                   {hotel.features.map((feature, i) => {
                     console.log(feature);
                     return (
-                      <div
-                        key={i}
-                        className="flex px-3  justify-between items-center"
-                      >
-                        <h2>
+                      <div key={i} className="flex px-3  justify-end items-end">
+                        {/* <h2>
                           <IconWashMachine size={25} />
-                        </h2>
+                        </h2> */}
                         <h2 className="text-gray-900">{feature}</h2>
                       </div>
                     );
@@ -506,32 +488,32 @@ export default function HotelDetailPage({ hotel }) {
                       : "flex items-center     py-4 space-x-1 w-full justify-start"
                   }`}
                 >
-                  <h1
+                  <h2
                     className={`${
                       alignLeft === true
-                        ? "text-right w-56  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md"
-                        : "text-left w-40  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md"
+                        ? "text-right text-lg"
+                        : "text-left  text-lg"
                     }`}
                   >
                     {t("hotelPlaces")}
-                  </h1>
+                  </h2>
                 </div>
                 <div className="flex flex-col w-full justify-around  bg-white">
                   <div className="flex w-full justify-start items-start">
-                    <DynamicMap
+                    {/* <DynamicMap
                       secondLocation={hotel.secondLocation}
                       firstLocation={hotel.firstLocation}
                       lat={hotel.locationLat}
                       lng={hotel.locationLng}
-                    />
+                    /> */}
                   </div>
                 </div>
                 <div className="flex py-8 items-center space-y-6 w-full flex-col  justify-center">
                   <h1
                     className={`${
                       alignLeft === true
-                        ? "text-right self-end w-56  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md"
-                        : "text-left w-40 self-start  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md"
+                        ? "text-right text-xl font-bold self-end"
+                        : "text-left  text-xl font-bold self-start"
                     }`}
                   >
                     {t("rooms")}
@@ -620,6 +602,7 @@ export default function HotelDetailPage({ hotel }) {
                   </div>
                 </div>
                 <div
+                  ref={myBottomDiv}
                   className={`${
                     alignLeft === true
                       ? "flex items-center py-4 space-x-1  w-full justify-end"
@@ -629,8 +612,8 @@ export default function HotelDetailPage({ hotel }) {
                   <h1
                     className={`${
                       alignLeft === true
-                        ? "text-right self-end w-56  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md"
-                        : "text-left w-40 self-start  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md"
+                        ? "text-right self-end w-44  text-lg  border-b-2   border-mainBlue pb-2  px-2  rounded-md"
+                        : "text-left w-44 self-start  text-lg  border-b-2   border-mainBlue pb-2  px-2  rounded-md"
                     }`}
                   >
                     {t("hotelRules")}
@@ -677,8 +660,8 @@ export default function HotelDetailPage({ hotel }) {
                   <h1
                     className={`${
                       alignLeft === true
-                        ? "text-right self-end w-56  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md"
-                        : "text-left w-40 self-start  text-xl  border-b-4   border-mainBlue pb-2  px-2  rounded-md"
+                        ? "text-right self-end w-44  text-lg  border-b-2   border-mainBlue pb-2  px-2  rounded-md"
+                        : "text-left w-44 self-start  text-lg  border-b-2   border-mainBlue pb-2  px-2  rounded-md"
                     }`}
                   >
                     {t("aboutHotel")}
