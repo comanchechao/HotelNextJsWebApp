@@ -37,14 +37,18 @@ export default function NavDrawer() {
             href="/"
             className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
-            <h4 className=" ">{t("home")}</h4>
+            <a passHref className=" ">
+              {t("home")}
+            </a>
             <House className="mx-2" size={28} weight="light" />
           </Link>{" "}
           <Link
             href="/hotelList"
             className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
-            {t("hotel")}
+            <a passHref className=" ">
+              {t("hotel")}
+            </a>
 
             <Buildings className="mx-2" size={30} />
           </Link>
@@ -52,7 +56,9 @@ export default function NavDrawer() {
             href="/aboutUs"
             className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
-            <h4>{t("aboutUs")}</h4>
+            <a passHref className=" ">
+              {t("aboutUs")}
+            </a>
             <Scroll className="mx-2" size={24} weight="light" />
           </Link>
           <Link
@@ -66,7 +72,9 @@ export default function NavDrawer() {
             href="/admin"
             className=" flex border-2 border-dashed bg-mainBlue border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
-            <h4 className=" ">{t("admin")}</h4>
+            <a passHref className=" ">
+              {t("admin")}
+            </a>
             <IdentificationCard className="mx-1" weight="light" size={30} />
           </Link>
         </div>

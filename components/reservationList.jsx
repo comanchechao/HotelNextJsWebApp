@@ -3,7 +3,7 @@ import ReservedRoomCard from "./reservedRoomCard";
 import { supabase } from "../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
 
-export default function ReservationList({ Hotels }) {
+export default function ReservationList({ Hotels, user }) {
   const { t, i18n } = useTranslation("");
 
   const [reservations, setReservations] = useState([]);
@@ -12,6 +12,7 @@ export default function ReservationList({ Hotels }) {
       .from("reservations")
       .select()
       .eq("user_id", user.user.id);
+      console.log();
     setReservations(data);
   }
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function ReservationList({ Hotels }) {
         {t("reservedRoom")}
       </h1>
       <div className="w-full overflow-y-scroll px-4 flex items-center justify-start flex-col space-y-6 ">
-        {reservations === [] ? (
+        {reservations === null ? (
           <div className="text-3xl">No Reservation</div>
         ) : reservations !== [] ? (
           reservations.map((reserveData, i) => {

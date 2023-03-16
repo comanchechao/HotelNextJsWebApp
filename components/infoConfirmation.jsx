@@ -56,12 +56,14 @@ export default function InfoConfirmation() {
       passengers.push(passengerFour);
     }
 
+    const { data: session, error2 } = await supabase.auth.getSession();
+
     const { error } = await supabase.from("reservations").insert({
       name: passengers[0].name,
       hotel_name: hotelInfo.title,
       hotel_id: hotelInfo.id,
       passengers: passengers,
-      user_id: seshId,
+      user_id: session.session.user.id,
       passengerCount: passenger,
       room: room,
     });
