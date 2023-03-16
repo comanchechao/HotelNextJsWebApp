@@ -5,10 +5,24 @@ import { useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
 import { useTranslation } from "next-i18next";
 import { useState, useEffect } from "react";
+import { supabase } from "../lib/supabaseClient";
 
+import LoginCheckModal from "./LoginCheckModal";
 export default function RoomCard({ room, hotelDetail }) {
   // setting reservation info
   const [alignLeft, setAlignLeft] = useState(false);
+  const [userSigned, setUserSigned] = useState(false);
+  async function checkUser() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user) {
+      setUserSigned(true);
+    } else {
+      console.log("User not found");
+    }
+  }
 
   const { t, i18n } = useTranslation("");
   const lng = i18n.language;
@@ -18,6 +32,7 @@ export default function RoomCard({ room, hotelDetail }) {
     else setAlignLeft(true);
   }
   useEffect(() => {
+    checkUser();
     changeAlignment();
   }, []);
   const dispatch = useDispatch();
@@ -32,17 +47,21 @@ export default function RoomCard({ room, hotelDetail }) {
             </h2>
           </div>
           <h1 className="text-sm">{t("avrgNight")}</h1>
-          <Link href="/checkout">
-            <button
-              onClick={() => {
-                dispatch(reservationActions.setRoom(room));
-                dispatch(reservationActions.setHotelInfo(hotelDetail));
-              }}
-              className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   "
-            >
-              <p>{t("roomReserve")}</p>
-            </button>
-          </Link>
+          {userSigned ? (
+            <Link href="/checkout">
+              <button
+                onClick={() => {
+                  dispatch(reservationActions.setRoom(room));
+                  dispatch(reservationActions.setHotelInfo(hotelDetail));
+                }}
+                className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   "
+              >
+                <p>{t("roomReserve")}</p>
+              </button>
+            </Link>
+          ) : (
+            <LoginCheckModal />
+          )}
         </div>
         <div className="h-full flex flex-col items-end justify-start  p-4 lg:w-3/4  ">
           <div className="h-14 w-full flex items-center justify-between">

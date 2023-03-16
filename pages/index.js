@@ -170,7 +170,6 @@ export default function Home(props) {
         >
           <Navbar />
         </Suspense>
-        <Navbar />
         <div ref={mainPageBg} className="w-screen h-96  opacity-0">
           <Image
             className=" h-rem26 w-full object-cover"

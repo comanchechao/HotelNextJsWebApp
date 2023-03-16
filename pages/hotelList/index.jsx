@@ -95,7 +95,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
     const { data, error } = await supabase
       .from("Hotels")
       .select(
-        "id ,features, stars , title , prices , locationLng , locationLat, firstImage, secondImage, thirdImage"
+        "id , features , stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
       );
 
     setHotels(data);

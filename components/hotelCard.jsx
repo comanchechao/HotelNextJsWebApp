@@ -21,15 +21,15 @@ export default function HotelCard({ hotel }) {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   const [singleImage, setSingleImage] = useState("");
-  const [secondImage, setSecondImage] = useState("");
-  const [thirdImage, setThirdImage] = useState("");
+  const [imageTwo, setImageTwo] = useState("");
+  const [imageThree, setImageThree] = useState("");
 
-  const [displayImages, setDisplayImages] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     changeAlignment();
     downloadImage1();
+    downloadImage2();
   }, []);
   const downloadImage1 = async () => {
     setLoading(true);
@@ -41,50 +41,35 @@ export default function HotelCard({ hotel }) {
       throw error;
     }
     const url = URL.createObjectURL(data);
-    setSingleImage(url);  
+    setSingleImage(url);
     setLoading(false);
-    downloadImage2();
   };
   const downloadImage2 = async () => {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase.storage
-        .from("/public/hotel-images")
-        .download(hotel.secondImage);
+    setLoading(true);
+    const { data, error } = await supabase.storage
+      .from("/public/hotel-images")
+      .download(hotel.secondImage);
 
-      if (error) {
-        throw error;
-      }
-      if (data == !null) {
-        const url = URL.createObjectURL(data);
-        setSecondImage(url);
-      }
-    } catch (error) {
-      console.log("Error downloading image: ", error.message);
-    } finally {
-      setLoading(false);
-      downloadImage3();
+    if (error) {
+      throw error;
     }
+    const url = URL.createObjectURL(data);
+    setImageTwo(url);
+    setLoading(false);
+    downloadImage3();
   };
   const downloadImage3 = async () => {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase.storage
-        .from("/public/hotel-images")
-        .download(hotel.thirdImage);
+    setLoading(true);
+    const { data, error } = await supabase.storage
+      .from("/public/hotel-images")
+      .download(hotel.thirdImage);
 
-      if (error) {
-        throw error;
-      }
-      if (data == !null) {
-        const url = URL.createObjectURL(data);
-        setThirdImage(url);
-      }
-    } catch (error) {
-      console.log("Error downloading image: ", error.message);
-    } finally {
-      setLoading(false);
+    if (error) {
+      throw error;
     }
+    const url = URL.createObjectURL(data);
+    setImageThree(url);
+    setLoading(false);
   };
   const [alignLeft, setAlignLeft] = useState(false);
   async function changeAlignment() {
@@ -144,12 +129,13 @@ export default function HotelCard({ hotel }) {
       </div>
       <div className=" w-auto flex items-center lg:w-56 h-full">
         <Carousel
+          breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: 2 }]}
+          slideGap="sm"
+          align="start"
+          loop
           slideSize="100%"
           width="100%"
           height="190px"
-          controlSize={25}
-          loop
-          withIndicators
         >
           <Carousel.Slide>
             <Image
@@ -164,7 +150,7 @@ export default function HotelCard({ hotel }) {
             <Image
               alt="antalia"
               className=" w-full lg:object-fit h-full lg:w-full"
-              src={secondImage}
+              src={imageTwo}
               width={400}
               height={200}
             />
@@ -173,7 +159,7 @@ export default function HotelCard({ hotel }) {
             <Image
               alt="antalia"
               className="  w-full lg:object-fit h-full lg:w-full"
-              src={thirdImage}
+              src={imageThree}
               width={400}
               height={200}
             />

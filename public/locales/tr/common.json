@@ -219,5 +219,6 @@
   "seeAll": "Hepsini gör",
   "roomReserve": "Rezerve Oda",
 
-  "seo": "oda rezervasyonu fiyatı"
+  "seo": "oda rezervasyonu fiyatı",
+  "needToSign": "Oda rezervasyonu yapabilmek için oturum açmalısınız."
 }
