@@ -7,7 +7,7 @@ import { filterActions } from "../store/filterActivation";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
-export default function HotelListMenu({ features, residenceTypes }) {
+export default function HotelListMenu({ features, residenceTypes, cities }) {
   let stars = useSelector((state) => state.filter.stars);
   const [min, setMin] = useState();
   const [max, setMax] = useState();
@@ -30,6 +30,10 @@ export default function HotelListMenu({ features, residenceTypes }) {
   //   console.log(maxRange, minRange);
   // });
   let filterFeatures = useSelector((state) => state.filter.features);
+  let filterResidenceTypes = useSelector(
+    (state) => state.filter.residenceTypes
+  );
+
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
 
@@ -62,6 +66,65 @@ export default function HotelListMenu({ features, residenceTypes }) {
       </div>
       <Accordion
         className="w-full  "
+        variant="separated"
+        chevronPosition="left"
+        defaultValue="customization"
+      >
+        <Accordion.Item value="customization">
+          <Accordion.Control>
+            <span
+              className={`${
+                alignLeft === true
+                  ? "text-gray-900 flex justify-end text-md text-right"
+                  : "text-gray-900 flex flex-row-reverse justify-end text-md text-right"
+              }`}
+            >
+              {t("city")}
+            </span>
+          </Accordion.Control>
+          <Accordion.Panel>
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex text-right   items-end text-xl flex-col justify-center space-y-2"
+                  : "flex text-left   items-start text-xl flex-col justify-center space-y-2"
+              }`}
+            >
+              {alignLeft
+                ? cities.map((city, i) => {
+                    return (
+                      <Checkbox
+                        onClick={() => {
+                          dispatch(filterActions.setResidenceTypes(city.name));
+                        }}
+                        checked={filterFeatures.includes(city.name)}
+                        key={i}
+                        labelPosition="left"
+                        color="yellow"
+                        radius="xl"
+                        value="react"
+                        label={city.name}
+                      />
+                    );
+                  })
+                : cities.map((city, i) => {
+                    return (
+                      <Checkbox
+                        key={i}
+                        labelPosition="left"
+                        color="yellow"
+                        radius="xl"
+                        value="react"
+                        label={city.trTitle}
+                      />
+                    );
+                  })}
+            </div>
+          </Accordion.Panel>
+        </Accordion.Item>
+      </Accordion>
+      <Accordion
+        className="w-full  h-full"
         variant="separated"
         chevronPosition="left"
         defaultValue="customization"
@@ -199,6 +262,10 @@ export default function HotelListMenu({ features, residenceTypes }) {
                     return (
                       <Checkbox
                         key={i}
+                        onClick={() => {
+                          dispatch(filterActions.setFeatures(feature.trTitle));
+                        }}
+                        checked={filterFeatures.includes(feature.trTitle)}
                         labelPosition="left"
                         color="yellow"
                         radius="xl"
@@ -241,6 +308,12 @@ export default function HotelListMenu({ features, residenceTypes }) {
                 ? residenceTypes.map((residenceType, i) => {
                     return (
                       <Checkbox
+                        onClick={() => {
+                          dispatch(
+                            filterActions.setResidenceTypes(residenceType.title)
+                          );
+                        }}
+                        checked={filterFeatures.includes(residenceType.title)}
                         key={i}
                         labelPosition="left"
                         color="yellow"

@@ -20,8 +20,11 @@ export async function getServerSideProps({ locale }) {
   const { data: residenceTypes } = await supabase
     .from("residenceTypes")
     .select();
+  const { data: cities } = await supabase.from("cities").select();
   return {
     props: {
+      cities: cities,
+
       features: data,
       residenceTypes: residenceTypes,
       ...(await serverSideTranslations(locale, ["common"])),
@@ -29,7 +32,7 @@ export async function getServerSideProps({ locale }) {
   };
 }
 
-export default function HotelList({ features, residenceTypes }) {
+export default function HotelList({ features, residenceTypes, cities }) {
   const [filters, setFilters] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -182,13 +185,13 @@ export default function HotelList({ features, residenceTypes }) {
   }, [minPrice]);
 
   return (
-    <div className="w-screen h-auto bg-gray-100">
+    <div className="w-screen  bg-gray-100">
       <Navbar />
       <div
         className={`${
           alignLeft === true
-            ? "h-full w-full pt-28 flex lg:px-36 space-x-20"
-            : "h-full w-full pt-28 flex flex-row-reverse lg:px-36 space-x-20"
+            ? "h-auto w-full pt-24 flex lg:px-36 space-x-20 "
+            : "h-auto w-full pt-24 flex flex-row-reverse lg:px-36 space-x-20"
         }`}
       >
         <div className=" w-full lg:w-3/4 h-full  p-6  ">
@@ -322,10 +325,11 @@ export default function HotelList({ features, residenceTypes }) {
           ref={secondContainer}
           className=" w-1/4 h-screen hidden lg:flex opacity-0"
         >
-          <div className="w-full h-96 py-6">
+          <div className="w-full h-screen   py-6">
             <HotelListMenu
               features={features}
               residenceTypes={residenceTypes}
+              cities={cities}
             />
           </div>
         </div>
