@@ -494,319 +494,9 @@ export default function Home(props) {
         </div> */}
         <div
           ref={thirdContainer}
-          className="w-full opacity-0 h-auto lg:space-y-0 space-y-2 lg:h-rem26 py-6 flex-col lg:flex-row flex items-center justify-center space-x-5 lg:px-44 my-10"
+          className="w-full opacity-0 h-auto lg:space-y-0 space-y-2 lg:h-auto py-6 flex-col lg:flex-row flex items-center justify-center space-x-5 lg:px-44 my-10"
         >
-          <div className=" w-full h-full flex flex-col items-center justify-around lg:space-y-0 space-y-4">
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Van} />
-                <h3 className="text-base ml-1 mr-2">{t("van")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Irvan} />
-                <h3 className="text-base ml-1 mr-2">{t("erivan")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Rome} />
-                <h3 className="text-base ml-1 mr-2">{t("rome")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Moscow} />
-                <h3 className="text-base ml-1 mr-2">{t("moscow")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-          </div>
-          <div className=" w-full h-full flex flex-col items-center justify-around  lg:space-y-0 space-y-2">
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Istanbul} />
-                <h3 className="text-base ml-1 mr-2">{t("istanbul")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Paris} />
-                <h3 className="text-base ml-1 mr-2">{t("paris")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Baku} />
-                <h3 className="text-base ml-1 mr-2">{t("baku")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Milan} />
-                <h3 className="text-base ml-1 mr-2">{t("milan")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-          </div>
-          <div className=" w-full h-full flex flex-col items-center justify-around  lg:space-y-0 space-y-2">
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Antalia} />
-                <h3 className="text-base ml-1 mr-2">{t("antalya")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Dubai} />
-                <h3 className="text-base ml-1 mr-2">{t("dubai")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Amsterdam} />
-                <h3 className="text-base ml-1 mr-2">{t("amsterdam")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
-                }`}
-              >
-                <Image alt="antalia" src={Berlin} />
-                <h3 className="text-base ml-1 mr-2">{t("berlin")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-          </div>
-        </div>
-        <div className="w-full h-auto py-6 flex items-center lg:flex-row flex-col space-y-2 lg:space-y-0 justify-center space-x-5 lg:px-44 my-10">
+          {" "}
           <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
             <a
               className={`${
@@ -980,6 +670,168 @@ export default function Home(props) {
                   src={Tabriz}
                 />
                 <h3 className="text-base ml-1 mr-2">{t("tabriz")}</h3>
+              </div>
+              <CaretLeft
+                className={`${
+                  alignLeft === true ? "" : "transform rotate-180"
+                }`}
+                size={20}
+                weight="bold"
+              />
+            </a>
+          </div>
+        </div>
+        <div className="w-full h-auto py-6 flex items-center lg:flex-row flex-col space-y-2 lg:space-y-0 justify-center space-x-5 lg:px-44 my-10">
+          {" "}
+          <div className=" w-full h-full flex flex-col items-center justify-around lg:space-y-3 space-y-4">
+            <a
+              className={`${
+                alignLeft === true
+                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+              }`}
+            >
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex flex-row-reverse items-center"
+                    : "flex flex-row items-center"
+                }`}
+              >
+                <Image alt="antalia" src={Van} />
+                <h3 className="text-base ml-1 mr-2">{t("van")}</h3>
+              </div>
+              <CaretLeft
+                className={`${
+                  alignLeft === true ? "" : "transform rotate-180"
+                }`}
+                size={20}
+                weight="bold"
+              />
+            </a>
+
+            <a
+              className={`${
+                alignLeft === true
+                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+              }`}
+            >
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex flex-row-reverse items-center"
+                    : "flex flex-row items-center"
+                }`}
+              >
+                <Image alt="antalia" src={Irvan} />
+                <h3 className="text-base ml-1 mr-2">{t("erivan")}</h3>
+              </div>
+              <CaretLeft
+                className={`${
+                  alignLeft === true ? "" : "transform rotate-180"
+                }`}
+                size={20}
+                weight="bold"
+              />
+            </a>
+          </div>
+          <div className=" w-full h-full flex flex-col items-center justify-around  lg:space-y-3 space-y-2">
+            <a
+              className={`${
+                alignLeft === true
+                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+              }`}
+            >
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex flex-row-reverse items-center"
+                    : "flex flex-row items-center"
+                }`}
+              >
+                <Image alt="antalia" src={Istanbul} />
+                <h3 className="text-base ml-1 mr-2">{t("istanbul")}</h3>
+              </div>
+              <CaretLeft
+                className={`${
+                  alignLeft === true ? "" : "transform rotate-180"
+                }`}
+                size={20}
+                weight="bold"
+              />
+            </a>
+
+            <a
+              className={`${
+                alignLeft === true
+                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+              }`}
+            >
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex flex-row-reverse items-center"
+                    : "flex flex-row items-center"
+                }`}
+              >
+                <Image alt="antalia" src={Baku} />
+                <h3 className="text-base ml-1 mr-2">{t("baku")}</h3>
+              </div>
+              <CaretLeft
+                className={`${
+                  alignLeft === true ? "" : "transform rotate-180"
+                }`}
+                size={20}
+                weight="bold"
+              />
+            </a>
+          </div>
+          <div className=" w-full h-full flex flex-col items-center justify-around  lg:space-y-3 space-y-2">
+            <a
+              className={`${
+                alignLeft === true
+                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+              }`}
+            >
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex flex-row-reverse items-center"
+                    : "flex flex-row items-center"
+                }`}
+              >
+                <Image alt="antalia" src={Antalia} />
+                <h3 className="text-base ml-1 mr-2">{t("antalya")}</h3>
+              </div>
+              <CaretLeft
+                className={`${
+                  alignLeft === true ? "" : "transform rotate-180"
+                }`}
+                size={20}
+                weight="bold"
+              />
+            </a>
+
+            <a
+              className={`${
+                alignLeft === true
+                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+              }`}
+            >
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex flex-row-reverse items-center"
+                    : "flex flex-row items-center"
+                }`}
+              >
+                <Image alt="antalia" src={Dubai} />
+                <h3 className="text-base ml-1 mr-2">{t("dubai")}</h3>
               </div>
               <CaretLeft
                 className={`${

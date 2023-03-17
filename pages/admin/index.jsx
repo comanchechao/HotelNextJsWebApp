@@ -233,7 +233,7 @@ export default function AdminPage({ user }) {
             className={`${
               tab === "websiteInfo"
                 ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center text-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
             }`}
           >
             <div

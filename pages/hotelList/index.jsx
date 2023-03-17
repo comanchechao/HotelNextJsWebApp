@@ -215,7 +215,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
                   : "h-auto w-full   space-x-3 flex flex-row-reverse items-center justify-end opacity-0"
               }`}
             >
-              <Link className="text-lg items-center flex text-black" href="/">
+              <Link className="text-sm   items-center flex text-black" href="/">
                 <CaretLeft
                   className={`${
                     alignLeft === true ? " " : "transform rotate-180"
@@ -225,7 +225,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
                 {t("hotels")} {selectedCity}
               </Link>
               <Link
-                className="text-lg items-center flex text-gray-700"
+                className="text-sm   items-center flex text-gray-700"
                 href="/"
               >
                 <CaretLeft
@@ -247,7 +247,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
               }`}
             >
               <div className="lg:h-10 h-auto py-2 lg:py-8 w-full flex lg:flex-nowrap space-y-2 lg:space-y-0 flex-wrap items-center justify-center space-x-4   ">
-                <h2 className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md text-xs lg:text-base">
+                <h2 className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md text-xs lg:text-sm">
                   {t("mRerserve")}{" "}
                 </h2>
                 <h2
@@ -256,7 +256,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
                     setOrder("stars");
                     orderFetch();
                   }}
-                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
+                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-sm"
                 >
                   {t("mStar")}{" "}
                 </h2>
@@ -266,7 +266,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
                     setOrder("prices");
                     orderFetch();
                   }}
-                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
+                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-sm"
                 >
                   {t("mPrice")}{" "}
                 </h2>
@@ -276,7 +276,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
                     setOrder("prices");
                     orderFetch();
                   }}
-                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-base"
+                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-sm"
                 >
                   {t("lPrice")}{" "}
                 </h2>

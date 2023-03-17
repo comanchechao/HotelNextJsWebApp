@@ -52,6 +52,7 @@ export default function AddHotel({ featuresData, cities, user }) {
   const [exitingHours, setExitingHours] = useState(14);
   const [alignLeft, setAlignLeft] = useState(false);
   const [alert, setAlert] = useState(false);
+  const [alert2, setAlert2] = useState(false);
 
   let getlat = useSelector((state) => state.map.lat);
   let getLng = useSelector((state) => state.map.lng);
@@ -172,6 +173,10 @@ export default function AddHotel({ featuresData, cities, user }) {
         lng: lng3,
       },
     });
+    setAlert(true);
+    setTimeout(() => {
+      setAlert(false);
+    }, 2000);
     if (error) throw error;
   }
   useEffect(() => {
@@ -223,7 +228,7 @@ export default function AddHotel({ featuresData, cities, user }) {
         throw uploadError;
       }
     } catch (error) {
-      alert(error.message);
+      console.log(error.message);
     } finally {
       setUploading(false);
       setAlert(true);
@@ -918,7 +923,23 @@ export default function AddHotel({ featuresData, cities, user }) {
                 </Tabs.Panel> */}
               </Tabs>
             </div>
-            <div className="flex">
+            <div className="flex items-center space-x-4">
+              {alert2 ? (
+                <Notification
+                  transition="fade"
+                  transitionDuration={600}
+                  transitionTimingFunction="ease"
+                  color="green"
+                  withCloseButton
+                  variant="outline"
+                >
+                  <h1 className="text-2xl text-center">
+                    {t("addHotelSuccess")}
+                  </h1>
+                </Notification>
+              ) : (
+                <div></div>
+              )}
               <button
                 onClick={() => {
                   handleSubmit();

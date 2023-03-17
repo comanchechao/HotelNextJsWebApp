@@ -13,13 +13,13 @@ export default function RoomCard({ room, hotelDetail }) {
   const [alignLeft, setAlignLeft] = useState(false);
   const [userSigned, setUserSigned] = useState(false);
   async function checkUser() {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    const { data: user, error } = await supabase.auth.getSession();
 
-    if (user) {
+    if (user.session) {
       setUserSigned(true);
     } else {
+      setUserSigned(false);
+
       console.log("User not found");
     }
   }
@@ -34,7 +34,7 @@ export default function RoomCard({ room, hotelDetail }) {
   useEffect(() => {
     checkUser();
     changeAlignment();
-  }, []);
+  });
   const dispatch = useDispatch();
   {
     return (

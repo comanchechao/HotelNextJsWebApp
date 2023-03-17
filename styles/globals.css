@@ -22,7 +22,11 @@
 body {
   -webkit-overflow-scrolling: touch;
 }
-* {
+h1,
+h2,
+h3,
+h4,
+p {
   line-height: 2;
 }
 html,

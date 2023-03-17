@@ -2,6 +2,8 @@ import { Modal, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import LoginModal from "./loginModal";
+import { X } from "phosphor-react";
+
 export default function LoginCheckModal() {
   const [opened, setOpened] = useState(false);
   const { t, i18n } = useTranslation("common");
@@ -10,6 +12,7 @@ export default function LoginCheckModal() {
   return (
     <>
       <Modal
+        withCloseButton={false}
         transition="fade"
         transitionDuration={600}
         transitionTimingFunction="ease"
@@ -25,6 +28,15 @@ export default function LoginCheckModal() {
         overlayOpacity={0.55}
         overlayBlur={3}
       >
+        {" "}
+        <X
+          onClick={() => {
+            setOpened(false);
+          }}
+          className="cursor-pointer transition ease-in duration-200    hover:bg-mainPurple hover:text-mainBlue m-5  rounded-md text-mainPurple"
+          size={32}
+          weight="bold"
+        />{" "}
         <div className="h-36 flex p-4 items-center justify-center space-y-8 flex-col">
           <h2 className="text-xl font-bold text-center"> {t("needToSign")}</h2>
           <LoginModal />

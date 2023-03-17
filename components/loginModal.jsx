@@ -148,6 +148,7 @@ export default function LoginModal() {
         setAlert(false);
         setOpened(false);
       }, 1000);
+      window.location.reload();
     }
   };
   // SignOut

@@ -107,11 +107,12 @@ export default function Footer() {
       </div>
       <div className="w-full flex lg:flex-row flex-col items-center justify-evenly lg:justify-between h-24 lg:px-20 border-t border-dashed border-mainPurple">
         <div className="flex items-center justify-start space-x-5">
-          <InstagramLogo
+          <a
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
-            size={40}
-            weight="fill"
-          />
+            href={phoneNumber}
+          >
+            <InstagramLogo size={40} weight="fill" />
+          </a>
           <FacebookLogo
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
             size={40}

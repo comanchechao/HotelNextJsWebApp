@@ -220,5 +220,24 @@
   "roomReserve": "Rezerve Oda",
 
   "seo": "oda rezervasyonu fiyatı",
-  "needToSign": "Oda rezervasyonu yapabilmek için oturum açmalısınız."
+  "needToSign": "Oda rezervasyonu yapabilmek için oturum açmalısınız.",
+
+  "contactBoutak": "Boutak ile iletişim kurma yolları",
+  "youCanContact": "Boutak ile iletişime geçmek isterseniz, aşağıdaki seçeneklerle bunu yapabilirsiniz.",
+  "supportAddress": "Destek ofisi adresi",
+  "supportPhone": "telefon desteği",
+  "postalCode": "Posta Kodu",
+
+  "aboutBoutak": "Boutak Hakkında",
+  "knowUsMore": "Bizi daha yakından tanıyın",
+
+  "websiteInfo": "Web sitesi bilgilerini değiştir",
+  "footer": "Footer",
+  "telegramLink": "Telegram Bağlantı",
+  "instagramLink": "Instagram Bağlantı",
+  "whatsappLink": "Whatsapp Bağlantı",
+  "facebookLink": "Facebook Bağlantı",
+  "confirmChanges": "Değişiklikleri onayla",
+
+  "addHotelSuccess": "Otel başarıyla eklendi"
 }

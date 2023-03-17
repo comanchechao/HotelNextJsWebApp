@@ -9,14 +9,65 @@ import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { Star } from "phosphor-react";
 import dynamic from "next/dynamic";
+import { supabase } from "../lib/supabaseClient";
+
 const EditHotel = dynamic(() => import("./editHotel"));
 export default function AdminHotelCard({ hotel, user, features, cities }) {
   const HotelMap = dynamic(() => import("./hotelMap"), {
     ssr: false,
   });
+  const [singleImage, setSingleImage] = useState("");
+  const [imageTwo, setImageTwo] = useState("");
+  const [imageThree, setImageThree] = useState("");
   const { t, i18n } = useTranslation("");
+  const [loading, setLoading] = useState(false);
+
   const lng = i18n.language;
   const [alignLeft, setAlignLeft] = useState(false);
+
+  useEffect(() => {
+    changeAlignment();
+    downloadImage1();
+    downloadImage2();
+  }, []);
+  const downloadImage1 = async () => {
+    setLoading(true);
+    const { data, error } = await supabase.storage
+      .from("/public/hotel-images")
+      .download(hotel.firstImage);
+
+    if (data) {
+      const url = URL.createObjectURL(data);
+      setSingleImage(url);
+    }
+    setLoading(false);
+  };
+  const downloadImage2 = async () => {
+    setLoading(true);
+    const { data, error } = await supabase.storage
+      .from("/public/hotel-images")
+      .download(hotel.secondImage);
+
+    if (data) {
+      const url = URL.createObjectURL(data);
+      setImageTwo(url);
+    }
+    setLoading(false);
+    downloadImage3();
+  };
+  const downloadImage3 = async () => {
+    setLoading(true);
+    const { data, error } = await supabase.storage
+      .from("/public/hotel-images")
+      .download(hotel.thirdImage);
+
+    if (data) {
+      const url = URL.createObjectURL(data);
+      setImageThree(url);
+    }
+    setLoading(false);
+  };
+
   async function changeAlignment() {
     console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
@@ -66,33 +117,46 @@ export default function AdminHotelCard({ hotel, user, features, cities }) {
       </div>
       <div className=" w-auto flex items-center lg:w-56 h-full">
         <Carousel
+          breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: 2 }]}
+          slideGap="sm"
+          align="start"
+          loop
           slideSize="100%"
           width="100%"
-          height="155px"
-          controlSize={25}
-          loop
-          withIndicators
+          height="160px"
         >
           <Carousel.Slide>
-            <Image
-              className=" w-full  lg:object-fit h-full lg:w-full"
-              alt="antalia"
-              src={hotelone}
-            />
+            {singleImage ? (
+              <Image
+                className=" w-full  lg:object-fit h-40 lg:w-full"
+                alt="antalia"
+                src={singleImage}
+                width={400}
+                height={200}
+              />
+            ) : null}
           </Carousel.Slide>
           <Carousel.Slide>
-            <Image
-              className=" w-full lg:object-fit h-full lg:w-full"
-              alt="antalia"
-              src={hotelthree}
-            />
+            {imageTwo ? (
+              <Image
+                alt="antalia"
+                className=" w-full lg:object-fit h-40 lg:w-full"
+                src={imageTwo}
+                width={400}
+                height={200}
+              />
+            ) : null}
           </Carousel.Slide>
           <Carousel.Slide>
-            <Image
-              className="  w-full lg:object-fit h-full lg:w-full"
-              alt="antalia"
-              src={hotelfour}
-            />
+            {imageThree ? (
+              <Image
+                alt="antalia"
+                className="  w-full lg:object-fit h-40 lg:w-full"
+                src={imageThree}
+                width={400}
+                height={200}
+              />
+            ) : null}
           </Carousel.Slide>
         </Carousel>
       </div>

@@ -1,6 +1,8 @@
 import { Textarea, Tabs, Loader, NumberInput } from "@mantine/core";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
+import { useTranslation } from "next-i18next";
+
 export default function WebsiteInfo() {
   const [loading, setLoading] = useState(false);
   const [aboutUs, setAboutUs] = useState("");
@@ -13,6 +15,18 @@ export default function WebsiteInfo() {
   const [telegram, setTelegram] = useState("");
   const [facebook, setFacebook] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
+  const { t, i18n } = useTranslation("");
+  const lng = i18n.language;
+  const [alignLeft, setAlignLeft] = useState(false);
+
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
+  useEffect(() => {
+    changeAlignment();
+  }, []);
   async function changeWebsiteInfo() {
     setLoading(true);
     const {
@@ -42,7 +56,7 @@ export default function WebsiteInfo() {
     <div className="flex flex-col items-center justify-start pt-5 w-full h-full lg:h-carousel  ">
       <div className="   w-full lg:py-20 h-carousel lg:px-14 bg-white flex flex-col items-center lg:justify-center">
         <h1 className="border-b-4   border-mainBlue pb-2  px-2  rounded-md text-xl   my-3">
-          تغییر اطلاعات وبسایت
+          {t("websiteInfo")}
         </h1>
         <Tabs
           className="mt-5 w-full"
@@ -52,35 +66,54 @@ export default function WebsiteInfo() {
         >
           <Tabs.List grow position="center">
             <Tabs.Tab color="pink" value="settings">
-              فوتر
+              {t("footer")}
             </Tabs.Tab>
             <Tabs.Tab color="violet" value="messages">
-              تماس با ما
+              {t("contactUs")}
             </Tabs.Tab>
             <Tabs.Tab color="indigo" value="gallery">
-              درباره ما
+              {t("aboutUs")}
             </Tabs.Tab>
           </Tabs.List>
 
           <Tabs.Panel value="gallery">
             <div className="w-full overflow-y-scroll   flex flex-col items-center p-10 h-full space-y-3">
-              <div className="flex w-full items-start justify-end">
-                <h3 className="text-3xl">درباره ما</h3>
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex w-full items-start justify-end"
+                    : "flex w-full items-start justify-start"
+                }`}
+              >
+                <h3 className="text-3xl"> {t("aboutUs")}</h3>
               </div>
-              <p className="text-lg self-end">درباره بوتک</p>
+              <p
+                className={`${
+                  alignLeft === true ? "text-lg self-end" : "text-lg self-start"
+                }`}
+              >
+                {" "}
+                {t("aboutBoutak")}
+              </p>
               <Textarea
                 className="text-2xl  text-right w-full"
-                placeholder="درباره بوتک"
+                placeholder={t("aboutBoutak")}
                 radius="xs"
                 autosize
                 minRows={5}
                 withAsterisk
                 onChange={(e) => setAboutUs(e.target.value)}
               />
-              <p className="text-lg self-end">تاریخچه و پیشینه</p>
+              <p
+                className={`${
+                  alignLeft === true ? "text-lg self-end" : "text-lg self-start"
+                }`}
+              >
+                {t("knowUsMore")}
+              </p>
               <Textarea
                 className="text-2xl  text-right w-full"
-                placeholder="تاریخچه و پیشینه"
+                placeholder={t("knowUsMore")}
                 radius="xs"
                 autosize
                 minRows={5}
@@ -93,58 +126,88 @@ export default function WebsiteInfo() {
           <Tabs.Panel value="messages" pt="xs">
             {" "}
             <div className="w-full   flex flex-col items-center p-10 h-full space-y-9">
-              <div className="flex w-full items-start justify-end">
-                <h3 className="text-3xl">تماس با ما</h3>
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex w-full items-start justify-end"
+                    : "flex w-full items-start justify-start"
+                }`}
+              >
+                <h3 className="text-3xl"> {t("contactUs")}</h3>
               </div>
-              <p className="text-lg self-end">آدرس</p>
+              <p
+                className={`${
+                  alignLeft === true ? "text-lg self-end" : "text-lg self-start"
+                }`}
+              >
+                {t("address")}
+              </p>
               <Textarea
                 className="text-2xl  text-right w-full"
-                placeholder="آدرس"
+                placeholder={t("address")}
                 radius="xs"
                 autosize
                 minRows={2}
                 withAsterisk
                 onChange={(e) => setAddress(e.target.value)}
               />
-              <p className="text-lg self-end">شماره تلفن</p>
+              <p
+                className={`${
+                  alignLeft === true ? "text-lg self-end" : "text-lg self-start"
+                }`}
+              >
+                {t("phone")}
+              </p>
               <NumberInput
                 className="text-2xl  text-right w-full"
-                placeholder="شماره تلفن"
+                placeholder={t("phone")}
                 radius="xs"
                 autosize
                 minRows={1}
                 withAsterisk
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
-              <div className="flex items-center flex-col-reverse lg:flex-row lg:space-y-0 space-y-2 justify-center lg:space-x-9">
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex items-center flex-col-reverse lg:flex-row lg:space-y-0 space-y-2 justify-center lg:space-x-9"
+                    : "flex items-center flex-col-reverse lg:flex-row-reverse lg:space-y-0 space-y-2 justify-center lg:space-x-9"
+                }`}
+              >
                 <Textarea
                   className="text-2xl  text-right w-full"
-                  placeholder="ایمیل"
+                  placeholder={t("email")}
                   radius="xs"
                   autosize
                   minRows={1}
                   withAsterisk
                   onChange={(e) => setEmail(e.target.value)}
                 />{" "}
-                <p className="text-lg text-center w-full">ایمیل</p>
+                <p className="text-lg text-center w-full">{t("email")}</p>
                 <NumberInput
                   className="text-2xl  text-right w-full"
-                  placeholder="کد پستی"
+                  placeholder={t("postalCode")}
                   radius="xs"
                   autosize
                   minRows={1}
                   withAsterisk
                   onChange={(e) => setPostalCode(e.target.value)}
                 />
-                <p className="text-lg text-center w-full">کد پستی</p>
+                <p className="text-lg text-center w-full">{t("postalCode")}</p>
               </div>{" "}
             </div>
           </Tabs.Panel>
 
           <Tabs.Panel value="settings" pt="xs">
             <div className="w-full   flex flex-col items-center p-10 h-full space-y-9">
-              <div className="flex w-full items-start justify-end">
-                <h3 className="text-3xl">فوتر</h3>
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex w-full items-start justify-end"
+                    : "flex w-full items-start justify-start"
+                }`}
+              >
+                <h3 className="text-3xl">{t("footer")}</h3>
               </div>
               {/* <p className="text-lg self-end">آدرس</p>
               <Textarea
@@ -166,49 +229,69 @@ export default function WebsiteInfo() {
                 withAsterisk
                 onChange={(e) => setPhoneNumber(e.target.value)}
               /> */}
-              <div className="flex items-center justify-center space-x-9">
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex items-center justify-center space-x-9"
+                    : "flex items-center flex-row-reverse justify-center space-x-9"
+                }`}
+              >
                 <Textarea
                   className="text-2xl  text-right w-full"
-                  placeholder="لینک تلگرام"
+                  placeholder={t("telegramLink")}
                   radius="xs"
                   autosize
                   minRows={1}
                   withAsterisk
                   onChange={(e) => setTelegram(e.target.value)}
                 />{" "}
-                <p className="text-lg text-center w-full">لینک تلگرام</p>
+                <p className="text-lg text-center w-full">
+                  {t("telegramLink")}
+                </p>
                 <Textarea
                   className="text-2xl  text-right w-full"
-                  placeholder="لینک اینستاگرام"
+                  placeholder={t("instagramLink")}
                   radius="xs"
                   autosize
                   minRows={1}
                   withAsterisk
                   onChange={(e) => setInstagram(e.target.value)}
                 />
-                <p className="text-lg text-center w-full">لینک اینستاگرام</p>
+                <p className="text-lg text-center w-full">
+                  {t("instagramLink")}
+                </p>
               </div>{" "}
-              <div className="flex items-center justify-center space-x-9">
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex items-center justify-center space-x-9"
+                    : "flex items-center flex-row-reverse justify-center space-x-9"
+                }`}
+              >
                 <Textarea
                   className="text-2xl  text-right w-full"
-                  placeholder="لینک فیسبوک"
+                  placeholder={t("facebookLink")}
                   radius="xs"
                   autosize
                   minRows={1}
                   withAsterisk
                   onChange={(e) => setFacebook(e.target.value)}
                 />{" "}
-                <p className="text-lg text-center w-full">لینک فیسبوک</p>
+                <p className="text-lg text-center w-full">
+                  {t("facebookLink")}
+                </p>
                 <Textarea
                   className="text-2xl  text-right w-full"
-                  placeholder="لینک واتسپ"
+                  placeholder={t("whatsappLink")}
                   radius="xs"
                   autosize
                   minRows={1}
                   withAsterisk
                   onChange={(e) => setWhatsapp(e.target.value)}
                 />
-                <p className="text-lg text-center w-full">لینک واتسپ</p>
+                <p className="text-lg text-center w-full">
+                  {t("whatsappLink")}
+                </p>
               </div>
             </div>{" "}
           </Tabs.Panel>
@@ -220,7 +303,11 @@ export default function WebsiteInfo() {
             }}
             className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
           >
-            {loading ? <Loader color="yellow" /> : <span> تایید تغییرات</span>}
+            {loading ? (
+              <Loader color="yellow" />
+            ) : (
+              <span> {t("confirmChanges")}</span>
+            )}
           </button>
         </div>
       </div>

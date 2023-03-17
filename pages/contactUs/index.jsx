@@ -3,16 +3,28 @@ import Navbar from "../../components/Navbar";
 import Image from "next/image";
 import contactUsBg from "../../assets/images/contactUsBg.webp";
 import { supabase } from "../../lib/supabaseClient";
-
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState, useEffect } from "react";
-
 import { Phone, MapPin, Envelope, Signpost } from "phosphor-react";
+export async function getServerSideProps({ locale }) {
+  // Fetch data from the database
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}
+
 export default function ContactUs() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [postalCode, setPostalCode] = useState("");
+  const { t } = useTranslation("common");
+
   useEffect(() => {
     getWebsiteInfo();
   }, []);
@@ -41,17 +53,14 @@ export default function ContactUs() {
         </div>
         <div className="w-full mb-16 h-auto flex-col  flex items-center  justify-start pt-16 space-y-7 lg:px-44">
           <h1 className="text-gray-900 lg:px-0  text-4xl pb-4 border-b-8 rounded-lg border-mainPurple">
-            راه های تماس با بوتک
+            {t("contactBoutak")}
           </h1>
-          <h5 className="text-xl text-center">
-            در صورت نیاز به راهنمایی و یا پشتیبانی، از طریق راه های زیر میتوانید
-            با بوتک ارتباط برقرار کنید
-          </h5>
+          <h5 className="text-xl text-center">{t("youCanContact")}</h5>
           <div className="w-full justify-around h-rem34 lg:h-auto lg:p-4 text-center lg:space-y-0 space-y-7 lg:divide-x-2 bg-white lg:flex-row flex-col-reverse flex items-center">
             <div className="w-1/2 h-44   flex flex-col items-center justify-center lg:justify-around">
               <div className="flex flex-col items-center space-y-2">
                 <h4 className="text-xl flex items-center">
-                  آدرس دفتر پشتیبانی
+                  {t("supportAddress")}
                   <MapPin
                     className="mx-2"
                     size={24}
@@ -63,7 +72,7 @@ export default function ContactUs() {
               </div>
               <div className="flex flex-col items-center space-y-2 mt-3">
                 <h4 className="text-xl flex items-center">
-                  کد پستی
+                  {t("postalCode")}
                   <Signpost
                     className="mx-2"
                     size={24}
@@ -77,7 +86,7 @@ export default function ContactUs() {
             <div className="w-1/2 h-44   flex flex-col items-center justify-around">
               <div className="flex flex-col items-center space-y-2">
                 <h4 className="text-xl flex items-center">
-                  تلفن پشتیبانی
+                  {t("supportPhone")}
                   <Phone
                     className="mx-2"
                     size={24}
@@ -89,7 +98,7 @@ export default function ContactUs() {
               </div>
               <div className="flex flex-col items-center space-y-2">
                 <h4 className="text-xl flex items-center">
-                  ایمیل
+                  {t("email")}
                   <Envelope
                     className="mx-2"
                     size={24}

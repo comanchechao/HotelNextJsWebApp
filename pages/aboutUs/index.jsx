@@ -4,7 +4,21 @@ import Image from "next/image";
 import aboutUsBg from "../../assets/images/aboutUsBg.webp";
 import { supabase } from "../../lib/supabaseClient";
 import { useState, useEffect } from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
+
+export async function getServerSideProps({ locale }) {
+  // Fetch data from the database
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}
 export default function AboutUs() {
+  const { t } = useTranslation("common");
+
   const [loading, setLoading] = useState(false);
   const [aboutUs, setAboutUs] = useState("");
   const [aboutUsMore, setAboutUsMore] = useState("");
@@ -27,7 +41,7 @@ export default function AboutUs() {
       <div className="w-screen h-screen pt-10 flex lg:flex-row flex-col-reverse items-center justify-end ">
         <div className="w-full h-full flex-col    flex items-center pt-9 lg:pt-44 justify-center space-y-7">
           <h1 className="text-gray-900 lg:px-0  text-7xl pb-4 border-b-8 rounded-lg border-mainPurple">
-            درباره ی بوتک
+            {t("aboutBoutak")}
           </h1>
           <div className="w-full h-96  ">
             <h4 className="text-center text-lg px-8">{aboutUs}</h4>
@@ -42,7 +56,7 @@ export default function AboutUs() {
       <div className="h-auto w-screen bg-mainWhite my-9 flex items-end py-5 flex-col justify-end lg:px-24">
         <div className="w-full h-full py-10 my-16 flex flex-col px-16 items-center justify-center space-y-6 bg-white">
           <h2 className="text-gray-900  text-4xl pb-4 border-b-8 rounded-lg border-mainPurple">
-            تاریخچه و پیشینه
+            {t("knowUsMore")}
           </h2>
           <h4 className="text-center text-lg   p-9 rounded-md ">
             {aboutUsMore}
