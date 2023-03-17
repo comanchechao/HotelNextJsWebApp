@@ -25,7 +25,7 @@ export default function LoginCheckModal() {
         overlayOpacity={0.55}
         overlayBlur={3}
       >
-        <div className="h-24 flex p-4 items-center justify-center space-y-8 flex-col">
+        <div className="h-36 flex p-4 items-center justify-center space-y-8 flex-col">
           <h2 className="text-xl font-bold text-center"> {t("needToSign")}</h2>
           <LoginModal />
         </div>
@@ -34,7 +34,7 @@ export default function LoginCheckModal() {
         onClick={() => {
           setOpened(true);
         }}
-        className="py-3  hover:text-white bg-white border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-mainPurple my-5 px-12   "
+        className="py-3    bg-white border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-mainPurple my-5 px-12   "
       >
         <p>{t("roomReserve")}</p>
       </button>

@@ -556,7 +556,7 @@ export default function PassengerInfo() {
             onClick={() => {
               dispatch(reservationActions.decreamentPassenger());
             }}
-            className="px-4 rounded-md flex items-center justify-center lg:mb-0 mb-4 transition ease-in duration-300 hover:bg-gray-100 border-r-8 border-red-500  border  py-2 bg-white text-red-500 text-sm font-mainFont"
+            className="px-4 rounded-md flex items-center justify-center lg:mb-0 mb-4 transition ease-in duration-300 hover:bg-mainWhite border-r-8 border-red-500  border  py-2 bg-white text-red-500 text-sm font-mainFont"
           >
             {t("removePassenger")}{" "}
             <Minus className="ml-2" size={20} weight="fill" />

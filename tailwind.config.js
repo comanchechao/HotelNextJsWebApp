@@ -10,6 +10,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      lineHeight: {
+        base: "2",
+      },
+
+      // Set the base font size for the document.
+      fontSize: {
+        base: ["18px", "2"],
+      },
+
       gridTemplateRows: {
         "[auto,auto,1fr]": "auto auto 1fr",
       },
@@ -35,9 +44,6 @@ module.exports = {
         mainFont: ["IranSans"],
         SultanFont: ["SultanFont"],
       },
-      fontSize: {
-        "10xl": "14rem",
-      },
     },
     daisyui: {
       styled: false,
@@ -58,7 +64,7 @@ module.exports = {
       mainBlue: "#e0ab19",
       mainYellow: "#dea004",
       // mainBlue: "#1982C4",
-      mainWhite: "#dfc69c",
+      mainWhite: "#eee7d4",
       mainCream: "#FFE3CB",
       // darkPurple: "#240046",
       goldie: "#ff9e00",

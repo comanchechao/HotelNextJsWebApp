@@ -160,7 +160,7 @@ export default function Home(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="h-full w-screen bg-gray-100 overflow-x-hidden">
+      <div className="h-full w-screen bg-mainWhite overflow-x-hidden">
         <Suspense
           fallback={
             <div>

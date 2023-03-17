@@ -241,8 +241,8 @@ export default function HotelDetailPage({ hotel }) {
       </Head>
       <div className="w-full h-full">
         <Navbar />
-        <div className="flex w-full lg:py-20  lg:px-44 h-full bg-gray-100">
-          <div className="flex flex-col p-5 w-full h-full  ">
+        <div className="flex w-full lg:py-20  lg:px-44 h-full bg-mainWhite">
+          <div className="flex flex-col p-5 w-full h-full   space-y-11">
             <div
               className={`${
                 alignLeft === true
@@ -449,7 +449,7 @@ export default function HotelDetailPage({ hotel }) {
               <div className="lg:hidden w-full items-center justify-end flex  ">
                 <ReserveInfoModal />
               </div>
-              <div className="flex flex-col w-full lg:w-4/5 mt-8  lg:pl-7">
+              <div className="flex flex-col w-full lg:w-4/5 mt-8  lg:pl-7 ">
                 <div
                   className={`${
                     alignLeft === true
@@ -512,8 +512,8 @@ export default function HotelDetailPage({ hotel }) {
                   <h1
                     className={`${
                       alignLeft === true
-                        ? "text-right text-xl font-bold self-end"
-                        : "text-left  text-xl font-bold self-start"
+                        ? "text-right text-2xl font-bold self-end"
+                        : "text-left  text-2xl font-bold self-start"
                     }`}
                   >
                     {t("rooms")}
@@ -605,8 +605,8 @@ export default function HotelDetailPage({ hotel }) {
                   ref={myBottomDiv}
                   className={`${
                     alignLeft === true
-                      ? "flex items-center py-4 space-x-1  w-full justify-end"
-                      : "flex items-center     py-4 space-x-1 w-full justify-start"
+                      ? "flex items-center py-4 space-x-1  w-full justify-end "
+                      : "flex items-center     py-4 space-x-1 w-full justify-start "
                   }`}
                 >
                   <h1
@@ -622,8 +622,8 @@ export default function HotelDetailPage({ hotel }) {
                 <div
                   className={`${
                     alignLeft === true
-                      ? "flex divide-x divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm"
-                      : "flex flex-row-reverse   divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm"
+                      ? "flex divide-x divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
+                      : "flex flex-row-reverse   divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
                   }`}
                 >
                   <div className="flex justify-end text-right px-4 w-full h-full">
@@ -670,8 +670,8 @@ export default function HotelDetailPage({ hotel }) {
                 <div
                   className={`${
                     alignLeft === true
-                      ? "flex text-right p-5 border border-gray-300 rounded-md bg-white text-sm"
-                      : "flex text-left p-5 border border-gray-300 rounded-md bg-white text-sm"
+                      ? "flex text-right p-5 border border-gray-300 rounded-md bg-white text-sm mb-14 "
+                      : "flex text-left p-5 border border-gray-300 rounded-md bg-white text-sm mb-14 "
                   }`}
                 >
                   <p>

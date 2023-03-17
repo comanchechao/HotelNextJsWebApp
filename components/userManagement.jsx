@@ -18,12 +18,12 @@ export default function UserManagement() {
           <div className="flex flex-reverse w-full items-center space-x-2 justify-center">
             <button
               type="submit"
-              className="bg-gray-100 justify-center items-center border-2 h-10 px-3  flex"
+              className="bg-mainWhite justify-center items-center border-2 h-10 px-3  flex"
             >
               <MagnifyingGlass size={20} weight="bold" />
             </button>
             <input
-              className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-textArea hover:bg-white   bg-gray-100 font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-sm  text-sm focus:outline-none"
+              className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-textArea hover:bg-white   bg-mainWhite font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-sm  text-sm focus:outline-none"
               type="search"
               name="search"
               placeholder="جستجو همکار"

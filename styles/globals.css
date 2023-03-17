@@ -22,7 +22,9 @@
 body {
   -webkit-overflow-scrolling: touch;
 }
-
+* {
+  line-height: 2;
+}
 html,
 body {
   overflow-x: hidden;

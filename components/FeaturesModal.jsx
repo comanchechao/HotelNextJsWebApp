@@ -29,7 +29,7 @@ export default function FeaturesModal() {
   return (
     <div className="w-full h-full">
       <Modal opened={opened} centered onClose={() => setOpened(false)}>
-        <div className=" bg-gray-100 flex flex-col  divdie-x divide-black  ">
+        <div className=" bg-mainWhite flex flex-col  divdie-x divide-black  ">
           <div className="flex justify-center items-center w-full text-right h-14">
             <h1 className="text-lg   py-2">امکانات هتل</h1>
           </div>

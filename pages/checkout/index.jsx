@@ -83,7 +83,7 @@ export default function Checkout(props) {
     setActive((current) => (current > 0 ? current - 1 : current));
 
   return (
-    <div className="w-screen flex items-center justify-start flex-col  h-auto bg-gray-100">
+    <div className="w-screen flex items-center justify-start flex-col  h-auto bg-mainWhite">
       <Navbar />
       <div className="w-screen h-full flex-col text-right flex items-center p-10  lg:px-0 pt-36 justify-center ">
         <StyledStepper

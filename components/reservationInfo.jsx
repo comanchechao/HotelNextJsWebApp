@@ -47,7 +47,7 @@ export default function ReservationInfo({
             </div>
           </div>
           <div className="flex w-full justify-center items-center">
-            <div className="lg:space-x-2 lg:flex-row flex-col-reverse border border-gray-400 border-dashed flex px-0 items-center justify-between h-full shadow-xl w-full rounded bg-gray-100">
+            <div className="lg:space-x-2 lg:flex-row flex-col-reverse border border-gray-400 border-dashed flex px-0 items-center justify-between h-full shadow-xl w-full rounded bg-mainWhite">
               <div className="flex lg:border-r border-gray-900 flex-col h-full w-full lg:w-2/3 justify-center items-center">
                 <div className="flex justify-center items-center w-full h-full">
                   <div className="flex text-center justify-center items-center">

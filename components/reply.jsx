@@ -77,13 +77,13 @@ export default function Reply(props) {
             <div
               className={`${
                 alignLeft === true
-                  ? "flex space-y-2 py-2 text-right flex-col w-full h-full p-4 bg-gray-100"
-                  : "flex space-y-2 py-2 text-left flex-col w-full h-full p-4 bg-gray-100"
+                  ? "flex space-y-2 py-2 text-right flex-col w-full h-full p-4 bg-mainWhite"
+                  : "flex space-y-2 py-2 text-left flex-col w-full h-full p-4 bg-mainWhite"
               }`}
             >
               <label htmlFor="reply">{t("commentTitle")}</label>
               <textarea
-                className="bg-gray-100 border border-gray-400"
+                className="bg-mainWhite border border-gray-400"
                 name="reply"
                 id=""
                 cols="30"
@@ -92,7 +92,7 @@ export default function Reply(props) {
               ></textarea>
               <label htmlFor="reply">{t("writeComment")}</label>
               <textarea
-                className="bg-gray-100 border border-gray-400"
+                className="bg-mainWhite border border-gray-400"
                 name="reply"
                 id=""
                 cols="30"

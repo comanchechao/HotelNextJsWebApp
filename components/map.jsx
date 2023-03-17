@@ -368,7 +368,7 @@ export default function ExternalStateExample({ cityLatLng }) {
                   onChange={(e) => {
                     setMarker2Title(e.target.value);
                   }}
-                  className="py-2 px-8 rounded-lg bg-gray-100"
+                  className="py-2 px-8 rounded-lg bg-mainWhite"
                   type="text"
                   placeholder="نام مکان"
                 />
@@ -413,7 +413,7 @@ export default function ExternalStateExample({ cityLatLng }) {
                   onChange={(e) => {
                     setMarker3Title(e.target.value);
                   }}
-                  className="py-2 px-8 rounded-lg bg-gray-100"
+                  className="py-2 px-8 rounded-lg bg-mainWhite"
                   type="text"
                   placeholder="نام مکان"
                 />

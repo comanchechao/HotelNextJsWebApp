@@ -54,7 +54,7 @@ export default function UserProfile({ user }) {
   }, []);
 
   return (
-    <div className="h-auto w-screen bg-gray-100">
+    <div className="h-auto w-screen bg-mainWhite">
       <Navbar />
 
       <div
