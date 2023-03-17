@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import calendar from "dayjs/plugin/calendar";
+import localeData from "dayjs/plugin/localeData";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
-import "dayjs/locale/fa"; // Load the fa localeimport Head from "next/head";
-
+import faFile from "dayjs/locale/fa";
 import Faq from "../components/Faq";
 import Link from "next/link";
 import { gsap } from "gsap";
@@ -77,6 +77,75 @@ export default function Home(props) {
     }
   );
 
+  const faLocale = {
+    name: "fa",
+    weekdays: [
+      "یک‌شنبه",
+      "دوشنبه",
+      "سه‌شنبه",
+      "چهارشنبه",
+      "پنج‌شنبه",
+      "جمعه",
+      "شنبه",
+    ],
+    weekStart: 1,
+    months: [
+      "دی",
+      "بهمن",
+      "اسفند",
+      "فروردین",
+      "اردیبهشت",
+      "خرداد",
+      "تیر",
+      "مرداد",
+      "شهریور",
+      "مهر",
+      "آبان",
+      "آذر",
+    ],
+    relativeTime: {
+      future: "%s بعد",
+      past: "%s قبل",
+      s: "چند ثانیه",
+      m: "1 دقیقه",
+      mm: "%d دقیقه",
+      h: "1 ساعت",
+      hh: "%d ساعت",
+      d: "1 روز",
+      dd: "%d روز",
+      M: "1 ماه",
+      MM: "%d ماه",
+      y: "1 سال",
+      yy: "%d سال",
+    },
+    formats: {
+      L: "DD/MM/YYYY",
+      LTS: "HH:mm:ss",
+      LLLL: "dddd, D MMMM YYYY HH:mm",
+      LLL: "D MMMM YYYY HH:mm",
+    },
+  };
+  // You need to extend the custom locale and localeData
+  dayjs.extend(customParseFormat);
+  dayjs.extend(localeData);
+
+  // Set the locale to your custom locale
+  dayjs.localeData("fa", faLocale);
+
+  function disablePastDates(date) {
+    return dayjs(date).isBefore(new Date(), "day");
+  }
+  useEffect(() => {
+    // First, you need to define the custom locale
+
+    // Format the date using your custom locale
+    const formattedDate = dayjs().locale("fa").format("YYYY/MM/DD");
+
+    console.log(faFile);
+    console.log(
+      dayjs(dates[0]).locale(faLocale).format("dddd, D MMMM YYYY HH:mm")
+    );
+  });
   // set cities
   const [selectedCity, setSelectedCity] = useState("");
 
@@ -123,19 +192,6 @@ export default function Home(props) {
     window.scrollTo(0, 0);
   });
 
-  dayjs.extend(customParseFormat);
-  dayjs.extend(calendar);
-  dayjs.extend(utc);
-  dayjs.extend(timezone);
-
-  const today = dayjs
-    .utc()
-    .tz("Asia/Tehran")
-    .locale("fa")
-    .format("dddd، jYYYY/jM/jD");
-  useEffect(() => {
-    console.log(today);
-  });
   // const myDateFormatted = myDate.utc().format("MM/DD/YYYY");
   const useStyles = createStyles((theme) => ({
     firstInRange: {
@@ -209,12 +265,12 @@ export default function Home(props) {
                     : "text-3xl text-right  flex flex-col  items-start"
                 }`}
                 dropdownType="modal"
-                locale="fa"
-                minDate={dayjs().subtract(4, "month")}
+                locale={faLocale}
                 dropdownPosition="top-start"
                 placeholder={t("inDate")}
                 label={t("inDate")}
                 withAsterisk
+                disableDate={dayjs().isBefore}
                 variant="default"
                 value={dates}
                 onChange={setDates}

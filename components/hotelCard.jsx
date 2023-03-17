@@ -37,11 +37,10 @@ export default function HotelCard({ hotel }) {
       .from("/public/hotel-images")
       .download(hotel.firstImage);
 
-    if (error) {
-      throw error;
+    if (data) {
+      const url = URL.createObjectURL(data);
+      setSingleImage(url);
     }
-    const url = URL.createObjectURL(data);
-    setSingleImage(url);
     setLoading(false);
   };
   const downloadImage2 = async () => {
@@ -50,11 +49,10 @@ export default function HotelCard({ hotel }) {
       .from("/public/hotel-images")
       .download(hotel.secondImage);
 
-    if (error) {
-      throw error;
+    if (data) {
+      const url = URL.createObjectURL(data);
+      setImageTwo(url);
     }
-    const url = URL.createObjectURL(data);
-    setImageTwo(url);
     setLoading(false);
     downloadImage3();
   };
@@ -64,11 +62,10 @@ export default function HotelCard({ hotel }) {
       .from("/public/hotel-images")
       .download(hotel.thirdImage);
 
-    if (error) {
-      throw error;
+    if (data) {
+      const url = URL.createObjectURL(data);
+      setImageThree(url);
     }
-    const url = URL.createObjectURL(data);
-    setImageThree(url);
     setLoading(false);
   };
   const [alignLeft, setAlignLeft] = useState(false);
@@ -138,31 +135,37 @@ export default function HotelCard({ hotel }) {
           height="190px"
         >
           <Carousel.Slide>
-            <Image
-              className=" w-full  lg:object-fit h-full lg:w-full"
-              alt="antalia"
-              src={singleImage}
-              width={400}
-              height={200}
-            />
+            {singleImage ? (
+              <Image
+                className=" w-full  lg:object-fit h-full lg:w-full"
+                alt="antalia"
+                src={singleImage}
+                width={400}
+                height={200}
+              />
+            ) : null}
           </Carousel.Slide>
           <Carousel.Slide>
-            <Image
-              alt="antalia"
-              className=" w-full lg:object-fit h-full lg:w-full"
-              src={imageTwo}
-              width={400}
-              height={200}
-            />
+            {imageTwo ? (
+              <Image
+                alt="antalia"
+                className=" w-full lg:object-fit h-full lg:w-full"
+                src={imageTwo}
+                width={400}
+                height={200}
+              />
+            ) : null}
           </Carousel.Slide>
           <Carousel.Slide>
-            <Image
-              alt="antalia"
-              className="  w-full lg:object-fit h-full lg:w-full"
-              src={imageThree}
-              width={400}
-              height={200}
-            />
+            {imageThree ? (
+              <Image
+                alt="antalia"
+                className="  w-full lg:object-fit h-full lg:w-full"
+                src={imageThree}
+                width={400}
+                height={200}
+              />
+            ) : null}
           </Carousel.Slide>
         </Carousel>
       </div>

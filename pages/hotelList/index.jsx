@@ -126,7 +126,9 @@ export default function HotelList({ features, residenceTypes, cities }) {
 
   function sortStars() {
     if (stars === 5) {
-      const filteredProducts = initialHotels.filter((hotel) => hotel.stars < 6);
+      const filteredProducts = initialHotels.filter(
+        (hotel) => 5 < hotel.stars < 6
+      );
       setHotels(filteredProducts);
     } else if (stars === 4) {
       const filteredProducts = initialHotels.filter((hotel) => hotel.stars < 5);
