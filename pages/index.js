@@ -189,7 +189,7 @@ export default function Home(props) {
     changeState();
 
     window.scrollTo(0, 0);
-  });
+  }, []);
 
   // const myDateFormatted = myDate.utc().format("MM/DD/YYYY");
   const useStyles = createStyles((theme) => ({
@@ -265,7 +265,6 @@ export default function Home(props) {
                 }`}
                 dropdownType="modal"
                 locale={"fa"}
-                value={dates}
                 dropdownPosition="top-start"
                 placeholder={t("inDate")}
                 label={t("inDate")}
@@ -362,7 +361,7 @@ export default function Home(props) {
                           size={30}
                           weight="fill"
                         />
-                        <h1 className="text-base ">{passenger}</h1>
+                        <h1 className="text-base "></h1>
                         <MinusCircle
                           className="cursor-pointer"
                           size={30}
@@ -582,36 +581,41 @@ export default function Home(props) {
             </a>
           </div>
           <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity("تهران"));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain"
-                  alt="antalia"
-                  src={Tehran}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain"
+                    alt="antalia"
+                    src={Tehran}
+                  />
+                  <h3 className="text-base ml-1 mr-2">{t("tehran")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-1 mr-2">{t("tehran")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-
+              </a>
+            </Link>
             <a
               className={`${
                 alignLeft === true

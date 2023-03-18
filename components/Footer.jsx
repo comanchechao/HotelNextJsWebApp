@@ -28,7 +28,9 @@ export default function Footer() {
     else setAlignLeft(true);
   }
   useEffect(() => {
-    getWebsiteInfo();
+    if (address === "" || phoneNumber === "") {
+      getWebsiteInfo();
+    }
   }, []);
 
   async function getWebsiteInfo() {

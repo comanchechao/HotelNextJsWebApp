@@ -192,7 +192,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
     <>
       <Head>
         <title>
-          {hotels.city} , {t("boutak")} , {t("seo")}
+          {selectedCity} , {t("boutak")} , {t("seo")}
         </title>
         <meta name="description" content={t("description")} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
