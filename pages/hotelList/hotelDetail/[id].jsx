@@ -9,6 +9,7 @@ import isToday from "dayjs/plugin/isToday.js";
 import utc from "dayjs/plugin/utc.js";
 import timezone from "dayjs/plugin/timezone.js";
 import dayjs from "dayjs";
+import jalaliday from "jalaliday";
 import {
   IconChevronLeft,
   IconStar,
@@ -20,6 +21,7 @@ import {
   IconWifi,
   IconWashMachine,
 } from "@tabler/icons";
+import { createStyles } from "@mantine/core";
 import Link from "next/link";
 import Image from "next/image";
 import { Suspense } from "react";
@@ -196,6 +198,12 @@ export default function HotelDetailPage({ hotel }) {
   }, []);
 
   // get comments
+  const useStyles = createStyles((theme) => ({
+    firstInRange: {
+      color: `${theme.colors.blue[6]} !important`,
+    },
+  }));
+  const { classes, cx } = useStyles();
 
   const [comments, setComments] = useState([]);
 
@@ -208,6 +216,9 @@ export default function HotelDetailPage({ hotel }) {
     setComments(commentData);
   }
   // getting reservtion info
+
+  dayjs.extend(jalaliday);
+  dayjs.calendar("jalali");
 
   const [entering, setEntering] = useState(null);
   const [exiting, setExiting] = useState(null);
@@ -360,7 +371,8 @@ export default function HotelDetailPage({ hotel }) {
                     }`}
                     dropdownType="modal"
                     locale="fa"
-                    minDate={dayjs().subtract(4, "month")}
+                    defaultValue={!entering}
+                    minDate={dayjs()}
                     dropdownPosition="top-start"
                     placeholder={t("inDate")}
                     label={t("inDate")}

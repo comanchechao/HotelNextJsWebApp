@@ -171,11 +171,12 @@ export default function HotelList({ features, residenceTypes, cities }) {
   }
 
   async function priceRange() {
-    const filteredData = initialHotels.filter(
-      (obj) => obj.prices >= minPrice[0] && obj.prices <= minPrice[1]
-    );
-
-    setHotels(filteredData);
+    if (minPrice) {
+      const filteredData = initialHotels.filter(
+        (obj) => obj.prices >= minPrice[0] && obj.prices <= minPrice[1]
+      );
+      setHotels(filteredData);
+    }
   }
 
   // reservation info

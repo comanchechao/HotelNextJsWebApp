@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import customParseFormat from "dayjs/plugin/customParseFormat";
-import calendar from "dayjs/plugin/calendar";
-import localeData from "dayjs/plugin/localeData";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
-import faFile from "dayjs/locale/fa";
+// import customParseFormat from "dayjs/plugin/customParseFormat";
+// import calendar from "dayjs/plugin/calendar";
+// import localeData from "dayjs/plugin/localeData";
+// import utc from "dayjs/plugin/utc";
+// import timezone from "dayjs/plugin/timezone";
+import dayjs from "dayjs";
+import jalaliday from "jalaliday";
+import fa from "dayjs/locale/fa";
 import Faq from "../components/Faq";
 import Link from "next/link";
 import { gsap } from "gsap";
@@ -38,7 +40,6 @@ import Mashhad from "../assets/images/Mashhad.webp";
 import Shiraz from "../assets/images/Shiraz.webp";
 import Tabriz from "../assets/images/Tabriz.webp";
 import Esfahan from "../assets/images/Esfahan.webp";
-import dayjs from "dayjs";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { useRef, useEffect, useState } from "react";
@@ -88,7 +89,7 @@ export default function Home(props) {
       "جمعه",
       "شنبه",
     ],
-    weekStart: 1,
+    weekStart: 6,
     months: [
       "دی",
       "بهمن",
@@ -125,26 +126,24 @@ export default function Home(props) {
       LLL: "D MMMM YYYY HH:mm",
     },
   };
+
+  dayjs.extend(jalaliday);
+  dayjs.calendar("jalali");
   // You need to extend the custom locale and localeData
-  dayjs.extend(customParseFormat);
-  dayjs.extend(localeData);
+  // dayjs.extend(customParseFormat);
+  // dayjs.extend(localeData);
 
   // Set the locale to your custom locale
-  dayjs.localeData("fa", faLocale);
+  // dayjs.localeData("fa", faLocale);
 
-  function disablePastDates(date) {
-    return dayjs(date).isBefore(new Date(), "day");
-  }
   useEffect(() => {
+    console.log(dates);
+    // dayjs(dates[0], { jalali: true });
     // First, you need to define the custom locale
-
     // Format the date using your custom locale
-    const formattedDate = dayjs().locale("fa").format("YYYY/MM/DD");
-
-    console.log(faFile);
-    console.log(
-      dayjs(dates[0]).locale(faLocale).format("dddd, D MMMM YYYY HH:mm")
-    );
+    // const formattedDate = dayjs().locale("fa").format("jYYYY/MM/DD");
+    // console.log(formattedDate);
+    // console.log(dayjs().locale(faFile).format("dddd, D MMMM jYYYY HH:mm"));
   });
   // set cities
   const [selectedCity, setSelectedCity] = useState("");
@@ -265,15 +264,29 @@ export default function Home(props) {
                     : "text-3xl text-right  flex flex-col  items-start"
                 }`}
                 dropdownType="modal"
-                locale={faLocale}
+                locale={"fa"}
+                value={dates}
                 dropdownPosition="top-start"
                 placeholder={t("inDate")}
                 label={t("inDate")}
                 withAsterisk
-                disableDate={dayjs().isBefore}
+                defaultValue={dayjs().calendar("jalali")}
                 variant="default"
-                value={dates}
-                onChange={setDates}
+                onChange={(e) => {
+                  console.log();
+                  console.log(e[0]);
+                  let enter = dayjs(e[0])
+                    .add(19, "day")
+                    .calendar("jalali")
+                    .locale("fa")
+                    .format("DD MMMM YYYY");
+                  let exit = dayjs(e[1])
+                    .add(19, "day")
+                    .calendar("jalali")
+                    .locale("fa")
+                    .format("DD MMMM YYYY");
+                  setDates([enter, exit]);
+                }}
                 radius="md"
                 dayClassName={(date, modifiers) =>
                   cx({
@@ -367,12 +380,22 @@ export default function Home(props) {
                 onClick={() => {
                   dispatch(
                     reservationActions.setEnterting(
-                      dayjs(dates[0]).format("YYYY/MM/DD")
+                      reservationActions.setEnterting(
+                        dayjs(dates[0])
+                          .calendar("jalali")
+                          .locale("fa")
+                          .format("DD MMMM YYYY")
+                      )
                     )
                   );
                   dispatch(
-                    reservationActions.setExiting(
-                      dayjs(dates[1]).format("YYYY/MM/DD")
+                    reservationActions.setEnterting(
+                      reservationActions.setEnterting(
+                        dayjs(dates[1])
+                          .calendar("jalali")
+                          .locale("fa")
+                          .format("DD MMMM YYYY")
+                      )
                     )
                   );
                   dispatch(reservationActions.setCity(selectedCity));
