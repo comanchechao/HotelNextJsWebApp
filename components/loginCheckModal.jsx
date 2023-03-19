@@ -46,7 +46,7 @@ export default function LoginCheckModal() {
         onClick={() => {
           setOpened(true);
         }}
-        className="py-3    bg-white border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-mainPurple my-5 px-12   "
+        className="py-1    bg-white border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-mainPurple my-5 px-6   "
       >
         <p>{t("roomReserve")}</p>
       </button>

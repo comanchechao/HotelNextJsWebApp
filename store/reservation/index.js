@@ -7,6 +7,7 @@ export const reservation = createSlice({
     exitDate: "",
     passenger: 1,
     city: "",
+    cities: [],
     hotelInfo: {
       title: "",
       id: null,
@@ -47,6 +48,13 @@ export const reservation = createSlice({
     },
     setExiting: (state, actions) => {
       state.exitDate = actions.payload;
+    },
+    setCities: (state, action) => {
+      if (state.cities.indexOf(action.payload) === -1) {
+        state.cities.push(action.payload);
+      } else {
+        state.cities.splice(state.cities.indexOf(action.payload), 1);
+      }
     },
     setCity: (state, actions) => {
       state.city = actions.payload;

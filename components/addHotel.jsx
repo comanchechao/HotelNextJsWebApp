@@ -9,6 +9,7 @@ import {
   Tabs,
   Notification,
 } from "@mantine/core";
+import sharp from "sharp";
 import {
   IconUpload,
   IconPhoto,
@@ -213,16 +214,18 @@ export default function AddHotel({ featuresData, cities, user }) {
       if (!event.target.files || event.target.files.length === 0) {
         throw new Error("You must select an image to upload.");
       }
-
       const file = event.target.files[0];
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
       setFirstImage(filePath);
+      const resizedImage = await sharp(file.buffer)
+        .resize({ width: 1600, height: 1200, fit: "inside" })
+        .toBuffer();
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, file);
+        .upload(filePath, resizedImage);
 
       if (uploadError) {
         throw uploadError;

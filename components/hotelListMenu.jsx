@@ -4,9 +4,11 @@ import { MagnifyingGlass } from "phosphor-react";
 import { Checkbox } from "@mantine/core";
 import { RangeSlider } from "@mantine/core";
 import { filterActions } from "../store/filterActivation";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { reservationActions } from "../store/reservation";
 export default function HotelListMenu({ features, residenceTypes, cities }) {
   let stars = useSelector((state) => state.filter.stars);
   const [min, setMin] = useState();
@@ -33,6 +35,7 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
   let filterResidenceTypes = useSelector(
     (state) => state.filter.residenceTypes
   );
+  let filterCities = useSelector((state) => state.reserve.city);
 
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
@@ -98,9 +101,9 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
                     return (
                       <Checkbox
                         onClick={() => {
-                          dispatch(filterActions.setResidenceTypes(city.name));
+                          dispatch(reservationActions.setCity(city.name));
                         }}
-                        checked={filterFeatures.includes(city.name)}
+                        checked={filterCities.includes(city.name)}
                         key={i}
                         labelPosition="left"
                         color="yellow"

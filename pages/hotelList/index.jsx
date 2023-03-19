@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import HotelListMenu from "../../components/hotelListMenu";
 import Head from "next/head";
+import { reservation } from "../../store/reservation";
 export async function getServerSideProps({ locale }) {
   // Fetch data from the database
 
@@ -63,6 +64,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
 
   let stars = useSelector((state) => state.filter.stars);
   let filterFeatures = useSelector((state) => state.filter.features);
+  let filterCities = useSelector((state) => state.reserve.cities);
 
   const mainPageBg = useRef();
   const firstContainer = useRef();
@@ -112,6 +114,20 @@ export default function HotelList({ features, residenceTypes, cities }) {
   function filter(filterFeatures) {
     let filteredArray = initialHotels.filter((obj) =>
       obj.features.some((hobby) => filterFeatures.includes(hobby))
+    );
+
+    setHotels(filteredArray);
+    if (hotels === []) {
+      setHotels(initialHotels);
+    }
+  }
+  useEffect(() => {
+    filter(filterCities);
+  }, [filterCities]);
+
+  function filter(filterCities) {
+    let filteredArray = initialHotels.filter((obj) =>
+      obj.features.some((hobby) => filterCities.includes(hobby))
     );
 
     setHotels(filteredArray);

@@ -1,8 +1,23 @@
 import Navbar from "../../../components/Navbar";
 import Head from "next/head";
 import { reservationActions } from "../../../store/reservation/index";
-import { Tabs, Popover, TextInput, Skeleton } from "@mantine/core";
+import {
+  Tabs,
+  Popover,
+  TextInput,
+  Skeleton,
+  createStyles,
+  Paper,
+  Text,
+  Title,
+  Button,
+  useMantineTheme,
+} from "@mantine/core";
+import { IconArrowRight, IconArrowLeft } from "@tabler/icons";
+
 import { DateRangePicker } from "@mantine/dates";
+import { useMediaQuery } from "@mantine/hooks";
+
 import { supabase } from "../../../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
 import isToday from "dayjs/plugin/isToday.js";
@@ -21,7 +36,6 @@ import {
   IconWifi,
   IconWashMachine,
 } from "@tabler/icons";
-import { createStyles } from "@mantine/core";
 import Link from "next/link";
 import Image from "next/image";
 import { Suspense } from "react";
@@ -36,7 +50,56 @@ import { useDispatch, useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Comments from "../../../components/comments";
 import Reply from "../../../components/reply";
+import { Carousel } from "@mantine/carousel";
+const useStyles = createStyles((theme) => ({
+  card: {
+    height: 440,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
 
+  title: {
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontWeight: 900,
+    color: theme.white,
+    lineHeight: 1.2,
+    fontSize: 32,
+    marginTop: theme.spacing.xs,
+  },
+
+  category: {
+    color: theme.white,
+    opacity: 0.7,
+    fontWeight: 700,
+    textTransform: "uppercase",
+  },
+}));
+function Card({ image, title, category }) {
+  const { classes } = useStyles();
+
+  return (
+    <Paper
+      shadow="md"
+      p="xl"
+      radius="md"
+      sx={{ backgroundImage: `url(${image})` }}
+      className={classes.card}
+    >
+      <div>
+        <Text className={classes.category} size="xs">
+          {category}
+        </Text>
+        <Title order={3} className={classes.title}>
+          {title}
+        </Title>
+      </div>
+    </Paper>
+  );
+}
 export const getStaticPaths = async ({ locales }) => {
   const { data, error } = await supabase.from("Hotels").select();
   if (error) throw error;
@@ -87,6 +150,9 @@ export const getStaticProps = async (context) => {
 // );
 
 export default function HotelDetailPage({ hotel }) {
+  const theme = useMantineTheme();
+  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
+
   const ReserveInfoModal = dynamic(
     () => import("../../../components/reserveInfoModal"),
     {
@@ -100,8 +166,9 @@ export default function HotelDetailPage({ hotel }) {
   const [alignLeft, setAlignLeft] = useState(false);
   const { t, i18n } = useTranslation("");
   const [loading, setLoading] = useState(false);
-  const [displayImages, setDisplayImages] = useState([]);
   const [singleImage, setSingleImage] = useState("");
+  const [imageTwo, setImageTwo] = useState("");
+  const [imageThree, setImageThree] = useState("");
   const lng = i18n.language;
 
   async function changeAlignment() {
@@ -137,9 +204,7 @@ export default function HotelDetailPage({ hotel }) {
         throw error;
       }
       const url = URL.createObjectURL(data);
-      if (displayImages.indexOf(url) === -1) {
-        displayImages.push(url);
-      }
+      setImageTwo(url);
     } catch (error) {
       console.log("Error downloading image: ", error.message);
     } finally {
@@ -158,9 +223,7 @@ export default function HotelDetailPage({ hotel }) {
         throw error;
       }
       const url = URL.createObjectURL(data);
-      if (displayImages.indexOf(url) === -1) {
-        displayImages.push(url);
-      }
+      setImageThree(url);
     } catch (error) {
       console.log("Error downloading image: ", error.message);
     } finally {
@@ -285,40 +348,53 @@ export default function HotelDetailPage({ hotel }) {
               </div>
             ) : (
               <div className="flex   my-4 items-center justify-between space-x-6 h-rem22 w-full     ">
-                <div className="h-96 w-1/2 grid  justify-items-center grid-rows-2 gap-2    grid-cols-2  cursor-pointer  rounded-md">
-                  {displayImages.map((image) => {
-                    return (
-                      <Image
-                        key={image}
-                        width={300}
-                        height={400}
-                        alt=""
-                        className=" w-full h-full object-contain"
-                        src={image}
-                      />
-                    );
-                  })}
-                  {/* {displayImages.map((image) => {
-                    return (
-                      <Image
-                        key={image}
-                        width={300}
-                        height={300}
-                        alt=""
-                        className=" w-full h-full object-contain"
-                        src={image}
-                      />
-                    );
-                  })} */}
-                </div>
-                <div className="flex cursor-pointer h-96 justify-center items-center   w-1/2   rounded-md">
-                  <Image
-                    width={500}
-                    height={200}
-                    alt=""
-                    className=" h-96 w-full  object-contain rounded-md"
-                    src={singleImage}
-                  />
+                <div className="h-rem22   w-full grid  justify-center items-center   cursor-pointer  rounded-md">
+                  <Carousel
+                    slideSize="100%"
+                    breakpoints={[
+                      { maxWidth: "sm", slideSize: "100%", slideGap: 2 },
+                    ]}
+                    slideGap="xl"
+                    align="start"
+                    slidesToScroll={mobile ? 1 : 2}
+                    nextControlIcon={<IconArrowRight size={16} />}
+                    previousControlIcon={<IconArrowLeft size={16} />}
+                    loop
+                  >
+                    <Carousel.Slide>
+                      {singleImage ? (
+                        <Image
+                          className=" w-full  lg:object-contain h-rem22 lg:w-full"
+                          alt="antalia"
+                          src={singleImage}
+                          width={400}
+                          height={200}
+                        />
+                      ) : null}
+                    </Carousel.Slide>
+                    <Carousel.Slide>
+                      {imageTwo ? (
+                        <Image
+                          alt="antalia"
+                          className=" w-full lg:object-contain h-rem22 lg:w-full"
+                          src={imageTwo}
+                          width={400}
+                          height={200}
+                        />
+                      ) : null}
+                    </Carousel.Slide>
+                    <Carousel.Slide>
+                      {imageThree ? (
+                        <Image
+                          alt="antalia"
+                          className="  w-full lg:object-contain h-rem22 lg:w-full"
+                          src={imageThree}
+                          width={400}
+                          height={200}
+                        />
+                      ) : null}
+                    </Carousel.Slide>
+                  </Carousel>
                 </div>
               </div>
             )}
@@ -433,9 +509,25 @@ export default function HotelDetailPage({ hotel }) {
                         <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
                           <h1 className="text-xs"> {t("kid")} </h1>
                           <div className="flex text-blue-800 items-center justify-center space-x-5">
-                            <PlusCircle size={27} weight="fill" />
-                            <h1 className="text-xs ">1</h1>
-                            <MinusCircle size={27} weight="fill" />
+                            <PlusCircle
+                              onClick={() => {
+                                dispatch(
+                                  reservationActions.increasePassenger()
+                                );
+                              }}
+                              size={27}
+                              weight="fill"
+                            />
+                            <h1 className="text-xs font-bold">{passenger}</h1>
+                            <MinusCircle
+                              onClick={() => {
+                                dispatch(
+                                  reservationActions.decreamentPassenger()
+                                );
+                              }}
+                              size={27}
+                              weight="fill"
+                            />
                           </div>
                         </div>
                       </div>

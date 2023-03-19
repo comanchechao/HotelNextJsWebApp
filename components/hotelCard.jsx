@@ -108,14 +108,14 @@ export default function HotelCard({ hotel }) {
             : "w-96 h-full flex flex-col items-center lg:space-y-0 space-y-3 lg:items-start justify-between p-3 lg:border-l border-mainBlue"
         }`}
       >
-        <div className="flex items-center lg:flex-row flex-col justify-center space-x-2">
+        {/* <div className="flex items-center lg:flex-row flex-col justify-center space-x-2">
           <Chip defaultChecked color="green" variant="filled" size="md">
             <span className="text-xs">بالاترین درصد رضایتمندی</span>{" "}
           </Chip>
           <Chip defaultChecked color="red" variant="filled" size="md">
             <span className="text-xs">تحفیف ویژه بوتک</span>{" "}
           </Chip>
-        </div>
+        </div> */}
         <h1 className="text-center   text-lg">{hotel.title}</h1>
         <div className="flex items-center   text-sm space-x-1">
           <h2>{t("star")}</h2>
