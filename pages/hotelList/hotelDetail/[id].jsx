@@ -172,7 +172,6 @@ export default function HotelDetailPage({ hotel }) {
   const lng = i18n.language;
 
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
@@ -302,6 +301,12 @@ export default function HotelDetailPage({ hotel }) {
   let enterDate = useSelector((state) => state.reserve.enterDate);
   let exitDate = useSelector((state) => state.reserve.exitDate);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
+  let dates = [enterDate, exitDate];
+
+
+  useEffect(() => {
+    console.log(dates);
+  });
 
   return (
     <>
@@ -573,7 +578,6 @@ export default function HotelDetailPage({ hotel }) {
                 </div>
                 <div className="rounded-lg border text-sm  border-gray-300 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  ">
                   {hotel.features.map((feature, i) => {
-                    console.log(feature);
                     return (
                       <div key={i} className="flex px-3  justify-end items-end">
                         {/* <h2>
@@ -646,7 +650,6 @@ export default function HotelDetailPage({ hotel }) {
                       </Tabs.List>
                       <Tabs.Panel className="w-full" value="first" pt="xs">
                         {hotel.rooms.map((room, i) => {
-                          console.log(room);
                           return (
                             <RoomCard hotelDetail={hotel} key={i} room={room} />
                           );
@@ -655,7 +658,6 @@ export default function HotelDetailPage({ hotel }) {
 
                       <Tabs.Panel className="w-full" value="second" pt="xs">
                         {hotel.rooms.map((room, i) => {
-                          console.log(room.meal);
                           if (room.meal === "صبحانه") {
                             return (
                               <RoomCard
@@ -669,7 +671,6 @@ export default function HotelDetailPage({ hotel }) {
                       </Tabs.Panel>
                       <Tabs.Panel className="w-full" value="fourth" pt="xs">
                         {hotel.rooms.map((room, i) => {
-                          console.log(room.meal);
                           if (room.meal === "کامل") {
                             return (
                               <RoomCard
@@ -684,7 +685,6 @@ export default function HotelDetailPage({ hotel }) {
 
                       <Tabs.Panel value="third" pt="xs">
                         {hotel.rooms.map((room, i) => {
-                          console.log(room);
                           if (room.meal === "شام") {
                             return (
                               <RoomCard

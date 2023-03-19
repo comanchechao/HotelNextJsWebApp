@@ -126,9 +126,9 @@ export default function Home(props) {
     },
   };
   // You need to extend the custom locale and localeData
+  dayjs.extend(jalaliday);
   dayjs.extend(customParseFormat);
   dayjs.extend(localeData);
-  dayjs.extend(jalaliday);
 
   // Set the locale to your custom locale
   dayjs.localeData("fa", faLocale);
@@ -139,11 +139,14 @@ export default function Home(props) {
 
   useEffect(() => {
     console.log(dates);
+
     // dayjs(dates[0], { jalali: true });
     // First, you need to define the custom locale
     // Format the date using your custom locale
-    // const formattedDate = dayjs().locale("fa").format("jYYYY/MM/DD");
-    // console.log(formattedDate);
+    const formattedDate = dayjs()
+      .locale("fa")
+      .format("dddd, D MMMM jYYYY HH:mm");
+    console.log(formattedDate);
     // console.log(dayjs().locale(faFile).format("dddd, D MMMM jYYYY HH:mm"));
   });
   // set cities
@@ -370,13 +373,26 @@ export default function Home(props) {
             <Link href="/hotelList">
               <button
                 onClick={() => {
+                  console.log(
+                    dayjs(dates[0])
+                      .calendar("jalali")
+                      .locale("fa")
+                      .format("DD/MM/YYYY")
+                  );
+                  // dispatch(reservationActions.setDates(dates));
+                  // console.log(
+                  //   dayjs(dates[0])
+                  //     .calendar("jalali")
+                  //     .locale("fa")
+                  //     .format("dddd, D MMMM jYYYY HH:mm")
+                  // );
                   dispatch(
                     reservationActions.setEnterting(
                       reservationActions.setEnterting(
                         dayjs(dates[0])
                           .calendar("jalali")
                           .locale("fa")
-                          .format("DD MMMM YYYY")
+                          .format("DD/MM/YYYY")
                       )
                     )
                   );
@@ -386,7 +402,7 @@ export default function Home(props) {
                         dayjs(dates[1])
                           .calendar("jalali")
                           .locale("fa")
-                          .format("DD MMMM YYYY")
+                          .format("DD/MM/YYYY")
                       )
                     )
                   );

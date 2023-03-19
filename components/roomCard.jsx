@@ -27,14 +27,13 @@ export default function RoomCard({ room, hotelDetail }) {
   const { t, i18n } = useTranslation("");
   const lng = i18n.language;
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
   useEffect(() => {
     checkUser();
     changeAlignment();
-  });
+  }, []);
   const dispatch = useDispatch();
   {
     return (

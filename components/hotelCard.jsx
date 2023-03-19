@@ -33,38 +33,44 @@ export default function HotelCard({ hotel }) {
   }, []);
   const downloadImage1 = async () => {
     setLoading(true);
-    const { data, error } = await supabase.storage
-      .from("/public/hotel-images")
-      .download(hotel.firstImage);
+    if (hotel.firstImage) {
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.firstImage);
 
-    if (data) {
-      const url = URL.createObjectURL(data);
-      setSingleImage(url);
+      if (data) {
+        const url = URL.createObjectURL(data);
+        setSingleImage(url);
+      }
+      setLoading(false);
     }
-    setLoading(false);
   };
   const downloadImage2 = async () => {
     setLoading(true);
-    const { data, error } = await supabase.storage
-      .from("/public/hotel-images")
-      .download(hotel.secondImage);
+    if (hotel.secondImage) {
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.secondImage);
 
-    if (data) {
-      const url = URL.createObjectURL(data);
-      setImageTwo(url);
+      if (data) {
+        const url = URL.createObjectURL(data);
+        setImageTwo(url);
+      }
+      setLoading(false);
     }
-    setLoading(false);
     downloadImage3();
   };
   const downloadImage3 = async () => {
     setLoading(true);
-    const { data, error } = await supabase.storage
-      .from("/public/hotel-images")
-      .download(hotel.thirdImage);
+    if (hotel.thirdImage) {
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.thirdImage);
 
-    if (data) {
-      const url = URL.createObjectURL(data);
-      setImageThree(url);
+      if (data) {
+        const url = URL.createObjectURL(data);
+        setImageThree(url);
+      }
     }
     setLoading(false);
   };

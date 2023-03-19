@@ -5,6 +5,7 @@ export const reservation = createSlice({
   initialState: {
     enterDate: "",
     exitDate: "",
+    dates: [],
     passenger: 1,
     city: "",
     cities: [],
@@ -43,6 +44,9 @@ export const reservation = createSlice({
     },
   },
   reducers: {
+    setDates: (state, actions) => {
+      state.dates = actions.payload;
+    },
     setEnterting: (state, actions) => {
       state.enterDate = actions.payload;
     },
