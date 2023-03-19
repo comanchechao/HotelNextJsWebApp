@@ -116,6 +116,10 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
                 : cities.map((city, i) => {
                     return (
                       <Checkbox
+                        onClick={() => {
+                          dispatch(reservationActions.setCity(city.trTitle));
+                        }}
+                        checked={filterCities.includes(city.trTitle)}
                         key={i}
                         labelPosition="left"
                         color="yellow"

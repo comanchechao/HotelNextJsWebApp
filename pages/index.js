@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import calendar from "dayjs/plugin/calendar";
+
 import localeData from "dayjs/plugin/localeData";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
@@ -48,6 +48,7 @@ import { supabase } from "../lib/supabaseClient";
 import { useDispatch, useSelector } from "react-redux";
 import { reservationActions } from "../store/reservation";
 import Head from "next/head";
+import Navbar from "../components/Navbar";
 
 export async function getServerSideProps(context) {
   // Fetch data from the database
@@ -67,9 +68,7 @@ export default function Home(props) {
   const Footer = dynamic(() => import("../components/Footer"), {
     suspense: true,
   });
-  const Navbar = dynamic(() => import("../components/Navbar"), {
-    suspense: true,
-  });
+
   const HomePageCarousel = dynamic(
     () => import("../components/homePageCarousel"),
     {
@@ -151,16 +150,40 @@ export default function Home(props) {
   });
   // set cities
   const [selectedCity, setSelectedCity] = useState("");
+  const { t, i18n } = useTranslation("");
+  const lng = i18n.language;
 
   const [cityNames, setCityNames] = useState([]);
-  useEffect(() => {
+  const [alignLeft, setAlignLeft] = useState(false);
+
+  async function changeState() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
+
+  async function CityTranslate() {
     if (props.cities) {
-      props.cities.forEach((city, i) => {
-        if (cityNames.indexOf(city.name) === -1) {
-          cityNames.push(city.name);
-        }
-      });
+      if (lng === "fa") {
+        cityNames.splice(0, cityNames.length);
+
+        await props.cities.forEach((city, i) => {
+          if (cityNames.indexOf(city.name) === -1) {
+            cityNames.push(city.name);
+          }
+        });
+      } else {
+        cityNames.splice(0, cityNames.length);
+        await props.cities.forEach((city, i) => {
+          if (cityNames.indexOf(city.trTitle) === -1) {
+            cityNames.push(city.trTitle);
+          }
+        });
+      }
     }
+  }
+  useEffect(() => {
+    CityTranslate();
   }, []);
 
   const [dates, setDates] = useState([Date | null, Date | null]);
@@ -176,14 +199,6 @@ export default function Home(props) {
   const secondContainer = useRef();
   const thirdContainer = useRef();
 
-  const { t, i18n } = useTranslation("");
-  const lng = i18n.language;
-  const [alignLeft, setAlignLeft] = useState(false);
-  async function changeState() {
-    console.log(lng);
-    if (lng === "tr") await setAlignLeft(false);
-    else setAlignLeft(true);
-  }
   useEffect(() => {
     var tl = gsap.timeline();
     tl.to(mainPageBg.current, {
@@ -195,10 +210,10 @@ export default function Home(props) {
     tl.to(secondContainer.current, { opacity: "1", duration: 0.4, delay: 0.5 });
     tl.to(thirdContainer.current, { opacity: "1", duration: 0.4, delay: 0.5 });
 
+    CityTranslate();
     changeState();
-
     window.scrollTo(0, 0);
-  }, []);
+  }, [lng]);
 
   // const myDateFormatted = myDate.utc().format("MM/DD/YYYY");
   const useStyles = createStyles((theme) => ({
