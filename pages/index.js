@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-// import customParseFormat from "dayjs/plugin/customParseFormat";
-// import calendar from "dayjs/plugin/calendar";
-// import localeData from "dayjs/plugin/localeData";
-// import utc from "dayjs/plugin/utc";
-// import timezone from "dayjs/plugin/timezone";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import calendar from "dayjs/plugin/calendar";
+import localeData from "dayjs/plugin/localeData";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import dayjs from "dayjs";
 import jalaliday from "jalaliday";
-import fa from "dayjs/locale/fa";
 import Faq from "../components/Faq";
 import Link from "next/link";
 import { gsap } from "gsap";
@@ -89,7 +88,7 @@ export default function Home(props) {
       "جمعه",
       "شنبه",
     ],
-    weekStart: 6,
+    weekStart: 1,
     months: [
       "دی",
       "بهمن",
@@ -126,11 +125,13 @@ export default function Home(props) {
       LLL: "D MMMM YYYY HH:mm",
     },
   };
-
-  dayjs.extend(jalaliday);
-  dayjs.calendar("jalali");
   // You need to extend the custom locale and localeData
-  // dayjs.extend(customParseFormat);
+  dayjs.extend(customParseFormat);
+  dayjs.extend(localeData);
+  dayjs.extend(jalaliday);
+
+  // Set the locale to your custom locale
+  dayjs.localeData("fa", faLocale);
   // dayjs.extend(localeData);
 
   // Set the locale to your custom locale
@@ -160,6 +161,11 @@ export default function Home(props) {
   }, []);
 
   const [dates, setDates] = useState([Date | null, Date | null]);
+  const [choosedDate, setChoosenDate] = useState([Date | null, Date | null]);
+
+  useEffect(() => {
+    console.log(jalaliday);
+  }, [dates]);
   const theme = useMantineTheme();
   const mainPageBg = useRef();
 
@@ -258,34 +264,21 @@ export default function Home(props) {
                 size="md"
               />
               <DateRangePicker
+                locale={faLocale}
+                timeZone="iran/tehran"
                 className={`${
                   alignLeft === true
                     ? "text-3xl text-right  flex flex-col  items-end"
                     : "text-3xl text-right  flex flex-col  items-start"
                 }`}
                 dropdownType="modal"
-                locale={"fa"}
+                value={dates}
                 dropdownPosition="top-start"
                 placeholder={t("inDate")}
                 label={t("inDate")}
+                minDate={dayjs().add(9, "day").toDate()}
                 withAsterisk
-                defaultValue={dayjs().calendar("jalali")}
-                variant="default"
-                onChange={(e) => {
-                  console.log();
-                  console.log(e[0]);
-                  let enter = dayjs(e[0])
-                    .add(19, "day")
-                    .calendar("jalali")
-                    .locale("fa")
-                    .format("DD MMMM YYYY");
-                  let exit = dayjs(e[1])
-                    .add(19, "day")
-                    .calendar("jalali")
-                    .locale("fa")
-                    .format("DD MMMM YYYY");
-                  setDates([enter, exit]);
-                }}
+                onChange={setDates}
                 radius="md"
                 dayClassName={(date, modifiers) =>
                   cx({
