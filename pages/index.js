@@ -608,7 +608,7 @@ export default function Home(props) {
             <Link href="/hotelList" legacyBehavior>
               <a
                 onClick={() => {
-                  dispatch(reservationActions.setCity("تهران"));
+                  dispatch(reservationActions.setCity(t("tehran")));
                 }}
                 passHref
                 className={`${
