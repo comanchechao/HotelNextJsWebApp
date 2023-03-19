@@ -234,6 +234,7 @@ export default function HotelDetailPage({ hotel }) {
 
     downloadImage1();
     getComments(hotel);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const myDivRef = useRef(null);
   const myTopDiv = useRef(null);
@@ -292,6 +293,7 @@ export default function HotelDetailPage({ hotel }) {
     dispatch(
       reservationActions.setExiting(dayjs(exiting).format("YYYY/MM/DD"))
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entering, exiting]);
 
   const dispatch = useDispatch();
@@ -301,12 +303,7 @@ export default function HotelDetailPage({ hotel }) {
   let enterDate = useSelector((state) => state.reserve.enterDate);
   let exitDate = useSelector((state) => state.reserve.exitDate);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
-  let dates = [enterDate, exitDate];
-
-
-  useEffect(() => {
-    console.log(dates);
-  });
+  let dates = [enterDate.payload, exitDate.payload];
 
   return (
     <>

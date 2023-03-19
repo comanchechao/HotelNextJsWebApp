@@ -1,5 +1,6 @@
 import { Accordion } from "@mantine/core";
 import Link from "next/link";
+import LoginCheckModal from "./LoginCheckModal";
 import { Coffee, User, Tag } from "phosphor-react";
 import { useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
@@ -7,7 +8,6 @@ import { useTranslation } from "next-i18next";
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
 
-import LoginCheckModal from "./LoginCheckModal";
 export default function RoomCard({ room, hotelDetail }) {
   // setting reservation info
   const [alignLeft, setAlignLeft] = useState(false);
@@ -33,6 +33,7 @@ export default function RoomCard({ room, hotelDetail }) {
   useEffect(() => {
     checkUser();
     changeAlignment();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const dispatch = useDispatch();
   {

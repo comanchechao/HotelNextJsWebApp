@@ -9,7 +9,6 @@ import {
   Tabs,
   Notification,
 } from "@mantine/core";
-import sharp from "sharp";
 import {
   IconUpload,
   IconPhoto,
@@ -84,6 +83,7 @@ export default function AddHotel({ featuresData, cities, user }) {
         setMapLng(theCity.lng);
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [city]);
 
   const [meal, setMeal] = useState("");
@@ -188,6 +188,7 @@ export default function AddHotel({ featuresData, cities, user }) {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [allFeatures, setAllFeatures] = useState([]);
@@ -200,6 +201,7 @@ export default function AddHotel({ featuresData, cities, user }) {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // uploading images
@@ -219,13 +221,13 @@ export default function AddHotel({ featuresData, cities, user }) {
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
       setFirstImage(filePath);
-      const resizedImage = await sharp(file.buffer)
-        .resize({ width: 1600, height: 1200, fit: "inside" })
-        .toBuffer();
+      // const resizedImage = await sharp(file.buffer)
+      //   .resize({ width: 1600, height: 1200, fit: "inside" })
+      //   .toBuffer();
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, resizedImage);
+        .upload(filePath, file);
 
       if (uploadError) {
         throw uploadError;

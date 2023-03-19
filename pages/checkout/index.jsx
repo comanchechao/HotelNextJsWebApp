@@ -70,6 +70,7 @@ export default function Checkout(props) {
   }
   useEffect(() => {
     changeAlignment();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // getting and setting reservation info
