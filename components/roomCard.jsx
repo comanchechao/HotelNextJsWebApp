@@ -1,6 +1,6 @@
 import { Accordion } from "@mantine/core";
 import Link from "next/link";
-import LoginCheckModal from "./LoginCheckModal";
+import CheckLoginModal from "./checkLoginModal";
 import { Coffee, User, Tag } from "phosphor-react";
 import { useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
@@ -60,7 +60,7 @@ export default function RoomCard({ room, hotelDetail }) {
               </button>
             </Link>
           ) : (
-            <LoginCheckModal />
+            <CheckLoginModal />
           )}
         </div>
         <div className="h-full flex flex-col items-end justify-start  p-4 lg:w-3/4  ">
