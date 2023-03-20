@@ -237,5 +237,7 @@
   "whatsappLink": "لینک واتسپ",
   "confirmChanges": "تایید تغییرات",
 
-  "addHotelSuccess": "هتل با موفقیت اضافه شد"
+  "addHotelSuccess": "هتل با موفقیت اضافه شد",
+  "seeMap": "مشاهده روی نقشه",
+  "cancelRule": "قوانین کنسلی"
 }

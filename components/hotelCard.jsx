@@ -89,7 +89,7 @@ export default function HotelCard({ hotel }) {
           : "w-full lg:w-carousel h-auto lg:h-48 bg-white rounded-md flex lg:flex-row-reverse flex-col-reverse justify-between items-center border"
       }`}
     >
-      <div className="w-56 h-full flex flex-col p-4 items-center lg:items-center justify-center space-y-4">
+      <div className="w-56 h-full flex flex-col p-4 items-center lg:items-center justify-center space-y-2">
         <h2 className="text-mainPurple   flex items-start justify-center">
           <p className="text-sm font-bold mx-2">{t("currency")}</p>
 
@@ -110,8 +110,8 @@ export default function HotelCard({ hotel }) {
       <div
         className={`${
           alignLeft === true
-            ? "w-96 h-full flex flex-col items-center lg:space-y-0 space-y-3 lg:items-end justify-between p-3 lg:border-l border-mainBlue"
-            : "w-96 h-full flex flex-col items-center lg:space-y-0 space-y-3 lg:items-start justify-between p-3 lg:border-l border-mainBlue"
+            ? "w-96 h-full flex flex-col items-center lg:space-y-2 space-y-3 lg:items-end justify-center p-3 lg:border-l border-mainBlue"
+            : "w-96 h-full flex flex-col items-center lg:space-y-2 space-y-3 lg:items-start justify-center p-3 lg:border-l border-mainBlue"
         }`}
       >
         {/* <div className="flex items-center lg:flex-row flex-col justify-center space-x-2">

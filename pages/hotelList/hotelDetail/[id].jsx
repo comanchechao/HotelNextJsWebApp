@@ -39,7 +39,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { Suspense } from "react";
-import { PlusCircle, MinusCircle, Star } from "phosphor-react";
+import { PlusCircle, MinusCircle, Star, MapPin } from "phosphor-react";
 import ImagesModal from "../../../components/imagesModal";
 import FeaturesModal from "../../../components/FeaturesModal";
 
@@ -331,11 +331,19 @@ export default function HotelDetailPage({ hotel }) {
                   {t("singleHotel")} {hotel.title}
                 </p>
               </Link>
-              <IconChevronLeft />
+              <IconChevronLeft
+                className={`${
+                  alignLeft === true ? " " : " transform rotate-180"
+                }`}
+              />
               <p>
                 {t("hotels")} {city}
               </p>
-              <IconChevronLeft />
+              <IconChevronLeft
+                className={`${
+                  alignLeft === true ? " " : " transform rotate-180"
+                }`}
+              />
               <Link href="/">
                 <p>{t("hotelsOf")}</p>
               </Link>
@@ -409,7 +417,7 @@ export default function HotelDetailPage({ hotel }) {
             >
               {/* <ImagesModal /> */}
             </div>
-            <div className="flex w-full justify-end h-auto  ">
+            <div className="flex w-full justify-end h-auto      ">
               <div
                 className={`${
                   alignLeft === true
@@ -422,7 +430,8 @@ export default function HotelDetailPage({ hotel }) {
                 </h1>
                 <div className="flex border border-gray-300 bg-white my-3 lg:my-0 p-2 rounded-md space-x-2 justify-center items-center">
                   <div className="flex">
-                    <p className="text-sm">اول بند ، روبه روی خیابان گلشهر -</p>
+                    <MapPin size={15} weight="fill" />
+                    <p className="text-sm">{hotel.address}</p>
                   </div>
                   <div className="flex justify-center items-center space-x-1">
                     <p className="text-xs">{t("star")}</p>
@@ -432,14 +441,14 @@ export default function HotelDetailPage({ hotel }) {
                 </div>
               </div>
             </div>
-            <div className="flex   items-end lg:items-start lg:flex-row flex-col justify-center ">
+            <div className="flex     items-end lg:items-start lg:flex-row flex-col justify-center ">
               <div
                 ref={myTopDiv}
                 className="lg:flex   hidden items-start h-screen w-96 pt-8 "
               >
                 <div
                   ref={myDivRef}
-                  className=" flex   p-4 bg-white   flex-col items-center w-68  h-72 mt-10 ml-2 rounded-md border "
+                  className=" flex   p-4 bg-white   flex-col items-center w-68  h-72 mt-10  rounded-md border "
                 >
                   <DateRangePicker
                     className={`${
@@ -543,7 +552,7 @@ export default function HotelDetailPage({ hotel }) {
                           dispatch(reservationActions.setEnterting(entering));
                           dispatch(reservationActions.setExiting(exiting));
                         }}
-                        className="py-3  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-12   "
+                        className="py-1  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white mt-5 px-10   "
                       >
                         <p>{t("searchRoom")}</p>
                       </button>
@@ -552,7 +561,13 @@ export default function HotelDetailPage({ hotel }) {
                 </div>
               </div>
 
-              <div className="lg:hidden w-full items-center justify-end flex  ">
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "lg:hidden w-full items-center justify-end flex"
+                    : "lg:hidden w-full items-center justify-start flex"
+                }`}
+              >
                 <ReserveInfoModal />
               </div>
               <div className="flex flex-col w-full lg:w-4/5 mt-8  lg:pl-7 ">

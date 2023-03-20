@@ -53,7 +53,7 @@ export default function Navbar() {
   return (
     <div
       ref={boxRef}
-      className=" w-screen h-16 opacity-0 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-52"
+      className=" w-screen h-14 opacity-0 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-52"
     >
       <div className="text-base flex items-center space-x-4">
         <Link

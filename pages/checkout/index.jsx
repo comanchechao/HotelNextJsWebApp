@@ -70,7 +70,7 @@ export default function Checkout(props) {
   }
   useEffect(() => {
     changeAlignment();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // getting and setting reservation info
@@ -129,8 +129,8 @@ export default function Checkout(props) {
         <div
           className={`${
             alignLeft === true
-              ? "h-44 lg:space-y-0  lg:flex-row flex-col-reverse lg:h-24 w-full bg-white flex lg:px-7 items-center justify-center lg:justify-around"
-              : "h-44 lg:space-y-0  lg:flex-row-reverse flex-col-reverse lg:h-24 w-full bg-white flex lg:px-7 items-center justify-center lg:justify-around"
+              ? "h-44 lg:space-y-0  lg:flex-row flex-col-reverse lg:h-24 w-screen   flex lg:px-7 items-center justify-center lg:justify-around"
+              : "h-44 lg:space-y-0  lg:flex-row-reverse flex-col-reverse lg:h-24 w-screen   flex lg:px-7 items-center justify-center lg:justify-around"
           }`}
         >
           <button

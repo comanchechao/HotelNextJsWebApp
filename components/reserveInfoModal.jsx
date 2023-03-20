@@ -73,9 +73,9 @@ export default function ReserveInfoModal() {
             </Popover.Target>
             <Popover.Dropdown>
               <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
-                <h1 className="text-sm ">اتاق اول</h1>
+                <h1 className="text-sm ">{t("firstRoom")}</h1>
                 <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
-                  <h1 className="text-sm">بزرگسال(۱۲ سال به بالا)</h1>
+                  <h1 className="text-sm">{t("adult")}</h1>
                   <div className="flex text-blue-800  items-center justify-center space-x-5">
                     <PlusCircle
                       onClick={() => {
@@ -95,7 +95,7 @@ export default function ReserveInfoModal() {
                   </div>
                 </div>
                 <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
-                  <h1 className="text-sm">کودک(تا ۱۲ سال)</h1>
+                  <h1 className="text-sm">{t("kid")}</h1>
                   <div className="flex text-blue-800 items-center justify-center space-x-5">
                     <PlusCircle size={27} weight="fill" />
                     <h1 className="text-sm ">1</h1>
@@ -117,7 +117,7 @@ export default function ReserveInfoModal() {
         className="px-10 rounded-md flex items-center transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-sm font-mainFont"
         onClick={() => setOpened(true)}
       >
-        <h4>اطلاعات رزرو اتاق</h4>
+        <h4>{t("searchRoom")}</h4>
       </button>
     </div>
   );

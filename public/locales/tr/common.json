@@ -239,5 +239,8 @@
   "facebookLink": "Facebook Bağlantı",
   "confirmChanges": "Değişiklikleri onayla",
 
-  "addHotelSuccess": "Otel başarıyla eklendi"
+  "addHotelSuccess": "Otel başarıyla eklendi",
+  "seeMap": "haritada gör",
+
+  "cancelRule": "İptal kuralları"
 }

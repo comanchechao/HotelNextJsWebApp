@@ -232,14 +232,18 @@ export default function HotelList({ features, residenceTypes, cities }) {
                   : "h-auto w-full   space-x-3 flex flex-row-reverse items-center justify-end opacity-0"
               }`}
             >
-              <Link className="text-sm   items-center flex text-black" href="/">
+              <Link
+                className="text-sm  space-x-1  items-center flex text-black"
+                href="/"
+              >
                 <CaretLeft
                   className={`${
                     alignLeft === true ? " " : "transform rotate-180"
                   }`}
                   size={20}
                 />
-                {t("hotels")} {selectedCity}
+                <span>{selectedCity}</span>
+                <span>{t("hotelsOf")}</span>
               </Link>
               <Link
                 className="text-sm   items-center flex text-gray-700"

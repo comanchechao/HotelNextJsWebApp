@@ -6,18 +6,6 @@ import { supabase } from "../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
 
 export default function InfoConfirmation() {
-  const { t, i18n } = useTranslation("");
-  const lng = i18n.language;
-  const [alignLeft, setAlignLeft] = useState(false);
-  async function changeAlignment() {
-    console.log(lng);
-    if (lng === "tr") await setAlignLeft(false);
-    else setAlignLeft(true);
-  }
-  useEffect(() => {
-    changeAlignment();
-  }, []);
-
   const [seshId, setSeshId] = useState();
   //getting reservation info
   const [loading, setLoading] = useState(false);
@@ -38,6 +26,45 @@ export default function InfoConfirmation() {
     const { data, error } = await supabase.auth.getSession();
     setSeshId(data.session.user.id);
   }
+  const { t, i18n } = useTranslation("");
+  const lng = i18n.language;
+  const [alignLeft, setAlignLeft] = useState(false);
+  const [formattedEnterDate, setFormattedEnterDate] = useState(false);
+  const [formattedExitDate, setFormattedExitDate] = useState(false);
+
+  let formattedEnterDatefa = enterDate.toLocaleString("fa-IR", {
+    timeZone: "Asia/Tehran",
+    hour12: false,
+  });
+
+  let formattedExitDatefa = exitDate.toLocaleString("fa-IR", {
+    timeZone: "Asia/Tehran",
+    hour12: false,
+  });
+  let formattedEnterDatetr = enterDate.toLocaleString("tr-TR", {
+    timeZone: "Europe/Istanbul",
+    hour12: false,
+  });
+
+  let formattedExitDatetr = exitDate.toLocaleString("tr-TR", {
+    timeZone: "Europe/Istanbul",
+    hour12: false,
+  });
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") {
+      await setAlignLeft(false);
+      setFormattedEnterDate(formattedEnterDatetr);
+      setFormattedExitDate(formattedExitDatetr);
+    } else {
+      setFormattedEnterDate(formattedEnterDatefa);
+      setFormattedExitDate(formattedExitDatefa);
+      setAlignLeft(true);
+    }
+  }
+  useEffect(() => {
+    changeAlignment();
+  }, []);
 
   async function handleReservation() {
     setLoading(true);
@@ -97,25 +124,42 @@ export default function InfoConfirmation() {
               <h2>{t("exitTime")}</h2>
               <SignOut size={40} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">{JSON.stringify(enterDate)}</h1>
+            <h1 className="font text-lg">
+              {JSON.stringify(formattedEnterDate)}
+            </h1>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>{t("enterTime")}</h2>
               <SignIn size={40} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg"> {JSON.stringify(exitDate)}</h1>
+            <h1 className="font text-lg">
+              {" "}
+              {JSON.stringify(formattedExitDate)}
+            </h1>
           </div>
         </div>
-        <div className="h-full w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3">
-          <div className="flex items-center space-x-4">
+        <div
+          className={`${
+            alignLeft === true
+              ? "h-full w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3"
+              : "h-full w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-start lg:justify-start space-y-3"
+          }`}
+        >
+          <div
+            className={`${
+              alignLeft === true
+                ? "flex items-center flex-col"
+                : "flex items-center flex-col"
+            }`}
+          >
+            <h1 className="text-xl font-bold">
+              {t("singleHotel")} {hotelInfo.title}
+            </h1>
             <h2 className="flex items-center">
               {hotelInfo.stars} {t("star")}
               <Star className="mx-2" size={19} color="#e0ab19" weight="fill" />
             </h2>
-            <h1 className="text-xl font-bold">
-              {t("singleHotel")} {hotelInfo.title}
-            </h1>
           </div>
           <h2>{hotelInfo.address}</h2>
         </div>
