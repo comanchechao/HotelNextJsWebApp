@@ -49,6 +49,8 @@ export default function LoginModal() {
   async function getSetUser() {
     const { data: user, error } = await supabase.auth.getSession();
 
+    if (error) throw error;
+
     if (user.session) {
       SetisLogged(true);
       const { data: userRole, error6 } = await supabase

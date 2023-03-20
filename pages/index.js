@@ -227,6 +227,10 @@ export default function Home(props) {
   let passenger = useSelector((state) => state.reserve.passenger);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    console.log(dates);
+  });
+
   return (
     <>
       <Head>
@@ -296,7 +300,19 @@ export default function Home(props) {
                 label={t("inDate")}
                 minDate={dayjs().add(9, "day").toDate()}
                 withAsterisk
-                onChange={setDates}
+                onChange={(e) => {
+                  setDates(e);
+                  dispatch(
+                    reservationActions.setEnterting(
+                      dayjs(e[0]).locale("fa").format("dddd, D MMMM YYYY")
+                    )
+                  );
+                  dispatch(
+                    reservationActions.setExiting(
+                      dayjs(e[1]).locale("fa").format("dddd, D MMMM YYYY")
+                    )
+                  );
+                }}
                 radius="md"
                 dayClassName={(date, modifiers) =>
                   cx({
@@ -388,12 +404,6 @@ export default function Home(props) {
             <Link href="/hotelList">
               <button
                 onClick={() => {
-                  console.log(
-                    dayjs(dates[0])
-                      .calendar("jalali")
-                      .locale("fa")
-                      .format("DD/MM/YYYY")
-                  );
                   // dispatch(reservationActions.setDates(dates));
                   // console.log(
                   //   dayjs(dates[0])
@@ -401,26 +411,6 @@ export default function Home(props) {
                   //     .locale("fa")
                   //     .format("dddd, D MMMM jYYYY HH:mm")
                   // );
-                  dispatch(
-                    reservationActions.setEnterting(
-                      reservationActions.setEnterting(
-                        dayjs(dates[0])
-                          .calendar("jalali")
-                          .locale("fa")
-                          .format("DD/MM/YYYY")
-                      )
-                    )
-                  );
-                  dispatch(
-                    reservationActions.setEnterting(
-                      reservationActions.setEnterting(
-                        dayjs(dates[1])
-                          .calendar("jalali")
-                          .locale("fa")
-                          .format("DD/MM/YYYY")
-                      )
-                    )
-                  );
                   dispatch(reservationActions.setCity(selectedCity));
                 }}
                 className="px-14 rounded-lg transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont"
