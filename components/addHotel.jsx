@@ -9,6 +9,7 @@ import {
   Tabs,
   Notification,
 } from "@mantine/core";
+import { TimeInput } from "@mantine/dates";
 import {
   IconUpload,
   IconPhoto,
@@ -623,7 +624,7 @@ export default function AddHotel({ featuresData, cities, user }) {
                     setExitingHours(e.target.value);
                   }}
                   className="py-2 text-right font-mainFont px-2 w-20 rounded-md  bg-gray-200"
-                  type="text"
+                  type="time"
                   name="exiting hour"
                 />
               </div>
@@ -634,7 +635,7 @@ export default function AddHotel({ featuresData, cities, user }) {
                     setEnteringHours(e.target.value);
                   }}
                   className="py-2 text-right font-mainFont px-2 w-20 rounded-md   bg-gray-200"
-                  type="text"
+                  type="time"
                   name="entering hour"
                 />
               </div>

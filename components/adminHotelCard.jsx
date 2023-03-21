@@ -93,11 +93,11 @@ export default function AdminHotelCard({ hotel, user, features, cities }) {
         </h2>
         <EditHotel
           identifier={hotel.id}
+          hotel={hotel}
           user={user}
           featuresData={features}
           cities={cities}
         />
-        <p className="text-gray-500 text-xs">Ana Hotel ساخته شده توسط</p>
       </div>
 
       <div

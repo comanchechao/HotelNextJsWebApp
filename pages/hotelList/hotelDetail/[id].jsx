@@ -309,7 +309,7 @@ export default function HotelDetailPage({ hotel }) {
     <>
       <Head>
         <title>
-          {hotel.city} , {hotel.title} , {t("boutak")} , {t("seo")}
+          {city} , {hotel.title} , {t("boutak")} , {t("seo")}
         </title>
         <meta name="description" content={t("description")} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -317,7 +317,7 @@ export default function HotelDetailPage({ hotel }) {
       </Head>
       <div className="w-full h-full">
         <Navbar />
-        <div className="flex w-full lg:py-20  lg:px-44 h-full bg-mainWhite">
+        <div className="flex w-full lg:py-20  lg:px-44 h-full bg-mainWhite capitalize">
           <div className="flex flex-col p-5 w-full h-full   space-y-11">
             <div
               className={`${
@@ -337,7 +337,7 @@ export default function HotelDetailPage({ hotel }) {
                 }`}
               />
               <p>
-                {t("hotels")} {city}
+                {city} {t("hotels")}
               </p>
               <IconChevronLeft
                 className={`${
@@ -345,7 +345,7 @@ export default function HotelDetailPage({ hotel }) {
                 }`}
               />
               <Link href="/">
-                <p>{t("hotelsOf")}</p>
+                <p>{t("hotelsOf")} </p>
               </Link>
             </div>
             {loading ? (

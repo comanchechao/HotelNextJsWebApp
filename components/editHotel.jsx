@@ -5,7 +5,6 @@ import {
   MultiSelect,
   Rating,
   Loader,
-  Group,
   Tabs,
 } from "@mantine/core";
 import {
@@ -29,7 +28,13 @@ import { X, Buildings } from "phosphor-react";
 //   ssr: false,
 //   Suspense: true,
 // });
-export default function EditHotel({ identifier, featuresData, cities, user }) {
+export default function EditHotel({
+  identifier,
+  featuresData,
+  cities,
+  user,
+  hotel,
+}) {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   const [opened, setOpened] = useState(false);
@@ -451,7 +456,7 @@ export default function EditHotel({ identifier, featuresData, cities, user }) {
                 className=" py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                 type="text"
                 name="title"
-                placeholder={t("enterHotelName")}
+                placeholder={hotel.title}
               />
             </div>
             <div className="flex   w-full h-full text-right justify-center items-center">
@@ -465,7 +470,12 @@ export default function EditHotel({ identifier, featuresData, cities, user }) {
                 >
                   {t("editHotelStars")}
                 </h3>
-                <Rating value={value} onChange={setValue} size="xl" count={5} />
+                <Rating
+                  value={hotel.stars}
+                  onChange={setValue}
+                  size="xl"
+                  count={5}
+                />
               </div>
             </div>
             <div
@@ -486,7 +496,7 @@ export default function EditHotel({ identifier, featuresData, cities, user }) {
                 className=" py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                 type="text"
                 name="title"
-                placeholder={t("enterHotelAdd")}
+                placeholder={hotel.address}
               />
             </div>
             <div
@@ -508,7 +518,7 @@ export default function EditHotel({ identifier, featuresData, cities, user }) {
                 placeholder={t("enterCity")}
                 size="md"
                 required
-                value={city}
+                value={hotel.city}
                 onChange={setCity}
                 searchable
                 className="text-right  w-full"
@@ -559,7 +569,7 @@ export default function EditHotel({ identifier, featuresData, cities, user }) {
                 className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                 type="number"
                 name="price"
-                placeholder={t("enterPrice")}
+                placeholder={hotel.prices}
               />
             </div>{" "}
             <div
@@ -591,7 +601,7 @@ export default function EditHotel({ identifier, featuresData, cities, user }) {
                     setExitingHours(e.target.value);
                   }}
                   className="py-2 text-right font-mainFont px-2 w-20 rounded-md  bg-gray-200"
-                  type="text"
+                  type="time"
                   name="exiting hour"
                 />
               </div>
@@ -602,8 +612,9 @@ export default function EditHotel({ identifier, featuresData, cities, user }) {
                     setEnteringHours(e.target.value);
                   }}
                   className="py-2 text-right font-mainFont px-2 w-20 rounded-md   bg-gray-200"
-                  type="text"
+                  type="time"
                   name="entering hour"
+                  value={hotel.exitTime}
                 />
               </div>
             </div>

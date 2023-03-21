@@ -77,16 +77,14 @@ export default function FeaturesModal() {
           </div>
         </div>
       </Modal>
-      <Group position="start" className="flex justify-center items-center w-24">
-        <h1
-          onClick={() => {
-            setOpened(true);
-          }}
-          className="  text-mainPurple my-4  text-sm cursor-pointer hover:text-blue-800"
-        >
-          {t("seeAll")}
-        </h1>
-      </Group>
+      <h1
+        onClick={() => {
+          setOpened(true);
+        }}
+        className="  text-mainPurple my-4  text-sm cursor-pointer hover:text-blue-800"
+      >
+        {t("seeAll")}
+      </h1>
     </div>
   );
 }
