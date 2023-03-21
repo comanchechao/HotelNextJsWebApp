@@ -263,9 +263,9 @@ export default function Home(props) {
         <div className="w-full h-auto lg:h-72 lg:px-44 z-40">
           <div
             ref={firstContainer}
-            className="w-full opacity-0 z-30 h-full flex flex-col items-center justify-center space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-lg p-14  "
+            className="w-full opacity-0 z-30 h-full flex flex-col items-center justify-center lg:space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-lg p-14  "
           >
-            <div className="flex w-full   h-full items-end flex-col lg:flex-row-reverse justify-around mb-10 lg:space-y-0 space-y-4   ">
+            <div className="flex w-full   h-full items-center  flex-col lg:flex-row-reverse justify-center lg:justify-around mb-10 lg:space-y-0 space-y-4   ">
               <Select
                 dropdownPosition="top"
                 className={`${
@@ -597,7 +597,7 @@ export default function Home(props) {
             <Link href="/hotelList" legacyBehavior>
               <a
                 onClick={() => {
-                  dispatch(reservationActions.setCity(t("tehran")));
+                  dispatch(reservationActions.setCity("تهران"));
                 }}
                 passHref
                 className={`${

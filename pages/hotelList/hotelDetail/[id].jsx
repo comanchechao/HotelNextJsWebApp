@@ -23,26 +23,14 @@ import { useMediaQuery } from "@mantine/hooks";
 import { supabase } from "../../../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
 import isToday from "dayjs/plugin/isToday.js";
-import utc from "dayjs/plugin/utc.js";
-import timezone from "dayjs/plugin/timezone.js";
 import dayjs from "dayjs";
 import jalaliday from "jalaliday";
-import {
-  IconChevronLeft,
-  IconStar,
-  IconBarbell,
-  IconCoffee,
-  IconChefHat,
-  IconHotelService,
-  IconBath,
-  IconWifi,
-  IconWashMachine,
-} from "@tabler/icons";
+import { IconChevronLeft } from "@tabler/icons";
 import Link from "next/link";
 import Image from "next/image";
-import { Suspense } from "react";
 import { PlusCircle, MinusCircle, Star, MapPin } from "phosphor-react";
-import ImagesModal from "../../../components/imagesModal";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import FeaturesModal from "../../../components/FeaturesModal";
 
 import dynamic from "next/dynamic";
@@ -215,7 +203,9 @@ export default function HotelDetailPage({ hotel }) {
   };
   dayjs.extend(customParseFormat);
   dayjs.extend(localeData);
-
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  dayjs.tz.setDefault("Asia/Tehran");
   // Set the locale to your custom locale
   dayjs.localeData("fa", faLocale);
 

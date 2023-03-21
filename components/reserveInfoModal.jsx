@@ -1,17 +1,98 @@
 import { Modal } from "@mantine/core";
-import { useState } from "react";
-import { Popover, TextInput } from "@mantine/core";
+import { useState, useEffect } from "react";
+import {
+  Popover,
+  TextInput,
+  useMantineTheme,
+  createStyles,
+} from "@mantine/core";
 import { PlusCircle, MinusCircle } from "phosphor-react";
-import { DatePicker } from "@mantine/dates";
+import { DateRangePicker } from "@mantine/dates";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "next-i18next";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import localeData from "dayjs/plugin/localeData";
+import dayjs from "dayjs";
+import jalaliday from "jalaliday";
+import { reservationActions } from "../store/reservation";
 
 export default function ReserveInfoModal() {
   const [opened, setOpened] = useState(false);
   const [entering, setEntering] = useState(null);
   const [exiting, setExiting] = useState(null);
-  const { t } = useTranslation("");
+  const [alignLeft, setAlignLeft] = useState(false);
+  const theme = useMantineTheme();
 
+  const { t, i18n } = useTranslation("");
+  const lng = i18n.language;
+  async function changeAlignment() {
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
+  const faLocale = {
+    name: "fa",
+    weekdays: [
+      "یک‌شنبه",
+      "دوشنبه",
+      "سه‌شنبه",
+      "چهارشنبه",
+      "پنج‌شنبه",
+      "جمعه",
+      "شنبه",
+    ],
+    weekStart: 1,
+    months: [
+      "دی",
+      "بهمن",
+      "اسفند",
+      "فروردین",
+      "اردیبهشت",
+      "خرداد",
+      "تیر",
+      "مرداد",
+      "شهریور",
+      "مهر",
+      "آبان",
+      "آذر",
+    ],
+    relativeTime: {
+      future: "%s بعد",
+      past: "%s قبل",
+      s: "چند ثانیه",
+      m: "1 دقیقه",
+      mm: "%d دقیقه",
+      h: "1 ساعت",
+      hh: "%d ساعت",
+      d: "1 روز",
+      dd: "%d روز",
+      M: "1 ماه",
+      MM: "%d ماه",
+      y: "1 سال",
+      yy: "%d سال",
+    },
+    formats: {
+      L: "DD/MM/YYYY",
+      LTS: "HH:mm:ss",
+      LLLL: "dddd, D MMMM YYYY HH:mm",
+      LLL: "D MMMM YYYY HH:mm",
+    },
+  };
+  useEffect(() => {
+    changeAlignment();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  dayjs.extend(customParseFormat);
+  dayjs.extend(localeData);
+  const useStyles = createStyles((theme) => ({
+    firstInRange: {
+      color: `${theme.colors.blue[6]} !important`,
+    },
+  }));
+  const { classes, cx } = useStyles();
+
+  // Set the locale to your custom locale
+  dayjs.localeData("fa", faLocale);
   const dispatch = useDispatch();
   let city = useSelector((state) => state.reserve.city);
   let passenger = useSelector((state) => state.reserve.passenger);
@@ -29,32 +110,28 @@ export default function ReserveInfoModal() {
         centered
       >
         <div className="w-full h-full flex flex-col items-center justify-center">
-          <DatePicker
-            locale="fa"
-            onChange={setEntering}
-            defaultValue={enterDate}
-            inputFormat="MM/DD/YYYY"
-            dropdownPosition="bottom-start"
-            className="text-4xl text-center flex flex-col items-end"
+          <DateRangePicker
+            value={[enterDate, exitDate]}
+            locale={faLocale}
+            timeZone="iran/tehran"
+            className={`${
+              alignLeft === true
+                ? "text-3xl text-right  flex flex-col  items-end"
+                : "text-3xl text-right  flex flex-col  items-start"
+            }`}
+            dropdownType="modal"
+            minDate={dayjs()}
+            dropdownPosition="top-start"
             placeholder={t("inDate")}
             label={t("inDate")}
             withAsterisk
             variant="default"
             radius="md"
-            size="md"
-          />
-          <DatePicker
-            locale="fa"
-            onChange={setExiting}
-            defaultValue={exitDate}
-            inputFormat="MM/DD/YYYY"
-            dropdownPosition="bottom-start"
-            className="text-4xl text-center flex flex-col items-end"
-            placeholder={t("inDate")}
-            label={t("inDate")}
-            withAsterisk
-            variant="default"
-            radius="md"
+            dayClassName={(date, modifiers) =>
+              cx({
+                [classes.firstInRange]: modifiers.outside,
+              })
+            }
             size="md"
           />
           <Popover width={300} position="bottom" withArrow shadow="md">

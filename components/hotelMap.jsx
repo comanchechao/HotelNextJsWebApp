@@ -4,9 +4,11 @@ import { Marker, DraggableMarker, render, Popup } from "react-leaflet";
 import { useEffect, useState } from "react";
 import { Group, Modal } from "@mantine/core";
 import { useTranslation } from "next-i18next";
+import { useMediaQuery } from "@mantine/hooks";
 
 export default function HotelMaps({ lat, lng }) {
   const { t } = useTranslation();
+  const isMobile = useMediaQuery("(max-width: 50em)");
 
   const center = {
     lat: 35.7,
@@ -25,7 +27,7 @@ export default function HotelMaps({ lat, lng }) {
         opened={opened}
         onClose={() => setOpened(false)}
         centered
-        title="hotel display"
+        fullScreen={isMobile}
       >
         {" "}
         <MapContainer

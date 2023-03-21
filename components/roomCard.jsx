@@ -41,11 +41,11 @@ export default function RoomCard({ room, hotelDetail }) {
       <div
         className={`${
           alignLeft === true
-            ? " flex border border-gray-300 bg-white lg:flex-row flex-col justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-44"
-            : "flex border border-gray-300 bg-white lg:flex-row-reverse flex-col justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-44"
+            ? " flex border border-gray-300 bg-white lg:flex-row flex-col-reverse justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-44"
+            : "flex border border-gray-300 bg-white lg:flex-row-reverse flex-col-reverse justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-44"
         }`}
       >
-        <div className="h-full lg:w-1/4 flex flex-col items-center justify-around py-8 ">
+        <div className="h-full lg:w-1/4 flex flex-col items-center justify-around py-8 lg:border-t-0  border-t-2 border-mainBlue">
           <div className="flex space-x-1 p-2 justify-center items-center">
             <h2>{t("currency")}</h2>
             <h2 className="  text-xl text-mainPurple">
