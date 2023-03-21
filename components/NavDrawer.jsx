@@ -1,7 +1,7 @@
 import { Drawer, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
-
+import { useSelector } from "react-redux";
 import {
   List,
   House,
@@ -15,7 +15,7 @@ import {
 import Link from "next/link";
 export default function NavDrawer() {
   const { t } = useTranslation("common");
-
+  let isManager = useSelector((state) => state.user.isManager);
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
   return (
@@ -63,20 +63,24 @@ export default function NavDrawer() {
           </Link>
           <Link
             href="/contactUs"
-            className=" flex border-2 border-dashed  border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
-          >
-            <h4>{t("contactUs")}</h4>
-            <Question className="ml-1" size={24} weight="light" />
-          </Link>
-          <Link
-            href="/admin"
-            className=" flex border-2 border-dashed bg-mainBlue border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
             <a passHref className=" ">
-              {t("admin")}
+              {t("contactUs")}
             </a>
-            <IdentificationCard className="mx-1" weight="light" size={30} />
+            <Scroll className="mx-2" size={24} weight="light" />
           </Link>
+          {isManager ? (
+            <Link
+              href="/admin"
+              className=" flex border-2 border-dashed bg-mainBlue border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            >
+              <a passHref className=" ">
+                {t("admin")}
+              </a>
+              <IdentificationCard className="mx-1" weight="light" size={30} />
+            </Link>
+          ) : null}
         </div>
       </Drawer>
       <button

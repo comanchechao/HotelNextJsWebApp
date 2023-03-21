@@ -69,7 +69,6 @@ export default function AdminHotelCard({ hotel, user, features, cities }) {
   };
 
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
