@@ -54,32 +54,26 @@ export async function getServerSideProps(context) {
   if (userRole[0].role !== "admin" && userRole[0].role !== "colleage") {
     throw new Error("you are not authorized");
   }
+  const { data: cities, error2 } = await supabase.from("cities").select();
+  const { data: residenceTypes, error4 } = await supabase
+    .from("residenceTypes")
+    .select();
+
+  const { data: features, error3 } = await supabase
+    .from("features")
+    .select("title");
   return {
     props: {
+      cities: cities,
+      residenceTypes: residenceTypes,
+      features: features,
       user: user.user,
       ...(await serverSideTranslations(context.locale, ["common"])),
     },
   };
 }
 
-export default function AdminPage({ user }) {
-  const [cities, setCities] = useState([]);
-  const [features, setFeatures] = useState([]);
-  const [residenceTypes, setResidenceTypes] = useState([]);
-
-  async function getData() {
-    const { data: cities, error2 } = await supabase.from("cities").select();
-    const { data: residenceTypes, error4 } = await supabase
-      .from("residenceTypes")
-      .select();
-
-    const { data: features, error3 } = await supabase
-      .from("features")
-      .select("title");
-    setFeatures(features);
-    setCities(cities);
-    setResidenceTypes(residenceTypes);
-  }
+export default function AdminPage({ user, cities, features, residenceTypes }) {
   const [hotelIds, setHotelIds] = useState([]);
   const [hotels, setHotels] = useState([]);
 
@@ -95,7 +89,6 @@ export default function AdminPage({ user }) {
   useEffect(() => {
     changeAlignment();
     getHotels();
-    getData();
 
     if (hotels) {
       hotels.forEach((hotel, i) => {

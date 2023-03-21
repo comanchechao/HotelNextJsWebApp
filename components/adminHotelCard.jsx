@@ -31,41 +31,47 @@ export default function AdminHotelCard({ hotel, user, features, cities }) {
     downloadImage2();
   }, []);
   const downloadImage1 = async () => {
-    setLoading(true);
-    const { data, error } = await supabase.storage
-      .from("/public/hotel-images")
-      .download(hotel.firstImage);
+    if (hotel.firstImage) {
+      setLoading(true);
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.firstImage);
 
-    if (data) {
-      const url = URL.createObjectURL(data);
-      setSingleImage(url);
+      if (data) {
+        const url = URL.createObjectURL(data);
+        setSingleImage(url);
+      }
+      setLoading(false);
     }
-    setLoading(false);
   };
   const downloadImage2 = async () => {
-    setLoading(true);
-    const { data, error } = await supabase.storage
-      .from("/public/hotel-images")
-      .download(hotel.secondImage);
+    if (hotel.secondImage) {
+      setLoading(true);
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.secondImage);
 
-    if (data) {
-      const url = URL.createObjectURL(data);
-      setImageTwo(url);
+      if (data) {
+        const url = URL.createObjectURL(data);
+        setImageTwo(url);
+      }
+      setLoading(false);
     }
-    setLoading(false);
     downloadImage3();
   };
   const downloadImage3 = async () => {
-    setLoading(true);
-    const { data, error } = await supabase.storage
-      .from("/public/hotel-images")
-      .download(hotel.thirdImage);
+    if (hotel.thirdImage) {
+      setLoading(true);
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.thirdImage);
 
-    if (data) {
-      const url = URL.createObjectURL(data);
-      setImageThree(url);
+      if (data) {
+        const url = URL.createObjectURL(data);
+        setImageThree(url);
+      }
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   async function changeAlignment() {

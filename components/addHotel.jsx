@@ -9,11 +9,8 @@ import {
   Tabs,
   Notification,
 } from "@mantine/core";
-import { TimeInput } from "@mantine/dates";
 import {
   IconUpload,
-  IconPhoto,
-  IconMessageCircle,
   IconCirclePlus,
   IconTrash,
   IconCircleMinus,
@@ -21,9 +18,6 @@ import {
 import dynamic from "next/dynamic.js";
 import { supabase } from "../lib/supabaseClient";
 import { useSelector, useDispatch } from "react-redux";
-import { roomActions } from "../store/room";
-import AddRoom from "./addRoom";
-import { Suspense } from "react";
 import { useTranslation } from "next-i18next";
 
 import { X, Buildings } from "phosphor-react";
@@ -140,7 +134,7 @@ export default function AddHotel({
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [city]);
+  }, []);
 
   const [meal, setMeal] = useState("");
 
@@ -215,6 +209,9 @@ export default function AddHotel({
       prices: avragePrice,
       stars: value,
       rooms: rooms,
+      address: address,
+      enterTime: enteringHours,
+      exitTime: exitingHours,
       locationLat: getlat,
       locationLng: getLng,
       firstLocation: {
@@ -241,15 +238,19 @@ export default function AddHotel({
         residenceTypesName.splice(0, residenceTypesName.length);
 
         await residenceTypes.forEach((residenceType, i) => {
-          if (residenceTypesName.indexOf(residenceType.name) === -1) {
-            residenceTypesName.push(residenceType.name);
+          if (residenceTypesName.indexOf(residenceType.title) === -1) {
+            if (residenceType.title) {
+              residenceTypesName.push(residenceType.title);
+            }
           }
         });
       } else {
         residenceTypesName.splice(0, residenceTypesName.length);
         await residenceTypes.forEach((residenceType, i) => {
           if (residenceTypesName.indexOf(residenceType.trTitle) === -1) {
-            residenceTypesName.push(residenceType.trTitle);
+            if (residenceType.trTitle) {
+              residenceTypesName.push(residenceType.trTitle);
+            }
           }
         });
       }
@@ -262,14 +263,18 @@ export default function AddHotel({
 
         await cities.forEach((city, i) => {
           if (cityNames.indexOf(city.name) === -1) {
-            cityNames.push(city.name);
+            if (city.name) {
+              cityNames.push(city.name);
+            }
           }
         });
       } else {
         cityNames.splice(0, cityNames.length);
         await cities.forEach((city, i) => {
           if (cityNames.indexOf(city.trTitle) === -1) {
-            cityNames.push(city.trTitle);
+            if (city.trTitle) {
+              cityNames.push(city.trTitle);
+            }
           }
         });
       }
@@ -284,6 +289,7 @@ export default function AddHotel({
   const [allFeatures, setAllFeatures] = useState([]);
 
   useEffect(() => {
+    console.log(cities);
     if (featuresData) {
       featuresData.forEach((feature, i) => {
         if (allFeatures.indexOf(feature.title) === -1) {
@@ -291,6 +297,17 @@ export default function AddHotel({
         }
       });
     }
+    // if (cities) {
+    //   cities.forEach((city, i) => {
+    //     if (cityNames.indexOf(city.title) === -1) {
+    //       if(city.title){
+    //         cityNames.push(city.title);
+    //       }
+    //     }
+    //   });
+
+    //   console.log(cityNames);
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
