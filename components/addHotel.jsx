@@ -209,11 +209,10 @@ export default function AddHotel({
       prices: avragePrice,
       stars: value,
       rooms: rooms,
+      hotelAbout: aboutHotel,
       address: address,
       enterTime: enteringHours,
       exitTime: exitingHours,
-      locationLat: getlat,
-      locationLng: getLng,
       firstLocation: {
         name: marker2,
         lat: lat2,
@@ -754,6 +753,7 @@ export default function AddHotel({
                 <input
                   onChange={(e) => {
                     setExitingHours(e.target.value);
+                    console.log(exitingHours);
                   }}
                   className="py-2 text-right font-mainFont px-2 w-20 rounded-md  bg-gray-200"
                   type="time"
