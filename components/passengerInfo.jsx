@@ -41,33 +41,11 @@ export default function PassengerInfo() {
   const [formattedEnterDate, setFormattedEnterDate] = useState(false);
   const [formattedExitDate, setFormattedExitDate] = useState(false);
 
-  let formattedEnterDatefa = enterDate.toLocaleString("fa-IR", {
-    timeZone: "Asia/Tehran",
-    hour12: false,
-  });
-
-  let formattedExitDatefa = exitDate.toLocaleString("fa-IR", {
-    timeZone: "Asia/Tehran",
-    hour12: false,
-  });
-  let formattedEnterDatetr = enterDate.toLocaleString("tr-TR", {
-    timeZone: "Europe/Istanbul",
-    hour12: false,
-  });
-
-  let formattedExitDatetr = exitDate.toLocaleString("tr-TR", {
-    timeZone: "Europe/Istanbul",
-    hour12: false,
-  });
   async function changeAlignment() {
     console.log(lng);
     if (lng === "tr") {
-      await setAlignLeft(false);
-      setFormattedEnterDate(formattedEnterDatetr);
-      setFormattedExitDate(formattedExitDatetr);
+      setAlignLeft(false);
     } else {
-      setFormattedEnterDate(formattedEnterDatefa);
-      setFormattedExitDate(formattedExitDatefa);
       setAlignLeft(true);
     }
   }
@@ -154,19 +132,14 @@ export default function PassengerInfo() {
               <h2>{t("exitTime")}</h2>
               <SignOut size={40} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">
-              {JSON.stringify(formattedEnterDate)}
-            </h1>
+            <h1 className="font text-lg">{enterDate}</h1>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>{t("enterTime")}</h2>
               <SignIn size={40} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">
-              {" "}
-              {JSON.stringify(formattedExitDate)}
-            </h1>
+            <h1 className="font text-lg"> {exitDate}</h1>
           </div>
         </div>
         <div

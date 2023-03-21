@@ -1,5 +1,7 @@
 import Navbar from "../../../components/Navbar";
 import Head from "next/head";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import localeData from "dayjs/plugin/localeData";
 import { reservationActions } from "../../../store/reservation/index";
 import {
   Tabs,
@@ -163,6 +165,60 @@ export default function HotelDetailPage({ hotel }) {
     suspense: true,
   });
 
+  const faLocale = {
+    name: "fa",
+    weekdays: [
+      "یک‌شنبه",
+      "دوشنبه",
+      "سه‌شنبه",
+      "چهارشنبه",
+      "پنج‌شنبه",
+      "جمعه",
+      "شنبه",
+    ],
+    weekStart: 1,
+    months: [
+      "دی",
+      "بهمن",
+      "اسفند",
+      "فروردین",
+      "اردیبهشت",
+      "خرداد",
+      "تیر",
+      "مرداد",
+      "شهریور",
+      "مهر",
+      "آبان",
+      "آذر",
+    ],
+    relativeTime: {
+      future: "%s بعد",
+      past: "%s قبل",
+      s: "چند ثانیه",
+      m: "1 دقیقه",
+      mm: "%d دقیقه",
+      h: "1 ساعت",
+      hh: "%d ساعت",
+      d: "1 روز",
+      dd: "%d روز",
+      M: "1 ماه",
+      MM: "%d ماه",
+      y: "1 سال",
+      yy: "%d سال",
+    },
+    formats: {
+      L: "DD/MM/YYYY",
+      LTS: "HH:mm:ss",
+      LLLL: "dddd, D MMMM YYYY HH:mm",
+      LLL: "D MMMM YYYY HH:mm",
+    },
+  };
+  dayjs.extend(customParseFormat);
+  dayjs.extend(localeData);
+
+  // Set the locale to your custom locale
+  dayjs.localeData("fa", faLocale);
+
   const [alignLeft, setAlignLeft] = useState(false);
   const { t, i18n } = useTranslation("");
   const [loading, setLoading] = useState(false);
@@ -281,20 +337,8 @@ export default function HotelDetailPage({ hotel }) {
   // getting reservtion info
 
   dayjs.extend(jalaliday);
-  dayjs.calendar("jalali");
-
   const [entering, setEntering] = useState(null);
   const [exiting, setExiting] = useState(null);
-
-  useEffect(() => {
-    dispatch(
-      reservationActions.setEnterting(dayjs(entering).format("YYYY/MM/DD"))
-    );
-    dispatch(
-      reservationActions.setExiting(dayjs(exiting).format("YYYY/MM/DD"))
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [entering, exiting]);
 
   const dispatch = useDispatch();
   let city = useSelector((state) => state.reserve.city);
@@ -303,7 +347,11 @@ export default function HotelDetailPage({ hotel }) {
   let enterDate = useSelector((state) => state.reserve.enterDate);
   let exitDate = useSelector((state) => state.reserve.exitDate);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
-  let dates = [enterDate.payload, exitDate.payload];
+  let dates = [enterDate, exitDate];
+
+  useEffect(() => {
+    console.log(dates);
+  });
 
   return (
     <>
@@ -451,14 +499,15 @@ export default function HotelDetailPage({ hotel }) {
                   className=" flex   p-4 bg-white   flex-col items-center w-68  h-72 mt-10  rounded-md border "
                 >
                   <DateRangePicker
+                    value={[enterDate, exitDate]}
+                    locale={faLocale}
+                    timeZone="iran/tehran"
                     className={`${
                       alignLeft === true
                         ? "text-3xl text-right  flex flex-col  items-end"
                         : "text-3xl text-right  flex flex-col  items-start"
                     }`}
                     dropdownType="modal"
-                    locale="fa"
-                    defaultValue={!entering}
                     minDate={dayjs()}
                     dropdownPosition="top-start"
                     placeholder={t("inDate")}
@@ -549,8 +598,6 @@ export default function HotelDetailPage({ hotel }) {
                       <button
                         onClick={() => {
                           dispatch(reservationActions.setHotelInfo(hotel));
-                          dispatch(reservationActions.setEnterting(entering));
-                          dispatch(reservationActions.setExiting(exiting));
                         }}
                         className="py-1  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white mt-5 px-10   "
                       >
