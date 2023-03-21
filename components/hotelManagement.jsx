@@ -26,7 +26,13 @@ const AddHotel = dynamic(() => import("./addHotel"));
 const HotelMap = dynamic(() => import("./hotelMap"), {
   ssr: false,
 });
-export default function HotelManagement({ cities, features, user, hotels }) {
+export default function HotelManagement({
+  cities,
+  features,
+  user,
+  hotels,
+  residenceTypes,
+}) {
   const { t, i18n } = useTranslation("common");
 
   return (
@@ -116,7 +122,12 @@ export default function HotelManagement({ cities, features, user, hotels }) {
           </Tabs.Panel>
         </Tabs>
         <div className="lg:absolute right-8 bottom-3   fixed">
-          <AddHotel user={user} featuresData={features} cities={cities} />
+          <AddHotel
+            user={user}
+            featuresData={features}
+            cities={cities}
+            residenceTypes={residenceTypes}
+          />
         </div>
       </div>
     </div>

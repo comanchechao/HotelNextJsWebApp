@@ -31,7 +31,12 @@ import { X, Buildings } from "phosphor-react";
 //   ssr: false,
 //   Suspense: true,
 // });
-export default function AddHotel({ featuresData, cities, user }) {
+export default function AddHotel({
+  featuresData,
+  cities,
+  user,
+  residenceTypes,
+}) {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   const [opened, setOpened] = useState(false);
@@ -61,11 +66,61 @@ export default function AddHotel({ featuresData, cities, user }) {
   let lng2 = useSelector((state) => state.map.lng2);
   let lat3 = useSelector((state) => state.map.lat3);
   let lng3 = useSelector((state) => state.map.lng3);
+  const [cityNames, setCityNames] = useState([]);
+  const [residenceTypesName, setResidenceTypesName] = useState([]);
+
   async function changeAlignment() {
     console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
+
+  async function ResidenceTypesTranslate() {
+    if (residenceTypes) {
+      if (lng === "fa") {
+        residenceTypesName.splice(0, residenceTypesName.length);
+
+        await residenceTypes.forEach((residenceType, i) => {
+          if (residenceTypesName.indexOf(residenceType.name) === -1) {
+            residenceTypesName.push(residenceType.name);
+          }
+        });
+      } else {
+        residenceTypesName.splice(0, residenceTypesName.length);
+        await residenceTypes.forEach((residenceType, i) => {
+          if (residenceTypesName.indexOf(residenceType.trTitle) === -1) {
+            residenceTypesName.push(residenceType.trTitle);
+          }
+        });
+      }
+    }
+  }
+  async function CityTranslate() {
+    if (cities) {
+      if (lng === "fa") {
+        cityNames.splice(0, cityNames.length);
+
+        await cities.forEach((city, i) => {
+          if (cityNames.indexOf(city.name) === -1) {
+            cityNames.push(city.name);
+          }
+        });
+      } else {
+        cityNames.splice(0, cityNames.length);
+        await cities.forEach((city, i) => {
+          if (cityNames.indexOf(city.trTitle) === -1) {
+            cityNames.push(city.trTitle);
+          }
+        });
+      }
+    }
+  }
+  useEffect(() => {
+    CityTranslate();
+    ResidenceTypesTranslate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const [definedRoom, setDefinedRoom] = useState({
     title: "",
     price: null,
@@ -104,8 +159,6 @@ export default function AddHotel({ featuresData, cities, user }) {
   useEffect(() => {
     definedRoom.meal = meal;
   }, [definedRoom, meal]);
-
-  const [cityNames, setCityNames] = useState([]);
 
   const [rooms, setRooms] = useState([]);
   const dispatch = useDispatch();
@@ -181,14 +234,50 @@ export default function AddHotel({ featuresData, cities, user }) {
     }, 2000);
     if (error) throw error;
   }
-  useEffect(() => {
-    if (cities) {
-      cities.forEach((city, i) => {
-        if (cityNames.indexOf(city.name) === -1) {
-          cityNames.push(city.name);
-        }
-      });
+
+  async function ResidenceTypesTranslate() {
+    if (residenceTypes) {
+      if (lng === "fa") {
+        residenceTypesName.splice(0, residenceTypesName.length);
+
+        await residenceTypes.forEach((residenceType, i) => {
+          if (residenceTypesName.indexOf(residenceType.name) === -1) {
+            residenceTypesName.push(residenceType.name);
+          }
+        });
+      } else {
+        residenceTypesName.splice(0, residenceTypesName.length);
+        await residenceTypes.forEach((residenceType, i) => {
+          if (residenceTypesName.indexOf(residenceType.trTitle) === -1) {
+            residenceTypesName.push(residenceType.trTitle);
+          }
+        });
+      }
     }
+  }
+  async function CityTranslate() {
+    if (cities) {
+      if (lng === "fa") {
+        cityNames.splice(0, cityNames.length);
+
+        await cities.forEach((city, i) => {
+          if (cityNames.indexOf(city.name) === -1) {
+            cityNames.push(city.name);
+          }
+        });
+      } else {
+        cityNames.splice(0, cityNames.length);
+        await cities.forEach((city, i) => {
+          if (cityNames.indexOf(city.trTitle) === -1) {
+            cityNames.push(city.trTitle);
+          }
+        });
+      }
+    }
+  }
+  useEffect(() => {
+    CityTranslate();
+    ResidenceTypesTranslate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -546,6 +635,32 @@ export default function AddHotel({ featuresData, cities, user }) {
                 searchable
                 className="text-right  w-full"
                 data={cityNames}
+              />
+            </div>
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex flex-col w-full h-full text-right justify-center items-end"
+                  : "flex flex-col w-full h-full text-right justify-center items-start"
+              }`}
+            >
+              <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
+                {t("residenceTypes")}
+              </h3>
+              <Select
+                transitionDuration={150}
+                transition="pop-top-left"
+                transitionTimingFunction="ease"
+                variant="default"
+                radius="md"
+                placeholder={t("enterResidenceType")}
+                size="md"
+                required
+                value={city}
+                onChange={setCity}
+                searchable
+                className="text-right"
+                data={residenceTypesName}
               />
             </div>
             {/* <div className="">

@@ -210,7 +210,6 @@ export default function Home(props) {
     tl.to(secondContainer.current, { opacity: "1", duration: 0.4, delay: 0.5 });
     tl.to(thirdContainer.current, { opacity: "1", duration: 0.4, delay: 0.5 });
 
-    CityTranslate();
     changeState();
     window.scrollTo(0, 0);
   }, [lng]);
