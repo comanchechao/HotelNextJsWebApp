@@ -167,33 +167,38 @@ export default function InfoConfirmation() {
       <div className="h-auto w-full bg-white flex flex-col justify-start items-center px-9">
         <div className="h-20 w-full flex items-end justify-start  flex-col   py-3">
           <h1 className="text-2xl font-bold items-center flex">
-            مشخصات اتاق و مسافران
+            {t("passengerInfo")}
             <Bed className="ml-3" size={45} color="#e0ab19" weight="fill" />
           </h1>
         </div>
-        <div className="  lg:flex-row flex-col  lg:self-end flex flex-wrap-reverse items-start justify-center  py-4 space-x-5 ">
-          <h5>وعده {room.meal}</h5>
+        <div className="  lg:flex-row flex-col  lg:self-end flex flex-wrap-reverse items-center justify-end  py-4 space-x-5 ">
+          <h5>
+            <strong>{t("roomMeal")}</strong> : {room.meal}
+          </h5>
           <h4 className="text-lg">
-            <strong>نام اتاق: </strong>
+            <strong>{t("roomName")} : </strong>
             {room.title}
           </h4>
           <h4 className="text-lg">
-            <strong>تعداد مسافران :{passenger} </strong> نفر
+            <strong>
+              {t("passengerCount")} : {passenger}
+            </strong>{" "}
+            {t("person")}
           </h4>
           <h4 className="text-lg">
-            <strong>اطلاعات تلفن تماس: </strong>
+            <strong>{t("phone")} : </strong>
             09256354488
           </h4>
           <h4 className="text-lg">
-            <strong>اطلاعات سرپرست: </strong>
+            <strong>{t("supervisor")} : </strong>
             آروین نیک بین
           </h4>
         </div>
         <div className="h-16 w-full bg-Cyan-100 flex items-center justify-around">
-          <h4 className="font-bold text-lg">جنسیت</h4>
-          <h4 className="font-bold text-lg">کد ملی</h4>
-          <h4 className="font-bold text-lg">نام مسافر</h4>
-          <h4 className="font-bold text-lg">نوع مسافر</h4>
+          <h4 className="font-bold text-lg">{t("idCode")}</h4>
+          <h4 className="font-bold text-lg">{t("phone")}</h4>
+          <h4 className="font-bold text-lg">{t("fullName")}</h4>
+          <h4 className="font-bold text-lg">{t("gender")}</h4>
         </div>
         {passengerOne.name !== "" ? (
           <div className="h-16 mb-9 w-full  flex items-center justify-around">
@@ -246,9 +251,7 @@ export default function InfoConfirmation() {
             withCloseButton
             variant="outline"
           >
-            <h1 className="text-2xl text-center">
-              ثبت اطلاعات موفقیت آمیز بود
-            </h1>
+            <h1 className="text-2xl text-center">{t("infoConfirmSuccess")}</h1>
           </Notification>
         ) : (
           <button
@@ -260,29 +263,15 @@ export default function InfoConfirmation() {
             {loading ? (
               <Loader size="sm" color="yellow" variant="bars" />
             ) : (
-              <p> تایید اطلاعات</p>
+              <p> {t("confirmInfo")}</p>
             )}
           </button>
         )}
       </div>
       <div className="h-28 w-full bg-white flex flex-col justify-center items-end px-9">
-        <h1 className="text-2xl font-bold items-center flex py-2">
-          قوانین کنسلی
+        <h1 className="text-lg font-bold items-center flex py-2">
+          {t("cancelRule")}
         </h1>
-        <h2 className="text-lg"> غیرقابل استرداد </h2>
-      </div>
-      <div className="h-auto w-full bg-white flex flex-col justify-center items-end px-9 py-4">
-        <h1 className="text-2xl font-bold items-center flex py-2">
-          هزینه‌های جانبی
-        </h1>
-        <h2 className="text-lg">هزینه اقامت کودک زیر دوسال رایگان می‌باشد </h2>
-        <h2 className="text-lg">
-          هزینه اقامت کودک دو تا شش سال طبق قوانین هتل در خود هتل مبلغ پرداخت
-          می‌گردد
-        </h2>
-        <h2 className="text-lg">
-          هزینه اقامت کودک بالای شش سال یک نفر کامل محاسبه می‌گردد
-        </h2>
       </div>
     </div>
   );

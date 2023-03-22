@@ -371,7 +371,7 @@ export default function AddHotel({
         throw uploadError;
       }
     } catch (error) {
-      alert(error.message);
+      console.log(error.message);
     } finally {
       setUploading(false);
       setAlert(true);
@@ -403,7 +403,7 @@ export default function AddHotel({
         throw uploadError;
       }
     } catch (error) {
-      alert(error.message);
+      console.log(error.message);
     } finally {
       setUploading(false);
       setAlert(true);
@@ -435,7 +435,7 @@ export default function AddHotel({
         throw uploadError;
       }
     } catch (error) {
-      alert(error.message);
+      console.log(error.message);
     } finally {
       setUploading(false);
       setAlert(true);
@@ -517,23 +517,7 @@ export default function AddHotel({
                   />
                 </div>
               </div>
-              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
-                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                  <label htmlFor="fifthImage">
-                    {uploading ? (
-                      <Loader color="dark" />
-                    ) : (
-                      <IconUpload className="cursor-pointer" size={30} />
-                    )}
-                  </label>
-                  <input
-                    required
-                    type="file"
-                    className="hidden"
-                    id="fifthImage"
-                  />
-                </div>
-              </div>
+
               <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="thirdImage">
@@ -1061,23 +1045,21 @@ export default function AddHotel({
                 </Tabs.Panel> */}
               </Tabs>
             </div>
+            {alert2 ? (
+              <Notification
+                transition="fade"
+                transitionDuration={600}
+                transitionTimingFunction="ease"
+                color="green"
+                withCloseButton
+                variant="outline"
+              >
+                <h1 className="text-2xl text-center">{t("addHotelSuccess")}</h1>
+              </Notification>
+            ) : (
+              <div></div>
+            )}
             <div className="flex items-center space-x-4">
-              {alert2 ? (
-                <Notification
-                  transition="fade"
-                  transitionDuration={600}
-                  transitionTimingFunction="ease"
-                  color="green"
-                  withCloseButton
-                  variant="outline"
-                >
-                  <h1 className="text-2xl text-center">
-                    {t("addHotelSuccess")}
-                  </h1>
-                </Notification>
-              ) : (
-                <div></div>
-              )}
               <button
                 onClick={() => {
                   handleSubmit();

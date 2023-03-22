@@ -747,12 +747,6 @@ export default function HotelDetailPage({ hotel }) {
                       </Tabs.Panel>
                     </Tabs>
                   </div>
-
-                  <div className="flex justify-around">
-                    <button className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-base font-mainFont">
-                      {t("showMore")}
-                    </button>
-                  </div>
                 </div>
                 <div
                   ref={myBottomDiv}
@@ -780,26 +774,20 @@ export default function HotelDetailPage({ hotel }) {
                   }`}
                 >
                   <div className="flex justify-end text-right px-4 w-full h-full">
-                    <ul>
-                      <li>هزینه های جانبی</li>
-                      <li>هزینه اقامت کودک زیر دوسال رایگان می‌باشد</li>
-                      <li>
-                        هزینه اقامت کودک دو تا شش سال طبق قوانین هتل در خود هتل
-                        مبلغ پرداخت می‌گردد
-                      </li>
-                      <li>
-                        هزینه اقامت کودک بالای شش سال یک نفر کامل محاسبه می‌گردد
-                      </li>
-                    </ul>
+                    <p>{hotel.hotelRules}</p>
                   </div>
                   <div className="flex w-1/3 justify-center items-center flex-col">
                     <div className="flex flex-col justify-center items-center">
                       <p>{t("exitTime")}</p>
-                      <p>14:00</p>
+                      <p className="py-2 text-right font-mainFont px-2 w-20 rounded-md  bg-gray-200">
+                        {hotel.exitTime}
+                      </p>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                       <p>{t("enterTime")}</p>
-                      <p>14:00</p>
+                      <p className="py-2 text-right font-mainFont px-2 w-20 rounded-md  bg-gray-200">
+                        {hotel.enterTime}
+                      </p>{" "}
                     </div>
                   </div>
                 </div>
@@ -827,15 +815,7 @@ export default function HotelDetailPage({ hotel }) {
                       : "flex text-left p-5 border border-gray-300 rounded-md bg-white text-sm mb-14 "
                   }`}
                 >
-                  <p>
-                    گزینه‌ای بسیار مطلوب برای کسانی است که هم هتلی مجلل و شیک
-                    می‌خواهند و هم دلشان می‌خواهد به مرکز شهر، شرکت‌های خصوصی و
-                    دولتی و مکان‌هایی از این دست نزدیک باشند. البته موقعیت مکانی
-                    یکی از امتیازات این هتل است؛ اتاق‌ها و سوئیت‌هایی راحت و
-                    مجهز، رستورانی شیک و مدرن، کافی‌شاپ آرام و مرتب و امکانات
-                    رفاهی متناسب، از دیگر مزیت‌های این هتل 4 ستاره به شمار
-                    می‌آیند
-                  </p>
+                  <p>{hotel.hotelAbout}</p>
                 </div>
                 <div
                   className={`${

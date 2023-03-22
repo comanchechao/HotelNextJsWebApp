@@ -242,5 +242,7 @@
   "addHotelSuccess": "Otel başarıyla eklendi",
   "seeMap": "haritada gör",
 
-  "cancelRule": "İptal kuralları"
+  "cancelRule": "İptal kuralları",
+  "passengerCount": "Yolcu sayısı",
+  "infoConfirmSuccess": "Kayıt başarılı oldu."
 }

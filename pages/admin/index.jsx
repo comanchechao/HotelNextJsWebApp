@@ -141,7 +141,7 @@ export default function AdminPage({ user, cities, features, residenceTypes }) {
             />
           ) : null}
         </div>
-        <div className=" text-right  rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800">
+        <div className="  rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800">
           <div
             onClick={() => {
               setTab("hotel");
@@ -160,7 +160,7 @@ export default function AdminPage({ user, cities, features, residenceTypes }) {
               }`}
             >
               <IconBuildingSkyscraper className="mx-2" size={24} />
-              <h1 className="lg:text-2xl text-sm  "> {t("hotels")} </h1>
+              <h1 className="lg:text-xl text-sm  "> {t("hotels")} </h1>
             </div>
           </div>
           <div
@@ -181,7 +181,7 @@ export default function AdminPage({ user, cities, features, residenceTypes }) {
               }`}
             >
               <IconUserCheck className="mx-2" size={24} />
-              <h1 className="lg:text-2xl text-sm  "> {t("colleagues")} </h1>
+              <h1 className="lg:text-xl text-sm  "> {t("colleagues")} </h1>
             </div>
           </div>
           <div
@@ -202,7 +202,7 @@ export default function AdminPage({ user, cities, features, residenceTypes }) {
               }`}
             >
               <MapTrifold className="mx-2" size={24} />
-              <h1 className="lg:text-2xl text-sm  "> {t("city")} </h1>
+              <h1 className="lg:text-xl text-sm  "> {t("city")} </h1>
             </div>
           </div>
           <div
@@ -223,7 +223,7 @@ export default function AdminPage({ user, cities, features, residenceTypes }) {
               }`}
             >
               <IconBook className="mx-2" size={24} />
-              <h1 className="lg:text-2xl text-sm  "> {t("reservations")} </h1>
+              <h1 className="lg:text-xl text-sm  "> {t("reservations")} </h1>
             </div>
           </div>
           <div
@@ -244,7 +244,7 @@ export default function AdminPage({ user, cities, features, residenceTypes }) {
               }`}
             >
               <Desktop className="mx-2" size={24} />
-              <h1 className="lg:text-2xl text-sm  "> {t("websiteInfo")} </h1>
+              <h1 className="lg:text-xl text-sm  "> {t("websiteInfo")} </h1>
             </div>
           </div>
           <div className="rounded-md flex lg:mt-0  cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full ">
@@ -256,7 +256,7 @@ export default function AdminPage({ user, cities, features, residenceTypes }) {
               }`}
             >
               <IconLogout className="mx-2" size={24} />
-              <h1 className="lg:text-2xl text-sm  "> {t("exit")} </h1>
+              <h1 className="lg:text-xl text-sm  "> {t("exit")} </h1>
             </div>
           </div>
         </div>

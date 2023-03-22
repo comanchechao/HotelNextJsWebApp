@@ -122,12 +122,12 @@ export default function PassengerInfo() {
       <div
         className={`${
           alignLeft === true
-            ? "h-auto lg:h-24 w-full bg-white divide-x-2 flex"
-            : "h-auto lg:h-24 w-full bg-white divide-x-2 flex flex-row-reverse"
+            ? "h-auto lg:flex-row flex-col-reverse lg:h-24 w-full bg-white divide-x-2 flex"
+            : "h-auto lg:flex-row-reverse flex-col-reverse lg:h-24 w-full bg-white divide-x-2 flex "
         }`}
       >
-        <div className="h-full w-1/2 flex lg:flex-row flex-col items-center justify-center ">
-          <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col items-center justify-center">
+        <div className="h-full w-full lg:w-1/2 flex lg:flex-row flex-col items-center justify-center ">
+          <div className="h-full w-full lg:w-1/2 flex my-4 lg:my-0 flex-col items-center justify-center">
             <div className="flex items-center space-x-2">
               <h2>{t("exitTime")}</h2>
               <SignOut size={40} color="#e0ab19" weight="fill" />
@@ -145,8 +145,8 @@ export default function PassengerInfo() {
         <div
           className={`${
             alignLeft === true
-              ? "h-full w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3"
-              : "h-full w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-start lg:justify-start space-y-3"
+              ? "h-full lg:w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3"
+              : "h-full lg:w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-start lg:justify-start space-y-3"
           }`}
         >
           <div
