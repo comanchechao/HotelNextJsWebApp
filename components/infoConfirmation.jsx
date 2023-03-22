@@ -165,13 +165,25 @@ export default function InfoConfirmation() {
         </div>
       </div>
       <div className="h-auto w-full bg-white flex flex-col justify-start items-center px-9">
-        <div className="h-20 w-full flex items-end justify-start  flex-col   py-3">
+        <div
+          className={`${
+            alignLeft === true
+              ? "h-20 w-full flex items-end justify-start  flex-col   py-3"
+              : "h-20 w-full flex items-start justify-start  flex-col   py-3"
+          }`}
+        >
           <h1 className="text-2xl font-bold items-center flex">
             {t("passengerInfo")}
             <Bed className="ml-3" size={45} color="#e0ab19" weight="fill" />
           </h1>
         </div>
-        <div className="  lg:flex-row flex-col  lg:self-end flex flex-wrap-reverse items-center justify-end  py-4 space-x-5 ">
+        <div
+          className={`${
+            alignLeft === true
+              ? "lg:flex-row flex-col  lg:self-end flex flex-wrap-reverse items-center justify-end  py-4 space-x-5 "
+              : "lg:flex-row flex-col  lg:self-end flex flex-wrap-reverse items-center justify-start  py-4 space-x-5 "
+          }`}
+        >
           <h5>
             <strong>{t("roomMeal")}</strong> : {room.meal}
           </h5>
@@ -268,7 +280,13 @@ export default function InfoConfirmation() {
           </button>
         )}
       </div>
-      <div className="h-28 w-full bg-white flex flex-col justify-center items-end px-9">
+      <div
+        className={`${
+          alignLeft === true
+            ? "h-28 w-full bg-white flex flex-col justify-center items-end px-9"
+            : "h-28 w-full bg-white flex flex-col justify-center items-start px-9"
+        }`}
+      >
         <h1 className="text-lg font-bold items-center flex py-2">
           {t("cancelRule")}
         </h1>
