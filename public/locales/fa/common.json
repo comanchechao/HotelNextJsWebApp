@@ -246,5 +246,7 @@
   "otherHotels": "هتل های دیگری",
 
   "passengerCount": "تعداد مسافران",
-  "infoConfirmSuccess": "ثبت اطلاعات موفقیت آمیز بود"
+  "infoConfirmSuccess": "ثبت اطلاعات موفقیت آمیز بود",
+
+  "hotelOnMap": "مکان هتل در نقشه"
 }

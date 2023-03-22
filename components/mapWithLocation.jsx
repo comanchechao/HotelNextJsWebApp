@@ -3,6 +3,7 @@ import { TileLayer } from "react-leaflet/TileLayer";
 import { useMap } from "react-leaflet/hooks";
 import { Marker, DraggableMarker, render, Popup } from "react-leaflet";
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { useTranslation } from "next-i18next";
 
 const center = [35.7, 51.4167];
 const locations = [
@@ -16,8 +17,15 @@ const zoom = 15;
 function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
   const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(() => map.getCenter());
-
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeAlignment() {
+    console.log(lng);
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   useEffect(() => {
+    changeAlignment();
+
     onClick();
   }, []);
 
@@ -39,9 +47,10 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
   function toLocation(location) {
     map.setView(location, zoom);
   }
+  const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col items-center w-96 ml-9 space-y-7  ">
+    <div className="flex  justify-around  items-center w-auto ml-9 space-x-7  ">
       <div className="flex flex-row-reverse items-center justify-around w-full">
         {/* latitude: {position.lat.toFixed(4)}, longitude:{" "}
         {position.lng.toFixed(4)}{" "} */}
@@ -49,10 +58,10 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
           className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white hover:bg-mainBlue   transition ease-in duration-300 text-gray-700 text-lg"
           onClick={onClick}
         >
-          به هتل
+          {t("hotelOnMap")}{" "}
         </button>
       </div>
-      <div className="flex flex-col border items-end rounded-lg border-gray-200 divide-y divide-gray-200 w-full h-full">
+      <div className="flex  border mt-6 space-x-4  items-center rounded-lg border-gray-200 divide-y divide-gray-200  ">
         {firstLocation ? (
           <div
             onMouseOver={() => {
@@ -61,26 +70,9 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
                 lng: JSON.stringify(firstLocation.lng),
               });
             }}
-            className="flex flex-col justify-around items-around  cursor-pointer transition ease-in duration-200 hover:bg-mainBlue hover:text-mainPurple  space-y-2 p-5 w-10/12"
+            className="flex   justify-center items-center  h-11 rounded-lg w-40   bg-white cursor-pointer transition ease-in duration-200 hover:bg-mainBlue hover:text-mainPurple   p-2  "
           >
-            <h1 className="text-lg self-end">
-              {JSON.stringify(firstLocation.name)}
-            </h1>
-            <div className="flex w-full">
-              <div className="flex w-full">
-                <p>23213</p>
-                <p>متر</p>
-              </div>
-              <div className="flex justify-end w-full">
-                <div className="flex">
-                  <p>4 دقیقه</p>
-                </div>
-                <div className="flex">
-                  <p>4</p>
-                  <p>دقیقه</p>
-                </div>
-              </div>
-            </div>
+            <h1 className="text-sm  ">{JSON.stringify(firstLocation.name)}</h1>
           </div>
         ) : null}
         {secondLocation ? (
@@ -91,26 +83,9 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
                 lng: JSON.stringify(secondLocation.lng),
               });
             }}
-            className="flex flex-col justify-around items-around  cursor-pointer transition ease-in duration-200 hover:bg-mainBlue hover:text-mainPurple  space-y-2 p-5 w-10/12"
+            className="flex   justify-center items-center  h-11 rounded-lg w-40  bg-white  cursor-pointer transition ease-in duration-200 hover:bg-mainBlue hover:text-mainPurple   p-2 "
           >
-            <h1 className="text-lg self-end">
-              {JSON.stringify(secondLocation.name)}
-            </h1>
-            <div className="flex w-full">
-              <div className="flex w-full">
-                <p>23213</p>
-                <p>متر</p>
-              </div>
-              <div className="flex justify-end w-full">
-                <div className="flex">
-                  <p>4 دقیقه</p>
-                </div>
-                <div className="flex">
-                  <p>4</p>
-                  <p>دقیقه</p>
-                </div>
-              </div>
-            </div>
+            <h1 className="text-sm">{JSON.stringify(secondLocation.name)}</h1>
           </div>
         ) : null}
       </div>
@@ -130,7 +105,6 @@ export default function ExternalStateExample({
     () => (
       <MapContainer
         id="map"
-        style={{ width: "600px", height: "400px" }}
         center={center}
         zoom={zoom}
         scrollWheelZoom={false}
@@ -170,7 +144,7 @@ export default function ExternalStateExample({
   );
 
   return (
-    <div className="flex lg:flex-row flex-col w-auto items-center justify-center lg:w-full z-10 mx-9">
+    <div className="flex  flex-col w-full items-center justify-center  z-10 ">
       {displayMap}
       {map ? (
         <DisplayPosition

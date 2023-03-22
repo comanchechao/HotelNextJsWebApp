@@ -575,6 +575,7 @@ export default function AddHotel({
                 className=" py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                 type="text"
                 name="title"
+                maxlength="150"
                 placeholder={t("enterHotelName")}
               />
             </div>
@@ -611,6 +612,7 @@ export default function AddHotel({
                 type="text"
                 name="title"
                 placeholder={t("enterHotelAdd")}
+                maxlength="150"
               />
             </div>
             <div
@@ -731,6 +733,7 @@ export default function AddHotel({
                 id=""
                 cols="10"
                 rows="5"
+                maxlength="500"
               ></textarea>
             </div>
             <div className="flex w-full justify-around space-x-2 items-center  ">
@@ -777,6 +780,7 @@ export default function AddHotel({
                 id=""
                 cols="30"
                 rows="10"
+                maxlength="1000"
               ></textarea>
             </div>
             <div className="flex w-full ">

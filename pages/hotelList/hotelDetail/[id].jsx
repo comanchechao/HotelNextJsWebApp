@@ -132,12 +132,12 @@ export const getStaticProps = async (context) => {
   };
 };
 
-// const DynamicMap = dynamic(
-//   () => import("../../../components/mapWithLocation"),
-//   {
-//     ssr: false,
-//   }
-// );
+const DynamicMap = dynamic(
+  () => import("../../../components/mapWithLocation"),
+  {
+    ssr: false,
+  }
+);
 
 export default function HotelDetailPage({ hotel }) {
   const theme = useMantineTheme();
@@ -655,14 +655,14 @@ export default function HotelDetailPage({ hotel }) {
                     {t("hotelPlaces")}
                   </h2>
                 </div>
-                <div className="flex flex-col w-full justify-around  bg-white">
-                  <div className="flex w-full justify-start items-start">
-                    {/* <DynamicMap
+                <div className="flex flex-col w-full my-4 justify-around  ">
+                  <div className="flex w-full justify-center items-center">
+                    <DynamicMap
                       secondLocation={hotel.secondLocation}
                       firstLocation={hotel.firstLocation}
                       lat={hotel.locationLat}
                       lng={hotel.locationLng}
-                    /> */}
+                    />
                   </div>
                 </div>
                 <div className="flex py-8 items-center space-y-6 w-full flex-col  justify-center">
@@ -675,7 +675,10 @@ export default function HotelDetailPage({ hotel }) {
                   >
                     {t("rooms")}
                   </h1>
-                  <div id="target" className="flex  justify-center w-full text-sm rounded-md">
+                  <div
+                    id="target"
+                    className="flex  justify-center w-full text-sm rounded-md"
+                  >
                     <Tabs
                       className="w-full "
                       radius="xs"
