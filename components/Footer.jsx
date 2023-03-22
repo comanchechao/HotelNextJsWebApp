@@ -15,6 +15,11 @@ export default function Footer() {
   const [address, setAddress] = useState("");
 
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [telegram, setTelegram] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+
   const { t, i18n } = useTranslation();
   const lng = i18n.language;
   useEffect(() => {
@@ -39,6 +44,10 @@ export default function Footer() {
     data.map((object) => {
       setAddress(object.address);
       setPhoneNumber(object.phoneNumber);
+      setTelegram(object.telegram);
+      setInstagram(object.instagram);
+      setFacebook(object.facebook);
+      setWhatsapp(object.whatsapp);
     });
     setLoading(false);
   }
@@ -110,31 +119,35 @@ export default function Footer() {
       <div className="w-full flex lg:flex-row flex-col items-center justify-evenly lg:justify-between h-24 lg:px-20 border-t border-dashed border-mainPurple">
         <div className="flex items-center justify-start space-x-5">
           <a
+            href={"https://www.instagram.com/" + instagram}
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
-            href={phoneNumber}
           >
-            <InstagramLogo size={40} weight="fill" />
+            <InstagramLogo size={30} weight="fill" />
           </a>
-          <FacebookLogo
+          <a
+            href={"https://www.facebook.com/" + facebook}
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
-            size={40}
-            weight="fill"
-          />
-          <WhatsappLogo
+          >
+            <FacebookLogo size={30} weight="fill" />
+          </a>
+          <a
+            href={"https://wa.me/" + whatsapp}
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
-            size={40}
-            weight="fill"
-          />
-          <TelegramLogo
+          >
+            <WhatsappLogo size={30} weight="fill" />
+          </a>
+          <a
+            href={"https://www.telegram.org/" + telegram}
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
-            size={40}
-            weight="fill"
-          />
-          <Phone
+          >
+            <TelegramLogo size={30} weight="fill" />
+          </a>
+          <a
             className="transition ease-in duration-300 p-1 rounded-sm  hover:bg-mainBlue cursor-pointer"
-            size={40}
-            weight="fill"
-          />
+            href={"tel:" + phoneNumber}
+          >
+            <Phone size={30} weight="fill" />
+          </a>
         </div>
         <h4 className="text-gray-600 text-xs">{t("copyright")}</h4>
       </div>
