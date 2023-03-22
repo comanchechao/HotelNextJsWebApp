@@ -277,8 +277,9 @@ export default function Home(props) {
                 dropdownPosition="top-start"
                 placeholder={t("inDate")}
                 label={t("inDate")}
-                minDate={dayjs().add(12, "day").toDate()}
+                minDate={dayjs().add(11, "day").toDate()}
                 withAsterisk
+                defaultValue={dayjs().add(11, "day").toDate()}
                 onChange={(e) => {
                   setDates(e);
                   dispatch(

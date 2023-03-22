@@ -2,7 +2,7 @@ import Navbar from "../../components/Navbar";
 import Link from "next/link";
 import { CaretLeft } from "phosphor-react";
 import HotelCard from "../../components/hotelCard";
-import { Skeleton, Pagination, Loader } from "@mantine/core";
+import { Skeleton, Pagination, Loader, filterProps } from "@mantine/core";
 import dynamic from "next/dynamic";
 import { gsap } from "gsap";
 import { useTranslation } from "next-i18next";
@@ -96,7 +96,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
     const { data, error } = await supabase
       .from("Hotels")
       .select(
-        "id , features , stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        "id , features ,city, stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
       );
 
     setHotels(data);
@@ -135,6 +135,9 @@ export default function HotelList({ features, residenceTypes, cities }) {
     }
   }
 
+  let selectedCity = useSelector((state) => state.reserve.city);
+  let minPrice = useSelector((state) => state.filter.minPrice);
+
   useEffect(() => {
     sortStars();
   }, [stars]);
@@ -152,6 +155,17 @@ export default function HotelList({ features, residenceTypes, cities }) {
       const filteredProducts = initialHotels.filter((hotel) => hotel.stars < 4);
       setHotels(filteredProducts);
     }
+  }
+
+  useEffect(() => {
+    sortCity();
+  }, [selectedCity]);
+
+  function sortCity() {
+    const filteredData = initialHotels.filter((obj) => {
+      return obj.city.includes(selectedCity);
+    });
+    setHotels(filteredData);
   }
 
   // async function getFilteredHotels() {
@@ -193,9 +207,6 @@ export default function HotelList({ features, residenceTypes, cities }) {
   }
 
   // reservation info
-
-  let selectedCity = useSelector((state) => state.reserve.city);
-  let minPrice = useSelector((state) => state.filter.minPrice);
 
   useEffect(() => {
     priceRange();
