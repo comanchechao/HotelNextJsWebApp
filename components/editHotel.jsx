@@ -63,7 +63,6 @@ export default function EditHotel({
   let lat3 = useSelector((state) => state.map.lat3);
   let lng3 = useSelector((state) => state.map.lng3);
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
@@ -162,8 +161,6 @@ export default function EditHotel({
     if (rooms) updates.rooms = rooms;
     if (getlat) updates.locationLat = getlat;
     if (getLng) updates.locationLng = getLng;
-
-    console.log(updates);
   }
 
   async function handleSubmit() {

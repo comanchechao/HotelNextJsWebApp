@@ -52,7 +52,6 @@ export default function HotelList({ features, residenceTypes, cities }) {
     }
   );
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
@@ -153,8 +152,6 @@ export default function HotelList({ features, residenceTypes, cities }) {
       const filteredProducts = initialHotels.filter((hotel) => hotel.stars < 4);
       setHotels(filteredProducts);
     }
-
-    console.log(hotels);
   }
 
   // async function getFilteredHotels() {

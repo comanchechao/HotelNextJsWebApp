@@ -45,7 +45,6 @@ export default function UserProfile({ user }) {
   const lng = i18n.language;
   const [alignLeft, setAlignLeft] = useState(false);
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }

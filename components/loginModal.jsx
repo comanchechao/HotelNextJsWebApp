@@ -26,7 +26,6 @@ export default function LoginModal() {
 
   const [alignLeft, setAlignLeft] = useState(false);
   async function changeState() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
@@ -58,12 +57,14 @@ export default function LoginModal() {
         .select()
         .eq("id", user.session.user.id);
 
-      if (userRole[0].role === "admin") {
-        dispatch(userActions.isManagerFunction(true));
-      } else if (userRole[0].role === "colleage") {
-        dispatch(userActions.isManagerFunction(true));
+      if (userRole.length) {
+        if (userRole[0].role === "admin") {
+          dispatch(userActions.isManagerFunction(true));
+        } else if (userRole[0].role === "colleage") {
+          dispatch(userActions.isManagerFunction(true));
+        }
+      } else {
       }
-    } else {
     }
   }
   useEffect(() => {

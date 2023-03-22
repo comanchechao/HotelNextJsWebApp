@@ -136,18 +136,6 @@ export default function Home(props) {
   // Set the locale to your custom locale
   // dayjs.localeData("fa", faLocale);
 
-  useEffect(() => {
-    console.log(dates);
-
-    // dayjs(dates[0], { jalali: true });
-    // First, you need to define the custom locale
-    // Format the date using your custom locale
-    const formattedDate = dayjs()
-      .locale("fa")
-      .format("dddd, D MMMM jYYYY HH:mm");
-    console.log(formattedDate);
-    // console.log(dayjs().locale(faFile).format("dddd, D MMMM jYYYY HH:mm"));
-  });
   // set cities
   const [selectedCity, setSelectedCity] = useState("");
   const { t, i18n } = useTranslation("");
@@ -157,7 +145,6 @@ export default function Home(props) {
   const [alignLeft, setAlignLeft] = useState(false);
 
   async function changeState() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
@@ -189,9 +176,6 @@ export default function Home(props) {
   const [dates, setDates] = useState([Date | null, Date | null]);
   const [choosedDate, setChoosenDate] = useState([Date | null, Date | null]);
 
-  useEffect(() => {
-    console.log(jalaliday);
-  }, [dates]);
   const theme = useMantineTheme();
   const mainPageBg = useRef();
 
@@ -225,10 +209,6 @@ export default function Home(props) {
 
   let passenger = useSelector((state) => state.reserve.passenger);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log(dates);
-  });
 
   return (
     <>

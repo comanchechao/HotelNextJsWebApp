@@ -131,7 +131,6 @@ export default function AdminPage({
               : "h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row-reverse flex-col-reverse space-y-3 lg:space-x-8 lg:px-40"
           }`}
         >
-          admin
           <div className="lg:w-3/4 w-full flex items-center justify-center h-screen lg:p-6 py-6">
             {tab === "user" ? (
               <UserManagement />
@@ -284,7 +283,6 @@ export default function AdminPage({
               : "h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row-reverse flex-col-reverse space-y-3 lg:space-x-8 lg:px-40"
           }`}
         >
-          colleage
           <div className="lg:w-3/4 w-full flex items-center justify-center h-screen lg:p-6 py-6">
             {tab === "reserve" ? (
               <ReservationManagement Hotels={hotelIds} />

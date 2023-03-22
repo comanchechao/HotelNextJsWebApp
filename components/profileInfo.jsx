@@ -20,7 +20,6 @@ export default function ProfileInfo({ user }) {
 
   const [alignLeft, setAlignLeft] = useState(false);
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
@@ -33,18 +32,18 @@ export default function ProfileInfo({ user }) {
     setLoading(true);
 
     if (user) {
-      let userData = await supabase
+      let { data: userData, error } = await supabase
         .from("profiles")
         .select()
         .eq("id", user.user.id);
-
-      if (userData) {
-        setEmail(userData.data[0].email);
-        setFullName(userData.data[0].fullName);
-        setPhone(userData.data[0].phone);
-        setCard(userData.data[0].card);
-        setIdCard(userData.data[0].idCard);
-        setShaba(userData.data[0].shaba);
+      if (userData.length) {
+        setCreate(false);
+        setEmail(userData[0].email);
+        setFullName(userData[0].fullName);
+        setPhone(userData[0].phone);
+        setCard(userData[0].card);
+        setIdCard(userData[0].idCard);
+        setShaba(userData[0].shaba);
         setCreate(true);
       }
     } else {
@@ -69,6 +68,15 @@ export default function ProfileInfo({ user }) {
       console.log("User not found");
     }
   }
+  async function createProfile() {
+    const { data, error } = await supabase.from("profiles").insert({
+      id: user.user.id,
+      email: user.user.email,
+    });
+
+    if (error) throw error;
+  }
+
   return (
     <div className="w-full h-full lg:h-carousel p-3 flex space-y-8 flex-col">
       {create ? (
@@ -278,7 +286,12 @@ export default function ProfileInfo({ user }) {
         </div>
       ) : (
         <button
-          onClick={() => setCreate(true)}
+          onClick={() => {
+            setCreate(true);
+            if (user) {
+              createProfile();
+            }
+          }}
           className={`${
             alignLeft === true
               ? "px-10 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg m-3 self-center font-mainFont"
