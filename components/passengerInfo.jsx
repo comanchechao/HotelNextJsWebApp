@@ -213,7 +213,8 @@ export default function PassengerInfo() {
               >
                 <NumberInput
                   onChange={(e) => {
-                    setPassengerOneSocialNumber(e.target.value);
+                    console.log(e);
+                    setPassengerOneSocialNumber(e);
                   }}
                   className={`${
                     alignLeft === true
@@ -230,7 +231,8 @@ export default function PassengerInfo() {
                 />
                 <NumberInput
                   onChange={(e) => {
-                    setPassengerOnePhoneNumber(e.target.value);
+                    console.log(e);
+                    setPassengerOnePhoneNumber(e);
                   }}
                   className={`${
                     alignLeft === true
@@ -308,7 +310,7 @@ export default function PassengerInfo() {
               >
                 <NumberInput
                   onChange={(e) => {
-                    setPassengerTwoSocialNumber(e.target.value);
+                    setPassengerTwoSocialNumber(e);
                   }}
                   className={`${
                     alignLeft === true
@@ -327,7 +329,7 @@ export default function PassengerInfo() {
 
                 <NumberInput
                   onChange={(e) => {
-                    setPassengerTwoPhoneNumber(e.target.value);
+                    setPassengerTwoPhoneNumber(e);
                   }}
                   className={`${
                     alignLeft === true
@@ -402,7 +404,7 @@ export default function PassengerInfo() {
               >
                 <NumberInput
                   onChange={(e) => {
-                    setPassengerThreeSocialNumber(e.target.value);
+                    setPassengerThreeSocialNumber(e);
                   }}
                   className={`${
                     alignLeft === true
@@ -420,7 +422,7 @@ export default function PassengerInfo() {
                 />
                 <NumberInput
                   onChange={(e) => {
-                    setPassengerThreePhoneNumber(e.target.value);
+                    setPassengerThreePhoneNumber(e);
                   }}
                   className={`${
                     alignLeft === true
@@ -496,7 +498,7 @@ export default function PassengerInfo() {
               >
                 <NumberInput
                   onChange={(e) => {
-                    setPassengerFourSocialNumber(e.target.value);
+                    setPassengerFourSocialNumber(e);
                   }}
                   className={`${
                     alignLeft === true
@@ -514,7 +516,7 @@ export default function PassengerInfo() {
                 />
                 <NumberInput
                   onChange={(e) => {
-                    setPassengerFourPhoneNumber(e.target.value);
+                    setPassengerFourPhoneNumber(e);
                   }}
                   className={`${
                     alignLeft === true
