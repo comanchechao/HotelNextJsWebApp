@@ -584,16 +584,16 @@ export default function HotelDetailPage({ hotel }) {
                     </Popover.Dropdown>
                   </Popover>
                   <div className="flex">
-                    <Link href="/checkout">
-                      <button
-                        onClick={() => {
-                          dispatch(reservationActions.setHotelInfo(hotel));
-                        }}
-                        className="py-1  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white mt-5 px-10   "
-                      >
-                        <p>{t("searchRoom")}</p>
-                      </button>
-                    </Link>
+                    <button
+                      onClick={() => {
+                        dispatch(reservationActions.setHotelInfo(hotel));
+                        var element = document.getElementById("target");
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="py-1  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white mt-5 px-10   "
+                    >
+                      <p>{t("searchRoom")}</p>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -675,7 +675,7 @@ export default function HotelDetailPage({ hotel }) {
                   >
                     {t("rooms")}
                   </h1>
-                  <div className="flex  justify-center w-full text-sm rounded-md">
+                  <div id="target" className="flex  justify-center w-full text-sm rounded-md">
                     <Tabs
                       className="w-full "
                       radius="xs"
