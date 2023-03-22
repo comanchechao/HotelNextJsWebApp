@@ -65,6 +65,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       cities: cities,
+      role: userRole[0].role,
       residenceTypes: residenceTypes,
       features: features,
       user: user.user,
@@ -73,7 +74,13 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function AdminPage({ user, cities, features, residenceTypes }) {
+export default function AdminPage({
+  user,
+  cities,
+  features,
+  residenceTypes,
+  role,
+}) {
   const [hotelIds, setHotelIds] = useState([]);
   const [hotels, setHotels] = useState([]);
 
@@ -112,155 +119,245 @@ export default function AdminPage({ user, cities, features, residenceTypes }) {
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
-  return (
-    <div className="h-auto w-screen bg-mainWhite  ">
-      <Navbar />
-      <div
-        className={`${
-          alignLeft === true
-            ? "h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-8 lg:px-40"
-            : "h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row-reverse flex-col-reverse space-y-3 lg:space-x-8 lg:px-40"
-        }`}
-      >
-        <div className="lg:w-3/4 w-full flex items-center justify-center h-screen lg:p-6 py-6">
-          {tab === "user" ? (
-            <UserManagement />
-          ) : tab === "city" ? (
-            <AddCity cities={cities} />
-          ) : tab === "reserve" ? (
-            <ReservationManagement Hotels={hotelIds} />
-          ) : tab === "websiteInfo" ? (
-            <WebsiteInfo />
-          ) : tab === "hotel" ? (
-            <HotelManagement
-              features={features}
-              hotels={hotels}
-              cities={cities}
-              user={user}
-              residenceTypes={residenceTypes}
-            />
-          ) : null}
-        </div>
-        <div className="  rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800">
-          <div
-            onClick={() => {
-              setTab("hotel");
-            }}
-            className={`${
-              tab === "hotel"
-                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-            }`}
-          >
-            <div
-              className={`${
-                alignLeft === true
-                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
-                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
-              }`}
-            >
-              <IconBuildingSkyscraper className="mx-2" size={24} />
-              <h1 className="lg:text-xl text-sm  "> {t("hotels")} </h1>
-            </div>
+
+  if (role === "admin") {
+    return (
+      <div className="h-auto w-screen bg-mainWhite  ">
+        <Navbar />
+        <div
+          className={`${
+            alignLeft === true
+              ? "h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-8 lg:px-40"
+              : "h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row-reverse flex-col-reverse space-y-3 lg:space-x-8 lg:px-40"
+          }`}
+        >
+          admin
+          <div className="lg:w-3/4 w-full flex items-center justify-center h-screen lg:p-6 py-6">
+            {tab === "user" ? (
+              <UserManagement />
+            ) : tab === "city" ? (
+              <AddCity cities={cities} />
+            ) : tab === "reserve" ? (
+              <ReservationManagement Hotels={hotelIds} />
+            ) : tab === "websiteInfo" ? (
+              <WebsiteInfo />
+            ) : tab === "hotel" ? (
+              <HotelManagement
+                features={features}
+                hotels={hotels}
+                cities={cities}
+                user={user}
+                residenceTypes={residenceTypes}
+              />
+            ) : null}
           </div>
-          <div
-            onClick={() => {
-              setTab("user");
-            }}
-            className={`${
-              tab === "user"
-                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-            }`}
-          >
+          <div className="  rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800">
             <div
+              onClick={() => {
+                setTab("hotel");
+              }}
               className={`${
-                alignLeft === true
-                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
-                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                tab === "hotel"
+                  ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                  : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
               }`}
             >
-              <IconUserCheck className="mx-2" size={24} />
-              <h1 className="lg:text-xl text-sm  "> {t("colleagues")} </h1>
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                }`}
+              >
+                <IconBuildingSkyscraper className="mx-2" size={24} />
+                <h1 className="lg:text-xl text-sm  "> {t("hotels")} </h1>
+              </div>
             </div>
-          </div>
-          <div
-            onClick={() => {
-              setTab("city");
-            }}
-            className={`${
-              tab === "city"
-                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-            }`}
-          >
             <div
+              onClick={() => {
+                setTab("user");
+              }}
               className={`${
-                alignLeft === true
-                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
-                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                tab === "user"
+                  ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                  : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
               }`}
             >
-              <MapTrifold className="mx-2" size={24} />
-              <h1 className="lg:text-xl text-sm  "> {t("city")} </h1>
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                }`}
+              >
+                <IconUserCheck className="mx-2" size={24} />
+                <h1 className="lg:text-xl text-sm  "> {t("colleagues")} </h1>
+              </div>
             </div>
-          </div>
-          <div
-            onClick={() => {
-              setTab("reserve");
-            }}
-            className={`${
-              tab === "reserve"
-                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-            }`}
-          >
             <div
+              onClick={() => {
+                setTab("city");
+              }}
               className={`${
-                alignLeft === true
-                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
-                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                tab === "city"
+                  ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                  : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
               }`}
             >
-              <IconBook className="mx-2" size={24} />
-              <h1 className="lg:text-xl text-sm  "> {t("reservations")} </h1>
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                }`}
+              >
+                <MapTrifold className="mx-2" size={24} />
+                <h1 className="lg:text-xl text-sm  "> {t("city")} </h1>
+              </div>
             </div>
-          </div>
-          <div
-            onClick={() => {
-              setTab("websiteInfo");
-            }}
-            className={`${
-              tab === "websiteInfo"
-                ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-                : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center text-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-            }`}
-          >
             <div
+              onClick={() => {
+                setTab("reserve");
+              }}
               className={`${
-                alignLeft === true
-                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
-                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                tab === "reserve"
+                  ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                  : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
               }`}
             >
-              <Desktop className="mx-2" size={24} />
-              <h1 className="lg:text-xl text-sm  "> {t("websiteInfo")} </h1>
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                }`}
+              >
+                <IconBook className="mx-2" size={24} />
+                <h1 className="lg:text-xl text-sm  "> {t("reservations")} </h1>
+              </div>
             </div>
-          </div>
-          <div className="rounded-md flex lg:mt-0  cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full ">
             <div
+              onClick={() => {
+                setTab("websiteInfo");
+              }}
               className={`${
-                alignLeft === true
-                  ? "flex justify-around items-center  transition   text-gray-800 w-full"
-                  : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                tab === "websiteInfo"
+                  ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                  : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center text-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
               }`}
             >
-              <IconLogout className="mx-2" size={24} />
-              <h1 className="lg:text-xl text-sm  "> {t("exit")} </h1>
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                }`}
+              >
+                <Desktop className="mx-2" size={24} />
+                <h1 className="lg:text-xl text-sm  "> {t("websiteInfo")} </h1>
+              </div>
+            </div>
+            <div className="rounded-md flex lg:mt-0  cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full ">
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                }`}
+              >
+                <IconLogout className="mx-2" size={24} />
+                <h1 className="lg:text-xl text-sm  "> {t("exit")} </h1>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else if (role === "colleage") {
+    return (
+      <div className="h-auto w-screen bg-mainWhite  ">
+        <Navbar />
+        <div
+          className={`${
+            alignLeft === true
+              ? "h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row flex-col-reverse space-y-3 lg:space-x-8 lg:px-40"
+              : "h-full  w-full items-center pt-14 lg:pt-0 flex lg:flex-row-reverse flex-col-reverse space-y-3 lg:space-x-8 lg:px-40"
+          }`}
+        >
+          colleage
+          <div className="lg:w-3/4 w-full flex items-center justify-center h-screen lg:p-6 py-6">
+            {tab === "reserve" ? (
+              <ReservationManagement Hotels={hotelIds} />
+            ) : tab === "hotel" ? (
+              <HotelManagement
+                features={features}
+                hotels={hotels}
+                cities={cities}
+                user={user}
+                residenceTypes={residenceTypes}
+              />
+            ) : null}
+          </div>
+          <div className="  rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800">
+            <div
+              onClick={() => {
+                setTab("hotel");
+              }}
+              className={`${
+                tab === "hotel"
+                  ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                  : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+              }`}
+            >
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                }`}
+              >
+                <IconBuildingSkyscraper className="mx-2" size={24} />
+                <h1 className="lg:text-xl text-sm  "> {t("hotels")} </h1>
+              </div>
+            </div>
+
+            <div
+              onClick={() => {
+                setTab("reserve");
+              }}
+              className={`${
+                tab === "reserve"
+                  ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                  : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+              }`}
+            >
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                }`}
+              >
+                <IconBook className="mx-2" size={24} />
+                <h1 className="lg:text-xl text-sm  "> {t("reservations")} </h1>
+              </div>
+            </div>
+
+            <div className="rounded-md flex lg:mt-0  cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full ">
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                }`}
+              >
+                <IconLogout className="mx-2" size={24} />
+                <h1 className="lg:text-xl text-sm  "> {t("exit")} </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }

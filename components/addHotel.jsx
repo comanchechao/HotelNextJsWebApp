@@ -53,6 +53,7 @@ export default function AddHotel({
   const [alignLeft, setAlignLeft] = useState(false);
   const [alert, setAlert] = useState(false);
   const [alert2, setAlert2] = useState(false);
+  const [hotelRules, setHotelRules] = useState("");
 
   let getlat = useSelector((state) => state.map.lat);
   let getLng = useSelector((state) => state.map.lng);
@@ -213,6 +214,7 @@ export default function AddHotel({
       address: address,
       enterTime: enteringHours,
       exitTime: exitingHours,
+      hotelRules: hotelRules,
       firstLocation: {
         name: marker2,
         lat: lat2,
@@ -722,7 +724,7 @@ export default function AddHotel({
               </h3>
               <textarea
                 onChange={(e) => {
-                  setAboutHotel(e.target.value);
+                  setHotelRules(e.target.value);
                 }}
                 name="about hotel"
                 className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
