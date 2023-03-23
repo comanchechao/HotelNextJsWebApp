@@ -56,20 +56,6 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
       style={{ lineHeight: "1.7 !important" }}
       className="flex flex-col items-center space-y-4 bg-white p-4 drop-shadow-xl rounded-md z-30"
     >
-      <div class="pt-2 relative text-black ">
-        <input
-          className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-52 hover:bg-white   bg-mainWhite font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-full  text-sm focus:outline-none"
-          type="search"
-          name="search"
-          placeholder={t("hotelNameSearch")}
-        />
-        <button
-          type="submit"
-          className="absolute flex items-center left-0 top-0 mt-5 ml-4"
-        >
-          <MagnifyingGlass size={20} weight="bold" />
-        </button>
-      </div>
       <Accordion
         className="w-full  "
         variant="separated"

@@ -1,20 +1,17 @@
 import Navbar from "../../components/Navbar";
 import Link from "next/link";
-import { CaretLeft } from "phosphor-react";
+import { CaretLeft, MagnifyingGlass } from "phosphor-react";
 import HotelCard from "../../components/hotelCard";
 import { Skeleton, Pagination, Loader, filterProps } from "@mantine/core";
 import dynamic from "next/dynamic";
 import { gsap } from "gsap";
 import { useTranslation } from "next-i18next";
-
-import { Suspense } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import HotelListMenu from "../../components/hotelListMenu";
 import Head from "next/head";
-import { reservation } from "../../store/reservation";
 export async function getServerSideProps({ locale }) {
   // Fetch data from the database
 
@@ -266,7 +263,20 @@ export default function HotelList({ features, residenceTypes, cities }) {
                 {t("home")}
               </Link>
             </div>
-
+            <div class=" mt-4 relative text-black pl-7  self-center   flex items-center justify-center">
+              <input
+                className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-full hover:bg-gray-100   bg-white font-mainFont h-8 px-5 pr-4 md:pr-16 rounded-3xl  text-sm focus:outline-none"
+                type="search"
+                name="search"
+                placeholder={t("hotelNameSearch")}
+              />
+              <button
+                type="submit"
+                className="absolute flex items-center   left-4 ml-6 inset-0"
+              >
+                <MagnifyingGlass size={20} weight="bold" />
+              </button>
+            </div>
             <div
               ref={firstContainer}
               className={`${
