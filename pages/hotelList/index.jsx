@@ -203,6 +203,13 @@ export default function HotelList({ features, residenceTypes, cities }) {
     }
   }
 
+  function searchFunction(input) {
+    const filteredArray = initialHotels.filter((item) =>
+      item.title.toLowerCase().includes(input.toLowerCase())
+    );
+    setHotels(filteredArray);
+  }
+
   // reservation info
 
   useEffect(() => {
@@ -267,6 +274,9 @@ export default function HotelList({ features, residenceTypes, cities }) {
               <input
                 className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-full hover:bg-gray-100   bg-white font-mainFont h-8 px-5 pr-4 md:pr-16 rounded-3xl  text-sm focus:outline-none"
                 type="search"
+                onChange={(e) => {
+                  searchFunction(e.target.value);
+                }}
                 name="search"
                 placeholder={t("hotelNameSearch")}
               />
