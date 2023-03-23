@@ -142,7 +142,9 @@ export default function ReservationInfo({
                   >
                     <Accordion.Item value="customization">
                       <Accordion.Control className="text-right w-full">
-                        <p>مسافر {i + 1}</p>
+                        <p>
+                          {pass.name} {i + 1}
+                        </p>
                       </Accordion.Control>
                       <Accordion.Panel>
                         <div className="flex w-full space-x-4 justify-around items-center">

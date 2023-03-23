@@ -102,11 +102,6 @@ export default function AdminPage({
     if (error) throw error;
 
     setHotels(hotels);
-  }
-  useEffect(() => {
-    changeAlignment();
-    getHotels();
-
     if (hotels) {
       hotels.forEach((hotel, i) => {
         if (hotelIds.indexOf(hotel.id) === -1) {
@@ -114,6 +109,12 @@ export default function AdminPage({
         }
       });
     }
+  }
+  useEffect(() => {
+    changeAlignment();
+    getHotels();
+
+    console.log("idds", hotelIds);
   }, []);
   const router = useRouter();
   const [tab, setTab] = useState("hotel");
