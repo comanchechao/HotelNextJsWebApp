@@ -280,12 +280,8 @@ export default function HotelList({ features, residenceTypes, cities }) {
                 name="search"
                 placeholder={t("hotelNameSearch")}
               />
-              <button
-                type="submit"
-                className="absolute flex items-center left-0   lg:left-4 ml-3 lg:ml-6 inset-0"
-              >
-                <MagnifyingGlass size={20} weight="bold" />
-              </button>
+
+              <MagnifyingGlass size={20} weight="bold" />
             </div>
             <div
               ref={firstContainer}
