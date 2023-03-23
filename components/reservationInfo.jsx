@@ -39,7 +39,7 @@ export default function ReservationInfo({
               </div>
               <div className="flex items-center space-x-1">
                 <p>{passengers[0].name}</p>
-                <p>:نام مالک</p>
+                <p>:نام درخواست دهنده</p>
               </div>
             </div>
             <div className="flex">
