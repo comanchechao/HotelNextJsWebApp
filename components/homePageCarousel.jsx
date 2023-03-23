@@ -9,6 +9,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons";
+import { useEffect } from "react";
 const useStyles = createStyles((theme) => ({
   card: {
     height: 440,
@@ -29,7 +30,7 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.xs,
   },
 
-  category: {
+  prices: {
     color: theme.white,
     opacity: 0.7,
     fontWeight: 700,
@@ -37,8 +38,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function Card({ image, title, category }) {
+function Card({ image, title, prices }) {
   const { classes } = useStyles();
+
+  useEffect(() => {
+    console.log(title);
+  });
 
   return (
     <Paper
@@ -49,8 +54,8 @@ function Card({ image, title, category }) {
       className={classes.card}
     >
       <div>
-        <Text className={classes.category} size="xs">
-          {category}
+        <Text className={classes.prices} size="xs">
+          {prices}
         </Text>
         <Title order={3} className={classes.title}>
           {title}
@@ -62,34 +67,37 @@ function Card({ image, title, category }) {
 const data = [
   {
     title: "Best forests to visit in North America",
-    category: "new",
+    prices: "new",
   },
   {
     title: "Hawaii beaches review: better than you think",
-    category: "new",
+    prices: "new",
   },
   {
     title: "Mountains at night: 12 best locations to enjoy the view",
-    category: "new",
+    prices: "new",
   },
   {
     title: "Aurora in Norway: when to visit for best experience",
-    category: "new",
+    prices: "new",
   },
   {
     title: "Best places to visit this winter",
-    category: "new",
+    prices: "new",
   },
   {
     title: "Active volcanos reviews: travel at your own risk",
-    category: "new",
+    prices: "new",
   },
 ];
-export default function HomePageCarousel() {
+export default function HomePageCarousel({ hotels }) {
+  useEffect(() => {
+    console.log(hotels);
+  });
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
-  const slides = data.map((item) => (
-    <Carousel.Slide className=" cursor-pointer" key={item.title}>
+  const slides = hotels.map((item, i) => (
+    <Carousel.Slide className=" cursor-pointer" key={i}>
       <Card {...item} />
     </Carousel.Slide>
   ));

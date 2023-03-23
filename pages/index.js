@@ -55,9 +55,16 @@ export async function getServerSideProps(context) {
 
   const { data: cities, error2 } = await supabase.from("cities").select();
 
+  const { data: hotels, error } = await supabase
+    .from("Hotels")
+    .select("id ,created_at , title ,  prices,firstImage")
+    .order("created_at", { ascending: false })
+    .limit(3);
+
   if (error2) throw error2;
   return {
     props: {
+      hotels: hotels,
       cities: cities,
       ...(await serverSideTranslations(context.locale, ["common"])),
     },
@@ -412,7 +419,7 @@ export default function Home(props) {
               </div>
             }
           >
-            <HomePageCarousel />
+            <HomePageCarousel hotels={props.hotels} />
           </Suspense>
         </div>
         {/* <div className="w-full h-auto  lg:h-60 lg:px-44 z-10">
