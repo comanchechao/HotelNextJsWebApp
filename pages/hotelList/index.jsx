@@ -263,7 +263,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
                 {t("home")}
               </Link>
             </div>
-            <div class=" mt-4 relative text-black pl-7  self-center   flex items-center justify-center">
+            <div class=" mt-4 relative text-black lg:pl-7  self-center   flex items-center justify-center">
               <input
                 className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-full hover:bg-gray-100   bg-white font-mainFont h-8 px-5 pr-4 md:pr-16 rounded-3xl  text-sm focus:outline-none"
                 type="search"
@@ -272,7 +272,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
               />
               <button
                 type="submit"
-                className="absolute flex items-center   left-4 ml-6 inset-0"
+                className="absolute flex items-center left-0   lg:left-4 ml-3 lg:ml-6 inset-0"
               >
                 <MagnifyingGlass size={20} weight="bold" />
               </button>

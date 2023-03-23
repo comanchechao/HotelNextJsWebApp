@@ -9,7 +9,9 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+
 const useStyles = createStyles((theme) => ({
   card: {
     height: 440,
@@ -38,31 +40,47 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function Card({ image, title, prices }) {
+function Card({ hotels, hotel }) {
   const { classes } = useStyles();
+  const [singleImage, setSingleImage] = useState("");
 
+  const downloadImage1 = async () => {
+    const { data, error } = await supabase.storage
+      .from("/public/hotel-images")
+      .download(hotel.firstImage);
+
+    if (error) {
+      throw error;
+    }
+    const url = URL.createObjectURL(data);
+    setSingleImage(url);
+  };
   useEffect(() => {
-    console.log(title);
+    downloadImage1();
+    console.log(hotels.title);
   });
 
-  return (
-    <Paper
-      shadow="md"
-      p="xl"
-      radius="md"
-      sx={{ backgroundImage: `url(${image})` }}
-      className={classes.card}
-    >
-      <div>
-        <Text className={classes.prices} size="xs">
-          {prices}
-        </Text>
-        <Title order={3} className={classes.title}>
-          {title}
-        </Title>
-      </div>
-    </Paper>
-  );
+  hotels.map((hotel, i) => {
+    return (
+      <Paper
+        key={i}
+        shadow="md"
+        p="xl"
+        radius="md"
+        sx={{ backgroundImage: `url(${singleImage})` }}
+        className={classes.card}
+      >
+        <div>
+          <Text className={classes.prices} size="xs">
+            {hotel.prices}
+          </Text>
+          <Title order={3} className={classes.title}>
+            {hotel.title}
+          </Title>
+        </div>
+      </Paper>
+    );
+  });
 }
 const data = [
   {
@@ -96,9 +114,9 @@ export default function HomePageCarousel({ hotels }) {
   });
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
-  const slides = hotels.map((item, i) => (
+  const slides = hotels.map((hotel, i) => (
     <Carousel.Slide className=" cursor-pointer" key={i}>
-      <Card {...item} />
+      <Card hotels={hotels} hotel={hotel} {...hotel} />
     </Carousel.Slide>
   ));
 

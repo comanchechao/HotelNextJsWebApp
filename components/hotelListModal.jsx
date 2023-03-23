@@ -20,14 +20,17 @@ export default function HotelListModal({ features, residenceTypes, cities }) {
     (state) => state.filter.residenceTypes
   );
   let stars = useSelector((state) => state.filter.stars);
+  const [checked, setChecked] = useState(true);
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
   const isMobile = useMediaQuery("(max-width: 50em)");
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   const [tempCity, setTempCity] = useState(false);
-  async function SelectCity() {
-    setTempCity(city.Tr);
+
+  async function submitFilters() {
+    dispatch(reservationActions.setCity(tempCity));
+    setOpened(false);
   }
 
   useEffect(() => {
@@ -92,10 +95,9 @@ export default function HotelListModal({ features, residenceTypes, cities }) {
                     ? cities.map((city, i) => {
                         return (
                           <Checkbox
-                            onClick={() => {
-                              dispatch(reservationActions.setCity(city.name));
+                            onChange={() => {
+                              setTempCity(city.name);
                             }}
-                            checked={filterCities.includes(city.name)}
                             key={i}
                             labelPosition="left"
                             color="yellow"
@@ -108,10 +110,9 @@ export default function HotelListModal({ features, residenceTypes, cities }) {
                     : cities.map((city, i) => {
                         return (
                           <Checkbox
-                            onClick={() => {
-                              SelectCity();
+                            onChange={() => {
+                              setTempCity(city.trTitle);
                             }}
-                            checked={filterCities.includes(city.trTitle)}
                             key={i}
                             labelPosition="left"
                             color="yellow"
@@ -340,7 +341,7 @@ export default function HotelListModal({ features, residenceTypes, cities }) {
             </Accordion.Item>
           </Accordion>
           <button
-            onClick={() => setOpened(false)}
+            onClick={() => submitFilters()}
             className="py-1 px-8 mt-6 border-2 lg:self-start font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
           >
             {t("confirmFilters")}
