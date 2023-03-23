@@ -31,7 +31,6 @@ import Image from "next/image";
 import { PlusCircle, MinusCircle, Star, MapPin } from "phosphor-react";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
-import FeaturesModal from "../../../components/FeaturesModal";
 
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState, useRef } from "react";
@@ -625,7 +624,7 @@ export default function HotelDetailPage({ hotel }) {
                     {t("hotelFacilities")}
                   </h2>
                 </div>
-                <div className="rounded-lg border text-sm  border-gray-300 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  ">
+                <div className="rounded-lg border text-sm mb-7  border-gray-300 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  ">
                   {hotel.features.map((feature, i) => {
                     return (
                       <div key={i} className="flex px-3  justify-end items-end">
@@ -637,7 +636,6 @@ export default function HotelDetailPage({ hotel }) {
                     );
                   })}
                 </div>
-                <FeaturesModal />
                 <div
                   className={`${
                     alignLeft === true
