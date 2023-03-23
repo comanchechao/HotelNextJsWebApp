@@ -12,7 +12,7 @@ import dynamic from "next/dynamic";
 import { supabase } from "../lib/supabaseClient";
 
 const EditHotel = dynamic(() => import("./editHotel"));
-export default function AdminHotelCard({ hotel, user, features, cities }) {
+export default function AdminHotelCard({ hotel, user, featuresData, cities }) {
   const HotelMap = dynamic(() => import("./hotelMap"), {
     ssr: false,
   });
@@ -26,6 +26,7 @@ export default function AdminHotelCard({ hotel, user, features, cities }) {
   const [alignLeft, setAlignLeft] = useState(false);
 
   useEffect(() => {
+    console.log(featuresData);
     changeAlignment();
     downloadImage1();
     downloadImage2();
@@ -100,7 +101,7 @@ export default function AdminHotelCard({ hotel, user, features, cities }) {
           identifier={hotel.id}
           hotel={hotel}
           user={user}
-          featuresData={features}
+          featuresData={featuresData}
           cities={cities}
         />
       </div>

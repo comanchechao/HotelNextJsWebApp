@@ -28,13 +28,7 @@ import { X, Buildings } from "phosphor-react";
 //   ssr: false,
 //   Suspense: true,
 // });
-export default function EditHotel({
-  identifier,
-  featuresData,
-  cities,
-  user,
-  hotel,
-}) {
+export default function EditHotel({ identifier, featuresData, cities, hotel }) {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   const [opened, setOpened] = useState(false);
@@ -197,6 +191,7 @@ export default function EditHotel({
   const [allFeatures, setAllFeatures] = useState([]);
 
   useEffect(() => {
+    console.log(featuresData);
     if (featuresData) {
       featuresData.forEach((feature, i) => {
         if (allFeatures.indexOf(feature.title) === -1) {
@@ -512,10 +507,10 @@ export default function EditHotel({
                 transitionTimingFunction="ease"
                 variant="default"
                 radius="md"
-                placeholder={t("enterCity")}
+                placeholder={hotel.city}
                 size="md"
                 required
-                value={hotel.city}
+                value={city}
                 onChange={setCity}
                 searchable
                 className="text-right  w-full"
@@ -547,6 +542,20 @@ export default function EditHotel({
                 onChange={setFeatures}
                 data={allFeatures}
               />
+            </div>
+            <div className="flex space-x-4 w-full justify-end">
+              {!features.length
+                ? hotel.features.map((feature, i) => {
+                    return (
+                      <button
+                        key={i}
+                        className="shadow-2xl py-3 px-6 bg-gray-200  rounded"
+                      >
+                        {feature}
+                      </button>
+                    );
+                  })
+                : null}
             </div>
             <div
               className={`${
@@ -587,6 +596,7 @@ export default function EditHotel({
                 className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                 id=""
                 cols="10"
+                placeholder={hotel.hotelRules}
                 rows="5"
               ></textarea>
             </div>
@@ -634,6 +644,7 @@ export default function EditHotel({
                 id=""
                 cols="30"
                 rows="10"
+                placeholder={hotel.hotelAbout}
               ></textarea>
             </div>
             <div className="flex p-5 w-full justify-center   items-center"></div>
