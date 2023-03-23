@@ -14,6 +14,7 @@ import { supabase } from "../lib/supabaseClient";
 export default function ReservationManagement({ Hotels }) {
   const [reservations, setReservations] = useState(null);
   async function getReservations() {
+    console.log('hotels' , Hotels)
     const { data: reservations, error4 } = await supabase
       .from("reservations")
       .select()

@@ -34,6 +34,14 @@ export default function HotelManagement({
   residenceTypes,
 }) {
   const { t, i18n } = useTranslation("common");
+  const [initialHotels, setInitialHotels] = useState(hotels);
+
+  function searchFunction(input) {
+    const filteredArray = hotels.filter((item) =>
+      item.title.toLowerCase().includes(input.toLowerCase())
+    );
+    setInitialHotels(filteredArray);
+  }
 
   return (
     <div className="flex flex-col w-full h-full  lg:h-carousel   px-4 py-7">
@@ -50,6 +58,9 @@ export default function HotelManagement({
               className="border-2 p-0 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-textArea hover:bg-white   bg-white font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-sm  text-sm focus:outline-none"
               type="search"
               name="search"
+              onChange={(e) => {
+                searchFunction(e.target.value);
+              }}
               placeholder={t("hotelNameSearch")}
             />
           </div>
@@ -84,7 +95,7 @@ export default function HotelManagement({
               className="flex w-full  overflow-y-scroll  h-rem28
                space-y-7  flex-col"
             >
-              {hotels.map((hotel, i) => {
+              {initialHotels.map((hotel, i) => {
                 return (
                   <AdminHotelCard
                     user={user}
@@ -103,7 +114,7 @@ export default function HotelManagement({
               className="flex w-full  overflow-y-scroll  h-rem28
                space-y-7  flex-col"
             >
-              {hotels.map((hotel, i) => {
+              {initialHotels.map((hotel, i) => {
                 return (
                   <AdminHotelCard
                     user={user}
