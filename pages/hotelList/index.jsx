@@ -280,8 +280,11 @@ export default function HotelList({ features, residenceTypes, cities }) {
                 name="search"
                 placeholder={t("hotelNameSearch")}
               />
-
-              <MagnifyingGlass size={20} weight="bold" />
+              <MagnifyingGlass
+                className="absolute flex items-center left-0   lg:left-4 ml-3 lg:ml-6 inset-0"
+                size={20}
+                weight="bold"
+              />
             </div>
             <div
               ref={firstContainer}
