@@ -235,30 +235,31 @@ export default function HotelDetailPage({ hotel }) {
     setSingleImage(url);
 
     setLoading(false);
-    downloadImage2();
+    console.log(hotel.secondImage);
+    if (hotel.secondImage) {
+      downloadImage2();
+    }
   };
 
   const downloadImage2 = async () => {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase.storage
-        .from("/public/hotel-images")
-        .download(hotel.secondImage);
+    setLoading(true);
+    const { data, error } = await supabase.storage
+      .from("/public/hotel-images")
+      .download(hotel.secondImage);
 
-      if (error) {
-        throw error;
-      }
-      const url = URL.createObjectURL(data);
-      setImageTwo(url);
-    } catch (error) {
-      console.log("Error downloading image: ", error.message);
-    } finally {
-      setLoading(false);
+    if (error) {
+      throw error;
+    }
+    const url = URL.createObjectURL(data);
+    setImageTwo(url);
+
+    setLoading(false);
+    if(hotel.thirdImage){
       downloadImage3();
     }
   };
   const downloadImage3 = async () => {
-    try {
+    if (hotel.thirdImage) {
       setLoading(true);
       const { data, error } = await supabase.storage
         .from("/public/hotel-images")
@@ -269,16 +270,16 @@ export default function HotelDetailPage({ hotel }) {
       }
       const url = URL.createObjectURL(data);
       setImageThree(url);
-    } catch (error) {
-      console.log("Error downloading image: ", error.message);
-    } finally {
+
       setLoading(false);
     }
   };
   useEffect(() => {
     changeAlignment();
 
-    downloadImage1();
+    if (hotel.firstImage) {
+      downloadImage1();
+    }
     getComments(hotel);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -560,21 +561,13 @@ export default function HotelDetailPage({ hotel }) {
                           <h1 className="text-xs"> {t("kid")} </h1>
                           <div className="flex text-blue-800 items-center justify-center space-x-5">
                             <PlusCircle
-                              onClick={() => {
-                                dispatch(
-                                  reservationActions.increasePassenger()
-                                );
-                              }}
+                           
                               size={27}
                               weight="fill"
                             />
-                            <h1 className="text-xs font-bold">{passenger}</h1>
+                            <h1 className="text-xs font-bold">1</h1>
                             <MinusCircle
-                              onClick={() => {
-                                dispatch(
-                                  reservationActions.decreamentPassenger()
-                                );
-                              }}
+                          
                               size={27}
                               weight="fill"
                             />

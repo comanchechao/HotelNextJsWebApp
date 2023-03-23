@@ -267,6 +267,7 @@ export default function Home(props) {
               <DateRangePicker
                 locale={faLocale}
                 timeZone="iran/tehran"
+                amountOfMonths={2}
                 className={`${
                   alignLeft === true
                     ? "text-3xl text-right  flex flex-col  items-end"

@@ -15,7 +15,12 @@ export async function getServerSideProps({ req, locale }) {
   const accessToken = req.cookies["my-access-token"];
 
   if (!refreshToken && !accessToken) {
-    throw new Error("User is not authenticated.");
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
   }
 
   await supabase.auth.setSession({

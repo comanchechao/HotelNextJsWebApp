@@ -35,7 +35,12 @@ export async function getServerSideProps(context) {
   const accessToken = context.req.cookies["my-access-token"];
 
   if (!refreshToken && !accessToken) {
-    throw new Error("user not authenticated");
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
   }
   await supabase.auth.setSession({
     refresh_token: refreshToken,
@@ -52,7 +57,12 @@ export async function getServerSideProps(context) {
   if (error6) throw error6;
 
   if (userRole[0].role !== "admin" && userRole[0].role !== "colleage") {
-    throw new Error("you are not authorized");
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
   }
   const { data: cities, error2 } = await supabase.from("cities").select();
   const { data: residenceTypes, error4 } = await supabase

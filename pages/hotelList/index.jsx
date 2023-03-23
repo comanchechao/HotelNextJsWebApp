@@ -328,15 +328,9 @@ export default function HotelList({ features, residenceTypes, cities }) {
             </div>
             {loading === false ? (
               <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
-                {!filters
-                  ? hotels.map((hotel) => {
-                      return <HotelCard key={hotel.id} hotel={hotel} />;
-                    })
-                  : filteredHotels !== null
-                  ? filteredHotels.map((hotel) => {
-                      return <HotelCard key={hotel.id} hotel={hotel} />;
-                    })
-                  : null}
+                {hotels.map((hotel) => {
+                  return <HotelCard key={hotel.id} hotel={hotel} />;
+                })}
               </div>
             ) : (
               <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
