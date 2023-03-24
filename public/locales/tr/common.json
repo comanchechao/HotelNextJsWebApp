@@ -245,5 +245,7 @@
   "cancelRule": "İptal kuralları",
   "passengerCount": "Yolcu sayısı",
   "infoConfirmSuccess": "Kayıt başarılı oldu.",
-  "hotelOnMap": "Haritada otel yeri"
+  "hotelOnMap": "Haritada otel yeri",
+
+  "profileCreate": "Profil oluştur"
 }

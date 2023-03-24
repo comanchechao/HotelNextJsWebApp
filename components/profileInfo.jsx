@@ -59,8 +59,13 @@ export default function ProfileInfo({ user }) {
       const updates = {
         id: user.user.id,
         email: email,
+        phone: phone,
+        fullName: fullName,
+        shaba: shaba,
+        idCard: idCard,
+        card: card,
       };
-      const { data, error } = await supabase.from("profiles").insert(updates);
+      const { data, error } = await supabase.from("profiles").upsert(updates);
       if (error) throw error;
       setLoading(false);
       setEdit(false);
@@ -262,7 +267,7 @@ export default function ProfileInfo({ user }) {
             </button>
           ) : edit ? (
             <button
-              onClick={() => setEdit(true)}
+              onClick={() => editUser()}
               className={`${
                 alignLeft === true
                   ? "px-10 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-sm m-3 self-start font-mainFont"
@@ -273,7 +278,7 @@ export default function ProfileInfo({ user }) {
             </button>
           ) : (
             <button
-              onClick={editUser}
+              onClick={() => setEdit(true)}
               className={`${
                 alignLeft === true
                   ? "px-10 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-sm m-3 self-start font-mainFont"
@@ -298,7 +303,7 @@ export default function ProfileInfo({ user }) {
               : "px-10 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg m-3 self-center font-mainFont"
           }`}
         >
-          ایجاد پروفایل
+          {t("profileCreate")}
         </button>
       )}
     </div>
