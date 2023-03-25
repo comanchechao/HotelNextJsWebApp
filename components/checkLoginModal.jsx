@@ -1,13 +1,34 @@
 import { Modal, useMantineTheme } from "@mantine/core";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import LoginModal from "./loginModal";
 import { X } from "phosphor-react";
+import { supabase } from "../lib/supabaseClient";
+import { reservationActions } from "../store/reservation";
+import { useDispatch } from "react-redux";
+import Link from "next/link";
 
 export default function LoginCheckModal() {
   const [opened, setOpened] = useState(false);
+  const [userSigned, setUserSigned] = useState(false);
+  async function checkUser() {
+    const { data: user, error } = await supabase.auth.getSession();
+
+    if (user.session) {
+      setUserSigned(true);
+    } else {
+      setUserSigned(false);
+
+      console.log("User not found");
+    }
+  }
   const { t, i18n } = useTranslation("common");
   const theme = useMantineTheme();
+  useEffect(() => {
+    checkUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -31,6 +52,7 @@ export default function LoginCheckModal() {
         {" "}
         <X
           onClick={() => {
+            checkUser();
             setOpened(false);
           }}
           className="cursor-pointer transition ease-in duration-200    hover:bg-mainPurple hover:text-mainBlue m-5  rounded-md text-mainPurple"
@@ -42,14 +64,28 @@ export default function LoginCheckModal() {
           <LoginModal />
         </div>
       </Modal>
-      <button
-        onClick={() => {
-          setOpened(true);
-        }}
-        className="py-1    bg-white border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-mainPurple my-5 px-6   "
-      >
-        <p>{t("roomReserve")}</p>
-      </button>
+      {userSigned ? (
+        <Link href="/checkout">
+          <button
+            onClick={() => {
+              dispatch(reservationActions.setRoom(room));
+              dispatch(reservationActions.setHotelInfo(hotelDetail));
+            }}
+            className="py-1  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-6   "
+          >
+            <p>{t("roomReserve")}</p>
+          </button>
+        </Link>
+      ) : (
+        <button
+          onClick={() => {
+            setOpened(true);
+          }}
+          className="py-1    bg-white border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-mainPurple my-5 px-6   "
+        >
+          <p>{t("roomReserve")}</p>
+        </button>
+      )}
     </>
   );
 }

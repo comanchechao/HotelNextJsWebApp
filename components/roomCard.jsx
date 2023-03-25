@@ -53,21 +53,8 @@ export default function RoomCard({ room, hotelDetail }) {
             </h2>
           </div>
           <h1 className="text-sm">{t("avrgNight")}</h1>
-          {userSigned ? (
-            <Link href="/checkout">
-              <button
-                onClick={() => {
-                  dispatch(reservationActions.setRoom(room));
-                  dispatch(reservationActions.setHotelInfo(hotelDetail));
-                }}
-                className="py-1  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-6   "
-              >
-                <p>{t("roomReserve")}</p>
-              </button>
-            </Link>
-          ) : (
-            <CheckLoginModal />
-          )}
+
+          <CheckLoginModal />
         </div>
         <div
           className={`${
