@@ -1,14 +1,12 @@
 import { Carousel } from "@mantine/carousel";
 import Image from "next/image";
 import Link from "next/link";
-import hotelone from "../assets/images/hotelone.webp";
-import hotelthree from "../assets/images/hotelthree.webp";
-import hotelfour from "../assets/images/hotelfour.webp";
+
 import dynamic from "next/dynamic";
 import { useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
 import { Star } from "phosphor-react";
-import { Chip } from "@mantine/core";
+import { Chip, Loader } from "@mantine/core";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
@@ -148,7 +146,11 @@ export default function HotelCard({ hotel }) {
                 width={400}
                 height={200}
               />
-            ) : null}
+            ) : (
+              <div>
+                <Loader size="lg" color="yellow" variant="bars" />
+              </div>
+            )}
           </Carousel.Slide>
           <Carousel.Slide>
             {imageTwo ? (
@@ -159,7 +161,11 @@ export default function HotelCard({ hotel }) {
                 width={400}
                 height={200}
               />
-            ) : null}
+            ) : (
+              <div>
+                <Loader size="lg" color="yellow" variant="bars" />
+              </div>
+            )}
           </Carousel.Slide>
           <Carousel.Slide>
             {imageThree ? (
@@ -170,7 +176,11 @@ export default function HotelCard({ hotel }) {
                 width={400}
                 height={200}
               />
-            ) : null}
+            ) : (
+              <div>
+                <Loader size="lg" color="yellow" variant="bars" />
+              </div>
+            )}
           </Carousel.Slide>
         </Carousel>
       </div>

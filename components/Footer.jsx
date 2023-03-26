@@ -67,12 +67,6 @@ export default function Footer() {
           <p className=" ">
             {t("address")} : {address}
           </p>
-          <div className="flex items-center justify-center space-x-4">
-            <div className="w-20 h-20 bg-mainYellow drop-shadow-lg"></div>
-            <div className="w-20 h-20 bg-mainYellow drop-shadow-lg"></div>
-            <div className="w-20 h-20 bg-mainYellow drop-shadow-lg"></div>
-            <div className="w-20 h-20 bg-mainYellow drop-shadow-lg"></div>
-          </div>
         </div>
         <div
           className={`${

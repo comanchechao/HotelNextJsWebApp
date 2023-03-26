@@ -376,7 +376,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
                 })}
               </div>
             ) : (
-              <div className="w-full h-full flex flex-col items-end justify-center space-y-9 my-10  ">
+              <div className="w-full h-full flex flex-col items-center lg:items-end justify-center space-y-9 my-10  ">
                 <Skeleton height={200} width="88%" />{" "}
                 <Skeleton height={200} width="88%" />{" "}
                 <Skeleton height={200} width="88%" />{" "}

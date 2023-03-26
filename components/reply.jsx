@@ -72,6 +72,7 @@ export default function Reply(props) {
         transitionTimingFunction="ease"
         exitTransitionDuration={600}
         size="600px"
+        fullScreen={isMobile}
         opened={opened}
         onClose={() => setOpened(false)}
         centered
@@ -81,8 +82,8 @@ export default function Reply(props) {
             <div
               className={`${
                 alignLeft === true
-                  ? "flex space-y-2 py-2 text-right flex-col w-full h-full p-4 bg-mainWhite"
-                  : "flex space-y-2 py-2 text-left flex-col w-full h-full p-4 bg-mainWhite"
+                  ? "flex space-y-2 py-2 text-right flex-col w-full h-full p-4 bg-white"
+                  : "flex space-y-2 py-2 text-left flex-col w-full h-full p-4 bg-white"
               }`}
             >
               <label htmlFor="reply">{t("commentTitle")}</label>

@@ -253,7 +253,7 @@ export default function HotelDetailPage({ hotel }) {
     setImageTwo(url);
 
     setLoading(false);
-    if(hotel.thirdImage){
+    if (hotel.thirdImage) {
       downloadImage3();
     }
   };
@@ -389,10 +389,6 @@ export default function HotelDetailPage({ hotel }) {
             {loading ? (
               <div className="h-full my-8 w-full flex items-center justify-center space-x-5">
                 <Skeleton height={400} width={"100%"} />{" "}
-                <Skeleton height={400} width={"100%"} />{" "}
-                <Skeleton height={400} width={"100%"} />{" "}
-                <Skeleton height={400} width={"100%"} />{" "}
-                <Skeleton height={400} width={"100%"} />
               </div>
             ) : (
               <div className="flex   my-4 items-center justify-between space-x-6 h-rem22 w-full     ">
@@ -559,17 +555,9 @@ export default function HotelDetailPage({ hotel }) {
                         <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
                           <h1 className="text-xs"> {t("kid")} </h1>
                           <div className="flex text-blue-800 items-center justify-center space-x-5">
-                            <PlusCircle
-                           
-                              size={27}
-                              weight="fill"
-                            />
+                            <PlusCircle size={27} weight="fill" />
                             <h1 className="text-xs font-bold">1</h1>
-                            <MinusCircle
-                          
-                              size={27}
-                              weight="fill"
-                            />
+                            <MinusCircle size={27} weight="fill" />
                           </div>
                         </div>
                       </div>
