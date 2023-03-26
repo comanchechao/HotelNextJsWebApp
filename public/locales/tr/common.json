@@ -247,5 +247,10 @@
   "infoConfirmSuccess": "Kayıt başarılı oldu.",
   "hotelOnMap": "Haritada otel yeri",
 
-  "profileCreate": "Profil oluştur"
+  "profileCreate": "Profil oluştur",
+
+  "details": "Detaylar",
+
+  "reserveInfo": "Rezervasyon Bilgileri",
+  "seeHotel": "Oteli Gör"
 }

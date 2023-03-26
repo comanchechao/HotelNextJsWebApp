@@ -27,7 +27,7 @@ export default function LoginCheckModal() {
   useEffect(() => {
     checkUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [opened]);
   const dispatch = useDispatch();
 
   return (
@@ -49,7 +49,6 @@ export default function LoginCheckModal() {
         overlayOpacity={0.55}
         overlayBlur={3}
       >
-        {" "}
         <X
           onClick={() => {
             checkUser();

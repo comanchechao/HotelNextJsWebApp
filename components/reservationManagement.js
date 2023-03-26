@@ -10,11 +10,20 @@ import {
 import ReservationInfo from "./reservationInfo";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
+import { useTranslation } from "next-i18next";
 
 export default function ReservationManagement({ Hotels }) {
   const [reservations, setReservations] = useState(null);
+  const { t, i18n } = useTranslation("common");
+  const lng = i18n.language;
+  const [alignLeft, setAlignLeft] = useState(false);
+
+  async function changeState() {
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   async function getReservations() {
-    console.log('hotels' , Hotels)
+    console.log("hotels", Hotels);
     const { data: reservations, error4 } = await supabase
       .from("reservations")
       .select()
@@ -24,6 +33,7 @@ export default function ReservationManagement({ Hotels }) {
   }
 
   useEffect(() => {
+    changeState();
     getReservations();
 
     console.log(reservations, "reservatoins");
@@ -54,14 +64,14 @@ export default function ReservationManagement({ Hotels }) {
               value="messages"
               icon={<IconBuildingSkyscraper size={16} />}
             >
-              هتل های من
+              {t("myHotels")}
             </Tabs.Tab>
             <Tabs.Tab
               color="indigo"
               value="gallery"
               icon={<IconUser size={16} />}
             >
-              همه همکاران
+              {t("otherHotels")}
             </Tabs.Tab>
           </Tabs.List>
           <Tabs.Panel value="gallery" pt="xs">
@@ -73,13 +83,17 @@ export default function ReservationManagement({ Hotels }) {
                   return (
                     <div
                       key={i}
-                      className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                      className="flex py-1   w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
                     >
                       <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
-                        <IconUserCircle size={50} />
+                        <IconUserCircle size={40} />
                       </div>
-                      <h1 className=" text-sm lg:text-xl">{user.hotel_name}</h1>
-                      <p className="hidden lg:block">{user.name}</p>
+                      <h1 className=" text-sm lg:text-lg">
+                        {t("hotelName")} : <strong>{user.hotel_name}</strong>
+                      </h1>
+                      <p className="hidden lg:block">
+                        {t("fullName")} : <strong>{user.name}</strong>
+                      </p>
                       <ReservationInfo
                         passengerCount={user.passengerCount}
                         room={user.room}

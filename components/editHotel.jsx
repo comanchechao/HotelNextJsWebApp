@@ -320,6 +320,10 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
   return (
     <>
       <Modal
+        transition="fade"
+        transitionDuration={600}
+        transitionTimingFunction="ease"
+        exitTransitionDuration={600}
         padding={1}
         fullScreen
         withCloseButton={false}

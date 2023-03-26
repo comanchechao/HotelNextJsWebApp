@@ -67,6 +67,10 @@ export default function Reply(props) {
   return (
     <>
       <Modal
+        transition="fade"
+        transitionDuration={600}
+        transitionTimingFunction="ease"
+        exitTransitionDuration={600}
         size="600px"
         opened={opened}
         onClose={() => setOpened(false)}

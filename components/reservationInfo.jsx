@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   IconBed,
   IconStar,
@@ -11,6 +11,9 @@ import { IconUserCircle } from "@tabler/icons";
 import hotelOne from "../assets/images/hotelone.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
+import { useMediaQuery } from "@mantine/hooks";
+
 export default function ReservationInfo({
   hotel,
   passengerCount,
@@ -18,152 +21,75 @@ export default function ReservationInfo({
   room,
 }) {
   let hotels = [{ title: "هتل", rooms: 32, image: hotelOne }];
-  const [opened, setOpened] = useState(false);
+  const [alignLeft, setAlignLeft] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 50em)");
 
+  const [opened, setOpened] = useState(false);
+  const { t, i18n } = useTranslation("");
+  const lng = i18n.language;
+
+  async function changeAlignment() {
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
+  useEffect(() => {
+    changeAlignment();
+  }, []);
   return (
     <>
       <Modal
-        size="70%"
+        fullScreen={isMobile}
         centered
+        size="650px"
+        transition="fade"
+        transitionDuration={600}
+        transitionTimingFunction="ease"
+        exitTransitionDuration={600}
         opened={opened}
         onClose={() => setOpened(false)}
-        title="جزئیات رزرو"
         className="text-right w-full flex justify-end"
       >
-        <div className="w-full h-full">
-          <div className="flex w-full justify-around items-center">
-            <div className="flex lg:flex-row flex-col-reverse w-full items-center justify-around">
-              <div className="flex items-center space-x-1">
-                <p>{hotel}</p>
-                <p>:نام کاربری</p>
-              </div>
-              <div className="flex items-center space-x-1">
-                <p>{passengers[0].name}</p>
-                <p>:نام درخواست دهنده</p>
-              </div>
-            </div>
-            <div className="flex">
-              <IconUserCircle size={50} />
-            </div>
+        <div className="h-full w-full flex items-center  p-4 flex-col space-y-6">
+          <h1 className="text-2xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
+            {t("reserveInfo")}
+          </h1>
+          <div className="grid justify-items-center grid-cols-2 w-full ">
+            <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
+              {t("hotelName")} : <strong>هتل چت جی پی تی</strong>
+            </h2>
+            <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
+              {t("fullName")} : <strong>آروین نیک بین</strong>
+            </h2>
           </div>
-          <div className="flex w-full justify-center items-center">
-            <div className="lg:space-x-2 lg:flex-row flex-col-reverse border border-gray-400 border-dashed flex px-0 items-center justify-between h-full shadow-xl w-full rounded bg-mainWhite">
-              <div className="flex lg:border-r border-gray-900 flex-col h-full w-full lg:w-2/3 justify-center items-center">
-                <div className="flex justify-center items-center w-full h-full">
-                  <div className="flex text-center justify-center items-center">
-                    <IconBed />
-                    <h2>{hotel.rooms}</h2>
-                  </div>
-                </div>
-                <div className="flex flex-col p-5 h-full w-full justify-between  items-around">
-                  <Link className="w-full h-full" href="/admin/hoteldetail">
-                    <button className="w-full py-4 bg-mainPurple transition ease-in duration-150 font-mainFont rounded-md text-white hover:bg-mainBlue">
-                      نمایش هتل
-                    </button>
-                  </Link>
-                </div>
-                <div className="flex space-x-2 p-1 justify-start items-end w-full h-full font-medium text-sm">
-                  <p>Ana Hotel</p> <p>ساخته شده توسط</p>
-                </div>
+          <div className="grid justify-items-center grid-cols-2  w-full">
+            <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
+              {t("roomName")} : <strong>اتاق مشتی</strong>
+            </h2>{" "}
+            <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
+              {t("roomCapacity")} : <strong>3</strong>
+            </h2>
+          </div>
+          <div className="w-full h-auto flex items-center">
+            <div className=" border-b-2 my-3 space-y-2  h-full flex-col   w-full border-mainPurple border-dashed flex items-start  rounded-md">
+              <div className="bg-blue-600 w-full grid grid-cols-4 justify-items-center  rounded-sm">
+                {" "}
+                <h3 className="text-white">{t("idCode")}</h3>{" "}
+                <h3 className="text-white">{t("phone")}</h3>
+                <h3 className="text-white">{t("gender")}</h3>{" "}
+                <h3 className="text-white">{t("fullName")}</h3>
               </div>
-              <div className="flex px-4 lg:px-0  border-black w-full justify-end items-center text-right flex-col">
-                <div className="flex flex-col text-right">
-                  <h2 className="text-2xl">{hotel.title}</h2>
-                  <div className="flex justify-center text-md">
-                    <IconStar size={15} />
-                    <h3>5</h3>
-                  </div>
-                </div>
-                <div className="flex w-full flex-col text-right">
-                  <div className="flex space-y-1 flex-col w-full">
-                    <div className="flex  border-black justify-between w-full items-center">
-                      <IconBath />
-                      <h2>حمام ترکی</h2>
-                    </div>
-                    <div className="flex justify-between w-full items-center">
-                      <IconToolsKitchen />
-                      <h2>رستوران</h2>
-                    </div>
-                    <div className="flex justify-between w-full items-center">
-                      <IconMassage />
-                      <h2>ماساژ</h2>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex text-blue-500 transition hover:text-blue-600 cursor-pointer justify-center items-center">
-                  <h2>مشاهده روی نقشه</h2>
-                </div>
-              </div>
-              <div className="flex w-full h-full lg:h-52 justify-center items-center">
-                <Image alt="" className="w-full lg:h-52 object-contain" />
+              <div className="  w-full grid grid-cols-4 justify-items-center rounded-sm">
+                {" "}
+                <h3 className="text-mainPurple">0023470011</h3>{" "}
+                <h3 className="text-mainPurple">09145248936</h3>
+                <h3 className="text-mainPurple">مرد</h3>{" "}
+                <h3 className="text-mainPurple">آروین نیک بین</h3>
               </div>
             </div>
           </div>
-          <div className="flex m-2 flex-col w-full">
-            <div className="flex w-full border-b-2 border-gray-900 justify-end text-right">
-              <h1 className="bg-gray-900 p-3 text-gray-100">درخواست</h1>
-            </div>
-            <div className="flex">
-              <div className="flex border border-gray-300 bg-white justify-around divide-y my-5 divide-gray-300 rounded-sm flex-col w-full h-64">
-                <div className="flex flex-col py-4 px-5 justify-center items-end ">
-                  <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
-                    {room ? room.title : null}
-                  </h1>
-                  <h2 className="my-3"> {room ? room.meal : null}</h2>
-                </div>
-                <div className="flex items-center h-full w-full px-5 justify-between">
-                  <div className="flex space-x-1 p-2 justify-center items-center">
-                    <h2>ریال</h2>
-                    <h2 className="  text-3xl text-mainPurple">
-                      {" "}
-                      {room ? room.price : null}
-                    </h2>
-                  </div>
-                  <h1 className="text-lg">قیمت برای هرشب</h1>
-                </div>
-                <div className="flex justify-center items-center h-full">
-                  <Link href="/checkout">
-                    <button className="py-3  hover:text-white border-mainPurple border-2 border-dashed ease-in duration-300 hover:bg-darkPurple transition rounded-full  text-mainPurple my-5 px-12 bg-transparent  ">
-                      <p>رزرو مجدد</p>
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="flex s justify-around bg-gray-600 items-center  w-full h-full p-3 ">
-              {passengers.map((pass, i) => {
-                return (
-                  <Accordion
-                    key={i}
-                    variant="separated"
-                    chevronPosition="left"
-                    color="yellow"
-                    className=""
-                  >
-                    <Accordion.Item value="customization">
-                      <Accordion.Control className="text-right w-full">
-                        <p>
-                          {pass.name} {i + 1}
-                        </p>
-                      </Accordion.Control>
-                      <Accordion.Panel>
-                        <div className="flex w-full space-x-4 justify-around items-center">
-                          <div className="flex items-center space-x-1">
-                            <p>{pass.phoneNumber}</p>
-                            <p>:شماره تماس</p>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <p>{pass.socialNumber}</p>
-                            <p>:شماره ملی</p>
-                          </div>
-                        </div>
-                      </Accordion.Panel>
-                    </Accordion.Item>
-                  </Accordion>
-                );
-              })}
-            </div>
-          </div>
+          <button className="py-2 font-mainFont  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-6   ">
+            {t("seeHotel")}
+          </button>
         </div>
       </Modal>
 
@@ -172,9 +98,9 @@ export default function ReservationInfo({
           onClick={() => {
             setOpened(true);
           }}
-          className="lg:w-32 w-24 py-2 border-2 text-mainPurple text-lg border-mainPurple border-dashed  urple transition ease-in duration-300 font-mainFont rounded-md   hover:bg-mainBlue"
+          className="py-1 font-mainFont  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white  px-8   "
         >
-          <p>جزئیات</p>
+          <p>{t("details")}</p>
         </button>
       </Group>
     </>
