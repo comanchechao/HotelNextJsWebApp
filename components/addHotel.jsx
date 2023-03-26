@@ -65,7 +65,6 @@ export default function AddHotel({
   const [residenceTypesName, setResidenceTypesName] = useState([]);
 
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
@@ -290,7 +289,6 @@ export default function AddHotel({
   const [allFeatures, setAllFeatures] = useState([]);
 
   useEffect(() => {
-    console.log(cities);
     if (featuresData) {
       featuresData.forEach((feature, i) => {
         if (allFeatures.indexOf(feature.title) === -1) {
@@ -746,7 +744,6 @@ export default function AddHotel({
                 <input
                   onChange={(e) => {
                     setExitingHours(e.target.value);
-                    console.log(exitingHours);
                   }}
                   className="py-2 text-right font-mainFont px-2 w-20 rounded-md  bg-gray-200"
                   type="time"

@@ -10,7 +10,10 @@ import SuperUser from "./superUserModal";
 import SuperUserValidation from "./superUserValidation";
 import { useEffect } from "react";
 
-export default function UserManagement() {
+export default function UserManagement({ users }) {
+  useEffect(() => {
+    console.log(users);
+  });
   return (
     <div className="flex w-full h-full lg:h-carousel ">
       <div className="flex w-full space-y-4 flex-col">

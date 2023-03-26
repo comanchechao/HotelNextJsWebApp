@@ -26,10 +26,13 @@ export default function AdminHotelCard({ hotel, user, featuresData, cities }) {
   const [alignLeft, setAlignLeft] = useState(false);
 
   useEffect(() => {
-    console.log(featuresData);
     changeAlignment();
-    downloadImage1();
-    downloadImage2();
+    if (hotel.firstImage) {
+      downloadImage1();
+    }
+    if (hotel.secondImage) {
+      downloadImage2();
+    }
   }, []);
   const downloadImage1 = async () => {
     if (hotel.firstImage) {

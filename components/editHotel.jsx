@@ -191,7 +191,6 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
   const [allFeatures, setAllFeatures] = useState([]);
 
   useEffect(() => {
-    console.log(featuresData);
     if (featuresData) {
       featuresData.forEach((feature, i) => {
         if (allFeatures.indexOf(feature.title) === -1) {

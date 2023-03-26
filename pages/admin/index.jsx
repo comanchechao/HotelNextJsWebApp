@@ -72,10 +72,19 @@ export async function getServerSideProps(context) {
   const { data: features, error3 } = await supabase
     .from("features")
     .select("title");
+
+  const {
+    data: { users },
+    error,
+  } = await adminAuthClient.listUsers();
+
+  if (error) throw error;
+
   return {
     props: {
       cities: cities,
       role: userRole[0].role,
+      users: users,
       residenceTypes: residenceTypes,
       features: features,
       user: user.user,
@@ -89,10 +98,15 @@ export default function AdminPage({
   cities,
   features,
   residenceTypes,
+  users,
   role,
 }) {
   const [hotelIds, setHotelIds] = useState([]);
   const [hotels, setHotels] = useState([]);
+
+  useEffect(() => {
+    console.log(users);
+  });
 
   async function getHotels() {
     const { data: hotels, error } = await supabase
@@ -144,7 +158,7 @@ export default function AdminPage({
         >
           <div className="lg:w-3/4 w-full flex items-center justify-center h-screen lg:p-6 py-6">
             {tab === "user" ? (
-              <UserManagement />
+              <UserManagement users={users} />
             ) : tab === "city" ? (
               <AddCity cities={cities} />
             ) : tab === "reserve" ? (
