@@ -206,24 +206,24 @@ export default function InfoConfirmation() {
             آروین نیک بین
           </h4>
         </div>
-        <div className="h-16 w-full bg-Cyan-100 flex items-center justify-around">
+        <div className="h-auto p-3 w-full bg-Cyan-100 grid justify-items-center grid-cols-4">
           <h4 className="font-bold text-lg">{t("idCode")}</h4>
           <h4 className="font-bold text-lg">{t("phone")}</h4>
           <h4 className="font-bold text-lg">{t("fullName")}</h4>
           <h4 className="font-bold text-lg">{t("gender")}</h4>
         </div>
         {passengerOne.name !== "" ? (
-          <div className="h-16 mb-9 w-full  flex items-center justify-around">
-            <h4 className="text-lg">{passengerOne.gender}</h4>
+          <div className="h-auto p-3 mb-9 w-full  grid justify-items-center grid-cols-4">
+            <h4 className="text-lg">{passengerOne.socialNumber}</h4>
             <h4 className="text-lg">{passengerOne.phoneNumber}</h4>
             <h4 className="text-lg">{passengerOne.name}</h4>
-            <h4 className="text-lg">{passengerOne.socialNumber}</h4>
+            <h4 className="text-lg">{passengerOne.gender}</h4>
 
             <h4 className="text-lg">بزرگسال</h4>
           </div>
         ) : null}
         {passengerTwo.name !== "" ? (
-          <div className="h-16 mb-9 w-full  flex items-center justify-around">
+          <div className="h-16 mb-9 w-full  grid justify-items-center grid-cols-4">
             <h4 className="text-lg">{passengerTwo.gender}</h4>
             <h4 className="text-lg">{passengerTwo.phoneNumber}</h4>
             <h4 className="text-lg">{passengerTwo.name}</h4>
@@ -233,21 +233,21 @@ export default function InfoConfirmation() {
           </div>
         ) : null}
         {passengerThree.name !== "" ? (
-          <div className="h-16 mb-9 w-full  flex items-center justify-around">
-            <h4 className="text-lg">{passengerThree.gender}</h4>
-            <h4 className="text-lg">{passengerThree.phoneNumber}</h4>
-            <h4 className="text-lg">{passengerThree.name}</h4>
-            <h4 className="text-lg">{passengerThree.socialNumber}</h4>
+          <div className="h-16 mb-9 w-full  grid justify-items-center grid-cols-4">
+            <h4 className="text-lg">{passengerOne.socialNumber}</h4>
+            <h4 className="text-lg">{passengerOne.phoneNumber}</h4>
+            <h4 className="text-lg">{passengerOne.name}</h4>
+            <h4 className="text-lg">{passengerOne.gender}</h4>
 
             <h4 className="text-lg">بزرگسال</h4>
           </div>
         ) : null}
         {passengerFour.name !== "" ? (
-          <div className="h-16 mb-9 w-full  flex items-center justify-around">
-            <h4 className="text-lg">{passengerFour.gender}</h4>
-            <h4 className="text-lg">{passengerFour.phoneNumber}</h4>
-            <h4 className="text-lg">{passengerFour.name}</h4>
-            <h4 className="text-lg">{passengerFour.socialNumber}</h4>
+          <div className="h-16 mb-9 w-full  grid justify-items-center grid-cols-4">
+            <h4 className="text-lg">{passengerOne.socialNumber}</h4>
+            <h4 className="text-lg">{passengerOne.phoneNumber}</h4>
+            <h4 className="text-lg">{passengerOne.name}</h4>
+            <h4 className="text-lg">{passengerOne.gender}</h4>
 
             <h4 className="text-lg">بزرگسال</h4>
           </div>

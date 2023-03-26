@@ -25,14 +25,8 @@ import Antalia from "../assets/images/Antalia.webp";
 import Istanbul from "../assets/images/Istanbul.webp";
 import Van from "../assets/images/Van.webp";
 import Dubai from "../assets/images/Dubai.webp";
-import Amsterdam from "../assets/images/Amsterdam.webp";
-import Berlin from "../assets/images/Berlin.webp";
-import Paris from "../assets/images/Paris.webp";
 import Baku from "../assets/images/Baku.webp";
-import Milan from "../assets/images/Milan.webp";
 import Irvan from "../assets/images/Irvan.webp";
-import Rome from "../assets/images/Rome.webp";
-import Moscow from "../assets/images/Moscow.webp";
 import Kish from "../assets/images/Kish.webp";
 import Tehran from "../assets/images/Tehran.webp";
 import Mashhad from "../assets/images/Mashhad.webp";
@@ -345,9 +339,8 @@ export default function Home(props) {
                 </Popover.Target>
                 <Popover.Dropdown>
                   <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
-                    <h1 className="text-base font-bold">اتاق اول</h1>
                     <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
-                      <h1 className="text-xs    ">بزرگسال(۱۲ سال به بالا)</h1>
+                      <h1 className="text-xs    ">{t("adult")}</h1>
                       <div className="flex text-blue-800  items-center justify-center space-x-5">
                         <PlusCircle
                           className="cursor-pointer"
@@ -369,7 +362,7 @@ export default function Home(props) {
                       </div>
                     </div>
                     <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
-                      <h1 className="text-xs    ">کودک(تا ۱۲ سال)</h1>
+                      <h1 className="text-xs    ">{t("kid")}</h1>
                       <div className="flex text-blue-800 items-center justify-center space-x-5">
                         <PlusCircle
                           className="cursor-pointer"
@@ -537,7 +530,7 @@ export default function Home(props) {
                 }`}
               >
                 <Image
-                  className="h-16 w-14 object-contain"
+                  className="h-16 w-14 object-contain mx-2"
                   alt="antalia"
                   src={Kish}
                 />
@@ -567,7 +560,7 @@ export default function Home(props) {
                 }`}
               >
                 <Image
-                  className="h-10 w-14 object-contain"
+                  className="h-16 w-14 object-contain"
                   alt="antalia"
                   src={Shiraz}
                 />
@@ -603,7 +596,7 @@ export default function Home(props) {
                   }`}
                 >
                   <Image
-                    className="h-16 w-14 object-contain"
+                    className="h-16 w-14 object-contain mx-2"
                     alt="antalia"
                     src={Tehran}
                   />
@@ -633,7 +626,7 @@ export default function Home(props) {
                 }`}
               >
                 <Image
-                  className="h-16 w-10 object-contain"
+                  className="h-16 w-14 object-contain"
                   alt="antalia"
                   src={Esfahan}
                 />
@@ -664,7 +657,7 @@ export default function Home(props) {
                 }`}
               >
                 <Image
-                  className="h-16 w-14 object-contain"
+                  className="h-16 w-14 object-contain mx-2"
                   alt="antalia"
                   src={Mashhad}
                 />
@@ -694,7 +687,7 @@ export default function Home(props) {
                 }`}
               >
                 <Image
-                  className="h-16 w-14 object-contain"
+                  className="h-16 w-14 object-contain mx-2"
                   alt="antalia"
                   src={Tabriz}
                 />
@@ -727,7 +720,11 @@ export default function Home(props) {
                     : "flex flex-row items-center"
                 }`}
               >
-                <Image alt="antalia" src={Van} />
+                <Image
+                  className="h-16 w-14 object-contain mx-2"
+                  alt="antalia"
+                  src={Van}
+                />
                 <h3 className="text-base ml-1 mr-2">{t("van")}</h3>
               </div>
               <CaretLeft
@@ -753,8 +750,12 @@ export default function Home(props) {
                     : "flex flex-row items-center"
                 }`}
               >
-                <Image alt="antalia" src={Irvan} />
-                <h3 className="text-base ml-1 mr-2">{t("erivan")}</h3>
+                <Image
+                  className="h-16 w-14 object-contain mx-2"
+                  alt="antalia"
+                  src={Irvan}
+                />
+                <h3 className="text-base ml-2 mr-2">{t("erivan")}</h3>
               </div>
               <CaretLeft
                 className={`${
@@ -780,7 +781,11 @@ export default function Home(props) {
                     : "flex flex-row items-center"
                 }`}
               >
-                <Image alt="antalia" src={Istanbul} />
+                <Image
+                  className="h-16 w-14 object-contain mx-2"
+                  alt="antalia"
+                  src={Istanbul}
+                />
                 <h3 className="text-base ml-1 mr-2">{t("istanbul")}</h3>
               </div>
               <CaretLeft
@@ -806,7 +811,11 @@ export default function Home(props) {
                     : "flex flex-row items-center"
                 }`}
               >
-                <Image alt="antalia" src={Baku} />
+                <Image
+                  className="h-16 w-14 object-contain mx-2"
+                  alt="antalia"
+                  src={Baku}
+                />
                 <h3 className="text-base ml-1 mr-2">{t("baku")}</h3>
               </div>
               <CaretLeft
@@ -833,7 +842,11 @@ export default function Home(props) {
                     : "flex flex-row items-center"
                 }`}
               >
-                <Image alt="antalia" src={Antalia} />
+                <Image
+                  className="h-16 w-14 object-contain mx-2"
+                  alt="antalia"
+                  src={Antalia}
+                />
                 <h3 className="text-base ml-1 mr-2">{t("antalya")}</h3>
               </div>
               <CaretLeft
@@ -859,7 +872,11 @@ export default function Home(props) {
                     : "flex flex-row items-center"
                 }`}
               >
-                <Image alt="antalia" src={Dubai} />
+                <Image
+                  className="h-16 w-14 object-contain mx-2"
+                  alt="antalia"
+                  src={Dubai}
+                />
                 <h3 className="text-base ml-1 mr-2">{t("dubai")}</h3>
               </div>
               <CaretLeft

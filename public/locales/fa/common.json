@@ -251,5 +251,7 @@
   "hotelOnMap": "مکان هتل در نقشه",
   "profileCreate": "ایجاد پروفایل",
 
-  "details": "جزئیات"
+  "details": "جزئیات",
+  "reserveInfo": "اطلاعات رزرو",
+  "seeHotel": "دیدن هتل"
 }
