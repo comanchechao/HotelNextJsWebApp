@@ -96,7 +96,17 @@ export default function HotelList({ features, residenceTypes, cities }) {
         "id , features ,city, stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
       );
 
-    setHotels(data);
+    if (selectedCity !== "") {
+      const filteredData = data.filter((obj) => {
+        return obj.city.includes(selectedCity);
+      });
+      setHotels(filteredData);
+      console.log(filteredData);
+    }
+
+    if (selectedCity === "") {
+      setHotels(data);
+    }
     setInitialHotels(data);
 
     if (error) throw error;
@@ -159,6 +169,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
   }, [selectedCity]);
 
   function sortCity() {
+    console.log(selectedCity);
     const filteredData = initialHotels.filter((obj) => {
       return obj.city.includes(selectedCity);
     });
