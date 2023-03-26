@@ -101,7 +101,6 @@ export default function HotelList({ features, residenceTypes, cities }) {
         return obj.city.includes(selectedCity);
       });
       setHotels(filteredData);
-      console.log(filteredData);
     }
 
     if (selectedCity === "") {
@@ -169,7 +168,6 @@ export default function HotelList({ features, residenceTypes, cities }) {
   }, [selectedCity]);
 
   function sortCity() {
-    console.log(selectedCity);
     const filteredData = initialHotels.filter((obj) => {
       return obj.city.includes(selectedCity);
     });
