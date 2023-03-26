@@ -93,16 +93,24 @@ export default function HotelList({ features, residenceTypes, cities }) {
     const { data, error } = await supabase
       .from("Hotels")
       .select(
-        "id , features ,city, stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        "id , features , city , trTitle , stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
       );
-
-    if (selectedCity !== "") {
-      const filteredData = data.filter((obj) => {
-        return obj.city.includes(selectedCity);
-      });
-      setHotels(filteredData);
+    if (lng === "fa") {
+      if (selectedCity !== "") {
+        const filteredData = data.filter((obj) => {
+          return obj.city.includes(selectedCity);
+        });
+        setHotels(filteredData);
+      }
     }
-
+    if (lng === "tr") {
+      if (selectedCity !== "") {
+        const filteredData = data.filter((obj) => {
+          return obj.trTitle.includes(selectedCity);
+        });
+        setHotels(filteredData);
+      }
+    }
     if (selectedCity === "") {
       setHotels(data);
     }
@@ -168,10 +176,17 @@ export default function HotelList({ features, residenceTypes, cities }) {
   }, [selectedCity]);
 
   function sortCity() {
-    const filteredData = initialHotels.filter((obj) => {
-      return obj.city.includes(selectedCity);
-    });
-    setHotels(filteredData);
+    if (lng === "fa") {
+      const filteredData = initialHotels.filter((obj) => {
+        return obj.city.includes(selectedCity);
+      });
+      setHotels(filteredData);
+    } else {
+      const filteredData = initialHotels.filter((obj) => {
+        return obj.trTitle.includes(selectedCity);
+      });
+      setHotels(filteredData);
+    }
   }
 
   // async function getFilteredHotels() {

@@ -141,6 +141,18 @@ export default function Home(props) {
   const [selectedCity, setSelectedCity] = useState("");
   const { t, i18n } = useTranslation("");
   const lng = i18n.language;
+  const [tehranT, setTehranT] = useState("");
+  const [shirazT, setShirazT] = useState("");
+  const [tabrizT, setTabrizT] = useState("");
+  const [istanbulT, setIstanbulT] = useState("");
+  const [isfahanT, setIsfahanT] = useState("");
+  const [vanT, setVanT] = useState("");
+  const [antaliaT, setAntaliaT] = useState("");
+  const [dubaiT, setDubaiT] = useState("");
+  const [bakuT, setBakuT] = useState("");
+  const [mashhadT, setMashhadT] = useState("");
+  const [irvanT, setIrvanT] = useState("");
+  const [kishT, setKishT] = useState("");
 
   const [cityNames, setCityNames] = useState([]);
   const [alignLeft, setAlignLeft] = useState(false);
@@ -153,6 +165,18 @@ export default function Home(props) {
   async function CityTranslate() {
     if (props.cities) {
       if (lng === "fa") {
+        setTehranT("تهران");
+        setKishT("کیش");
+        setAntaliaT("آنتالیا");
+        setBakuT("باکو");
+        setMashhadT("مشهد");
+        setTabrizT("تبریز");
+        setDubaiT("دوبی");
+        setIrvanT("ایروان");
+        setIsfahanT("اصفهان");
+        setShirazT("شیراز");
+        setIstanbulT("استانبول");
+
         cityNames.splice(0, cityNames.length);
 
         await props.cities.forEach((city, i) => {
@@ -161,6 +185,17 @@ export default function Home(props) {
           }
         });
       } else {
+        setTehranT("Tehran");
+        setKishT("Kish");
+        setAntaliaT("Antalia");
+        setBakuT("Baku");
+        setMashhadT("Mashhad");
+        setTabrizT("Tabriz");
+        setDubaiT("Dubai");
+        setIrvanT("Irvan");
+        setIsfahanT("Isfahan");
+        setShirazT("Shiraz");
+        setIstanbulT("Istanbul");
         cityNames.splice(0, cityNames.length);
         await props.cities.forEach((city, i) => {
           if (cityNames.indexOf(city.trTitle) === -1) {
@@ -172,7 +207,7 @@ export default function Home(props) {
   }
   useEffect(() => {
     CityTranslate();
-  }, []);
+  }, [lng]);
 
   const [dates, setDates] = useState([Date | null, Date | null]);
   const [choosedDate, setChoosenDate] = useState([Date | null, Date | null]);
@@ -579,7 +614,7 @@ export default function Home(props) {
             <Link href="/hotelList" legacyBehavior>
               <a
                 onClick={() => {
-                  dispatch(reservationActions.setCity("تهران"));
+                  dispatch(reservationActions.setCity(tehranT));
                 }}
                 passHref
                 className={`${
