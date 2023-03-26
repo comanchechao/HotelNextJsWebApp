@@ -550,65 +550,76 @@ export default function Home(props) {
         >
           {" "}
           <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity(kishT));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain mx-2"
-                  alt="antalia"
-                  src={Kish}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain mx-2"
+                    alt="antalia"
+                    src={Kish}
+                  />
+                  <h3 className="text-base ml-1 mr-2">{t("kish")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-1 mr-2">{t("kish")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+              </a>
+            </Link>
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity(shirazT));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain"
-                  alt="antalia"
-                  src={Shiraz}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain"
+                    alt="antalia"
+                    src={Shiraz}
+                  />
+                  <h3 className="text-base ml-1 mr-2">{t("shiraz")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-1 mr-2">{t("shiraz")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
+              </a>
+            </Link>
           </div>
           <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
             <Link href="/hotelList" legacyBehavior>
@@ -646,282 +657,331 @@ export default function Home(props) {
                 />
               </a>
             </Link>
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity(isfahanT));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain"
-                  alt="antalia"
-                  src={Esfahan}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain"
+                    alt="antalia"
+                    src={Esfahan}
+                  />
+                  <h3 className="text-base ml-1 mr-2">{t("isfahan")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-1 mr-2">{t("isfahan")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
+              </a>
+            </Link>
           </div>
           <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity(mashhadT));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain mx-2"
-                  alt="antalia"
-                  src={Mashhad}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain mx-2"
+                    alt="antalia"
+                    src={Mashhad}
+                  />
+                  <h3 className="text-base ml-1 mr-2">{t("mashhad")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-1 mr-2">{t("mashhad")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+              </a>
+            </Link>
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity(tabrizT));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain mx-2"
-                  alt="antalia"
-                  src={Tabriz}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain mx-2"
+                    alt="antalia"
+                    src={Tabriz}
+                  />
+                  <h3 className="text-base ml-1 mr-2">{t("tabriz")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-1 mr-2">{t("tabriz")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
+              </a>
+            </Link>
           </div>
         </div>
         <div className="w-full h-auto py-6 flex items-center lg:flex-row flex-col space-y-2 lg:space-y-0 justify-center space-x-5 lg:px-44 my-10">
-          {" "}
           <div className=" w-full h-full flex flex-col items-center justify-around lg:space-y-3 space-y-4">
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity(vanT));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain mx-2"
-                  alt="antalia"
-                  src={Van}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain mx-2"
+                    alt="antalia"
+                    src={Van}
+                  />
+                  <h3 className="text-base ml-1 mr-2">{t("van")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-1 mr-2">{t("van")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+              </a>
+            </Link>
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity(irvanT));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain mx-2"
-                  alt="antalia"
-                  src={Irvan}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain mx-2"
+                    alt="antalia"
+                    src={Irvan}
+                  />
+                  <h3 className="text-base ml-2 mr-2">{t("erivan")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-2 mr-2">{t("erivan")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
+              </a>
+            </Link>
           </div>
           <div className=" w-full h-full flex flex-col items-center justify-around  lg:space-y-3 space-y-2">
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity(istanbulT));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain mx-2"
-                  alt="antalia"
-                  src={Istanbul}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain mx-2"
+                    alt="antalia"
+                    src={Istanbul}
+                  />
+                  <h3 className="text-base ml-1 mr-2">{t("istanbul")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-1 mr-2">{t("istanbul")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+              </a>
+            </Link>
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity(bakuT));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain mx-2"
-                  alt="antalia"
-                  src={Baku}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain mx-2"
+                    alt="antalia"
+                    src={Baku}
+                  />
+                  <h3 className="text-base ml-1 mr-2">{t("baku")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-1 mr-2">{t("baku")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
+              </a>
+            </Link>
           </div>
           <div className=" w-full h-full flex flex-col items-center justify-around  lg:space-y-3 space-y-2">
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity(antaliaT));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain mx-2"
-                  alt="antalia"
-                  src={Antalia}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain mx-2"
+                    alt="antalia"
+                    src={Antalia}
+                  />
+                  <h3 className="text-base ml-1 mr-2">{t("antalya")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-1 mr-2">{t("antalya")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
-
-            <a
-              className={`${
-                alignLeft === true
-                  ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                  : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-              }`}
-            >
-              <div
+              </a>
+            </Link>
+            <Link href="/hotelList" legacyBehavior>
+              <a
+                onClick={() => {
+                  dispatch(reservationActions.setCity(dubaiT));
+                }}
+                passHref
                 className={`${
                   alignLeft === true
-                    ? "flex flex-row-reverse items-center"
-                    : "flex flex-row items-center"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
-                <Image
-                  className="h-16 w-14 object-contain mx-2"
-                  alt="antalia"
-                  src={Dubai}
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex flex-row-reverse items-center"
+                      : "flex flex-row items-center"
+                  }`}
+                >
+                  <Image
+                    className="h-16 w-14 object-contain mx-2"
+                    alt="antalia"
+                    src={Dubai}
+                  />
+                  <h3 className="text-base ml-1 mr-2">{t("dubai")}</h3>
+                </div>
+                <CaretLeft
+                  className={`${
+                    alignLeft === true ? "" : "transform rotate-180"
+                  }`}
+                  size={20}
+                  weight="bold"
                 />
-                <h3 className="text-base ml-1 mr-2">{t("dubai")}</h3>
-              </div>
-              <CaretLeft
-                className={`${
-                  alignLeft === true ? "" : "transform rotate-180"
-                }`}
-                size={20}
-                weight="bold"
-              />
-            </a>
+              </a>
+            </Link>
           </div>
         </div>
         <div className="w-full  h-auto lg:px-44 mb-7">
