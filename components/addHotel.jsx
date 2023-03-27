@@ -19,7 +19,7 @@ import dynamic from "next/dynamic.js";
 import { supabase } from "../lib/supabaseClient";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "next-i18next";
-import sharp from "sharp";
+// import sharp from "sharp";
 import { X, Buildings } from "phosphor-react";
 // const LocationsMap = dynamic(() => import("./map"), {
 //   ssr: false,

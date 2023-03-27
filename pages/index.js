@@ -304,7 +304,7 @@ export default function Home(props) {
               <DateRangePicker
                 locale={faLocale}
                 timeZone="iran/tehran"
-                amountOfMonths={2}
+                amountOfMonths={1}
                 className={`${
                   alignLeft === true
                     ? "text-3xl text-right  flex flex-col  items-end"
@@ -569,8 +569,8 @@ export default function Home(props) {
                 passHref
                 className={`${
                   alignLeft === true
-                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between pr-7 pl-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between pl-7 pr-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
                 <div
@@ -604,8 +604,8 @@ export default function Home(props) {
                 passHref
                 className={`${
                   alignLeft === true
-                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between pr-7 pl-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between pl-7 pr-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
                 <div
@@ -616,7 +616,7 @@ export default function Home(props) {
                   }`}
                 >
                   <Image
-                    className="h-16 w-14 object-contain"
+                    className="h-16 w-14 object-contain mx-2"
                     alt="antalia"
                     src={Shiraz}
                   />
@@ -688,7 +688,7 @@ export default function Home(props) {
                   }`}
                 >
                   <Image
-                    className="h-16 w-14 object-contain"
+                    className="h-16 w-14 object-contain mx-2"
                     alt="antalia"
                     src={Esfahan}
                   />
@@ -787,8 +787,8 @@ export default function Home(props) {
                 passHref
                 className={`${
                   alignLeft === true
-                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between pr-7 pl-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between pl-7 pr-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
                 <div
@@ -822,8 +822,8 @@ export default function Home(props) {
                 passHref
                 className={`${
                   alignLeft === true
-                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between pr-7 pl-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between pl-7 pr-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
                 <div
@@ -838,7 +838,7 @@ export default function Home(props) {
                     alt="antalia"
                     src={Irvan}
                   />
-                  <h3 className="text-base ml-2 mr-2">{t("erivan")}</h3>
+                  <h3 className="text-base ml-1 mr-2">{t("erivan")}</h3>
                 </div>
                 <CaretLeft
                   className={`${

@@ -636,7 +636,13 @@ export default function HotelDetailPage({ hotel }) {
                     {t("hotelFacilities")}
                   </h2>
                 </div>
-                <div className="rounded-lg border text-sm mb-7  border-gray-300 bg-white grid grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 lg:p-5 divdie-x divide-black  ">
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "rounded-lg border text-sm mb-7  border-gray-300 bg-white  flex items-center justify-end  lg:p-5 divdie-x divide-black  "
+                      : "rounded-lg border text-sm mb-7  border-gray-300 bg-white  flex items-center justify-start  lg:p-5 divdie-x divide-black  "
+                  }`}
+                >
                   {hotel.features.map((feature, i) => {
                     return (
                       <div key={i} className="flex px-3  justify-end items-end">
@@ -782,14 +788,20 @@ export default function HotelDetailPage({ hotel }) {
                 <div
                   className={`${
                     alignLeft === true
-                      ? "flex divide-x divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
-                      : "flex flex-row-reverse   divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
+                      ? "flex divide-x lg:flex-row flex-col divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
+                      : "flex flex-col lg:flex-row-reverse   divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
                   }`}
                 >
-                  <div className="flex justify-end text-right px-4 w-full h-full">
+                  <div
+                    className={`${
+                      alignLeft === true
+                        ? "flex justify-end text-right px-4 w-full h-full"
+                        : "flex justify-end text-left px-4 w-full h-full"
+                    }`}
+                  >
                     <p>{hotel.hotelRules}</p>
                   </div>
-                  <div className="flex w-1/3 justify-center items-center flex-col">
+                  <div className="flex w-full  lg:w-1/3 justify-center items-center flex-row lg:space-x-0 space-x-4 my-3 lg:my-0 lg:flex-col">
                     <div className="flex flex-col justify-center items-center">
                       <p>{t("exitTime")}</p>
                       <p className="py-2 text-right font-mainFont px-2 w-20 rounded-md  bg-gray-200">

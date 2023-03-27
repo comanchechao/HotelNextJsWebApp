@@ -147,7 +147,7 @@ export default function HotelCard({ hotel }) {
                 height={200}
               />
             ) : (
-              <div>
+              <div className="h-full w-full flex items-center justify-center">
                 <Loader size="lg" color="yellow" variant="bars" />
               </div>
             )}

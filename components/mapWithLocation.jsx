@@ -50,7 +50,7 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex  justify-around  items-center w-auto ml-9 space-x-7  ">
+    <div className="flex  justify-around lg:flex-row flex-col  items-center w-auto lg:ml-9 lg:space-x-7  ">
       <div className="flex flex-row-reverse items-center justify-around w-full">
         {/* latitude: {position.lat.toFixed(4)}, longitude:{" "}
         {position.lng.toFixed(4)}{" "} */}
