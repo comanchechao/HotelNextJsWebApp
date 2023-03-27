@@ -20,7 +20,6 @@ export default function ReservationInfo({
   passengers,
   room,
 }) {
-  let hotels = [{ title: "هتل", rooms: 32, image: hotelOne }];
   const [alignLeft, setAlignLeft] = useState(false);
   const isMobile = useMediaQuery("(max-width: 50em)");
 
@@ -55,18 +54,18 @@ export default function ReservationInfo({
           </h1>
           <div className="grid justify-items-center grid-cols-2 w-full ">
             <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
-              {t("hotelName")} : <strong>هتل چت جی پی تی</strong>
+              {t("hotelName")} : <strong>{hotel}</strong>
             </h2>
             <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
-              {t("fullName")} : <strong>آروین نیک بین</strong>
+              {t("fullName")} : <strong>{passengers[0].name}</strong>
             </h2>
           </div>
           <div className="grid justify-items-center grid-cols-2  w-full">
             <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
-              {t("roomName")} : <strong>اتاق مشتی</strong>
+              {t("roomName")} : <strong>{room ? room.title : null}</strong>
             </h2>{" "}
             <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
-              {t("roomCapacity")} : <strong>3</strong>
+              {t("roomCapacity")} : <strong>{passengerCount}</strong>
             </h2>
           </div>
           <div className="w-full h-auto flex items-center">
@@ -78,13 +77,20 @@ export default function ReservationInfo({
                 <h3 className="text-white">{t("gender")}</h3>{" "}
                 <h3 className="text-white">{t("fullName")}</h3>
               </div>
-              <div className="  w-full grid grid-cols-4 justify-items-center rounded-sm">
-                {" "}
-                <h3 className="text-mainPurple">0023470011</h3>{" "}
-                <h3 className="text-mainPurple">09145248936</h3>
-                <h3 className="text-mainPurple">مرد</h3>{" "}
-                <h3 className="text-mainPurple">آروین نیک بین</h3>
-              </div>
+              {passengers.map((passenger, i) => {
+                return (
+                  <div
+                    key={i}
+                    className="  w-full grid grid-cols-4 justify-items-center rounded-sm"
+                  >
+                    {" "}
+                    <h3 className="text-mainPurple">0023470011</h3>{" "}
+                    <h3 className="text-mainPurple">09145248936</h3>
+                    <h3 className="text-mainPurple">مرد</h3>{" "}
+                    <h3 className="text-mainPurple">{passenger.name}</h3>
+                  </div>
+                );
+              })}
             </div>
           </div>
           <button className="py-2 font-mainFont  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-6   ">
