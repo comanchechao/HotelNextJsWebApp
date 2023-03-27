@@ -22,7 +22,6 @@ import { useMediaQuery } from "@mantine/hooks";
 
 import { supabase } from "../../../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
-import isToday from "dayjs/plugin/isToday.js";
 import dayjs from "dayjs";
 import jalaliday from "jalaliday";
 import { IconChevronLeft } from "@tabler/icons";
@@ -214,6 +213,7 @@ export default function HotelDetailPage({ hotel }) {
   const [singleImage, setSingleImage] = useState("");
   const [imageTwo, setImageTwo] = useState("");
   const [imageThree, setImageThree] = useState("");
+  const [dates, setDates] = useState([Date | null, Date | null]);
   const lng = i18n.language;
 
   async function changeAlignment() {
@@ -333,11 +333,10 @@ export default function HotelDetailPage({ hotel }) {
   const dispatch = useDispatch();
   let city = useSelector((state) => state.reserve.city);
   let passenger = useSelector((state) => state.reserve.passenger);
-
+  let childPassenger = useSelector((state) => state.reserve.childPassenger);
   let enterDate = useSelector((state) => state.reserve.enterDate);
   let exitDate = useSelector((state) => state.reserve.exitDate);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
-  let dates = [enterDate, exitDate];
 
   useEffect(() => {
     console.log(dates);
@@ -485,21 +484,35 @@ export default function HotelDetailPage({ hotel }) {
                   className=" flex   p-4 bg-white   flex-col items-center w-68  h-72 mt-10  rounded-md border "
                 >
                   <DateRangePicker
-                    value={[enterDate, exitDate]}
                     locale={faLocale}
                     timeZone="iran/tehran"
+                    amountOfMonths={2}
                     className={`${
                       alignLeft === true
                         ? "text-3xl text-right  flex flex-col  items-end"
                         : "text-3xl text-right  flex flex-col  items-start"
                     }`}
                     dropdownType="modal"
-                    minDate={dayjs()}
+                    value={dates}
                     dropdownPosition="top-start"
                     placeholder={t("inDate")}
                     label={t("inDate")}
+                    minDate={dayjs().add(11, "day").toDate()}
                     withAsterisk
-                    variant="default"
+                    defaultValue={dayjs().add(11, "day").toDate()}
+                    onChange={(e) => {
+                      setDates(e);
+                      dispatch(
+                        reservationActions.setEnterting(
+                          dayjs(e[0]).locale("fa").format("dddd, D MMMM YYYY")
+                        )
+                      );
+                      dispatch(
+                        reservationActions.setExiting(
+                          dayjs(e[1]).locale("fa").format("dddd, D MMMM YYYY")
+                        )
+                      );
+                    }}
                     radius="md"
                     dayClassName={(date, modifiers) =>
                       cx({
@@ -554,10 +567,28 @@ export default function HotelDetailPage({ hotel }) {
                         </div>
                         <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
                           <h1 className="text-xs"> {t("kid")} </h1>
-                          <div className="flex text-blue-800 items-center justify-center space-x-5">
-                            <PlusCircle size={27} weight="fill" />
-                            <h1 className="text-xs font-bold">1</h1>
-                            <MinusCircle size={27} weight="fill" />
+                          <div className="flex text-blue-800  items-center justify-center space-x-5">
+                            <PlusCircle
+                              onClick={() => {
+                                dispatch(
+                                  reservationActions.incrementChildPassenger()
+                                );
+                              }}
+                              size={27}
+                              weight="fill"
+                            />
+                            <h1 className="text-xs font-bold">
+                              {childPassenger}
+                            </h1>
+                            <MinusCircle
+                              onClick={() => {
+                                dispatch(
+                                  reservationActions.decrementChildPassenger()
+                                );
+                              }}
+                              size={27}
+                              weight="fill"
+                            />
                           </div>
                         </div>
                       </div>

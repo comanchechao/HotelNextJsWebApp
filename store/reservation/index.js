@@ -7,6 +7,7 @@ export const reservation = createSlice({
     exitDate: "",
     dates: [],
     passenger: 1,
+    childPassenger: 0,
     city: "",
     cities: [],
     hotelInfo: {
@@ -85,9 +86,21 @@ export const reservation = createSlice({
         console.log("no");
       }
     },
+    incrementChildPassenger: (state, action) => {
+      if (state.childPassenger > -1 && state.childPassenger < 4) {
+        state.childPassenger++;
+      } else {
+        console.log("no");
+      }
+    },
     decreamentPassenger: (state, action) => {
       if (state.passenger > 1) {
         state.passenger--;
+      }
+    },
+    decrementChildPassenger: (state, action) => {
+      if (state.childPassenger > 0) {
+        state.childPassenger--;
       }
     },
     setPassengerOne: (state, actions) => {

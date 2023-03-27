@@ -57,8 +57,8 @@ function Card({ hotels, hotel }) {
   };
   useEffect(() => {
     downloadImage1();
-    console.log(hotels.title);
-  });
+    console.log(hotel.title);
+  }, []);
 
   hotels.map((hotel, i) => {
     return (
@@ -111,7 +111,7 @@ const data = [
 export default function HomePageCarousel({ hotels }) {
   useEffect(() => {
     console.log(hotels);
-  });
+  }, []);
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
   const slides = hotels.map((hotel, i) => (

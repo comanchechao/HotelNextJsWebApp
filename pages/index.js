@@ -244,6 +244,7 @@ export default function Home(props) {
   // dispatching the selection to the store
 
   let passenger = useSelector((state) => state.reserve.passenger);
+  let childPassenger = useSelector((state) => state.reserve.childPassenger);
   const dispatch = useDispatch();
 
   return (
@@ -400,12 +401,22 @@ export default function Home(props) {
                       <h1 className="text-xs    ">{t("kid")}</h1>
                       <div className="flex text-blue-800 items-center justify-center space-x-5">
                         <PlusCircle
+                          onClick={() => {
+                            dispatch(
+                              reservationActions.incrementChildPassenger()
+                            );
+                          }}
                           className="cursor-pointer"
                           size={30}
                           weight="fill"
                         />
-                        <h1 className="text-base "></h1>
+                        <h1 className="text-base ">{childPassenger}</h1>
                         <MinusCircle
+                          onClick={() => {
+                            dispatch(
+                              reservationActions.decrementChildPassenger()
+                            );
+                          }}
                           className="cursor-pointer"
                           size={30}
                           weight="fill"

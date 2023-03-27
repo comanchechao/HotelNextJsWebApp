@@ -72,7 +72,6 @@ export default function Reply(props) {
         transitionTimingFunction="ease"
         exitTransitionDuration={600}
         size="600px"
-        fullScreen={isMobile}
         opened={opened}
         onClose={() => setOpened(false)}
         centered

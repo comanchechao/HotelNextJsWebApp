@@ -8,7 +8,7 @@ import { reservationActions } from "../store/reservation";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 
-export default function LoginCheckModal() {
+export default function LoginCheckModal({ room, hotelDetail }) {
   const [opened, setOpened] = useState(false);
   const [userSigned, setUserSigned] = useState(false);
   async function checkUser() {

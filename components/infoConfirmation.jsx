@@ -199,11 +199,11 @@ export default function InfoConfirmation() {
           </h4>
           <h4 className="text-lg">
             <strong>{t("phone")} : </strong>
-            09256354488
+            {passengerOne.phoneNumber}
           </h4>
           <h4 className="text-lg">
-            <strong>{t("supervisor")} : </strong>
-            آروین نیک بین
+            {passengerOne.name}
+            <strong>:{t("supervisor")}  </strong>
           </h4>
         </div>
         <div className="h-auto p-3 w-full bg-Cyan-100 grid justify-items-center grid-cols-4">

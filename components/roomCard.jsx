@@ -54,7 +54,7 @@ export default function RoomCard({ room, hotelDetail }) {
           </div>
           <h1 className="text-sm">{t("avrgNight")}</h1>
 
-          <CheckLoginModal />
+          <CheckLoginModal room={room} hotelDetail={hotelDetail} />
         </div>
         <div
           className={`${

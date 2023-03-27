@@ -19,7 +19,7 @@ import dynamic from "next/dynamic.js";
 import { supabase } from "../lib/supabaseClient";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "next-i18next";
-
+import sharp from "sharp";
 import { X, Buildings } from "phosphor-react";
 // const LocationsMap = dynamic(() => import("./map"), {
 //   ssr: false,
@@ -326,6 +326,10 @@ export default function AddHotel({
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
+      // const resizedImg = await sharp(filePath)
+      //   .resize(800, 600) // resize the image
+      //   .webp({ quality: 80 }) // convert to WebP format with 80% quality
+      //   .toBuffer(); // convert to node buffer
       setFirstImage(filePath);
       // const resizedImage = await sharp(file.buffer)
       //   .resize({ width: 1600, height: 1200, fit: "inside" })
@@ -333,7 +337,10 @@ export default function AddHotel({
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, file);
+        .upload(filePath, resizedImg, {
+          cacheControl: "3600",
+          upsert: false,
+        });
 
       if (uploadError) {
         throw uploadError;

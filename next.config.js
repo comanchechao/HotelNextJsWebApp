@@ -29,5 +29,15 @@ module.exports = {
     ];
   },
 };
+module.exports = {
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // Use the browser version of the sharp library
+      config.resolve.alias["sharp"] = "sharp/browser";
+    }
+
+    return config;
+  },
+};
 
 module.exports = nextConfig;
