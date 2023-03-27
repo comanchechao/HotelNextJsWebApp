@@ -3,11 +3,13 @@ import { Modal, Rating, Group, Loader } from "@mantine/core";
 import { supabase } from "../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
 import LoginModal from "./loginModal";
+import { useMediaQuery } from "@mantine/hooks";
 
 export default function Reply(props) {
   let hotel = props.hotel;
   const { t, i18n } = useTranslation("");
   const lng = i18n.language;
+  const isMobile = useMediaQuery("(max-width: 50em)");
 
   const [opened, setOpened] = useState(false);
   const [value, setValue] = useState(0);
@@ -67,6 +69,7 @@ export default function Reply(props) {
   return (
     <>
       <Modal
+        fullScreen={isMobile}
         transition="fade"
         transitionDuration={600}
         transitionTimingFunction="ease"
