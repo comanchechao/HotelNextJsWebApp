@@ -8,12 +8,20 @@ import {
 } from "@tabler/icons";
 import SuperUser from "./superUserModal";
 import SuperUserValidation from "./superUserValidation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 
 export default function UserManagement({ users }) {
+  const { t, i18n } = useTranslation("common");
+  const lng = i18n.language;
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeState() {
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   useEffect(() => {
-    console.log(users);
-  });
+    changeState();
+  }, []);
   return (
     <div className="flex w-full h-full lg:h-carousel ">
       <div className="flex w-full space-y-4 flex-col">
@@ -63,12 +71,18 @@ export default function UserManagement({ users }) {
                 return (
                   <div
                     key={i}
-                    className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                    className={`${
+                      alignLeft === true
+                        ? "flex py-1 flex-row-reverse   w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                        : "flex py-1     w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                    }`}
                   >
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
-                      <IconUserCircle size={50} />
+                      <IconUserCircle size={40} />
                     </div>
-                    <h1 className=" text-sm lg:text-xl">{user.email}</h1>
+                    <h1 className=" text-sm lg:text-lg">
+                      <strong>{user.email}</strong> : {t("email")}
+                    </h1>
                     <p className="hidden lg:block">{user.name}</p>
                     <SuperUser />
                   </div>

@@ -175,7 +175,13 @@ export default function AdminPage({
               />
             ) : null}
           </div>
-          <div className="  rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800">
+          <div
+            className={`${
+              alignLeft === true
+                ? "rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800"
+                : "rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800"
+            }`}
+          >
             <div
               onClick={() => {
                 setTab("hotel");

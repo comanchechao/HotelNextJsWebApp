@@ -1,14 +1,6 @@
 import { useState, useEffect } from "react";
-import {
-  IconBed,
-  IconStar,
-  IconBath,
-  IconToolsKitchen,
-  IconMassage,
-} from "@tabler/icons";
-import { Modal, Button, Group, Accordion } from "@mantine/core";
-import { IconUserCircle } from "@tabler/icons";
-import hotelOne from "../assets/images/hotelone.jpg";
+
+import { Modal, Group } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
@@ -52,36 +44,29 @@ export default function ReservationInfo({
           <h1 className="text-2xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
             {t("reserveInfo")}
           </h1>
-          <div className="grid justify-items-center grid-cols-2 w-full ">
-            <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
+          <div className="grid justify-items-center grid-cols-2 gap-5 w-full ">
+            <h2 className="py-1 rounded-md px-4 border-2     border-mainPurple">
               {t("hotelName")} : <strong>{hotel}</strong>
             </h2>
-            <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
+            <h2 className="py-1 rounded-md px-4 border-2 border-mainPurple">
               {t("fullName")} : <strong>{passengers[0].name}</strong>
             </h2>
           </div>
           <div className="grid justify-items-center grid-cols-2  w-full">
-            <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
+            <h2 className="py-1 rounded-md px-4 border-2   border-mainBlue">
               {t("roomName")} : <strong>{room ? room.title : null}</strong>
             </h2>{" "}
-            <h2 className="py-1 rounded-md px-4 border-2 border-dashed border-mainPurple">
+            <h2 className="py-1 rounded-md px-4  border-2   border-mainBlue">
               {t("roomCapacity")} : <strong>{passengerCount}</strong>
             </h2>
           </div>
           <div className="w-full h-auto flex items-center">
-            <div className=" border-b-2 my-3 space-y-2  h-full flex-col   w-full border-mainPurple border-dashed flex items-start  rounded-md">
-              <div className="bg-blue-600 w-full grid grid-cols-4 justify-items-center  rounded-sm">
-                {" "}
-                <h3 className="text-white">{t("idCode")}</h3>{" "}
-                <h3 className="text-white">{t("phone")}</h3>
-                <h3 className="text-white">{t("gender")}</h3>{" "}
-                <h3 className="text-white">{t("fullName")}</h3>
-              </div>
+            <div className="  my-3 space-y-2  h-full grid lg:grid-rows-2 lg:grid-cols-1    lg:grid-flow-col grid-cols-2  justify-items-center    w-full   border-dashed    rounded-md">
               {passengers.map((passenger, i) => {
                 return (
                   <div
                     key={i}
-                    className="  w-full grid grid-cols-4 justify-items-center rounded-sm"
+                    className="  w-full grid grid-rows-4 bg-white lg:grid-cols-4 lg:grid-rows-1 lg:order-1  justify-items-center rounded-sm"
                   >
                     {" "}
                     <h3 className="text-mainPurple">0023470011</h3>{" "}
@@ -91,6 +76,13 @@ export default function ReservationInfo({
                   </div>
                 );
               })}
+              <div className="bg-blue-600 w-full grid grid-rows-4 lg:grid-rows-1 lg:grid-cols-4 justify-items-center  rounded-sm">
+                {" "}
+                <h3 className="text-white">{t("idCode")}</h3>{" "}
+                <h3 className="text-white">{t("phone")}</h3>
+                <h3 className="text-white">{t("gender")}</h3>{" "}
+                <h3 className="text-white">{t("fullName")}</h3>
+              </div>
             </div>
           </div>
           <button className="py-2 font-mainFont  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-6   ">
