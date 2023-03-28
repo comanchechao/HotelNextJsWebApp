@@ -1,12 +1,6 @@
 import { Tabs } from "@mantine/core";
-import { MagnifyingGlass } from "phosphor-react";
-import {
-  IconUser,
-  IconUserExclamation,
-  IconBuildingSkyscraper,
-  IconUserCircle,
-  IconUserCheck,
-} from "@tabler/icons";
+import { MagnifyingGlass, Newspaper } from "phosphor-react";
+import { IconUser, IconBuildingSkyscraper } from "@tabler/icons";
 import ReservationInfo from "./reservationInfo";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
@@ -90,7 +84,7 @@ export default function ReservationManagement({ Hotels }) {
                       }`}
                     >
                       <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
-                        <IconUserCircle size={40} />
+                        <Newspaper size={40} />
                       </div>
                       <h1 className=" text-sm lg:text-lg">
                         {t("hotelName")} : <strong>{user.hotel_name}</strong>

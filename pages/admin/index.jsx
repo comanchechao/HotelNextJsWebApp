@@ -1,23 +1,10 @@
 import Navbar from "../../components/Navbar.jsx";
-import { Menu, Button, Text } from "@mantine/core";
 import ReservationManagement from "../../components/reservationManagement.js";
 import UserManagement from "../../components/userManagement";
 import HotelManagement from "../../components/hotelManagement";
 import { Drawer, Group, useMantineTheme } from "@mantine/core";
 import Footer from "../../components/Footer";
-import {
-  IconSortDescending2,
-  IconStars,
-  IconMenu2,
-  IconBuildingSkyscraper,
-  IconStarsOff,
-  IconUserCheck,
-  IconSortAscending,
-  IconLogout,
-  IconBook,
-  IconUser,
-  IconBuildingCommunity,
-} from "@tabler/icons";
+
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient.js";
 import { adminAuthClient } from "../../lib/supbaseServer";
@@ -26,7 +13,14 @@ import AddCity from "../../components/addCity";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router.js";
 import { useTranslation } from "next-i18next";
-import { Desktop, MapTrifold } from "phosphor-react";
+import {
+  Desktop,
+  MapTrifold,
+  Buildings,
+  Users,
+  Newspaper,
+  SignOut,
+} from "phosphor-react";
 
 export async function getServerSideProps(context) {
   // Fetch data from the database
@@ -178,8 +172,8 @@ export default function AdminPage({
           <div
             className={`${
               alignLeft === true
-                ? "rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800"
-                : "rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800"
+                ? "rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-1 lg:mt-0   flex-col items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800"
+                : "rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-1 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800"
             }`}
           >
             <div
@@ -195,12 +189,12 @@ export default function AdminPage({
               <div
                 className={`${
                   alignLeft === true
-                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <IconBuildingSkyscraper className="mx-2" size={24} />
-                <h1 className="lg:text-xl text-sm  "> {t("hotels")} </h1>
+                <Buildings className="mx-2" weight="fill" size={35} />
+                <h1 className="lg:text-xl  text-sm  "> {t("hotels")} </h1>
               </div>
             </div>
             <div
@@ -216,11 +210,11 @@ export default function AdminPage({
               <div
                 className={`${
                   alignLeft === true
-                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <IconUserCheck className="mx-2" size={24} />
+                <Users className="mx-2" weight="fill" size={35} />
                 <h1 className="lg:text-xl text-sm  "> {t("colleagues")} </h1>
               </div>
             </div>
@@ -237,11 +231,11 @@ export default function AdminPage({
               <div
                 className={`${
                   alignLeft === true
-                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <MapTrifold className="mx-2" size={24} />
+                <MapTrifold className="mx-2" weight="fill" size={35} />
                 <h1 className="lg:text-xl text-sm  "> {t("city")} </h1>
               </div>
             </div>
@@ -258,11 +252,11 @@ export default function AdminPage({
               <div
                 className={`${
                   alignLeft === true
-                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <IconBook className="mx-2" size={24} />
+                <Newspaper className="mx-2" weight="fill" size={35} />
                 <h1 className="lg:text-xl text-sm  "> {t("reservations")} </h1>
               </div>
             </div>
@@ -279,11 +273,11 @@ export default function AdminPage({
               <div
                 className={`${
                   alignLeft === true
-                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <Desktop className="mx-2" size={24} />
+                <Desktop className="mx-2" weight="fill" size={35} />
                 <h1 className="lg:text-xl text-sm  "> {t("websiteInfo")} </h1>
               </div>
             </div>
@@ -291,11 +285,11 @@ export default function AdminPage({
               <div
                 className={`${
                   alignLeft === true
-                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <IconLogout className="mx-2" size={24} />
+                <SignOut className="mx-2" weight="fill" size={35} />
                 <h1 className="lg:text-xl text-sm  "> {t("exit")} </h1>
               </div>
             </div>
@@ -327,7 +321,13 @@ export default function AdminPage({
               />
             ) : null}
           </div>
-          <div className="  rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800">
+          <div
+            className={`${
+              alignLeft === true
+                ? "rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800"
+                : "rounded-md  flex   lg:space-x-0 mt-44   lg:space-y-2 lg:mt-0   flex-col items-start lg:items-end  justify-center lg:justify-center lg:w-1/4 w-full h-auto  bg-white text-gray-800"
+            }`}
+          >
             <div
               onClick={() => {
                 setTab("hotel");
@@ -341,12 +341,12 @@ export default function AdminPage({
               <div
                 className={`${
                   alignLeft === true
-                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <IconBuildingSkyscraper className="mx-2" size={24} />
-                <h1 className="lg:text-xl text-sm  "> {t("hotels")} </h1>
+                <Buildings className="mx-2" weight="fill" size={35} />
+                <h1 className="lg:text-xl  text-sm  "> {t("hotels")} </h1>
               </div>
             </div>
 
@@ -363,11 +363,11 @@ export default function AdminPage({
               <div
                 className={`${
                   alignLeft === true
-                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <IconBook className="mx-2" size={24} />
+                <Newspaper className="mx-2" weight="fill" size={35} />
                 <h1 className="lg:text-xl text-sm  "> {t("reservations")} </h1>
               </div>
             </div>
@@ -376,11 +376,11 @@ export default function AdminPage({
               <div
                 className={`${
                   alignLeft === true
-                    ? "flex justify-around items-center  transition   text-gray-800 w-full"
+                    ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <IconLogout className="mx-2" size={24} />
+                <SignOut className="mx-2" weight="fill" size={35} />
                 <h1 className="lg:text-xl text-sm  "> {t("exit")} </h1>
               </div>
             </div>

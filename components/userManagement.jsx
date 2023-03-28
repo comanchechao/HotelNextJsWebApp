@@ -1,5 +1,5 @@
 import { Tabs } from "@mantine/core";
-import { MagnifyingGlass } from "phosphor-react";
+import { MagnifyingGlass, Users } from "phosphor-react";
 import {
   IconUser,
   IconUserExclamation,
@@ -78,7 +78,7 @@ export default function UserManagement({ users }) {
                     }`}
                   >
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
-                      <IconUserCircle size={40} />
+                      <Users weight="fill" size={40} />
                     </div>
                     <h1 className=" text-sm lg:text-lg">
                       <strong>{user.email}</strong> : {t("email")}
