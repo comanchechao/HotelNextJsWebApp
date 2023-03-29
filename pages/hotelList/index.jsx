@@ -40,7 +40,6 @@ export default function HotelList({ features, residenceTypes, cities }) {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
 
-  const [from, setFrom] = useState(1);
   // dynamic imports
   const HotelListModal = dynamic(
     () => import("../../components/hotelListModal"),
@@ -61,7 +60,14 @@ export default function HotelList({ features, residenceTypes, cities }) {
   let stars = useSelector((state) => state.filter.stars);
   let filterFeatures = useSelector((state) => state.filter.features);
   let filterCities = useSelector((state) => state.reserve.cities);
+  let selectedCity = useSelector((state) => state.reserve.city);
 
+  let filterResidenceTypes = useSelector(
+    (state) => state.filter.residenceTypes
+  );
+  let selectedResidenceType = useSelector(
+    (state) => state.filter.residenceType
+  );
   const mainPageBg = useRef();
   const firstContainer = useRef();
   const secondContainer = useRef();
@@ -93,7 +99,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
     const { data, error } = await supabase
       .from("Hotels")
       .select(
-        "id , features , city , trTitle , stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        "id, residenceType , features , city , trTitle , stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
       );
     if (lng === "fa") {
       if (selectedCity !== "") {
@@ -121,6 +127,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
   }
 
   useEffect(() => {
+    console.log(initialHotels);
     filter(filterFeatures);
   }, [filterFeatures]);
 
@@ -134,22 +141,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
       setHotels(initialHotels);
     }
   }
-  useEffect(() => {
-    filter(filterCities);
-  }, [filterCities]);
 
-  function filter(filterCities) {
-    let filteredArray = initialHotels.filter((obj) =>
-      obj.features.some((hobby) => filterCities.includes(hobby))
-    );
-
-    setHotels(filteredArray);
-    if (hotels === []) {
-      setHotels(initialHotels);
-    }
-  }
-
-  let selectedCity = useSelector((state) => state.reserve.city);
   let minPrice = useSelector((state) => state.filter.minPrice);
 
   useEffect(() => {
@@ -170,7 +162,20 @@ export default function HotelList({ features, residenceTypes, cities }) {
       setHotels(filteredProducts);
     }
   }
+  useEffect(() => {
+    filter(filterCities);
+  }, [filterCities]);
 
+  function filter(filterCities) {
+    let filteredArray = initialHotels.filter((obj) =>
+      obj.city.some((hobby) => filterCities.includes(hobby))
+    );
+
+    setHotels(filteredArray);
+    if (hotels === []) {
+      setHotels(initialHotels);
+    }
+  }
   useEffect(() => {
     sortCity();
   }, [selectedCity]);
@@ -189,6 +194,32 @@ export default function HotelList({ features, residenceTypes, cities }) {
     }
   }
 
+  useEffect(() => {
+    filter(filterResidenceTypes);
+  }, [filterResidenceTypes]);
+
+  function filter(filterResidenceTypes) {
+    let filteredArray = initialHotels.filter((obj) =>
+      obj.residenceType.some((hobby) => filterResidenceTypes.includes(hobby))
+    );
+
+    setHotels(filteredArray);
+    if (hotels === []) {
+      setHotels(initialHotels);
+    }
+  }
+  useEffect(() => {
+    sortResidenceType();
+  }, [selectedResidenceType]);
+
+  function sortResidenceType() {
+    if (lng === "fa") {
+      const filteredData = initialHotels.filter((obj) => {
+        return obj.residenceType.includes(selectedResidenceType);
+      });
+      setHotels(filteredData);
+    }
+  }
   // async function getFilteredHotels() {
   //   setTo(to + 2);
   //   setLoading(true);

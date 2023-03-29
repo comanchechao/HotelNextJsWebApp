@@ -34,12 +34,10 @@ export default function HotelListModal({ features, residenceTypes, cities }) {
   }
 
   useEffect(() => {
-    console.log(tempCity);
     changeAlignment();
   }, [tempCity]);
   const [alignLeft, setAlignLeft] = useState(false);
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }

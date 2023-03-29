@@ -122,49 +122,15 @@ export default function AdminHotelCard({ hotel, user, featuresData, cities }) {
         <HotelMap lat={hotel.locationLat} lng={hotel.locationLng} />
       </div>
       <div className=" w-auto flex items-center lg:w-56 h-full">
-        <Carousel
-          breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: 2 }]}
-          slideGap="sm"
-          align="start"
-          loop
-          slideSize="100%"
-          width="100%"
-          height="160px"
-        >
-          <Carousel.Slide>
-            {singleImage ? (
-              <Image
-                className=" w-full  lg:object-fit h-40 lg:w-full"
-                alt="antalia"
-                src={singleImage}
-                width={400}
-                height={200}
-              />
-            ) : null}
-          </Carousel.Slide>
-          <Carousel.Slide>
-            {imageTwo ? (
-              <Image
-                alt="antalia"
-                className=" w-full lg:object-fit h-40 lg:w-full"
-                src={imageTwo}
-                width={400}
-                height={200}
-              />
-            ) : null}
-          </Carousel.Slide>
-          <Carousel.Slide>
-            {imageThree ? (
-              <Image
-                alt="antalia"
-                className="  w-full lg:object-fit h-40 lg:w-full"
-                src={imageThree}
-                width={400}
-                height={200}
-              />
-            ) : null}
-          </Carousel.Slide>
-        </Carousel>
+        {singleImage ? (
+          <Image
+            className=" w-full  lg:object-fit h-40 lg:w-full rounded-r-md"
+            alt="antalia"
+            src={singleImage}
+            width={400}
+            height={200}
+          />
+        ) : null}
       </div>
     </div>
   );

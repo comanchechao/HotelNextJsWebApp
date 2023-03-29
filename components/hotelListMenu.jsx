@@ -16,7 +16,6 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
 
   useEffect(() => {
     dispatch(filterActions.setMinPrice(min));
-    console.log(min);
   }, [min]);
 
   // let minPrice = useSelector((state) => state.filter.minPrice);
@@ -32,9 +31,7 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
   //   console.log(maxRange, minRange);
   // });
   let filterFeatures = useSelector((state) => state.filter.features);
-  let filterResidenceTypes = useSelector(
-    (state) => state.filter.residenceTypes
-  );
+  let filterResidenceTypes = useSelector((state) => state.filter.residenceType);
   let filterCities = useSelector((state) => state.reserve.city);
 
   const { t, i18n } = useTranslation("common");
@@ -46,7 +43,6 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
 
   const [alignLeft, setAlignLeft] = useState(false);
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
@@ -259,9 +255,9 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
                       <Checkbox
                         key={i}
                         onClick={() => {
-                          dispatch(filterActions.setFeatures(feature.trTitle));
+                          dispatch(filterActions.setFeatures(feature.title));
                         }}
-                        checked={filterFeatures.includes(feature.trTitle)}
+                        checked={filterFeatures.includes(feature.title)}
                         labelPosition="left"
                         color="yellow"
                         radius="xl"
@@ -306,7 +302,7 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
                       <Checkbox
                         onClick={() => {
                           dispatch(
-                            filterActions.setResidenceTypes(residenceType.title)
+                            filterActions.setResidenceType(residenceType.title)
                           );
                         }}
                         checked={filterResidenceTypes.includes(
@@ -324,6 +320,14 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
                 : residenceTypes.map((residenceType, i) => {
                     return (
                       <Checkbox
+                        onClick={() => {
+                          dispatch(
+                            filterActions.setResidenceType(residenceType.title)
+                          );
+                        }}
+                        checked={filterResidenceTypes.includes(
+                          residenceType.title
+                        )}
                         key={i}
                         labelPosition="left"
                         color="yellow"

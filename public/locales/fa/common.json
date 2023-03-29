@@ -151,6 +151,7 @@
   "roomCapacity": "ظرفیت اتاق",
   "confirmRoom": "تایید و افزودن اتاق",
   "confirmHotel": "افزودن هتل",
+  "declineHotel": "رد هتل",
 
   "hotelsOf": "هتل های",
   "singleHotel": "هتل",
@@ -256,5 +257,12 @@
   "seeHotel": "دیدن هتل",
 
   "colleagueInfo": "اطلاعات همکار",
-  "hotelCount": "تعداد هتل"
+  "hotelCount": "تعداد هتل",
+
+  "needConfirmHotel": "هتل های نیاز به تایید",
+
+  "addAdmin": "ارتقا به همکار",
+
+  "needsConfirm": "نیاز به تایید",
+  "confirmed": "تایید شده"
 }

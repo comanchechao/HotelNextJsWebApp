@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Modal, Group } from "@mantine/core";
-import Image from "next/image";
-import Link from "next/link";
+import { Modal } from "@mantine/core";
 import { useTranslation } from "next-i18next";
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -93,16 +91,14 @@ export default function ReservationInfo({
         </div>
       </Modal>
 
-      <Group position="center">
-        <button
-          onClick={() => {
-            setOpened(true);
-          }}
-          className="py-1 font-mainFont  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white  px-8   "
-        >
-          <p>{t("details")}</p>
-        </button>
-      </Group>
+      <button
+        onClick={() => {
+          setOpened(true);
+        }}
+        className="py-1 font-mainFont  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white  px-8   "
+      >
+        <p>{t("details")}</p>
+      </button>
     </>
   );
 }

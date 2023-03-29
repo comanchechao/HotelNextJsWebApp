@@ -8,6 +8,7 @@ export const filter = createSlice({
     minPrice: [],
     features: [],
     residenceTypes: [],
+    residenceType: "",
   },
   reducers: {
     setStars: (state, action) => {
@@ -25,6 +26,9 @@ export const filter = createSlice({
       } else {
         state.features.splice(state.features.indexOf(action.payload), 1);
       }
+    },
+    setResidenceType: (state, actions) => {
+      state.residenceType = actions.payload;
     },
     setResidenceTypes: (state, action) => {
       if (state.residenceTypes.indexOf(action.payload) === -1) {

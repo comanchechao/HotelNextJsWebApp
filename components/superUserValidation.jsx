@@ -1,92 +1,101 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTranslation } from "next-i18next";
 
-import { Modal, Group, Accordion } from "@mantine/core";
-import { IconUserCircle } from "@tabler/icons";
+import { useMediaQuery } from "@mantine/hooks";
+import { Coffee, User, Tag } from "phosphor-react";
 
-export default function SuperUserModal() {
-  let hotels = [
-    { title: "هتل", rooms: 32, image: hotelOne },
-    { title: "دلتا", rooms: 32, image: hotelTwo },
-  ];
+import { Modal } from "@mantine/core";
+
+export default function SuperUserValidation() {
+  const isMobile = useMediaQuery("(max-width: 50em)");
+
   const [opened, setOpened] = useState(false);
+  const { t, i18n } = useTranslation("");
+  const [alignLeft, setAlignLeft] = useState();
+  const [confirmed, setConfirmed] = useState(true);
 
+  const lng = i18n.language;
+
+  async function changeAlignment() {
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
+  useEffect(() => {
+    changeAlignment();
+  }, []);
   return (
     <>
       <Modal
-        size="55%"
+        fullScreen={isMobile}
         centered
+        size="650px"
+        transition="fade"
+        transitionDuration={600}
+        transitionTimingFunction="ease"
+        exitTransitionDuration={600}
         opened={opened}
         onClose={() => setOpened(false)}
-        title="اطلاعات کاربر"
         className="text-right w-full flex justify-end"
       >
-        <div className="w-full h-full">
-          <div className="flex w-full justify-around items-center">
-            <div className="flex w-full items-center justify-around">
-              <div className="flex items-center space-x-1">
-                <p>Hotel Ana</p>
-                <p>:نام کاربری</p>
+        <div className="h-full w-full flex items-center  p-4 flex-col space-y-6">
+          <div className="w-full h-auto flex items-center flex-col">
+            <h1 className="text-xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
+              {t("needConfirmHotel")}
+            </h1>
+            <div className="flex border lg:flex-row flex-col-reverse border-gray-300 bg-white justify-around divide-x my-5 divide-gray-300 rounded-md w-full h-full lg:h-44">
+              <div className="h-full w-full lg:w-1/3 flex flex-col items-center justify-around py-8 ">
+                <div className="flex space-x-1 p-2 justify-center items-center">
+                  <h2 className="text-xs">{t("currency")}</h2>
+                  <h2 className="  text-lg text-mainPurple">22,550,000</h2>
+                </div>
+                <h1 className="text-sm">{t("price1Night")}</h1>
+                <div className="flex items-center flex-col justify-center space-y-3 mt-2">
+                  <button className="py-2 font-mainFont  hover:text-white bg-green-500 border-green-800 border-r-8   ease-in duration-300 hover:bg-green-900 transition rounded-lg  text-white   px-6   ">
+                    {t("confirmHotel")}
+                  </button>{" "}
+                  <button className="py-2 font-mainFont  hover:text-white bg-red-500 border-red-800 border-r-8   ease-in duration-300 hover:bg-red-900 transition rounded-lg  text-white px-6   ">
+                    {t("declineHotel")}
+                  </button>
+                </div>
               </div>
-              <div className="flex items-center space-x-1">
-                <p>آرنیک نرمال</p>
-                <p>:نام مالک</p>
+              <div className="h-full flex flex-col items-end justify-start  p-4 w-full lg:w-2/3  ">
+                <div className="h-14 w-full flex items-start  justify-end ">
+                  <h1 className="text-2xl my-2">{t("room")}</h1>
+                </div>
+
+                <div className="flex flex-col items-end justify-center space-y-3   h-full">
+                  <h2 className="flex items-center  text-sm">
+                    {t("roomMeal")}
+                    <Coffee className="ml-2" size={19} weight="fill" />
+                  </h2>
+                  <h2 className="flex items-center  text-sm">
+                    {t("person")} 1
+                    <User className="ml-2" size={19} weight="fill" />
+                  </h2>
+                  <h2 className="flex items-center  text-sm">
+                    {t("price1Night")} : 18,000,000 {t("currency")}
+                    <Tag className="ml-2" size={19} weight="fill" />
+                  </h2>
+                </div>
               </div>
-            </div>
-            <div className="flex">
-              <IconUserCircle size={50} />
-            </div>
-          </div>
-          <div className="flex w-full justify-center items-center">
-            <Accordion
-              variant="separated"
-              chevronPosition="left"
-              color="yellow"
-            >
-              <Accordion.Item value="customization">
-                <Accordion.Control className="text-right w-full">
-                  <p>اطلاعات بیشتر</p>
-                </Accordion.Control>
-                <Accordion.Panel>
-                  <div className="flex w-full space-x-4 justify-around items-center">
-                    <div className="flex items-center space-x-1">
-                      <p>021 555 8789</p>
-                      <p>:شماره تماس</p>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <p>423940234</p>
-                      <p>:شماره ملی</p>
-                    </div>
-                  </div>
-                </Accordion.Panel>
-              </Accordion.Item>
-            </Accordion>
-          </div>
-          <div className="flex m-2 flex-col w-full">
-            <div className="flex w-full border-b-2 border-gray-900 justify-end text-right">
-              <h1 className="bg-gray-900 p-3 text-gray-100">مدارک هتل</h1>
-            </div>
-            <div className="flex w-full justify-around items-center p-4">
-              <button className="lg:w-32 w-24 py-3 border-2 text-lg border-gray-100  bg-green-800 transition ease-in duration-300 font-mainFont rounded-md text-gray-50 hover:bg-green-500 hover:text-gray-100 ">
-                <p>تایید</p>
-              </button>
-              <button className="lg:w-32 w-24 py-3 border-2 text-lg border-gray-100  bg-red-800 transition ease-in duration-300 font-mainFont rounded-md text-gray-50 hover:bg-red-500 hover:text-gray-100 ">
-                <p>رد</p>
-              </button>
             </div>
           </div>
         </div>
       </Modal>
-
-      <Group position="center">
+      {confirmed ? (
         <button
           onClick={() => {
             setOpened(true);
           }}
-          className="lg:w-32 w-24 py-2 border-2 text-lg border-mainYellow border-dashed bg-transparent transition ease-in duration-300 font-mainFont rounded-md text-darkPurple hover:bg-yellow-500 "
+          className="py-1 font-mainFont  hover:text-white bg-transparent border-red-500 border-2 border-dashed   ease-in duration-300 hover:bg-red-600 transition rounded-lg  text-mainPurple  px-6   "
         >
-          <p>اطلاعات</p>
+          <p>{t("needsConfirm")}</p>
         </button>
-      </Group>
+      ) : (
+        <button className="py-1 font-mainFont  hover:text-white bg-transparent border-green-500 border-2 border-dashed   ease-in duration-300 hover:bg-green-600 transition rounded-lg  text-mainPurple  px-6   ">
+          <p>{t("confirmed")}</p>
+        </button>
+      )}
     </>
   );
 }

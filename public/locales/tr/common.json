@@ -255,5 +255,13 @@
   "seeHotel": "Oteli Gör",
 
   "colleagueInfo": "meslektaş bilgisi",
-  "hotelCount": "otel sayısı"
+  "hotelCount": "otel sayısı",
+  "declineHotel": "oteli reddet",
+
+  "needConfirmHotel": "Onay gerektiren oteller",
+
+  "addAdmin": "meslektaşına terfi",
+
+  "needsConfirm": "Onay gerekiyor",
+  "confirmed": "Kabul edilmiş"
 }

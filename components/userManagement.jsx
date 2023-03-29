@@ -1,14 +1,10 @@
 import { Tabs } from "@mantine/core";
 import { MagnifyingGlass, Users } from "phosphor-react";
-import {
-  IconUser,
-  IconUserExclamation,
-  IconUserCircle,
-  IconUserCheck,
-} from "@tabler/icons";
+import { IconUser, IconUserExclamation, IconUserCheck } from "@tabler/icons";
 import SuperUser from "./superUserModal";
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
+import SuperUserValidation from "./superUserValidation";
 
 export default function UserManagement({ users }) {
   const { t, i18n } = useTranslation("common");
@@ -72,8 +68,8 @@ export default function UserManagement({ users }) {
                     key={i}
                     className={`${
                       alignLeft === true
-                        ? "flex py-1 flex-row-reverse   w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
-                        : "flex py-1     w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                        ? "flex py-4 lg:py-1 flex-col lg:flex-row-reverse   w-full h-auto lg:space-y-0 space-y-4 lg:h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                        : "flex py-4 lg:py-1 flex-col lg:flex-row   w-full h-auto lg:space-y-0 space-y-4 lg:h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
                     }`}
                   >
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
@@ -83,6 +79,7 @@ export default function UserManagement({ users }) {
                       <strong>{user.email}</strong> : {t("email")}
                     </h1>
                     <p className="hidden lg:block">{user.name}</p>
+                    <SuperUserValidation />
                     <SuperUser />
                   </div>
                 );

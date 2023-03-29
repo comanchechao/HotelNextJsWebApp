@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Modal, Button, Group, Accordion } from "@mantine/core";
+import { Modal } from "@mantine/core";
 import { useTranslation } from "next-i18next";
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -40,17 +40,20 @@ export default function SuperUserModal() {
           <h1 className="text-2xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
             {t("colleagueInfo")}
           </h1>
-          <div className="grid justify-items-center grid-cols-2 gap-5 w-full ">
+          <div className="flex flex-wrap items-center lg:flex-row flex-col space-y-5 lg:space-y-0 space-x-0 lg:space-x-5 w-full ">
             <h2 className="py-1 rounded-md px-4 border-2     border-mainPurple">
               {t("fullName")} : <strong>آروین نیک بین</strong>
             </h2>
-            <h2 className="py-1 rounded-md px-4 border-2 border-mainPurple">
+            <h2 className="py-1  lg:mb-2 rounded-md px-4 border-2 border-mainPurple">
               {t("email")} : <strong>Arvin.nikbin22@gmail.com</strong>
             </h2>
           </div>
-          <h2 className="py-1 rounded-md px-4 border-2   border-mainBlue">
+          <h2 className="py-1   rounded-md px-4 border-2   border-mainBlue">
             {t("hotelCount")} : <strong>5 {t("singleHotel")}</strong>
           </h2>{" "}
+          <button className="py-2 font-mainFont  hover:text-white bg-green-500 border-green-800 border-r-8   ease-in duration-300 hover:bg-green-900 transition rounded-lg  text-white   px-6   ">
+            {t("addAdmin")}
+          </button>{" "}
           <div className="w-full h-auto flex items-center flex-col">
             <h1 className="text-xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
               {t("hotels")}
@@ -91,16 +94,14 @@ export default function SuperUserModal() {
         </div>
       </Modal>
 
-      <Group position="center">
-        <button
-          onClick={() => {
-            setOpened(true);
-          }}
-          className="py-1 font-mainFont  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white  px-8   "
-        >
-          <p>{t("details")}</p>
-        </button>
-      </Group>
+      <button
+        onClick={() => {
+          setOpened(true);
+        }}
+        className="py-1 font-mainFont  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white  px-8   "
+      >
+        <p>{t("details")}</p>
+      </button>
     </>
   );
 }
