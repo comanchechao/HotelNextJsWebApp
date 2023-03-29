@@ -15,6 +15,7 @@ import {
   useMantineTheme,
   TextInput,
   Skeleton,
+  rem,
 } from "@mantine/core";
 import Image from "next/image";
 import mainBg from "../assets/images/mainBg.webp";
@@ -302,15 +303,16 @@ export default function Home(props) {
                 size="md"
               />
               <DatePickerInput
+                variant="default"
                 locale={faLocale}
                 timeZone="iran/tehran"
                 numberOfColumns={1}
                 oriantation
-                type='range'
+                type="range"
                 className={`${
                   alignLeft === true
-                    ? "text-3xl text-right  flex flex-col  items-end"
-                    : "text-3xl text-right  flex flex-col  items-start"
+                    ? "text-xl   text-right flex flex-col items-center lg:items-end"
+                    : "text-xl   text-right flex flex-col items-center lg:items-start"
                 }`}
                 dropdownType="modal"
                 value={dates}
@@ -340,6 +342,11 @@ export default function Home(props) {
                   })
                 }
                 size="md"
+                styles={(theme) => ({
+                  input: {
+                    marginRight: rem(112),
+                  },
+                })}
               />
               {/* <DatePicker
                 locale="fa"
@@ -365,7 +372,7 @@ export default function Home(props) {
                     className={`${
                       alignLeft === true
                         ? "text-3xl text-right flex flex-col items-center lg:items-end"
-                        : "text-3xl text-right flex flex-col items-center lg:items-start"
+                        : "text-3xl text-left flex flex-col items-center lg:items-start"
                     }`}
                     placeholder={t("passenger")}
                     label={t("passenger")}
@@ -373,6 +380,11 @@ export default function Home(props) {
                     radius="md"
                     size="md"
                     withAsterisk
+                    styles={(theme) => ({
+                      input: {
+                        marginRight: rem(25),
+                      },
+                    })}
                   />
                 </Popover.Target>
                 <Popover.Dropdown>

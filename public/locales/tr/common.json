@@ -252,5 +252,8 @@
   "details": "Detaylar",
 
   "reserveInfo": "Rezervasyon Bilgileri",
-  "seeHotel": "Oteli Gör"
+  "seeHotel": "Oteli Gör",
+
+  "colleagueInfo": "meslektaş bilgisi",
+  "hotelCount": "otel sayısı"
 }

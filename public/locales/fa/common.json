@@ -253,5 +253,8 @@
 
   "details": "جزئیات",
   "reserveInfo": "اطلاعات رزرو",
-  "seeHotel": "دیدن هتل"
+  "seeHotel": "دیدن هتل",
+
+  "colleagueInfo": "اطلاعات همکار",
+  "hotelCount": "تعداد هتل"
 }
