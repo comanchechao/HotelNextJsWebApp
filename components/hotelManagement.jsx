@@ -1,27 +1,10 @@
-import hotelOne from "../assets/images/hotelone.jpg";
-import hotelTwo from "../assets/images/hoteltwo.jpg";
-import hotelThree from "../assets/images/hotelthree.jpg";
-import hotelFour from "../assets/images/hotelfour.jpg";
-import Image from "next/image";
-import {
-  IconBed,
-  IconToolsKitchen,
-  IconMassage,
-  IconBath,
-  IconStar,
-  IconBuildingSkyscraper,
-  IconUser,
-  IconUsers,
-} from "@tabler/icons";
-import Link from "next/link";
+import { IconBuildingSkyscraper, IconUser, IconUsers } from "@tabler/icons";
 import { Tabs } from "@mantine/core";
 import { MagnifyingGlass } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
-import HotelImage from "./hotelImage";
 import { useTranslation } from "next-i18next";
 import AdminHotelCard from "./adminHotelCard";
-import { supabase } from "../lib/supabaseClient";
 const AddHotel = dynamic(() => import("./addHotel"));
 const HotelMap = dynamic(() => import("./hotelMap"), {
   ssr: false,

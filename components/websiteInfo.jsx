@@ -1,4 +1,10 @@
-import { Textarea, Tabs, Loader, NumberInput } from "@mantine/core";
+import {
+  Textarea,
+  Tabs,
+  Notification,
+  Loader,
+  NumberInput,
+} from "@mantine/core";
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
@@ -24,33 +30,42 @@ export default function WebsiteInfo() {
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
+  const [alert, setAlert] = useState(false);
+
   useEffect(() => {
     changeAlignment();
   }, []);
   async function changeWebsiteInfo() {
     setLoading(true);
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (user) {
-      const { data, error } = await supabase.from("websiteInfo").upsert([
-        {
-          aboutUs: aboutUs,
-          aboutUsMore: aboutUsMore,
-          address: address,
-          phoneNumber: phoneNumber,
-          postalCode: postalCode,
-          email: email,
-          instagram: instagram,
-          telegram: telegram,
-          facebook: facebook,
-          whatsapp: whatsapp,
-        },
-      ]);
-    } else {
-      console.log(error);
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user) {
+        const { data, error } = await supabase.from("websiteInfo").upsert([
+          {
+            aboutUs: aboutUs,
+            aboutUsMore: aboutUsMore,
+            address: address,
+            phoneNumber: phoneNumber,
+            postalCode: postalCode,
+            email: email,
+            instagram: instagram,
+            telegram: telegram,
+            facebook: facebook,
+            whatsapp: whatsapp,
+          },
+        ]);
+      } // add this closing curly brace
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 2000);
     }
-    setLoading(false);
   }
   return (
     <div className="flex flex-col items-center justify-start pt-5 w-full h-full lg:h-carousel  ">
@@ -165,7 +180,7 @@ export default function WebsiteInfo() {
                 autosize
                 minRows={1}
                 withAsterisk
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                onChange={(e) => setPhoneNumber(e)}
               />
               <div
                 className={`${
@@ -191,7 +206,7 @@ export default function WebsiteInfo() {
                   autosize
                   minRows={1}
                   withAsterisk
-                  onChange={(e) => setPostalCode(e.target.value)}
+                  onChange={(e) => setPostalCode(e)}
                 />
                 <p className="text-lg text-center w-full">{t("postalCode")}</p>
               </div>{" "}
@@ -297,18 +312,33 @@ export default function WebsiteInfo() {
           </Tabs.Panel>
         </Tabs>
         <div className="lg:absolute right-8 bottom-0   fixed">
-          <button
-            onClick={() => {
-              changeWebsiteInfo();
-            }}
-            className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
-          >
-            {loading ? (
-              <Loader color="yellow" />
-            ) : (
-              <span> {t("confirmChanges")}</span>
-            )}
-          </button>
+          {alert ? (
+            <Notification
+              transition="fade"
+              transitionDuration={600}
+              transitionTimingFunction="ease"
+              color="green"
+              withCloseButton
+              variant="outline"
+            >
+              <h1 className="text-2xl text-center">
+                {t("infoConfirmSuccess")}
+              </h1>
+            </Notification>
+          ) : (
+            <button
+              onClick={() => {
+                changeWebsiteInfo();
+              }}
+              className="px-14 mb-10 rounded-lg self-start transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-xl font-mainFont"
+            >
+              {loading ? (
+                <Loader variant="bars" color="yellow" />
+              ) : (
+                <span> {t("confirmChanges")}</span>
+              )}
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -2,9 +2,6 @@ import Link from "next/link";
 
 import { Carousel } from "@mantine/carousel";
 import Image from "next/image";
-import hotelone from "../assets/images/hotelone.webp";
-import hotelthree from "../assets/images/hotelthree.webp";
-import hotelfour from "../assets/images/hotelfour.webp";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { Star } from "phosphor-react";

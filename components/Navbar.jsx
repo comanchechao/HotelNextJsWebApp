@@ -15,6 +15,9 @@ import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { useSelector } from "react-redux";
+import Logo from "../assets/images/LOGO.webp";
+import Image from "next/image";
+
 export default function Navbar() {
   const router = useRouter();
   const boxRef = useRef();
@@ -58,7 +61,7 @@ export default function Navbar() {
       <div className="text-base flex items-center space-x-4">
         <Link
           href="/hotelList"
-          className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-2  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           {t("hotel")}
 
@@ -67,7 +70,7 @@ export default function Navbar() {
 
         <Link
           href="/"
-          className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-3  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-2  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           <h4 className=" ">{t("home")}</h4>
           <House className="mx-2" size={28} weight="light" />
@@ -76,10 +79,17 @@ export default function Navbar() {
 
         <Link
           href="/"
-          className="flex rounded-sm p-3 border-r-8 border-transparent hover:border-r-mainBlue items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex rounded-sm p-2 border-r-8 border-transparent hover:border-r-mainBlue items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           locale={changeTo}
         >
           {router.locale === "tr" ? <p> فارسی 🇮🇷</p> : <p>Turkish 🇹🇷</p>}
+        </Link>
+        <Link href="/">
+          <Image
+            src={Logo}
+            alt="Logo"
+            className="object-contain h-12 w-11    rounded-sm   cursor-pointer transition ease-in duration-200 hover:bg-mainPurple p-2"
+          />
         </Link>
       </div>
 
@@ -87,7 +97,7 @@ export default function Navbar() {
         {isManager ? (
           <Link
             href="/admin"
-            className="flex rounded-sm justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            className="flex rounded-sm justify-center  items-center cursor-pointer p-2 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
           >
             <h4 className=" ">{t("admin")}</h4>
             <IdentificationCard className="mx-1" weight="light" size={30} />
@@ -95,14 +105,14 @@ export default function Navbar() {
         ) : null}
         <Link
           href="/aboutUs"
-          className="flex  rounded-sm  justify-center  items-center cursor-pointer md:text-xs p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex  rounded-sm  justify-center  items-center cursor-pointer md:text-xs p-2 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           <h4>{t("aboutUs")}</h4>
           <Scroll className="mx-2" size={24} weight="light" />
         </Link>
         <Link
           href="/contactUs"
-          className="flex rounded-sm justify-center  items-center cursor-pointer p-3 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="flex rounded-sm justify-center  items-center cursor-pointer p-2 border-r-8 border-transparent hover:border-r-mainBlue text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           <h4>{t("contactUs")}</h4>
           <Question className="ml-1" size={24} weight="light" />

@@ -1,19 +1,8 @@
 import { useState } from "react";
-import {
-  IconBed,
-  IconStar,
-  IconBath,
-  IconToolsKitchen,
-  IconMassage,
-} from "@tabler/icons";
-import { Modal, Button, Group, Accordion } from "@mantine/core";
+
+import { Modal, Group, Accordion } from "@mantine/core";
 import { IconUserCircle } from "@tabler/icons";
-import hotelOne from "../assets/images/hotelone.jpg";
-import hotelTwo from "../assets/images/hoteltwo.jpg";
-import hotelThree from "../assets/images/hotelthree.jpg";
-import hotelFour from "../assets/images/hotelfour.jpg";
-import Image from "next/image";
-import Link from "next/link";
+
 export default function SuperUserModal() {
   let hotels = [
     { title: "هتل", rooms: 32, image: hotelOne },

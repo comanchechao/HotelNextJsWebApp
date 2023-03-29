@@ -98,10 +98,6 @@ export default function AdminPage({
   const [hotelIds, setHotelIds] = useState([]);
   const [hotels, setHotels] = useState([]);
 
-  useEffect(() => {
-    console.log(users);
-  });
-
   async function getHotels() {
     const { data: hotels, error } = await supabase
       .from("Hotels")
@@ -121,8 +117,6 @@ export default function AdminPage({
   useEffect(() => {
     changeAlignment();
     getHotels();
-
-    console.log("idds", hotelIds);
   }, []);
   const router = useRouter();
   const [tab, setTab] = useState("hotel");
@@ -134,7 +128,6 @@ export default function AdminPage({
 
   const theme = useMantineTheme();
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }

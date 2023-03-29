@@ -9,7 +9,8 @@ import {
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
-
+import Image from "next/image";
+import Logo from "../assets/images/LOGO.webp";
 export default function Footer() {
   const [loading, setLoading] = useState(false);
   const [address, setAddress] = useState("");
@@ -48,6 +49,7 @@ export default function Footer() {
       setInstagram(object.instagram);
       setFacebook(object.facebook);
       setWhatsapp(object.whatsapp);
+      console.log(address);
     });
     setLoading(false);
   }
@@ -56,18 +58,12 @@ export default function Footer() {
       <div
         className={`${
           alignLeft === true
-            ? "flex lg:flex-row flex-col items-center w-full h-full my-4"
+            ? "flex    lg:flex-row flex-col items-center w-full h-full my-4"
             : "flex lg:flex-row-reverse flex-col items-center w-full h-full my-4"
         }`}
       >
-        <div className="lg:w-1/2   lg:h-3/5 w-full h-auto text-base font-bold lg:px-20 flex items-center lg:items-start justify-center space-y-3 flex-col">
-          <p className=" ">
-            {t("phone")} : {phoneNumber}
-          </p>
-          <p className=" ">
-            {t("address")} : {address}
-          </p>
-        </div>
+        <Image src={Logo} alt="Logo" className="object-contain h-48"></Image>
+
         <div
           className={`${
             alignLeft === true

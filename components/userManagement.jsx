@@ -7,7 +7,6 @@ import {
   IconUserCheck,
 } from "@tabler/icons";
 import SuperUser from "./superUserModal";
-import SuperUserValidation from "./superUserValidation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 
@@ -111,23 +110,7 @@ export default function UserManagement({ users }) {
             </div>
           </Tabs.Panel>
           <Tabs.Panel value="settings" pt="xs">
-            <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
-              {/* {users.map((user, i) => {
-                return (
-                  <div
-                    key={i}
-                    className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
-                  >
-                    <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
-                      <IconUserCircle size={50} />
-                    </div>
-                    <h1 className=" text-sm lg:text-xl">{user.title}</h1>
-                    <p className="hidden lg:block">{user.name}</p>
-                    <SuperUserValidation />
-                  </div>
-                );
-              })} */}
-            </div>
+            <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col"></div>
           </Tabs.Panel>
         </Tabs>
       </div>
