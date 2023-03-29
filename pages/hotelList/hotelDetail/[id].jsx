@@ -12,7 +12,7 @@ import {
   Paper,
   Text,
   Title,
-  Button,
+  rem,
   useMantineTheme,
 } from "@mantine/core";
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons";
@@ -521,6 +521,11 @@ export default function HotelDetailPage({ hotel }) {
                         [classes.firstInRange]: modifiers.outside,
                       })
                     }
+                    styles={(theme) => ({
+                      input: {
+                        width: rem(240),
+                      },
+                    })}
                     size="md"
                   />
                   <Popover width={300} position="bottom" withArrow shadow="md">
@@ -790,8 +795,8 @@ export default function HotelDetailPage({ hotel }) {
                 <div
                   className={`${
                     alignLeft === true
-                      ? "flex divide-x lg:flex-row flex-col divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
-                      : "flex flex-col lg:flex-row-reverse   divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
+                      ? "flex divide-x  flex-col divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
+                      : "flex flex-col  divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
                   }`}
                 >
                   <div
@@ -803,7 +808,7 @@ export default function HotelDetailPage({ hotel }) {
                   >
                     <p>{hotel.hotelRules}</p>
                   </div>
-                  <div className="flex w-full  lg:w-1/3 justify-center items-center flex-row lg:space-x-0 space-x-4 my-3 lg:my-0 lg:flex-col">
+                  <div className="flex w-full  justify-center items-center flex-row space-x-4 my-3 ">
                     <div className="flex flex-col justify-center items-center">
                       <p>{t("exitTime")}</p>
                       <p className="py-2 text-right font-mainFont px-2 w-20 rounded-md  bg-gray-200">

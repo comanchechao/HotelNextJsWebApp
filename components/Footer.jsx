@@ -54,15 +54,19 @@ export default function Footer() {
     setLoading(false);
   }
   return (
-    <div className="w-screen h-auto lg:h-rem26 bg-white drop-shadow-lg lg:px-28 flex flex-col items-center mt-28 -z-50">
+    <div className="w-screen h-auto  bg-white drop-shadow-lg lg:px-28 flex flex-col items-center mt-20 -z-50">
       <div
         className={`${
           alignLeft === true
-            ? "flex    lg:flex-row flex-col items-center w-full h-full my-4"
-            : "flex lg:flex-row-reverse flex-col items-center w-full h-full my-4"
+            ? "flex justify-around lg:flex-row flex-col items-center w-full h-full my-4"
+            : "flex justify-around lg:flex-row-reverse flex-col items-center w-full h-full my-4"
         }`}
       >
-        <Image src={Logo} alt="Logo" className="object-contain h-48"></Image>
+        <Image
+          src={Logo}
+          alt="Logo"
+          className="object-contain h-48 w-48 rounded-sm   cursor-pointer transition ease-in duration-200 hover:bg-mainBlue   p-2"
+        ></Image>
 
         <div
           className={`${

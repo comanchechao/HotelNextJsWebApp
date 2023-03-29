@@ -203,10 +203,10 @@ export default function InfoConfirmation() {
           </h4>
           <h4 className="text-lg">
             {passengerOne.name}
-            <strong>:{t("supervisor")}  </strong>
+            <strong>:{t("supervisor")} </strong>
           </h4>
         </div>
-        <div className="h-auto p-3 w-full bg-Cyan-100 grid justify-items-center grid-cols-4">
+        <div className="h-auto p-3 w-full bg-blue-700 text-white grid justify-items-center grid-cols-4">
           <h4 className="font-bold text-lg">{t("idCode")}</h4>
           <h4 className="font-bold text-lg">{t("phone")}</h4>
           <h4 className="font-bold text-lg">{t("fullName")}</h4>
@@ -218,28 +218,22 @@ export default function InfoConfirmation() {
             <h4 className="text-lg">{passengerOne.phoneNumber}</h4>
             <h4 className="text-lg">{passengerOne.name}</h4>
             <h4 className="text-lg">{passengerOne.gender}</h4>
-
-            <h4 className="text-lg">بزرگسال</h4>
           </div>
         ) : null}
         {passengerTwo.name !== "" ? (
           <div className="h-16 mb-9 w-full  grid justify-items-center grid-cols-4">
-            <h4 className="text-lg">{passengerTwo.gender}</h4>
+            <h4 className="text-lg">{passengerTwo.socialNumber}</h4>
             <h4 className="text-lg">{passengerTwo.phoneNumber}</h4>
             <h4 className="text-lg">{passengerTwo.name}</h4>
-            <h4 className="text-lg">{passengerTwo.socialNumber}</h4>
-
-            <h4 className="text-lg">بزرگسال</h4>
+            <h4 className="text-lg">{passengerTwo.gender}</h4>
           </div>
         ) : null}
         {passengerThree.name !== "" ? (
           <div className="h-16 mb-9 w-full  grid justify-items-center grid-cols-4">
             <h4 className="text-lg">{passengerOne.socialNumber}</h4>
             <h4 className="text-lg">{passengerOne.phoneNumber}</h4>
-            <h4 className="text-lg">{passengerOne.name}</h4>
             <h4 className="text-lg">{passengerOne.gender}</h4>
-
-            <h4 className="text-lg">بزرگسال</h4>
+            <h4 className="text-lg">{passengerOne.name}</h4>
           </div>
         ) : null}
         {passengerFour.name !== "" ? (
@@ -248,8 +242,6 @@ export default function InfoConfirmation() {
             <h4 className="text-lg">{passengerOne.phoneNumber}</h4>
             <h4 className="text-lg">{passengerOne.name}</h4>
             <h4 className="text-lg">{passengerOne.gender}</h4>
-
-            <h4 className="text-lg">بزرگسال</h4>
           </div>
         ) : null}
       </div>
