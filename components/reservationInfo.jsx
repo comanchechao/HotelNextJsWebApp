@@ -69,9 +69,11 @@ export default function ReservationInfo({
                     className="  w-full grid grid-rows-4 bg-white lg:grid-cols-4 lg:grid-rows-1 lg:order-1  justify-items-center rounded-sm"
                   >
                     {" "}
-                    <h3 className="text-mainPurple">0023470011</h3>{" "}
-                    <h3 className="text-mainPurple">09145248936</h3>
-                    <h3 className="text-mainPurple">مرد</h3>{" "}
+                    <h3 className="text-mainPurple">
+                      {passenger.socialNumber}
+                    </h3>{" "}
+                    <h3 className="text-mainPurple">{passenger.phoneNumber}</h3>
+                    <h3 className="text-mainPurple">{passenger.gender}</h3>{" "}
                     <h3 className="text-mainPurple">{passenger.name}</h3>
                   </div>
                 );
