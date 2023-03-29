@@ -9,9 +9,8 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons";
-import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
-
+import { useEffect, useState } from "react";
 const useStyles = createStyles((theme) => ({
   card: {
     height: 440,
@@ -32,7 +31,7 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.xs,
   },
 
-  prices: {
+  category: {
     color: theme.white,
     opacity: 0.7,
     fontWeight: 700,
@@ -40,86 +39,81 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function Card({ hotels, hotel }) {
+function Card({ ...item }) {
   const { classes } = useStyles();
-  const [singleImage, setSingleImage] = useState("");
-
+  const [singleImage, setSingleImage] = useState();
   const downloadImage1 = async () => {
-    const { data, error } = await supabase.storage
-      .from("/public/hotel-images")
-      .download(hotel.firstImage);
+    if (item.firstImage) {
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(item.firstImage);
 
-    if (error) {
-      throw error;
+      if (data) {
+        const url = URL.createObjectURL(data);
+        setSingleImage(url);
+        console.log(url);
+      }
     }
-    const url = URL.createObjectURL(data);
-    setSingleImage(url);
   };
   useEffect(() => {
     downloadImage1();
-    console.log(hotel.title);
   }, []);
-
-  hotels.map((hotel, i) => {
-    return (
-      <Paper
-        key={i}
-        shadow="md"
-        p="xl"
-        radius="md"
-        sx={{ backgroundImage: `url(${singleImage})` }}
-        className={classes.card}
-      >
-        <div>
-          <Text className={classes.prices} size="xs">
-            {hotel.prices}
-          </Text>
-          <Title order={3} className={classes.title}>
-            {hotel.title}
-          </Title>
-        </div>
-      </Paper>
-    );
-  });
+  return (
+    <Paper
+      shadow="md"
+      p="xl"
+      radius="md"
+      sx={{ backgroundImage: `url(${singleImage})` }}
+      className={classes.card}
+    >
+      <div>
+        <Text className={classes.prices} size="xs">
+          {item.prices}
+        </Text>
+        <Title order={3} className={classes.title}>
+          {item.title}
+        </Title>
+      </div>
+    </Paper>
+  );
 }
 const data = [
   {
     title: "Best forests to visit in North America",
-    prices: "new",
+    category: "new",
   },
   {
     title: "Hawaii beaches review: better than you think",
-    prices: "new",
+    category: "new",
   },
   {
     title: "Mountains at night: 12 best locations to enjoy the view",
-    prices: "new",
+    category: "new",
   },
   {
     title: "Aurora in Norway: when to visit for best experience",
-    prices: "new",
+    category: "new",
   },
   {
     title: "Best places to visit this winter",
-    prices: "new",
+    category: "new",
   },
   {
     title: "Active volcanos reviews: travel at your own risk",
-    prices: "new",
+    category: "new",
   },
 ];
 export default function HomePageCarousel({ hotels }) {
-  useEffect(() => {
-    console.log(hotels);
-  }, []);
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
-  const slides = hotels.map((hotel, i) => (
-    <Carousel.Slide className=" cursor-pointer" key={i}>
-      <Card hotels={hotels} hotel={hotel} {...hotel} />
+  const slides = hotels.map((item) => (
+    <Carousel.Slide className=" cursor-pointer" key={item.title}>
+      <Card {...item} />
     </Carousel.Slide>
   ));
-
+  useEffect(() => {
+    console.log(hotels);
+  });
   return (
     <Carousel
       slideSize="50%"
