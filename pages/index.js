@@ -18,7 +18,7 @@ import {
 } from "@mantine/core";
 import Image from "next/image";
 import mainBg from "../assets/images/mainBg.webp";
-import { DateRangePicker } from "@mantine/dates";
+import { DateInput, DatePickerInput } from "@mantine/dates";
 import { createStyles } from "@mantine/core";
 import { MapPin, PlusCircle, MinusCircle, CaretLeft } from "phosphor-react";
 import Antalia from "../assets/images/Antalia.webp";
@@ -301,10 +301,12 @@ export default function Home(props) {
                 searchable
                 size="md"
               />
-              <DateRangePicker
+              <DatePickerInput
                 locale={faLocale}
                 timeZone="iran/tehran"
-                amountOfMonths={1}
+                numberOfColumns={1}
+                oriantation
+                type='range'
                 className={`${
                   alignLeft === true
                     ? "text-3xl text-right  flex flex-col  items-end"

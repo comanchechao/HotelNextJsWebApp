@@ -17,7 +17,7 @@ import {
 } from "@mantine/core";
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons";
 
-import { DateRangePicker } from "@mantine/dates";
+import { DatePickerInput } from "@mantine/dates";
 import { useMediaQuery } from "@mantine/hooks";
 
 import { supabase } from "../../../lib/supabaseClient";
@@ -483,10 +483,12 @@ export default function HotelDetailPage({ hotel }) {
                   ref={myDivRef}
                   className=" flex   p-4 bg-white   flex-col items-center w-68  h-72 mt-10  rounded-md border "
                 >
-                  <DateRangePicker
+                  <DatePickerInput
                     locale={faLocale}
                     timeZone="iran/tehran"
-                    amountOfMonths={2}
+                    numberOfColumns={1}
+                    oriantation
+                    type="range"
                     className={`${
                       alignLeft === true
                         ? "text-3xl text-right  flex flex-col  items-end"
