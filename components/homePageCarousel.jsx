@@ -17,18 +17,9 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    alignItems: "flex-start",
+    alignItems: "flex-end",
     backgroundSize: "cover",
     backgroundPosition: "center",
-  },
-
-  title: {
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontWeight: 900,
-    color: theme.white,
-    lineHeight: 1.2,
-    fontSize: 32,
-    marginTop: theme.spacing.xs,
   },
 
   category: {
@@ -67,11 +58,10 @@ function Card({ ...item }) {
       className={classes.card}
     >
       <div>
-        <Text className={classes.prices} size="xs">
-          {item.prices}
-        </Text>
         <Title order={3} className={classes.title}>
-          {item.title}
+          <h2 className="text-2xl text-white rounded-md bg-mainPurple p-2 bg-opacity-30 flex items-center justify-center">
+            {item.title}
+          </h2>
         </Title>
       </div>
     </Paper>
