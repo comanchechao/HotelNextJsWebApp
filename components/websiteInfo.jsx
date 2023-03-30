@@ -14,8 +14,8 @@ export default function WebsiteInfo() {
   const [aboutUs, setAboutUs] = useState("");
   const [aboutUsMore, setAboutUsMore] = useState("");
   const [address, setAddress] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [postalCode, setPostalCode] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [postalCode, setPostalCode] = useState();
   const [email, setEmail] = useState("");
   const [instagram, setInstagram] = useState("");
   const [telegram, setTelegram] = useState("");
@@ -42,8 +42,9 @@ export default function WebsiteInfo() {
         data: { user },
       } = await supabase.auth.getUser();
       if (user) {
-        const { data, error } = await supabase.from("websiteInfo").upsert([
-          {
+        const { data, error } = await supabase
+          .from("websiteInfo")
+          .update({
             aboutUs: aboutUs,
             aboutUsMore: aboutUsMore,
             address: address,
@@ -54,8 +55,11 @@ export default function WebsiteInfo() {
             telegram: telegram,
             facebook: facebook,
             whatsapp: whatsapp,
-          },
-        ]);
+          })
+          .eq("id", 25)
+          .select();
+        console.log(data);
+        if (error) throw error;
       } // add this closing curly brace
     } catch (error) {
       console.log(error.message);

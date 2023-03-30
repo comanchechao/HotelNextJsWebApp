@@ -9,14 +9,15 @@ import { useTranslation } from "next-i18next";
 
 export async function getServerSideProps({ locale }) {
   // Fetch data from the database
-
+  const { data: websiteInfo } = await supabase.from("websiteInfo").select();
   return {
     props: {
+      websiteInfo: websiteInfo,
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
-export default function AboutUs() {
+export default function AboutUs({ websiteInfo }) {
   const { t } = useTranslation("common");
 
   const [loading, setLoading] = useState(false);
@@ -28,8 +29,8 @@ export default function AboutUs() {
 
   async function getWebsiteInfo() {
     setLoading(true);
-    const { data } = await supabase.from("websiteInfo").select();
-    data.map((object) => {
+    console.log(websiteInfo[0]);
+    websiteInfo.map((object) => {
       setAboutUs(object.aboutUs);
       setAboutUsMore(object.aboutUsMore);
     });
