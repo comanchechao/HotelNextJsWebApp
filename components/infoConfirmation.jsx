@@ -93,6 +93,8 @@ export default function InfoConfirmation() {
       user_id: session.session.user.id,
       passengerCount: passenger,
       room: room,
+      enteringDate: enterDate,
+      exitingDate: exitDate,
     });
     setLoading(false);
     setConfirm(true);

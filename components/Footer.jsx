@@ -48,7 +48,6 @@ export default function Footer() {
       setInstagram(object.instagram);
       setFacebook(object.facebook);
       setWhatsapp(object.whatsapp);
-      console.log(address);
     });
     setLoading(false);
   }

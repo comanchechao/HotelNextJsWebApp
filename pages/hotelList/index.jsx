@@ -163,10 +163,10 @@ export default function HotelList({ features, residenceTypes, cities }) {
     }
   }
   useEffect(() => {
-    filter(filterCities);
+    filter();
   }, [filterCities]);
 
-  function filter(filterCities) {
+  function filter() {
     let filteredArray = initialHotels.filter((obj) =>
       obj.city.some((hobby) => filterCities.includes(hobby))
     );
@@ -194,20 +194,20 @@ export default function HotelList({ features, residenceTypes, cities }) {
     }
   }
 
-  useEffect(() => {
-    filter(filterResidenceTypes);
-  }, [filterResidenceTypes]);
+  // useEffect(() => {
+  //   filter(filterResidenceTypes);
+  // }, [filterResidenceTypes]);
 
-  function filter(filterResidenceTypes) {
-    let filteredArray = initialHotels.filter((obj) =>
-      obj.residenceType.some((hobby) => filterResidenceTypes.includes(hobby))
-    );
+  // function filter(filterResidenceTypes) {
+  //   let filteredArray = initialHotels.filter((obj) =>
+  //     obj.residenceType.some((hobby) => filterResidenceTypes.includes(hobby))
+  //   );
 
-    setHotels(filteredArray);
-    if (hotels === []) {
-      setHotels(initialHotels);
-    }
-  }
+  //   setHotels(filteredArray);
+  //   if (hotels === []) {
+  //     setHotels(initialHotels);
+  //   }
+  // }
   useEffect(() => {
     sortResidenceType();
   }, [selectedResidenceType]);
@@ -215,7 +215,9 @@ export default function HotelList({ features, residenceTypes, cities }) {
   function sortResidenceType() {
     if (lng === "fa") {
       const filteredData = initialHotels.filter((obj) => {
-        return obj.residenceType.includes(selectedResidenceType);
+        if (obj.residenceType !== null) {
+          return obj.residenceType.includes(selectedResidenceType);
+        }
       });
       setHotels(filteredData);
     }

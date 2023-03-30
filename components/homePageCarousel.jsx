@@ -42,7 +42,6 @@ function Card({ ...item }) {
       if (data) {
         const url = URL.createObjectURL(data);
         setSingleImage(url);
-        console.log(url);
       }
     }
   };
@@ -101,9 +100,7 @@ export default function HomePageCarousel({ hotels }) {
       <Card {...item} />
     </Carousel.Slide>
   ));
-  useEffect(() => {
-    console.log(hotels);
-  });
+
   return (
     <Carousel
       slideSize="50%"

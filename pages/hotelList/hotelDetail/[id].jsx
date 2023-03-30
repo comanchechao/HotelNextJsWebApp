@@ -16,10 +16,8 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons";
-
 import { DatePickerInput } from "@mantine/dates";
 import { useMediaQuery } from "@mantine/hooks";
-
 import { supabase } from "../../../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
 import dayjs from "dayjs";
@@ -30,9 +28,8 @@ import Image from "next/image";
 import { PlusCircle, MinusCircle, Star, MapPin } from "phosphor-react";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
-
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import RoomCard from "../../../components/roomCard";
 import { useDispatch, useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -338,10 +335,6 @@ export default function HotelDetailPage({ hotel }) {
   let exitDate = useSelector((state) => state.reserve.exitDate);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
 
-  useEffect(() => {
-    console.log(dates);
-  });
-
   return (
     <>
       <Head>
@@ -497,11 +490,10 @@ export default function HotelDetailPage({ hotel }) {
                     dropdownType="modal"
                     value={dates}
                     dropdownPosition="top-start"
-                    placeholder={t("inDate")}
+                    placeholder={[enterDate, exitDate]}
                     label={t("inDate")}
                     minDate={dayjs().add(11, "day").toDate()}
                     withAsterisk
-                    defaultValue={dayjs().add(11, "day").toDate()}
                     onChange={(e) => {
                       setDates(e);
                       dispatch(
