@@ -18,6 +18,8 @@ import {
 import dynamic from "next/dynamic.js";
 import { supabase } from "../lib/supabaseClient";
 import { useSelector, useDispatch } from "react-redux";
+import Compressor from "compressorjs";
+
 import { useTranslation } from "next-i18next";
 import { X, Buildings } from "phosphor-react";
 // const LocationsMap = dynamic(() => import("./map"), {
@@ -118,6 +120,7 @@ export default function AddHotel({
     title: "",
     price: null,
     meal: null,
+    copacity: 1,
     quantity: 1,
   });
 
@@ -144,6 +147,7 @@ export default function AddHotel({
         title: definedRoom.title,
         price: definedRoom.price,
         meal: meal,
+        copacity: 1,
         quantity: 1,
       })
     );
@@ -152,7 +156,14 @@ export default function AddHotel({
     for (var i = 0; i < inputs.length; i++) {
       inputs[i].value = "";
     }
-    setMeal("");
+    setDefinedRoom((oldValues) => {
+      let newObject = oldValues;
+      oldValues.title = "";
+      oldValues.price = 0;
+      oldValues.copacity = 1;
+      oldValues.quantity = 1;
+      return newObject;
+    });
   }
 
   useEffect(() => {
@@ -319,6 +330,19 @@ export default function AddHotel({
 
   const [uploading, setUploading] = useState(false);
 
+  async function compressFile(file) {
+    return new Promise((resolve, reject) => {
+      new Compressor(file, {
+        quality: 0.5,
+        success(result) {
+          resolve(result);
+        },
+        error(err) {
+          reject(err);
+        },
+      });
+    });
+  }
   const firstImageUpload = async (event) => {
     try {
       event.preventDefault();
@@ -328,6 +352,7 @@ export default function AddHotel({
         throw new Error("You must select an image to upload.");
       }
       const file = event.target.files[0];
+      const compressedFile = await compressFile(file);
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
@@ -335,10 +360,7 @@ export default function AddHotel({
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, file, {
-          cacheControl: "3600",
-          upsert: false,
-        });
+        .upload(filePath, compressedFile);
 
       if (uploadError) {
         throw uploadError;
@@ -903,6 +925,13 @@ export default function AddHotel({
                         <Select
                           searchable
                           clearable
+                          onChange={(e) => {
+                            setDefinedRoom((oldValues) => {
+                              let newObject = oldValues;
+                              oldValues.copacity = e;
+                              return newObject;
+                            });
+                          }}
                           transitionDuration={150}
                           transition="pop-top-left"
                           transitionTimingFunction="ease"
@@ -976,7 +1005,9 @@ export default function AddHotel({
                       <div className="flex items-end justify-center w-full">
                         <button
                           onClick={() => {
-                            handleNewRoom();
+                            if (definedRoom.title !== "") {
+                              handleNewRoom();
+                            }
                           }}
                           className="w-52 py-3 border-r-8   border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
                         >

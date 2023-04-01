@@ -26,8 +26,9 @@ export default function HotelCard({ hotel }) {
 
   useEffect(() => {
     changeAlignment();
-    downloadImage1();
-    downloadImage2();
+    if (hotel.firstImage) {
+      downloadImage1();
+    }
   }, []);
   const downloadImage1 = async () => {
     setLoading(true);
@@ -41,6 +42,9 @@ export default function HotelCard({ hotel }) {
         setSingleImage(url);
       }
       setLoading(false);
+      if (hotel.secondImage) {
+        downloadImage2();
+      }
     }
   };
   const downloadImage2 = async () => {
@@ -56,7 +60,6 @@ export default function HotelCard({ hotel }) {
       }
       setLoading(false);
     }
-    downloadImage3();
   };
   const downloadImage3 = async () => {
     setLoading(true);
@@ -176,11 +179,7 @@ export default function HotelCard({ hotel }) {
                 width={400}
                 height={200}
               />
-            ) : (
-              <div>
-                <Loader size="lg" color="yellow" variant="bars" />
-              </div>
-            )}
+            ) : null}
           </Carousel.Slide>
         </Carousel>
       </div>

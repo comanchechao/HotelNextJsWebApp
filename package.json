@@ -28,6 +28,7 @@
     "@supabase/auth-ui-shared": "^0.1.2",
     "@supabase/supabase-js": "^2.6.0",
     "@tabler/icons": "^1.119.0",
+    "compressorjs": "^1.2.1",
     "daisyui": "^2.46.1",
     "dayjs": "^1.11.7",
     "embla-carousel-react": "^7.1.0",
