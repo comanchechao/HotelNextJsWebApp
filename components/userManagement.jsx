@@ -5,8 +5,15 @@ import SuperUser from "./superUserModal";
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 import SuperUserValidation from "./superUserValidation";
+import { supabase } from "../lib/supabaseClient";
 
 export default function UserManagement({ users }) {
+  const [profiles, setProfiles] = useState();
+  async function getProfiles() {
+    const { data: profiles, error } = await supabase.from("profiles").select();
+    if (error) throw error;
+    setProfiles(profiles);
+  }
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   const [alignLeft, setAlignLeft] = useState(false);
@@ -16,6 +23,7 @@ export default function UserManagement({ users }) {
   }
   useEffect(() => {
     changeState();
+    getProfiles();
   }, []);
   return (
     <div className="flex w-full h-full lg:h-carousel ">
@@ -89,21 +97,23 @@ export default function UserManagement({ users }) {
 
           <Tabs.Panel value="messages" pt="xs">
             <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
-              {/* {users.map((user, i) => {
-                return (
-                  <div
-                    key={i}
-                    className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
-                  >
-                    <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
-                      <IconUserCircle size={50} />
-                    </div>
-                    <h1 className=" text-sm lg:text-xl">{user.email}</h1>
-                    <p className="hidden lg:block">{user.name}</p>
-                    <SuperUser />
-                  </div>
-                );
-              })} */}
+              {profiles
+                ? profiles.map((user, i) => {
+                    return (
+                      <div
+                        key={i}
+                        className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                      >
+                        <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
+                          <Users weight="fill" size={40} />
+                        </div>
+                        <h1 className=" text-sm lg:text-xl">{user.email}</h1>
+                        <p className="hidden lg:block">{user.name}</p>
+                        <SuperUser user={user} />
+                      </div>
+                    );
+                  })
+                : null}
             </div>
           </Tabs.Panel>
           <Tabs.Panel value="settings" pt="xs">

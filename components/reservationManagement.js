@@ -17,20 +17,16 @@ export default function ReservationManagement({ Hotels }) {
     else setAlignLeft(true);
   }
   async function getReservations() {
-    console.log("hotels", Hotels);
     const { data: reservations, error4 } = await supabase
       .from("reservations")
       .select()
       .in("hotel_id", Hotels);
-    console.log(reservations);
     setReservations(reservations);
   }
 
   useEffect(() => {
     changeState();
     getReservations();
-
-    console.log(reservations, "reservatoins");
   }, [Hotels]);
   return (
     <div className="flex w-full h-auto   ">

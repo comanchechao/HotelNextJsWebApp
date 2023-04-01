@@ -12,7 +12,6 @@ export default function ReservationList({ Hotels, user }) {
       .from("reservations")
       .select()
       .eq("user_id", user.user.id);
-      console.log();
     setReservations(data);
   }
   useEffect(() => {
