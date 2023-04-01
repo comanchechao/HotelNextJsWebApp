@@ -9,6 +9,7 @@ export const filter = createSlice({
     features: [],
     residenceTypes: [],
     residenceType: "",
+    country: "",
   },
   reducers: {
     setStars: (state, action) => {
@@ -29,6 +30,9 @@ export const filter = createSlice({
     },
     setResidenceType: (state, actions) => {
       state.residenceType = actions.payload;
+    },
+    setCountry: (state, actions) => {
+      state.country = actions.payload;
     },
     setResidenceTypes: (state, action) => {
       if (state.residenceTypes.indexOf(action.payload) === -1) {

@@ -263,5 +263,7 @@
   "addAdmin": "meslektaşına terfi",
 
   "needsConfirm": "Onay gerekiyor",
-  "confirmed": "Kabul edilmiş"
+  "confirmed": "Kabul edilmiş",
+
+  "country": "Ülke"
 }

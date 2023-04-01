@@ -9,7 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 import { reservationActions } from "../store/reservation";
-export default function HotelListMenu({ features, residenceTypes, cities }) {
+export default function HotelListMenu({
+  features,
+  residenceTypes,
+  cities,
+  countries,
+}) {
   let stars = useSelector((state) => state.filter.stars);
   const [min, setMin] = useState();
   const [max, setMax] = useState();
@@ -33,6 +38,7 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
   let filterFeatures = useSelector((state) => state.filter.features);
   let filterResidenceTypes = useSelector((state) => state.filter.residenceType);
   let filterCities = useSelector((state) => state.reserve.city);
+  let filterCountries = useSelector((state) => state.filter.country);
 
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
@@ -52,6 +58,70 @@ export default function HotelListMenu({ features, residenceTypes, cities }) {
       style={{ lineHeight: "1.7 !important" }}
       className="flex flex-col items-center space-y-4 bg-white p-4 drop-shadow-xl rounded-md z-30"
     >
+      {" "}
+      <Accordion
+        className="w-full  "
+        variant="separated"
+        chevronPosition="left"
+        defaultValue="customization"
+      >
+        <Accordion.Item value="customization">
+          <Accordion.Control>
+            <span
+              className={`${
+                alignLeft === true
+                  ? "text-gray-900 flex justify-end text-md text-right"
+                  : "text-gray-900 flex flex-row-reverse justify-end text-md text-right"
+              }`}
+            >
+              {t("country")}
+            </span>
+          </Accordion.Control>
+          <Accordion.Panel>
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex text-right   items-end text-xl flex-col justify-center space-y-2"
+                  : "flex text-left   items-start text-xl flex-col justify-center space-y-2"
+              }`}
+            >
+              {alignLeft
+                ? countries.map((country, i) => {
+                    return (
+                      <Checkbox
+                        onClick={() => {
+                          dispatch(filterActions.setCountry(country.title));
+                        }}
+                        checked={filterCountries.includes(country.title)}
+                        key={i}
+                        labelPosition="left"
+                        color="yellow"
+                        radius="xl"
+                        value="react"
+                        label={country.title}
+                      />
+                    );
+                  })
+                : countries.map((country, i) => {
+                    return (
+                      <Checkbox
+                        onClick={() => {
+                          dispatch(filterActions.setCountry(country.title));
+                        }}
+                        checked={filterCountries.includes(country.title)}
+                        key={i}
+                        labelPosition="left"
+                        color="yellow"
+                        radius="xl"
+                        value="react"
+                        label={country.trTitle}
+                      />
+                    );
+                  })}
+            </div>
+          </Accordion.Panel>
+        </Accordion.Item>
+      </Accordion>
       <Accordion
         className="w-full  "
         variant="separated"

@@ -20,9 +20,12 @@ export async function getServerSideProps({ locale }) {
     .from("residenceTypes")
     .select();
   const { data: cities } = await supabase.from("cities").select();
+  const { data: countries } = await supabase.from("countries").select();
+
   return {
     props: {
       cities: cities,
+      countries: countries,
 
       features: data,
       residenceTypes: residenceTypes,
@@ -31,7 +34,12 @@ export async function getServerSideProps({ locale }) {
   };
 }
 
-export default function HotelList({ features, residenceTypes, cities }) {
+export default function HotelList({
+  features,
+  residenceTypes,
+  cities,
+  countries,
+}) {
   const [filters, setFilters] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -61,7 +69,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
   let filterFeatures = useSelector((state) => state.filter.features);
   let filterCities = useSelector((state) => state.reserve.cities);
   let selectedCity = useSelector((state) => state.reserve.city);
-
+  let selectedCountry = useSelector((state) => state.filter.country);
   let filterResidenceTypes = useSelector(
     (state) => state.filter.residenceTypes
   );
@@ -99,7 +107,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
     const { data, error } = await supabase
       .from("Hotels")
       .select(
-        "id, residenceType , features , city , trTitle , stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        "id , residenceType , country , features , city , trTitle , stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
       );
     if (lng === "fa") {
       if (selectedCity !== "") {
@@ -213,14 +221,24 @@ export default function HotelList({ features, residenceTypes, cities }) {
   }, [selectedResidenceType]);
 
   function sortResidenceType() {
-    if (lng === "fa") {
-      const filteredData = initialHotels.filter((obj) => {
-        if (obj.residenceType !== null) {
-          return obj.residenceType.includes(selectedResidenceType);
-        }
-      });
-      setHotels(filteredData);
-    }
+    const filteredData = initialHotels.filter((obj) => {
+      if (obj.residenceType !== null) {
+        return obj.residenceType.includes(selectedResidenceType);
+      }
+    });
+    setHotels(filteredData);
+  }
+  useEffect(() => {
+    sortCountries();
+  }, [selectedCountry]);
+
+  function sortCountries() {
+    const filteredData = initialHotels.filter((obj) => {
+      if (obj.country !== null) {
+        return obj.country.includes(selectedCountry);
+      }
+    });
+    setHotels(filteredData);
   }
   // async function getFilteredHotels() {
   //   setTo(to + 2);
@@ -400,6 +418,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
                 residenceTypes={residenceTypes}
                 features={features}
                 cities={cities}
+                countries={countries}
               />
             </div>
             {loading === false ? (
@@ -437,6 +456,7 @@ export default function HotelList({ features, residenceTypes, cities }) {
                 features={features}
                 residenceTypes={residenceTypes}
                 cities={cities}
+                countries={countries}
               />
             </div>
           </div>

@@ -348,7 +348,7 @@ export default function HotelDetailPage({ hotel }) {
       <div className="w-full h-full">
         <Navbar />
         <div className="flex w-full lg:py-20  lg:px-44 h-full bg-mainWhite capitalize">
-          <div className="flex flex-col p-5 w-full h-full   space-y-11">
+          <div className="flex flex-col  p-2 w-full h-full   space-y-11  ">
             <div
               className={`${
                 alignLeft === true
@@ -380,27 +380,29 @@ export default function HotelDetailPage({ hotel }) {
             </div>
             {loading ? (
               <div className="h-full my-8 w-full flex items-center justify-center space-x-5">
-                <Skeleton height={400} width={"100%"} />{" "}
+                <Skeleton height={300} width={"100%"} />{" "}
+                <Skeleton height={300} width={"100%"} />{" "}
               </div>
             ) : (
-              <div className="flex   my-4 items-center justify-between space-x-6 h-rem22 w-full     ">
-                <div className="h-rem22   w-full grid  justify-center items-center   cursor-pointer  rounded-md">
+              <div className="flex   my-4 items-center justify-between space-x-6 h-rem22 w-full       ">
+                <div className="h-rem22     w-full grid  justify-center items-center   cursor-pointer  rounded-md">
                   <Carousel
-                    slideSize="100%"
+                    slideSize="50%"
                     breakpoints={[
                       { maxWidth: "sm", slideSize: "100%", slideGap: 2 },
                     ]}
-                    slideGap="xl"
+                    slideGap="xs"
                     align="start"
                     slidesToScroll={mobile ? 1 : 2}
                     nextControlIcon={<IconArrowRight size={16} />}
                     previousControlIcon={<IconArrowLeft size={16} />}
                     loop
+                    className="rounded-md"
                   >
                     <Carousel.Slide>
                       {singleImage ? (
                         <Image
-                          className=" w-full  lg:object-contain h-rem22 lg:w-full"
+                          className=" w-full  lg:object-contain h-rem22 lg:w-full rounded-md"
                           alt="antalia"
                           src={singleImage}
                           width={400}
@@ -412,7 +414,7 @@ export default function HotelDetailPage({ hotel }) {
                       {imageTwo ? (
                         <Image
                           alt="antalia"
-                          className=" w-full lg:object-contain h-rem22 lg:w-full"
+                          className=" w-full lg:object-contain h-rem22 lg:w-full rounded-md"
                           src={imageTwo}
                           width={400}
                           height={200}
@@ -423,7 +425,7 @@ export default function HotelDetailPage({ hotel }) {
                       {imageThree ? (
                         <Image
                           alt="antalia"
-                          className="  w-full lg:object-contain h-rem22 lg:w-full"
+                          className="  w-full lg:object-contain h-rem22 lg:w-full rounded-md"
                           src={imageThree}
                           width={400}
                           height={200}
