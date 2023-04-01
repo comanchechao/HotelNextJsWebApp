@@ -147,6 +147,12 @@ export default function AddHotel({
         quantity: 1,
       })
     );
+    var container = document.getElementById("RoomDiv");
+    var inputs = container.getElementsByTagName("input");
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].value = "";
+    }
+    setMeal("");
   }
 
   useEffect(() => {
@@ -799,7 +805,10 @@ export default function AddHotel({
 
                 <Tabs.Panel value="gallery" pt="xs">
                   <div className="flex flex-col  w-full h-full">
-                    <div className="flex space-y-2 w-full h-full flex-col">
+                    <div
+                      id="RoomDiv"
+                      className="flex space-y-2 w-full h-full flex-col"
+                    >
                       <div
                         className={`${
                           alignLeft === true
@@ -842,6 +851,7 @@ export default function AddHotel({
                           radius="md"
                           size="md"
                           searchable
+                          clearable
                           value={meal}
                           className="text-right flex items-center justify-end w-full"
                           onChange={setMeal}
@@ -891,13 +901,14 @@ export default function AddHotel({
                           {t("roomCapacity")}
                         </h3>
                         <Select
+                          searchable
+                          clearable
                           transitionDuration={150}
                           transition="pop-top-left"
                           transitionTimingFunction="ease"
                           variant="default"
                           radius="md"
                           size="md"
-                          searchable
                           className="text-right w-full"
                           data={[
                             { value: "1", label: "1" },
@@ -910,7 +921,7 @@ export default function AddHotel({
                           return (
                             <div
                               key={i}
-                              className="w-full h-32 bg-white rounded-md px-4  border-2 border-mainPurple my-6 flex items-center justify-center"
+                              className="w-full h-32 bg-white rounded-md px-4  border-2 my-6 flex items-center justify-center"
                             >
                               <div className="flex   w-3/4 flex-col  items-start space-y-3 justify-center ">
                                 <div className="  flex  justify-center items-center space-x-2">
@@ -920,7 +931,7 @@ export default function AddHotel({
                                   </p>
                                 </div>
                                 <div className="flex   text-darkPurple justify-center items-center h-full space-x-3 ">
-                                  <div className="flex justify-around text-darkPurple space-x-1   ">
+                                  <div className="flex justify-center items-center text-darkPurple space-x-5   ">
                                     <p>
                                       <IconCirclePlus
                                         className="cursor-pointer"
@@ -929,7 +940,9 @@ export default function AddHotel({
                                         }}
                                       />
                                     </p>
-                                    <p className="font-bold">{room.quantity}</p>
+                                    <p className="font-bold text-base">
+                                      {room.quantity}
+                                    </p>
                                     <p>
                                       <IconCircleMinus
                                         className="cursor-pointer"

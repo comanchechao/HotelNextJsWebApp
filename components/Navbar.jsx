@@ -58,7 +58,7 @@ export default function Navbar() {
       ref={boxRef}
       className=" w-screen h-14 opacity-0 items-center justify-between z-50 bg-white flex flex-row-reverse fixed drop-shadow-xl px-4 lg:px-52"
     >
-      <div className="text-base flex items-center space-x-4">
+      <div className="text-sm flex items-center space-x-4">
         <Link
           href="/hotelList"
           className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-2  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
@@ -93,7 +93,7 @@ export default function Navbar() {
         </Link>
       </div>
 
-      <div className="lg:text-base text-sm lg:flex items-center lg:space-x-4 hidden">
+      <div className="lg:text-sm text-sm lg:flex items-center lg:space-x-4 hidden">
         {isManager ? (
           <Link
             href="/admin"
