@@ -87,7 +87,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
       rooms.concat({
         id: Math.random(3, 50),
         title: definedRoom.title,
-        price: 655555,
+        price: definedRoom.price,
         meal: meal,
         quantity: 1,
       })
@@ -161,6 +161,9 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
     let updates = {};
     if (title) updates.title = title;
     if (city) updates.city = city;
+    if (address) updates.address = address;
+    if (enteringHours) updates.enterTime = enteringHours;
+    if (exitingHours) updates.exitTime = exitingHours;
     if (firstImage) updates.firstImage = firstImage;
     if (secondImage) updates.secondImage = secondImage;
     if (thirdImage) updates.thirdImage = thirdImage;
@@ -450,7 +453,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                   {t("editHotelStars")}
                 </h3>
                 <Rating
-                  value={hotel.stars}
+                  defaultValue={hotel.stars}
                   onChange={setValue}
                   size="xl"
                   count={5}
@@ -597,18 +600,19 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                   className="py-2 text-right font-mainFont px-2 w-20 rounded-md  bg-gray-200"
                   type="time"
                   name="exiting hour"
+                  defaultValue={hotel.exitTime}
                 />
               </div>
               <div className="flex-col space-y-2 text-right flex">
                 <label htmlFor="entering hour">{t("editEnterTime")}</label>
                 <input
+                  defaultValue={hotel.enterTime}
                   onChange={(e) => {
                     setEnteringHours(e.target.value);
                   }}
                   className="py-2 text-right font-mainFont px-2 w-20 rounded-md   bg-gray-200"
                   type="time"
                   name="entering hour"
-                  value={hotel.exitTime}
                 />
               </div>
             </div>
@@ -766,6 +770,13 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                           {t("editRoomAvrgPrice")}
                         </h3>
                         <input
+                          onChange={(e) => {
+                            setDefinedRoom((oldValues) => {
+                              let newObject = oldValues;
+                              oldValues.price = e.target.value;
+                              return newObject;
+                            });
+                          }}
                           className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                           type="number"
                           name="price"

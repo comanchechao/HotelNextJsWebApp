@@ -142,7 +142,7 @@ export default function AddHotel({
       rooms.concat({
         id: Math.random(3, 50),
         title: definedRoom.title,
-        price: 655555,
+        price: definedRoom.price,
         meal: meal,
         quantity: 1,
       })
@@ -867,6 +867,13 @@ export default function AddHotel({
                           {t("avrgNight")}
                         </h3>
                         <input
+                          onChange={(e) => {
+                            setDefinedRoom((oldValues) => {
+                              let newObject = oldValues;
+                              oldValues.price = e.target.value;
+                              return newObject;
+                            });
+                          }}
                           className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                           type="number"
                           name="price"
