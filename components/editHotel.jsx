@@ -913,7 +913,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 </Tabs.Panel> */}
               </Tabs>
             </div>
-            {alert2 ? (
+            {alert ? (
               <Notification
                 transition="fade"
                 transitionDuration={600}

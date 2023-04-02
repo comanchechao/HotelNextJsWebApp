@@ -414,8 +414,8 @@ export default function LoginModal() {
                   href="/userProfile"
                   className={`${
                     alignLeft === true
-                      ? "w-full text-center text-sm flex items-center justify-end"
-                      : "w-full text-center text-sm flex flex-row-reverse items-center justify-end"
+                      ? "w-full font-bold text-center text-sm flex items-center justify-end"
+                      : "w-full font-bold text-center text-sm flex flex-row-reverse items-center justify-end"
                   }`}
                 >
                   {t("accountInfo")}
