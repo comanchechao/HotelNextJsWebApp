@@ -362,7 +362,11 @@ export default function AddHotel({
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, compressedFile);
+        .upload(filePath, compressedFile, decode("base64FileData"), {
+          contentType: "image/png",
+          contentType: "image/webp",
+          contentType: "image/jpeg",
+        });
 
       if (uploadError) {
         throw uploadError;
@@ -387,6 +391,7 @@ export default function AddHotel({
       }
 
       const file = event.target.files[0];
+      const compressedFile = await compressFile(file);
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
@@ -394,7 +399,11 @@ export default function AddHotel({
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, file);
+        .upload(filePath, compressedFile, decode("base64FileData"), {
+          contentType: "image/png",
+          contentType: "image/webp",
+          contentType: "image/jpeg",
+        });
 
       if (uploadError) {
         throw uploadError;
@@ -419,6 +428,7 @@ export default function AddHotel({
       }
 
       const file = event.target.files[0];
+      const compressedFile = await compressFile(file);
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
@@ -426,7 +436,11 @@ export default function AddHotel({
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, file);
+        .upload(filePath, compressedFile, decode("base64FileData"), {
+          contentType: "image/png",
+          contentType: "image/webp",
+          contentType: "image/jpeg",
+        });
 
       if (uploadError) {
         throw uploadError;
@@ -451,6 +465,7 @@ export default function AddHotel({
       }
 
       const file = event.target.files[0];
+      const compressedFile = await compressFile(file);
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
@@ -458,7 +473,11 @@ export default function AddHotel({
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, file);
+        .upload(filePath, compressedFile, decode("base64FileData"), {
+          contentType: "image/png",
+          contentType: "image/webp",
+          contentType: "image/jpeg",
+        });
 
       if (uploadError) {
         throw uploadError;
@@ -525,6 +544,7 @@ export default function AddHotel({
                   </label>
                   <input
                     required
+                    accept="image/webp,image/jpeg,image/png"
                     onChange={firstImageUpload}
                     type="file"
                     className="hidden"
@@ -543,6 +563,7 @@ export default function AddHotel({
                   </label>
                   <input
                     required
+                    accept="image/webp,image/jpeg,image/png"
                     onChange={fourthImageUpload}
                     type="file"
                     className="hidden"
@@ -562,6 +583,7 @@ export default function AddHotel({
                   </label>
                   <input
                     required
+                    accept="image/webp,image/jpeg,image/png"
                     onChange={thirdImageUpload}
                     type="file"
                     className="hidden"
@@ -580,6 +602,7 @@ export default function AddHotel({
                   </label>
                   <input
                     required
+                    accept="image/webp,image/jpeg,image/png"
                     onChange={secondImageUpload}
                     type="file"
                     className="hidden"
