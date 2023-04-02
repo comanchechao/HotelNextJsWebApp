@@ -262,7 +262,9 @@ export default function ExternalStateExample({ cityLatLng }) {
       }
     }, [cityLatLng]);
 
-    useEffect(() => {}, [cityLatLng]);
+    useEffect(() => {
+      console.log(cityLatLng);
+    }, [cityLatLng]);
     const [position, setPosition] = useState(center);
     const markerRef = useRef(null);
 
@@ -329,7 +331,7 @@ export default function ExternalStateExample({ cityLatLng }) {
       <MapContainer
         id="map"
         className="z-20"
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "500px", height: "500px" }}
         center={center}
         zoom={theZoom}
         scrollWheelZoom={false}
