@@ -29,7 +29,6 @@ export default function AboutUs({ websiteInfo }) {
 
   async function getWebsiteInfo() {
     setLoading(true);
-    console.log(websiteInfo[0]);
     websiteInfo.map((object) => {
       setAboutUs(object.aboutUs);
       setAboutUsMore(object.aboutUsMore);

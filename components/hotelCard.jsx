@@ -143,19 +143,21 @@ export default function HotelCard({ hotel }) {
           height="190px"
         >
           <Carousel.Slide>
-            {singleImage ? (
-              <Image
-                className=" w-full  lg:object-fit h-full lg:w-full"
-                alt="antalia"
-                src={singleImage}
-                width={400}
-                height={200}
-              />
-            ) : (
-              <div className="h-56 w-56 bg-mainPurple flex items-center justify-center">
-                <Loader size="lg" color="yellow" variant="bars" />
-              </div>
-            )}
+            <div className="h-full   w-full justify-center items-center">
+              {singleImage ? (
+                <Image
+                  className=" w-full  lg:object-fit h-full lg:w-full"
+                  alt="antalia"
+                  src={singleImage}
+                  width={400}
+                  height={200}
+                />
+              ) : (
+                <div className="lg:h-56 w-full h-full lg:w-56 lg:bg-mainPurple flex items-center justify-center">
+                  <Loader size="lg" color="yellow" variant="bars" />
+                </div>
+              )}
+            </div>
           </Carousel.Slide>
           <Carousel.Slide>
             {imageTwo ? (

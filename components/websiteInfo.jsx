@@ -26,7 +26,6 @@ export default function WebsiteInfo() {
   const [alignLeft, setAlignLeft] = useState(false);
 
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }

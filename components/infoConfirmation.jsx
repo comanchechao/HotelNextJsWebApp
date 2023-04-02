@@ -1,5 +1,5 @@
 import { Loader, Notification } from "@mantine/core";
-import { Star, SignIn, SignOut, Bed } from "phosphor-react";
+import { Star, SignIn, SignOut, Bed, Timer } from "phosphor-react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { supabase } from "../lib/supabaseClient";
@@ -51,7 +51,6 @@ export default function InfoConfirmation() {
     hour12: false,
   });
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") {
       await setAlignLeft(false);
       setFormattedEnterDate(formattedEnterDatetr);
@@ -100,52 +99,53 @@ export default function InfoConfirmation() {
     setConfirm(true);
 
     if (error) throw error;
-    console.log(
-      "passenger count",
-      passenger,
-      "roomDetail ",
-      room,
-      "passengers",
-      passengers,
-      "hotel info",
-      hotelInfo.id
-    );
   }
   return (
-    <div className=" mb-10 h-auto w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
+    <div className=" mb-10 h-auto lg:h-full w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
       <div
         className={`${
           alignLeft === true
-            ? "h-auto lg:h-24 w-full bg-white divide-x-2 flex"
-            : "h-auto lg:h-24 w-full bg-white divide-x-2 flex flex-row-reverse"
+            ? "h-auto lg:flex-row flex-col-reverse lg:h-24 w-full bg-white divide-x-2 space-x-3 flex"
+            : "h-auto lg:flex-row-reverse flex-col-reverse lg:h-24 w-full bg-white divide-x-2 flex "
         }`}
       >
-        <div className="h-full w-1/2 flex lg:flex-row flex-col items-center justify-center ">
-          <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col items-center justify-center">
+        <div className="h-full w-full   lg:w-1/3 flex lg:flex-row flex-col items-center justify-center p-2">
+          <div className="h-full w-full lg:w-1/2 flex my-4 lg:my-0 flex-col items-center justify-center">
+            <div className="flex items-center space-x-2">
+              <h2>{t("exitDay")}</h2>
+              <SignOut size={30} color="#e0ab19" weight="fill" />
+            </div>
+            <h1 className="font text-sm">{enterDate}</h1>
+          </div>
+          <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
+            <div className="flex items-center space-x-2">
+              <h2>{t("enterDay")}</h2>
+              <SignIn size={30} color="#e0ab19" weight="fill" />
+            </div>
+            <h1 className="font text-sm"> {exitDate}</h1>
+          </div>
+        </div>
+        <div className="h-full w-full   lg:w-1/3 flex lg:flex-row flex-col items-center justify-center p-2">
+          <div className="h-full w-full lg:w-1/2 flex my-4 lg:my-0 flex-col items-center justify-center">
             <div className="flex items-center space-x-2">
               <h2>{t("exitTime")}</h2>
-              <SignOut size={40} color="#e0ab19" weight="fill" />
+              <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">
-              {JSON.stringify(formattedEnterDate)}
-            </h1>
+            <h1 className="font text-sm">{enterDate}</h1>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>{t("enterTime")}</h2>
-              <SignIn size={40} color="#e0ab19" weight="fill" />
+              <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">
-              {" "}
-              {JSON.stringify(formattedExitDate)}
-            </h1>
+            <h1 className="font text-sm"> {exitDate}</h1>
           </div>
         </div>
         <div
           className={`${
             alignLeft === true
-              ? "h-full w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3"
-              : "h-full w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-start lg:justify-start space-y-3"
+              ? "h-full lg:w-1/3 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3"
+              : "h-full lg:w-1/3 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-start lg:justify-start space-y-3"
           }`}
         >
           <div

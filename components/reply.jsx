@@ -21,7 +21,6 @@ export default function Reply(props) {
   const [userSignedIn, setUserSignedIn] = useState(false);
 
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
@@ -57,9 +56,7 @@ export default function Reply(props) {
           title: title,
         },
       ]);
-      console.log(user.id);
-      console.log(comment);
-      console.log(stars);
+
       setLoading(false);
       setOpened(false);
     } else {

@@ -11,7 +11,7 @@ import {
 import PassengerInfo from "../../components/passengerInfo";
 import Link from "next/link";
 import InfoConfirmation from "../../components/infoConfirmation";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
@@ -67,6 +67,7 @@ export default function Checkout(props) {
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
+
   useEffect(() => {
     changeAlignment();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -82,6 +83,7 @@ export default function Checkout(props) {
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
 
+  useDispatch();
   return (
     <div className="w-screen flex items-center justify-start flex-col  h-auto bg-mainWhite">
       <Navbar />

@@ -88,11 +88,9 @@ export default function AddHotel({
   useEffect(() => {
     changeAlignment();
     cities.forEach((theCity) => {
-      console.log(theCity);
       if (theCity.name === city) {
         setMapLat(theCity.lat);
         setMapLng(theCity.lng);
-        console.log("lat ", mapLat, "lng", mapLng);
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

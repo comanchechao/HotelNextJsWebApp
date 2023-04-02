@@ -1,5 +1,5 @@
 import { Select, TextInput, NumberInput } from "@mantine/core";
-import { Star, SignIn, SignOut, Bed, Plus, Minus } from "phosphor-react";
+import { Star, SignIn, SignOut, Bed, Plus, Minus, Timer } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
@@ -41,8 +41,17 @@ export default function PassengerInfo() {
   const [formattedEnterDate, setFormattedEnterDate] = useState(false);
   const [formattedExitDate, setFormattedExitDate] = useState(false);
 
+  const [specific, setSpecific] = useState(false);
+
+  let country = useSelector((state) => state.filter.country);
+  async function CountrySpecific() {
+    if (country === "ایران") {
+      setSpecific(false);
+    } else {
+      setSpecific(true);
+    }
+  }
   async function changeAlignment() {
-    console.log(lng);
     if (lng === "tr") {
       setAlignLeft(false);
     } else {
@@ -51,6 +60,7 @@ export default function PassengerInfo() {
   }
   useEffect(() => {
     changeAlignment();
+    CountrySpecific();
   }, []);
 
   useEffect(() => {
@@ -122,40 +132,40 @@ export default function PassengerInfo() {
       <div
         className={`${
           alignLeft === true
-            ? "h-auto lg:flex-row flex-col-reverse lg:h-24 w-full bg-white divide-x-2 flex"
+            ? "h-auto lg:flex-row flex-col-reverse lg:h-24 w-full bg-white divide-x-2 space-x-3 flex"
             : "h-auto lg:flex-row-reverse flex-col-reverse lg:h-24 w-full bg-white divide-x-2 flex "
         }`}
       >
-        <div className="h-full w-full bg-Lime-500 lg:w-1/3 flex lg:flex-row flex-col items-center justify-center ">
+        <div className="h-full w-full   lg:w-1/3 flex lg:flex-row flex-col items-center justify-center p-2">
           <div className="h-full w-full lg:w-1/2 flex my-4 lg:my-0 flex-col items-center justify-center">
             <div className="flex items-center space-x-2">
               <h2>{t("exitDay")}</h2>
-              <SignOut size={40} color="#e0ab19" weight="fill" />
+              <SignOut size={30} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">{enterDate}</h1>
+            <h1 className="font text-sm">{enterDate}</h1>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>{t("enterDay")}</h2>
-              <SignIn size={40} color="#e0ab19" weight="fill" />
+              <SignIn size={30} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg"> {exitDate}</h1>
+            <h1 className="font text-sm"> {exitDate}</h1>
           </div>
         </div>
-        <div className="h-full w-full bg-Lime-500 lg:w-1/3 flex lg:flex-row flex-col items-center justify-center ">
+        <div className="h-full w-full   lg:w-1/3 flex lg:flex-row flex-col items-center justify-center p-2">
           <div className="h-full w-full lg:w-1/2 flex my-4 lg:my-0 flex-col items-center justify-center">
             <div className="flex items-center space-x-2">
               <h2>{t("exitTime")}</h2>
-              <SignOut size={40} color="#e0ab19" weight="fill" />
+              <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg">{enterDate}</h1>
+            <h1 className="font text-sm">{enterDate}</h1>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>{t("enterTime")}</h2>
-              <SignIn size={40} color="#e0ab19" weight="fill" />
+              <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-lg"> {exitDate}</h1>
+            <h1 className="font text-sm"> {exitDate}</h1>
           </div>
         </div>
         <div
@@ -227,9 +237,27 @@ export default function PassengerInfo() {
                     : "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
                 }`}
               >
+                {specific ? (
+                  <NumberInput
+                    className={`${
+                      alignLeft === true
+                        ? "text-4xl text-right flex flex-col items-end"
+                        : "text-4xl text-right flex flex-col items-start"
+                    }`}
+                    placeholder={t("passport")}
+                    label={t("passport")}
+                    hideControls
+                    variant="default"
+                    radius="md"
+                    size="md"
+                    withAsterisk
+                  />
+                ) : (
+                  <div></div>
+                )}
+
                 <NumberInput
                   onChange={(e) => {
-                    console.log(e);
                     setPassengerOneSocialNumber(e);
                   }}
                   className={`${
@@ -247,7 +275,6 @@ export default function PassengerInfo() {
                 />
                 <NumberInput
                   onChange={(e) => {
-                    console.log(e);
                     setPassengerOnePhoneNumber(e);
                   }}
                   className={`${
@@ -324,6 +351,25 @@ export default function PassengerInfo() {
                     : "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
                 }`}
               >
+                {" "}
+                {specific ? (
+                  <NumberInput
+                    className={`${
+                      alignLeft === true
+                        ? "text-4xl text-right flex flex-col items-end"
+                        : "text-4xl text-right flex flex-col items-start"
+                    }`}
+                    placeholder={t("passport")}
+                    label={t("passport")}
+                    hideControls
+                    variant="default"
+                    radius="md"
+                    size="md"
+                    withAsterisk
+                  />
+                ) : (
+                  <div></div>
+                )}
                 <NumberInput
                   onChange={(e) => {
                     setPassengerTwoSocialNumber(e);
@@ -342,7 +388,24 @@ export default function PassengerInfo() {
                   size="md"
                   withAsterisk
                 />
-
+                <NumberInput
+                  onChange={(e) => {
+                    setPassengerTwoSocialNumber(e);
+                  }}
+                  className={`${
+                    alignLeft === true
+                      ? "text-4xl text-right flex flex-col items-end"
+                      : "text-4xl text-right flex flex-col items-start"
+                  }`}
+                  required
+                  placeholder={t("idCode")}
+                  label={t("idCode")}
+                  hideControls
+                  variant="default"
+                  radius="md"
+                  size="md"
+                  withAsterisk
+                />
                 <NumberInput
                   onChange={(e) => {
                     setPassengerTwoPhoneNumber(e);
@@ -418,6 +481,25 @@ export default function PassengerInfo() {
                     : "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
                 }`}
               >
+                {" "}
+                {specific ? (
+                  <NumberInput
+                    className={`${
+                      alignLeft === true
+                        ? "text-4xl text-right flex flex-col items-end"
+                        : "text-4xl text-right flex flex-col items-start"
+                    }`}
+                    placeholder={t("passport")}
+                    label={t("passport")}
+                    hideControls
+                    variant="default"
+                    radius="md"
+                    size="md"
+                    withAsterisk
+                  />
+                ) : (
+                  <div></div>
+                )}
                 <NumberInput
                   onChange={(e) => {
                     setPassengerThreeSocialNumber(e);
@@ -454,7 +536,6 @@ export default function PassengerInfo() {
                   size="md"
                   withAsterisk
                 />
-
                 <TextInput
                   onChange={(e) => {
                     setPassengerThreeName(e.target.value);
@@ -512,6 +593,25 @@ export default function PassengerInfo() {
                     : "w-full h-full flex lg:flex-row flex-col  justify-center items-center space-x-4 px-6"
                 }`}
               >
+                {" "}
+                {specific ? (
+                  <NumberInput
+                    className={`${
+                      alignLeft === true
+                        ? "text-4xl text-right flex flex-col items-end"
+                        : "text-4xl text-right flex flex-col items-start"
+                    }`}
+                    placeholder={t("passport")}
+                    label={t("passport")}
+                    hideControls
+                    variant="default"
+                    radius="md"
+                    size="md"
+                    withAsterisk
+                  />
+                ) : (
+                  <div></div>
+                )}
                 <NumberInput
                   onChange={(e) => {
                     setPassengerFourSocialNumber(e);
@@ -548,7 +648,6 @@ export default function PassengerInfo() {
                   size="md"
                   withAsterisk
                 />
-
                 <TextInput
                   onChange={(e) => {
                     setPassengerFourName(e.target.value);
@@ -612,7 +711,7 @@ export default function PassengerInfo() {
       <div
         className={`${
           alignLeft === true
-            ? "w-full h-auto lg:h-24 flex lg:flex-row flex-col-reverse text-left items-center justify-around py-2 lg:justify-between bg-white px-7"
+            ? "w-full h-auto lg:h-24 flex lg:flex-row flex-col-reverse text-right items-center justify-around py-2 lg:justify-between bg-white px-7"
             : "w-full h-auto lg:h-24 flex lg:flex-row-reverse text-left flex-col-reverse items-center justify-around py-2 lg:justify-between bg-white px-7"
         }`}
       >

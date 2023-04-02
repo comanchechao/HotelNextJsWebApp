@@ -47,10 +47,6 @@ export default function Navbar() {
   const [nextLocale, setNextLocale] = useState("tr");
   const { pathname, asPath, query } = router;
 
-  useEffect(() => {
-    console.log(router.locale);
-  }, []);
-
   // change just the locale and maintain all other route information including href's query
 
   return (

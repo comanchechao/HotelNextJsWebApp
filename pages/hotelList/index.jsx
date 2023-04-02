@@ -135,7 +135,6 @@ export default function HotelList({
   }
 
   useEffect(() => {
-    console.log(initialHotels);
     filter(filterFeatures);
   }, [filterFeatures]);
 

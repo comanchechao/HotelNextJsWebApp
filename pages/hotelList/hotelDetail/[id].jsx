@@ -231,7 +231,6 @@ export default function HotelDetailPage({ hotel }) {
     setSingleImage(url);
 
     setLoading(false);
-    console.log(hotel.secondImage);
     if (hotel.secondImage) {
       downloadImage2();
     }
