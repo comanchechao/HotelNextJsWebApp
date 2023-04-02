@@ -6,6 +6,7 @@ import {
   Rating,
   Loader,
   Tabs,
+  Notification,
 } from "@mantine/core";
 import {
   IconUpload,
@@ -49,6 +50,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
   const [enteringHours, setEnteringHours] = useState(12);
   const [exitingHours, setExitingHours] = useState(14);
   const [alignLeft, setAlignLeft] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   let getlat = useSelector((state) => state.map.lat);
   let getLng = useSelector((state) => state.map.lng);
@@ -142,20 +144,20 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
   //   window.scrollTo(0, 0);
   // });
 
-  function something() {
-    let updates = {};
-    if (title) updates.title = title;
-    if (city) updates.city = city;
-    if (firstImage) updates.firstImage = firstImage;
-    if (secondImage) updates.secondImage = secondImage;
-    if (thirdImage) updates.thirdImage = thirdImage;
-    if (fourthImage) updates.fourthImage = fourthImage;
-    if (features) updates.features = features;
-    if (avragePrice) updates.prices = avragePrice;
-    if (rooms) updates.rooms = rooms;
-    if (getlat) updates.locationLat = getlat;
-    if (getLng) updates.locationLng = getLng;
-  }
+  // function something() {
+  //   let updates = {};
+  //   if (title) updates.title = title;
+  //   if (city) updates.city = city;
+  //   if (firstImage) updates.firstImage = firstImage;
+  //   if (secondImage) updates.secondImage = secondImage;
+  //   if (thirdImage) updates.thirdImage = thirdImage;
+  //   if (fourthImage) updates.fourthImage = fourthImage;
+  //   if (features) updates.features = features;
+  //   if (avragePrice) updates.prices = avragePrice;
+  //   if (rooms) updates.rooms = rooms;
+  //   if (getlat) updates.locationLat = getlat;
+  //   if (getLng) updates.locationLng = getLng;
+  // }
 
   async function handleSubmit() {
     let updates = {};
@@ -178,7 +180,10 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
       .from("Hotels")
       .update(updates)
       .eq("id", identifier);
-
+    setAlert(true);
+    setTimeout(() => {
+      setAlert(false);
+    }, 2000);
     if (error) throw error;
   }
   useEffect(() => {
@@ -908,7 +913,23 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 </Tabs.Panel> */}
               </Tabs>
             </div>
-            <div className="flex">
+            {alert2 ? (
+              <Notification
+                transition="fade"
+                transitionDuration={600}
+                transitionTimingFunction="ease"
+                color="green"
+                withCloseButton
+                variant="outline"
+              >
+                <h1 className="text-2xl text-center">
+                  {t("editHotelSuccess")}
+                </h1>
+              </Notification>
+            ) : (
+              <div></div>
+            )}
+            <div className="flex items-center space-x-4">
               <button
                 onClick={() => {
                   handleSubmit();

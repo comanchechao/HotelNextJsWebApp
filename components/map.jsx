@@ -55,7 +55,7 @@ function DisplayPosition({ map, cityLatLng }) {
   }
 
   return (
-    <div className="flex flex-col items-end w-96 ">
+    <div className="flex  justify-around lg:flex-row flex-col  items-center w-auto  lg:space-x-7  ">
       <div className="flex flex-row-reverse items-center justify-around w-full">
         {/* {position.lat.toFixed(4)},{position.lng.toFixed(4)}{" "} */}
         <button
@@ -325,10 +325,10 @@ export default function ExternalStateExample({ cityLatLng }) {
     }
   }, [lat2, lat3]);
   return (
-    <div className="flex flex-col items-center  w-screen">
+    <div className="flex flex-col items-center  w-auto">
       <MapContainer
         id="map"
-        className="z-0"
+        className="z-20"
         style={{ width: "100%", height: "100%" }}
         center={center}
         zoom={theZoom}

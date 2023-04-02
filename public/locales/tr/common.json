@@ -265,5 +265,6 @@
   "needsConfirm": "Onay gerekiyor",
   "confirmed": "Kabul edilmiş",
 
-  "country": "Ülke"
+  "country": "Ülke",
+  "editHotelSuccess": "Başarıyla düzenlendi"
 }
