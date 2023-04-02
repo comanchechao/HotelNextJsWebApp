@@ -721,8 +721,6 @@ export default function AddHotel({
                 placeholder={t("enterResidenceType")}
                 size="md"
                 required
-                value={city}
-                onChange={setCity}
                 searchable
                 className="text-right"
                 data={residenceTypesName}
@@ -844,7 +842,7 @@ export default function AddHotel({
                 id=""
                 cols="30"
                 rows="10"
-                maxlength="1000"
+                maxlength="3000"
               ></textarea>
             </div>
             <div className="flex w-full ">
@@ -1150,22 +1148,21 @@ export default function AddHotel({
                 <h1 className="text-2xl text-center">{t("addHotelSuccess")}</h1>
               </Notification>
             ) : (
-              <div></div>
+              <div className="flex items-center space-x-4">
+                <button
+                  onClick={() => {
+                    handleSubmit();
+                  }}
+                  className={`${
+                    alignLeft === true
+                      ? "w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                      : "w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue self-start"
+                  }`}
+                >
+                  {t("confirmHotel")}
+                </button>
+              </div>
             )}
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => {
-                  handleSubmit();
-                }}
-                className={`${
-                  alignLeft === true
-                    ? "w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
-                    : "w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue self-start"
-                }`}
-              >
-                {t("confirmHotel")}
-              </button>
-            </div>
           </div>
         </div>
       </Modal>

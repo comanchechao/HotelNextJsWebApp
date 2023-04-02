@@ -66,11 +66,11 @@ export default function RoomCard({ room, hotelDetail }) {
           <div
             className={`${
               alignLeft === true
-                ? "h-14 w-full flex items-center justify-between"
-                : "h-14 w-full flex items-center justify-between flex-row-reverse"
+                ? "h-14 w-full flex items-center justify-end"
+                : "h-14 w-full flex items-center justify-start flex-row-reverse"
             }`}
           >
-            <Accordion
+            {/* <Accordion
               variant="separated"
               chevronPosition="left"
               color="yellow"
@@ -88,7 +88,7 @@ export default function RoomCard({ room, hotelDetail }) {
                   </p>
                 </Accordion.Panel>
               </Accordion.Item>
-            </Accordion>
+            </Accordion> */}
             <h1 className="text-xl my-2">{JSON.stringify(room.title)}</h1>
           </div>
 

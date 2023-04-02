@@ -327,11 +327,10 @@ export default function ExternalStateExample({ cityLatLng }) {
     }
   }, [lat2, lat3]);
   return (
-    <div className="flex flex-col items-center  w-auto">
+    <div className="flex flex-col items-center  w-full">
       <MapContainer
         id="map"
         className="z-20"
-        style={{ width: "500px", height: "500px" }}
         center={center}
         zoom={theZoom}
         scrollWheelZoom={false}

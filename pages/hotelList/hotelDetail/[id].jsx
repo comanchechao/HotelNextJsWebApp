@@ -459,8 +459,8 @@ export default function HotelDetailPage({ hotel }) {
                 </h1>
                 <div className="flex border border-gray-300 bg-white my-3 lg:my-0 p-2 rounded-md space-x-2 justify-center items-center">
                   <div className="flex">
-                    <MapPin size={15} weight="fill" />
                     <p className="text-sm">{hotel.address}</p>
+                    <MapPin size={15} weight="fill" />
                   </div>
                   <div className="flex justify-center items-center space-x-1">
                     <p className="text-xs">{t("star")}</p>
