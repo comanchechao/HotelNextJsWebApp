@@ -268,5 +268,10 @@
 
   "country": "کشور",
 
-  "editHotelSuccess": "با موفقیت ویرایش شد"
+  "editHotelSuccess": "با موفقیت ویرایش شد",
+
+  "enterCountry": "کشور هتل را وارد کنید",
+
+  "enterDay": "تاریخ ورود",
+  "exitDay": "تاریخ خروج"
 }

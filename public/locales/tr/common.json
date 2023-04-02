@@ -266,5 +266,10 @@
   "confirmed": "Kabul edilmiş",
 
   "country": "Ülke",
-  "editHotelSuccess": "Başarıyla düzenlendi"
+  "editHotelSuccess": "Başarıyla düzenlendi",
+
+  "enterCountry": "Otel Ülke Yazin",
+
+  "enterDay": "girme günü",
+  "exitDay": "çıkış günü"
 }

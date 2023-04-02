@@ -339,7 +339,7 @@ export default function HotelDetailPage({ hotel }) {
     <>
       <Head>
         <title>
-          {city} , {hotel.title} , {t("boutak")} , {t("seo")}
+          {hotel.city} , {hotel.title} , {t("boutak")} , {t("seo")}
         </title>
         <meta name="description" content={t("description")} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -366,17 +366,19 @@ export default function HotelDetailPage({ hotel }) {
                   alignLeft === true ? " " : " transform rotate-180"
                 }`}
               />
-              <p>
-                {city} {t("hotels")}
-              </p>
+              <Link href="/">
+                <p>
+                  {t("hotelsOf")} {hotel.city}{" "}
+                </p>
+              </Link>
               <IconChevronLeft
                 className={`${
                   alignLeft === true ? " " : " transform rotate-180"
                 }`}
               />
-              <Link href="/">
-                <p>{t("hotelsOf")} </p>
-              </Link>
+              <p>
+                {city} {t("hotels")}
+              </p>
             </div>
             {loading ? (
               <div className="h-full my-8 w-full flex items-center justify-center space-x-5">
@@ -397,7 +399,7 @@ export default function HotelDetailPage({ hotel }) {
                     nextControlIcon={<IconArrowRight size={16} />}
                     previousControlIcon={<IconArrowLeft size={16} />}
                     loop
-                    className="rounded-md"
+                    withIndicators
                   >
                     <Carousel.Slide>
                       {singleImage ? (
@@ -546,6 +548,7 @@ export default function HotelDetailPage({ hotel }) {
                           <h1 className="text-xs">{t("adult")}</h1>
                           <div className="flex text-blue-800  items-center justify-center space-x-5">
                             <PlusCircle
+                              className="cursor-pointer"
                               onClick={() => {
                                 dispatch(
                                   reservationActions.increasePassenger()
@@ -556,6 +559,7 @@ export default function HotelDetailPage({ hotel }) {
                             />
                             <h1 className="text-xs font-bold">{passenger}</h1>
                             <MinusCircle
+                              className="cursor-pointer"
                               onClick={() => {
                                 dispatch(
                                   reservationActions.decreamentPassenger()
@@ -570,6 +574,7 @@ export default function HotelDetailPage({ hotel }) {
                           <h1 className="text-xs"> {t("kid")} </h1>
                           <div className="flex text-blue-800  items-center justify-center space-x-5">
                             <PlusCircle
+                              className="cursor-pointer"
                               onClick={() => {
                                 dispatch(
                                   reservationActions.incrementChildPassenger()
@@ -582,6 +587,7 @@ export default function HotelDetailPage({ hotel }) {
                               {childPassenger}
                             </h1>
                             <MinusCircle
+                              className="cursor-pointer"
                               onClick={() => {
                                 dispatch(
                                   reservationActions.decrementChildPassenger()
@@ -789,8 +795,8 @@ export default function HotelDetailPage({ hotel }) {
                 <div
                   className={`${
                     alignLeft === true
-                      ? "flex divide-x  flex-col divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
-                      : "flex flex-col  divide-gray-300 p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
+                      ? "flex    flex-col   p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
+                      : "flex flex-col    p-5 border border-gray-300 rounded-md bg-white text-sm mb-14"
                   }`}
                 >
                   <div

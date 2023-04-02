@@ -132,9 +132,11 @@ export default function HotelCard({ hotel }) {
       </div>
       <div className=" w-auto flex items-center lg:w-56 h-full">
         <Carousel
+          withControls={false}
+          withIndicators
           breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: 2 }]}
           slideGap="sm"
-          align="start"
+          align="center"
           loop
           slideSize="100%"
           width="100%"
@@ -150,7 +152,7 @@ export default function HotelCard({ hotel }) {
                 height={200}
               />
             ) : (
-              <div className="h-56 w-56 flex items-center justify-center">
+              <div className="h-56 w-56 bg-mainPurple flex items-center justify-center">
                 <Loader size="lg" color="yellow" variant="bars" />
               </div>
             )}

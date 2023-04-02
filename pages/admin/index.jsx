@@ -62,6 +62,7 @@ export async function getServerSideProps(context) {
   const { data: residenceTypes, error4 } = await supabase
     .from("residenceTypes")
     .select();
+  const { data: countries } = await supabase.from("countries").select();
 
   const { data: features, error3 } = await supabase
     .from("features")
@@ -79,6 +80,8 @@ export async function getServerSideProps(context) {
       cities: cities,
       role: userRole[0].role,
       users: users,
+      countries: countries,
+
       residenceTypes: residenceTypes,
       features: features,
       user: user.user,
@@ -94,6 +97,7 @@ export default function AdminPage({
   residenceTypes,
   users,
   role,
+  countries,
 }) {
   const [hotelIds, setHotelIds] = useState([]);
   const [hotels, setHotels] = useState([]);
@@ -159,6 +163,7 @@ export default function AdminPage({
                 cities={cities}
                 user={user}
                 residenceTypes={residenceTypes}
+                countries={countries}
               />
             ) : null}
           </div>

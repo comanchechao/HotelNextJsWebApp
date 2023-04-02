@@ -61,7 +61,7 @@ export default function Navbar() {
       <div className="text-sm flex items-center space-x-4">
         <Link
           href="/hotelList"
-          className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-2  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="border-r-8 rounded-sm border-transparent hover:border-r-mainBlue hidden lg:flex    p-2  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           {t("hotel")}
 
@@ -70,7 +70,7 @@ export default function Navbar() {
 
         <Link
           href="/"
-          className="border-r-8 border-transparent hover:border-r-mainBlue hidden lg:flex    p-2  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+          className="border-r-8 rounded-sm border-transparent hover:border-r-mainBlue hidden lg:flex    p-2  items-center cursor-pointer text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
         >
           <h4 className=" ">{t("home")}</h4>
           <House className="mx-2" size={28} weight="light" />

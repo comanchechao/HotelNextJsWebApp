@@ -31,6 +31,7 @@ export default function AddHotel({
   cities,
   user,
   residenceTypes,
+  countries,
 }) {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
@@ -47,6 +48,8 @@ export default function AddHotel({
   const [location, setLocation] = useState({});
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+
   const [get, setGet] = useState(false);
   const [aboutHotel, setAboutHotel] = useState("");
   const [enteringHours, setEnteringHours] = useState(12);
@@ -64,57 +67,12 @@ export default function AddHotel({
   let lng3 = useSelector((state) => state.map.lng3);
   const [cityNames, setCityNames] = useState([]);
   const [residenceTypesName, setResidenceTypesName] = useState([]);
+  const [countryNames, setCountryNames] = useState([]);
 
   async function changeAlignment() {
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
-
-  async function ResidenceTypesTranslate() {
-    if (residenceTypes) {
-      if (lng === "fa") {
-        residenceTypesName.splice(0, residenceTypesName.length);
-
-        await residenceTypes.forEach((residenceType, i) => {
-          if (residenceTypesName.indexOf(residenceType.name) === -1) {
-            residenceTypesName.push(residenceType.name);
-          }
-        });
-      } else {
-        residenceTypesName.splice(0, residenceTypesName.length);
-        await residenceTypes.forEach((residenceType, i) => {
-          if (residenceTypesName.indexOf(residenceType.trTitle) === -1) {
-            residenceTypesName.push(residenceType.trTitle);
-          }
-        });
-      }
-    }
-  }
-  async function CityTranslate() {
-    if (cities) {
-      if (lng === "fa") {
-        cityNames.splice(0, cityNames.length);
-
-        await cities.forEach((city, i) => {
-          if (cityNames.indexOf(city.name) === -1) {
-            cityNames.push(city.name);
-          }
-        });
-      } else {
-        cityNames.splice(0, cityNames.length);
-        await cities.forEach((city, i) => {
-          if (cityNames.indexOf(city.trTitle) === -1) {
-            cityNames.push(city.trTitle);
-          }
-        });
-      }
-    }
-  }
-  useEffect(() => {
-    CityTranslate();
-    ResidenceTypesTranslate();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const [definedRoom, setDefinedRoom] = useState({
     title: "",
@@ -296,9 +254,34 @@ export default function AddHotel({
       }
     }
   }
+  async function CountryTranslate() {
+    if (countries) {
+      if (lng === "fa") {
+        countryNames.splice(0, countryNames.length);
+
+        await countries.forEach((country, i) => {
+          if (countryNames.indexOf(country.title) === -1) {
+            if (country.title) {
+              countryNames.push(country.title);
+            }
+          }
+        });
+      } else {
+        countryNames.splice(0, countryNames.length);
+        await countries.forEach((country, i) => {
+          if (countryNames.indexOf(country.trTitle) === -1) {
+            if (country.trTitle) {
+              countryNames.push(country.trTitle);
+            }
+          }
+        });
+      }
+    }
+  }
   useEffect(() => {
     CityTranslate();
     ResidenceTypesTranslate();
+    CountryTranslate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -668,6 +651,32 @@ export default function AddHotel({
                 searchable
                 className="text-right  w-full"
                 data={cityNames}
+              />
+            </div>
+            <div
+              className={`${
+                alignLeft === true
+                  ? "flex flex-col w-full h-full text-right justify-center items-end"
+                  : "flex flex-col w-full h-full text-right justify-center items-start"
+              }`}
+            >
+              <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
+                {t("country")}
+              </h3>
+              <Select
+                transitionDuration={150}
+                transition="pop-top-left"
+                transitionTimingFunction="ease"
+                variant="default"
+                radius="md"
+                placeholder={t("enterCountry")}
+                size="md"
+                required
+                value={country}
+                onChange={setCountry}
+                searchable
+                className="text-right  w-full"
+                data={countryNames}
               />
             </div>
             <div
@@ -1143,7 +1152,7 @@ export default function AddHotel({
           onClick={() => {
             setOpened(true);
           }}
-          className="w-52 py-2 flex justify-center items-center border-2 text-lg text-white border-r-8 border-mainBlue bg-mainPurple   transition ease-in duration-300 font-mainFont rounded-md   hover:bg-mainBlue"
+          className="w-52 py-2 flex justify-center items-center border-2 text-lg text-white border-r-8 border-mainBlue bg-mainPurple   transition ease-in duration-300 font-mainFont rounded-md hover:text-mainPurple  hover:bg-mainBlue"
         >
           {t("newHotel")}
           <Buildings className="ml-2" size={32} weight="light" />

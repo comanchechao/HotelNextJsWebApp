@@ -15,6 +15,7 @@ export default function HotelManagement({
   user,
   hotels,
   residenceTypes,
+  countries,
 }) {
   const { t, i18n } = useTranslation("common");
   const [initialHotels, setInitialHotels] = useState(hotels);
@@ -121,6 +122,7 @@ export default function HotelManagement({
             featuresData={features}
             cities={cities}
             residenceTypes={residenceTypes}
+            countries={countries}
           />
         </div>
       </div>

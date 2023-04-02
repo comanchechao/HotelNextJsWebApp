@@ -126,7 +126,23 @@ export default function PassengerInfo() {
             : "h-auto lg:flex-row-reverse flex-col-reverse lg:h-24 w-full bg-white divide-x-2 flex "
         }`}
       >
-        <div className="h-full w-full lg:w-1/2 flex lg:flex-row flex-col items-center justify-center ">
+        <div className="h-full w-full bg-Lime-500 lg:w-1/3 flex lg:flex-row flex-col items-center justify-center ">
+          <div className="h-full w-full lg:w-1/2 flex my-4 lg:my-0 flex-col items-center justify-center">
+            <div className="flex items-center space-x-2">
+              <h2>{t("exitDay")}</h2>
+              <SignOut size={40} color="#e0ab19" weight="fill" />
+            </div>
+            <h1 className="font text-lg">{enterDate}</h1>
+          </div>
+          <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
+            <div className="flex items-center space-x-2">
+              <h2>{t("enterDay")}</h2>
+              <SignIn size={40} color="#e0ab19" weight="fill" />
+            </div>
+            <h1 className="font text-lg"> {exitDate}</h1>
+          </div>
+        </div>
+        <div className="h-full w-full bg-Lime-500 lg:w-1/3 flex lg:flex-row flex-col items-center justify-center ">
           <div className="h-full w-full lg:w-1/2 flex my-4 lg:my-0 flex-col items-center justify-center">
             <div className="flex items-center space-x-2">
               <h2>{t("exitTime")}</h2>
@@ -145,8 +161,8 @@ export default function PassengerInfo() {
         <div
           className={`${
             alignLeft === true
-              ? "h-full lg:w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3"
-              : "h-full lg:w-1/2 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-start lg:justify-start space-y-3"
+              ? "h-full lg:w-1/3 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-end lg:justify-start space-y-3"
+              : "h-full lg:w-1/3 px-5 lg:px-3 p-3 flex flex-col justify-center items-center lg:items-start lg:justify-start space-y-3"
           }`}
         >
           <div
