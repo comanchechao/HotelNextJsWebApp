@@ -27,7 +27,6 @@ import { useTranslation } from "next-i18next";
 import { X, Buildings } from "phosphor-react";
 // const LocationsMap = dynamic(() => import("./map"), {
 //   ssr: false,
-//   Suspense: true,
 // });
 export default function EditHotel({ identifier, featuresData, cities, hotel }) {
   const { t, i18n } = useTranslation("common");

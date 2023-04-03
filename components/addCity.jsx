@@ -10,6 +10,7 @@ export default function WebsiteInfo({ cities }) {
     ssr: false,
     suspense: true,
   });
+  const [country, setCountry] = useState("");
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState(null);
   const [lat, setLat] = useState(null);
@@ -40,6 +41,18 @@ export default function WebsiteInfo({ cities }) {
       <div className="py-20 overflow-y-scroll w-full h-full   px-14 bg-white flex flex-col items-center justify-center">
         <h1 className="border-b-4 pb-4 border-mainBlue my-3">افزودن شهر</h1>
         <DisplayCities className="z-10" LatLng={[lat, lng]} cities={cities} />
+        <div className="flex">
+          <Select
+            label="Your favorite framework/library"
+            placeholder="Pick one"
+            onChange={setCountry}
+            value={country}
+            data={[
+              { value: "turkey", label: "turkey" },
+              { value: "iran", label: "iran" },
+            ]}
+          />
+        </div>
         <div className="flex justify-center items-center w-full h-full">
           <Select
             value={value}

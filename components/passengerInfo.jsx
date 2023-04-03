@@ -20,21 +20,29 @@ export default function PassengerInfo() {
   const [passengerOnePhoneNumber, setPassengerOnePhoneNumber] = useState("");
   const [passengerOneSocialNumber, setPassengerOneSocialNumber] = useState("");
   const [passengerOneGender, setPassengerOneGender] = useState(null);
+  const [passengerOnePassportCode, setPassengerOnePassportCode] =
+    useState(null);
   const [passengerTwoName, setPassengerTwoName] = useState("");
   const [passengerTwoPhoneNumber, setPassengerTwoPhoneNumber] = useState("");
   const [passengerTwoSocialNumber, setPassengerTwoSocialNumber] = useState("");
   const [passengerTwoGender, setPassengerTwoGender] = useState(null);
+  const [passengerTwoPassportCode, setPassengerTwoPassportCode] =
+    useState(null);
   const [passengerThreeName, setPassengerThreeName] = useState("");
   const [passengerThreePhoneNumber, setPassengerThreePhoneNumber] =
     useState("");
   const [passengerThreeSocialNumber, setPassengerThreeSocialNumber] =
     useState("");
   const [passengerThreeGender, setPassengerThreeGender] = useState(null);
+  const [passengerThreePassportCode, setPassengerThreePassportCode] =
+    useState(null);
   const [passengerFourName, setPassengerFourName] = useState("");
   const [passengerFourPhoneNumber, setPassengerFourPhoneNumber] = useState("");
   const [passengerFourSocialNumber, setPassengerFourSocialNumber] =
     useState("");
   const [passengerFourGender, setPassengerFourGender] = useState(null);
+  const [passengerFourPassportCode, setPassengerFourPassportCode] =
+    useState(null);
   const { t, i18n } = useTranslation("");
   const lng = i18n.language;
   const [alignLeft, setAlignLeft] = useState(false);
@@ -70,6 +78,7 @@ export default function PassengerInfo() {
         passengerOnePhoneNumber,
         passengerOneSocialNumber,
         passengerOneGender,
+        passengerOnePassportCode,
       })
     );
   }, [
@@ -77,6 +86,7 @@ export default function PassengerInfo() {
     passengerOnePhoneNumber,
     passengerOneSocialNumber,
     passengerOneGender,
+    passengerOnePassportCode,
     dispatch,
   ]);
   useEffect(() => {
@@ -86,6 +96,7 @@ export default function PassengerInfo() {
         passengerTwoPhoneNumber,
         passengerTwoSocialNumber,
         passengerTwoGender,
+        passengerTwoPassportCode,
       })
     );
   }, [
@@ -93,6 +104,7 @@ export default function PassengerInfo() {
     passengerTwoPhoneNumber,
     passengerTwoSocialNumber,
     passengerTwoGender,
+    passengerTwoPassportCode,
     dispatch,
   ]);
   useEffect(() => {
@@ -102,6 +114,7 @@ export default function PassengerInfo() {
         passengerThreePhoneNumber,
         passengerThreeSocialNumber,
         passengerThreeGender,
+        passengerThreePassportCode,
       })
     );
   }, [
@@ -109,6 +122,7 @@ export default function PassengerInfo() {
     passengerThreePhoneNumber,
     passengerThreeSocialNumber,
     passengerThreeGender,
+    passengerThreePassportCode,
     dispatch,
   ]);
   useEffect(() => {
@@ -118,6 +132,7 @@ export default function PassengerInfo() {
         passengerFourPhoneNumber,
         passengerFourSocialNumber,
         passengerFourGender,
+        passengerFourPassportCode,
       })
     );
   }, [
@@ -125,6 +140,7 @@ export default function PassengerInfo() {
     passengerFourPhoneNumber,
     passengerFourSocialNumber,
     passengerFourGender,
+    passengerFourPassportCode,
     dispatch,
   ]);
   return (
@@ -239,6 +255,9 @@ export default function PassengerInfo() {
               >
                 {specific ? (
                   <NumberInput
+                    onChange={(e) => {
+                      setPassengerOnePassportCode(e);
+                    }}
                     className={`${
                       alignLeft === true
                         ? "text-4xl text-right flex flex-col items-end"
@@ -354,6 +373,9 @@ export default function PassengerInfo() {
                 {" "}
                 {specific ? (
                   <NumberInput
+                    onChange={(e) => {
+                      setPassengerTwoPassportCode(e);
+                    }}
                     className={`${
                       alignLeft === true
                         ? "text-4xl text-right flex flex-col items-end"
@@ -484,6 +506,9 @@ export default function PassengerInfo() {
                 {" "}
                 {specific ? (
                   <NumberInput
+                    onChange={(e) => {
+                      setPassengerThreePassportCode(e);
+                    }}
                     className={`${
                       alignLeft === true
                         ? "text-4xl text-right flex flex-col items-end"
@@ -596,6 +621,9 @@ export default function PassengerInfo() {
                 {" "}
                 {specific ? (
                   <NumberInput
+                    onChange={(e) => {
+                      setPassengerFourPassportCode(e);
+                    }}
                     className={`${
                       alignLeft === true
                         ? "text-4xl text-right flex flex-col items-end"

@@ -24,24 +24,28 @@ export const reservation = createSlice({
       socialNumber: null,
       phoneNumber: null,
       gender: null,
+      passportCode: null,
     },
     passengerTwo: {
       name: "",
       socialNumber: null,
       phoneNumber: null,
       gender: null,
+      passportCode: null,
     },
     passengerThree: {
       name: "",
       socialNumber: null,
       phoneNumber: null,
       gender: null,
+      passportCode: null,
     },
     passengerFour: {
       name: "",
       socialNumber: null,
       phoneNumber: null,
       gender: null,
+      passportCode: null,
     },
   },
   reducers: {
@@ -109,6 +113,8 @@ export const reservation = createSlice({
         actions.payload.passengerOneSocialNumber;
       state.passengerOne.phoneNumber = actions.payload.passengerOnePhoneNumber;
       state.passengerOne.gender = actions.payload.passengerOneGender;
+      state.passengerOne.passportCode =
+        actions.payload.passengerOnePassportCode;
     },
     setPassengerTwo: (state, actions) => {
       state.passengerTwo.name = actions.payload.passengerTwoName;
@@ -116,6 +122,8 @@ export const reservation = createSlice({
         actions.payload.passengerTwoSocialNumber;
       state.passengerTwo.phoneNumber = actions.payload.passengerTwoPhoneNumber;
       state.passengerTwo.gender = actions.payload.passengerTwoGender;
+      state.passengerOne.passportCode =
+        actions.payload.passengerTwoPassportCode;
     },
     setPassengerThree: (state, actions) => {
       state.passengerThree.name = actions.payload.passengerThreeName;
@@ -124,6 +132,8 @@ export const reservation = createSlice({
       state.passengerThree.phoneNumber =
         actions.payload.passengerThreePhoneNumber;
       state.passengerThree.gender = actions.payload.passengerThreeGender;
+      state.passengerOne.passportCode =
+        actions.payload.passengerThreePassportCode;
     },
     setPassengerFour: (state, actions) => {
       state.passengerFour.name = actions.payload.passengerFourName;
@@ -132,6 +142,8 @@ export const reservation = createSlice({
       state.passengerFour.phoneNumber =
         actions.payload.passengerFourPhoneNumber;
       state.passengerFour.gender = actions.payload.passengerFourGender;
+      state.passengerOne.passportCode =
+        actions.payload.passengerFourPassportCode;
     },
   },
 });

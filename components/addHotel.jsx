@@ -24,7 +24,6 @@ import { useTranslation } from "next-i18next";
 import { X, Buildings } from "phosphor-react";
 const LocationsMap = dynamic(() => import("./map"), {
   ssr: false,
-  Suspense: true,
 });
 export default function AddHotel({
   featuresData,
@@ -184,6 +183,8 @@ export default function AddHotel({
       stars: value,
       rooms: rooms,
       hotelAbout: aboutHotel,
+      locationLat: getlat,
+      locationLng: getLng,
       address: address,
       enterTime: enteringHours,
       exitTime: exitingHours,
@@ -205,6 +206,10 @@ export default function AddHotel({
     }, 2000);
     if (error) throw error;
   }
+
+  useEffect(() => {
+    console.log(lat2);
+  });
 
   async function ResidenceTypesTranslate() {
     if (residenceTypes) {
@@ -343,7 +348,7 @@ export default function AddHotel({
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, compressedFile, decode("base64FileData"), {
+        .upload(filePath, compressedFile, {
           contentType: "image/png",
           contentType: "image/webp",
           contentType: "image/jpeg",
@@ -380,7 +385,7 @@ export default function AddHotel({
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, compressedFile, decode("base64FileData"), {
+        .upload(filePath, compressedFile, {
           contentType: "image/png",
           contentType: "image/webp",
           contentType: "image/jpeg",
@@ -417,7 +422,7 @@ export default function AddHotel({
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, compressedFile, decode("base64FileData"), {
+        .upload(filePath, compressedFile, {
           contentType: "image/png",
           contentType: "image/webp",
           contentType: "image/jpeg",
@@ -454,7 +459,7 @@ export default function AddHotel({
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
-        .upload(filePath, compressedFile, decode("base64FileData"), {
+        .upload(filePath, compressedFile, {
           contentType: "image/png",
           contentType: "image/webp",
           contentType: "image/jpeg",
@@ -516,25 +521,6 @@ export default function AddHotel({
             <div className="flex justify-around space-x-1 lg:space-x-4 lg:px-0 px-4 h-28 lg:h-rem22 ">
               <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                  <label htmlFor="firstImage">
-                    {uploading ? (
-                      <Loader color="dark" />
-                    ) : (
-                      <IconUpload className="cursor-pointer" size={30} />
-                    )}
-                  </label>
-                  <input
-                    required
-                    accept="image/webp,image/jpeg,image/png"
-                    onChange={firstImageUpload}
-                    type="file"
-                    className="hidden"
-                    id="firstImage"
-                  />
-                </div>
-              </div>
-              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
-                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="fourthImage">
                     {uploading ? (
                       <Loader color="dark" />
@@ -588,6 +574,25 @@ export default function AddHotel({
                     type="file"
                     className="hidden"
                     id="secondImage"
+                  />
+                </div>
+              </div>
+              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
+                  <label htmlFor="firstImage">
+                    {uploading ? (
+                      <Loader color="dark" />
+                    ) : (
+                      <IconUpload className="cursor-pointer" size={30} />
+                    )}
+                  </label>
+                  <input
+                    required
+                    accept="image/webp,image/jpeg,image/png"
+                    onChange={firstImageUpload}
+                    type="file"
+                    className="hidden"
+                    id="firstImage"
                   />
                 </div>
               </div>

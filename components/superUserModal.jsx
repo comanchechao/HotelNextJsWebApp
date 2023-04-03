@@ -70,6 +70,9 @@ export default function SuperUserModal({ user }) {
               {hotels ? hotels.length : null} {t("singleHotel")}
             </strong>
           </h2>{" "}
+          <h2 className="py-1   rounded-md px-4 border-2   border-mainBlue">
+            نوع کاربر : <strong>{user ? user.role : null}</strong>
+          </h2>{" "}
           <button className="py-2 font-mainFont  hover:text-white bg-green-500 border-green-800 border-r-8   ease-in duration-300 hover:bg-green-900 transition rounded-lg  text-white   px-6   ">
             {t("addAdmin")}
           </button>{" "}

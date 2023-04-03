@@ -65,7 +65,7 @@ export default function UserManagement({ users }) {
               value="gallery"
               icon={<IconUser size={16} />}
             >
-              همه همکاران
+              همه کاربران
             </Tabs.Tab>
           </Tabs.List>
           <Tabs.Panel value="gallery" pt="xs">
