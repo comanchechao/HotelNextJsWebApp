@@ -73,6 +73,8 @@ export const reservation = createSlice({
       state.hotelInfo.id = actions.payload.id;
       state.hotelInfo.price = actions.payload.prices;
       state.hotelInfo.stars = actions.payload.stars;
+      (state.hotelInfo.enterTime = actions.payload.enterTime),
+        (state.hotelInfo.exitTime = actions.payload.exitTime);
     },
     setRoom: (state, actions) => {
       state.room = actions.payload;
