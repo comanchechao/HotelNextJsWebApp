@@ -412,24 +412,6 @@ export default function PassengerInfo() {
                 />
                 <NumberInput
                   onChange={(e) => {
-                    setPassengerTwoSocialNumber(e);
-                  }}
-                  className={`${
-                    alignLeft === true
-                      ? "text-4xl text-right flex flex-col items-end"
-                      : "text-4xl text-right flex flex-col items-start"
-                  }`}
-                  required
-                  placeholder={t("idCode")}
-                  label={t("idCode")}
-                  hideControls
-                  variant="default"
-                  radius="md"
-                  size="md"
-                  withAsterisk
-                />
-                <NumberInput
-                  onChange={(e) => {
                     setPassengerTwoPhoneNumber(e);
                   }}
                   className={`${
