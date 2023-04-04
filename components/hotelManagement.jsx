@@ -99,21 +99,40 @@ export default function HotelManagement({
                space-y-7  flex-col"
             >
               {initialHotels.map((hotel, i) => {
-                return (
-                  <AdminHotelCard
-                    user={user}
-                    featuresData={features}
-                    cities={cities}
-                    key={hotel.id}
-                    hotel={hotel}
-                  />
-                );
+                if (hotel.owner === user.id) {
+                  return (
+                    <AdminHotelCard
+                      user={user}
+                      featuresData={features}
+                      cities={cities}
+                      key={hotel.id}
+                      hotel={hotel}
+                    />
+                  );
+                }
               })}
             </div>
           </Tabs.Panel>
 
           <Tabs.Panel value="settings" pt="xs">
-            Settings tab content
+            <div
+              className="flex w-full  overflow-y-scroll  h-rem28
+               space-y-7  flex-col"
+            >
+              {initialHotels.map((hotel, i) => {
+                if (hotel.owner !== user.id) {
+                  return (
+                    <AdminHotelCard
+                      user={user}
+                      featuresData={features}
+                      cities={cities}
+                      key={hotel.id}
+                      hotel={hotel}
+                    />
+                  );
+                }
+              })}
+            </div>
           </Tabs.Panel>
         </Tabs>
         <div className="lg:absolute right-8 bottom-3   fixed">

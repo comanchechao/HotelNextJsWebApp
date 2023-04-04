@@ -5,7 +5,7 @@ const TRCities = [
     latitude: "37.0000",
     longitude: "35.3213",
     population: 2183167,
-    value: "Akdeniz",
+    value: "Adana",
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const TRCities = [
     latitude: "37.7648",
     longitude: "38.2786",
     population: 602774,
-    value: "Güneydoğu Anadolu",
+    value: "Adıyaman",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const TRCities = [
     latitude: "38.7507",
     longitude: "30.5567",
     population: 709015,
-    value: "Ege",
+    value: "Afyonkarahisar",
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const TRCities = [
     latitude: "39.7191",
     longitude: "43.0503",
     population: 547210,
-    value: "Doğu Anadolu",
+    value: "Ağrı",
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const TRCities = [
     latitude: "40.6499",
     longitude: "35.8353",
     population: 322167,
-    value: "Karadeniz",
+    value: "Amasya",
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const TRCities = [
     latitude: "39.9208",
     longitude: "32.8541",
     population: 5270575,
-    value: "İç Anadolu",
+    value: "Ankara",
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const TRCities = [
     latitude: "36.8841",
     longitude: "30.7056",
     population: 2288456,
-    value: "Akdeniz",
+    value: "Antalya",
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ const TRCities = [
     latitude: "41.1828",
     longitude: "41.8183",
     population: 168370,
-    value: "Karadeniz",
+    value: "Artvin",
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ const TRCities = [
     latitude: "37.8560",
     longitude: "27.8416",
     population: 1053506,
-    value: "Ege",
+    value: "Aydın",
   },
   {
     id: 10,
@@ -77,7 +77,7 @@ const TRCities = [
     latitude: "39.6484",
     longitude: "27.8826",
     population: 1186688,
-    value: "Ege",
+    value: "Balıkesir",
   },
   {
     id: 11,
@@ -85,7 +85,7 @@ const TRCities = [
     latitude: "40.0567",
     longitude: "30.0665",
     population: 212361,
-    value: "Marmara",
+    value: "Bilecik",
   },
   {
     id: 12,
@@ -93,7 +93,7 @@ const TRCities = [
     latitude: "39.0626",
     longitude: "40.7696",
     population: 267184,
-    value: "Doğu Anadolu",
+    value: "Bingöl",
   },
   {
     id: 13,
@@ -101,7 +101,7 @@ const TRCities = [
     latitude: "38.3938",
     longitude: "42.1232",
     population: 267184,
-    value: "Doğu Anadolu",
+    value: "Bitlis",
   },
   {
     id: 14,
@@ -109,7 +109,7 @@ const TRCities = [
     latitude: "40.5760",
     longitude: "31.5788",
     population: 291095,
-    value: "Karadeniz",
+    value: "Bolu",
   },
   {
     id: 15,
@@ -117,7 +117,7 @@ const TRCities = [
     latitude: "37.4613",
     longitude: "30.0665",
     population: 258339,
-    value: "Akdeniz",
+    value: "Burdur",
   },
   {
     id: 16,
@@ -125,7 +125,7 @@ const TRCities = [
     latitude: "40.2669",
     longitude: "29.0634",
     population: 2842547,
-    value: "Marmara",
+    value: "Bursa",
   },
   {
     id: 17,
@@ -133,7 +133,7 @@ const TRCities = [
     latitude: "40.1553",
     longitude: "26.4142",
     population: 513341,
-    value: "Marmara",
+    value: "Çanakkale",
   },
   {
     id: 18,
@@ -141,7 +141,7 @@ const TRCities = [
     latitude: "40.6013",
     longitude: "33.6134",
     population: 180945,
-    value: "İç Anadolu",
+    value: "Çankırı",
   },
   {
     id: 19,
@@ -149,7 +149,7 @@ const TRCities = [
     latitude: "40.5506",
     longitude: "34.9556",
     population: 525180,
-    value: "Karadeniz",
+    value: "Çorum",
   },
   {
     id: 20,
@@ -157,7 +157,7 @@ const TRCities = [
     latitude: "37.7765",
     longitude: "29.0864",
     population: 993442,
-    value: "Ege",
+    value: "Denizli",
   },
   {
     id: 21,
@@ -165,7 +165,7 @@ const TRCities = [
     latitude: "37.9144",
     longitude: "40.2306",
     population: 1654196,
-    value: "Güneydoğu Anadolu",
+    value: "Diyarbakır",
   },
   {
     id: 22,
@@ -173,7 +173,7 @@ const TRCities = [
     latitude: "41.6818",
     longitude: "26.5623",
     population: 402537,
-    value: "Marmara",
+    value: "Edirne",
   },
   {
     id: 23,
@@ -181,7 +181,7 @@ const TRCities = [
     latitude: "38.6810",
     longitude: "39.2264",
     population: 574304,
-    value: "Doğu Anadolu",
+    value: "Elâzığ",
   },
   {
     id: 24,
@@ -189,7 +189,7 @@ const TRCities = [
     latitude: "39.7500",
     longitude: "39.5000",
     population: 222918,
-    value: "Doğu Anadolu",
+    value: "Erzincan",
   },
   {
     id: 25,
@@ -197,7 +197,7 @@ const TRCities = [
     latitude: "39.9000",
     longitude: "41.2700",
     population: 762321,
-    value: "Doğu Anadolu",
+    value: "Erzurum",
   },
   {
     id: 26,
@@ -205,7 +205,7 @@ const TRCities = [
     latitude: "39.7767",
     longitude: "30.5206",
     population: 826716,
-    value: "İç Anadolu",
+    value: "Eskişehir",
   },
   {
     id: 27,
@@ -213,7 +213,7 @@ const TRCities = [
     latitude: "37.0662",
     longitude: "37.3833",
     population: 1931836,
-    value: "Güneydoğu Anadolu",
+    value: "Gaziantep",
   },
   {
     id: 28,
@@ -221,7 +221,7 @@ const TRCities = [
     latitude: "40.9128",
     longitude: "38.3895",
     population: 426686,
-    value: "Karadeniz",
+    value: "Giresun",
   },
   {
     id: 29,
@@ -229,7 +229,7 @@ const TRCities = [
     latitude: "40.4386",
     longitude: "39.5086",
     population: 151449,
-    value: "Karadeniz",
+    value: "Gümüşhane",
   },
   {
     id: 30,
@@ -237,7 +237,7 @@ const TRCities = [
     latitude: "37.5833",
     longitude: "43.7333",
     population: 278775,
-    value: "Doğu Anadolu",
+    value: "Hakkâri",
   },
   {
     id: 31,
@@ -245,7 +245,7 @@ const TRCities = [
     latitude: "36.4018",
     longitude: "36.3498",
     population: 1533507,
-    value: "Akdeniz",
+    value: "Hatay",
   },
   {
     id: 32,
@@ -253,7 +253,7 @@ const TRCities = [
     latitude: "37.7648",
     longitude: "30.5566",
     population: 421766,
-    value: "Akdeniz",
+    value: "Isparta",
   },
   {
     id: 33,
@@ -261,7 +261,7 @@ const TRCities = [
     latitude: "36.8000",
     longitude: "34.6333",
     population: 1745221,
-    value: "Akdeniz",
+    value: "Mersin",
   },
   {
     id: 34,
@@ -269,7 +269,7 @@ const TRCities = [
     latitude: "41.0053",
     longitude: "28.9770",
     population: 14657434,
-    value: "Marmara",
+    value: "İstanbul",
   },
   {
     id: 35,
@@ -277,7 +277,7 @@ const TRCities = [
     latitude: "38.4189",
     longitude: "27.1287",
     population: 4168415,
-    value: "Ege",
+    value: "İzmir",
   },
   {
     id: 36,
@@ -285,7 +285,7 @@ const TRCities = [
     latitude: "40.6167",
     longitude: "43.1000",
     population: 292660,
-    value: "Doğu Anadolu",
+    value: "Kars",
   },
   {
     id: 37,
@@ -293,7 +293,7 @@ const TRCities = [
     latitude: "41.3887",
     longitude: "33.7827",
     population: 372633,
-    value: "Karadeniz",
+    value: "Kastamonu",
   },
   {
     id: 38,
@@ -301,7 +301,7 @@ const TRCities = [
     latitude: "38.7312",
     longitude: "35.4787",
     population: 1341056,
-    value: "İç Anadolu",
+    value: "Kayseri",
   },
   {
     id: 39,
@@ -309,7 +309,7 @@ const TRCities = [
     latitude: "41.7333",
     longitude: "27.2167",
     population: 346973,
-    value: "Marmara",
+    value: "Kırklareli",
   },
   {
     id: 40,
@@ -317,7 +317,7 @@ const TRCities = [
     latitude: "39.1425",
     longitude: "34.1709",
     population: 225562,
-    value: "İç Anadolu",
+    value: "Kırşehir",
   },
   {
     id: 41,
@@ -325,7 +325,7 @@ const TRCities = [
     latitude: "40.8533",
     longitude: "29.8815",
     population: 1780055,
-    value: "Marmara",
+    value: "Kocaeli",
   },
   {
     id: 42,
@@ -333,7 +333,7 @@ const TRCities = [
     latitude: "37.8667",
     longitude: "32.4833",
     population: 2130544,
-    value: "İç Anadolu",
+    value: "Konya",
   },
   {
     id: 43,
@@ -341,7 +341,7 @@ const TRCities = [
     latitude: "39.4167",
     longitude: "29.9833",
     population: 571463,
-    value: "Ege",
+    value: "Kütahya",
   },
   {
     id: 44,
@@ -349,7 +349,7 @@ const TRCities = [
     latitude: "38.3552",
     longitude: "38.3095",
     population: 772904,
-    value: "Doğu Anadolu",
+    value: "Malatya",
   },
   {
     id: 45,
@@ -357,7 +357,7 @@ const TRCities = [
     latitude: "38.6191",
     longitude: "27.4289",
     population: 1380366,
-    value: "Ege",
+    value: "Manisa",
   },
   {
     id: 46,
@@ -365,7 +365,7 @@ const TRCities = [
     latitude: "37.5858",
     longitude: "36.9371",
     population: 1096610,
-    value: "Akdeniz",
+    value: "Kahramanmaraş",
   },
   {
     id: 47,
@@ -373,7 +373,7 @@ const TRCities = [
     latitude: "37.3212",
     longitude: "40.7245",
     population: 796591,
-    value: "Güneydoğu Anadolu",
+    value: "Mardin",
   },
   {
     id: 48,
@@ -381,7 +381,7 @@ const TRCities = [
     latitude: "37.2153",
     longitude: "28.3636",
     population: 908877,
-    value: "Ege",
+    value: "Muğla",
   },
   {
     id: 49,
@@ -389,7 +389,7 @@ const TRCities = [
     latitude: "38.9462",
     longitude: "41.7539",
     population: 408728,
-    value: "Doğu Anadolu",
+    value: "Muş",
   },
   {
     id: 50,
@@ -397,7 +397,7 @@ const TRCities = [
     latitude: "38.6939",
     longitude: "34.6857",
     population: 286767,
-    value: "İç Anadolu",
+    value: "Nevşehir",
   },
   {
     id: 51,
@@ -405,7 +405,7 @@ const TRCities = [
     latitude: "37.9667",
     longitude: "34.6833",
     population: 346114,
-    value: "İç Anadolu",
+    value: "Niğde",
   },
   {
     id: 52,
@@ -413,7 +413,7 @@ const TRCities = [
     latitude: "40.9839",
     longitude: "37.8764",
     population: 728949,
-    value: "Karadeniz",
+    value: "Ordu",
   },
   {
     id: 53,
@@ -421,7 +421,7 @@ const TRCities = [
     latitude: "41.0201",
     longitude: "40.5234",
     population: 328979,
-    value: "Karadeniz",
+    value: "Rize",
   },
   {
     id: 54,
@@ -429,7 +429,7 @@ const TRCities = [
     latitude: "40.6940",
     longitude: "30.4358",
     population: 953181,
-    value: "Marmara",
+    value: "Sakarya",
   },
   {
     id: 55,
@@ -437,7 +437,7 @@ const TRCities = [
     latitude: "41.2928",
     longitude: "36.3313",
     population: 1279884,
-    value: "Karadeniz",
+    value: "Samsun",
   },
   {
     id: 56,
@@ -445,7 +445,7 @@ const TRCities = [
     latitude: "37.9333",
     longitude: "41.9500",
     population: 320351,
-    value: "Güneydoğu Anadolu",
+    value: "Siirt",
   },
   {
     id: 57,
@@ -453,7 +453,7 @@ const TRCities = [
     latitude: "42.0231",
     longitude: "35.1531",
     population: 204133,
-    value: "Karadeniz",
+    value: "Sinop",
   },
   {
     id: 58,
@@ -461,7 +461,7 @@ const TRCities = [
     latitude: "39.7477",
     longitude: "37.0179",
     population: 618617,
-    value: "İç Anadolu",
+    value: "Sivas",
   },
   {
     id: 59,
@@ -469,7 +469,7 @@ const TRCities = [
     latitude: "40.9833",
     longitude: "27.5167",
     population: 937910,
-    value: "Marmara",
+    value: "Tekirdağ",
   },
   {
     id: 60,
@@ -477,7 +477,7 @@ const TRCities = [
     latitude: "40.3167",
     longitude: "36.5500",
     population: 593990,
-    value: "Karadeniz",
+    value: "Tokat",
   },
   {
     id: 61,
@@ -485,7 +485,7 @@ const TRCities = [
     latitude: "41.0015",
     longitude: "39.7178",
     population: 768417,
-    value: "Karadeniz",
+    value: "Trabzon",
   },
   {
     id: 62,
@@ -493,7 +493,7 @@ const TRCities = [
     latitude: "39.3074",
     longitude: "39.4388",
     population: 86076,
-    value: "Doğu Anadolu",
+    value: "Tunceli",
   },
   {
     id: 63,
@@ -501,7 +501,7 @@ const TRCities = [
     latitude: "37.1591",
     longitude: "38.7969",
     population: 1892320,
-    value: "Güneydoğu Anadolu",
+    value: "Şanlıurfa",
   },
   {
     id: 64,
@@ -509,7 +509,7 @@ const TRCities = [
     latitude: "38.6823",
     longitude: "29.4082",
     population: 353048,
-    value: "Ege",
+    value: "Uşak",
   },
   {
     id: 65,
@@ -517,7 +517,7 @@ const TRCities = [
     latitude: "38.4891",
     longitude: "43.4089",
     population: 1096397,
-    value: "Doğu Anadolu",
+    value: "Van",
   },
   {
     id: 66,
@@ -525,7 +525,7 @@ const TRCities = [
     latitude: "39.8181",
     longitude: "34.8147",
     population: 419440,
-    value: "İç Anadolu",
+    value: "Yozgat",
   },
   {
     id: 67,
@@ -533,7 +533,7 @@ const TRCities = [
     latitude: "41.4564",
     longitude: "31.7987",
     population: 595907,
-    value: "Karadeniz",
+    value: "Zonguldak",
   },
   {
     id: 68,
@@ -541,7 +541,7 @@ const TRCities = [
     latitude: "38.3687",
     longitude: "34.0370",
     population: 386514,
-    value: "İç Anadolu",
+    value: "Aksaray",
   },
   {
     id: 69,
@@ -549,7 +549,7 @@ const TRCities = [
     latitude: "40.2552",
     longitude: "40.2249",
     population: 78550,
-    value: "Karadeniz",
+    value: "Bayburt",
   },
   {
     id: 70,
@@ -557,7 +557,7 @@ const TRCities = [
     latitude: "37.1759",
     longitude: "33.2287",
     population: 242196,
-    value: "İç Anadolu",
+    value: "Karaman",
   },
   {
     id: 71,
@@ -565,7 +565,7 @@ const TRCities = [
     latitude: "39.8468",
     longitude: "33.5153",
     population: 270271,
-    value: "İç Anadolu",
+    value: "Kırıkkale",
   },
   {
     id: 72,
@@ -573,7 +573,7 @@ const TRCities = [
     latitude: "37.8812",
     longitude: "41.1351",
     population: 566633,
-    value: "Güneydoğu Anadolu",
+    value: "Batman",
   },
   {
     id: 73,
@@ -581,7 +581,7 @@ const TRCities = [
     latitude: "37.4187",
     longitude: "42.4918",
     population: 490184,
-    value: "Güneydoğu Anadolu",
+    value: "Şırnak",
   },
   {
     id: 74,
@@ -589,7 +589,7 @@ const TRCities = [
     latitude: "41.5811",
     longitude: "32.4610",
     population: 190708,
-    value: "Karadeniz",
+    value: "Bartın",
   },
   {
     id: 75,
@@ -597,7 +597,7 @@ const TRCities = [
     latitude: "41.1105",
     longitude: "42.7022",
     population: 99265,
-    value: "Doğu Anadolu",
+    value: "Ardahan",
   },
   {
     id: 76,
@@ -605,7 +605,7 @@ const TRCities = [
     latitude: "39.8880",
     longitude: "44.0048",
     population: 192435,
-    value: "Doğu Anadolu",
+    value: "Iğdır",
   },
   {
     id: 77,
@@ -613,7 +613,7 @@ const TRCities = [
     latitude: "40.6500",
     longitude: "29.2667",
     population: 233009,
-    value: "Marmara",
+    value: "Yalova",
   },
   {
     id: 78,
@@ -621,7 +621,7 @@ const TRCities = [
     latitude: "41.2061",
     longitude: "32.6204",
     population: 236978,
-    value: "Karadeniz",
+    value: "Karabük",
   },
   {
     id: 79,
@@ -629,7 +629,7 @@ const TRCities = [
     latitude: "36.7184",
     longitude: "37.1212",
     population: 130655,
-    value: "Güneydoğu Anadolu",
+    value: "Kilis",
   },
   {
     id: 80,
@@ -637,7 +637,7 @@ const TRCities = [
     latitude: "37.2130",
     longitude: "36.1763",
     population: 512873,
-    value: "Akdeniz",
+    value: "Osmaniye",
   },
   {
     id: 81,
@@ -645,7 +645,7 @@ const TRCities = [
     latitude: "40.8438",
     longitude: "31.1565",
     population: 360388,
-    value: "Karadeniz",
+    value: "Düzce",
   },
 ];
 

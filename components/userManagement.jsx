@@ -87,7 +87,7 @@ export default function UserManagement({ users }) {
                       <strong>{user.email}</strong> : {t("email")}
                     </h1>
                     <p className="hidden lg:block">{user.name}</p>
-                    <SuperUserValidation />
+
                     <SuperUser />
                   </div>
                 );
@@ -99,25 +99,48 @@ export default function UserManagement({ users }) {
             <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
               {profiles
                 ? profiles.map((user, i) => {
-                    return (
-                      <div
-                        key={i}
-                        className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
-                      >
-                        <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
-                          <Users weight="fill" size={40} />
+                    if (user.role !== "customer") {
+                      return (
+                        <div
+                          key={i}
+                          className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                        >
+                          <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
+                            <Users weight="fill" size={40} />
+                          </div>
+                          <h1 className=" text-sm lg:text-xl">{user.email}</h1>
+                          <p className="hidden lg:block">{user.name}</p>
+                          <SuperUser user={user} />
                         </div>
-                        <h1 className=" text-sm lg:text-xl">{user.email}</h1>
-                        <p className="hidden lg:block">{user.name}</p>
-                        <SuperUser user={user} />
-                      </div>
-                    );
+                      );
+                    }
                   })
                 : null}
             </div>
           </Tabs.Panel>
           <Tabs.Panel value="settings" pt="xs">
-            <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col"></div>
+            <div className="flex space-y-2 h-rem30 overflow-y-scroll px-4 w-full h-full flex-col">
+              {profiles
+                ? profiles.map((user, i) => {
+                    if (user.role === "customer") {
+                      return (
+                        <div
+                          key={i}
+                          className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                        >
+                          <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
+                            <Users weight="fill" size={40} />
+                          </div>
+                          <h1 className=" text-sm lg:text-xl">{user.email}</h1>
+                          <p className="hidden lg:block">{user.name}</p>
+                          <SuperUserValidation />
+                          <SuperUser user={user} />
+                        </div>
+                      );
+                    }
+                  })
+                : null}
+            </div>
           </Tabs.Panel>
         </Tabs>
       </div>

@@ -106,8 +106,7 @@ export default function AdminPage({
     const { data: hotels, error } = await supabase
       .from("Hotels")
       .select()
-      .order("id", { ascending: false})
-      .eq("owner", user.id);
+      .order("id", { ascending: false });
     if (error) throw error;
 
     setHotels(hotels);

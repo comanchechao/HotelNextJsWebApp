@@ -50,7 +50,11 @@ export default function WebsiteInfo({ cities }) {
     <div className="flex flex-col items-center justify-center  w-full h-full  ">
       <div className="py-20 overflow-y-scroll w-full h-full   px-14 bg-white flex flex-col items-center justify-center">
         <h1 className="border-b-4 pb-4 border-mainBlue my-3">افزودن شهر</h1>
-        <DisplayCities className="w-full h-full z-10" LatLng={[lat, lng]} cities={cities} />
+        <DisplayCities
+          className="w-full h-full z-10"
+          LatLng={[lat, lng]}
+          cities={cities}
+        />
         <div className="flex">
           <Select
             label="pick a country"
@@ -90,8 +94,6 @@ export default function WebsiteInfo({ cities }) {
             <Select
               value={value}
               onChange={setValue}
-              onSearchChange={onSearchChange}
-              searchValue={searchValue}
               label="یک شهر رو انتخاب کنید"
               placeholder="انتخاب شهر"
               searchable
