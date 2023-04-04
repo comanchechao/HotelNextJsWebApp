@@ -11,10 +11,10 @@ export default function DisplayCities({ LatLng, cities }) {
   return (
     <MapContainer
       id="map"
-      className="w-96 h-96"
+      className="w-full h-full"
       center={center}
       zoom={4}
-      style={{ width: "600px", height: "500px" }}
+      style={{ width: "600px", height: "1000px" }}
       scrollWheelZoom={false}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

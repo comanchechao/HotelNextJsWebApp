@@ -108,7 +108,8 @@ export default function HotelList({
       .from("Hotels")
       .select(
         "id , residenceType , country , features , city , trTitle , stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
-      );
+      )
+      .order("id", { ascending: false });
     if (lng === "fa") {
       if (selectedCity !== "") {
         const filteredData = data.filter((obj) => {

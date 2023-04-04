@@ -2,6 +2,7 @@ import { Loader, Select } from "@mantine/core";
 import dynamic from "next/dynamic.js";
 import { useEffect, useState } from "react";
 import IRCities from "../assets/cities/ir";
+import TRCities from "../assets/cities/tr";
 import { supabase } from "../lib/supabaseClient";
 import { Suspense } from "react";
 
@@ -10,7 +11,7 @@ export default function WebsiteInfo({ cities }) {
     ssr: false,
     suspense: true,
   });
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState("iran");
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState(null);
   const [lat, setLat] = useState(null);
@@ -22,6 +23,15 @@ export default function WebsiteInfo({ cities }) {
       if (city.value === value) {
         setLat(city.lat);
         setLng(city.lng);
+      }
+    });
+  }, [value]);
+
+  useEffect(() => {
+    TRCities.forEach((city) => {
+      if (city.value === value) {
+        setLat(city.latitude);
+        setLng(city.longitude);
       }
     });
   }, [value]);
@@ -40,10 +50,10 @@ export default function WebsiteInfo({ cities }) {
     <div className="flex flex-col items-center justify-center  w-full h-full  ">
       <div className="py-20 overflow-y-scroll w-full h-full   px-14 bg-white flex flex-col items-center justify-center">
         <h1 className="border-b-4 pb-4 border-mainBlue my-3">افزودن شهر</h1>
-        <DisplayCities className="z-10" LatLng={[lat, lng]} cities={cities} />
+        <DisplayCities className="w-full h-full z-10" LatLng={[lat, lng]} cities={cities} />
         <div className="flex">
           <Select
-            label="Your favorite framework/library"
+            label="pick a country"
             placeholder="Pick one"
             onChange={setCountry}
             value={country}
@@ -54,27 +64,51 @@ export default function WebsiteInfo({ cities }) {
           />
         </div>
         <div className="flex justify-center items-center w-full h-full">
-          <Select
-            value={value}
-            onChange={setValue}
-            onSearchChange={onSearchChange}
-            searchValue={searchValue}
-            label="یک شهر رو انتخاب کنید"
-            placeholder="انتخاب شهر"
-            searchable
-            nothingFound="No options"
-            dropdownPosition="bottom"
-            data={IRCities}
-            transitionDuration={150}
-            transition="pop-top-left"
-            transitionTimingFunction="ease"
-            variant="default"
-            className="text-2xl z-50 mx-6 text-right flex flex-col items-end"
-            radius="md"
-            withAsterisk
-            clearable
-            size="md"
-          />
+          {country === "iran" ? (
+            <Select
+              value={value}
+              onChange={setValue}
+              onSearchChange={onSearchChange}
+              searchValue={searchValue}
+              label="یک شهر رو انتخاب کنید"
+              placeholder="انتخاب شهر"
+              searchable
+              nothingFound="No options"
+              dropdownPosition="bottom"
+              data={IRCities}
+              transitionDuration={150}
+              transition="pop-top-left"
+              transitionTimingFunction="ease"
+              variant="default"
+              className="text-2xl z-50 mx-6 text-right flex flex-col items-end"
+              radius="md"
+              withAsterisk
+              clearable
+              size="md"
+            />
+          ) : country === "turkey" ? (
+            <Select
+              value={value}
+              onChange={setValue}
+              onSearchChange={onSearchChange}
+              searchValue={searchValue}
+              label="یک شهر رو انتخاب کنید"
+              placeholder="انتخاب شهر"
+              searchable
+              nothingFound="No options"
+              dropdownPosition="bottom"
+              data={TRCities}
+              transitionDuration={150}
+              transition="pop-top-left"
+              transitionTimingFunction="ease"
+              variant="default"
+              className="text-2xl z-50 mx-6 text-right flex flex-col items-end"
+              radius="md"
+              withAsterisk
+              clearable
+              size="md"
+            />
+          ) : null}
         </div>
         <div className="flex space-y-4 flex-col items-center w-full justify-center">
           <div className="flex w-52 justfy-center border-b-4 border-mainBlue">
