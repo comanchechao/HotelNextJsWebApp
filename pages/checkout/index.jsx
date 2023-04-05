@@ -142,11 +142,8 @@ export default function Checkout(props) {
           </button>
           <h3 className="lg:text-right text-center my-3">
             {t("confirmRules")}
-            <Link className=" underline text-Indigo-500 mx-1" href="/">
-              {t("hotelRules")}
-            </Link>
-            و
-            <Link className=" underline text-Indigo-500 mx-1" href="/">
+
+            <Link className=" underline text-Indigo-500 mx-1" href="/rules">
               {t("websiteRules")}
             </Link>
             {t("ifYouClick")}
