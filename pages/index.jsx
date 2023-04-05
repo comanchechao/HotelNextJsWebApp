@@ -3,6 +3,7 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 
 import localeData from "dayjs/plugin/localeData";
 import utc from "dayjs/plugin/utc";
+import "dayjs/locale/tr";
 import timezone from "dayjs/plugin/timezone";
 import dayjs from "dayjs";
 import jalaliday from "jalaliday";
@@ -44,6 +45,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { reservationActions } from "../store/reservation";
 import Head from "next/head";
 import Navbar from "../components/Navbar";
+import React from "react";
+const DatePicker = dynamic(() => import("../components/calendar"), {
+  ssr: false,
+  suspense: true,
+});
 
 export async function getServerSideProps(context) {
   // Fetch data from the database
@@ -305,52 +311,58 @@ export default function Home(props) {
                 searchable
                 size="md"
               />
-              <DatePickerInput
-                variant="default"
-                locale={faLocale}
-                timeZone="iran/tehran"
-                numberOfColumns={1}
-                oriantation
-                type="range"
-                className={`${
-                  alignLeft === true
-                    ? "text-xl   text-right flex flex-col items-center lg:items-end"
-                    : "text-xl   text-right flex flex-col items-center lg:items-start"
-                }`}
-                dropdownType="modal"
-                value={dates}
-                dropdownPosition="top-start"
-                placeholder={t("inDate")}
-                label={t("inDate")}
-                minDate={dayjs().add(11, "day").toDate()}
-                withAsterisk
-                defaultValue={dayjs().add(11, "day").toDate()}
-                onChange={(e) => {
-                  setDates(e);
-                  dispatch(
-                    reservationActions.setEnterting(
-                      dayjs(e[0], { jalali: true }).locale("fa")
-                    )
-                  );
-                  dispatch(
-                    reservationActions.setExiting(
-                      dayjs(e[1], { jalali: true }).locale("fa")
-                    )
-                  );
-                }}
-                radius="md"
-                dayClassName={(date, modifiers) =>
-                  cx({
-                    [classes.firstInRange]: modifiers.outside,
-                  })
-                }
-                size="md"
-                styles={(theme) => ({
-                  input: {
-                    marginRight: rem(112),
-                  },
-                })}
-              />
+              {lng === "fa" ? (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <DatePicker />
+                </Suspense>
+              ) : null}
+              {lng === "tr" ? (
+                <DatePickerInput
+                  variant="default"
+                  locale="tr"
+                  numberOfColumns={1}
+                  oriantation
+                  type="range"
+                  className={`${
+                    alignLeft === true
+                      ? "text-xl   text-right flex flex-col items-center lg:items-end"
+                      : "text-xl   text-right flex flex-col items-center lg:items-start"
+                  }`}
+                  dropdownType="modal"
+                  value={dates}
+                  dropdownPosition="top-start"
+                  placeholder={t("inDate")}
+                  label={t("inDate")}
+                  minDate={dayjs().toDate()}
+                  withAsterisk
+                  defaultValue={dayjs().toDate()}
+                  onChange={(e) => {
+                    setDates(e);
+                    dispatch(
+                      reservationActions.setEnterting(
+                        dayjs(e[0], { jalali: true }).locale("fa")
+                      )
+                    );
+                    dispatch(
+                      reservationActions.setExiting(
+                        dayjs(e[1], { jalali: true }).locale("fa")
+                      )
+                    );
+                  }}
+                  radius="md"
+                  dayClassName={(date, modifiers) =>
+                    cx({
+                      [classes.firstInRange]: modifiers.outside,
+                    })
+                  }
+                  size="md"
+                  styles={(theme) => ({
+                    input: {
+                      marginRight: rem(112),
+                    },
+                  })}
+                />
+              ) : null}
               {/* <DatePicker
                 locale="fa"
                 dropdownPosition="top-start"

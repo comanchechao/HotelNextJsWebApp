@@ -19,7 +19,6 @@ import dynamic from "next/dynamic.js";
 import { supabase } from "../lib/supabaseClient";
 import { useSelector, useDispatch } from "react-redux";
 import Compressor from "compressorjs";
-
 import { useTranslation } from "next-i18next";
 import { X, Buildings } from "phosphor-react";
 // const LocationsMap = dynamic(() => import("./map"), {
@@ -106,6 +105,8 @@ export default function AddHotel({
         meal: meal,
         copacity: 1,
         quantity: 1,
+        startOfAvalibity: null,
+        endOfAvalibility: null,
       })
     );
     var container = document.getElementById("RoomDiv");

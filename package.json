@@ -48,7 +48,8 @@
     "react-i18next": "^12.1.4",
     "react-leaflet": "^4.2.0",
     "react-redux": "^8.0.5",
-    "swr": "^2.0.4"
+    "swr": "^2.0.4",
+    "zaman": "^2.0.3"
   },
   "devDependencies": {
     "@types/node": "18.14.6",
