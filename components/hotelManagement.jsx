@@ -1,7 +1,7 @@
 import { IconBuildingSkyscraper, IconUser, IconUsers } from "@tabler/icons";
-import { Tabs } from "@mantine/core";
+import { Skeleton, Tabs } from "@mantine/core";
 import { MagnifyingGlass } from "phosphor-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import AdminHotelCard from "./adminHotelCard";
@@ -79,17 +79,21 @@ export default function HotelManagement({
               className="flex w-full  overflow-y-scroll  h-rem28
                space-y-7  flex-col"
             >
-              {initialHotels.map((hotel, i) => {
-                return (
-                  <AdminHotelCard
-                    user={user}
-                    featuresData={features}
-                    cities={cities}
-                    key={hotel.id}
-                    hotel={hotel}
-                  />
-                );
-              })}
+              {initialHotels !== null ? (
+                initialHotels.map((hotel, i) => {
+                  return (
+                    <AdminHotelCard
+                      user={user}
+                      featuresData={features}
+                      cities={cities}
+                      key={hotel.id}
+                      hotel={hotel}
+                    />
+                  );
+                })
+              ) : (
+                <Skeleton height={200} width="88%" />
+              )}
             </div>
           </Tabs.Panel>
 

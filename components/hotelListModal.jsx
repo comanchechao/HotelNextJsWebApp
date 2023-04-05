@@ -13,12 +13,19 @@ import { useTranslation } from "next-i18next";
 import { useMediaQuery } from "@mantine/hooks";
 import { reservationActions } from "../store/reservation";
 
-export default function HotelListModal({ features, residenceTypes, cities }) {
+export default function HotelListModal({
+  features,
+  residenceTypes,
+  cities,
+  countries,
+}) {
   let filterFeatures = useSelector((state) => state.filter.features);
   let filterCities = useSelector((state) => state.reserve.city);
   let filterResidenceTypes = useSelector(
     (state) => state.filter.residenceTypes
   );
+  let filterCountries = useSelector((state) => state.filter.country);
+
   let stars = useSelector((state) => state.filter.stars);
   const [checked, setChecked] = useState(true);
   const theme = useMantineTheme();
@@ -27,9 +34,15 @@ export default function HotelListModal({ features, residenceTypes, cities }) {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   const [tempCity, setTempCity] = useState(false);
+  const [tempCountry, setTempCountry] = useState(false);
+  const [tempFeatures, setTempFeatures] = useState([]);
+  const [tempResidence, setTempResidence] = useState(false);
 
   async function submitFilters() {
+    dispatch(filterActions.setCountry(tempCountry));
+    dispatch(filterActions.setFeatures(tempFeatures));
     dispatch(reservationActions.setCity(tempCity));
+    dispatch(filterActions.setResidenceTypes(tempResidence));
     setOpened(false);
   }
 
@@ -63,6 +76,67 @@ export default function HotelListModal({ features, residenceTypes, cities }) {
         onClose={() => setOpened(false)}
       >
         <div className="h-full w-full bg-mainWhite p-2">
+          <Accordion
+            className="w-full  "
+            variant="separated"
+            chevronPosition="left"
+            defaultValue="customization"
+          >
+            <Accordion.Item value="customization">
+              <Accordion.Control>
+                <span
+                  className={`${
+                    alignLeft === true
+                      ? "text-gray-900 flex justify-end text-md text-right"
+                      : "text-gray-900 flex flex-row-reverse justify-end text-md text-right"
+                  }`}
+                >
+                  {t("country")}
+                </span>
+              </Accordion.Control>
+              <Accordion.Panel>
+                <div
+                  className={`${
+                    alignLeft === true
+                      ? "flex text-right   items-end text-xl flex-col justify-center space-y-2"
+                      : "flex text-left   items-start text-xl flex-col justify-center space-y-2"
+                  }`}
+                >
+                  {alignLeft
+                    ? countries.map((country, i) => {
+                        return (
+                          <Checkbox
+                            onClick={() => {
+                              setTempCountry(country.title);
+                            }}
+                            key={i}
+                            labelPosition="left"
+                            color="yellow"
+                            radius="xl"
+                            value="react"
+                            label={country.title}
+                          />
+                        );
+                      })
+                    : countries.map((country, i) => {
+                        return (
+                          <Checkbox
+                            onClick={() => {
+                              setTempCountry(country.title);
+                            }}
+                            key={i}
+                            labelPosition="left"
+                            color="yellow"
+                            radius="xl"
+                            value="react"
+                            label={country.trTitle}
+                          />
+                        );
+                      })}
+                </div>
+              </Accordion.Panel>
+            </Accordion.Item>
+          </Accordion>
           <Accordion
             className="w-full  "
             variant=" "
@@ -249,17 +323,17 @@ export default function HotelListModal({ features, residenceTypes, cities }) {
                             value="react"
                             label={feature.title}
                             onClick={() => {
-                              dispatch(
-                                filterActions.setFeatures(feature.title)
-                              );
+                              setTempFeatures(feature.title);
                             }}
-                            checked={filterFeatures.includes(feature.title)}
                           />
                         );
                       })
                     : features.map((feature, i) => {
                         return (
                           <Checkbox
+                            onClick={() => {
+                              setTempFeatures(feature.title);
+                            }}
                             key={i}
                             labelPosition="left"
                             color="yellow"
@@ -304,15 +378,8 @@ export default function HotelListModal({ features, residenceTypes, cities }) {
                         return (
                           <Checkbox
                             onClick={() => {
-                              dispatch(
-                                filterActions.setResidenceTypes(
-                                  residenceType.title
-                                )
-                              );
+                              setTempResidence(residenceType.title);
                             }}
-                            checked={filterResidenceTypes.includes(
-                              residenceType.title
-                            )}
                             key={i}
                             labelPosition="left"
                             color="yellow"
@@ -325,6 +392,9 @@ export default function HotelListModal({ features, residenceTypes, cities }) {
                     : residenceTypes.map((residenceType, i) => {
                         return (
                           <Checkbox
+                            onClick={() => {
+                              setTempResidence(residenceType.title);
+                            }}
                             key={i}
                             labelPosition="left"
                             color="yellow"

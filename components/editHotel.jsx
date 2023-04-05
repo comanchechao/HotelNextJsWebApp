@@ -38,9 +38,11 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
   const [secondImage, setSecondImage] = useState("");
   const [thirdImage, setThirdImage] = useState("");
   const [fourthImage, setFourthImage] = useState("");
-  const [fifthImage, setFifthImage] = useState("");
   const [features, setFeatures] = useState([]);
-  const [avragePrice, setAvragePrice] = useState(0);
+  const [avragePriceRial, setAvragePriceRial] = useState(0);
+  const [hotelRules, setHotelRules] = useState("");
+
+  const [avragePriceL, setAvragePriceL] = useState(0);
   const [location, setLocation] = useState({});
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -170,7 +172,11 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
     if (thirdImage) updates.thirdImage = thirdImage;
     if (fourthImage) updates.fourthImage = fourthImage;
     if (features !== []) updates.features = features;
-    if (avragePrice) updates.prices = avragePrice;
+    if (avragePriceL) updates.pricesL = avragePriceL;
+    if (avragePriceRial) updates.prices = avragePriceRial;
+    if (aboutHotel) updates.hotelAbout = aboutHotel;
+    if (hotelRules) updates.hotelRules = hotelRules;
+
     if (rooms) updates.rooms = rooms;
     if (getlat) updates.locationLat = getlat;
     if (getLng) updates.locationLng = getLng;
@@ -564,12 +570,22 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
               <input
                 required
                 onChange={(e) => {
-                  setAvragePrice(e.target.value);
+                  setAvragePriceRial(e.target.value);
                 }}
                 className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                 type="number"
                 name="price"
                 placeholder={hotel.prices}
+              />{" "}
+              <input
+                required
+                onChange={(e) => {
+                  setAvragePriceL(e.target.value);
+                }}
+                className="py-2 my-3 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
+                type="number"
+                name="price"
+                placeholder={hotel.pricesL}
               />
             </div>{" "}
             <div
@@ -584,7 +600,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
               </h3>
               <textarea
                 onChange={(e) => {
-                  setAboutHotel(e.target.value);
+                  setHotelRules(e.target.value);
                 }}
                 name="about hotel"
                 className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"

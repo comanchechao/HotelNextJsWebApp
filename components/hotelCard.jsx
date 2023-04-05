@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import { useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
 import { Star } from "phosphor-react";
-import { Chip, Loader } from "@mantine/core";
+import { Loader } from "@mantine/core";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
@@ -92,8 +92,11 @@ export default function HotelCard({ hotel }) {
       <div className="w-56 h-full flex flex-col p-4 items-center lg:items-center justify-center space-y-2">
         <h2 className="text-mainPurple   flex items-start justify-center">
           <p className="text-sm font-bold mx-2">{t("currency")}</p>
-
-          <p className="text-2xl "> {hotel.prices}</p>
+          {alignLeft ? (
+            <p className="text-2xl "> {hotel.prices}</p>
+          ) : (
+            <p className="text-2xl "> {hotel.pricesL}</p>
+          )}
         </h2>
         <Link href={"/hotelList/hotelDetail/" + hotel.id}>
           <button

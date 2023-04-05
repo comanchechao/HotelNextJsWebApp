@@ -29,20 +29,7 @@ export default function UserManagement({ users }) {
     <div className="flex w-full h-full lg:h-carousel ">
       <div className="flex w-full space-y-4 flex-col">
         <div class="pt-4 px-2 flex w-full justify-center items-center relative text-black ">
-          <div className="flex flex-reverse w-full items-center space-x-2 justify-center">
-            <button
-              type="submit"
-              className="bg-mainWhite justify-center items-center border-2 h-10 px-3  flex"
-            >
-              <MagnifyingGlass size={20} weight="bold" />
-            </button>
-            <input
-              className="border-2 placeholder-gray-400 text-right transition ease-in duration-300 text-darkPurple w-textArea hover:bg-white   bg-mainWhite font-mainFont h-10 px-5 pr-4 md:pr-16 rounded-sm  text-sm focus:outline-none"
-              type="search"
-              name="search"
-              placeholder="جستجو همکار"
-            />
-          </div>
+          <div className="flex flex-reverse w-full items-center space-x-2 justify-center"></div>
         </div>
         <Tabs color="yellow" variant="pills" defaultValue="gallery">
           <Tabs.List className="px-2" position="center" grow>
@@ -51,21 +38,21 @@ export default function UserManagement({ users }) {
               value="settings"
               icon={<IconUserExclamation size={16} />}
             >
-              در انتظار
+              {t("waiting")}
             </Tabs.Tab>
             <Tabs.Tab
               color="violet"
               value="messages"
               icon={<IconUserCheck size={16} />}
             >
-              تایید شده
+              {t("confirmed")}
             </Tabs.Tab>
             <Tabs.Tab
               color="indigo"
               value="gallery"
               icon={<IconUser size={16} />}
             >
-              همه کاربران
+              {t("allUsers")}
             </Tabs.Tab>
           </Tabs.List>
           <Tabs.Panel value="gallery" pt="xs">

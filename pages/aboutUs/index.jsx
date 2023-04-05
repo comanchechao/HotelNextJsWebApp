@@ -81,7 +81,7 @@ export default function AboutUs({ websiteInfo }) {
           </h4> */}
         </div>
       </div>
-      <Footer />
+      <Footer websiteInfo={websiteInfo} />
     </div>
   );
 }

@@ -55,6 +55,7 @@ export async function getServerSideProps(context) {
   // Fetch data from the database
 
   const { data: cities, error2 } = await supabase.from("cities").select();
+  const { data: websiteInfo } = await supabase.from("websiteInfo").select();
 
   const { data: hotels, error } = await supabase
     .from("Hotels")
@@ -67,6 +68,8 @@ export async function getServerSideProps(context) {
     props: {
       hotels: hotels,
       cities: cities,
+      websiteInfo: websiteInfo,
+
       ...(await serverSideTranslations(context.locale, ["common"])),
     },
   };
@@ -306,7 +309,6 @@ export default function Home(props) {
                 label={t("destination")}
                 variant="default"
                 radius="md"
-                withAsterisk
                 clearable
                 searchable
                 size="md"
@@ -334,7 +336,6 @@ export default function Home(props) {
                   placeholder={t("inDate")}
                   label={t("inDate")}
                   minDate={dayjs().toDate()}
-                  withAsterisk
                   defaultValue={dayjs().toDate()}
                   onChange={(e) => {
                     setDates(e);
@@ -394,7 +395,6 @@ export default function Home(props) {
                     variant="default"
                     radius="md"
                     size="md"
-                    withAsterisk
                     styles={(theme) => ({
                       input: {
                         marginRight: rem(25),
@@ -1037,7 +1037,7 @@ export default function Home(props) {
           </div>
         </div>
 
-        <Footer />
+        <Footer websiteInfo={props.websiteInfo} />
       </div>
     </>
   );

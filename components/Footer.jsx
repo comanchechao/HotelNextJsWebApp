@@ -11,7 +11,8 @@ import { supabase } from "../lib/supabaseClient";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Logo from "../assets/images/LOGO.webp";
-export default function Footer() {
+
+export default function Footer({ websiteInfo }) {
   const [loading, setLoading] = useState(false);
   const [address, setAddress] = useState("");
 
@@ -32,16 +33,10 @@ export default function Footer() {
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
-  useEffect(() => {
-    if (address === "" || phoneNumber === "") {
-      getWebsiteInfo();
-    }
-  }, []);
-
   async function getWebsiteInfo() {
     setLoading(true);
-    const { data } = await supabase.from("websiteInfo").select();
-    data.map((object) => {
+    console.log(websiteInfo);
+    websiteInfo.map((object) => {
       setAddress(object.address);
       setPhoneNumber(object.phoneNumber);
       setTelegram(object.telegram);
@@ -51,6 +46,13 @@ export default function Footer() {
     });
     setLoading(false);
   }
+  useEffect(() => {
+    getWebsiteInfo();
+    console.log(facebook);
+    console.log(address);
+    console.log(phoneNumber);
+  }, []);
+
   return (
     <div className="w-screen h-auto  bg-white drop-shadow-lg lg:px-28 flex flex-col items-center mt-20 -z-50">
       <div

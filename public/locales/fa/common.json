@@ -122,6 +122,9 @@
 
   "hotels": "هتل ها",
   "colleagues": "همکاران",
+  "users": "کاربران",
+  "waiting": " در انتظار",
+  "allUsers": "همه کاربران",
   "city": "شهر",
   "reservations": "رزرو ها",
   "websiteInfo": "اطلاعات سایت",
@@ -233,10 +236,10 @@
 
   "websiteInfo": "تغییر اطلاعات وبسایت",
   "footer": "فوتر",
-  "telegramLink": "لینک تلگرام",
-  "instagramLink": "لینک اینستاگرام",
-  "facebookLink": "لینک فیسبوک",
-  "whatsappLink": "لینک واتسپ",
+  "telegramLink": "یوزرنیم تلگرام",
+  "instagramLink": "یوزرنیم اینستاگرام",
+  "facebookLink": "یوزرنیم فیسبوک",
+  "whatsappLink": "شماره واتسپ",
   "confirmChanges": "تایید تغییرات",
 
   "addHotelSuccess": "هتل با موفقیت اضافه شد",
@@ -275,5 +278,10 @@
   "enterDay": "تاریخ ورود",
   "exitDay": "تاریخ خروج",
 
-  "passport": "شماره پاسپورت"
+  "passport": "شماره پاسپورت",
+
+  "imageReq": "آپلود حداقل دو عکس الزامیست",
+
+  "enterLir": "میانگین قیمت به لیر را وارد کنید",
+  "enterRial": "میانگین قیمت به ریال را وارد کنید"
 }

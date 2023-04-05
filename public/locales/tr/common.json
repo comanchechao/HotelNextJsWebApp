@@ -121,7 +121,11 @@
 
   "hotels": "Oteller",
   "colleagues": "İş arkadaşları",
+  "users": "kullanıcılar",
+  "waiting": " bekleme",
   "city": "Şehir",
+  "allUsers": "Tüm kullanıcılar",
+
   "reservations": "rezervasyonlar",
   "websiteInfo": "Web Sitesi Bilgileri",
   "exit": "çıkış",
@@ -233,9 +237,9 @@
 
   "websiteInfo": "Web sitesi bilgilerini değiştir",
   "footer": "Footer",
-  "telegramLink": "Telegram Bağlantı",
-  "instagramLink": "Instagram Bağlantı",
-  "whatsappLink": "Whatsapp Bağlantı",
+  "telegramLink": "Telegram  ",
+  "instagramLink": "Instagram  ",
+  "whatsappLink": "Whatsapp  ",
   "facebookLink": "Facebook Bağlantı",
   "confirmChanges": "Değişiklikleri onayla",
 
@@ -273,5 +277,7 @@
   "enterDay": "girme günü",
   "exitDay": "çıkış günü",
 
-  "passport": "pasaport numarası"
+  "passport": "pasaport numarası",
+
+  "imageReq": "En az iki resim yüklemeniz gerekiyor"
 }

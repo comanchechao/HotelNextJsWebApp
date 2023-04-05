@@ -123,7 +123,7 @@ export default function AdminPage({
     getHotels();
   }, []);
   const router = useRouter();
-  const [tab, setTab] = useState("hotel");
+  const [tab, setTab] = useState("user");
   const [bg, setBg] = useState("");
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
@@ -176,6 +176,27 @@ export default function AdminPage({
           >
             <div
               onClick={() => {
+                setTab("user");
+              }}
+              className={`${
+                tab === "user"
+                  ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+                  : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
+              }`}
+            >
+              <div
+                className={`${
+                  alignLeft === true
+                    ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
+                    : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
+                }`}
+              >
+                <Users className="mx-2" weight="fill" size={35} />
+                <h1 className="lg:text-xl text-sm  "> {t("users")} </h1>
+              </div>
+            </div>{" "}
+            <div
+              onClick={() => {
                 setTab("hotel");
               }}
               className={`${
@@ -193,27 +214,6 @@ export default function AdminPage({
               >
                 <Buildings className="mx-2" weight="fill" size={35} />
                 <h1 className="lg:text-xl  text-sm  "> {t("hotels")} </h1>
-              </div>
-            </div>
-            <div
-              onClick={() => {
-                setTab("user");
-              }}
-              className={`${
-                tab === "user"
-                  ? "flex cursor-pointer rounded-md  bg-mainBlue ease-in duration-150 transition  text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-                  : "flex cursor-pointer rounded-md  hover:bg-mainBlue ease-in duration-150 transition hover:text-white justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full"
-              }`}
-            >
-              <div
-                className={`${
-                  alignLeft === true
-                    ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
-                    : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
-                }`}
-              >
-                <Users className="mx-2" weight="fill" size={35} />
-                <h1 className="lg:text-xl text-sm  "> {t("colleagues")} </h1>
               </div>
             </div>
             <div

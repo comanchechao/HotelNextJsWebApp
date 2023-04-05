@@ -19,6 +19,8 @@ export async function getServerSideProps({ locale }) {
   const { data: residenceTypes } = await supabase
     .from("residenceTypes")
     .select();
+  const { data: websiteInfo } = await supabase.from("websiteInfo").select();
+
   const { data: cities } = await supabase.from("cities").select();
   const { data: countries } = await supabase.from("countries").select();
 
@@ -26,6 +28,7 @@ export async function getServerSideProps({ locale }) {
     props: {
       cities: cities,
       countries: countries,
+      websiteInfo: websiteInfo,
 
       features: data,
       residenceTypes: residenceTypes,
@@ -39,6 +42,7 @@ export default function HotelList({
   residenceTypes,
   cities,
   countries,
+  websiteInfo,
 }) {
   const [filters, setFilters] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -107,7 +111,7 @@ export default function HotelList({
     const { data, error } = await supabase
       .from("Hotels")
       .select(
-        "id , residenceType , country , features , city , trTitle , stars , title , prices , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
       )
       .order("id", { ascending: false });
     if (lng === "fa") {
@@ -176,7 +180,7 @@ export default function HotelList({
 
   function filter() {
     let filteredArray = initialHotels.filter((obj) =>
-      obj.city.some((hobby) => filterCities.includes(hobby))
+      obj.city((hobby) => filterCities.includes(hobby))
     );
 
     setHotels(filteredArray);
@@ -370,16 +374,13 @@ export default function HotelList({
               }`}
             >
               <div className="lg:h-10 h-auto py-2 lg:py-8 w-full flex lg:flex-nowrap   lg:space-y-0   items-center justify-center space-x-4   ">
-                <h2 className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm hover:bg-darkPurple rounded-md text-xs lg:text-sm">
-                  {t("mRerserve")}{" "}
-                </h2>
                 <h2
                   onClick={() => {
                     setAscention(false);
                     setOrder("stars");
                     orderFetch();
                   }}
-                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-sm"
+                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-mainPurple text-xs lg:text-sm"
                 >
                   {t("mStar")}{" "}
                 </h2>
@@ -389,7 +390,7 @@ export default function HotelList({
                     setOrder("prices");
                     orderFetch();
                   }}
-                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-sm"
+                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-mainPurple text-xs lg:text-sm"
                 >
                   {t("mPrice")}{" "}
                 </h2>
@@ -399,7 +400,7 @@ export default function HotelList({
                     setOrder("prices");
                     orderFetch();
                   }}
-                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-darkPurple text-xs lg:text-sm"
+                  className="text-gray-600 cursor-pointer flex items-center transition   ease-in duration-100 border-2 border-mainPurple hover:text-mainBlue px-2 lg:px-4 py-2 bg-white drop-shadow-sm rounded-md hover:bg-mainPurple text-xs lg:text-sm"
                 >
                   {t("lPrice")}{" "}
                 </h2>
@@ -462,7 +463,7 @@ export default function HotelList({
           </div>
         </div>
 
-        <Footer />
+        <Footer websiteInfo={websiteInfo} />
       </div>
     </>
   );

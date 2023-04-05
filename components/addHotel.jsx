@@ -42,11 +42,14 @@ export default function AddHotel({
   const [fourthImage, setFourthImage] = useState("");
   const [fifthImage, setFifthImage] = useState("");
   const [features, setFeatures] = useState([]);
-  const [avragePrice, setAvragePrice] = useState(0);
+  const [avragePriceRial, setAvragePriceRial] = useState(0);
+  const [avragePriceL, setAvragePriceL] = useState(0);
+
   const [location, setLocation] = useState({});
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
+  const [residenceType, setResidenceType] = useState("");
 
   const [get, setGet] = useState(false);
   const [aboutHotel, setAboutHotel] = useState("");
@@ -180,9 +183,12 @@ export default function AddHotel({
       thirdImage: thirdImage,
       fourthImage: fourthImage,
       features: features,
-      prices: avragePrice,
+      prices: avragePriceRial,
+      pricesL: avragePriceL,
+
       stars: value,
       rooms: rooms,
+      residenceType: residenceType,
       hotelAbout: aboutHotel,
       locationLat: getlat,
       locationLng: getLng,
@@ -201,9 +207,9 @@ export default function AddHotel({
         lng: lng3,
       },
     });
-    setAlert(true);
+    setAlert2(true);
     setTimeout(() => {
-      setAlert(false);
+      setAlert2(false);
     }, 2000);
     if (error) throw error;
   }
@@ -520,7 +526,8 @@ export default function AddHotel({
               <div></div>
             )}
             <div className="flex justify-around space-x-1 lg:space-x-4 lg:px-0 px-4 h-28 lg:h-rem22 ">
-              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+              <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
+                <h2 className="text-xl font-bold">(4)</h2>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="fourthImage">
                     {uploading ? (
@@ -540,7 +547,8 @@ export default function AddHotel({
                 </div>
               </div>
 
-              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+              <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
+                <h2 className="text-xl font-bold">(3)</h2>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="thirdImage">
                     {uploading ? (
@@ -559,7 +567,9 @@ export default function AddHotel({
                   />
                 </div>
               </div>
-              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+              <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
+                {" "}
+                <h2 className="text-xl font-bold">(2)</h2>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="secondImage">
                     {uploading ? (
@@ -578,7 +588,8 @@ export default function AddHotel({
                   />
                 </div>
               </div>
-              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+              <div className="h-full w-full flex items-center justify-center space-y-2   cursor-pointer transition ease-in duration-300 flex-col  ">
+                <h2 className="text-xl font-bold">(1)</h2>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="firstImage">
                     {uploading ? (
@@ -598,6 +609,24 @@ export default function AddHotel({
                 </div>
               </div>
             </div>
+            <Notification
+              transition="fade"
+              transitionDuration={600}
+              transitionTimingFunction="ease"
+              color="green"
+              withCloseButton
+              variant="outline"
+            >
+              <h1
+                className={`${
+                  alignLeft === true
+                    ? "text-2xl text-right"
+                    : "text-2xl text-left"
+                }`}
+              >
+                {t("imageReq")}
+              </h1>
+            </Notification>
             <div
               className={`${
                 alignLeft === true
@@ -728,6 +757,8 @@ export default function AddHotel({
                 size="md"
                 required
                 searchable
+                value={residenceType}
+                onChange={setResidenceType}
                 className="text-right"
                 data={residenceTypesName}
               />
@@ -775,12 +806,22 @@ export default function AddHotel({
               <input
                 required
                 onChange={(e) => {
-                  setAvragePrice(e.target.value);
+                  setAvragePriceRial(e.target.value);
                 }}
                 className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                 type="number"
                 name="price"
-                placeholder={t("enterPrice")}
+                placeholder={t("enterRial")}
+              />{" "}
+              <input
+                required
+                onChange={(e) => {
+                  setAvragePriceL(e.target.value);
+                }}
+                className="py-2 my-3 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
+                type="number"
+                name="price"
+                placeholder={t("enterLir")}
               />
             </div>{" "}
             <div

@@ -15,6 +15,8 @@ import {
   rem,
   useMantineTheme,
 } from "@mantine/core";
+import { Suspense } from "react";
+
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons";
 import { DatePickerInput } from "@mantine/dates";
 import { useMediaQuery } from "@mantine/hooks";
@@ -126,7 +128,10 @@ export const getStaticProps = async (context) => {
     },
   };
 };
-
+const DatePicker = dynamic(() => import("../../../components/calendar"), {
+  ssr: false,
+  suspense: true,
+});
 const DynamicMap = dynamic(
   () => import("../../../components/mapWithLocation"),
   {
@@ -382,19 +387,18 @@ export default function HotelDetailPage({ hotel }) {
             {loading ? (
               <div className="h-full my-8 w-full flex items-center justify-center space-x-5">
                 <Skeleton height={300} width={"100%"} />{" "}
-                <Skeleton height={300} width={"100%"} />{" "}
               </div>
             ) : (
               <div className="flex   my-4 items-center justify-between space-x-6 h-rem22 w-full       ">
                 <div className="h-rem22     w-full grid  justify-center items-center   cursor-pointer  rounded-md">
                   <Carousel
-                    slideSize="50%"
+                    slideSize="100%"
                     breakpoints={[
                       { maxWidth: "sm", slideSize: "100%", slideGap: 2 },
                     ]}
                     slideGap="xs"
                     align="start"
-                    slidesToScroll={mobile ? 1 : 2}
+                    slidesToScroll={mobile ? 1 : 1}
                     nextControlIcon={<IconArrowRight size={16} />}
                     previousControlIcon={<IconArrowLeft size={16} />}
                     loop
@@ -479,50 +483,57 @@ export default function HotelDetailPage({ hotel }) {
                   ref={myDivRef}
                   className=" flex   p-4 bg-white   flex-col items-center w-68  h-72 mt-10  rounded-md border "
                 >
-                  <DatePickerInput
-                    locale={faLocale}
-                    timeZone="iran/tehran"
-                    numberOfColumns={1}
-                    oriantation
-                    type="range"
-                    className={`${
-                      alignLeft === true
-                        ? "text-3xl text-right  flex flex-col  items-end"
-                        : "text-3xl text-right  flex flex-col  items-start"
-                    }`}
-                    dropdownType="modal"
-                    value={dates}
-                    dropdownPosition="top-start"
-                    placeholder={[enterDate, exitDate]}
-                    label={t("inDate")}
-                    minDate={dayjs().add(11, "day").toDate()}
-                    withAsterisk
-                    onChange={(e) => {
-                      setDates(e);
-                      dispatch(
-                        reservationActions.setEnterting(
-                          dayjs(e[0]).locale("fa").format("dddd, D MMMM YYYY")
-                        )
-                      );
-                      dispatch(
-                        reservationActions.setExiting(
-                          dayjs(e[1]).locale("fa").format("dddd, D MMMM YYYY")
-                        )
-                      );
-                    }}
-                    radius="md"
-                    dayClassName={(date, modifiers) =>
-                      cx({
-                        [classes.firstInRange]: modifiers.outside,
-                      })
-                    }
-                    styles={(theme) => ({
-                      input: {
-                        width: rem(240),
-                      },
-                    })}
-                    size="md"
-                  />
+                  {lng === "fa" ? (
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <DatePicker />
+                    </Suspense>
+                  ) : null}
+                  {lng === "tr" ? (
+                    <DatePickerInput
+                      variant="default"
+                      locale="tr"
+                      numberOfColumns={1}
+                      oriantation
+                      type="range"
+                      className={`${
+                        alignLeft === true
+                          ? "text-xl   text-right flex flex-col items-center lg:items-end"
+                          : "text-xl   text-right flex flex-col items-center lg:items-start"
+                      }`}
+                      dropdownType="modal"
+                      value={dates}
+                      dropdownPosition="top-start"
+                      placeholder={t("inDate")}
+                      label={t("inDate")}
+                      minDate={dayjs().toDate()}
+                      defaultValue={dayjs().toDate()}
+                      onChange={(e) => {
+                        setDates(e);
+                        dispatch(
+                          reservationActions.setEnterting(
+                            dayjs(e[0], { jalali: true }).locale("fa")
+                          )
+                        );
+                        dispatch(
+                          reservationActions.setExiting(
+                            dayjs(e[1], { jalali: true }).locale("fa")
+                          )
+                        );
+                      }}
+                      radius="md"
+                      dayClassName={(date, modifiers) =>
+                        cx({
+                          [classes.firstInRange]: modifiers.outside,
+                        })
+                      }
+                      size="md"
+                      styles={(theme) => ({
+                        input: {
+                          marginRight: rem(112),
+                        },
+                      })}
+                    />
+                  ) : null}
                   <Popover width={300} position="bottom" withArrow shadow="md">
                     <Popover.Target>
                       <TextInput
@@ -656,6 +667,16 @@ export default function HotelDetailPage({ hotel }) {
                           <IconWashMachine size={25} />
                         </h2> */}
                         <h2 className="text-gray-900">{feature}</h2>
+                      </div>
+                    );
+                  })}
+                  {hotel.features.map((feature, i) => {
+                    return (
+                      <div key={i} className="flex px-3  justify-end items-end">
+                        {/* <h2>
+                          <IconWashMachine size={25} />
+                        </h2> */}
+                        <h2 className="text-gray-900">{feature.trTitle}</h2>
                       </div>
                     );
                   })}

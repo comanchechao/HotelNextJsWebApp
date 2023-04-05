@@ -9,15 +9,16 @@ import { useState, useEffect } from "react";
 import { Phone, MapPin, Envelope, Signpost } from "phosphor-react";
 export async function getServerSideProps({ locale }) {
   // Fetch data from the database
-
+  const { data: websiteInfo } = await supabase.from("websiteInfo").select();
   return {
     props: {
+      websiteInfo: websiteInfo,
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
 
-export default function ContactUs() {
+export default function ContactUs({ websiteInfo }) {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -31,8 +32,7 @@ export default function ContactUs() {
 
   async function getWebsiteInfo() {
     setLoading(true);
-    const { data } = await supabase.from("websiteInfo").select();
-    data.map((object) => {
+    websiteInfo.map((object) => {
       setEmail(object.email);
       setAddress(object.address);
       setPhoneNumber(object.phoneNumber);
@@ -112,7 +112,7 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer websiteInfo={websiteInfo} />
     </div>
   );
 }
