@@ -81,13 +81,13 @@ export default function Home(props) {
   const faLocale = {
     name: "fa",
     weekdays: [
-      "یک‌شنبه",
-      "دوشنبه",
-      "سه‌شنبه",
       "چهارشنبه",
       "پنج‌شنبه",
       "جمعه",
       "شنبه",
+      "یک‌شنبه",
+      "دوشنبه",
+      "سه‌شنبه",
     ],
     weekStart: 1,
     months: [
@@ -120,19 +120,22 @@ export default function Home(props) {
       yy: "%d سال",
     },
     formats: {
-      L: "DD/MM/YYYY",
+      LT: "HH:mm",
       LTS: "HH:mm:ss",
-      LLLL: "dddd, D MMMM YYYY HH:mm",
-      LLL: "D MMMM YYYY HH:mm",
+      L: "jYYYY/jMM/jDD",
+      LL: "jD jMMMM jYYYY",
+      LLL: "jD jMMMM jYYYY HH:mm",
+      LLLL: "dddd، jD jMMMM jYYYY HH:mm",
     },
   };
   // You need to extend the custom locale and localeData
   dayjs.extend(jalaliday);
-  dayjs.extend(customParseFormat);
-  dayjs.extend(localeData);
+  // dayjs.calendar("jalali").locale("fa");
+  console.log(jalaliday);
+  // dayjs.extend(customParseFormat);
+  // dayjs.extend(localeData);
 
   // Set the locale to your custom locale
-  dayjs.localeData("fa", faLocale);
   // dayjs.extend(localeData);
 
   // Set the locale to your custom locale
@@ -326,12 +329,12 @@ export default function Home(props) {
                   setDates(e);
                   dispatch(
                     reservationActions.setEnterting(
-                      dayjs(e[0]).locale("fa").format("dddd, D MMMM YYYY")
+                      dayjs(e[0], { jalali: true }).locale("fa")
                     )
                   );
                   dispatch(
                     reservationActions.setExiting(
-                      dayjs(e[1]).locale("fa").format("dddd, D MMMM YYYY")
+                      dayjs(e[1], { jalali: true }).locale("fa")
                     )
                   );
                 }}
