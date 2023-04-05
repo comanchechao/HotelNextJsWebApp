@@ -101,7 +101,7 @@ export default function Footer() {
             </Link> */}{" "}
             <Link
               className="transition text-lg ease-in duration-200 hover:text-mainBlue"
-              href="/"
+              href="/rules"
             >
               {t("rules")}
             </Link>
