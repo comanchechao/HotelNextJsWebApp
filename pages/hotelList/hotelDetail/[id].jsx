@@ -128,10 +128,7 @@ export const getStaticProps = async (context) => {
     },
   };
 };
-const DatePicker = dynamic(() => import("../../../components/calendar"), {
-  ssr: false,
-  suspense: true,
-});
+
 const DynamicMap = dynamic(
   () => import("../../../components/mapWithLocation"),
   {
@@ -536,10 +533,6 @@ export default function HotelDetailPage({ hotel }) {
                       })}
                       size="md"
                     />
-                  ) : lng === "fa" ? (
-                    <Suspense fallback={<div>Loading...</div>}>
-                      <DatePicker />
-                    </Suspense>
                   ) : null}
 
                   <Popover width={300} position="bottom" withArrow shadow="md">
