@@ -138,7 +138,10 @@ const DynamicMap = dynamic(
     ssr: false,
   }
 );
-
+const DatePicker = dynamic(() => import("../../../components/calendar"), {
+  ssr: false,
+  suspense: true,
+});
 export default function HotelDetailPage({ hotel }) {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
@@ -511,12 +514,12 @@ export default function HotelDetailPage({ hotel }) {
                         setDates(e);
                         dispatch(
                           reservationActions.setEnterting(
-                            dayjs(e[0], { jalali: true }).locale("fa")
+                            dayjs(e[0]).locale("fa").format("dddd, D MMMM YYYY")
                           )
                         );
                         dispatch(
                           reservationActions.setExiting(
-                            dayjs(e[1], { jalali: true }).locale("fa")
+                            dayjs(e[1]).locale("fa").format("dddd, D MMMM YYYY")
                           )
                         );
                       }}
@@ -526,14 +529,19 @@ export default function HotelDetailPage({ hotel }) {
                           [classes.firstInRange]: modifiers.outside,
                         })
                       }
-                      size="md"
                       styles={(theme) => ({
                         input: {
-                          marginRight: rem(112),
+                          width: rem(240),
                         },
                       })}
+                      size="md"
                     />
+                  ) : lng === "fa" ? (
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <DatePicker />
+                    </Suspense>
                   ) : null}
+
                   <Popover width={300} position="bottom" withArrow shadow="md">
                     <Popover.Target>
                       <TextInput
