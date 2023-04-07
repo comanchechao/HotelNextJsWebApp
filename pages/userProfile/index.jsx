@@ -29,6 +29,7 @@ export async function getServerSideProps({ req, locale }) {
   });
 
   const { data: user, error } = await supabase.auth.getUser(accessToken);
+  const { data: websiteInfo } = await supabase.from("websiteInfo").select();
 
   const { data: reservations, error2 } = await supabase
     .from("reservations")
@@ -38,13 +39,15 @@ export async function getServerSideProps({ req, locale }) {
   // If there is a user, return it.
   return {
     props: {
+      websiteInfo: websiteInfo,
+
       user: user,
       reservations: reservations,
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
-export default function UserProfile({ user }) {
+export default function UserProfile({ user, websiteInfo }) {
   const [tab, setTab] = useState("Profile");
   const { t, i18n } = useTranslation("");
   const lng = i18n.language;
@@ -143,7 +146,7 @@ export default function UserProfile({ user }) {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer websiteInfo={websiteInfo} />
     </div>
   );
 }

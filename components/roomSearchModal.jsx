@@ -16,7 +16,7 @@ import dayjs from "dayjs";
 import jalaliday from "jalaliday";
 import { reservationActions } from "../store/reservation";
 
-export default function ReserveInfoModal() {
+export default function RoomSearch() {
   const [opened, setOpened] = useState(false);
   const [entering, setEntering] = useState(null);
   const [exiting, setExiting] = useState(null);
@@ -100,7 +100,7 @@ export default function ReserveInfoModal() {
   let exitDate = useSelector((state) => state.reserve.exitDate);
   let hotelInfo = useSelector((state) => state.reserve.hotelInfo);
   return (
-    <div>
+    <>
       <Modal
         transition="fade"
         transitionDuration={600}
@@ -196,6 +196,6 @@ export default function ReserveInfoModal() {
       >
         <h4>{t("searchRoom")}</h4>
       </button>
-    </div>
+    </>
   );
 }

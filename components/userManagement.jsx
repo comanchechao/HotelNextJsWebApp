@@ -90,7 +90,11 @@ export default function UserManagement({ users }) {
                       return (
                         <div
                           key={i}
-                          className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                          className={`${
+                            alignLeft === true
+                              ? "flex py-4 lg:py-1 flex-col lg:flex-row-reverse   w-full h-auto lg:space-y-0 space-y-4 lg:h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                              : "flex py-4 lg:py-1 flex-col lg:flex-row   w-full h-auto lg:space-y-0 space-y-4 lg:h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                          }`}
                         >
                           <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                             <Users weight="fill" size={40} />
@@ -113,7 +117,11 @@ export default function UserManagement({ users }) {
                       return (
                         <div
                           key={i}
-                          className="flex py-1 flex-row-reverse w-full h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                          className={`${
+                            alignLeft === true
+                              ? "flex py-4 lg:py-1 flex-col lg:flex-row-reverse   w-full h-auto lg:space-y-0 space-y-4 lg:h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                              : "flex py-4 lg:py-1 flex-col lg:flex-row   w-full h-auto lg:space-y-0 space-y-4 lg:h-24 bg-white justify-between px-2 lg:px-10 rounded items-center"
+                          }`}
                         >
                           <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                             <Users weight="fill" size={40} />

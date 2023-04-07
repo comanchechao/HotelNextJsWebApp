@@ -1,6 +1,7 @@
 import Navbar from "../../../components/Navbar";
 import Head from "next/head";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+
 import localeData from "dayjs/plugin/localeData";
 import { reservationActions } from "../../../store/reservation/index";
 import {
@@ -16,7 +17,6 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { Suspense } from "react";
-
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons";
 import { DatePickerInput } from "@mantine/dates";
 import { useMediaQuery } from "@mantine/hooks";
@@ -120,9 +120,12 @@ export const getStaticPaths = async ({ locales }) => {
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   const { data, error } = await supabase.from("Hotels").select().eq("id", id);
+  const { data: websiteInfo } = await supabase.from("websiteInfo").select();
 
   return {
     props: {
+      websiteInfo: websiteInfo,
+
       hotel: data[0],
       ...(await serverSideTranslations(context.locale, ["common"])),
     },
@@ -139,20 +142,19 @@ const DatePicker = dynamic(() => import("../../../components/calendar"), {
   ssr: false,
   suspense: true,
 });
-export default function HotelDetailPage({ hotel }) {
+export default function HotelDetailPage({ hotel, websiteInfo }) {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
 
-  const ReserveInfoModal = dynamic(
-    () => import("../../../components/reserveInfoModal"),
+  const Footer = dynamic(() => import("../../../components/Footer"), {
+    suspense: true,
+  });
+  const RoomSearch = dynamic(
+    () => import("../../../components/roomSearchModal"),
     {
       suspense: true,
     }
   );
-  const Footer = dynamic(() => import("../../../components/Footer"), {
-    suspense: true,
-  });
-
   const faLocale = {
     name: "fa",
     weekdays: [
@@ -351,7 +353,7 @@ export default function HotelDetailPage({ hotel }) {
       </Head>
       <div className="w-full h-full">
         <Navbar />
-        <div className="flex w-full lg:py-20  lg:px-44 h-full bg-mainWhite capitalize">
+        <div className="flex w-full lg:py-20 px-5  lg:px-44 h-full bg-mainWhite capitalize">
           <div className="flex flex-col  p-2 w-full h-full   space-y-11  ">
             <div
               className={`${
@@ -634,7 +636,7 @@ export default function HotelDetailPage({ hotel }) {
                     : "lg:hidden w-full items-center justify-start flex"
                 }`}
               >
-                <ReserveInfoModal />
+                <RoomSearch />
               </div>
               <div className="flex flex-col w-full lg:w-4/5 mt-8  lg:pl-7 ">
                 <div
@@ -888,7 +890,7 @@ export default function HotelDetailPage({ hotel }) {
           </div>
         </div>
 
-        <Footer />
+        <Footer websiteInfo={websiteInfo} />
       </div>
     </>
   );

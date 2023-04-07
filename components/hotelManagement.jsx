@@ -26,7 +26,16 @@ export default function HotelManagement({
     );
     setInitialHotels(filteredArray);
   }
+  const lng = i18n.language;
+  useEffect(() => {
+    changeAlignment();
+  }, [lng]);
 
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeAlignment() {
+    if (lng === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
   return (
     <div className="flex flex-col w-full h-full  lg:h-carousel   px-4 py-7">
       <div className="flex w-full space-y-4 flex-col   h-full">
@@ -139,7 +148,13 @@ export default function HotelManagement({
             </div>
           </Tabs.Panel>
         </Tabs>
-        <div className="lg:absolute right-8 bottom-3   fixed">
+        <div
+          className={`${
+            alignLeft === true
+              ? "lg:absolute right-8 bottom-3   fixed"
+              : "lg:absolute left-8 bottom-3   fixed"
+          }`}
+        >
           <AddHotel
             user={user}
             featuresData={features}

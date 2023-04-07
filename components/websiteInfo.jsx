@@ -23,7 +23,7 @@ export default function WebsiteInfo() {
   const [whatsapp, setWhatsapp] = useState("");
   const { t, i18n } = useTranslation("");
   const lng = i18n.language;
-  const [alignLeft, setAlignLeft] = useState(false);
+  let [alignLeft, setAlignLeft] = useState(false);
 
   async function changeAlignment() {
     if (lng === "tr") await setAlignLeft(false);
@@ -33,7 +33,7 @@ export default function WebsiteInfo() {
 
   useEffect(() => {
     changeAlignment();
-  }, []);
+  }, [lng]);
   async function changeWebsiteInfo() {
     setLoading(true);
     try {
@@ -41,23 +41,42 @@ export default function WebsiteInfo() {
         data: { user },
       } = await supabase.auth.getUser();
       if (user) {
-        const { data, error } = await supabase
-          .from("websiteInfo")
-          .update({
-            aboutUs: aboutUs,
-            aboutUsMore: aboutUsMore,
-            address: address,
-            phoneNumber: phoneNumber,
-            postalCode: postalCode,
-            email: email,
-            instagram: instagram,
-            telegram: telegram,
-            facebook: facebook,
-            whatsapp: whatsapp,
-          })
-          .eq("id", 25)
-          .select();
-        console.log(data);
+        if (lng === "tr") {
+          const { data } = await supabase
+            .from("websiteInfo")
+            .update({
+              aboutUsTr: aboutUs,
+              aboutUsMoreTr: aboutUsMore,
+              addressTr: address,
+              phoneNumber: phoneNumber,
+              postalCode: postalCode,
+              email: email,
+              instagram: instagram,
+              telegram: telegram,
+              facebook: facebook,
+              whatsapp: whatsapp,
+            })
+            .eq("id", 25)
+            .select();
+        } else {
+          const { data } = await supabase
+            .from("websiteInfo")
+            .update({
+              aboutUs: aboutUs,
+              aboutUsMore: aboutUsMore,
+              address: address,
+              phoneNumber: phoneNumber,
+              postalCode: postalCode,
+              email: email,
+              instagram: instagram,
+              telegram: telegram,
+              facebook: facebook,
+              whatsapp: whatsapp,
+            })
+            .eq("id", 25)
+            .select();
+          console.log(data);
+        }
         if (error) throw error;
       } // add this closing curly brace
     } catch (error) {
@@ -314,7 +333,13 @@ export default function WebsiteInfo() {
             </div>{" "}
           </Tabs.Panel>
         </Tabs>
-        <div className="lg:absolute right-8 bottom-0   fixed">
+        <div
+          className={`${
+            alignLeft === true
+              ? "lg:absolute right-8 bottom-0   fixed"
+              : "lg:absolute left-8 bottom-0   fixed"
+          }`}
+        >
           {alert ? (
             <Notification
               transition="fade"
@@ -322,6 +347,7 @@ export default function WebsiteInfo() {
               transitionTimingFunction="ease"
               color="green"
               withCloseButton
+              className="mb-10 "
               variant="outline"
             >
               <h1 className="text-2xl text-center">
