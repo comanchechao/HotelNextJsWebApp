@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import { Modal } from "@mantine/core";
 import { useTranslation } from "next-i18next";
 import { useMediaQuery } from "@mantine/hooks";
-
-import { Coffee, User, Tag } from "phosphor-react";
 import { supabase } from "../lib/supabaseClient";
+import { Coffee, User, Tag } from "phosphor-react";
 export default function SuperUserModal({ user }) {
   const [hotels, setHotels] = useState();
   async function getHotels() {
@@ -18,6 +17,25 @@ export default function SuperUserModal({ user }) {
       if (error) throw error;
       setHotels(hotels);
     }
+  }
+
+  async function updateRole() {
+    if (user) {
+      const { error } = await supabase
+        .from("profiles")
+        .update({ role: "Colleage" })
+        .eq("id", user.id);
+    }
+    setOpened(false);
+  }
+  async function downGradeRole() {
+    if (user) {
+      const { error } = await supabase
+        .from("profiles")
+        .update({ role: "customer" })
+        .eq("id", user.id);
+    }
+    setOpened(false);
   }
   const [alignLeft, setAlignLeft] = useState(false);
 
@@ -73,9 +91,25 @@ export default function SuperUserModal({ user }) {
           <h2 className="py-1   rounded-md px-4 border-2   border-mainBlue">
             نوع کاربر : <strong>{user ? user.role : null}</strong>
           </h2>{" "}
-          <button className="py-2 font-mainFont  hover:text-white bg-green-500 border-green-800 border-r-8   ease-in duration-300 hover:bg-green-900 transition rounded-lg  text-white   px-6   ">
-            {t("addAdmin")}
-          </button>{" "}
+          {user && user.role === "customer" ? (
+            <button
+              onClick={() => {
+                updateRole();
+              }}
+              className="py-2 font-mainFont  hover:text-white bg-green-500 border-green-800 border-r-8   ease-in duration-300 hover:bg-green-900 transition rounded-lg  text-white   px-6   "
+            >
+              {t("addAdmin")}
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                downGradeRole();
+              }}
+              className="py-2 font-mainFont  hover:text-white bg-red-500 border-red-800 border-r-8   ease-in duration-300 hover:bg-red-900 transition rounded-lg  text-white   px-6   "
+            >
+              حذف همکار
+            </button>
+          )}
           <div className="w-full h-auto flex items-center flex-col">
             <h1 className="text-xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
               {t("hotels")}

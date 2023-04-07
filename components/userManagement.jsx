@@ -101,6 +101,7 @@ export default function UserManagement({ users }) {
                           </div>
                           <h1 className=" text-sm lg:text-xl">{user.email}</h1>
                           <p className="hidden lg:block">{user.name}</p>
+                          <SuperUserValidation user={user} />
                           <SuperUser user={user} />
                         </div>
                       );
@@ -128,7 +129,7 @@ export default function UserManagement({ users }) {
                           </div>
                           <h1 className=" text-sm lg:text-xl">{user.email}</h1>
                           <p className="hidden lg:block">{user.name}</p>
-                          <SuperUserValidation />
+                          <SuperUserValidation user={user} />
                           <SuperUser user={user} />
                         </div>
                       );
