@@ -171,6 +171,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
     let updates = {};
     if (title) updates.title = title;
     if (city) updates.city = city;
+    if (rooms !== hotel.rooms) updates.rooms = rooms;
     if (address) updates.address = address;
     if (enteringHours) updates.enterTime = enteringHours;
     if (exitingHours) updates.exitTime = exitingHours;

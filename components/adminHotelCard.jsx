@@ -97,6 +97,20 @@ export default function AdminHotelCard({ hotel, user, featuresData, cities }) {
 
           <p className="text-2xl "> {hotel.prices}</p>
         </h2>
+        {hotel.validated ? (
+          <button className="py-1 font-mainFont  hover:text-white bg-transparent border-green-500 border-2 border-dashed   ease-in duration-300 hover:bg-green-600 transition rounded-lg  text-mainPurple  px-6   ">
+            <p>{t("confirmed")}</p>
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              setOpened(true);
+            }}
+            className="py-1 font-mainFont  hover:text-white bg-transparent border-red-500 border-2 border-dashed   ease-in duration-300 hover:bg-red-600 transition rounded-lg  text-mainPurple  px-6   "
+          >
+            <p>{t("needsConfirm")}</p>
+          </button>
+        )}
         <EditHotel
           identifier={hotel.id}
           hotel={hotel}

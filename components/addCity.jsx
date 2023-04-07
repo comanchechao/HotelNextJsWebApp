@@ -53,6 +53,7 @@ export default function WebsiteInfo({ cities }) {
       name: value,
       lat: lat,
       lng: lng,
+      country: country,
     });
     setAlert(true);
     setTimeout(() => {
