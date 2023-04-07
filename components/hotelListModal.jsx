@@ -28,7 +28,7 @@ export default function HotelListModal({
   let filterCountries = useSelector((state) => state.filter.country);
 
   let stars = useSelector((state) => state.filter.stars);
-  const [selectedStars, setSelectedStars] = useState(4);
+  const [selectedStars, setSelectedStars] = useState(null);
   const [checked, setChecked] = useState(true);
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
@@ -45,6 +45,7 @@ export default function HotelListModal({
     dispatch(mobileFilterActions.setFeatures(tempFeatures));
     dispatch(mobileFilterActions.setCity(tempCity));
     dispatch(mobileFilterActions.setResidenceTypes(tempResidence));
+    dispatch(mobileFilterActions.setStars(selectedStars));
     setOpened(false);
     console.log(
       "stars",
@@ -237,7 +238,6 @@ export default function HotelListModal({
                   }`}
                 >
                   <Switch
-                    checked={stars === 3}
                     onClick={() => {
                       setSelectedStars(3);
                     }}
@@ -245,7 +245,6 @@ export default function HotelListModal({
                     color="yellow"
                   />
                   <Switch
-                    checked={stars === 4}
                     onClick={() => {
                       setSelectedStars(4);
                     }}
@@ -253,7 +252,6 @@ export default function HotelListModal({
                     color="yellow"
                   />
                   <Switch
-                    checked={stars === 5}
                     onClick={() => {
                       setSelectedStars(5);
                     }}

@@ -106,10 +106,19 @@ export default function HotelList({
   }
 
   useEffect(() => {
-    if (selectedCityMobile !== "" || selectedCountryMobile !== "") {
+    if (
+      selectedCityMobile !== "" ||
+      selectedCountryMobile !== "" ||
+      starsMobile !== null
+    ) {
       getHotelsMobile();
     }
-  }, [selectedCityMobile, selectedCountryMobile, filterFeaturesMobile]);
+  }, [
+    selectedCityMobile,
+    selectedCountryMobile,
+    filterFeaturesMobile,
+    starsMobile,
+  ]);
 
   const mainPageBg = useRef();
   const firstContainer = useRef();
@@ -197,6 +206,16 @@ export default function HotelList({
         .order("id", { ascending: false });
       if (error) throw error;
       setHotels(data);
+    } else if (starsMobile !== null) {
+      const { data, error } = await supabase
+        .from("Hotels")
+        .select(
+          "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        )
+        .eq("stars", starsMobile)
+        .order("id", { ascending: false });
+      if (error) throw error;
+      setHotels(data);
     } else if (filterFeaturesMobile !== []) {
       const { data, error } = await supabase
         .from("Hotels")
@@ -205,6 +224,17 @@ export default function HotelList({
         )
         .in("features", filterFeaturesMobile)
         .order("id", { ascending: false });
+      setHotels(data);
+    } else if (selectedCityMobile !== "" && starsMobile !== null) {
+      const { data, error } = await supabase
+        .from("Hotels")
+        .select(
+          "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        )
+        .eq("city", selectedCityMobile)
+        .eq("stars", starsMobile)
+        .order("id", { ascending: false });
+      if (error) throw error;
       setHotels(data);
     } else if (selectedCityMobile !== "" && selectedCountryMobile !== "") {
       const { data, error } = await supabase
@@ -217,7 +247,24 @@ export default function HotelList({
         .order("id", { ascending: false });
       if (error) throw error;
       setHotels(data);
+    } else if (
+      selectedCityMobile !== "" &&
+      selectedCountryMobile !== "" &&
+      starsMobile !== null
+    ) {
+      const { data, error } = await supabase
+        .from("Hotels")
+        .select(
+          "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        )
+        .eq("country", selectedCountryMobile)
+        .eq("city", selectedCityMobile)
+        .eq("stars", starsMobile)
+        .order("id", { ascending: false });
+      if (error) throw error;
+      setHotels(data);
     }
+
     // if (lng === "fa") {
     //   if (selectedCity !== "") {
     //     const filteredData = data.filter((obj) => {

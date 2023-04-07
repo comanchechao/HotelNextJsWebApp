@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const MobileFilters = createSlice({
   name: "mobileFilters",
   initialState: {
-    stars: 5,
+    stars: null,
     city: "",
     minPrice: [],
     features: [],

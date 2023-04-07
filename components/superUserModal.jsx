@@ -4,8 +4,11 @@ import { Modal } from "@mantine/core";
 import { useTranslation } from "next-i18next";
 import { useMediaQuery } from "@mantine/hooks";
 import { supabase } from "../lib/supabaseClient";
-import { Coffee, User, Tag } from "phosphor-react";
+import { Coffee, User, Tag, CheckFat } from "phosphor-react";
+import { Loader } from "@mantine/core";
 export default function SuperUserModal({ user }) {
+  const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [hotels, setHotels] = useState();
   async function getHotels() {
     if (user) {
@@ -21,21 +24,25 @@ export default function SuperUserModal({ user }) {
 
   async function updateRole() {
     if (user) {
+      setLoading(true);
       const { error } = await supabase
         .from("profiles")
         .update({ role: "Colleage" })
         .eq("id", user.id);
+      setDone(true);
     }
-    setOpened(false);
+    setLoading(false);
   }
   async function downGradeRole() {
     if (user) {
+      setLoading(true);
       const { error } = await supabase
         .from("profiles")
         .update({ role: "customer" })
         .eq("id", user.id);
+      setDone(true);
     }
-    setOpened(false);
+    setLoading(false);
   }
   const [alignLeft, setAlignLeft] = useState(false);
 
@@ -98,7 +105,13 @@ export default function SuperUserModal({ user }) {
               }}
               className="py-2 font-mainFont  hover:text-white bg-green-500 border-green-800 border-r-8   ease-in duration-300 hover:bg-green-900 transition rounded-lg  text-white   px-6   "
             >
-              {t("addAdmin")}
+              {loading ? (
+                <Loader color="violet" size="sm" />
+              ) : done ? (
+                <p>انجام شد</p>
+              ) : (
+                t("addAdmin")
+              )}
             </button>
           ) : (
             <button
@@ -107,7 +120,13 @@ export default function SuperUserModal({ user }) {
               }}
               className="py-2 font-mainFont  hover:text-white bg-red-500 border-red-800 border-r-8   ease-in duration-300 hover:bg-red-900 transition rounded-lg  text-white   px-6   "
             >
-              حذف همکار
+              {loading ? (
+                <Loader color="violet" size="sm" />
+              ) : done ? (
+                <p>انجام شد</p>
+              ) : (
+                <p>حذف همکار</p>
+              )}
             </button>
           )}
           <div className="w-full h-auto flex items-center flex-col">
