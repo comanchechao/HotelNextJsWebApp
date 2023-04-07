@@ -69,6 +69,7 @@ export default function AddHotel({
   const [cityNames, setCityNames] = useState([]);
   const [residenceTypesName, setResidenceTypesName] = useState([]);
   const [countryNames, setCountryNames] = useState([]);
+  const [featureNames, setFeatureNames] = useState([]);
 
   async function changeAlignment() {
     if (lng === "tr") await setAlignLeft(false);
@@ -242,6 +243,7 @@ export default function AddHotel({
       }
     }
   }
+
   async function CityTranslate() {
     if (cities) {
       if (lng === "fa") {
@@ -290,38 +292,38 @@ export default function AddHotel({
       }
     }
   }
+  async function FeatureTranslate() {
+    if (featuresData) {
+      if (lng === "fa") {
+        featureNames.splice(0, featureNames.length);
+
+        await featuresData.forEach((feature, i) => {
+          if (featureNames.indexOf(feature.title) === -1) {
+            if (feature.title) {
+              featureNames.push(feature.title);
+            }
+          }
+        });
+      } else {
+        featureNames.splice(0, featureNames.length);
+
+        await featuresData.forEach((feature, i) => {
+          if (featureNames.indexOf(feature.trTitle) === -1) {
+            if (feature.trTitle) {
+              featureNames.push(feature.trTitle);
+            }
+          }
+        });
+      }
+    }
+  }
   useEffect(() => {
+    FeatureTranslate();
     CityTranslate();
     ResidenceTypesTranslate();
     CountryTranslate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const [allFeatures, setAllFeatures] = useState([]);
-
-  useEffect(() => {
-    if (featuresData) {
-      featuresData.forEach((feature, i) => {
-        if (allFeatures.indexOf(feature.title) === -1) {
-          allFeatures.push(feature.title);
-        }
-      });
-    }
-    // if (cities) {
-    //   cities.forEach((city, i) => {
-    //     if (cityNames.indexOf(city.title) === -1) {
-    //       if(city.title){
-    //         cityNames.push(city.title);
-    //       }
-    //     }
-    //   });
-
-    //   console.log(cityNames);
-    // }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // uploading images
 
   const [uploading, setUploading] = useState(false);
 
@@ -790,7 +792,7 @@ export default function AddHotel({
                 size="md"
                 value={features}
                 onChange={setFeatures}
-                data={allFeatures}
+                data={featureNames}
               />
             </div>
             <div

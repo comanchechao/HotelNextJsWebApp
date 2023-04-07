@@ -64,9 +64,7 @@ export async function getServerSideProps(context) {
     .select();
   const { data: countries } = await supabase.from("countries").select();
 
-  const { data: features, error3 } = await supabase
-    .from("features")
-    .select("title");
+  const { data: features, error3 } = await supabase.from("features").select();
 
   const {
     data: { users },
