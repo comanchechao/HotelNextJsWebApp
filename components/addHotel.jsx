@@ -185,7 +185,7 @@ export default function AddHotel({
       features: features,
       prices: avragePriceRial,
       pricesL: avragePriceL,
-
+      country: country,
       stars: value,
       rooms: rooms,
       residenceType: residenceType,

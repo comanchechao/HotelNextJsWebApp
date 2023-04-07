@@ -69,6 +69,8 @@ export default function HotelList({
 
   const [filteredHotels, setFilteredHotels] = useState([]);
 
+  // desktop filters
+
   let stars = useSelector((state) => state.filter.stars);
   let filterFeatures = useSelector((state) => state.filter.features);
   let filterCities = useSelector((state) => state.reserve.cities);
@@ -80,6 +82,35 @@ export default function HotelList({
   let selectedResidenceType = useSelector(
     (state) => state.filter.residenceType
   );
+
+  // mobile filters
+
+  let starsMobile = useSelector((state) => state.mobileFilter.stars);
+  let filterFeaturesMobile = useSelector(
+    (state) => state.mobileFilter.features
+  );
+  let selectedCityMobile = useSelector((state) => state.mobileFilter.city);
+  let selectedCountryMobile = useSelector(
+    (state) => state.mobileFilter.country
+  );
+
+  function filterMobileCity() {
+    let filteredArray = initialHotels.filter((obj) =>
+      obj.city((hobby) => selectedCityMobile.includes(hobby))
+    );
+
+    setHotels(filteredArray);
+    if (hotels === []) {
+      setHotels(initialHotels);
+    }
+  }
+
+  useEffect(() => {
+    if (selectedCityMobile !== "" || selectedCountryMobile !== "") {
+      getHotelsMobile();
+    }
+  }, [selectedCityMobile, selectedCountryMobile, filterFeaturesMobile]);
+
   const mainPageBg = useRef();
   const firstContainer = useRef();
   const secondContainer = useRef();
@@ -133,9 +164,79 @@ export default function HotelList({
     if (selectedCity === "") {
       setHotels(data);
     }
+
+    console.log("for windows");
     setInitialHotels(data);
 
     if (error) throw error;
+    setLoading(false);
+  }
+
+  // handing products for mobile
+
+  async function getHotelsMobile() {
+    setTo(to + 2);
+    setLoading(true);
+    if (selectedCityMobile !== "") {
+      const { data, error } = await supabase
+        .from("Hotels")
+        .select(
+          "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        )
+        .eq("city", selectedCityMobile)
+        .order("id", { ascending: false });
+      if (error) throw error;
+      setHotels(data);
+    } else if (selectedCountryMobile !== "") {
+      const { data, error } = await supabase
+        .from("Hotels")
+        .select(
+          "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        )
+        .eq("country", selectedCountryMobile)
+        .order("id", { ascending: false });
+      if (error) throw error;
+      setHotels(data);
+    } else if (filterFeaturesMobile !== []) {
+      const { data, error } = await supabase
+        .from("Hotels")
+        .select(
+          "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        )
+        .in("features", filterFeaturesMobile)
+        .order("id", { ascending: false });
+      setHotels(data);
+    } else if (selectedCityMobile !== "" && selectedCountryMobile !== "") {
+      const { data, error } = await supabase
+        .from("Hotels")
+        .select(
+          "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        )
+        .eq("country", selectedCountryMobile)
+        .eq("city", selectedCityMobile)
+        .order("id", { ascending: false });
+      if (error) throw error;
+      setHotels(data);
+    }
+    // if (lng === "fa") {
+    //   if (selectedCity !== "") {
+    //     const filteredData = data.filter((obj) => {
+    //       return obj.city.includes(selectedCity);
+    //     });
+    //     setHotels(filteredData);
+    //   }
+    // }
+    // if (lng === "tr") {
+    //   if (selectedCity !== "") {
+    //     const filteredData = data.filter((obj) => {
+    //       return obj.trTitle.includes(selectedCity);
+    //     });
+    //     setHotels(filteredData);
+    //   }
+    // }
+
+    console.log("fired");
+
     setLoading(false);
   }
 

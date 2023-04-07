@@ -4,7 +4,7 @@ export const MobileFilters = createSlice({
   name: "mobileFilters",
   initialState: {
     stars: 5,
-
+    city: "",
     minPrice: [],
     features: [],
     residenceTypes: [],
@@ -14,6 +14,9 @@ export const MobileFilters = createSlice({
   reducers: {
     setStars: (state, action) => {
       state.stars = action.payload;
+    },
+    setCity: (state, action) => {
+      state.city = action.payload;
     },
     setMaxPrice: (state, action) => {
       state.maxPrice = action.payload;

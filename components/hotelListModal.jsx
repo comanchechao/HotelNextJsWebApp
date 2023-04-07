@@ -35,14 +35,15 @@ export default function HotelListModal({
   const isMobile = useMediaQuery("(max-width: 50em)");
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
-  const [tempCity, setTempCity] = useState(false);
-  const [tempCountry, setTempCountry] = useState(false);
+  const [tempCity, setTempCity] = useState("");
+  const [tempCountry, setTempCountry] = useState("");
   const [tempFeatures, setTempFeatures] = useState([]);
-  const [tempResidence, setTempResidence] = useState(false);
+  const [tempResidence, setTempResidence] = useState("");
 
   async function submitFilters() {
     dispatch(mobileFilterActions.setCountry(tempCountry));
     dispatch(mobileFilterActions.setFeatures(tempFeatures));
+    dispatch(mobileFilterActions.setCity(tempCity));
     dispatch(mobileFilterActions.setResidenceTypes(tempResidence));
     setOpened(false);
     console.log(
@@ -334,7 +335,7 @@ export default function HotelListModal({
                             value="react"
                             label={feature.title}
                             onClick={() => {
-                              setTempFeatures(feature.title);
+                              tempFeatures.push(feature.title);
                             }}
                           />
                         );
