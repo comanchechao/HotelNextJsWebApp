@@ -726,45 +726,48 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
             <div className="flex space-y-1 flex-col">
               {rooms.map((room, i) => {
                 return (
-                  <div key={i} className="py-2 flex border rounded-lg">
-                    <div className="flex w-full">
-                      <div className="flex items-center justify-around w-full">
-                        <div className="flex text-darkPurple justify-center items-around h-full p-1 flex-col w-full">
-                          <div className="flex justify-around text-darkPurple w-14 space-x-4   ">
-                            <p>
-                              <IconCirclePlus
-                                onClick={() => {
-                                  increaseQuantity(room.id);
-                                }}
-                              />
-                            </p>
-                            <p>{room.quantity}</p>
-                            <p>
-                              <IconCircleMinus
-                                onClick={() => {
-                                  decreaseQuantity(room.id);
-                                }}
-                              />
-                            </p>
-                          </div>
-                          <div className="flex bg-red-500 rounded-md py-2 cursor-pointer transition ease-in duration-200 hover:bg-white hover:text-red-700 text-white justify-center items-center w-24">
-                            <IconTrash
+                  <div
+                    key={i}
+                    className="w-full my-3 h-32 bg-white rounded-md px-4  border-2  cursor-pointer hover:border-4 hover:border-mainBlue transition-all border-double  duration-200 flex items-center justify-center"
+                  >
+                    <div className="flex   w-3/4 flex-col  items-start space-y-3 justify-center ">
+                      <div className="  flex  justify-center items-center space-x-2">
+                        <p className="text-xs">{t("currency")}</p>
+                        <p className="text-lg font-bold">{room.price}</p>
+                      </div>
+                      <div className="flex   text-darkPurple justify-center items-center h-full space-x-3 ">
+                        <div className="flex justify-center items-center text-darkPurple space-x-5   ">
+                          <p>
+                            <IconCirclePlus
+                              className="cursor-pointer"
                               onClick={() => {
-                                deleteById(room.id);
+                                increaseQuantity(room.id);
                               }}
-                              size={25}
                             />
-                          </div>
+                          </p>
+                          <p className="font-bold text-base">{room.quantity}</p>
+                          <p>
+                            <IconCircleMinus
+                              className="cursor-pointer"
+                              onClick={() => {
+                                decreaseQuantity(room.id);
+                              }}
+                            />
+                          </p>
                         </div>
-                        <div className="w-36 flex  justify-around">
-                          <p>{t("currency")}</p>
-                          <p className="text-lg">{room.price}</p>
+                        <div className="flex bg-white rounded-md px-2 py-2 cursor-pointer transition ease-in duration-200 hover:bg-red-700 hover:text-white text-red-700 justify-center items-center ">
+                          <IconTrash
+                            onClick={() => {
+                              deleteById(room.id);
+                            }}
+                            size={25}
+                          />
                         </div>
                       </div>
-                      <div className="flex self-end w-52 text-right px-2  flex-col">
-                        <h1> {room.title}</h1>
-                        <p> {room.meal}</p>
-                      </div>
+                    </div>
+                    <div className="flex  w-1/4 text-right px-2  flex-col">
+                      <h1 className="text-2xl font-bold"> {room.title}</h1>
+                      <p className="text-xs"> {room.meal}</p>
                     </div>
                   </div>
                 );
@@ -780,7 +783,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 <Tabs.List grow position="center">
                   {/* <Tabs.Tab value="messages">اتاق پیش فرض</Tabs.Tab> */}
                   <Tabs.Tab position="center" value="gallery">
-                    <p className="text-2xl">{t("editRoom")}</p>
+                    <p className="text-2xl">{t("newRoom")}</p>
                   </Tabs.Tab>
                 </Tabs.List>
 

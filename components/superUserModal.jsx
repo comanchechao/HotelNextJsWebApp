@@ -56,7 +56,7 @@ export default function SuperUserModal({ user }) {
           <h1 className="text-2xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
             {t("colleagueInfo")}
           </h1>
-          <div className="flex flex-wrap items-center lg:flex-row flex-col space-y-5 lg:space-y-0 space-x-0 lg:space-x-5 w-full ">
+          <div className="flex flex-wrap justify-center items-center lg:flex-row flex-col space-y-5 lg:space-y-0 space-x-0 lg:space-x-5 w-full ">
             <h2 className="py-1 rounded-md px-4 border-2     border-mainPurple">
               {t("fullName")} : <strong>{user ? user.fullName : null}</strong>
             </h2>
@@ -71,7 +71,7 @@ export default function SuperUserModal({ user }) {
             </strong>
           </h2>{" "}
           <h2 className="py-1   rounded-md px-4 border-2   border-mainBlue">
-            نوع کاربر : <strong>{user ? user.role : null}</strong>
+            {t("userType")} : <strong>{user ? user.role : null}</strong>
           </h2>{" "}
           <button className="py-2 font-mainFont  hover:text-white bg-green-500 border-green-800 border-r-8   ease-in duration-300 hover:bg-green-900 transition rounded-lg  text-white   px-6   ">
             {t("addAdmin")}
@@ -114,7 +114,7 @@ export default function SuperUserModal({ user }) {
                           <User className="ml-2" size={19} weight="fill" />
                         </h2>
                         <h2 className="flex items-center  text-sm">
-                          : 18,000,000 {t("currency")}
+                          {hotel.prices} {t("currency")}
                           <Tag className="ml-2" size={19} weight="fill" />
                         </h2>
                       </div>
