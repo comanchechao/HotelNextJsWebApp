@@ -84,6 +84,12 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
     });
   }, [city]);
 
+  useEffect(() => {
+    if (hotel.rooms) {
+      setRooms(hotel.rooms);
+    }
+  }, []);
+
   const [meal, setMeal] = useState("");
 
   function handleNewRoom() {
@@ -764,7 +770,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 );
               })}
             </div>
-            <div className="flex w-full ">
+            <div className="flex w-full flex-col ">
               <Tabs
                 color="blue"
                 variant="pills"

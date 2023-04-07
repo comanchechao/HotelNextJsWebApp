@@ -5,6 +5,7 @@ import { mapReducer } from "./map/index";
 import { reservationReducer } from "./reservation";
 import { roomReducer } from "./room/index";
 import { userReducer } from "./user/user";
+import { mobileFilterReducer } from "./filterActivation/phoneFilters";
 // create a slice
 export const mainSlice = createSlice({
   name: "name",
@@ -22,6 +23,7 @@ const store = configureStore({
     user: userReducer,
     reserve: reservationReducer,
     filter: filterReducer,
+    mobileFilter: mobileFilterReducer,
   },
 });
 

@@ -12,6 +12,7 @@ import { filterActions } from "../store/filterActivation";
 import { useTranslation } from "next-i18next";
 import { useMediaQuery } from "@mantine/hooks";
 import { reservationActions } from "../store/reservation";
+import { mobileFilterActions } from "../store/filterActivation/phoneFilters";
 
 export default function HotelListModal({
   features,
@@ -27,6 +28,7 @@ export default function HotelListModal({
   let filterCountries = useSelector((state) => state.filter.country);
 
   let stars = useSelector((state) => state.filter.stars);
+  const [selectedStars, setSelectedStars] = useState(4);
   const [checked, setChecked] = useState(true);
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
@@ -39,11 +41,20 @@ export default function HotelListModal({
   const [tempResidence, setTempResidence] = useState(false);
 
   async function submitFilters() {
-    dispatch(filterActions.setCountry(tempCountry));
-    dispatch(filterActions.setFeatures(tempFeatures));
-    dispatch(reservationActions.setCity(tempCity));
-    dispatch(filterActions.setResidenceTypes(tempResidence));
+    dispatch(mobileFilterActions.setCountry(tempCountry));
+    dispatch(mobileFilterActions.setFeatures(tempFeatures));
+    dispatch(mobileFilterActions.setResidenceTypes(tempResidence));
     setOpened(false);
+    console.log(
+      "stars",
+      selectedStars,
+      "country",
+      tempCountry,
+      "features",
+      tempFeatures,
+      "city",
+      tempCity
+    );
   }
 
   useEffect(() => {
@@ -227,7 +238,7 @@ export default function HotelListModal({
                   <Switch
                     checked={stars === 3}
                     onClick={() => {
-                      dispatch(filterActions.setStars(3));
+                      setSelectedStars(3);
                     }}
                     label={t("3Stars")}
                     color="yellow"
@@ -235,7 +246,7 @@ export default function HotelListModal({
                   <Switch
                     checked={stars === 4}
                     onClick={() => {
-                      dispatch(filterActions.setStars(4));
+                      setSelectedStars(4);
                     }}
                     label={t("4Stars")}
                     color="yellow"
@@ -243,7 +254,7 @@ export default function HotelListModal({
                   <Switch
                     checked={stars === 5}
                     onClick={() => {
-                      dispatch(filterActions.setStars(5));
+                      setSelectedStars(5);
                     }}
                     label={t("5Stars")}
                     color="yellow"
