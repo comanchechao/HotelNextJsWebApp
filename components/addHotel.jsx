@@ -1219,7 +1219,7 @@ export default function AddHotel({
           onClick={() => {
             setOpened(true);
           }}
-          className="w-52 py-2 flex justify-center items-center border-2 text-lg text-white border-r-8 border-mainBlue bg-mainPurple   transition ease-in duration-300 font-mainFont rounded-md hover:text-mainPurple  hover:bg-mainBlue"
+          className="w-56 py-2 flex justify-center items-center  text-lg text-white border-r-8 border-mainBlue bg-mainPurple   transition ease-in duration-300 font-mainFont rounded-md hover:text-mainPurple  hover:bg-mainBlue"
         >
           {t("newHotel")}
           <Buildings className="ml-2" size={32} weight="light" />

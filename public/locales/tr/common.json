@@ -273,7 +273,8 @@
   "editHotelSuccess": "Başarıyla düzenlendi",
 
   "enterCountry": "Otel Ülke Yazin",
-
+  "enterLir": "fiyatı TL olarak girin",
+  "enterRial": "fiyatı Tooman'a girin",
   "enterDay": "girme günü",
   "exitDay": "çıkış günü",
 
@@ -287,5 +288,7 @@
   "iran": "Iran",
   "turkey": "türkiye",
 
-  "addCitySuccess": "Şehir başarıyla eklendi"
+  "addCitySuccess": "Şehir başarıyla eklendi",
+
+  "userType": "Kullanıcı tipi"
 }
