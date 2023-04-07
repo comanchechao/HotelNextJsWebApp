@@ -540,7 +540,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                   <Popover width={300} position="bottom" withArrow shadow="md">
                     <Popover.Target>
                       <TextInput
-                        value={passenger}
+                        value={passenger + childPassenger}
                         defaultValue={passenger}
                         className={`${
                           alignLeft === true
@@ -748,15 +748,24 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                       </Tabs.List>
                       <Tabs.Panel className="w-full" value="first" pt="xs">
                         {hotel.rooms.map((room, i) => {
-                          return (
-                            <RoomCard hotelDetail={hotel} key={i} room={room} />
-                          );
+                          if (room.copacity >= passenger + childPassenger) {
+                            return (
+                              <RoomCard
+                                hotelDetail={hotel}
+                                key={i}
+                                room={room}
+                              />
+                            );
+                          }
                         })}
                       </Tabs.Panel>
 
                       <Tabs.Panel className="w-full" value="second" pt="xs">
                         {hotel.rooms.map((room, i) => {
-                          if (room.meal === "صبحانه") {
+                          if (
+                            room.meal === "صبحانه" &&
+                            room.copacity >= passenger + childPassenger
+                          ) {
                             return (
                               <RoomCard
                                 hotelDetail={hotel}
@@ -769,7 +778,10 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                       </Tabs.Panel>
                       <Tabs.Panel className="w-full" value="fourth" pt="xs">
                         {hotel.rooms.map((room, i) => {
-                          if (room.meal === "کامل") {
+                          if (
+                            room.meal === "کامل" &&
+                            room.copacity >= passenger + childPassenger
+                          ) {
                             return (
                               <RoomCard
                                 hotelDetail={hotel}
@@ -783,7 +795,10 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
 
                       <Tabs.Panel value="third" pt="xs">
                         {hotel.rooms.map((room, i) => {
-                          if (room.meal === "شام") {
+                          if (
+                            room.meal === "شام" &&
+                            room.copacity >= passenger + childPassenger
+                          ) {
                             return (
                               <RoomCard
                                 hotelDetail={hotel}
