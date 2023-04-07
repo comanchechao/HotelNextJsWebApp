@@ -135,7 +135,18 @@ export default function AdminPage({
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
-
+  const handleSignOut = async (e) => {
+    try {
+      let { error } = await supabase.auth.signOut();
+      if (error) throw error;
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+    }
+  };
   if (role === "admin") {
     return (
       <div className="h-auto w-screen bg-mainWhite  ">
@@ -191,7 +202,7 @@ export default function AdminPage({
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <Users className="mx-2" weight="fill" size={35} />
+                <Users className="mx-2" weight="fill" size={30} />
                 <h1 className="lg:text-xl text-sm  "> {t("users")} </h1>
               </div>
             </div>{" "}
@@ -212,7 +223,7 @@ export default function AdminPage({
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <Buildings className="mx-2" weight="fill" size={35} />
+                <Buildings className="mx-2" weight="fill" size={30} />
                 <h1 className="lg:text-xl  text-sm  "> {t("hotels")} </h1>
               </div>
             </div>
@@ -233,7 +244,7 @@ export default function AdminPage({
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <MapTrifold className="mx-2" weight="fill" size={35} />
+                <MapTrifold className="mx-2" weight="fill" size={30} />
                 <h1 className="lg:text-xl text-sm  "> {t("city")} </h1>
               </div>
             </div>
@@ -254,7 +265,7 @@ export default function AdminPage({
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <Newspaper className="mx-2" weight="fill" size={35} />
+                <Newspaper className="mx-2" weight="fill" size={30} />
                 <h1 className="lg:text-xl text-sm  "> {t("reservations")} </h1>
               </div>
             </div>
@@ -275,19 +286,20 @@ export default function AdminPage({
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <Desktop className="mx-2" weight="fill" size={35} />
+                <Desktop className="mx-2" weight="fill" size={30} />
                 <h1 className="lg:text-xl text-sm  "> {t("websiteInfo")} </h1>
               </div>
             </div>
             <div className="rounded-md flex lg:mt-0  cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full ">
               <div
+                onClick={handleSignOut}
                 className={`${
                   alignLeft === true
                     ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <SignOut className="mx-2" weight="fill" size={35} />
+                <SignOut className="mx-2" weight="fill" size={30} />
                 <h1 className="lg:text-xl text-sm  "> {t("exit")} </h1>
               </div>
             </div>
@@ -343,7 +355,7 @@ export default function AdminPage({
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <Buildings className="mx-2" weight="fill" size={35} />
+                <Buildings className="mx-2" weight="fill" size={30} />
                 <h1 className="lg:text-xl  text-sm  "> {t("hotels")} </h1>
               </div>
             </div>
@@ -365,20 +377,21 @@ export default function AdminPage({
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <Newspaper className="mx-2" weight="fill" size={35} />
+                <Newspaper className="mx-2" weight="fill" size={30} />
                 <h1 className="lg:text-xl text-sm  "> {t("reservations")} </h1>
               </div>
             </div>
 
             <div className="rounded-md flex lg:mt-0  cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full ">
               <div
+                onClick={handleSignOut}
                 className={`${
                   alignLeft === true
                     ? "flex justify-evenly items-center    transition   text-gray-800 w-full"
                     : "flex justify-around flex-row-reverse items-center  transition   text-gray-800 w-full"
                 }`}
               >
-                <SignOut className="mx-2" weight="fill" size={35} />
+                <SignOut className="mx-2" weight="fill" size={30} />
                 <h1 className="lg:text-xl text-sm  "> {t("exit")} </h1>
               </div>
             </div>

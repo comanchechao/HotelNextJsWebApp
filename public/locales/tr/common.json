@@ -279,5 +279,13 @@
 
   "passport": "pasaport numarası",
 
-  "imageReq": "En az iki resim yüklemeniz gerekiyor"
+  "imageReq": "En az iki resim yüklemeniz gerekiyor",
+  "chosenCity": "seçilen şehir",
+
+  "addCity": "Şehir Ekle",
+
+  "iran": "Iran",
+  "turkey": "türkiye",
+
+  "addCitySuccess": "Şehir başarıyla eklendi"
 }

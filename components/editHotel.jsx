@@ -52,6 +52,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
   const [exitingHours, setExitingHours] = useState(14);
   const [alignLeft, setAlignLeft] = useState(false);
   const [alert, setAlert] = useState(false);
+  const [alert2, setAlert2] = useState(false);
 
   let getlat = useSelector((state) => state.map.lat);
   let getLng = useSelector((state) => state.map.lng);
@@ -243,6 +244,10 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
       alert(error.message);
     } finally {
       setUploading(false);
+      setAlert2(true);
+      setTimeout(() => {
+        setAlert2(false);
+      }, 2000);
     }
   };
   const secondImageUpload = async (event) => {
@@ -271,6 +276,10 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
       alert(error.message);
     } finally {
       setUploading(false);
+      setAlert2(true);
+      setTimeout(() => {
+        setAlert2(false);
+      }, 2000);
     }
   };
   const thirdImageUpload = async (event) => {
@@ -299,6 +308,10 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
       alert(error.message);
     } finally {
       setUploading(false);
+      setAlert2(true);
+      setTimeout(() => {
+        setAlert2(false);
+      }, 2000);
     }
   };
   const fourthImageUpload = async (event) => {
@@ -327,6 +340,10 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
       alert(error.message);
     } finally {
       setUploading(false);
+      setAlert2(true);
+      setTimeout(() => {
+        setAlert2(false);
+      }, 2000);
     }
   };
   return (
@@ -355,36 +372,34 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 {t("editHotelPictures")}
               </h3>
             </div>
+            {alert2 ? (
+              <Notification
+                transition="fade"
+                transitionDuration={600}
+                transitionTimingFunction="ease"
+                color="green"
+                withCloseButton
+                variant="outline"
+              >
+                <h1 className="text-2xl text-center">{t("uploadSuccess")}</h1>
+              </Notification>
+            ) : (
+              <div></div>
+            )}
             <div className="flex justify-around space-x-1 lg:space-x-4 lg:px-0 px-4 h-28 lg:h-rem22 ">
-              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
-                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                  <label htmlFor="firstImage">
-                    {uploading ? (
-                      <Loader color="grape" />
-                    ) : (
-                      <IconUpload className="cursor-pointer" size={30} />
-                    )}
-                  </label>
-                  <input
-                    required
-                    onChange={firstImageUpload}
-                    type="file"
-                    className="hidden"
-                    id="firstImage"
-                  />
-                </div>
-              </div>
-              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+              <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
+                <h2 className="text-xl font-bold">(4)</h2>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="fourthImage">
                     {uploading ? (
-                      <Loader color="grape" />
+                      <Loader color="dark" />
                     ) : (
                       <IconUpload className="cursor-pointer" size={30} />
                     )}
                   </label>
                   <input
                     required
+                    accept="image/webp,image/jpeg,image/png"
                     onChange={fourthImageUpload}
                     type="file"
                     className="hidden"
@@ -393,17 +408,19 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 </div>
               </div>
 
-              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+              <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
+                <h2 className="text-xl font-bold">(3)</h2>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="thirdImage">
                     {uploading ? (
-                      <Loader color="grape" />
+                      <Loader color="dark" />
                     ) : (
                       <IconUpload className="cursor-pointer" size={30} />
                     )}
                   </label>
                   <input
                     required
+                    accept="image/webp,image/jpeg,image/png"
                     onChange={thirdImageUpload}
                     type="file"
                     className="hidden"
@@ -411,17 +428,20 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                   />
                 </div>
               </div>
-              <div className="h-full w-full flex items-center justify-center bg-gray-500 cursor-pointer transition ease-in duration-300 hover:bg-gray-700">
+              <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
+                {" "}
+                <h2 className="text-xl font-bold">(2)</h2>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <label htmlFor="secondImage">
                     {uploading ? (
-                      <Loader color="grape" />
+                      <Loader color="dark" />
                     ) : (
                       <IconUpload className="cursor-pointer" size={30} />
                     )}
                   </label>
                   <input
                     required
+                    accept="image/webp,image/jpeg,image/png"
                     onChange={secondImageUpload}
                     type="file"
                     className="hidden"
@@ -429,7 +449,45 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                   />
                 </div>
               </div>
+              <div className="h-full w-full flex items-center justify-center space-y-2   cursor-pointer transition ease-in duration-300 flex-col  ">
+                <h2 className="text-xl font-bold">(1)</h2>
+                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
+                  <label htmlFor="firstImage">
+                    {uploading ? (
+                      <Loader color="dark" />
+                    ) : (
+                      <IconUpload className="cursor-pointer" size={30} />
+                    )}
+                  </label>
+                  <input
+                    required
+                    accept="image/webp,image/jpeg,image/png"
+                    onChange={firstImageUpload}
+                    type="file"
+                    className="hidden"
+                    id="firstImage"
+                  />
+                </div>
+              </div>
             </div>
+            <Notification
+              transition="fade"
+              transitionDuration={600}
+              transitionTimingFunction="ease"
+              color="green"
+              withCloseButton
+              variant="outline"
+            >
+              <h1
+                className={`${
+                  alignLeft === true
+                    ? "text-lg text-right"
+                    : "text-lg text-left"
+                }`}
+              >
+                {t("imageReq")}
+              </h1>
+            </Notification>
             <div
               className={`${
                 alignLeft === true
@@ -835,7 +893,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                           onClick={() => {
                             handleNewRoom();
                           }}
-                          className="w-52 py-3 border-r-8   border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                          className="w-52 py-3 border-r-8   border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:text-mainPurple hover:bg-mainBlue"
                         >
                           {t("confirmEditRoom")}{" "}
                         </button>
@@ -951,8 +1009,8 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 }}
                 className={`${
                   alignLeft === true
-                    ? "w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
-                    : "w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue self-start"
+                    ? "w-52 hover:text-mainPurple py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                    : "w-52 hover:text-mainPurple py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue self-start"
                 }`}
               >
                 {t("confirmEditHotel")}

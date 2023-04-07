@@ -620,8 +620,8 @@ export default function AddHotel({
               <h1
                 className={`${
                   alignLeft === true
-                    ? "text-2xl text-right"
-                    : "text-2xl text-left"
+                    ? "text-lg text-right"
+                    : "text-lg text-left"
                 }`}
               >
                 {t("imageReq")}
@@ -1090,7 +1090,7 @@ export default function AddHotel({
                               handleNewRoom();
                             }
                           }}
-                          className="w-52 py-3 border-r-8   border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                          className="w-52 hover:text-mainPurple py-3 border-r-8   border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
                         >
                           {t("confirmRoom")}{" "}
                         </button>
@@ -1202,8 +1202,8 @@ export default function AddHotel({
                   }}
                   className={`${
                     alignLeft === true
-                      ? "w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
-                      : "w-52 py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue self-start"
+                      ? "w-52 hover:text-mainPurple py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue"
+                      : "w-52 hover:text-mainPurple py-3 border-r-8 border-mainBlue my-4 bg-mainPurple transition ease-in duration-300 font-mainFont rounded-md text-white hover:bg-mainBlue self-start"
                   }`}
                 >
                   {t("confirmHotel")}

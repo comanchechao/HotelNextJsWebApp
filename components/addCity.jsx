@@ -1,12 +1,22 @@
-import { Loader, Select } from "@mantine/core";
+import { Loader, Select, Notification } from "@mantine/core";
 import dynamic from "next/dynamic.js";
 import { useEffect, useState } from "react";
 import IRCities from "../assets/cities/ir";
 import TRCities from "../assets/cities/tr";
 import { supabase } from "../lib/supabaseClient";
-import { Suspense } from "react";
+import { useTranslation } from "next-i18next";
 
 export default function WebsiteInfo({ cities }) {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+  const [alignLeft, setAlignLeft] = useState(false);
+  async function changeAlignment() {
+    if (lang === "tr") await setAlignLeft(false);
+    else setAlignLeft(true);
+  }
+  useEffect(() => {
+    changeAlignment();
+  }, [lang]);
   const DisplayCities = dynamic(() => import("./displayMap"), {
     ssr: false,
     suspense: true,
@@ -17,6 +27,7 @@ export default function WebsiteInfo({ cities }) {
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [searchValue, onSearchChange] = useState("");
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     IRCities.forEach((city) => {
@@ -43,39 +54,31 @@ export default function WebsiteInfo({ cities }) {
       lat: lat,
       lng: lng,
     });
+    setAlert(true);
+    setTimeout(() => {
+      setAlert(false);
+    }, 2000);
     setLoading(false);
   }
 
   return (
-    <div className="flex flex-col items-center justify-center  w-full h-full  ">
-      <div className="py-20 overflow-y-scroll w-full h-full   px-14 bg-white flex flex-col items-center justify-center">
-        <h1 className="border-b-4 pb-4 border-mainBlue my-3">افزودن شهر</h1>
+    <div className="flex flex-col items-center justify-center  w-screen h-screen  ">
+      <div className="py-10 overflow-y-scroll space-y-10 w-full h-full   px-14 bg-white flex flex-col items-center justify-center">
+        <h1 className="border-b-4 pb-4 border-mainBlue my-3">{t("addCity")}</h1>
         <DisplayCities
           className="w-full h-full z-10"
           LatLng={[lat, lng]}
           cities={cities}
         />
-        <div className="flex">
-          <Select
-            label="pick a country"
-            placeholder="Pick one"
-            onChange={setCountry}
-            value={country}
-            data={[
-              { value: "turkey", label: "turkey" },
-              { value: "iran", label: "iran" },
-            ]}
-          />
-        </div>
         <div className="flex justify-center items-center w-full h-full">
-          {country === "iran" ? (
+          {country === t("iran") ? (
             <Select
               value={value}
               onChange={setValue}
               onSearchChange={onSearchChange}
               searchValue={searchValue}
-              label="یک شهر رو انتخاب کنید"
-              placeholder="انتخاب شهر"
+              label={t("enterCity")}
+              placeholder={t("hotelCity")}
               searchable
               nothingFound="No options"
               dropdownPosition="bottom"
@@ -84,18 +87,18 @@ export default function WebsiteInfo({ cities }) {
               transition="pop-top-left"
               transitionTimingFunction="ease"
               variant="default"
-              className="text-2xl z-50 mx-6 text-right flex flex-col items-end"
+              className="text-2xl   mx-6 text-right flex flex-col items-end"
               radius="md"
               withAsterisk
               clearable
               size="md"
             />
-          ) : country === "turkey" ? (
+          ) : (
             <Select
               value={value}
               onChange={setValue}
-              label="یک شهر رو انتخاب کنید"
-              placeholder="انتخاب شهر"
+              label={t("enterCity")}
+              placeholder={t("hotelCity")}
               searchable
               nothingFound="No options"
               dropdownPosition="bottom"
@@ -110,25 +113,62 @@ export default function WebsiteInfo({ cities }) {
               clearable
               size="md"
             />
-          ) : null}
+          )}
+          <Select
+            searchable
+            transitionDuration={150}
+            transition="pop-top-left"
+            transitionTimingFunction="ease"
+            variant="default"
+            className="text-2xl   mx-6 text-right flex flex-col items-end"
+            radius="md"
+            dropdownPosition="bottom"
+            withAsterisk
+            clearable
+            size="md"
+            label={t("enterCountry")}
+            placeholder={t("enterCountry")}
+            onChange={setCountry}
+            value={country}
+            data={[
+              { value: t("turkey"), label: t("turkey") },
+              { value: t("iran"), label: t("iran") },
+            ]}
+          />
         </div>
         <div className="flex space-y-4 flex-col items-center w-full justify-center">
-          <div className="flex w-52 justfy-center border-b-4 border-mainBlue">
-            <p className=" px-4">{value}</p>: <h2>شهر انتخاب شده</h2>
+          <div className="flex w-auto justfy-center space-x-5">
+            <p className=" bg-mainBlue border-2 rounded-md border-dashed border-mainPurple px-4">
+              {value}
+            </p>{" "}
+            <h2> : {t("chosenCity")}</h2>
           </div>
           <div className="flex justify-center">
-            <button
-              className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont"
-              onClick={() => {
-                addCity();
-              }}
-            >
-              {loading ? (
-                <Loader size="sm" color="yellow" variant="bars" />
-              ) : (
-                <p> ثبت شهر</p>
-              )}
-            </button>
+            {alert ? (
+              <Notification
+                transition="fade"
+                transitionDuration={600}
+                transitionTimingFunction="ease"
+                color="green"
+                withCloseButton
+                variant="outline"
+              >
+                <h1 className="text-2xl text-center">{t("addCitySuccess")}</h1>
+              </Notification>
+            ) : (
+              <button
+                className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont"
+                onClick={() => {
+                  addCity();
+                }}
+              >
+                {loading ? (
+                  <Loader size="sm" color="yellow" variant="bars" />
+                ) : (
+                  <p> {t("confirmChanges")}</p>
+                )}
+              </button>
+            )}
           </div>
         </div>
       </div>
