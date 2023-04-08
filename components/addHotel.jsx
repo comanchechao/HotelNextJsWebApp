@@ -79,6 +79,7 @@ export default function AddHotel({
   const [definedRoom, setDefinedRoom] = useState({
     title: "",
     price: null,
+    priceL: null,
     meal: null,
     copacity: 1,
     quantity: 1,
@@ -106,6 +107,8 @@ export default function AddHotel({
         id: Math.random(3, 50),
         title: definedRoom.title,
         price: definedRoom.price,
+        priceL: definedRoom.priceL,
+
         meal: meal,
         copacity: 1,
         quantity: 1,
@@ -122,6 +125,8 @@ export default function AddHotel({
       let newObject = oldValues;
       oldValues.title = "";
       oldValues.price = 0;
+      oldValues.priceL = 0;
+
       oldValues.copacity = 1;
       oldValues.quantity = 1;
       return newObject;
@@ -992,7 +997,20 @@ export default function AddHotel({
                           className="py-2 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
                           type="number"
                           name="price"
-                          placeholder={t("avrgNight")}
+                          placeholder={t("enterRial")}
+                        />{" "}
+                        <input
+                          onChange={(e) => {
+                            setDefinedRoom((oldValues) => {
+                              let newObject = oldValues;
+                              oldValues.priceL = e.target.value;
+                              return newObject;
+                            });
+                          }}
+                          className="py-2 my-3 text-right font-mainFont px-2 w-full bg-gray-200 rounded-md"
+                          type="number"
+                          name="price"
+                          placeholder={t("enterLir")}
                         />
                       </div>
                       <div
@@ -1037,9 +1055,14 @@ export default function AddHotel({
                             >
                               <div className="flex   w-3/4 flex-col  items-start space-y-3 justify-center ">
                                 <div className="  flex  justify-center items-center space-x-2">
-                                  <p className="text-xs">{t("currency")}</p>
+                                  <p className="text-xs">تومان</p>
                                   <p className="text-lg font-bold">
                                     {room.price}
+                                  </p>
+                                  <p className="text-xs">TL</p>
+
+                                  <p className="text-lg font-bold">
+                                    {room.priceL}
                                   </p>
                                 </div>
                                 <div className="flex   text-darkPurple justify-center items-center h-full space-x-3 ">

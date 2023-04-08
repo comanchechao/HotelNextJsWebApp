@@ -734,8 +734,11 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                   >
                     <div className="flex   w-3/4 flex-col  items-start space-y-3 justify-center ">
                       <div className="  flex  justify-center items-center space-x-2">
-                        <p className="text-xs">{t("currency")}</p>
+                        <p className="text-xs">تومان</p>
                         <p className="text-lg font-bold">{room.price}</p>
+                        <p className="text-xs">TL</p>
+
+                        <p className="text-lg font-bold">{room.priceL}</p>
                       </div>
                       <div className="flex   text-darkPurple justify-center items-center h-full space-x-3 ">
                         <div className="flex justify-center items-center text-darkPurple space-x-5   ">

@@ -48,9 +48,15 @@ export default function RoomCard({ room, hotelDetail }) {
         <div className="h-full lg:w-1/4 flex flex-col items-center justify-around py-8 lg:border-t-0  border-t-2 border-mainBlue">
           <div className="flex space-x-1 p-2 justify-center items-center">
             <h2>{t("currency")}</h2>
-            <h2 className="  text-xl text-mainPurple">
-              {JSON.stringify(room.price)}
-            </h2>
+            {alignLeft ? (
+              <h2 className="  text-xl text-mainPurple">
+                {JSON.stringify(room.price)}
+              </h2>
+            ) : (
+              <h2 className="  text-xl text-mainPurple">
+                {JSON.stringify(room.priceL)}
+              </h2>
+            )}
           </div>
           <h1 className="text-sm">{t("avrgNight")}</h1>
 
@@ -126,7 +132,17 @@ export default function RoomCard({ room, hotelDetail }) {
                   : " flex flex-row-reverse items-center  text-sm"
               }`}
             >
-              {t("price1Night")} : {JSON.stringify(room.price)} {t("currency")}
+              {t("price1Night")} :{" "}
+              {alignLeft ? (
+                <h2 className="  text-xl text-mainPurple">
+                  {JSON.stringify(room.price)}
+                </h2>
+              ) : (
+                <h2 className="  text-xl text-mainPurple">
+                  {JSON.stringify(room.priceL)}
+                </h2>
+              )}{" "}
+              {t("currency")}
               <Tag className="mx-2" size={19} weight="fill" />
             </h2>
           </div>

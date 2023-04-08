@@ -20,6 +20,8 @@ export const room = createSlice({
   },
   reducers: {
     setRoom: (state, action) => {
+      state.room.priceL = action.payload.priceL;
+
       state.room.price = action.payload.price;
       state.room.title = action.payload.title;
       state.room.meal = action.payload.meal;
