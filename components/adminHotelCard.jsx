@@ -94,8 +94,11 @@ export default function AdminHotelCard({ hotel, user, featuresData, cities }) {
       <div className="w-56 h-full flex flex-col p-4 items-center lg:items-center justify-center space-y-4">
         <h2 className="text-mainPurple   flex items-start justify-center">
           <p className="text-sm font-bold mx-2">{t("currency")}</p>
-
-          <p className="text-2xl "> {hotel.prices}</p>
+          {alignLeft ? (
+            <p className="text-2xl "> {hotel.prices}</p>
+          ) : (
+            <p className="text-2xl "> {hotel.pricesL}</p>
+          )}
         </h2>
         {hotel.validated ? (
           <button className="py-1 font-mainFont  hover:text-white bg-transparent border-green-500 border-2 border-dashed   ease-in duration-300 hover:bg-green-600 transition rounded-lg  text-mainPurple  px-6   ">

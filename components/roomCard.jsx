@@ -67,7 +67,7 @@ export default function RoomCard({ room, hotelDetail }) {
             className={`${
               alignLeft === true
                 ? "h-14 w-full flex items-center justify-end"
-                : "h-14 w-full flex items-center justify-start flex-row-reverse"
+                : "h-14 w-full flex items-center justify-end flex-row-reverse"
             }`}
           >
             {/* <Accordion
