@@ -1,11 +1,11 @@
 const IRCities = [
   {
-    label: "Tehran",
+    label: "تهران",
     lat: "35.7000",
     lng: "51.4167",
     country: "Iran",
     iso2: "IR",
-    value: "Tehrān",
+    value: "تهران",
     capital: "primary",
     population: "13633000",
     population_proper: "9033003",

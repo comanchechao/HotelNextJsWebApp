@@ -325,15 +325,15 @@ export default function HotelList({
     }
   }
   useEffect(() => {
-    filter();
+    filterCity();
   }, [filterCities]);
 
-  function filter() {
+  function filterCity() {
     let filteredArray = initialHotels.filter((obj) =>
       obj.city((hobby) => filterCities.includes(hobby))
     );
-
     setHotels(filteredArray);
+
     if (hotels === []) {
       setHotels(initialHotels);
     }
