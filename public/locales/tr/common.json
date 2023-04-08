@@ -290,5 +290,8 @@
 
   "addCitySuccess": "Şehir başarıyla eklendi",
 
-  "userType": "Kullanıcı tipi"
+  "userType": "Kullanıcı tipi",
+
+  "done": "Tamamlandı",
+  "deleteCol": "meslektaşı sil"
 }

@@ -64,7 +64,7 @@ export default function SuperUserValidation({ user }) {
             <h1 className="text-xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
               {t("needConfirmHotel")}
             </h1>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full  ">
               {hotels.map((hotel, i) => {
                 if (hotel.validated) {
                   return (
@@ -76,7 +76,11 @@ export default function SuperUserValidation({ user }) {
                         <div className="flex space-x-1 p-2 justify-center items-center">
                           <h2 className="text-xs">{t("currency")}</h2>
                           <h2 className="  text-lg text-mainPurple">
-                            {hotel.prices}
+                            {alignLeft ? (
+                              <p> {hotel.prices}</p>
+                            ) : (
+                              <p> {hotel.pricesL}</p>
+                            )}
                           </h2>
                         </div>
                         <h1 className="text-sm">{t("price1Night")}</h1>
@@ -104,7 +108,13 @@ export default function SuperUserValidation({ user }) {
                             <User className="ml-2" size={19} weight="fill" />
                           </h2>
                           <h2 className="flex items-center  text-sm">
-                            {t("price1Night")} : 18,000,000 {t("currency")}
+                            {t("price1Night")} :
+                            {alignLeft ? (
+                              <p> {hotel.prices}</p>
+                            ) : (
+                              <p> {hotel.pricesL}</p>
+                            )}
+                            {t("currency")}
                             <Tag className="ml-2" size={19} weight="fill" />
                           </h2>
                         </div>

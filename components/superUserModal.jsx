@@ -81,7 +81,7 @@ export default function SuperUserModal({ user }) {
           <h1 className="text-2xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
             {t("colleagueInfo")}
           </h1>
-          <div className="flex flex-wrap justify-center items-center lg:flex-row flex-col space-y-5 lg:space-y-0 space-x-0 lg:space-x-5 w-full ">
+          <div className="flex flex-wrap justify-center items-center lg:flex-row flex-col space-y-5 lg:space-y-3 space-x-0 lg:space-x-5 w-full ">
             <h2 className="py-1 rounded-md px-4 border-2     border-mainPurple">
               {t("fullName")} : <strong>{user ? user.fullName : null}</strong>
             </h2>
@@ -108,7 +108,7 @@ export default function SuperUserModal({ user }) {
               {loading ? (
                 <Loader color="violet" size="sm" />
               ) : done ? (
-                <p>انجام شد</p>
+                <p>{t("done")}</p>
               ) : (
                 t("addAdmin")
               )}
@@ -123,9 +123,9 @@ export default function SuperUserModal({ user }) {
               {loading ? (
                 <Loader color="violet" size="sm" />
               ) : done ? (
-                <p>انجام شد</p>
+                <p>{t("done")}</p>
               ) : (
-                <p>حذف همکار</p>
+                <p>{t("deleteCol")}</p>
               )}
             </button>
           )}
@@ -144,7 +144,11 @@ export default function SuperUserModal({ user }) {
                       <div className="flex space-x-1 p-2 justify-center items-center">
                         <h2 className="text-xs">{t("currency")}</h2>
                         <h2 className="  text-lg text-mainPurple">
-                          {hotel.prices}
+                          {alignLeft ? (
+                            <p> {hotel.prices}</p>
+                          ) : (
+                            <p> {hotel.pricesL}</p>
+                          )}
                         </h2>
                       </div>
                       <h1 className="text-sm">{t("price1Night")}</h1>
@@ -167,7 +171,12 @@ export default function SuperUserModal({ user }) {
                           <User className="ml-2" size={19} weight="fill" />
                         </h2>
                         <h2 className="flex items-center  text-sm">
-                          {hotel.prices} {t("currency")}
+                          {alignLeft ? (
+                            <p className="text-2xl "> {hotel.prices}</p>
+                          ) : (
+                            <p className="text-2xl "> {hotel.pricesL}</p>
+                          )}
+                          {t("currency")}
                           <Tag className="ml-2" size={19} weight="fill" />
                         </h2>
                       </div>
