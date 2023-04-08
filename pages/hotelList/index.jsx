@@ -165,7 +165,9 @@ export default function HotelList({
     if (lng === "tr") {
       if (selectedCity !== "") {
         const filteredData = data.filter((obj) => {
-          return obj.trTitle.includes(selectedCity);
+          if (obj.trTitle) {
+            return obj.trTitle.includes(selectedCity);
+          }
         });
         setHotels(filteredData);
       }

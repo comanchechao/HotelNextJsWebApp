@@ -177,45 +177,13 @@ export default function Home(props) {
 
   async function CityTranslate() {
     if (props.cities) {
-      if (lng === "fa") {
-        setTehranT("تهران");
-        setKishT("کیش");
-        setAntaliaT("آنتالیا");
-        setBakuT("باکو");
-        setMashhadT("مشهد");
-        setTabrizT("تبریز");
-        setDubaiT("دوبی");
-        setIrvanT("ایروان");
-        setIsfahanT("اصفهان");
-        setShirazT("شیراز");
-        setIstanbulT("استانبول");
+      cityNames.splice(0, cityNames.length);
 
-        cityNames.splice(0, cityNames.length);
-
-        await props.cities.forEach((city, i) => {
-          if (cityNames.indexOf(city.name) === -1) {
-            cityNames.push(city.name);
-          }
-        });
-      } else {
-        setTehranT("Tehran");
-        setKishT("Kish");
-        setAntaliaT("Antalia");
-        setBakuT("Baku");
-        setMashhadT("Mashhad");
-        setTabrizT("Tabriz");
-        setDubaiT("Dubai");
-        setIrvanT("Irvan");
-        setIsfahanT("Isfahan");
-        setShirazT("Shiraz");
-        setIstanbulT("Istanbul");
-        cityNames.splice(0, cityNames.length);
-        await props.cities.forEach((city, i) => {
-          if (cityNames.indexOf(city.trTitle) === -1) {
-            cityNames.push(city.trTitle);
-          }
-        });
-      }
+      await props.cities.forEach((city, i) => {
+        if (cityNames.indexOf(city.name) === -1) {
+          cityNames.push(city.name);
+        }
+      });
     }
   }
   useEffect(() => {
@@ -339,16 +307,6 @@ export default function Home(props) {
                   defaultValue={dayjs().toDate()}
                   onChange={(e) => {
                     setDates(e);
-                    dispatch(
-                      reservationActions.setEnterting(
-                        dayjs(e[0], { jalali: true }).locale("fa")
-                      )
-                    );
-                    dispatch(
-                      reservationActions.setExiting(
-                        dayjs(e[1], { jalali: true }).locale("fa")
-                      )
-                    );
                   }}
                   radius="md"
                   dayClassName={(date, modifiers) =>

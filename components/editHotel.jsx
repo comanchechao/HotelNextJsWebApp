@@ -48,8 +48,8 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
   const [city, setCity] = useState("");
   const [get, setGet] = useState(false);
   const [aboutHotel, setAboutHotel] = useState("");
-  const [enteringHours, setEnteringHours] = useState(12);
-  const [exitingHours, setExitingHours] = useState(14);
+  const [enteringHours, setEnteringHours] = useState(null);
+  const [exitingHours, setExitingHours] = useState(null);
   const [alignLeft, setAlignLeft] = useState(false);
   const [alert, setAlert] = useState(false);
   const [alert2, setAlert2] = useState(false);
@@ -179,15 +179,15 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
     if (secondImage) updates.secondImage = secondImage;
     if (thirdImage) updates.thirdImage = thirdImage;
     if (fourthImage) updates.fourthImage = fourthImage;
-    if (features !== []) updates.features = features;
+    if (features.length) updates.features = features;
     if (avragePriceL) updates.pricesL = avragePriceL;
     if (avragePriceRial) updates.prices = avragePriceRial;
     if (aboutHotel) updates.hotelAbout = aboutHotel;
     if (hotelRules) updates.hotelRules = hotelRules;
-
-    if (rooms) updates.rooms = rooms;
     if (getlat) updates.locationLat = getlat;
     if (getLng) updates.locationLng = getLng;
+
+    console.log(updates);
 
     const { data, error } = await supabase
       .from("Hotels")
@@ -198,6 +198,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
       setAlert(false);
     }, 2000);
     if (error) throw error;
+    console.log("fired");
   }
   useEffect(() => {
     if (cities) {

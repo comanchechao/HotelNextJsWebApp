@@ -174,14 +174,14 @@ export default function PassengerInfo() {
               <h2>{t("exitTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm">{hotelInfo.enterTime}</h1>
+            <h1 className="font text-sm"> {hotelInfo.exitTime}</h1>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>{t("enterTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm"> {hotelInfo.exitTime}</h1>
+            <h1 className="font text-sm"> {hotelInfo.enterTime}</h1>
           </div>
         </div>
         <div
