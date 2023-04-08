@@ -75,7 +75,10 @@ export default function WebsiteInfo({ cities }) {
           {country === t("iran") ? (
             <Select
               value={value}
-              onChange={setValue}
+              onChange={(e) => {
+                setValue(e);
+                console.log(e);
+              }}
               onSearchChange={onSearchChange}
               searchValue={searchValue}
               label={t("enterCity")}
