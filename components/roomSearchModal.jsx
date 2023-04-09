@@ -85,9 +85,7 @@ export default function RoomSearch() {
             }
             size="md"
           /> */}
-          <Suspense fallback={<div>Loading...</div>}>
-            <DatePicker />
-          </Suspense>
+          <DatePicker className="z-50" />
           <Popover width={300} position="bottom" withArrow shadow="md">
             <Popover.Target>
               <TextInput
@@ -140,7 +138,7 @@ export default function RoomSearch() {
             onClick={() => setOpened(false)}
             className="py-1 px-8 mt-6 border-2 font-mainFont border-r-8 border-mainBlue rounded-md bg-white transition ease-in duration-300 text-gray-700 text-lg"
           >
-            تایید
+            {t("confirm")}
           </button>
         </div>
       </Modal>

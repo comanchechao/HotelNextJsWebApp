@@ -38,7 +38,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Comments from "../../../components/comments";
 import Reply from "../../../components/reply";
 import { Carousel } from "@mantine/carousel";
-import RoomSearch from "../../../components/roomSearchModal";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -625,8 +624,148 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                   </div>
                 </div>
               </div>
+              <div className="   lg:hidden flex     p-4 bg-white   flex-col items-center w-full  h-72 rounded-md border ">
+                {lng === "fa" ? (
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <DatePicker />
+                  </Suspense>
+                ) : null}
+                {lng === "tr" ? (
+                  <DatePickerInput
+                    variant="default"
+                    locale="tr"
+                    numberOfColumns={1}
+                    oriantation
+                    type="range"
+                    className={`${
+                      alignLeft === true
+                        ? "text-xl   text-right flex flex-col items-center lg:items-end"
+                        : "text-xl   text-right flex flex-col items-center lg:items-start"
+                    }`}
+                    dropdownType="modal"
+                    value={dates}
+                    dropdownPosition="top-start"
+                    placeholder={t("inDate")}
+                    label={t("inDate")}
+                    minDate={dayjs().toDate()}
+                    defaultValue={dayjs().toDate()}
+                    onChange={(e) => {
+                      setDates(e);
+                      dispatch(
+                        reservationActions.setEnterting(
+                          dayjs(e[0]).locale("fa").format("dddd, D MMMM YYYY")
+                        )
+                      );
+                      dispatch(
+                        reservationActions.setExiting(
+                          dayjs(e[1]).locale("fa").format("dddd, D MMMM YYYY")
+                        )
+                      );
+                    }}
+                    radius="md"
+                    dayClassName={(date, modifiers) =>
+                      cx({
+                        [classes.firstInRange]: modifiers.outside,
+                      })
+                    }
+                    styles={(theme) => ({
+                      input: {
+                        width: rem(240),
+                      },
+                    })}
+                    size="md"
+                  />
+                ) : null}
 
-              <div
+                <Popover width={300} position="bottom" withArrow shadow="md">
+                  <Popover.Target>
+                    <TextInput
+                      value={passenger + childPassenger}
+                      defaultValue={passenger}
+                      className={`${
+                        alignLeft === true
+                          ? "text-3xl text-center flex flex-col items-end"
+                          : "text-3xl text-center flex flex-col items-start"
+                      }`}
+                      label={t("passenger")}
+                      placeholder={t("passenger")}
+                      variant="default"
+                      radius="md"
+                      size="md"
+                      withAsterisk
+                    />
+                  </Popover.Target>
+                  <Popover.Dropdown>
+                    <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
+                      <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
+                        <h1 className="text-xs">{t("adult")}</h1>
+                        <div className="flex text-blue-800  items-center justify-center space-x-5">
+                          <PlusCircle
+                            className="cursor-pointer"
+                            onClick={() => {
+                              dispatch(reservationActions.increasePassenger());
+                            }}
+                            size={27}
+                            weight="fill"
+                          />
+                          <h1 className="text-xs font-bold">{passenger}</h1>
+                          <MinusCircle
+                            className="cursor-pointer"
+                            onClick={() => {
+                              dispatch(
+                                reservationActions.decreamentPassenger()
+                              );
+                            }}
+                            size={27}
+                            weight="fill"
+                          />
+                        </div>
+                      </div>
+                      <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
+                        <h1 className="text-xs"> {t("kid")} </h1>
+                        <div className="flex text-blue-800  items-center justify-center space-x-5">
+                          <PlusCircle
+                            className="cursor-pointer"
+                            onClick={() => {
+                              dispatch(
+                                reservationActions.incrementChildPassenger()
+                              );
+                            }}
+                            size={27}
+                            weight="fill"
+                          />
+                          <h1 className="text-xs font-bold">
+                            {childPassenger}
+                          </h1>
+                          <MinusCircle
+                            className="cursor-pointer"
+                            onClick={() => {
+                              dispatch(
+                                reservationActions.decrementChildPassenger()
+                              );
+                            }}
+                            size={27}
+                            weight="fill"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </Popover.Dropdown>
+                </Popover>
+                <div className="flex">
+                  <button
+                    onClick={() => {
+                      dispatch(reservationActions.setHotelInfo(hotel));
+                      var element = document.getElementById("target");
+                      element.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="py-1  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white mt-5 px-10   "
+                  >
+                    <p>{t("searchRoom")}</p>
+                  </button>
+                </div>
+              </div>
+              {/* <div
                 className={`${
                   alignLeft === true
                     ? "lg:hidden w-full items-center justify-end flex"
@@ -634,7 +773,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                 }`}
               >
                 <RoomSearch />
-              </div>
+              </div> */}
               <div className="flex flex-col w-full lg:w-4/5 mt-8  lg:pl-7 ">
                 <div
                   className={`${
