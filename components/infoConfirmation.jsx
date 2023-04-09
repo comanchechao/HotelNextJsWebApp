@@ -83,7 +83,12 @@ export default function InfoConfirmation() {
     }
 
     const { data: session, error2 } = await supabase.auth.getSession();
-
+    const { error3 } = await supabase
+      .from("rooms")
+      .update({
+        checkout: "Wed Apr 19 2023 08:40:56 GMT+0330 (Iran Standard Time)",
+      })
+      .eq("id", 1);
     const { error } = await supabase.from("reservations").insert({
       name: passengers[0].name,
       hotel_name: hotelInfo.title,
@@ -95,13 +100,6 @@ export default function InfoConfirmation() {
       enteringDate: enterDate,
       exitingDate: exitDate,
     });
-    const { error3 } = await supabase
-      .from("rooms")
-      .update({
-        checkout: "Wed Apr 19 2023 08:40:56 GMT+0330 (Iran Standard Time)",
-      })
-      .eq("id", 1)
-      .select();
 
     setLoading(false);
     setConfirm(true);

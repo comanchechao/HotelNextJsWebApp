@@ -54,7 +54,7 @@ export default function ReservedRoomCard({ reserve }) {
               <h2 className="text-xs">{t("exitDay")}</h2>
               <SignOut size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-xs"> </h1>
+            <h1 className="font text-xs"> {reserve.exitingDate}</h1>
             <div className="flex items-center space-x-2">
               <h2 className="text-xs">{t("enterDay")}</h2>
               <SignIn size={25} color="#e0ab19" weight="fill" />
@@ -65,7 +65,7 @@ export default function ReservedRoomCard({ reserve }) {
               <h2 className="text-xs">{t("enterTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-xs"> </h1>{" "}
+            <h1 className="font text-xs"> {reserve.enteringDate}</h1>{" "}
             <div className="flex items-center space-x-2">
               <h2 className="text-xs">{t("exitTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
