@@ -232,11 +232,7 @@ export default function Home(props) {
     <>
       <Head>
         <title>{t("title")}</title>
-        <meta
-          name="description"
-          content="
-با بوتک رزرو هتل آسان و سریع است! بوتک، هتل و استراحتگاه های رفاهی فوق العاده را با بهترین قیمت ها و نرخ های ویژه ارائه می دهد. با ما بهترین قیمت و محل هتل خود را پیدا کنید. این سایت به شما انواع امکانات، عرضه های ویژه و کد های تخفیف اختصاصی را برای استفاده از برترین هتل ها، با مناسب ترین قیمت ها فراهم میکند"
-        />
+        <meta name="description" content={t("description")} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -258,7 +254,7 @@ export default function Home(props) {
           />
         </div>
         {props.locale}
-        <div className="w-full h-auto lg:h-72 lg:px-44 z-40">
+        <div className="w-full h-auto px-3 lg:h-72 lg:px-44 z-40">
           <div
             ref={firstContainer}
             className="w-full opacity-0 z-30 h-full flex flex-col items-center justify-center lg:space-x-6 transform drop-shadow-xl -translate-y-11 bg-white rounded-lg p-14  "
@@ -556,8 +552,8 @@ export default function Home(props) {
                 passHref
                 className={`${
                   alignLeft === true
-                    ? "h-20   w-full flex flex-row-reverse items-center justify-between pr-7 pl-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                    : "h-20   w-full flex flex-row items-center justify-between pl-7 pr-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
                 <div
@@ -591,8 +587,8 @@ export default function Home(props) {
                 passHref
                 className={`${
                   alignLeft === true
-                    ? "h-20   w-full flex flex-row-reverse items-center justify-between pr-7 pl-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                    : "h-20   w-full flex flex-row items-center justify-between pl-7 pr-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
                 <div
@@ -618,8 +614,6 @@ export default function Home(props) {
                 />
               </a>
             </Link>
-          </div>
-          <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
             <Link href="/hotelList" legacyBehavior>
               <a
                 onClick={() => {
@@ -765,7 +759,7 @@ export default function Home(props) {
           </div>
         </div>
         <div className="w-full h-auto py-6 flex items-center lg:flex-row flex-col space-y-2 lg:space-y-0 justify-center space-x-5 lg:px-44 my-10">
-          <div className=" w-full h-full flex flex-col items-center justify-around lg:space-y-3 space-y-4">
+          <div className=" w-full h-full flex flex-col items-center justify-around  lg:space-y-3 space-y-2">
             <Link href="/hotelList" legacyBehavior>
               <a
                 onClick={() => {
@@ -774,8 +768,8 @@ export default function Home(props) {
                 passHref
                 className={`${
                   alignLeft === true
-                    ? "h-20   w-full flex flex-row-reverse items-center justify-between pr-7 pl-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                    : "h-20   w-full flex flex-row items-center justify-between pl-7 pr-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
                 <div
@@ -809,8 +803,8 @@ export default function Home(props) {
                 passHref
                 className={`${
                   alignLeft === true
-                    ? "h-20   w-full flex flex-row-reverse items-center justify-between pr-7 pl-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
-                    : "h-20   w-full flex flex-row items-center justify-between pl-7 pr-3 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    ? "h-20   w-full flex flex-row-reverse items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
+                    : "h-20   w-full flex flex-row items-center justify-between p-5 cursor-pointer transition ease-in rounded-md duration-300 hover:drop-shadow-2xl bg-white"
                 }`}
               >
                 <div
@@ -836,8 +830,6 @@ export default function Home(props) {
                 />
               </a>
             </Link>
-          </div>
-          <div className=" w-full h-full flex flex-col items-center justify-around  lg:space-y-3 space-y-2">
             <Link href="/hotelList" legacyBehavior>
               <a
                 onClick={() => {
