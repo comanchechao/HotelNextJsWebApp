@@ -38,6 +38,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Comments from "../../../components/comments";
 import Reply from "../../../components/reply";
 import { Carousel } from "@mantine/carousel";
+import RoomSearch from "../../../components/roomSearchModal";
+
 const useStyles = createStyles((theme) => ({
   card: {
     height: 440,
@@ -149,12 +151,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
   const Footer = dynamic(() => import("../../../components/Footer"), {
     suspense: true,
   });
-  const RoomSearch = dynamic(
-    () => import("../../../components/roomSearchModal"),
-    {
-      suspense: true,
-    }
-  );
+
   const faLocale = {
     name: "fa",
     weekdays: [

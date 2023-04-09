@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { SignIn, SignOut, Timer } from "phosphor-react";
 
 import { Modal } from "@mantine/core";
 import { useTranslation } from "next-i18next";
@@ -58,8 +59,33 @@ export default function ReservationInfo({
               {t("roomCapacity")} : <strong>{passengerCount}</strong>
             </h2>
           </div>
+          <div className="h-auto w-full flex space-x-2 items-center justify-center">
+            {" "}
+            <div className="flex items-center space-x-2">
+              <h2>{t("exitDay")}</h2>
+              <SignOut size={25} color="#e0ab19" weight="fill" />
+            </div>
+            <h1 className="font text-sm"> </h1>
+            <div className="flex items-center space-x-2">
+              <h2>{t("enterDay")}</h2>
+              <SignIn size={25} color="#e0ab19" weight="fill" />
+            </div>
+          </div>{" "}
+          <div className="h-auto w-full flex space-x-2 items-center justify-center">
+            <div className="flex items-center space-x-2">
+              <h2>{t("enterTime")}</h2>
+              <Timer size={25} color="#e0ab19" weight="fill" />
+            </div>
+            <h1 className="font text-sm"> </h1>{" "}
+            <div className="flex items-center space-x-2">
+              <h2>{t("exitTime")}</h2>
+              <Timer size={25} color="#e0ab19" weight="fill" />
+            </div>
+            <h1 className="font text-sm"> </h1>
+          </div>
+          <h1 className="font text-sm"> </h1>
           <div className="w-full h-auto flex items-center">
-            <div className="  my-3 space-y-2  h-full grid lg:grid-rows-2 lg:grid-cols-1    lg:grid-flow-col grid-cols-2  justify-items-center    w-full   border-dashed    rounded-md">
+            <div className="  my-3 space-y-2  h-full grid lg:grid-rows-2 lg:grid-cols-1    lg:grid-flow-row grid-cols-2  justify-items-center    w-full   border-dashed    rounded-md">
               {passengers.map((passenger, i) => {
                 return (
                   <div
