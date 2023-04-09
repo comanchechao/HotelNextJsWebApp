@@ -656,13 +656,16 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                 <div
                   className={`${
                     alignLeft === true
-                      ? "rounded-lg border text-sm mb-7  border-gray-300 bg-white  flex items-center justify-end  lg:p-5 divdie-x divide-black  "
-                      : "rounded-lg border text-sm mb-7  border-gray-300 bg-white  flex items-center justify-start  lg:p-5 divdie-x divide-black  "
+                      ? "rounded-lg border text-sm mb-7    border-gray-300 bg-white  flex items-center justify-start flex-row-reverse  lg:p-5     "
+                      : "rounded-lg border text-sm mb-7    border-gray-300 bg-white  flex items-center justify-start  lg:p-5    "
                   }`}
                 >
                   {hotel.features.map((feature, i) => {
                     return (
-                      <div key={i} className="flex px-3  justify-end items-end">
+                      <div
+                        key={i}
+                        className="flex px-3  justify-end items-end "
+                      >
                         {/* <h2>
                           <IconWashMachine size={25} />
                         </h2> */}

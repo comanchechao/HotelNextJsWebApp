@@ -81,7 +81,7 @@ export default function SuperUserModal({ user }) {
           <h1 className="text-2xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
             {t("colleagueInfo")}
           </h1>
-          <div className="flex flex-wrap justify-center items-center lg:flex-row flex-col space-y-5 lg:space-y-3 space-x-0 lg:space-x-5 w-full ">
+          <div className="flex   justify-center items-center lg:flex-row flex-col space-y-5 lg:space-y-0   space-x-0 lg:space-x-5 w-full ">
             <h2 className="py-1 rounded-md px-4 border-2     border-mainPurple">
               {t("fullName")} : <strong>{user ? user.fullName : null}</strong>
             </h2>
@@ -89,15 +89,17 @@ export default function SuperUserModal({ user }) {
               {t("email")} : <strong>{user ? user.email : null}</strong>
             </h2>
           </div>
-          <h2 className="py-1   rounded-md px-4 border-2   border-mainBlue">
-            {t("hotelCount")} :{" "}
-            <strong>
-              {hotels ? hotels.length : null} {t("singleHotel")}
-            </strong>
-          </h2>{" "}
-          <h2 className="py-1   rounded-md px-4 border-2   border-mainBlue">
-            {t("userType")} : <strong>{user ? user.role : null}</strong>
-          </h2>{" "}
+          <div className="flex   justify-center items-center lg:flex-row flex-col space-y-5 lg:space-y-0   space-x-0 lg:space-x-5 w-full ">
+            <h2 className="py-1   rounded-md px-4 border-2   border-mainBlue">
+              {t("hotelCount")} :
+              <strong>
+                {hotels ? hotels.length : null} {t("singleHotel")}
+              </strong>
+            </h2>
+            <h2 className="py-1   rounded-md px-4 border-2   border-mainBlue">
+              {t("userType")} : <strong>{user ? user.role : null}</strong>
+            </h2>
+          </div>
           {user && user.role === "customer" ? (
             <button
               onClick={() => {
@@ -185,7 +187,9 @@ export default function SuperUserModal({ user }) {
                 );
               })
             ) : (
-              <p>no item</p>
+              <p className="p-3 text-2xl border-2 border-dashed border-red-600 rounded-md">
+                {t("nothing")}
+              </p>
             )}
           </div>
         </div>

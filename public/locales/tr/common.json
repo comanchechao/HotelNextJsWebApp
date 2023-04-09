@@ -293,5 +293,7 @@
   "userType": "Kullanıcı tipi",
 
   "done": "Tamamlandı",
-  "deleteCol": "meslektaşı sil"
+  "deleteCol": "meslektaşı sil",
+
+  "nothing": "kayıtlı otel yok"
 }

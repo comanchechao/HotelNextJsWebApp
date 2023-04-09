@@ -2,6 +2,7 @@ import { Accordion } from "@mantine/core";
 import Link from "next/link";
 import { Coffee, User, Tag } from "phosphor-react";
 import { useTranslation } from "next-i18next";
+import { SignIn, SignOut, Timer } from "phosphor-react";
 
 export default function ReservedRoomCard({ reserve }) {
   const { t, i18n } = useTranslation("");
@@ -20,9 +21,9 @@ export default function ReservedRoomCard({ reserve }) {
           </p>
         </Link>
       </div>
-      <div className="h-full flex flex-col items-end justify-start  p-4 w-full lg:w-3/4  ">
-        <div className="h-14 w-full flex items-center justify-between">
-          <Accordion
+      <div className="h-full flex flex-col items-end justify-start  p-4 w-full lg:w-3/4    ">
+        <div className="h-14 w-full flex items-center justify-end  ">
+          {/* <Accordion
             variant="separated"
             chevronPosition="left"
             color="yellow"
@@ -40,25 +41,51 @@ export default function ReservedRoomCard({ reserve }) {
                 </p>
               </Accordion.Panel>
             </Accordion.Item>
-          </Accordion>
+          </Accordion> */}
+
           <h1 className="text-2xl my-2">
             {t("room")} {JSON.stringify(reserve.hotel_name)}
           </h1>
         </div>
-
-        <div className="flex flex-col items-end justify-center space-y-3   h-full">
-          <h2 className="flex items-center  text-sm">
-            به همراه صبحانه
-            <Coffee className="ml-2" size={19} weight="fill" />
-          </h2>
-          <h2 className="flex items-center  text-sm">
-            {t("person")} 1
-            <User className="ml-2" size={19} weight="fill" />
-          </h2>
-          <h2 className="flex items-center  text-sm">
-            {t("price1Night")}: 18,000,000 {t("currency")}
-            <Tag className="ml-2" size={19} weight="fill" />
-          </h2>
+        <div className="w-full   flex items-center justify-between">
+          <div className="h-auto   flex-col flex space-y-2  items-center justify-center">
+            {" "}
+            <div className="flex items-center space-x-2">
+              <h2 className="text-xs">{t("exitDay")}</h2>
+              <SignOut size={25} color="#e0ab19" weight="fill" />
+            </div>
+            <h1 className="font text-xs"> </h1>
+            <div className="flex items-center space-x-2">
+              <h2 className="text-xs">{t("enterDay")}</h2>
+              <SignIn size={25} color="#e0ab19" weight="fill" />
+            </div>
+          </div>{" "}
+          <div className="h-auto   flex-col flex  space-y-2  items-center justify-center">
+            <div className="flex items-center space-x-2">
+              <h2 className="text-xs">{t("enterTime")}</h2>
+              <Timer size={25} color="#e0ab19" weight="fill" />
+            </div>
+            <h1 className="font text-xs"> </h1>{" "}
+            <div className="flex items-center space-x-2">
+              <h2 className="text-xs">{t("exitTime")}</h2>
+              <Timer size={25} color="#e0ab19" weight="fill" />
+            </div>
+            <h1 className="font text-xs"> </h1>
+          </div>
+          <div className="flex flex-col items-end justify-center space-y-3     h-full">
+            <h2 className="flex items-center  text-sm">
+              به همراه صبحانه
+              <Coffee className="ml-2" size={19} weight="fill" />
+            </h2>
+            <h2 className="flex items-center  text-sm">
+              {t("person")} 1
+              <User className="ml-2" size={19} weight="fill" />
+            </h2>
+            <h2 className="flex items-center  text-sm">
+              {t("price1Night")}: 18,000,000 {t("currency")}
+              <Tag className="ml-2" size={19} weight="fill" />
+            </h2>
+          </div>
         </div>
       </div>
     </div>
