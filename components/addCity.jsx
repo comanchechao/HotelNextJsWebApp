@@ -71,7 +71,7 @@ export default function WebsiteInfo({ cities }) {
           LatLng={[lat, lng]}
           cities={cities}
         />
-        <div className="flex justify-center items-center w-full h-full">
+        <div className="flex justify-center lg:flex-row flex-col items-center w-full h-full">
           {country === t("iran") ? (
             <Select
               value={value}
