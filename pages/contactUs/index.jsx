@@ -68,7 +68,7 @@ export default function ContactUs({ websiteInfo }) {
                     weight="fill"
                   />
                 </h4>
-                <h3 className="text-lg">{address}</h3>
+                <h3 className="text-lg font-bold">{address}</h3>
               </div>
               <div className="flex flex-col items-center space-y-2 mt-3">
                 <h4 className="text-xl flex items-center">
@@ -80,7 +80,7 @@ export default function ContactUs({ websiteInfo }) {
                     weight="fill"
                   />
                 </h4>
-                <h3 className="text-lg">{postalCode}</h3>
+                <h3 className="text-lg font-bold">{postalCode}</h3>
               </div>
             </div>
             <div className="w-1/2 h-44   flex flex-col items-center justify-around">
@@ -94,7 +94,7 @@ export default function ContactUs({ websiteInfo }) {
                     weight="fill"
                   />
                 </h4>
-                <h3 className="text-lg">{phoneNumber}</h3>
+                <h3 className="text-lg font-bold">{phoneNumber}</h3>
               </div>
               <div className="flex flex-col items-center space-y-2">
                 <h4 className="text-xl flex items-center">
@@ -106,7 +106,7 @@ export default function ContactUs({ websiteInfo }) {
                     weight="fill"
                   />
                 </h4>
-                <h3 className="text-lg">{email}</h3>
+                <h3 className="text-lg font-bold">{email}</h3>
               </div>
             </div>
           </div>
