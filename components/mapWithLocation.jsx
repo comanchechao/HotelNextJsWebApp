@@ -115,7 +115,7 @@ export default function ExternalStateExample({
           {" "}
           <Popup>مکان هتل</Popup>
         </Marker>
-        {firstLocation.name !== "" ? (
+        {firstLocation.lat !== "" ? (
           <Marker
             position={{
               lat: JSON.stringify(firstLocation.lat),
@@ -126,7 +126,7 @@ export default function ExternalStateExample({
             <Popup>firstLocation</Popup>
           </Marker>
         ) : null}
-        {secondLocation.name !== "" ? (
+        {secondLocation.lat !== "" ? (
           <Marker
             position={{
               lat: JSON.stringify(secondLocation.lat),

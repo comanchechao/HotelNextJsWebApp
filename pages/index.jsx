@@ -58,7 +58,7 @@ export async function getServerSideProps(context) {
   const { data: websiteInfo } = await supabase.from("websiteInfo").select();
 
   const { data: hotels, error } = await supabase
-    .from("Hotels")
+    .from("hotels")
     .select("id ,created_at , title ,  prices,firstImage")
     .order("created_at", { ascending: false })
     .limit(3);

@@ -88,7 +88,7 @@ function Card({ image, title, category }) {
   );
 }
 export const getStaticPaths = async ({ locales }) => {
-  const { data, error } = await supabase.from("Hotels").select();
+  const { data, error } = await supabase.from("hotels").select();
   if (error) throw error;
 
   // const paths = data.map((hotel) => {
@@ -119,7 +119,7 @@ export const getStaticPaths = async ({ locales }) => {
 
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const { data, error } = await supabase.from("Hotels").select().eq("id", id);
+  const { data, error } = await supabase.from("hotels").select().eq("id", id);
   const { data: websiteInfo } = await supabase.from("websiteInfo").select();
 
   return {

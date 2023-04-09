@@ -3,16 +3,19 @@ import { useTranslation } from "next-i18next";
 import { supabase } from "../lib/supabaseClient";
 import { useMediaQuery } from "@mantine/hooks";
 import { Coffee, User, Tag } from "phosphor-react";
-
+import { Loader } from "@mantine/core";
 import { Modal } from "@mantine/core";
 
 export default function SuperUserValidation({ user }) {
   const [hotels, setHotels] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const [done, setDone] = useState(false);
   async function getHotels() {
     if (user) {
       const { data: hotels, error } = await supabase
-        .from("Hotels")
-        .select("id, title, prices,stars , validated")
+        .from("hotels")
+        .select("id, title, prices,stars , validated , rejected")
         .eq("owner", user.id, "validated", false);
 
       if (error) throw error;
@@ -25,8 +28,11 @@ export default function SuperUserValidation({ user }) {
 
   useEffect(() => {
     if (hotels.length) {
-      setConfirmed(true);
-      console.log("filed", hotels);
+      hotels.forEach((hotel) => {
+        if (hotel.validated === false && hotel.rejected !== true) {
+          setConfirmed(true);
+        }
+      });
     }
   }, [hotels]);
   const isMobile = useMediaQuery("(max-width: 50em)");
@@ -41,6 +47,34 @@ export default function SuperUserValidation({ user }) {
   async function changeAlignment() {
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
+  }
+
+  async function confirmHotel(id) {
+    if (user) {
+      setLoading(true);
+      const { error } = await supabase
+        .from("hotels")
+        .update({ validated: true })
+        .eq("id", id)
+        .select();
+      if (error) throw error;
+      setDone(true);
+    }
+    setLoading(false);
+  }
+
+  async function rejectHotel(id) {
+    if (user) {
+      setLoading(true);
+      const { error } = await supabase
+        .from("hotels")
+        .update({ rejected: true })
+        .eq("id", id)
+        .select();
+      if (error) throw error;
+      setDone(true);
+    }
+    setLoading(false);
   }
   useEffect(() => {
     changeAlignment();
@@ -66,7 +100,7 @@ export default function SuperUserValidation({ user }) {
             </h1>
             <div className="flex flex-col w-full  ">
               {hotels.map((hotel, i) => {
-                if (hotel.validated) {
+                if (hotel.validated === false && hotel.rejected === false) {
                   return (
                     <div
                       key={i}
@@ -84,12 +118,35 @@ export default function SuperUserValidation({ user }) {
                           </h2>
                         </div>
                         <h1 className="text-sm">{t("price1Night")}</h1>
+
                         <div className="flex items-center flex-col justify-center space-y-3 mt-2">
-                          <button className="py-2 font-mainFont  hover:text-white bg-green-500 border-green-800 border-r-8   ease-in duration-300 hover:bg-green-900 transition rounded-lg  text-white   px-6   ">
-                            {t("confirmHotel")}
+                          <button
+                            onClick={() => {
+                              confirmHotel(hotel.id);
+                            }}
+                            className="py-2 font-mainFont  hover:text-white bg-green-500 border-green-800 border-r-8   ease-in duration-300 hover:bg-green-900 transition rounded-lg  text-white   px-6   "
+                          >
+                            {loading ? (
+                              <Loader color="violet" size="sm" />
+                            ) : done ? (
+                              <p>{t("done")}</p>
+                            ) : (
+                              t("confirmHotel")
+                            )}
                           </button>{" "}
-                          <button className="py-2 font-mainFont  hover:text-white bg-red-500 border-red-800 border-r-8   ease-in duration-300 hover:bg-red-900 transition rounded-lg  text-white px-6   ">
-                            {t("declineHotel")}
+                          <button
+                            onClick={() => {
+                              rejectHotel(hotel.id);
+                            }}
+                            className="py-2 font-mainFont  hover:text-white bg-red-500 border-red-800 border-r-8   ease-in duration-300 hover:bg-red-900 transition rounded-lg  text-white px-6   "
+                          >
+                            {loading ? (
+                              <Loader color="violet" size="sm" />
+                            ) : done ? (
+                              <p>{t("done")}</p>
+                            ) : (
+                              t("declineHotel")
+                            )}
                           </button>
                         </div>
                       </div>

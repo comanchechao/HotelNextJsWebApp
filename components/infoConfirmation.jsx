@@ -95,10 +95,19 @@ export default function InfoConfirmation() {
       enteringDate: enterDate,
       exitingDate: exitDate,
     });
+    const { error3 } = await supabase
+      .from("rooms")
+      .update({
+        checkout: "Wed Apr 19 2023 08:40:56 GMT+0330 (Iran Standard Time)",
+      })
+      .eq("id", 1)
+      .select();
+
     setLoading(false);
     setConfirm(true);
 
     if (error) throw error;
+    if (error3) throw error3;
   }
   return (
     <div className=" mb-10 h-auto lg:h-full w-screen lg:w-textArea flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">

@@ -100,6 +100,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
         price: definedRoom.price,
         meal: meal,
         quantity: 1,
+        copacity: 1,
       })
     );
   }
@@ -186,13 +187,11 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
     if (hotelRules) updates.hotelRules = hotelRules;
     if (getlat) updates.locationLat = getlat;
     if (getLng) updates.locationLng = getLng;
-
-    console.log(updates);
-
-    const { data, error } = await supabase
-      .from("Hotels")
+    const { error } = await supabase
+      .from("hotels")
       .update(updates)
-      .eq("id", identifier);
+      .in("id", [identifier]);
+    console.log(identifier);
     setAlert(true);
     setTimeout(() => {
       setAlert(false);
@@ -888,6 +887,13 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                         <Select
                           transitionDuration={150}
                           transition="pop-top-left"
+                          onChange={(e) => {
+                            setDefinedRoom((oldValues) => {
+                              let newObject = oldValues;
+                              oldValues.copacity = e;
+                              return newObject;
+                            });
+                          }}
                           transitionTimingFunction="ease"
                           variant="default"
                           radius="md"

@@ -102,7 +102,7 @@ export default function AdminPage({
 
   async function getHotels() {
     const { data: hotels, error } = await supabase
-      .from("Hotels")
+      .from("hotels")
       .select()
       .order("id", { ascending: false });
     if (error) throw error;

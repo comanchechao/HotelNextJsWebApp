@@ -7,15 +7,17 @@ import {
   createStyles,
 } from "@mantine/core";
 import { PlusCircle, MinusCircle } from "phosphor-react";
-import { DateRangePicker } from "@mantine/dates";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "next-i18next";
-import customParseFormat from "dayjs/plugin/customParseFormat";
-import localeData from "dayjs/plugin/localeData";
 import dayjs from "dayjs";
+import dynamic from "next/dynamic";
 import jalaliday from "jalaliday";
 import { reservationActions } from "../store/reservation";
-
+import { Suspense } from "react";
+const DatePicker = dynamic(() => import("./calendar"), {
+  ssr: false,
+  suspense: true,
+});
 export default function RoomSearch() {
   const [opened, setOpened] = useState(false);
   const [entering, setEntering] = useState(null);
@@ -29,61 +31,12 @@ export default function RoomSearch() {
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
-  const faLocale = {
-    name: "fa",
-    weekdays: [
-      "یک‌شنبه",
-      "دوشنبه",
-      "سه‌شنبه",
-      "چهارشنبه",
-      "پنج‌شنبه",
-      "جمعه",
-      "شنبه",
-    ],
-    weekStart: 1,
-    months: [
-      "دی",
-      "بهمن",
-      "اسفند",
-      "فروردین",
-      "اردیبهشت",
-      "خرداد",
-      "تیر",
-      "مرداد",
-      "شهریور",
-      "مهر",
-      "آبان",
-      "آذر",
-    ],
-    relativeTime: {
-      future: "%s بعد",
-      past: "%s قبل",
-      s: "چند ثانیه",
-      m: "1 دقیقه",
-      mm: "%d دقیقه",
-      h: "1 ساعت",
-      hh: "%d ساعت",
-      d: "1 روز",
-      dd: "%d روز",
-      M: "1 ماه",
-      MM: "%d ماه",
-      y: "1 سال",
-      yy: "%d سال",
-    },
-    formats: {
-      L: "DD/MM/YYYY",
-      LTS: "HH:mm:ss",
-      LLLL: "dddd, D MMMM YYYY HH:mm",
-      LLL: "D MMMM YYYY HH:mm",
-    },
-  };
+
   useEffect(() => {
     changeAlignment();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  dayjs.extend(customParseFormat);
-  dayjs.extend(localeData);
   const useStyles = createStyles((theme) => ({
     firstInRange: {
       color: `${theme.colors.blue[6]} !important`,
@@ -91,8 +44,6 @@ export default function RoomSearch() {
   }));
   const { classes, cx } = useStyles();
 
-  // Set the locale to your custom locale
-  dayjs.localeData("fa", faLocale);
   const dispatch = useDispatch();
   let city = useSelector((state) => state.reserve.city);
   let passenger = useSelector((state) => state.reserve.passenger);
@@ -110,7 +61,7 @@ export default function RoomSearch() {
         centered
       >
         <div className="w-full h-full flex flex-col items-center justify-center">
-          <DateRangePicker
+          {/* <DateRangePicker
             value={[enterDate, exitDate]}
             locale={faLocale}
             timeZone="iran/tehran"
@@ -133,7 +84,10 @@ export default function RoomSearch() {
               })
             }
             size="md"
-          />
+          /> */}
+          <Suspense fallback={<div>Loading...</div>}>
+            <DatePicker />
+          </Suspense>
           <Popover width={300} position="bottom" withArrow shadow="md">
             <Popover.Target>
               <TextInput
