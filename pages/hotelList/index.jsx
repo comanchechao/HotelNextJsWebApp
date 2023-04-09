@@ -149,7 +149,7 @@ export default function HotelList({
     setTo(to + 2);
     setLoading(true);
     const { data, error } = await supabase
-      .from("Hotels")
+      .from("hotels")
       .select(
         "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
       )
@@ -190,7 +190,7 @@ export default function HotelList({
     setLoading(true);
     if (selectedCityMobile !== "") {
       const { data, error } = await supabase
-        .from("Hotels")
+        .from("hotels")
         .select(
           "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
         )
@@ -200,7 +200,7 @@ export default function HotelList({
       setHotels(data);
     } else if (selectedCountryMobile !== "") {
       const { data, error } = await supabase
-        .from("Hotels")
+        .from("hotels")
         .select(
           "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
         )
@@ -210,7 +210,7 @@ export default function HotelList({
       setHotels(data);
     } else if (starsMobile !== null) {
       const { data, error } = await supabase
-        .from("Hotels")
+        .from("hotels")
         .select(
           "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
         )
@@ -220,7 +220,7 @@ export default function HotelList({
       setHotels(data);
     } else if (filterFeaturesMobile !== []) {
       const { data, error } = await supabase
-        .from("Hotels")
+        .from("hotels")
         .select(
           "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
         )
@@ -229,7 +229,7 @@ export default function HotelList({
       setHotels(data);
     } else if (selectedCityMobile !== "" && starsMobile !== null) {
       const { data, error } = await supabase
-        .from("Hotels")
+        .from("hotels")
         .select(
           "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
         )
@@ -240,7 +240,7 @@ export default function HotelList({
       setHotels(data);
     } else if (selectedCityMobile !== "" && selectedCountryMobile !== "") {
       const { data, error } = await supabase
-        .from("Hotels")
+        .from("hotels")
         .select(
           "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
         )
@@ -255,7 +255,7 @@ export default function HotelList({
       starsMobile !== null
     ) {
       const { data, error } = await supabase
-        .from("Hotels")
+        .from("hotels")
         .select(
           "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
         )

@@ -180,7 +180,7 @@ export default function AddHotel({
   // });
 
   async function handleSubmit() {
-    const { data, error } = await supabase.from("Hotels").insert({
+    const { data, error } = await supabase.from("hotels").insert({
       title: title,
       owner: user.id,
       city: city,

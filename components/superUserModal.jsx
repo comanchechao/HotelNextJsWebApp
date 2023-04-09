@@ -13,7 +13,7 @@ export default function SuperUserModal({ user }) {
   async function getHotels() {
     if (user) {
       const { data: hotels, error } = await supabase
-        .from("Hotels")
+        .from("hotels")
         .select("id, title, prices,stars")
         .eq("owner", user.id);
 

@@ -42,8 +42,9 @@ export default function WebsiteInfo() {
       } = await supabase.auth.getUser();
       if (user) {
         if (lng === "tr") {
-          const { data } = await supabase
+          const { data, error } = await supabase
             .from("websiteInfo")
+            .eq("id", 25)
             .update({
               aboutUsTr: aboutUs,
               aboutUsMoreTr: aboutUsMore,
@@ -56,11 +57,13 @@ export default function WebsiteInfo() {
               facebook: facebook,
               whatsapp: whatsapp,
             })
-            .eq("id", 25)
+
             .select();
+          if (error) throw error;
         } else {
-          const { data } = await supabase
+          const { data, error } = await supabase
             .from("websiteInfo")
+            .eq("id", 25)
             .update({
               aboutUs: aboutUs,
               aboutUsMore: aboutUsMore,
@@ -73,11 +76,11 @@ export default function WebsiteInfo() {
               facebook: facebook,
               whatsapp: whatsapp,
             })
-            .eq("id", 25)
+
             .select();
           console.log(data);
+          if (error) throw error;
         }
-        if (error) throw error;
       } // add this closing curly brace
     } catch (error) {
       console.log(error.message);

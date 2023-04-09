@@ -35,8 +35,8 @@ export default function Calendar() {
                 dayjs(e.to).locale("fa").format("DD MMMM YYYY")
               )
             );
-            console.log(dayjs(e.from).locale("fa").format("DD MMMM YYYY"));
-            console.log(dayjs(e.to).locale("fa").format("DD MMMM YYYY"));
+            console.log(e.from);
+            console.log(e.to);
           }}
           round="x2"
           className="text-center"
