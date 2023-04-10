@@ -10,7 +10,9 @@
   unicode-range: U+0020-007F;
   /* unicode-range: U+0020-007F; */
 }
-
+#datePicker{
+  z-index: 99999999 !important;
+}
 @font-face {
   font-family: "IranSans";
   src: url("../assets/fonts/IRAnjoman.woff2");

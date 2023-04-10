@@ -24,12 +24,39 @@ export default function WebsiteInfo() {
   const { t, i18n } = useTranslation("");
   const lng = i18n.language;
   let [alignLeft, setAlignLeft] = useState(false);
+  const [webInfo, setWebInfo] = useState();
 
   async function changeAlignment() {
     if (lng === "tr") await setAlignLeft(false);
     else setAlignLeft(true);
   }
   const [alert, setAlert] = useState(false);
+
+  const [aboutUsDefault, setAboutUsDefault] = useState("");
+  const [aboutUsMoreDefault, setAboutUsMoreDefault] = useState("");
+  const [addressDefault, setAddressDefault] = useState("");
+  const [phoneNumberDefault, setPhoneNumberDefault] = useState();
+  const [postalCodeDefault, setPostalCodeDefault] = useState();
+  const [emailDefault, setEmailDefault] = useState("");
+
+  async function getWebsiteInfo() {
+    const { data: websiteInfo, error } = await supabase
+      .from("websiteInfo")
+      .select();
+    if (error) throw error;
+    websiteInfo.map((object) => {
+      setAboutUsDefault(object.aboutUs);
+      setAboutUsMoreDefault(object.aboutUsMore);
+      setAddressDefault(object.address);
+      setPhoneNumberDefault(object.phoneNumber);
+      setPostalCodeDefault(object.postalCode);
+      setEmailDefault(object.email);
+    });
+  }
+
+  useEffect(() => {
+    getWebsiteInfo();
+  }, []);
 
   useEffect(() => {
     changeAlignment();
@@ -44,7 +71,6 @@ export default function WebsiteInfo() {
         if (lng === "tr") {
           const { data, error } = await supabase
             .from("websiteInfo")
-            .eq("id", 25)
             .update({
               aboutUsTr: aboutUs,
               aboutUsMoreTr: aboutUsMore,
@@ -57,25 +83,22 @@ export default function WebsiteInfo() {
               facebook: facebook,
               whatsapp: whatsapp,
             })
+            .eq("id", 25)
 
             .select();
           if (error) throw error;
         } else {
+          let updates = {};
+          if (aboutUs) updates.aboutUs = aboutUs;
+          if (aboutUsMore) updates.aboutUsMore = aboutUsMore;
+          if (phoneNumber) updates.phoneNumber = phoneNumber;
+          if (address) updates.address = address;
+          if (postalCode) updates.postalCode = postalCode;
+          if (email) updates.email = email;
           const { data, error } = await supabase
             .from("websiteInfo")
+            .update(updates)
             .eq("id", 25)
-            .update({
-              aboutUs: aboutUs,
-              aboutUsMore: aboutUsMore,
-              address: address,
-              phoneNumber: phoneNumber,
-              postalCode: postalCode,
-              email: email,
-              instagram: instagram,
-              telegram: telegram,
-              facebook: facebook,
-              whatsapp: whatsapp,
-            })
 
             .select();
           console.log(data);
@@ -137,7 +160,7 @@ export default function WebsiteInfo() {
               </p>
               <Textarea
                 className="text-2xl  text-right w-full"
-                placeholder={t("aboutBoutak")}
+                placeholder={aboutUsDefault ? aboutUsDefault : t("aboutBoutak")}
                 radius="xs"
                 autosize
                 minRows={5}
@@ -153,7 +176,9 @@ export default function WebsiteInfo() {
               </p>
               <Textarea
                 className="text-2xl  text-right w-full"
-                placeholder={t("knowUsMore")}
+                placeholder={
+                  aboutUsMoreDefault ? aboutUsMoreDefault : t("knowUsMore")
+                }
                 radius="xs"
                 autosize
                 minRows={5}
@@ -184,7 +209,7 @@ export default function WebsiteInfo() {
               </p>
               <Textarea
                 className="text-2xl  text-right w-full"
-                placeholder={t("address")}
+                placeholder={addressDefault ? addressDefault : t("aboutBoutak")}
                 radius="xs"
                 autosize
                 minRows={2}
@@ -200,7 +225,9 @@ export default function WebsiteInfo() {
               </p>
               <NumberInput
                 className="text-2xl  text-right w-full"
-                placeholder={t("phone")}
+                placeholder={
+                  phoneNumberDefault ? phoneNumberDefault : t("aboutBoutak")
+                }
                 radius="xs"
                 autosize
                 minRows={1}
@@ -216,7 +243,7 @@ export default function WebsiteInfo() {
               >
                 <Textarea
                   className="text-2xl  text-right w-full"
-                  placeholder={t("email")}
+                  placeholder={emailDefault ? emailDefault : t("aboutBoutak")}
                   radius="xs"
                   autosize
                   minRows={1}

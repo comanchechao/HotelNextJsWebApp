@@ -9,6 +9,8 @@ import {
   Tabs,
   Notification,
 } from "@mantine/core";
+import { Suspense } from "react";
+
 import {
   IconUpload,
   IconCirclePlus,
@@ -31,6 +33,10 @@ export default function AddHotel({
   residenceTypes,
   countries,
 }) {
+  const SingleDate = dynamic(() => import("./SingleDate"), {
+    ssr: false,
+    Suspense: true,
+  });
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   const [opened, setOpened] = useState(false);
@@ -221,7 +227,7 @@ export default function AddHotel({
   }
 
   useEffect(() => {
-    console.log(lat2);
+    console.log(rooms);
   });
 
   async function ResidenceTypesTranslate() {
@@ -1020,6 +1026,12 @@ export default function AddHotel({
                             : "flex  flex-col justify-center space-x-2 text-right items-start w-full h-full"
                         }`}
                       >
+                        <div className="w-full h-full">
+                          {" "}
+                          <Suspense fallback={<div>Loading...</div>}>
+                            <SingleDate />
+                          </Suspense>
+                        </div>
                         <h3 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md">
                           {t("roomCapacity")}
                         </h3>
@@ -1047,6 +1059,7 @@ export default function AddHotel({
                             { value: "4", label: "4" },
                           ]}
                         />
+
                         {rooms.map((room, i) => {
                           return (
                             <div
