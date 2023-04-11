@@ -609,7 +609,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
               />
             </div>
             <div className="flex space-x-4 w-full justify-end">
-              {!features.length
+              {features.length < 0
                 ? hotel.features.map((feature, i) => {
                     return (
                       <button

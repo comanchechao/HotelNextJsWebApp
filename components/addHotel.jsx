@@ -87,7 +87,7 @@ export default function AddHotel({
     price: null,
     priceL: null,
     meal: null,
-    copacity: 1,
+    capacity: 1,
     quantity: 1,
   });
 
@@ -116,7 +116,7 @@ export default function AddHotel({
         priceL: definedRoom.priceL,
 
         meal: meal,
-        copacity: 1,
+        capacity: definedRoom.capacity,
         quantity: 1,
         startOfAvalibity: null,
         endOfAvalibility: null,
@@ -133,7 +133,7 @@ export default function AddHotel({
       oldValues.price = 0;
       oldValues.priceL = 0;
 
-      oldValues.copacity = 1;
+      oldValues.capacity = 1;
       oldValues.quantity = 1;
       return newObject;
     });
@@ -186,39 +186,43 @@ export default function AddHotel({
   // });
 
   async function handleSubmit() {
-    const { data, error } = await supabase.from("hotels").insert({
-      title: title,
-      owner: user.id,
-      city: city,
-      firstImage: firstImage,
-      secondImage: secondImage,
-      thirdImage: thirdImage,
-      fourthImage: fourthImage,
-      features: features,
-      prices: avragePriceRial,
-      pricesL: avragePriceL,
-      country: country,
-      stars: value,
-      rooms: rooms,
-      residenceType: residenceType,
-      hotelAbout: aboutHotel,
-      locationLat: getlat,
-      locationLng: getLng,
-      address: address,
-      enterTime: enteringHours,
-      exitTime: exitingHours,
-      hotelRules: hotelRules,
-      firstLocation: {
-        name: marker2,
-        lat: lat2,
-        lng: lng2,
-      },
-      secondLocation: {
-        name: marker3,
-        lat: lat3,
-        lng: lng3,
-      },
-    });
+    const { data, error } = await supabase
+      .from("hotels")
+      .insert({
+        title: title,
+        owner: user.id,
+        city: city,
+        firstImage: firstImage,
+        secondImage: secondImage,
+        thirdImage: thirdImage,
+        fourthImage: fourthImage,
+        features: features,
+        prices: avragePriceRial,
+        pricesL: avragePriceL,
+        country: country,
+        stars: value,
+        rooms: rooms,
+        residenceType: residenceType,
+        hotelAbout: aboutHotel,
+        locationLat: getlat,
+        locationLng: getLng,
+        address: address,
+        enterTime: enteringHours,
+        exitTime: exitingHours,
+        hotelRules: hotelRules,
+        firstLocation: {
+          name: marker2,
+          lat: lat2,
+          lng: lng2,
+        },
+        secondLocation: {
+          name: marker3,
+          lat: lat3,
+          lng: lng3,
+        },
+      })
+      .select("id");
+    submitRooms(data[0].id);
     setAlert2(true);
     setTimeout(() => {
       setAlert2(false);
@@ -226,8 +230,23 @@ export default function AddHotel({
     if (error) throw error;
   }
 
+  async function submitRooms(hoteId) {
+    rooms.forEach(async (room) => {
+      const { data, error } = await supabase.from("rooms").insert({
+        title: room.title,
+        price: room.price,
+        priceTL: room.priceTL,
+        meal: room.meal,
+        capacity: room.capacity,
+        hotel_id: hoteId,
+      });
+      if (error) throw error;
+    });
+  }
   useEffect(() => {
-    console.log(rooms);
+    rooms.forEach((room) => {
+      console.log(room);
+    });
   });
 
   async function ResidenceTypesTranslate() {
@@ -1041,7 +1060,7 @@ export default function AddHotel({
                           onChange={(e) => {
                             setDefinedRoom((oldValues) => {
                               let newObject = oldValues;
-                              oldValues.copacity = e;
+                              oldValues.capacity = e;
                               return newObject;
                             });
                           }}
@@ -1053,10 +1072,10 @@ export default function AddHotel({
                           size="md"
                           className="text-right w-full"
                           data={[
-                            { value: "1", label: "1" },
-                            { value: "2", label: "2" },
-                            { value: "3", label: "3" },
-                            { value: "4", label: "4" },
+                            { value: 1, label: "1" },
+                            { value: 2, label: "2" },
+                            { value: 3, label: "3" },
+                            { value: 4, label: "4" },
                           ]}
                         />
 
