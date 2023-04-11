@@ -223,8 +223,20 @@ export default function Home(props) {
   }));
   const { classes, cx } = useStyles();
   // dispatching the selection to the store
-
   let passenger = useSelector((state) => state.reserve.passenger);
+  let entering = useSelector((state) => state.reserve.enterDate);
+  let exiting = useSelector((state) => state.reserve.exitDate);
+  const [inputError, setInputError] = useState(false);
+  useEffect(() => {
+    if (dayjs(entering) < dayjs() || dayjs(exiting) < dayjs()) {
+      setInputError(true);
+      console.log(" error in index ");
+    } else if (dayjs(entering) > dayjs() || dayjs(exiting) > dayjs()) {
+      setInputError(false);
+    }
+    console.log(entering);
+  }, [entering, exiting]);
+
   let childPassenger = useSelector((state) => state.reserve.childPassenger);
   const dispatch = useDispatch();
 
@@ -411,8 +423,10 @@ export default function Home(props) {
               </Popover>
             </div>
 
-            <Link href="/hotelList">
+            <Link disabled={inputError} href="/hotelList">
               <button
+                style={{ color: inputError ? " red" : "white" }}
+                disabled={inputError}
                 onClick={() => {
                   // dispatch(reservationActions.setDates(dates));
                   // console.log(
