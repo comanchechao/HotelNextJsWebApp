@@ -43,6 +43,13 @@ export default function HotelListMenu({
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
 
+  function resetCheckboxes() {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = false;
+    }
+  }
+
   useEffect(() => {
     changeAlignment();
   }, []);
@@ -59,6 +66,14 @@ export default function HotelListMenu({
       className="flex flex-col items-center space-y-4 bg-white p-4 drop-shadow-xl rounded-md z-30"
     >
       {" "}
+      <button
+        onClick={() => {
+          resetCheckboxes();
+        }}
+        className="py-1 hover:text-mainPurple font-mainFont text-sm  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white  px-8   "
+      >
+        پاک کردن فیلتر ها
+      </button>
       <Accordion
         className="w-full  "
         variant="separated"
