@@ -295,5 +295,7 @@
   "done": "Tamamlandı",
   "deleteCol": "meslektaşı sil",
 
-  "nothing": "kayıtlı otel yok"
+  "nothing": "kayıtlı otel yok",
+
+  "filterClear": "Filtreleri temizle"
 }

@@ -70,9 +70,9 @@ export default function HotelListMenu({
         onClick={() => {
           resetCheckboxes();
         }}
-        className="py-1 hover:text-mainPurple font-mainFont text-sm  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white  px-8   "
+        className="py-1 hover:text-mainPurple font-mainFont text-sm    bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white  px-8   "
       >
-        پاک کردن فیلتر ها
+        {t("filterClear")}
       </button>
       <Accordion
         className="w-full  "
