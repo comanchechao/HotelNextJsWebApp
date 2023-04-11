@@ -228,11 +228,13 @@ export default function Home(props) {
   let exiting = useSelector((state) => state.reserve.exitDate);
   const [inputError, setInputError] = useState(false);
   useEffect(() => {
-    if (dayjs(entering) < dayjs() || dayjs(exiting) < dayjs()) {
+    if (dayjs(entering) === dayjs()) {
+      setInputError(false);
+    } else if (dayjs(entering) >= dayjs() || dayjs(exiting) > dayjs()) {
+      setInputError(false);
+    } else if (dayjs(entering) < dayjs() || dayjs(exiting) < dayjs()) {
       setInputError(true);
       console.log(" error in index ");
-    } else if (dayjs(entering) > dayjs() || dayjs(exiting) > dayjs()) {
-      setInputError(false);
     }
     console.log(entering);
   }, [entering, exiting]);
