@@ -5,7 +5,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
-import { Star } from "phosphor-react";
+import { MapPin, Star } from "phosphor-react";
 import { Loader } from "@mantine/core";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
@@ -81,6 +81,7 @@ export default function HotelCard({ hotel }) {
     else setAlignLeft(true);
   }
   const dispatch = useDispatch();
+
   return (
     <div
       className={`${
@@ -108,13 +109,13 @@ export default function HotelCard({ hotel }) {
             {t("seeRoom")}{" "}
           </button>
         </Link>
-        <p className="text-gray-500 text-xs">{t("price1Night")}</p>
+        <p className="text-gray-700 text-xs">{t("price1Night")}</p>
       </div>
       <div
         className={`${
           alignLeft === true
-            ? "w-96 h-full flex flex-col items-center lg:space-y-2 space-y-3 lg:items-end justify-center p-3 lg:border-l border-mainBlue"
-            : "w-96 h-full flex flex-col items-center lg:space-y-2 space-y-3 lg:items-start justify-center p-3 lg:border-l border-mainBlue"
+            ? "w-96 h-full flex flex-col items-center lg:space-y-2 space-y-3 lg:items-end justify-around p-3 lg:border-l border-mainBlue"
+            : "w-96 h-full flex flex-col items-center lg:space-y-2 space-y-3 lg:items-start justify-around p-3 lg:border-l border-mainBlue"
         }`}
       >
         {/* <div className="flex items-center lg:flex-row flex-col justify-center space-x-2">
@@ -125,13 +126,29 @@ export default function HotelCard({ hotel }) {
             <span className="text-xs">تحفیف ویژه بوتک</span>{" "}
           </Chip>
         </div> */}
-        <h1 className="text-center   text-lg">{hotel.title}</h1>
-        <div className="flex items-center   text-sm space-x-1">
-          <h2>{t("star")}</h2>
-          <h2>{hotel.stars}</h2>
-          <Star size={15} weight="fill" />{" "}
+        <h1 className="text-center   text-xl font-bold">{hotel.title}</h1>
+        <div
+          className={`${
+            alignLeft === true
+              ? "flex flex-col items-end justify-around"
+              : "flex flex-col items-start justify-around"
+          }`}
+        >
+          <div className="flex items-center   text-xs space-x-1">
+            <h2>{t("star")}</h2>
+            <h2>{hotel.stars}</h2>
+            <Star size={15} weight="fill" />{" "}
+          </div>{" "}
+          <div className="flex items-center   text-sm space-x-1">
+            <h2 className="text-center   text-xs  ">{hotel.address}</h2>{" "}
+            <MapPin size={15} weight="fill" />
+          </div>
+          <HotelMap
+            className="self-center"
+            lat={hotel.locationLat}
+            lng={hotel.locationLng}
+          />
         </div>
-        <HotelMap lat={hotel.locationLat} lng={hotel.locationLng} />
       </div>
       <div className=" w-auto flex items-center lg:w-56 h-full">
         <Carousel

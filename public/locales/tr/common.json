@@ -297,5 +297,7 @@
 
   "nothing": "kayıtlı otel yok",
 
-  "filterClear": "Filtreleri temizle"
+  "filterClear": "Filtreleri temizle",
+
+  "errorMsg": "tüm alanları doldurmak zorunludur"
 }

@@ -151,7 +151,7 @@ export default function HotelList({
     const { data, error } = await supabase
       .from("hotels")
       .select(
-        "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage"
+        "id , residenceType , country , features , city , trTitle , stars , title , prices , pricesL , locationLng , locationLat, firstImage , secondImage , thirdImage, address"
       )
       .order("id", { ascending: false });
     if (lng === "fa") {

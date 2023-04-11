@@ -82,7 +82,13 @@ export default function Checkout(props) {
     setActive((current) => (current < 3 ? current + 1 : current));
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
-
+  function addPropertyIfInputsEmpty(component) {
+    const inputs = Array.from(component.getElementsByTagName("input"));
+    const isEmpty = inputs.some((input) => input.value === "");
+    if (isEmpty) {
+      component.error = "Fuck this";
+    }
+  }
   useDispatch();
   return (
     <div className="w-screen flex items-center justify-start flex-col  h-auto bg-mainWhite">
@@ -135,7 +141,7 @@ export default function Checkout(props) {
           }`}
         >
           <button
-            onClick={nextStep}
+            onClick={() => setChange(true) & setRegister(false)}
             className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont"
           >
             {t("confirmToNext")}

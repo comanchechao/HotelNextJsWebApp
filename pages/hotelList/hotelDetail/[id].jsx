@@ -952,7 +952,6 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                   </div>
                 </div>
                 <div
-                  ref={myBottomDiv}
                   className={`${
                     alignLeft === true
                       ? "flex items-center py-4 space-x-1  w-full justify-end "
@@ -1027,6 +1026,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                   <p>{hotel.hotelAbout}</p>
                 </div>
                 <div
+                  ref={myBottomDiv}
                   className={`${
                     alignLeft === true
                       ? "flex items-center py-4 space-x-1  w-full justify-end"

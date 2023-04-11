@@ -48,6 +48,7 @@ export default function PassengerInfo() {
   const [alignLeft, setAlignLeft] = useState(false);
   const [formattedEnterDate, setFormattedEnterDate] = useState(false);
   const [formattedExitDate, setFormattedExitDate] = useState(false);
+  const [errorValue, setErrorValue] = useState("");
 
   const [specific, setSpecific] = useState(false);
 
@@ -64,6 +65,23 @@ export default function PassengerInfo() {
       setAlignLeft(false);
     } else {
       setAlignLeft(true);
+    }
+  }
+  function checkFields() {
+    const myDiv = document.querySelector(".myDiv");
+    const inputs = myDiv.querySelectorAll("input");
+    var empty = false; // Initialize empty flag
+
+    for (let input of inputs) {
+      if (input.value.trim() === "") {
+        empty = true;
+      }
+    }
+
+    if (empty) {
+      setErrorValue(t("errorMsg")); // Show error message
+    } else {
+      setErrorValue(""); // Show error message
     }
   }
   useEffect(() => {
@@ -143,6 +161,7 @@ export default function PassengerInfo() {
     passengerFourPassportCode,
     dispatch,
   ]);
+
   return (
     <div className=" mb-10 h-auto lg:h-full w-screen lg:w-full flex mt-5 flex-col items-center space-y-7 lg:px-0 px-6">
       <div
@@ -234,7 +253,7 @@ export default function PassengerInfo() {
         {passenger}
         <form className="h-full    space-y-9 my-10 w-full    flex items-start flex-col px-9">
           {passenger >= 1 ? (
-            <div className="  border-2 border-dashed border-mainPurple  my-5 py-6 px-3 rounded-lg">
+            <div className="myDiv  border-2 border-dashed border-mainPurple  my-5 py-6 px-3 rounded-lg">
               <div
                 className={`${
                   alignLeft === true
@@ -257,6 +276,7 @@ export default function PassengerInfo() {
                   <NumberInput
                     onChange={(e) => {
                       setPassengerOnePassportCode(e);
+                      checkFields();
                     }}
                     className={`${
                       alignLeft === true
@@ -270,6 +290,7 @@ export default function PassengerInfo() {
                     radius="md"
                     size="md"
                     withAsterisk
+                    error={errorValue}
                   />
                 ) : (
                   <div></div>
@@ -278,6 +299,7 @@ export default function PassengerInfo() {
                 <NumberInput
                   onChange={(e) => {
                     setPassengerOneSocialNumber(e);
+                    checkFields();
                   }}
                   className={`${
                     alignLeft === true
@@ -291,10 +313,12 @@ export default function PassengerInfo() {
                   radius="md"
                   size="md"
                   withAsterisk
+                  error={errorValue}
                 />
                 <NumberInput
                   onChange={(e) => {
                     setPassengerOnePhoneNumber(e);
+                    checkFields();
                   }}
                   className={`${
                     alignLeft === true
@@ -309,10 +333,12 @@ export default function PassengerInfo() {
                   radius="md"
                   size="md"
                   withAsterisk
+                  error={errorValue}
                 />
                 <TextInput
                   onChange={(e) => {
                     setPassengerOneName(e.target.value);
+                    checkFields();
                   }}
                   className={`${
                     alignLeft === true
@@ -326,6 +352,7 @@ export default function PassengerInfo() {
                   radius="md"
                   size="md"
                   withAsterisk
+                  error={errorValue}
                 />
                 <Select
                   transitionDuration={150}
