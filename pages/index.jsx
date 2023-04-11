@@ -542,7 +542,6 @@ export default function Home(props) {
           ref={thirdContainer}
           className="w-full opacity-0 h-auto lg:space-y-0 space-y-2 lg:h-auto py-6 flex-col lg:flex-row flex items-center justify-center space-x-5 lg:px-44 my-10"
         >
-          {" "}
           <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
             <Link href="/hotelList" legacyBehavior>
               <a
@@ -614,6 +613,8 @@ export default function Home(props) {
                 />
               </a>
             </Link>
+          </div>
+          <div className=" w-full h-full flex flex-col space-y-3 items-center justify-center">
             <Link href="/hotelList" legacyBehavior>
               <a
                 onClick={() => {
@@ -759,7 +760,7 @@ export default function Home(props) {
           </div>
         </div>
         <div className="w-full h-auto py-6 flex items-center lg:flex-row flex-col space-y-2 lg:space-y-0 justify-center space-x-5 lg:px-44 my-10">
-          <div className=" w-full h-full flex flex-col items-center justify-around  lg:space-y-3 space-y-2">
+          <div className=" w-full h-full   flex flex-col items-center justify-around  lg:space-y-3 space-y-2">
             <Link href="/hotelList" legacyBehavior>
               <a
                 onClick={() => {
@@ -830,6 +831,8 @@ export default function Home(props) {
                 />
               </a>
             </Link>
+          </div>
+          <div className=" w-full h-full   flex flex-col items-center justify-around  lg:space-y-3 space-y-2">
             <Link href="/hotelList" legacyBehavior>
               <a
                 onClick={() => {
