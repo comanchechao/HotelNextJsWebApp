@@ -617,7 +617,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                         var element = document.getElementById("target");
                         element.scrollIntoView({ behavior: "smooth" });
                       }}
-                      className="py-1  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white mt-5 px-10   "
+                      className="py-1  hover:text-mainPurple bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white mt-5 px-10   "
                     >
                       <p>{t("searchRoom")}</p>
                     </button>
@@ -759,7 +759,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                       var element = document.getElementById("target");
                       element.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="py-1  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white mt-5 px-10   "
+                    className="py-1  hover:text-mainPurple bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white mt-5 px-10   "
                   >
                     <p>{t("searchRoom")}</p>
                   </button>

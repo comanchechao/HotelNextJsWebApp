@@ -70,7 +70,7 @@ export default function LoginCheckModal({ room, hotelDetail }) {
               dispatch(reservationActions.setRoom(room));
               dispatch(reservationActions.setHotelInfo(hotelDetail));
             }}
-            className="py-1  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-6   "
+            className="py-1  hover:text-mainPurple bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-6   "
           >
             <p>{t("roomReserve")}</p>
           </button>

@@ -96,7 +96,10 @@ export default function HomePageCarousel({ hotels }) {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
   const slides = hotels.map((item) => (
-    <Carousel.Slide className=" cursor-pointer" key={item.title}>
+    <Carousel.Slide
+      className=" cursor-pointer transition-all ease-in duration-150 transform hover:scale-95 "
+      key={item.title}
+    >
       <Card {...item} />
     </Carousel.Slide>
   ));
@@ -107,7 +110,7 @@ export default function HomePageCarousel({ hotels }) {
       breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: 2 }]}
       slideGap="xl"
       align="start"
-      slidesToScroll={mobile ? 1 : 2}
+      slidesToScroll={mobile ? 1 : 1}
       nextControlIcon={<IconArrowRight size={16} />}
       previousControlIcon={<IconArrowLeft size={16} />}
       loop

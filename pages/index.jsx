@@ -448,7 +448,7 @@ export default function Home(props) {
         </div>
         <div
           ref={secondContainer}
-          className="w-full h-auto lg:px-44 z-40 opacity-0"
+          className="w-screen  h-auto lg:px-44 z-40 opacity-0"
         >
           <Suspense
             fallback={

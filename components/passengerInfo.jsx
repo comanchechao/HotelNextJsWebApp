@@ -1,4 +1,4 @@
-import { Select, TextInput, NumberInput } from "@mantine/core";
+import { Select, TextInput, NumberInput, Notification } from "@mantine/core";
 import { Star, SignIn, SignOut, Bed, Plus, Minus, Timer } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -49,6 +49,7 @@ export default function PassengerInfo() {
   const [formattedEnterDate, setFormattedEnterDate] = useState(false);
   const [formattedExitDate, setFormattedExitDate] = useState(false);
   const [errorValue, setErrorValue] = useState("");
+  const [alert, setAlert] = useState(false);
 
   const [specific, setSpecific] = useState(false);
 
@@ -67,6 +68,7 @@ export default function PassengerInfo() {
       setAlignLeft(true);
     }
   }
+
   function checkFields() {
     const myDiv = document.querySelector(".myDiv");
     const inputs = myDiv.querySelectorAll("input");
@@ -79,9 +81,16 @@ export default function PassengerInfo() {
     }
 
     if (empty) {
-      setErrorValue(t("errorMsg")); // Show error message
+      setErrorValue("   ");
+      setAlert(true);
+
+      // Show error message
     } else {
-      setErrorValue(""); // Show error message
+      dispatch(reservationActions.increasePassenger());
+
+      setErrorValue("");
+      setAlert(false);
+      // Show error message
     }
   }
   useEffect(() => {
@@ -251,9 +260,9 @@ export default function PassengerInfo() {
           </div>
         </div>
         {passenger}
-        <form className="h-full    space-y-9 my-10 w-full    flex items-start flex-col px-9">
+        <form className="h-full  myDiv   space-y-9 my-10 w-full    flex items-start flex-col px-9">
           {passenger >= 1 ? (
-            <div className="myDiv  border-2 border-dashed border-mainPurple  my-5 py-6 px-3 rounded-lg">
+            <div className="  border-2 border-dashed border-mainPurple  my-5 py-6 px-3 rounded-lg">
               <div
                 className={`${
                   alignLeft === true
@@ -276,7 +285,6 @@ export default function PassengerInfo() {
                   <NumberInput
                     onChange={(e) => {
                       setPassengerOnePassportCode(e);
-                      checkFields();
                     }}
                     className={`${
                       alignLeft === true
@@ -299,7 +307,6 @@ export default function PassengerInfo() {
                 <NumberInput
                   onChange={(e) => {
                     setPassengerOneSocialNumber(e);
-                    checkFields();
                   }}
                   className={`${
                     alignLeft === true
@@ -318,7 +325,6 @@ export default function PassengerInfo() {
                 <NumberInput
                   onChange={(e) => {
                     setPassengerOnePhoneNumber(e);
-                    checkFields();
                   }}
                   className={`${
                     alignLeft === true
@@ -338,7 +344,6 @@ export default function PassengerInfo() {
                 <TextInput
                   onChange={(e) => {
                     setPassengerOneName(e.target.value);
-                    checkFields();
                   }}
                   className={`${
                     alignLeft === true
@@ -372,13 +377,14 @@ export default function PassengerInfo() {
                   withAsterisk
                   clearable
                   searchable
+                  error={errorValue}
                   size="md"
                 />
               </form>
             </div>
           ) : null}
           {passenger >= 2 ? (
-            <div className="border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
+            <div className=" border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
               <div
                 className={`${
                   alignLeft === true
@@ -415,6 +421,7 @@ export default function PassengerInfo() {
                     radius="md"
                     size="md"
                     withAsterisk
+                    error={errorValue}
                   />
                 ) : (
                   <div></div>
@@ -436,6 +443,7 @@ export default function PassengerInfo() {
                   radius="md"
                   size="md"
                   withAsterisk
+                  error={errorValue}
                 />
                 <NumberInput
                   onChange={(e) => {
@@ -454,6 +462,7 @@ export default function PassengerInfo() {
                   radius="md"
                   size="md"
                   withAsterisk
+                  error={errorValue}
                 />
                 <TextInput
                   onChange={(e) => {
@@ -471,6 +480,7 @@ export default function PassengerInfo() {
                   radius="md"
                   size="md"
                   withAsterisk
+                  error={errorValue}
                 />
                 <Select
                   onChange={setPassengerTwoGender}
@@ -488,12 +498,13 @@ export default function PassengerInfo() {
                   clearable
                   searchable
                   size="md"
+                  error={errorValue}
                 />
               </form>
             </div>
           ) : null}
           {passenger >= 3 ? (
-            <div className="border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
+            <div className=" border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
               <div
                 className={`${
                   alignLeft === true
@@ -530,6 +541,7 @@ export default function PassengerInfo() {
                     radius="md"
                     size="md"
                     withAsterisk
+                    error={errorValue}
                   />
                 ) : (
                   <div></div>
@@ -551,6 +563,7 @@ export default function PassengerInfo() {
                   radius="md"
                   size="md"
                   withAsterisk
+                  error={errorValue}
                 />
                 <NumberInput
                   onChange={(e) => {
@@ -569,6 +582,7 @@ export default function PassengerInfo() {
                   radius="md"
                   size="md"
                   withAsterisk
+                  error={errorValue}
                 />
                 <TextInput
                   onChange={(e) => {
@@ -584,6 +598,7 @@ export default function PassengerInfo() {
                   label={t("fullName")}
                   variant="default"
                   radius="md"
+                  error={errorValue}
                   size="md"
                   withAsterisk
                 />
@@ -597,6 +612,7 @@ export default function PassengerInfo() {
                   data={[t("man"), t("woman")]}
                   placeholder={t("gender")}
                   label={t("gender")}
+                  error={errorValue}
                   variant="default"
                   radius="md"
                   withAsterisk
@@ -608,7 +624,7 @@ export default function PassengerInfo() {
             </div>
           ) : null}
           {passenger >= 4 ? (
-            <div className="border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
+            <div className=" border-2 border-dashed border-mainPurple  my-5 py-9 px-3 rounded-lg">
               <div
                 className={`${
                   alignLeft === true
@@ -645,6 +661,7 @@ export default function PassengerInfo() {
                     radius="md"
                     size="md"
                     withAsterisk
+                    error={errorValue}
                   />
                 ) : (
                   <div></div>
@@ -666,6 +683,7 @@ export default function PassengerInfo() {
                   radius="md"
                   size="md"
                   withAsterisk
+                  error={errorValue}
                 />
                 <NumberInput
                   onChange={(e) => {
@@ -682,6 +700,7 @@ export default function PassengerInfo() {
                   hideControls
                   variant="default"
                   radius="md"
+                  error={errorValue}
                   size="md"
                   withAsterisk
                 />
@@ -699,6 +718,7 @@ export default function PassengerInfo() {
                   label={t("fullName")}
                   variant="default"
                   radius="md"
+                  error={errorValue}
                   size="md"
                   withAsterisk
                 />
@@ -714,6 +734,7 @@ export default function PassengerInfo() {
                   label={t("gender")}
                   variant="default"
                   radius="md"
+                  error={errorValue}
                   withAsterisk
                   clearable
                   searchable
@@ -722,7 +743,21 @@ export default function PassengerInfo() {
               </form>
             </div>
           ) : null}
-        </form>
+        </form>{" "}
+        {alert ? (
+          <Notification
+            transition="fade"
+            transitionDuration={600}
+            transitionTimingFunction="ease"
+            color="red"
+            withCloseButton
+            variant="outline"
+          >
+            <h1 className="text-sm text-center">{t("errorMsg")}</h1>
+          </Notification>
+        ) : (
+          <div></div>
+        )}
         <div className="w-full flex lg:flex-row flex-col-reverse   items-center justify-center  lg:justify-around">
           <button
             onClick={() => {
@@ -735,9 +770,9 @@ export default function PassengerInfo() {
           </button>
           <button
             onClick={() => {
-              dispatch(reservationActions.increasePassenger());
+              checkFields();
             }}
-            className="px-4 rounded-md lg:self-end m-4 transition flex justify-center items-center ease-in duration-300 hover:text-white border-2 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-white text-mainPurple text-sm font-mainFont"
+            className="px-4 rounded-md lg:self-end m-4 transition flex justify-center items-center ease-in duration-300 hover:text-white border-2 hover:bg-mainPurple border-r-8 border-mainBlue py-2 bg-white text-mainPurple text-sm font-mainFont"
           >
             {t("addPassenger")}
             <Plus className="ml-2" size={20} weight="fill" />
