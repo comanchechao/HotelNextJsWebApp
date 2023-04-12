@@ -23,9 +23,9 @@ import { useSelector, useDispatch } from "react-redux";
 import Compressor from "compressorjs";
 import { useTranslation } from "next-i18next";
 import { X, Buildings } from "phosphor-react";
-const LocationsMap = dynamic(() => import("./map"), {
-  ssr: false,
-});
+// const LocationsMap = dynamic(() => import("./map"), {
+//   ssr: false,
+// });
 export default function AddHotel({
   featuresData,
   cities,
@@ -525,6 +525,7 @@ export default function AddHotel({
         transitionTimingFunction="ease"
         exitTransitionDuration={600}
         padding={1}
+        style={{ zIndex: 1 }}
         fullScreen
         withCloseButton={false}
         opened={opened}
@@ -795,13 +796,13 @@ export default function AddHotel({
                 data={residenceTypesName}
               />
             </div>
-            <div className="flex w-full justify-center items-center">
+            {/* <div className="flex w-full justify-center items-center">
               <LocationsMap
                 className="z-10"
                 city={city}
                 cityLatLng={[mapLat, mapLng]}
               />
-            </div>
+            </div> */}
             <div
               className={`${
                 alignLeft === true

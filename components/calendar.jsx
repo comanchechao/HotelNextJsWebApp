@@ -33,11 +33,11 @@ export default function Calendar() {
           defaultValue={new Date()}
           minDate={dayjs().toDate()}
           onChange={(e) => {
-            if (dayjs(e.from) < dayjs() || dayjs(e.to) < dayjs()) {
+            if (dayjs(e.from) > dayjs() || dayjs(e.to) > dayjs()) {
               console.log("error ");
-              setInputError(true);
-            } else if (dayjs(e.from) > dayjs() || dayjs(e.to) > dayjs()) {
               setInputError(false);
+            } else if (dayjs(e.from) < dayjs() || dayjs(e.to) < dayjs()) {
+              setInputError(true);
             }
             dispatch(reservationActions.setEnterting(e.from));
             dispatch(reservationActions.setExiting(e.to));
@@ -50,7 +50,7 @@ export default function Calendar() {
           inputClass="w-60  text-red font-mainFont text-center h-10 my-0 bg-white border border-gray-300 rounded-lg justify-center items-center"
           from={new Date()}
           weekends={[6]}
-          style={{ color: inputError ? "2px solid red" : "none" }}
+          style={{ color: inputError ? "2px solid red" : "none", zIndex: 999999999 }}
           accentColor="#6374ae"
           placeholder="fjasdklf"
           direction="ltr"
