@@ -122,14 +122,14 @@ export default function InfoConfirmation() {
               <h2>{t("exitDay")}</h2>
               <SignOut size={30} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm">{exitDate}</h1>
+            {dayjs(exitDate).locale("fa").format("DD/MM/YYYY")}
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>{t("enterDay")}</h2>
               <SignIn size={30} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm"> {enterDate}</h1>
+            {dayjs(enterDate).locale("fa").format("DD/MM/YYYY")}
           </div>
         </div>
         <div className="h-full w-full   lg:w-1/3 flex lg:flex-row flex-col items-center justify-center p-2">

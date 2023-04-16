@@ -190,7 +190,7 @@ export default function Home(props) {
     CityTranslate();
   }, [lng]);
 
-  const [dates, setDates] = useState([Date | null, Date | null]);
+  const [dates, setDates] = useState([null, null]);
   const [choosedDate, setChoosenDate] = useState([Date | null, Date | null]);
 
   const theme = useMantineTheme();
@@ -291,11 +291,7 @@ export default function Home(props) {
                 searchable
                 size="md"
               />
-              {lng === "fa" ? (
-                <Suspense fallback={<div>Loading...</div>}>
-                  <DatePicker />
-                </Suspense>
-              ) : null}
+
               {lng === "tr" ? (
                 <DatePickerInput
                   variant="default"
@@ -303,34 +299,25 @@ export default function Home(props) {
                   numberOfColumns={1}
                   oriantation
                   type="range"
-                  className={`${
-                    alignLeft === true
-                      ? "text-xl   text-right flex flex-col items-center lg:items-end"
-                      : "text-xl   text-right flex flex-col items-center lg:items-start"
-                  }`}
                   dropdownType="modal"
-                  value={dates}
+                  value={dates !== null ? (dates) : null}
                   dropdownPosition="top-start"
                   placeholder={t("inDate")}
                   label={t("inDate")}
                   minDate={dayjs().toDate()}
                   defaultValue={dayjs().toDate()}
-                  onChange={(e) => {
-                    setDates(e);
-                  }}
+                  // onChange={(e) => {
+                  //   if (e) {
+                  //     setDates(e);
+                  //   }
+                  // }}
                   radius="md"
-                  dayClassName={(date, modifiers) =>
-                    cx({
-                      [classes.firstInRange]: modifiers.outside,
-                    })
-                  }
                   size="md"
-                  styles={(theme) => ({
-                    input: {
-                      marginRight: rem(112),
-                    },
-                  })}
                 />
+              ) : lng === "fa" ? (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <DatePicker />
+                </Suspense>
               ) : null}
               {/* <DatePicker
                 locale="fa"

@@ -4,8 +4,66 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { reservationActions } from "../store/reservation";
 import { useTranslation } from "next-i18next";
-
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import localeData from "dayjs/plugin/localeData";
+import jalaliday from "jalaliday";
 export default function PassengerInfo() {
+  const faLocale = {
+    name: "fa",
+    weekdays: [
+      "چهارشنبه",
+      "پنج‌شنبه",
+      "جمعه",
+      "شنبه",
+      "یک‌شنبه",
+      "دوشنبه",
+      "سه‌شنبه",
+    ],
+    weekStart: 1,
+    months: [
+      "دی",
+      "بهمن",
+      "اسفند",
+      "فروردین",
+      "اردیبهشت",
+      "خرداد",
+      "تیر",
+      "مرداد",
+      "شهریور",
+      "مهر",
+      "آبان",
+      "آذر",
+    ],
+    relativeTime: {
+      future: "%s بعد",
+      past: "%s قبل",
+      s: "چند ثانیه",
+      m: "1 دقیقه",
+      mm: "%d دقیقه",
+      h: "1 ساعت",
+      hh: "%d ساعت",
+      d: "1 روز",
+      dd: "%d روز",
+      M: "1 ماه",
+      MM: "%d ماه",
+      y: "1 سال",
+      yy: "%d سال",
+    },
+    formats: {
+      L: "DD/MM/YYYY",
+      LTS: "HH:mm:ss",
+      LLLL: "dddd, D MMMM YYYY HH:mm",
+      LLL: "D MMMM YYYY HH:mm",
+    },
+  };
+
+  const [dates, setDates] = useState([Date | null, Date | null]);
+  // You need to extend the custom locale and localeData
+  dayjs.extend(jalaliday);
+  dayjs.extend(customParseFormat);
+  dayjs.extend(localeData);
+  dayjs.localeData("fa", faLocale);
   const [passengers, setPassengers] = useState([]);
   // getting reservatoin info
   const dispatch = useDispatch();
@@ -186,14 +244,18 @@ export default function PassengerInfo() {
               <h2>{t("exitDay")}</h2>
               <SignOut size={30} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm">{exitDate}</h1>
+            <h1 className="font text-sm">
+              {dayjs(exitDate).locale("fa").format("DD/MM/YYYY")}
+            </h1>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>{t("enterDay")}</h2>
               <SignIn size={30} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm">{enterDate}</h1>
+            <h1 className="font text-sm">
+              {dayjs(enterDate).locale("fa").format("DD/MM/YYYY")}
+            </h1>
           </div>
         </div>
         <div className="h-full w-full   lg:w-1/3 flex lg:flex-row flex-col items-center justify-center p-2">

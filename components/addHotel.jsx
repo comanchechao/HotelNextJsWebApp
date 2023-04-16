@@ -22,10 +22,12 @@ import { supabase } from "../lib/supabaseClient";
 import { useSelector, useDispatch } from "react-redux";
 import Compressor from "compressorjs";
 import { useTranslation } from "next-i18next";
-import { X, Buildings } from "phosphor-react";
-// const LocationsMap = dynamic(() => import("./map"), {
-//   ssr: false,
-// });
+import { X, Buildings, Trash } from "phosphor-react";
+import SingleDate from "./SingleDate";
+import Image from "next/image";
+const LocationsMap = dynamic(() => import("./map"), {
+  ssr: false,
+});
 export default function AddHotel({
   featuresData,
   cities,
@@ -33,10 +35,6 @@ export default function AddHotel({
   residenceTypes,
   countries,
 }) {
-  const SingleDate = dynamic(() => import("./SingleDate"), {
-    ssr: false,
-    Suspense: true,
-  });
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
   const [opened, setOpened] = useState(false);
@@ -106,6 +104,7 @@ export default function AddHotel({
   }, [city]);
 
   const [meal, setMeal] = useState("");
+  let checkoutDate = useSelector((state) => state.room.roomCheckout);
 
   function handleNewRoom() {
     setRooms(
@@ -119,7 +118,7 @@ export default function AddHotel({
         capacity: definedRoom.capacity,
         quantity: 1,
         startOfAvalibity: null,
-        endOfAvalibility: null,
+        endOfAvalibility: checkoutDate,
       })
     );
     var container = document.getElementById("RoomDiv");
@@ -204,8 +203,8 @@ export default function AddHotel({
         rooms: rooms,
         residenceType: residenceType,
         hotelAbout: aboutHotel,
-        locationLat: getlat,
-        locationLng: getLng,
+        // locationLat: getlat,
+        // locationLng: getLng,
         address: address,
         enterTime: enteringHours,
         exitTime: exitingHours,
@@ -238,6 +237,7 @@ export default function AddHotel({
         priceTL: room.priceTL,
         meal: room.meal,
         capacity: room.capacity,
+        out_date: room.endOfAvalibility,
         hotel_id: hoteId,
       });
       if (error) throw error;
@@ -384,7 +384,7 @@ export default function AddHotel({
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
       setFirstImage(filePath);
-
+      setFirstImagePreview(file);
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
         .upload(filePath, compressedFile, {
@@ -421,6 +421,9 @@ export default function AddHotel({
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
       setSecondImage(filePath);
+      if (file) {
+        setSecondImagePreview(file);
+      }
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
@@ -458,6 +461,9 @@ export default function AddHotel({
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
       setThirdImage(filePath);
+      if (file) {
+        setThirdImagePreview(file);
+      }
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
@@ -495,6 +501,9 @@ export default function AddHotel({
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
       setFourthImage(filePath);
+      if (file) {
+        setFourthImagePreview(file);
+      }
 
       let { error: uploadError } = await supabase.storage
         .from("hotel-images")
@@ -517,6 +526,10 @@ export default function AddHotel({
       }, 2000);
     }
   };
+  const [firstImagePreview, setFirstImagePreview] = useState();
+  const [secondImagePreview, setSecondImagePreview] = useState();
+  const [thirdImagePreview, setThirdImagePreview] = useState();
+  const [fourthImagePreview, setFourthImagePreview] = useState();
   return (
     <>
       <Modal
@@ -560,86 +573,158 @@ export default function AddHotel({
             )}
             <div className="flex justify-around space-x-1 lg:space-x-4 lg:px-0 px-4 h-28 lg:h-rem22 ">
               <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
-                <h2 className="text-xl font-bold">(4)</h2>
-                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                  <label htmlFor="fourthImage">
-                    {uploading ? (
-                      <Loader color="dark" />
-                    ) : (
-                      <IconUpload className="cursor-pointer" size={30} />
-                    )}
-                  </label>
-                  <input
-                    required
-                    accept="image/webp,image/jpeg,image/png"
-                    onChange={fourthImageUpload}
-                    type="file"
-                    className="hidden"
-                    id="fourthImage"
+                {!fourthImagePreview ? (
+                  <h2 className="text-xl font-bold">(4)</h2>
+                ) : (
+                  <Trash
+                    onClick={() => {
+                      setFourthImagePreview(null);
+                    }}
+                    size={20}
                   />
-                </div>
+                )}
+                {!fourthImagePreview ? (
+                  <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
+                    <label htmlFor="fourthImage">
+                      {uploading ? (
+                        <Loader color="dark" />
+                      ) : (
+                        <IconUpload className="cursor-pointer" size={30} />
+                      )}
+                    </label>
+                    <input
+                      required
+                      accept="image/webp,image/jpeg,image/png"
+                      onChange={fourthImageUpload}
+                      type="file"
+                      className="hidden"
+                      id="fourthImage"
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    alt=""
+                    width={500}
+                    height={500}
+                    src={URL.createObjectURL(fourthImagePreview)}
+                  />
+                )}
               </div>
 
               <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
-                <h2 className="text-xl font-bold">(3)</h2>
-                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                  <label htmlFor="thirdImage">
-                    {uploading ? (
-                      <Loader color="dark" />
-                    ) : (
-                      <IconUpload className="cursor-pointer" size={30} />
-                    )}
-                  </label>
-                  <input
-                    required
-                    accept="image/webp,image/jpeg,image/png"
-                    onChange={thirdImageUpload}
-                    type="file"
-                    className="hidden"
-                    id="thirdImage"
+                {!thirdImagePreview ? (
+                  <h2 className="text-xl font-bold">(3)</h2>
+                ) : (
+                  <Trash
+                    onClick={() => {
+                      setThirdImagePreview(null);
+                    }}
+                    size={20}
                   />
-                </div>
+                )}
+                {!thirdImagePreview ? (
+                  <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
+                    <label htmlFor="thirdImage">
+                      {uploading ? (
+                        <Loader color="dark" />
+                      ) : (
+                        <IconUpload className="cursor-pointer" size={30} />
+                      )}
+                    </label>
+                    <input
+                      required
+                      accept="image/webp,image/jpeg,image/png"
+                      onChange={thirdImageUpload}
+                      type="file"
+                      className="hidden"
+                      id="thirdImage"
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    alt=""
+                    width={500}
+                    height={500}
+                    src={URL.createObjectURL(thirdImagePreview)}
+                  />
+                )}
               </div>
               <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
                 {" "}
-                <h2 className="text-xl font-bold">(2)</h2>
-                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                  <label htmlFor="secondImage">
-                    {uploading ? (
-                      <Loader color="dark" />
-                    ) : (
-                      <IconUpload className="cursor-pointer" size={30} />
-                    )}
-                  </label>
-                  <input
-                    required
-                    accept="image/webp,image/jpeg,image/png"
-                    onChange={secondImageUpload}
-                    type="file"
-                    className="hidden"
-                    id="secondImage"
+                {!secondImagePreview ? (
+                  <h2 className="text-xl font-bold">(2)</h2>
+                ) : (
+                  <Trash
+                    onClick={() => {
+                      setSecondImagePreview(null);
+                    }}
+                    size={20}
                   />
-                </div>
+                )}
+                {!secondImagePreview ? (
+                  <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
+                    <label htmlFor="secondImage">
+                      {uploading ? (
+                        <Loader color="dark" />
+                      ) : (
+                        <IconUpload className="cursor-pointer" size={30} />
+                      )}
+                    </label>
+                    <input
+                      required
+                      accept="image/webp,image/jpeg,image/png"
+                      onChange={secondImageUpload}
+                      type="file"
+                      className="hidden"
+                      id="secondImage"
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    alt=""
+                    width={500}
+                    height={500}
+                    src={URL.createObjectURL(secondImagePreview)}
+                  />
+                )}
               </div>
               <div className="h-full w-full flex items-center justify-center space-y-2   cursor-pointer transition ease-in duration-300 flex-col  ">
-                <h2 className="text-xl font-bold">(1)</h2>
-                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                  <label htmlFor="firstImage">
-                    {uploading ? (
-                      <Loader color="dark" />
-                    ) : (
-                      <IconUpload className="cursor-pointer" size={30} />
-                    )}
-                  </label>
-                  <input
-                    required
-                    accept="image/webp,image/jpeg,image/png"
-                    onChange={firstImageUpload}
-                    type="file"
-                    className="hidden"
-                    id="firstImage"
+                {!firstImagePreview ? (
+                  <h2 className="text-xl font-bold">(1)</h2>
+                ) : (
+                  <Trash
+                    onClick={() => {
+                      setFirstImagePreview(null);
+                    }}
+                    size={20}
                   />
-                </div>
+                )}
+                {!firstImagePreview ? (
+                  <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
+                    <label htmlFor="firstImage">
+                      {uploading ? (
+                        <Loader color="dark" />
+                      ) : (
+                        <IconUpload className="cursor-pointer" size={30} />
+                      )}
+                    </label>
+                    <input
+                      required
+                      accept="image/webp,image/jpeg,image/png"
+                      onChange={firstImageUpload}
+                      type="file"
+                      className="hidden"
+                      id="firstImage"
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    alt=""
+                    width={500}
+                    height={500}
+                    src={URL.createObjectURL(firstImagePreview)}
+                  />
+                )}
               </div>
             </div>
             <Notification
@@ -796,13 +881,13 @@ export default function AddHotel({
                 data={residenceTypesName}
               />
             </div>
-            {/* <div className="flex w-full justify-center items-center">
+            <div className="flex w-full justify-center items-center">
               <LocationsMap
                 className="z-10"
                 city={city}
                 cityLatLng={[mapLat, mapLng]}
               />
-            </div> */}
+            </div>
             <div
               className={`${
                 alignLeft === true

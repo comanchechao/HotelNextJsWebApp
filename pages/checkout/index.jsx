@@ -141,7 +141,7 @@ export default function Checkout(props) {
           }`}
         >
           <button
-            onClick={() => setChange(true) & setRegister(false)}
+            onClick={nextStep}
             className="px-14 rounded-md transition ease-in duration-300 hover:bg-darkPurple border-r-8 border-mainBlue py-2 bg-mainPurple text-white text-lg font-mainFont"
           >
             {t("confirmToNext")}

@@ -30,27 +30,34 @@ export default function Calendar() {
           <h2 style={{ color: inputError ? " red" : "none" }}>{t("inDate")}</h2>
         )}
         <DatePicker
-          defaultValue={new Date()}
-          minDate={dayjs().toDate()}
           onChange={(e) => {
-            if (dayjs(e.from) > dayjs() || dayjs(e.to) > dayjs()) {
+            if (
+              dayjs(e.from) > dayjs().toDate() ||
+              dayjs(e.to) > dayjs().toDate()
+            ) {
               console.log("error ");
               setInputError(false);
-            } else if (dayjs(e.from) < dayjs() || dayjs(e.to) < dayjs()) {
+            } else if (
+              dayjs(e.from) < dayjs().toDate() ||
+              dayjs(e.to) < dayjs().toDate()
+            ) {
               setInputError(true);
             }
-            dispatch(reservationActions.setEnterting(e.from));
-            dispatch(reservationActions.setExiting(e.to));
+            dispatch(reservationActions.setEnterting(e.from.toISOString()));
+            dispatch(reservationActions.setExiting(e.to.toISOString()));
 
-            console.log(e.from);
-            console.log(e.to);
+            console.log("enter", e.from);
+            console.log("exit ", e);
           }}
           round="x2"
           className="text-center"
           inputClass="w-60  text-red font-mainFont text-center h-10 my-0 bg-white border border-gray-300 rounded-lg justify-center items-center"
           from={new Date()}
           weekends={[6]}
-          style={{ color: inputError ? "2px solid red" : "none", zIndex: 999999999 }}
+          style={{
+            color: inputError ? "2px solid red" : "none",
+            zIndex: 999999999,
+          }}
           accentColor="#6374ae"
           placeholder="fjasdklf"
           direction="ltr"
