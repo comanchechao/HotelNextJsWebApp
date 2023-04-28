@@ -82,9 +82,9 @@ export default function ReservationManagement({ Hotels }) {
                       <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                         <Newspaper size={40} />
                       </div>
-                      <h1 className=" text-sm lg:text-lg">
+                      <h2 className=" text-sm lg:text-lg">
                         {t("hotelName")} : <strong>{user.hotel_name}</strong>
-                      </h1>
+                      </h2>
                       <p className="hidden lg:block">
                         {t("fullName")} : <strong>{user.name}</strong>
                       </p>
@@ -112,7 +112,7 @@ export default function ReservationManagement({ Hotels }) {
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                       <IconUserCircle size={50} />
                     </div>
-                    <h1 className=" text-sm lg:text-xl">{user.name}</h1>
+                    <h2 className=" text-sm lg:text-xl">{user.name}</h2>
                     <p className="hidden lg:block">{user.gender}</p>
                     <ReservationInfo />
                   </div>

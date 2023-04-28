@@ -300,7 +300,7 @@ export default function Home(props) {
                   oriantation
                   type="range"
                   dropdownType="modal"
-                  value={dates !== null ? (dates) : null}
+                  value={dates !== null ? dates : null}
                   dropdownPosition="top-start"
                   placeholder={t("inDate")}
                   label={t("inDate")}
@@ -360,7 +360,7 @@ export default function Home(props) {
                 <Popover.Dropdown>
                   <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
                     <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
-                      <h1 className="text-xs    ">{t("adult")}</h1>
+                      <h2 className="text-xs    ">{t("adult")}</h2>
                       <div className="flex text-blue-800  items-center justify-center space-x-5">
                         <PlusCircle
                           className="cursor-pointer"
@@ -370,7 +370,7 @@ export default function Home(props) {
                           size={30}
                           weight="fill"
                         />
-                        <h1 className="text-base  ">{passenger}</h1>
+                        <h2 className="text-base  ">{passenger}</h2>
                         <MinusCircle
                           className="cursor-pointer"
                           onClick={() => {
@@ -382,7 +382,7 @@ export default function Home(props) {
                       </div>
                     </div>
                     <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
-                      <h1 className="text-xs    ">{t("kid")}</h1>
+                      <h2 className="text-xs    ">{t("kid")}</h2>
                       <div className="flex text-blue-800 items-center justify-center space-x-5">
                         <PlusCircle
                           onClick={() => {
@@ -394,7 +394,7 @@ export default function Home(props) {
                           size={30}
                           weight="fill"
                         />
-                        <h1 className="text-base ">{childPassenger}</h1>
+                        <h2 className="text-base ">{childPassenger}</h2>
                         <MinusCircle
                           onClick={() => {
                             dispatch(
@@ -487,7 +487,7 @@ export default function Home(props) {
                 fill="currentColor"
                 className="text-blue-400 bg-blue-100 rounded-full p-2 ml-3 md:ml-0"
               >
-                <path d="M12 1.5C6.2 1.5 1.5 6.2 1.5 12S6.2 22.5 12 22.5 22.5 17.8 22.5 12 17.8 1.5 12 1.5ZM12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9 9 9 0 0 1-9-9 9 9 0 0 1 9-9Zm.242 12.634a.72.72 0 0 0-.72.72v.36a.72.72 0 0 0 .636.715l.084.005a.72.72 0 0 0 .72-.72v-.36a.72.72 0 0 0-.72-.72Zm-.285-9.068c-.5 0-.943.07-1.33.208a2.664 2.664 0 0 0-.98.592c-.264.258-.467.57-.605.937a3.48 3.48 0 0 0-.206 1.229c0 .354.054.683.164.99.108.308.257.6.441.878.185.279.394.541.629.788.232.247.475.488.724.721.286.266.48.565.578.897.1.334.147.693.147 1.078h1.445a6.226 6.226 0 0 0-.079-.96 2.803 2.803 0 0 0-.226-.726 3.122 3.122 0 0 0-.41-.636 11.256 11.256 0 0 0-.627-.69 56.686 56.686 0 0 0-.511-.519 3.796 3.796 0 0 1-.43-.507 2.073 2.073 0 0 1-.403-1.268c0-.546.144-.973.43-1.283.287-.31.703-.464 1.25-.464.228 0 .448.03.659.09.21.059.396.153.56.28a1.4 1.4 0 0 1 .395.484c.1.195.148.428.148.698h1.444a2.797 2.797 0 0 0-.258-1.186 2.65 2.65 0 0 0-.678-.885 3.035 3.035 0 0 0-1.01-.555 4.033 4.033 0 0 0-1.26-.191Z"></path>
+                <path d="M12 1.5C6.2 1.5 1.5 6.2 1.5 12S6.2 22.5 12 22.5 22.5 17.8 22.5 12 17.8 1.5 12 1.5ZM12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9 9 9 0 0 1-9-9 9 9 0 0 1 9-9Zm.242 12.634a.72.72 0 0 0-.72.72v.36a.72.72 0 0 0 .636.715l.084.005a.72.72 0 0 0 .72-.72v-.36a.72.72 0 0 0-.72-.72Zm-.285-9.068c-.5 0-.943.07-1.33.208a2.664 2.664 0 0 0-.98.592c-.264.258-.467.57-.605.937a3.48 3.48 0 0 0-.206 1.229c0 .354.054.683.164.99.108.308.257.6.441.878.185.279.394.541.629.788.232.247.475.488.724.721.286.266.48.565.578.897.1.334.147.693.147 1.078h2.445a6.226 6.226 0 0 0-.079-.96 2.803 2.803 0 0 0-.226-.726 3.122 3.122 0 0 0-.41-.636 11.256 11.256 0 0 0-.627-.69 56.686 56.686 0 0 0-.511-.519 3.796 3.796 0 0 1-.43-.507 2.073 2.073 0 0 1-.403-1.268c0-.546.144-.973.43-1.283.287-.31.703-.464 1.25-.464.228 0 .448.03.659.09.21.059.396.153.56.28a1.4 1.4 0 0 1 .395.484c.1.195.148.428.148.698h2.444a2.797 2.797 0 0 0-.258-1.186 2.65 2.65 0 0 0-.678-.885 3.035 3.035 0 0 0-1.01-.555 4.033 4.033 0 0 0-1.26-.191Z"></path>
               </svg>
               <h2 className="font-bold text-base">راهنمای سفر</h2>
               <h3 className=" font-extralight text-xs">
@@ -988,7 +988,9 @@ export default function Home(props) {
                 : "w-full h-full flex flex-col justify-center items-center lg:items-start space-y-3 rounded-sm"
             }`}
           >
-            <h1 className="font-bold mb-3 text-center">{t("faq")} </h1>
+            <h2 className="font-bold mb-3 text-2xl lg:text-3xl  text-center">
+              {t("faq")}
+            </h2>
             <Faq />
           </div>
         </div>

@@ -40,9 +40,9 @@ export default function ReservationInfo({
         className="text-right w-full flex justify-end"
       >
         <div className="h-full w-full flex items-center  p-4 flex-col space-y-6">
-          <h1 className="text-2xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
+          <h2 className="text-2xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
             {t("reserveInfo")}
-          </h1>
+          </h2>
           <div className="grid justify-items-center grid-cols-2 gap-5 w-full ">
             <h2 className="py-1 rounded-md px-4 border-2     border-mainPurple">
               {t("hotelName")} : <strong>{hotel}</strong>
@@ -65,7 +65,7 @@ export default function ReservationInfo({
               <h2>{t("exitDay")}</h2>
               <SignOut size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm"> </h1>
+            <h2 className="font text-sm"> </h2>
             <div className="flex items-center space-x-2">
               <h2>{t("enterDay")}</h2>
               <SignIn size={25} color="#e0ab19" weight="fill" />
@@ -76,14 +76,14 @@ export default function ReservationInfo({
               <h2>{t("enterTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm"> </h1>{" "}
+            <h2 className="font text-sm"> </h2>{" "}
             <div className="flex items-center space-x-2">
               <h2>{t("exitTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm"> </h1>
+            <h2 className="font text-sm"> </h2>
           </div>
-          <h1 className="font text-sm"> </h1>
+          <h2 className="font text-sm"> </h2>
           <div className="w-full h-auto flex items-center">
             <div className="  my-3 space-y-2  h-full grid lg:grid-rows-2 lg:grid-cols-1    lg:grid-flow-row grid-cols-2  justify-items-center    w-full   border-dashed    rounded-md">
               {passengers.map((passenger, i) => {

@@ -53,11 +53,11 @@ export default function ForgotPasswordModal() {
         overlayOpacity={0.55}
         overlayBlur={3}
       >
-        <h1 className="text-2xl my-6 text-center  ">
+        <h2 className="text-2xl my-6 text-center  ">
           {" "}
           ایمیل خودتون رو وارد کنید تا لینک بازیابی رمز عبور رو براتون ارسال
           کنیم{" "}
-        </h1>
+        </h2>
 
         <form className="flex flex-col mt-2">
           <input

@@ -6,9 +6,9 @@ export default function SupportRequest() {
 
   return (
     <div className="w-full h-carousel flex items-center justify-center flex-col bg-white px-14 text-center">
-      <h1 className="border-b-2 border-mainPurple pb-2 rounded-sm">
-        {t("supporth1")}{" "}
-      </h1>
+      <h2 className="border-b-2 border-mainPurple pb-2 rounded-sm">
+        {t("supporth2")}{" "}
+      </h2>
       <p className="text-gray-500 my-6">{t("supportp")} </p>
 
       <TicketModal />

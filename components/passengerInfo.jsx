@@ -244,18 +244,18 @@ export default function PassengerInfo() {
               <h2>{t("exitDay")}</h2>
               <SignOut size={30} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm">
+            <h2 className="font text-sm">
               {dayjs(exitDate).locale("fa").format("DD/MM/YYYY")}
-            </h1>
+            </h2>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>{t("enterDay")}</h2>
               <SignIn size={30} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm">
+            <h2 className="font text-sm">
               {dayjs(enterDate).locale("fa").format("DD/MM/YYYY")}
-            </h1>
+            </h2>
           </div>
         </div>
         <div className="h-full w-full   lg:w-1/3 flex lg:flex-row flex-col items-center justify-center p-2">
@@ -264,14 +264,14 @@ export default function PassengerInfo() {
               <h2>{t("exitTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm"> {hotelInfo.exitTime}</h1>
+            <h2 className="font text-sm"> {hotelInfo.exitTime}</h2>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>{t("enterTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm"> {hotelInfo.enterTime}</h1>
+            <h2 className="font text-sm"> {hotelInfo.enterTime}</h2>
           </div>
         </div>
         <div
@@ -288,9 +288,9 @@ export default function PassengerInfo() {
                 : "flex items-center flex-col"
             }`}
           >
-            <h1 className="text-xl font-bold">
+            <h2 className="text-xl font-bold">
               {t("singleHotel")} {hotelInfo.title}
-            </h1>
+            </h2>
             <h2 className="flex items-center">
               {hotelInfo.stars} {t("star")}
               <Star className="mx-2" size={19} color="#e0ab19" weight="fill" />
@@ -307,10 +307,10 @@ export default function PassengerInfo() {
               : "h-20 w-full flex items-start justify-start    flex-col  px-9 py-3"
           }`}
         >
-          <h1 className="text-2xl font-bold items-center flex">
+          <h2 className="text-2xl font-bold items-center flex">
             {t("firstRoom")}
             <Bed className="ml-3" size={45} color="#e0ab19" weight="fill" />
-          </h1>
+          </h2>
           <div className="flex items-center space-x-6">
             <h3 className="font-bold">1 {t("adult")}</h3>
             <h3>
@@ -815,7 +815,7 @@ export default function PassengerInfo() {
             withCloseButton
             variant="outline"
           >
-            <h1 className="text-sm text-center">{t("errorMsg")}</h1>
+            <h2 className="text-sm text-center">{t("errorMsg")}</h2>
           </Notification>
         ) : (
           <div></div>
@@ -858,7 +858,7 @@ export default function PassengerInfo() {
           size="sm"
           withAsterisk
         />
-        <h1 className="text-sm  lg:w-carousel lg:my-0 my-4">{t("ifLate")}</h1>
+        <h2 className="text-sm  lg:w-carousel lg:my-0 my-4">{t("ifLate")}</h2>
       </div>
     </div>
   );

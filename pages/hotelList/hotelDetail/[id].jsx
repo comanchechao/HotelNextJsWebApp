@@ -456,9 +456,9 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                     : "flex w-full justify-center items-start flex-col"
                 }`}
               >
-                <h1 className="text-2xl font-bold  border-b-4   border-mainBlue pb-2  px-2  rounded-md my-5">
+                <h2 className="text-2xl font-bold  border-b-4   border-mainBlue pb-2  px-2  rounded-md my-5">
                   {t("singleHotel")} {hotel.title}
-                </h1>
+                </h2>
                 <div className="flex border border-gray-300 bg-white my-3 lg:my-0 p-2 rounded-md space-x-2 justify-center items-center">
                   <div className="flex">
                     <p className="text-sm">{hotel.address}</p>
@@ -554,7 +554,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                     <Popover.Dropdown>
                       <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
                         <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
-                          <h1 className="text-xs">{t("adult")}</h1>
+                          <h2 className="text-xs">{t("adult")}</h2>
                           <div className="flex text-blue-800  items-center justify-center space-x-5">
                             <PlusCircle
                               className="cursor-pointer"
@@ -566,7 +566,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                               size={27}
                               weight="fill"
                             />
-                            <h1 className="text-xs font-bold">{passenger}</h1>
+                            <h2 className="text-xs font-bold">{passenger}</h2>
                             <MinusCircle
                               className="cursor-pointer"
                               onClick={() => {
@@ -580,7 +580,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                           </div>
                         </div>
                         <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
-                          <h1 className="text-xs"> {t("kid")} </h1>
+                          <h2 className="text-xs"> {t("kid")} </h2>
                           <div className="flex text-blue-800  items-center justify-center space-x-5">
                             <PlusCircle
                               className="cursor-pointer"
@@ -592,9 +592,9 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                               size={27}
                               weight="fill"
                             />
-                            <h1 className="text-xs font-bold">
+                            <h2 className="text-xs font-bold">
                               {childPassenger}
-                            </h1>
+                            </h2>
                             <MinusCircle
                               className="cursor-pointer"
                               onClick={() => {
@@ -698,7 +698,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                   <Popover.Dropdown>
                     <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
                       <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
-                        <h1 className="text-xs">{t("adult")}</h1>
+                        <h2 className="text-xs">{t("adult")}</h2>
                         <div className="flex text-blue-800  items-center justify-center space-x-5">
                           <PlusCircle
                             className="cursor-pointer"
@@ -708,7 +708,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                             size={27}
                             weight="fill"
                           />
-                          <h1 className="text-xs font-bold">{passenger}</h1>
+                          <h2 className="text-xs font-bold">{passenger}</h2>
                           <MinusCircle
                             className="cursor-pointer"
                             onClick={() => {
@@ -722,7 +722,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                         </div>
                       </div>
                       <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
-                        <h1 className="text-xs"> {t("kid")} </h1>
+                        <h2 className="text-xs"> {t("kid")} </h2>
                         <div className="flex text-blue-800  items-center justify-center space-x-5">
                           <PlusCircle
                             className="cursor-pointer"
@@ -734,9 +734,9 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                             size={27}
                             weight="fill"
                           />
-                          <h1 className="text-xs font-bold">
+                          <h2 className="text-xs font-bold">
                             {childPassenger}
-                          </h1>
+                          </h2>
                           <MinusCircle
                             className="cursor-pointer"
                             onClick={() => {
@@ -851,7 +851,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                   </div>
                 </div>
                 <div className="flex py-8 items-center space-y-6 w-full flex-col  justify-center">
-                  <h1
+                  <h2
                     className={`${
                       alignLeft === true
                         ? "text-right text-2xl font-bold self-end"
@@ -859,7 +859,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                     }`}
                   >
                     {t("rooms")}
-                  </h1>
+                  </h2>
                   <div
                     id="target"
                     className="flex  justify-center w-full text-sm rounded-md"
@@ -958,7 +958,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                       : "flex items-center     py-4 space-x-1 w-full justify-start "
                   }`}
                 >
-                  <h1
+                  <h2
                     className={`${
                       alignLeft === true
                         ? "text-right self-end w-44  text-lg  border-b-2   border-mainBlue pb-2  px-2  rounded-md"
@@ -966,7 +966,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                     }`}
                   >
                     {t("hotelRules")}
-                  </h1>
+                  </h2>
                 </div>
                 <div
                   className={`${
@@ -1006,7 +1006,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                       : "flex items-center     py-4 space-x-1 w-full justify-start"
                   }`}
                 >
-                  <h1
+                  <h2
                     className={`${
                       alignLeft === true
                         ? "text-right self-end w-44  text-lg  border-b-2   border-mainBlue pb-2  px-2  rounded-md"
@@ -1014,7 +1014,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                     }`}
                   >
                     {t("aboutHotel")}
-                  </h1>
+                  </h2>
                 </div>
                 <div
                   className={`${
@@ -1033,7 +1033,7 @@ export default function HotelDetailPage({ hotel, websiteInfo }) {
                       : "flex items-center     py-4 space-x-1 w-full justify-start"
                   }`}
                 >
-                  <h1 className="  text-gray-700 text-xl">{t("comments")} </h1>
+                  <h2 className="  text-gray-700 text-xl">{t("comments")} </h2>
                 </div>
                 {comments.map((comment, i) => {
                   return <Comments key={i} comment={comment} />;

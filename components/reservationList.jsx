@@ -19,9 +19,9 @@ export default function ReservationList({ Hotels, user }) {
   }, []);
   return (
     <div className="w-full   h-carousel flex items-center justify-center flex-col space-y-6 bg-white px-14 py-10 text-center">
-      <h1 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md ">
+      <h2 className="text-xl my-8 border-b-4   border-mainBlue pb-2  px-2  rounded-md ">
         {t("reservedRoom")}
-      </h1>
+      </h2>
       <div className="w-full overflow-y-scroll px-4 flex items-center justify-start flex-col space-y-6 ">
         {reservations === null ? (
           <div className="text-3xl">No Reservation</div>

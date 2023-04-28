@@ -201,7 +201,7 @@ export default function AdminPage({
                 }`}
               >
                 <Users className="mx-2" weight="fill" size={30} />
-                <h1 className="lg:text-xl text-sm  "> {t("users")} </h1>
+                <h2 className="lg:text-xl text-sm  "> {t("users")} </h2>
               </div>
             </div>{" "}
             <div
@@ -222,7 +222,7 @@ export default function AdminPage({
                 }`}
               >
                 <Buildings className="mx-2" weight="fill" size={30} />
-                <h1 className="lg:text-xl  text-sm  "> {t("hotels")} </h1>
+                <h2 className="lg:text-xl  text-sm  "> {t("hotels")} </h2>
               </div>
             </div>
             <div
@@ -243,7 +243,7 @@ export default function AdminPage({
                 }`}
               >
                 <MapTrifold className="mx-2" weight="fill" size={30} />
-                <h1 className="lg:text-xl text-sm  "> {t("city")} </h1>
+                <h2 className="lg:text-xl text-sm  "> {t("city")} </h2>
               </div>
             </div>
             <div
@@ -264,7 +264,7 @@ export default function AdminPage({
                 }`}
               >
                 <Newspaper className="mx-2" weight="fill" size={30} />
-                <h1 className="lg:text-xl text-sm  "> {t("reservations")} </h1>
+                <h2 className="lg:text-xl text-sm  "> {t("reservations")} </h2>
               </div>
             </div>
             <div
@@ -285,7 +285,7 @@ export default function AdminPage({
                 }`}
               >
                 <Desktop className="mx-2" weight="fill" size={30} />
-                <h1 className="lg:text-xl text-sm  "> {t("websiteInfo")} </h1>
+                <h2 className="lg:text-xl text-sm  "> {t("websiteInfo")} </h2>
               </div>
             </div>
             <div className="rounded-md flex lg:mt-0  cursor-pointer hover:bg-red-500 transition hover justify-center items-center h-full lg:h-auto p-3 w-auto lg:w-full ">
@@ -298,7 +298,7 @@ export default function AdminPage({
                 }`}
               >
                 <SignOut className="mx-2" weight="fill" size={30} />
-                <h1 className="lg:text-xl text-sm  "> {t("exit")} </h1>
+                <h2 className="lg:text-xl text-sm  "> {t("exit")} </h2>
               </div>
             </div>
           </div>
@@ -354,7 +354,7 @@ export default function AdminPage({
                 }`}
               >
                 <Buildings className="mx-2" weight="fill" size={30} />
-                <h1 className="lg:text-xl  text-sm  "> {t("hotels")} </h1>
+                <h2 className="lg:text-xl  text-sm  "> {t("hotels")} </h2>
               </div>
             </div>
 
@@ -376,7 +376,7 @@ export default function AdminPage({
                 }`}
               >
                 <Newspaper className="mx-2" weight="fill" size={30} />
-                <h1 className="lg:text-xl text-sm  "> {t("reservations")} </h1>
+                <h2 className="lg:text-xl text-sm  "> {t("reservations")} </h2>
               </div>
             </div>
 
@@ -390,7 +390,7 @@ export default function AdminPage({
                 }`}
               >
                 <SignOut className="mx-2" weight="fill" size={30} />
-                <h1 className="lg:text-xl text-sm  "> {t("exit")} </h1>
+                <h2 className="lg:text-xl text-sm  "> {t("exit")} </h2>
               </div>
             </div>
           </div>

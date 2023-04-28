@@ -118,9 +118,9 @@ export default function WebsiteInfo() {
   return (
     <div className="flex flex-col items-center justify-start pt-5 w-full h-full lg:h-carousel  ">
       <div className="   w-full lg:py-20 h-carousel lg:px-14 bg-white flex flex-col items-center lg:justify-center">
-        <h1 className="border-b-4   border-mainBlue pb-2  px-2  rounded-md text-xl   my-3">
+        <h2 className="border-b-4   border-mainBlue pb-2  px-2  rounded-md text-xl   my-3">
           {t("websiteInfo")}
-        </h1>
+        </h2>
         <Tabs
           className="mt-5 w-full"
           color="yellow"
@@ -380,9 +380,9 @@ export default function WebsiteInfo() {
               className="mb-10 "
               variant="outline"
             >
-              <h1 className="text-2xl text-center">
+              <h2 className="text-2xl text-center">
                 {t("infoConfirmSuccess")}
-              </h1>
+              </h2>
             </Notification>
           ) : (
             <button

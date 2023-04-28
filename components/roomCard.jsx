@@ -58,7 +58,7 @@ export default function RoomCard({ room, hotelDetail }) {
               </h2>
             )}
           </div>
-          <h1 className="text-sm">{t("avrgNight")}</h1>
+          <h2 className="text-sm">{t("avrgNight")}</h2>
 
           <CheckLoginModal room={room} hotelDetail={hotelDetail} />
         </div>
@@ -95,7 +95,7 @@ export default function RoomCard({ room, hotelDetail }) {
                 </Accordion.Panel>
               </Accordion.Item>
             </Accordion> */}
-            <h1 className="text-xl my-2">{JSON.stringify(room.title)}</h1>
+            <h2 className="text-xl my-2">{JSON.stringify(room.title)}</h2>
           </div>
 
           <div

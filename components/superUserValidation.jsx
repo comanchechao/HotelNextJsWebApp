@@ -95,9 +95,9 @@ export default function SuperUserValidation({ user }) {
       >
         <div className="h-full w-full flex items-center  p-4 flex-col space-y-6">
           <div className="w-full h-auto flex items-center flex-col">
-            <h1 className="text-xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
+            <h2 className="text-xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
               {t("needConfirmHotel")}
-            </h1>
+            </h2>
             <div className="flex flex-col w-full  ">
               {hotels.map((hotel, i) => {
                 if (hotel.validated === false && hotel.rejected === false) {
@@ -117,7 +117,7 @@ export default function SuperUserValidation({ user }) {
                             )}
                           </h2>
                         </div>
-                        <h1 className="text-sm">{t("price1Night")}</h1>
+                        <h2 className="text-sm">{t("price1Night")}</h2>
 
                         <div className="flex items-center flex-col justify-center space-y-3 mt-2">
                           <button
@@ -152,7 +152,7 @@ export default function SuperUserValidation({ user }) {
                       </div>
                       <div className="h-full flex flex-col items-end justify-start  p-4 w-full lg:w-2/3  ">
                         <div className="h-14 w-full flex items-start  justify-end ">
-                          <h1 className="text-2xl my-2">{hotel.title}</h1>
+                          <h2 className="text-2xl my-2">{hotel.title}</h2>
                         </div>
 
                         <div className="flex flex-col items-end justify-center space-y-3   h-full">

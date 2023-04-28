@@ -236,16 +236,16 @@ export default function LoginModal() {
                           withCloseButton
                           variant="outline"
                         >
-                          <h1 className="text-xl text-center">
+                          <h2 className="text-xl text-center">
                             {t("emailConfirm")}
-                          </h1>
+                          </h2>
                         </Notification>
                       ) : (
                         <div></div>
                       )}
                     </div>
                     <div className="flex flex-col items-center justify-center space-y-3">
-                      <h1 className="text-3xl  "> {t("signUp")} </h1>
+                      <h2 className="text-3xl  "> {t("signUp")} </h2>
                       <h4>{t("enterSignUp")}</h4>
                     </div>
                     <TextInput
@@ -307,16 +307,16 @@ export default function LoginModal() {
                           withCloseButton
                           variant="outline"
                         >
-                          <h1 className="text-2xl text-center">
+                          <h2 className="text-2xl text-center">
                             {t("loginSuccess")}
-                          </h1>
+                          </h2>
                         </Notification>
                       ) : (
                         <div></div>
                       )}
                     </div>
                     <div className="flex flex-col items-center justify-center space-y-3">
-                      <h1 className="text-3xl  "> {t("log")}</h1>
+                      <h2 className="text-3xl  "> {t("log")}</h2>
                       <h4> {t("enterEmail")}</h4>
                     </div>
                     <form onSubmit={handleLogin}>
@@ -382,7 +382,7 @@ export default function LoginModal() {
           ) : (
             <div className=" h-rem26 text-center flex flex-col items-center justify-center space-y-5">
               <div className="flex flex-col items-center justify-center space-y-3">
-                <h1 className="text-3xl  "> {t("logIn")} </h1>
+                <h2 className="text-3xl  "> {t("logIn")} </h2>
                 <h4>{t("enterPhone")}</h4>
               </div>
               <TextInput

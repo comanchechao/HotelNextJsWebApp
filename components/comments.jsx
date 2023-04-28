@@ -16,7 +16,7 @@ export default function Comments({ comment, hotel }) {
           </div>
         </div>
         <div className="flex justify-end items-end">
-          <h1 className="text-2xl text-gray-900">{comment.title}</h1>
+          <h2 className="text-2xl text-gray-900">{comment.title}</h2>
         </div>
         <div className="flex">
           <p className="text-sm">{comment.comment}</p>

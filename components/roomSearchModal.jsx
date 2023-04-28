@@ -102,9 +102,9 @@ export default function RoomSearch() {
             </Popover.Target>
             <Popover.Dropdown>
               <div className="w-full h-auto space-y-10 justify-center  flex flex-col items-center">
-                <h1 className="text-sm ">{t("firstRoom")}</h1>
+                <h2 className="text-sm ">{t("firstRoom")}</h2>
                 <div className="w-full flex flex-row-reverse justify-between items-center h-full ">
-                  <h1 className="text-sm">{t("adult")}</h1>
+                  <h2 className="text-sm">{t("adult")}</h2>
                   <div className="flex text-blue-800  items-center justify-center space-x-5">
                     <PlusCircle
                       onClick={() => {
@@ -113,7 +113,7 @@ export default function RoomSearch() {
                       size={27}
                       weight="fill"
                     />
-                    <h1 className="text-sm font-bold">{passenger}</h1>
+                    <h2 className="text-sm font-bold">{passenger}</h2>
                     <MinusCircle
                       onClick={() => {
                         dispatch(reservationActions.decreamentPassenger());
@@ -124,10 +124,10 @@ export default function RoomSearch() {
                   </div>
                 </div>
                 <div className="w-full  flex flex-row-reverse justify-between items-center h-full ">
-                  <h1 className="text-sm">{t("kid")}</h1>
+                  <h2 className="text-sm">{t("kid")}</h2>
                   <div className="flex text-blue-800 items-center justify-center space-x-5">
                     <PlusCircle size={27} weight="fill" />
-                    <h1 className="text-sm ">1</h1>
+                    <h2 className="text-sm ">1</h2>
                     <MinusCircle size={27} weight="fill" />
                   </div>
                 </div>

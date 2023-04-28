@@ -56,7 +56,7 @@ export default function PaymentHistory() {
   ));
   return (
     <div className="w-full   h-carousel flex items-center justify-center flex-col space-y-6 bg-white px-14 py-10 text-center">
-      <h1> {t("finances")} </h1>
+      <h2> {t("finances")} </h2>
       <div className="h-full overflow-y-scroll w-full border border-mainPurple rounded-md flex items-start p-10 justify-center space-x-16">
         <Table striped horizontalSpacing="xl" verticalSpacing="md">
           <thead>

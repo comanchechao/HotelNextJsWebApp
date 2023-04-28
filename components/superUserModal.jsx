@@ -78,9 +78,9 @@ export default function SuperUserModal({ user }) {
       >
         {" "}
         <div className="h-full w-full flex items-center  p-4 flex-col space-y-6">
-          <h1 className="text-2xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
+          <h2 className="text-2xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
             {t("colleagueInfo")}
-          </h1>
+          </h2>
           <div className="flex   justify-center items-center lg:flex-row flex-col space-y-5 lg:space-y-0   space-x-0 lg:space-x-5 w-full ">
             <h2 className="py-1 rounded-md px-4 border-2     border-mainPurple">
               {t("fullName")} : <strong>{user ? user.fullName : null}</strong>
@@ -132,9 +132,9 @@ export default function SuperUserModal({ user }) {
             </button>
           )}
           <div className="w-full h-auto flex items-center flex-col">
-            <h1 className="text-xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
+            <h2 className="text-xl border-b-4 rounded-md border-mainBlue my-6 pb-2">
               {t("hotels")}
-            </h1>
+            </h2>
             {hotels ? (
               hotels.map((hotel) => {
                 return (
@@ -153,14 +153,14 @@ export default function SuperUserModal({ user }) {
                           )}
                         </h2>
                       </div>
-                      <h1 className="text-sm">{t("price1Night")}</h1>
+                      <h2 className="text-sm">{t("price1Night")}</h2>
                       <button className="py-2 font-mainFont  hover:text-white bg-mainPurple border-mainBlue border-r-8   ease-in duration-300 hover:bg-mainBlue transition rounded-lg  text-white my-5 px-6   ">
                         {t("seeHotel")}
                       </button>
                     </div>
                     <div className="h-full flex flex-col items-end justify-start  p-4 w-full lg:w-3/4  ">
                       <div className="h-14 w-full flex items-start  justify-end ">
-                        <h1 className="text-2xl my-2">{hotel.title}</h1>
+                        <h2 className="text-2xl my-2">{hotel.title}</h2>
                       </div>
 
                       <div className="flex flex-col items-end justify-center space-y-3   h-full">

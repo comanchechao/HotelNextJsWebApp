@@ -14,7 +14,7 @@ export default function ReservedRoomCard({ reserve }) {
           <h2>{t("currency")}</h2>
           <h2 className="  text-xl text-mainPurple">22,550,000</h2>
         </div>
-        <h1 className="text-sm">{t("price1Night")}</h1>
+        <h2 className="text-sm">{t("price1Night")}</h2>
         <Link href="/checkout">
           <p className="py-2    bg-transparent border-mainPurple border-2 border-dashed   ease-in duration-300     rounded-lg  text-black my-5 px-5   ">
             {t("reservedRoom")}
@@ -43,9 +43,9 @@ export default function ReservedRoomCard({ reserve }) {
             </Accordion.Item>
           </Accordion> */}
 
-          <h1 className="text-2xl my-2">
+          <h2 className="text-2xl my-2">
             {t("room")} {JSON.stringify(reserve.hotel_name)}
-          </h1>
+          </h2>
         </div>
         <div className="w-full   flex items-center justify-between">
           <div className="h-auto   flex-col flex space-y-2  items-center justify-center">
@@ -54,7 +54,7 @@ export default function ReservedRoomCard({ reserve }) {
               <h2 className="text-xs">{t("exitDay")}</h2>
               <SignOut size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-xs"> {reserve.exitingDate}</h1>
+            <h2 className="font text-xs"> {reserve.exitingDate}</h2>
             <div className="flex items-center space-x-2">
               <h2 className="text-xs">{t("enterDay")}</h2>
               <SignIn size={25} color="#e0ab19" weight="fill" />
@@ -65,12 +65,12 @@ export default function ReservedRoomCard({ reserve }) {
               <h2 className="text-xs">{t("enterTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-xs"> {reserve.enteringDate}</h1>{" "}
+            <h2 className="font text-xs"> {reserve.enteringDate}</h2>{" "}
             <div className="flex items-center space-x-2">
               <h2 className="text-xs">{t("exitTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-xs"> </h1>
+            <h2 className="font text-xs"> </h2>
           </div>
           <div className="flex flex-col items-end justify-center space-y-3     h-full">
             <h2 className="flex items-center  text-sm">

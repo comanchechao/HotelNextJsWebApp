@@ -31,7 +31,7 @@ export default function FeaturesModal() {
       <Modal opened={opened} centered onClose={() => setOpened(false)}>
         <div className=" bg-mainWhite flex flex-col  divdie-x divide-black  ">
           <div className="flex justify-center items-center w-full text-right h-14">
-            <h1 className="text-lg   py-2">امکانات هتل</h1>
+            <h2 className="text-lg   py-2">امکانات هتل</h2>
           </div>
           <div className="flex px-3 justify-between items-center">
             <h2 className="flex flex-row">
@@ -77,14 +77,14 @@ export default function FeaturesModal() {
           </div>
         </div>
       </Modal>
-      <h1
+      <h2
         onClick={() => {
           setOpened(true);
         }}
         className="  text-mainPurple my-4  text-sm cursor-pointer hover:text-blue-800"
       >
         {t("seeAll")}
-      </h1>
+      </h2>
     </div>
   );
 }

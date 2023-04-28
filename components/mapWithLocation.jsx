@@ -71,7 +71,7 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
             }}
             className="flex   justify-center items-center  h-11 rounded-lg w-40   bg-white cursor-pointer transition ease-in duration-200 hover:bg-mainBlue hover:text-mainPurple   p-2  "
           >
-            <h1 className="text-sm  ">{JSON.stringify(firstLocation.name)}</h1>
+            <h2 className="text-sm  ">{JSON.stringify(firstLocation.name)}</h2>
           </div>
         ) : null}
         {secondLocation ? (
@@ -84,7 +84,7 @@ function DisplayPosition({ map, lng, lat, firstLocation, secondLocation }) {
             }}
             className="flex   justify-center items-center  h-11 rounded-lg w-40  bg-white  cursor-pointer transition ease-in duration-200 hover:bg-mainBlue hover:text-mainPurple   p-2 "
           >
-            <h1 className="text-sm">{JSON.stringify(secondLocation.name)}</h1>
+            <h2 className="text-sm">{JSON.stringify(secondLocation.name)}</h2>
           </div>
         ) : null}
       </div>

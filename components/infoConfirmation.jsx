@@ -138,14 +138,14 @@ export default function InfoConfirmation() {
               <h2>{t("exitTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm">{hotelInfo.exitTime}</h1>
+            <h2 className="font text-sm">{hotelInfo.exitTime}</h2>
           </div>
           <div className="h-full w-1/2 flex my-4 lg:my-0 flex-col justify-center items-center">
             <div className="flex items-center space-x-2">
               <h2>{t("enterTime")}</h2>
               <Timer size={25} color="#e0ab19" weight="fill" />
             </div>
-            <h1 className="font text-sm">{hotelInfo.enterTime}</h1>
+            <h2 className="font text-sm">{hotelInfo.enterTime}</h2>
           </div>
         </div>
         <div
@@ -162,9 +162,9 @@ export default function InfoConfirmation() {
                 : "flex items-center flex-col"
             }`}
           >
-            <h1 className="text-xl font-bold">
+            <h2 className="text-xl font-bold">
               {t("singleHotel")} {hotelInfo.title}
-            </h1>
+            </h2>
             <h2 className="flex items-center">
               {hotelInfo.stars} {t("star")}
               <Star className="mx-2" size={19} color="#e0ab19" weight="fill" />
@@ -181,10 +181,10 @@ export default function InfoConfirmation() {
               : "h-20 w-full flex items-start justify-start  flex-col   py-3"
           }`}
         >
-          <h1 className="text-2xl font-bold items-center flex">
+          <h2 className="text-2xl font-bold items-center flex">
             {t("passengerInfo")}
             <Bed className="ml-3" size={45} color="#e0ab19" weight="fill" />
-          </h1>
+          </h2>
         </div>
         <div
           className={`${
@@ -264,7 +264,7 @@ export default function InfoConfirmation() {
             withCloseButton
             variant="outline"
           >
-            <h1 className="text-2xl text-center">{t("infoConfirmSuccess")}</h1>
+            <h2 className="text-2xl text-center">{t("infoConfirmSuccess")}</h2>
           </Notification>
         ) : (
           <button
@@ -288,9 +288,9 @@ export default function InfoConfirmation() {
             : "h-28 w-full bg-white flex flex-col justify-center items-start px-9"
         }`}
       >
-        <h1 className="text-lg font-bold items-center flex py-2">
+        <h2 className="text-lg font-bold items-center flex py-2">
           {t("cancelRule")}
-        </h1>
+        </h2>
       </div>
     </div>
   );

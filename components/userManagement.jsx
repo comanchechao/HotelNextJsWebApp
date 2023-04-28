@@ -70,9 +70,9 @@ export default function UserManagement({ users }) {
                     <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                       <Users weight="fill" size={40} />
                     </div>
-                    <h1 className=" text-sm lg:text-lg">
+                    <h2 className=" text-sm lg:text-lg">
                       <strong>{user.email}</strong> : {t("email")}
-                    </h1>
+                    </h2>
                     <p className="hidden lg:block">{user.name}</p>
 
                     <SuperUser />
@@ -99,7 +99,7 @@ export default function UserManagement({ users }) {
                           <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                             <Users weight="fill" size={40} />
                           </div>
-                          <h1 className=" text-sm lg:text-xl">{user.email}</h1>
+                          <h2 className=" text-sm lg:text-xl">{user.email}</h2>
                           <p className="hidden lg:block">{user.name}</p>
                           <SuperUserValidation user={user} />
                           <SuperUser user={user} />
@@ -127,7 +127,7 @@ export default function UserManagement({ users }) {
                           <div className="lg:w-20 w-10 flex justify-center items-center lg:h-20 h-10 rounded-full ">
                             <Users weight="fill" size={40} />
                           </div>
-                          <h1 className=" text-sm lg:text-xl">{user.email}</h1>
+                          <h2 className=" text-sm lg:text-xl">{user.email}</h2>
                           <p className="hidden lg:block">{user.name}</p>
                           <SuperUserValidation user={user} />
                           <SuperUser user={user} />

@@ -65,7 +65,7 @@ export default function WebsiteInfo({ cities }) {
   return (
     <div className="flex flex-col items-center justify-center  w-screen h-screen  ">
       <div className="py-10 overflow-y-scroll space-y-10 w-full h-full   px-14 bg-white flex flex-col items-center justify-center">
-        <h1 className="border-b-4 pb-4 border-mainBlue my-3">{t("addCity")}</h1>
+        <h2 className="border-b-4 pb-4 border-mainBlue my-3">{t("addCity")}</h2>
         <DisplayCities
           className="w-full h-full z-10"
           LatLng={[lat, lng]}
@@ -157,7 +157,7 @@ export default function WebsiteInfo({ cities }) {
                 withCloseButton
                 variant="outline"
               >
-                <h1 className="text-2xl text-center">{t("addCitySuccess")}</h1>
+                <h2 className="text-2xl text-center">{t("addCitySuccess")}</h2>
               </Notification>
             ) : (
               <button

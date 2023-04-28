@@ -19,7 +19,7 @@ export default function TicketModal() {
         centered
       >
         <div className="w-full h-full flex flex-col items-center justify-center space-y-6">
-          <h1>{t("supportReq")}</h1>
+          <h2>{t("supportReq")}</h2>
           <Textarea
             className="text-2xl  text-right flex flex-col items-end"
             placeholder={t("reqTitle")}

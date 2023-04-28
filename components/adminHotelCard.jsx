@@ -125,7 +125,7 @@ export default function AdminHotelCard({ hotel, user, featuresData, cities }) {
             : "w-96 h-full flex flex-col items-center lg:space-y-0 space-y-3 lg:items-start justify-between p-3   border-mainBlue"
         }`}
       >
-        <h1 className="text-center   text-lg">{hotel.title}</h1>
+        <h2 className="text-center   text-lg">{hotel.title}</h2>
         <div className="flex items-center   text-sm space-x-1">
           <h2>{t("star")}</h2>
           <h2>{hotel.stars}</h2>

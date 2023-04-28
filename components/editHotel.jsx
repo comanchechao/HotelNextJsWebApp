@@ -388,7 +388,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 withCloseButton
                 variant="outline"
               >
-                <h1 className="text-2xl text-center">{t("uploadSuccess")}</h1>
+                <h2 className="text-2xl text-center">{t("uploadSuccess")}</h2>
               </Notification>
             ) : (
               <div></div>
@@ -485,7 +485,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
               withCloseButton
               variant="outline"
             >
-              <h1
+              <h2
                 className={`${
                   alignLeft === true
                     ? "text-lg text-right"
@@ -493,7 +493,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 }`}
               >
                 {t("imageReq")}
-              </h1>
+              </h2>
             </Notification>
             <div
               className={`${
@@ -770,7 +770,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                       </div>
                     </div>
                     <div className="flex  w-1/4 text-right px-2  flex-col">
-                      <h1 className="text-2xl font-bold"> {room.title}</h1>
+                      <h2 className="text-2xl font-bold"> {room.title}</h2>
                       <p className="text-xs"> {room.meal}</p>
                     </div>
                   </div>
@@ -949,9 +949,9 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                           </button>
                         </div>
                         <div className="flex flex-col py-4 px-5 justify-center items-center ">
-                          <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
+                          <h2 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
                             سام اتاق
-                          </h1>
+                          </h2>
                           <h2 className="my-3">وعده</h2>
                         </div>
                       </div>
@@ -960,7 +960,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                           <h2>ریال</h2>
                           <h2 className="  text-xl text-mainPurple">65555</h2>
                         </div>
-                        <h1 className="text-sm">قیمت برای هرشب</h1>
+                        <h2 className="text-sm">قیمت برای هرشب</h2>
                       </div>
                     </div>
                     <div className="flex bg-white justify-around divide-y my-1 divide-gray-300 rounded-md flex-col w-full h-44 border">
@@ -988,9 +988,9 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                           </button>
                         </div>
                         <div className="flex flex-col py-4 px-5 justify-center items-center ">
-                          <h1 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
+                          <h2 className="text-2xl border-b-2 p-3 border-mainPurple rounded-md">
                             اتاق ملکه
-                          </h1>
+                          </h2>
                           <h2 className="my-3">وعده کامل</h2>
                         </div>
                       </div>
@@ -999,7 +999,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                           <h2>ریال</h2>
                           <h2 className="  text-xl text-mainPurple">65555</h2>
                         </div>
-                        <h1 className="text-sm">قیمت برای هرشب</h1>
+                        <h2 className="text-sm">قیمت برای هرشب</h2>
                       </div>
                     </div>
                   </div>
@@ -1015,9 +1015,9 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 withCloseButton
                 variant="outline"
               >
-                <h1 className="text-2xl text-center">
+                <h2 className="text-2xl text-center">
                   {t("editHotelSuccess")}
-                </h1>
+                </h2>
               </Notification>
             ) : (
               <div></div>

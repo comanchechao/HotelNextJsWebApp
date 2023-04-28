@@ -126,7 +126,7 @@ export default function HotelCard({ hotel }) {
             <span className="text-xs">تحفیف ویژه بوتک</span>{" "}
           </Chip>
         </div> */}
-        <h1 className="text-center   text-xl font-bold">{hotel.title}</h1>
+        <h2 className="text-center   text-xl font-bold">{hotel.title}</h2>
         <div
           className={`${
             alignLeft === true
@@ -190,7 +190,9 @@ export default function HotelCard({ hotel }) {
               />
             ) : (
               <div>
-                <Loader size="lg" color="yellow" variant="bars" />
+                <div className="lg:h-56 w-full h-full lg:w-56 lg:bg-mainPurple flex items-center justify-center">
+                  <Loader size="lg" color="yellow" variant="bars" />
+                </div>
               </div>
             )}
           </Carousel.Slide>
