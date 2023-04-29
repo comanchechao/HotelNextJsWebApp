@@ -1,14 +1,11 @@
 import { DatePicker } from "zaman";
 import { Suspense, useEffect } from "react";
 import dayjs from "dayjs";
-import jalaliday from "jalaliday";
 import { useTranslation } from "next-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { reservationActions } from "../store/reservation";
 import { useState } from "react";
 
-dayjs.extend(jalaliday);
-dayjs.calendar("jalali");
 export default function Calendar() {
   let enterDate = useSelector((state) => state.reserve.enterDate);
   let exitDate = useSelector((state) => state.reserve.exitDate);
@@ -50,9 +47,11 @@ export default function Calendar() {
           round="x2"
           inputAttributes={{
             placeholder:
-              dayjs(enterDate).locale("fa").format("YYYY/MM/DD") +
-              " --- " +
-              dayjs(exitDate).locale("fa").format("YYYY/MM/DD"),
+              enterDate !== ""
+                ? dayjs(enterDate).locale("fa").format("YYYY/MM/DD") +
+                  " --- " +
+                  dayjs(exitDate).locale("fa").format("YYYY/MM/DD")
+                : "تاریخ ورود و خروج",
           }}
           className="text-center"
           inputClass="w-60  text-red font-mainFont text-center h-10 my-0 bg-white border border-gray-300 rounded-lg justify-center items-center"
