@@ -45,11 +45,15 @@ export default function Calendar() {
             }
             dispatch(reservationActions.setEnterting(e.from.toISOString()));
             dispatch(reservationActions.setExiting(e.to.toISOString()));
-
-            console.log("enter", e.from);
-            console.log("exit ", e);
+            console.log(e);
           }}
           round="x2"
+          inputAttributes={{
+            placeholder:
+              dayjs(enterDate).locale("fa").format("YYYY/MM/DD") +
+              " --- " +
+              dayjs(exitDate).locale("fa").format("YYYY/MM/DD"),
+          }}
           className="text-center"
           inputClass="w-60  text-red font-mainFont text-center h-10 my-0 bg-white border border-gray-300 rounded-lg justify-center items-center"
           from={new Date()}
