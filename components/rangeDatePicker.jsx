@@ -48,7 +48,7 @@ export default function RangeDatePicker() {
       "Ara",
     ],
   };
-  const [dates, setDates] = useState([null, dayjs().toDate()]);
+  const [dates, setDates] = useState([null, null]);
   return (
     <Group position="center">
       <DatePickerInput

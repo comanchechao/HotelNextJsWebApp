@@ -5,6 +5,7 @@ import { useTranslation } from "next-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { reservationActions } from "../store/reservation";
 import { useState } from "react";
+import jalaliday from "jalaliday";
 
 export default function Calendar() {
   let enterDate = useSelector((state) => state.reserve.enterDate);
@@ -13,6 +14,7 @@ export default function Calendar() {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
+  dayjs.extend(jalaliday);
   useEffect(() => {
     console.log(enterDate);
     console.log(exitDate);
@@ -48,9 +50,15 @@ export default function Calendar() {
           inputAttributes={{
             placeholder:
               enterDate !== ""
-                ? dayjs(enterDate).locale("fa").format("YYYY/MM/DD") +
+                ? dayjs(enterDate)
+                    .calendar("jalali")
+                    .locale("en")
+                    .format("YYYY/MM/DD") +
                   " --- " +
-                  dayjs(exitDate).locale("fa").format("YYYY/MM/DD")
+                  dayjs(exitDate)
+                    .calendar("jalali")
+                    .locale("en")
+                    .format("YYYY/MM/DD")
                 : "تاریخ ورود و خروج",
           }}
           className="text-center"
