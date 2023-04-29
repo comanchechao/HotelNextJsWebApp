@@ -50,18 +50,22 @@ export default function RangeDatePicker() {
   };
   const [dates, setDates] = useState([null, dayjs().toDate()]);
   return (
-    <DatePickerInput
-      dropdownPosition="top"
-      placeholder={t("inDate")}
-      label={t("inDate")}
-      minDate={dayjs().toDate()}
-      defaultValue={dayjs().toDate()}
-      value={dates}
-      onChange={setDates}
-      type="range"
-      mx="auto"
-      maw={400}
-      locale="tr"
-    />
+    <Group position="center">
+      <DatePickerInput
+        dropdownPosition="top-end"
+        position="top"
+        placeholder={t("inDate")}
+        label={t("inDate")}
+        minDate={dayjs().toDate()}
+        defaultValue={dayjs().toDate()}
+        value={dates}
+        onChange={setDates}
+        type="range"
+        mx="auto"
+        dropdownType="modal"
+        maw={800}
+        locale="tr"
+      />
+    </Group>
   );
 }
