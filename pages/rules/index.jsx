@@ -3,21 +3,42 @@ import Navbar from "../../components/Navbar";
 import { useState, useEffect } from "react";
 import contactUsBg from "../../assets/images/contactUsBg.webp";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { supabase } from "../../lib/supabaseClient";
 
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { IconDotsCircleHorizontal } from "@tabler/icons";
 export async function getServerSideProps({ locale }) {
-  // Fetch data from the database
+  const { data: websiteInfo } = await supabase.from("websiteInfo").select();
   return {
     props: {
+      websiteInfo: websiteInfo,
+
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
-export default function Rules() {
+export default function Rules({ websiteInfo }) {
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const { t } = useTranslation("common");
+  useEffect(() => {
+    getWebsiteInfo();
+  }, []);
 
+  async function getWebsiteInfo() {
+    setLoading(true);
+    websiteInfo.map((object) => {
+      setEmail(object.email);
+      setAddress(object.address);
+      setPhoneNumber(object.phoneNumber);
+      setPostalCode(object.postalCode);
+    });
+    setLoading(false);
+  }
   return (
     <div className="h-full w-screen">
       <Navbar />
@@ -33,7 +54,7 @@ export default function Rules() {
         <h1 className="text-3xl border-b-8 mt-9 pb-4 rounded-lg border-mainBlue">
           {t("hotelRules")}
         </h1>
-        <div className="h-auto w-full px-28 py-5   flex flex-col items-center space-y-7">
+        <div className="h-auto w-full px-3 lg:px-28 py-5   flex flex-col items-center space-y-7">
           <h2 className="text-xl self-end border-b-4 mt-5 pb-2 rounded-lg border-mainBlue">
             قوانین هتل های داخلی
           </h2>
@@ -51,12 +72,7 @@ export default function Rules() {
                 هنگام خرید برای کودک بالای شش سال این مسئله را مد نظر قراردهد.
                 در صورت عدم رعایت این موضوع ممکن است هتل از ورود تعداد افراد بیش
                 از ظرفیت رزرو شده ممانعت بعمل آورد. بوتک هیچگونه مسئولیتی در این
-                خصوص نخواهد داشتطبق قوانین اکثر هتلها، افراد بالای 6 سال بزرگسال
-                محسوب میگردند و شرایط رزرو برای بزرگسال نسبت به آنان جاری است.
-                مسافر می بایست به هنگام خرید برای کودک بالای شش سال این مسئله را
-                مد نظر قراردهد. در صورت عدم رعایت این موضوع ممکن است هتل از ورود
-                تعداد افراد بیش از ظرفیت رزرو شده ممانعت بعمل آورد. بوتک هیچگونه
-                مسئولیتی در این خصوص نخواهد داشت
+                خصوص نخواهد داشت
               </h2>{" "}
             </div>
             <div className="flex text-sm  text-right items-center">
@@ -133,7 +149,7 @@ export default function Rules() {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer websiteInfo={websiteInfo} />
     </div>
   );
 }

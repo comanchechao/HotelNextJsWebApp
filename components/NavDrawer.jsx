@@ -32,10 +32,10 @@ export default function NavDrawer() {
         overlayOpacity={0.55}
         overlayBlur={3}
       >
-        <div className="w-full h-rem22 flex flex-col items-center justify-center pt-16 space-y-4">
+        <div className="w-full h-full flex  flex-col items-center justify-center pt-16 space-y-4">
           <Link
             href="/"
-            className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            className=" flex border-2 border-dashed border-mainPurple  rounded-md  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in active:bg-mainPurple active:text-white hover:bg-mainPurple hover:text-white duration-200"
           >
             <a passHref className=" ">
               {t("home")}
@@ -44,7 +44,7 @@ export default function NavDrawer() {
           </Link>{" "}
           <Link
             href="/hotelList"
-            className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            className=" flex border-2 border-dashed border-mainPurple  rounded-md  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in active:bg-mainPurple active:text-white hover:bg-mainPurple hover:text-white duration-200"
           >
             <a passHref className=" ">
               {t("hotel")}
@@ -54,7 +54,7 @@ export default function NavDrawer() {
           </Link>
           <Link
             href="/aboutUs"
-            className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            className=" flex border-2 border-dashed border-mainPurple  rounded-md  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in active:bg-mainPurple active:text-white hover:bg-mainPurple hover:text-white duration-200"
           >
             <a passHref className=" ">
               {t("aboutUs")}
@@ -63,17 +63,26 @@ export default function NavDrawer() {
           </Link>
           <Link
             href="/contactUs"
-            className=" flex border-2 border-dashed border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+            className=" flex border-2 border-dashed border-mainPurple  rounded-md  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in active:bg-mainPurple active:text-white hover:bg-mainPurple hover:text-white duration-200"
           >
             <a passHref className=" ">
               {t("contactUs")}
+            </a>
+            <Question className="mx-2" size={24} weight="light" />
+          </Link>
+          <Link
+            href="/rules"
+            className=" flex border-2 border-dashed border-mainPurple  rounded-md  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in active:bg-mainPurple active:text-white hover:bg-mainPurple hover:text-white duration-200"
+          >
+            <a passHref className=" ">
+              {t("rules")}
             </a>
             <Scroll className="mx-2" size={24} weight="light" />
           </Link>
           {isManager ? (
             <Link
               href="/admin"
-              className=" flex border-2 border-dashed bg-mainBlue border-mainPurple  rounded-sm  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
+              className=" flex border-2 border-dashed bg-mainBlue border-yellow-600  rounded-md  items-center cursor-pointer w-44 text-center justify-center py-2 text-darkPurple transition ease-in hover:bg-mainPurple hover:text-white duration-200"
             >
               <a passHref className=" ">
                 {t("admin")}

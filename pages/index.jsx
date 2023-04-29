@@ -311,6 +311,7 @@ export default function Home(props) {
                   //     setDates(e);
                   //   }
                   // }}
+                  className="w-64 text-center"
                   radius="md"
                   size="md"
                 />
