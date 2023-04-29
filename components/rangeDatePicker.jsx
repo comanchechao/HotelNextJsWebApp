@@ -61,6 +61,7 @@ export default function RangeDatePicker() {
         value={dates}
         onChange={setDates}
         type="range"
+        className="w-64 text-center"
         mx="auto"
         dropdownType="modal"
         maw={800}
