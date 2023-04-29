@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import customParseFormat from "dayjs/plugin/customParseFormat";
-
+import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData";
 import utc from "dayjs/plugin/utc";
 import "dayjs/locale/tr";
+import "dayjs/locale/ru";
 import timezone from "dayjs/plugin/timezone";
-import dayjs from "dayjs";
-import jalaliday from "jalaliday";
 import Faq from "../components/Faq";
 import Link from "next/link";
 import { gsap } from "gsap";
@@ -51,6 +50,11 @@ const DatePicker = dynamic(() => import("../components/calendar"), {
   suspense: true,
 });
 
+const RangeDatePicker = dynamic(() => import("../components/rangeDatePicker"), {
+  ssr: false,
+  suspense: true,
+});
+
 export async function getServerSideProps(context) {
   // Fetch data from the database
 
@@ -87,60 +91,8 @@ export default function Home(props) {
     }
   );
 
-  const faLocale = {
-    name: "fa",
-    weekdays: [
-      "چهارشنبه",
-      "پنج‌شنبه",
-      "جمعه",
-      "شنبه",
-      "یک‌شنبه",
-      "دوشنبه",
-      "سه‌شنبه",
-    ],
-    weekStart: 1,
-    months: [
-      "دی",
-      "بهمن",
-      "اسفند",
-      "فروردین",
-      "اردیبهشت",
-      "خرداد",
-      "تیر",
-      "مرداد",
-      "شهریور",
-      "مهر",
-      "آبان",
-      "آذر",
-    ],
-    relativeTime: {
-      future: "%s بعد",
-      past: "%s قبل",
-      s: "چند ثانیه",
-      m: "1 دقیقه",
-      mm: "%d دقیقه",
-      h: "1 ساعت",
-      hh: "%d ساعت",
-      d: "1 روز",
-      dd: "%d روز",
-      M: "1 ماه",
-      MM: "%d ماه",
-      y: "1 سال",
-      yy: "%d سال",
-    },
-    formats: {
-      LT: "HH:mm",
-      LTS: "HH:mm:ss",
-      L: "jYYYY/jMM/jDD",
-      LL: "jD jMMMM jYYYY",
-      LLL: "jD jMMMM jYYYY HH:mm",
-      LLLL: "dddd، jD jMMMM jYYYY HH:mm",
-    },
-  };
   // You need to extend the custom locale and localeData
-  dayjs.extend(jalaliday);
-  // dayjs.calendar("jalali").locale("fa");
-  console.log(jalaliday);
+
   // dayjs.extend(customParseFormat);
   // dayjs.extend(localeData);
 
@@ -199,6 +151,8 @@ export default function Home(props) {
   const firstContainer = useRef();
   const secondContainer = useRef();
   const thirdContainer = useRef();
+  dayjs.locale("tr");
+  dayjs().locale("tr");
 
   useEffect(() => {
     var tl = gsap.timeline();
@@ -292,33 +246,30 @@ export default function Home(props) {
                 size="md"
               />
 
-              {lng === "tr" ? (
-                <DatePickerInput
-                  variant="default"
-                  locale="tr"
-                  numberOfColumns={1}
-                  oriantation
-                  type="range"
-                  dropdownType="modal"
-                  value={dates !== null ? dates : null}
-                  dropdownPosition="top-start"
-                  placeholder={t("inDate")}
-                  label={t("inDate")}
-                  minDate={dayjs().toDate()}
-                  defaultValue={dayjs().toDate()}
-                  // onChange={(e) => {
-                  //   if (e) {
-                  //     setDates(e);
-                  //   }
-                  // }}
-                  className="w-64 text-center"
-                  radius="md"
-                  size="md"
-                />
-              ) : lng === "fa" ? (
+              {/* <DatePickerInput
+                locale="tr"
+                type="range"
+                dropdownType="modal"
+                value={dates}
+                dropdownPosition="top-start"
+                placeholder={t("inDate")}
+                label={t("inDate")}
+                minDate={dayjs().toDate()}
+                defaultValue={dayjs().toDate()}
+                onChange={(e) => {
+                  if (e) {
+                    setDates(e);
+                  }
+                }}
+                radius="md"
+                size="md"
+              /> */}
+              {lng === "fa" ? (
                 <Suspense fallback={<div>Loading...</div>}>
                   <DatePicker />
                 </Suspense>
+              ) : lng === "tr" ? (
+                <RangeDatePicker />
               ) : null}
               {/* <DatePicker
                 locale="fa"
