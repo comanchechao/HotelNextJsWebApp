@@ -70,7 +70,6 @@ export default function Calendar() {
             zIndex: 999999999,
           }}
           accentColor="#6374ae"
-          placeholder="fjasdklf"
           direction="ltr"
           range
         />
