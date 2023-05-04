@@ -482,12 +482,21 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 </label>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <div className=" flex-col w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                    <Image
-                      width={500}
-                      height={500}
-                      src={fourthInitialImage}
-                      alt=""
-                    />
+                    {fourthImagePreview ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={URL.createObjectURL(fourthImagePreview)}
+                        alt=""
+                      />
+                    ) : !fourthImagePreview && fourthInitialImage ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={fourthInitialImage}
+                        alt=""
+                      />
+                    ) : null}
 
                     <input
                       required
@@ -513,12 +522,21 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 </label>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <div className=" flex-col w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                    <Image
-                      width={500}
-                      height={500}
-                      src={thridInitialImage}
-                      alt=""
-                    />
+                    {thirdImagePreview ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={URL.createObjectURL(thirdImagePreview)}
+                        alt=""
+                      />
+                    ) : !thirdImagePreview && thridInitialImage ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={thridInitialImage}
+                        alt=""
+                      />
+                    ) : null}
 
                     <input
                       required
@@ -543,12 +561,21 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 </label>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
                   <div className=" flex-col w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                    <Image
-                      width={500}
-                      height={500}
-                      src={secondInitialImage}
-                      alt=""
-                    />
+                    {secondImagePreview ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={URL.createObjectURL(secondImagePreview)}
+                        alt=""
+                      />
+                    ) : !secondImagePreview && secondInitialImage ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={secondInitialImage}
+                        alt=""
+                      />
+                    ) : null}
 
                     <input
                       required
@@ -578,14 +605,14 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                       src={URL.createObjectURL(firstImagePreview)}
                       alt=""
                     />
-                  ) : (
+                  ) : !firstImagePreview && firstInitialImage ? (
                     <Image
                       width={500}
                       height={500}
                       src={firstInitialImage}
                       alt=""
                     />
-                  )}
+                  ) : null}
 
                   <input
                     required
