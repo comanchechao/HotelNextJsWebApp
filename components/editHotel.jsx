@@ -25,9 +25,10 @@ import { Suspense } from "react";
 import { useTranslation } from "next-i18next";
 
 import { X, Buildings } from "phosphor-react";
-// const LocationsMap = dynamic(() => import("./map"), {
-//   ssr: false,
-// });
+import Image from "next/image";
+const LocationsMap = dynamic(() => import("./map"), {
+  ssr: false,
+});
 export default function EditHotel({ identifier, featuresData, cities, hotel }) {
   const { t, i18n } = useTranslation("common");
   const lng = i18n.language;
@@ -70,6 +71,77 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
     meal: null,
     quantity: 1,
   });
+
+  // previewing the images
+
+  const [firstImagePreview, setFirstImagePreview] = useState();
+  const [secondImagePreview, setSecondImagePreview] = useState();
+  const [thirdImagePreview, setThirdImagePreview] = useState();
+  const [fourthImagePreview, setFourthImagePreview] = useState();
+  // getting hotel images
+
+  const [firstInitialImage, setFirstInitialImage] = useState(null);
+  const [secondInitialImage, setSecondInitialImage] = useState(null);
+  const [thridInitialImage, setThirdInitialImage] = useState(null);
+  const [fourthInitialImage, setFourthInitialImage] = useState(null);
+
+  const downloadFirstImage = async () => {
+    const { data, error } = await supabase.storage
+      .from("/public/hotel-images")
+      .download(hotel.firstImage);
+
+    if (error) {
+      throw error;
+    }
+    const url = URL.createObjectURL(data);
+    setFirstInitialImage(url);
+  };
+  const downloadSecondImage = async () => {
+    if (hotel.secondImage) {
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.secondImage);
+
+      if (error) {
+        throw error;
+      }
+      const url = URL.createObjectURL(data);
+      setSecondInitialImage(url);
+    }
+  };
+  const downloadThirdImage = async () => {
+    if (hotel.thirdImage) {
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.thirdImage);
+
+      if (error) {
+        throw error;
+      }
+      const url = URL.createObjectURL(data);
+      setThirdInitialImage(url);
+    }
+  };
+  const downloadFourthImage = async () => {
+    if (hotel.fourthImage) {
+      const { data, error } = await supabase.storage
+        .from("/public/hotel-images")
+        .download(hotel.fourthImage);
+
+      if (error) {
+        throw error;
+      }
+      const url = URL.createObjectURL(data);
+      setFourthInitialImage(url);
+    }
+  };
+
+  useEffect(() => {
+    downloadFirstImage();
+    downloadSecondImage();
+    downloadThirdImage();
+    downloadFourthImage();
+  }, []);
 
   const [mapLat, setMapLat] = useState(null);
   const [mapLng, setMapLng] = useState(null);
@@ -238,6 +310,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
+      setFirstImagePreview(file);
       setFirstImage(filePath);
 
       let { error: uploadError } = await supabase.storage
@@ -270,6 +343,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
+      setSecondImagePreview(file);
       setSecondImage(filePath);
 
       let { error: uploadError } = await supabase.storage
@@ -302,6 +376,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
+      setThirdImagePreview(file);
       setThirdImage(filePath);
 
       let { error: uploadError } = await supabase.storage
@@ -334,6 +409,7 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
+      setFourthImagePreview(file);
       setFourthImage(filePath);
 
       let { error: uploadError } = await supabase.storage
@@ -393,79 +469,151 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
             ) : (
               <div></div>
             )}
-            <div className="flex justify-around space-x-1 lg:space-x-4 lg:px-0 px-4 h-28 lg:h-rem22 ">
+            <div className="flex flex-col md:flex-row lg:flex-row justify-around space-x-1 lg:space-x-4 lg:px-0 px-4 h-28 sm:h-full xs:h-full lg:h-rem22 ">
               <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
+                {" "}
                 <h2 className="text-xl font-bold">(4)</h2>
+                <label htmlFor="fourthImage">
+                  {uploading ? (
+                    <Loader color="dark" />
+                  ) : (
+                    <IconUpload className="cursor-pointer" size={30} />
+                  )}
+                </label>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                  <label htmlFor="fourthImage">
-                    {uploading ? (
-                      <Loader color="dark" />
-                    ) : (
-                      <IconUpload className="cursor-pointer" size={30} />
-                    )}
-                  </label>
-                  <input
-                    required
-                    accept="image/webp,image/jpeg,image/png"
-                    onChange={fourthImageUpload}
-                    type="file"
-                    className="hidden"
-                    id="fourthImage"
-                  />
+                  <div className=" flex-col w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
+                    {fourthImagePreview ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={URL.createObjectURL(fourthImagePreview)}
+                        alt=""
+                      />
+                    ) : !fourthImagePreview && fourthInitialImage ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={fourthInitialImage}
+                        alt=""
+                      />
+                    ) : null}
+
+                    <input
+                      required
+                      accept="image/webp,image/jpeg,image/png"
+                      onChange={fourthImageUpload}
+                      type="file"
+                      className="hidden"
+                      id="fourthImage"
+                    />
+                  </div>
                 </div>
               </div>
 
               <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
+                {" "}
                 <h2 className="text-xl font-bold">(3)</h2>
+                <label htmlFor="thirdImage">
+                  {uploading ? (
+                    <Loader color="dark" />
+                  ) : (
+                    <IconUpload className="cursor-pointer" size={30} />
+                  )}
+                </label>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                  <label htmlFor="thirdImage">
-                    {uploading ? (
-                      <Loader color="dark" />
-                    ) : (
-                      <IconUpload className="cursor-pointer" size={30} />
-                    )}
-                  </label>
-                  <input
-                    required
-                    accept="image/webp,image/jpeg,image/png"
-                    onChange={thirdImageUpload}
-                    type="file"
-                    className="hidden"
-                    id="thirdImage"
-                  />
+                  <div className=" flex-col w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
+                    {thirdImagePreview ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={URL.createObjectURL(thirdImagePreview)}
+                        alt=""
+                      />
+                    ) : !thirdImagePreview && thridInitialImage ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={thridInitialImage}
+                        alt=""
+                      />
+                    ) : null}
+
+                    <input
+                      required
+                      accept="image/webp,image/jpeg,image/png"
+                      onChange={thirdImageUpload}
+                      type="file"
+                      className="hidden"
+                      id="thirdImage"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="h-full w-full flex items-center justify-center flex-col space-y-2   cursor-pointer transition ease-in duration-300  ">
                 {" "}
                 <h2 className="text-xl font-bold">(2)</h2>
+                <label htmlFor="secondImage">
+                  {uploading ? (
+                    <Loader color="dark" />
+                  ) : (
+                    <IconUpload className="cursor-pointer" size={30} />
+                  )}
+                </label>
                 <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                  <label htmlFor="secondImage">
-                    {uploading ? (
-                      <Loader color="dark" />
-                    ) : (
-                      <IconUpload className="cursor-pointer" size={30} />
-                    )}
-                  </label>
-                  <input
-                    required
-                    accept="image/webp,image/jpeg,image/png"
-                    onChange={secondImageUpload}
-                    type="file"
-                    className="hidden"
-                    id="secondImage"
-                  />
+                  <div className=" flex-col w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
+                    {secondImagePreview ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={URL.createObjectURL(secondImagePreview)}
+                        alt=""
+                      />
+                    ) : !secondImagePreview && secondInitialImage ? (
+                      <Image
+                        width={500}
+                        height={500}
+                        src={secondInitialImage}
+                        alt=""
+                      />
+                    ) : null}
+
+                    <input
+                      required
+                      accept="image/webp,image/jpeg,image/png"
+                      onChange={secondImageUpload}
+                      type="file"
+                      className="hidden"
+                      id="secondImage"
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="h-full w-full flex items-center justify-center space-y-2   cursor-pointer transition ease-in duration-300 flex-col  ">
+              <div className="h-full flex-col w-full flex items-center justify-center space-y-2   cursor-pointer transition ease-in duration-300 flex-col  ">
                 <h2 className="text-xl font-bold">(1)</h2>
-                <div className=" w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
-                  <label htmlFor="firstImage">
-                    {uploading ? (
-                      <Loader color="dark" />
-                    ) : (
-                      <IconUpload className="cursor-pointer" size={30} />
-                    )}
-                  </label>
+                <label htmlFor="firstImage">
+                  {uploading ? (
+                    <Loader color="dark" />
+                  ) : (
+                    <IconUpload className="cursor-pointer" size={30} />
+                  )}
+                </label>
+                <div className=" flex-col w-full h-full cursor-pointer p-4 bg-mainBlue hover:text-white  transition justify-center items-center flex ease-in duration-300 font-mainFont   text-center text-mainPurple hover:bg-mainPurple">
+                  {firstImagePreview ? (
+                    <Image
+                      width={500}
+                      height={500}
+                      src={URL.createObjectURL(firstImagePreview)}
+                      alt=""
+                    />
+                  ) : !firstImagePreview && firstInitialImage ? (
+                    <Image
+                      width={500}
+                      height={500}
+                      src={firstInitialImage}
+                      alt=""
+                    />
+                  ) : null}
+
                   <input
                     required
                     accept="image/webp,image/jpeg,image/png"
@@ -582,9 +730,9 @@ export default function EditHotel({ identifier, featuresData, cities, hotel }) {
                 data={cityNames}
               />
             </div>
-            {/* <div className="">
+            <div className="">
               <LocationsMap city={city} cityLatLng={[mapLat, mapLng]} />
-            </div> */}
+            </div>
             <div
               className={`${
                 alignLeft === true
