@@ -30,6 +30,76 @@ export default function Calendar() {
         )}
         <DatePicker
           onChange={(e) => {
+            if (dayjs(e.value) > dayjs().toDate()) {
+              console.log("error ");
+              setInputError(false);
+            } else if (dayjs(e.value) < dayjs().toDate()) {
+              setInputError(true);
+            }
+            dispatch(reservationActions.setEnterting(e.value.toISOString()));
+            console.log(e.value);
+          }}
+          round="x2"
+          inputAttributes={{
+            placeholder:
+              enterDate !== ""
+                ? dayjs(enterDate)
+                    .calendar("jalali")
+                    .locale("en")
+                    .format("YYYY/MM/DD") +
+                  " --- " +
+                  dayjs(exitDate)
+                    .calendar("jalali")
+                    .locale("en")
+                    .format("YYYY/MM/DD")
+                : "تاریخ ورود",
+          }}
+          className="text-center"
+          inputClass="w-60  text-red font-mainFont text-center h-10 my-0 bg-white border border-gray-300 rounded-lg justify-center items-center"
+          weekends={[6]}
+          style={{
+            color: inputError ? "2px solid red" : "none",
+            zIndex: 999999999,
+          }}
+          accentColor="#6374ae"
+        />
+        <DatePicker
+          onChange={(e) => {
+            if (dayjs(e.value) > dayjs().toDate()) {
+              console.log("error ");
+              setInputError(false);
+            } else if (dayjs(e.value) < dayjs().toDate()) {
+              setInputError(true);
+            }
+            dispatch(reservationActions.setExiting(e.value.toISOString()));
+            console.log(e.value);
+          }}
+          round="x2"
+          inputAttributes={{
+            placeholder:
+              enterDate !== ""
+                ? dayjs(enterDate)
+                    .calendar("jalali")
+                    .locale("en")
+                    .format("YYYY/MM/DD") +
+                  " --- " +
+                  dayjs(exitDate)
+                    .calendar("jalali")
+                    .locale("en")
+                    .format("YYYY/MM/DD")
+                : "تاریخ خروج",
+          }}
+          className="text-center"
+          inputClass="w-60  text-red font-mainFont text-center h-10 my-0 bg-white border border-gray-300 rounded-lg justify-center items-center"
+          weekends={[6]}
+          style={{
+            color: inputError ? "2px solid red" : "none",
+            zIndex: 999999999,
+          }}
+          accentColor="#6374ae"
+        />
+        <DatePicker
+          onChange={(e) => {
             if (
               dayjs(e.from) > dayjs().toDate() ||
               dayjs(e.to) > dayjs().toDate()
