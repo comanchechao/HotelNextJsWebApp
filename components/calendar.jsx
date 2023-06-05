@@ -16,9 +16,15 @@ export default function Calendar() {
 
   dayjs.extend(jalaliday);
   useEffect(() => {
-    console.log(enterDate);
-    console.log(exitDate);
-  }, [enterDate]);
+    if (enterDate !== "" && exitDate !== "") {
+      console.log("lunched");
+      if (dayjs(exitDate) > dayjs(enterDate)) {
+        setInputError(false);
+      } else if (dayjs(exitDate) < dayjs(enterDate)) {
+        setInputError(true);
+      }
+    }
+  }, [enterDate, exitDate]);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -28,6 +34,8 @@ export default function Calendar() {
         ) : (
           <h2 style={{ color: inputError ? " red" : "none" }}>{t("inDate")}</h2>
         )}
+
+        {/* display this one only mobile  ======= from here ========= */}
         <DatePicker
           onChange={(e) => {
             if (dayjs(e.value) > dayjs().toDate()) {
@@ -98,6 +106,11 @@ export default function Calendar() {
           }}
           accentColor="#6374ae"
         />
+
+        {/* =================  untill here ================ */}
+
+        {/* display this on desktop  =============== from here ============== */}
+
         <DatePicker
           onChange={(e) => {
             if (
@@ -143,6 +156,8 @@ export default function Calendar() {
           direction="ltr"
           range
         />
+
+        {/* untill ===== here ================= */}
       </div>
     </Suspense>
   );
