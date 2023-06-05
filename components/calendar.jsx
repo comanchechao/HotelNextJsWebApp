@@ -35,7 +35,7 @@ export default function Calendar() {
           <h2 style={{ color: inputError ? " red" : "none" }}>{t("inDate")}</h2>
         )}
 
-        <div className="lg:hidden flex">
+        <div className="lg:hidden flex flex-col space-y-4">
           <DatePicker
             onChange={(e) => {
               if (dayjs(e.value) > dayjs().toDate()) {
